@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const JobVacancyAddForm = () => {
     return(
@@ -7,7 +7,9 @@ const JobVacancyAddForm = () => {
             <h2>채용공고 등록</h2>
             <div className="ban-list bg-white"> 
                 <div className="btn-area position">
-                    <button className="btn btn-white btn-120">취소</button>
+                    <Link to="/admin/employmentInfo/jobVacancy">
+                        <button className="btn btn-white btn-120">취소</button>
+                    </Link>
                     <button className="btn btn-blue btn-120">등록</button>
                 </div>
                 <div className="edit">

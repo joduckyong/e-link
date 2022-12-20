@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PressReleaseAddForm = () => {
     return (
@@ -6,7 +7,9 @@ const PressReleaseAddForm = () => {
             <h2>보도자료 등록</h2>
             <div className="ban-list bg-white"> 
                 <div className="btn-area position">
+                    <Link to="/admin/publicRelations/pressRelease">
                     <button className="btn btn-white btn-120">취소</button>
+                    </Link>
                     <button className="btn btn-blue btn-120">등록</button>
                 </div>
                 <div className="edit">

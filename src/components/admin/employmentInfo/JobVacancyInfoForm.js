@@ -1,17 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const JobVacancyInfoForm = () => {
-
-    const goListPage = () => {
-        document.location.href = '/admin/employmentInfo/jobVacancy';
-    }
 
     return(
         <div className="a-content">
             <h2>채용공고 관리</h2>
             <div className="ban-list p0"> 
                 <div className="btn-area position">
-                    <button className="btn btn-white btn-120" onClick={goListPage}>목록</button>
+                    <Link to="/admin/employmentInfo/jobVacancy">
+                        <button className="btn btn-white btn-120">목록</button>
+                    </Link>
                 </div>
                 <div className="view-detail bg-white">
                     <ul>

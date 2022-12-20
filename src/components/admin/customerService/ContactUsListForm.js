@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-const JobVacancyListForm = () => {
+const ContactUsListForm = () => {
 
     return(
         <div className="a-content">
-            <h2>채용공고 관리<span>총 5건</span></h2>
+            <h2>Contact Us<span>총 5건</span></h2>
             <div className="ban-list p0">
                 <div className="search-box">
                     <select name="" id="">
@@ -18,26 +18,22 @@ const JobVacancyListForm = () => {
                 </div>
                 <div className="btn-area position">
                     <button className="btn btn-red btn-120">선택삭제</button>
-                    <Link to="/admin/employmentInfo/jobVacancyAdd">
-                        <button className="btn btn-blue btn-120">글쓰기</button>
-                    </Link>
                 </div>
                 <div className="table-wrap">
                     <table>
                         <colgroup>
-                            <col width="10%" />
-                            <col width="5%" />
-                            <col width="15%" />
-                            <col width="45%" />
-                            <col width="10%" />
-                            <col width="15%" />
+                            <col width="7%" />
+                            <col width="7%" />
+                            <col width="7%" />
                         </colgroup>
                         <thead>
                             <tr>
                                 <th><label htmlFor="allchk"><input type="checkbox" id="allchk" /><span className="chkimg"></span></label></th>
                                 <th>번호</th>
-                                <th>구분</th>
-                                <th>제목</th>
+                                <th>이름</th>
+                                <th>연락처</th>
+                                <th>메일</th>
+                                <th>문의제목</th>
                                 <th>작성일</th>
                                 <th>관리</th>
                             </tr>
@@ -46,24 +42,28 @@ const JobVacancyListForm = () => {
                             <tr>
                                 <th><label htmlFor="p01"><input type="checkbox" id="p01" /><span className="chkimg"></span></label></th>
                                 <td>1</td>
-                                <td>신입</td>
-                                <td className="tal"><span className="pop-name">[신입_해외영업] 23년 신입사원 공개채용 (해외영업 분야)</span></td>
-                                <td><span className="pop-date">2022-08-01</span></td>
+                                <td>이지원</td>
+                                <td>010-1234-5678</td>
+                                <td>hello0404@gmail.com</td>
+                                <td className="fb">커넥터 분리 문의드립니다.</td>
+                                <td>2022-08-01</td>
                                 <td>
-                                    <Link to="/admin/employmentInfo/jobVacancyInfo">
-                                        <button className="btn">수정</button>
+                                    <Link to="/admin/customerService/contactUsInfo">
+                                        <button className="btn">보기</button>
                                     </Link>
                                 </td>
                             </tr>
                             <tr>
                                 <th><label htmlFor="p01"><input type="checkbox" id="p01" /><span className="chkimg"></span></label></th>
-                                <td>2</td>
-                                <td>신입</td>
-                                <td className="tal"><span className="pop-name">[신입_해외영업] 23년 신입사원 공개채용 (해외영업 분야)</span></td>
-                                <td><span className="pop-date">2022-08-01</span></td>
+                                <td>1</td>
+                                <td>이지원</td>
+                                <td>010-1234-5678</td>
+                                <td>hello0404@gmail.com</td>
+                                <td className="fb">커넥터 분리 문의드립니다.</td>
+                                <td>2022-08-01</td>
                                 <td>
-                                    <Link to="/admin/employmentInfo/jobVacancyInfo">
-                                        <button className="btn">수정</button>
+                                    <Link to="/admin/customerService/contactUsInfo">
+                                        <button className="btn">보기</button>
                                     </Link>
                                 </td>
                             </tr>
@@ -86,4 +86,4 @@ const JobVacancyListForm = () => {
     );
 }
 
-export default JobVacancyListForm;
+export default ContactUsListForm;

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PressReleaseInfoForm = () => {
+const ContactUsInfoForm = () => {
 
-    return (
+    return(
         <div className="a-content">
-            <h2>보도자료 관리</h2>
+            <h2>Contact Us</h2>
             <div className="ban-list p0"> 
                 <div className="btn-area position">
-                    <Link to="/admin/publicRelations/pressRelease">
+                    <Link to="/admin/customerService/contactUs">
                         <button className="btn btn-white btn-120">목록</button>
                     </Link>
                 </div>
@@ -64,4 +64,4 @@ const PressReleaseInfoForm = () => {
     );
 }
 
-export default PressReleaseInfoForm;
+export default ContactUsInfoForm;

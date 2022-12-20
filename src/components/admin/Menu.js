@@ -56,7 +56,7 @@ const Menu = () => {
               </li>
             </ul>
           </li>
-          <li>
+          <li className="on">
             <NavLink to="/admin/customerService/contactUs">고객센터</NavLink>
             <ul>
               <li>

@@ -1,8 +1,5 @@
 import React from 'react';
-
-const goListPage = () => {
-    document.location.href = '/admin/publicRelations/media';
-}
+import { Link } from 'react-router-dom';
 
 const MediaInfoForm = () => {
     return (
@@ -10,7 +7,9 @@ const MediaInfoForm = () => {
             <h2>미디어 관리</h2>
             <div className="ban-list p0"> 
                 <div className="btn-area position">
-                    <button className="btn btn-white btn-120" onClick={goListPage}>목록</button>
+                    <Link to="/admin/publicRelations/media">
+                        <button className="btn btn-white btn-120">목록</button>
+                    </Link>
                 </div>
                 <div className="view-detail bg-white">
                     <ul>

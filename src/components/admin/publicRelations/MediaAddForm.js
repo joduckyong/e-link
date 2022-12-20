@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MediaAddForm = () => {
     return (
@@ -6,7 +7,9 @@ const MediaAddForm = () => {
             <h2>미디어 등록</h2>
             <div className="ban-list bg-white"> 
                 <div className="btn-area position">
-                    <button className="btn btn-white btn-120">취소</button>
+                    <Link to="/admin/publicRelations/media">
+                        <button className="btn btn-white btn-120">취소</button>
+                    </Link>
                     <button className="btn btn-blue btn-120">등록</button>
                 </div>
                 <div className="edit">

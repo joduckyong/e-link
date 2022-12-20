@@ -29,6 +29,7 @@ import JobVacancyModPage from './pages/admin/employmentInfo/JobVacancyModPage';
 import JobVacancyInfoPage from './pages/admin/employmentInfo/JobVacancyInfoPage';
 
 import ContactUsPage from './pages/admin/customerService/ContactUsPage';
+import ContactUsInfoPage from './pages/admin/customerService/ContactUsInfoPage';
 
 const App = () => {
   return (
@@ -102,6 +103,10 @@ const App = () => {
         <Route
           path="/admin/customerService/contactUs"
           element={<ContactUsPage />}
+        />
+        <Route
+          path="/admin/customerService/contactUsInfo"
+          element={<ContactUsInfoPage />}
         />
       </Routes>
     </Router>

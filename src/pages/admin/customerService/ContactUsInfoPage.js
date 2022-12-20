@@ -1,17 +1,17 @@
 import React from "react";
 import Menu from 'components/admin/Menu';
-import ContactUsListForm from 'components/admin/customerService/ContactUsListForm'
+import ContactUsInfoForm from 'components/admin/customerService/ContactUsInfoForm'
 import 'styles/layout.css';
 import 'styles/layout_1440.css';
 import 'styles/layout_780.css';
 
-const ContactUsPage = () => {
+const ContactUsInfoPage = () => {
   return (
     <div className="adminsub">
       <Menu />
-      <ContactUsListForm />
+      <ContactUsInfoForm />
     </div>
   );
 };
 
-export default ContactUsPage;
+export default ContactUsInfoPage;
