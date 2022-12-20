@@ -33,7 +33,7 @@ const Menu = () => {
               </li>
             </ul>
           </li>
-          <li>
+          <li className="on">
             <NavLink to="">홍보센터</NavLink>
             <ul>
               <li>
@@ -46,7 +46,7 @@ const Menu = () => {
               </li>
             </ul>
           </li>
-          <li>
+          <li className="on">
             <NavLink to="/admin/employmentInfo/jobVacancy">채용정보</NavLink>
             <ul>
               <li>
