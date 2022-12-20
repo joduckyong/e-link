@@ -1,17 +1,17 @@
 import React from "react";
 import Menu from 'components/admin/Menu';
-import JobVacancyListForm from 'components/admin/employmentInfo/JobVacancyListForm'
+import JobVacancyInfoForm from 'components/admin/employmentInfo/JobVacancyInfoForm'
 import 'styles/layout.css';
 import 'styles/layout_1440.css';
 import 'styles/layout_780.css';
 
-const JobVacancyPage = () => {
+const JobVacancyInfoPage = () => {
   return (
     <div className="adminsub">
       <Menu />
-      <JobVacancyListForm />
+      <JobVacancyInfoForm />
     </div>
   );
 };
 
-export default JobVacancyPage;
+export default JobVacancyInfoPage;

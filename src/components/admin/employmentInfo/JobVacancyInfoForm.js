@@ -1,14 +1,14 @@
 import React from 'react';
 
-const PressReleaseInfoForm = () => {
+const JobVacancyInfoForm = () => {
 
     const goListPage = () => {
-        document.location.href = '/admin/publicRelations/pressRelease';
+        document.location.href = '/admin/employmentInfo/jobVacancy';
     }
 
-    return (
+    return(
         <div className="a-content">
-            <h2>보도자료 관리</h2>
+            <h2>채용공고 관리</h2>
             <div className="ban-list p0"> 
                 <div className="btn-area position">
                     <button className="btn btn-white btn-120" onClick={goListPage}>목록</button>
@@ -65,4 +65,4 @@ const PressReleaseInfoForm = () => {
     );
 }
 
-export default PressReleaseInfoForm;
+export default JobVacancyInfoForm;

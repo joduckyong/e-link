@@ -24,6 +24,10 @@ import MediaModPage from './pages/admin/publicRelations/MediaModPage';
 import MediaInfoPage from './pages/admin/publicRelations/MediaInfoPage';
 
 import JobVacancyPage from './pages/admin/employmentInfo/JobVacancyPage';
+import JobVacancyAddPage from './pages/admin/employmentInfo/JobVacancyAddPage';
+import JobVacancyModPage from './pages/admin/employmentInfo/JobVacancyModPage';
+import JobVacancyInfoPage from './pages/admin/employmentInfo/JobVacancyInfoPage';
+
 import ContactUsPage from './pages/admin/customerService/ContactUsPage';
 
 const App = () => {
@@ -82,6 +86,18 @@ const App = () => {
         <Route
           path="/admin/employmentInfo/jobVacancy"
           element={<JobVacancyPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyAdd"
+          element={<JobVacancyAddPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyMod"
+          element={<JobVacancyModPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyInfo"
+          element={<JobVacancyInfoPage />}
         />
         <Route
           path="/admin/customerService/contactUs"

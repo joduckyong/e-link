@@ -1,12 +1,16 @@
 import React from 'react';
 
+const goListPage = () => {
+    document.location.href = '/admin/publicRelations/media';
+}
+
 const MediaInfoForm = () => {
     return (
         <div className="a-content">
             <h2>미디어 관리</h2>
             <div className="ban-list p0"> 
                 <div className="btn-area position">
-                    <button className="btn btn-white btn-120">목록</button>
+                    <button className="btn btn-white btn-120" onClick={goListPage}>목록</button>
                 </div>
                 <div className="view-detail bg-white">
                     <ul>

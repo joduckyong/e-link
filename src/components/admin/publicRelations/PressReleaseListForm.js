@@ -2,13 +2,22 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const pressReleaseListForm = () => {
+
+    const goInfoPage = () => {
+        document.location.href = '/admin/publicRelations/pressReleaseInfo';
+    }
+    
+    const goAddPage = () => {
+        document.location.href = '/admin/publicRelations/pressReleaseAdd';
+    }
+
     return(
         <div className="a-content">
             <h2>보도자료 관리<span>총 5건</span></h2>
             <div className="ban-list p0">
                 <div className="btn-area position">
                     <button className="btn btn-red btn-120">선택삭제</button>
-                    <button className="btn btn-blue btn-120">글쓰기</button>
+                    <button className="btn btn-blue btn-120" onClick={goAddPage}>글쓰기</button>
                 </div>
                 <div className="table-wrap">
                     <table>
@@ -54,7 +63,7 @@ const pressReleaseListForm = () => {
                                     <span className="pop-date">2022-08-01</span>
                                 </td>
                                 <td>
-                                    <button className="btn">수정</button>
+                                    <button className="btn" onClick={goInfoPage}>수정</button>
                                 </td>
                             </tr>
                             <tr>
@@ -75,7 +84,7 @@ const pressReleaseListForm = () => {
                                     <span className="pop-date">2022-08-01</span>
                                 </td>
                                 <td>
-                                    <button className="btn">수정</button>
+                                    <button className="btn" onClick={goInfoPage}>수정</button>
                                 </td>
                             </tr>
                         </tbody>
