@@ -14,6 +14,10 @@ import AnnounceModPage from './pages/admin/investInfo/AnnounceModPage';
 import AnnounceInfoPage from './pages/admin/investInfo/AnnounceInfoPage';
 
 import PressReleasePage from './pages/admin/publicRelations/PressReleasePage';
+import PressReleaseAddPage from './pages/admin/publicRelations/PressReleaseAddPage';
+import PressReleaseModPage from './pages/admin/publicRelations/PressReleaseModPage';
+import PressReleaseInfoPage from './pages/admin/publicRelations/PressReleaseInfoPage';
+
 import MediaPage from './pages/admin/publicRelations/MediaPage';
 import JobVacancyPage from './pages/admin/employmentInfo/JobVacancyPage';
 import ContactUsPage from './pages/admin/customerService/ContactUsPage';
@@ -45,6 +49,18 @@ const App = () => {
         <Route
           path="/admin/publicRelations/pressRelease"
           element={<PressReleasePage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseAdd"
+          element={<PressReleaseAddPage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseMod"
+          element={<PressReleaseModPage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseInfo"
+          element={<PressReleaseInfoPage />}
         />
         <Route path="/admin/publicRelations/media" element={<MediaPage />} />
         <Route
