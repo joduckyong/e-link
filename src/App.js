@@ -19,6 +19,10 @@ import PressReleaseModPage from './pages/admin/publicRelations/PressReleaseModPa
 import PressReleaseInfoPage from './pages/admin/publicRelations/PressReleaseInfoPage';
 
 import MediaPage from './pages/admin/publicRelations/MediaPage';
+import MediaAddPage from './pages/admin/publicRelations/MediaAddPage';
+import MediaModPage from './pages/admin/publicRelations/MediaModPage';
+import MediaInfoPage from './pages/admin/publicRelations/MediaInfoPage';
+
 import JobVacancyPage from './pages/admin/employmentInfo/JobVacancyPage';
 import ContactUsPage from './pages/admin/customerService/ContactUsPage';
 
@@ -63,6 +67,18 @@ const App = () => {
           element={<PressReleaseInfoPage />}
         />
         <Route path="/admin/publicRelations/media" element={<MediaPage />} />
+        <Route
+          path="/admin/publicRelations/mediaAdd"
+          element={<MediaAddPage />}
+        />
+        <Route
+          path="/admin/publicRelations/mediaMod"
+          element={<MediaModPage />}
+        />
+        <Route
+          path="/admin/publicRelations/mediaInfo"
+          element={<MediaInfoPage />}
+        />
         <Route
           path="/admin/employmentInfo/jobVacancy"
           element={<JobVacancyPage />}
