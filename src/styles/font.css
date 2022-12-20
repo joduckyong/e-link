@@ -1,0 +1,45 @@
+@charset "utf-8";
+/*
+Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
+https://github.com/orioncactus/pretendard
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+*/
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 800;
+	font-display: swap;
+	unicode-range: U+0030-0039,U+AC00-D7A3,U+0041-005A,U+0061-007A;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 700; 
+	font-display: swap;
+	unicode-range: U+0030-0039,U+AC00-D7A3,U+0041-005A,U+0061-007A;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 600;
+	font-display: swap;
+	unicode-range: U+0030-0039,U+AC00-D7A3,U+0041-005A,U+0061-007A;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 400;
+	font-display: swap;
+	unicode-range: U+0030-0039,U+AC00-D7A3,U+0041-005A,U+0061-007A;
+}
