@@ -47,7 +47,7 @@ const Menu = () => {
             </ul>
           </li>
           <li>
-            <NavLink to="/admin/employmentInfo/jobVacancy">채용공고</NavLink>
+            <NavLink to="/admin/employmentInfo/jobVacancy">채용정보</NavLink>
             <ul>
               <li>
                 <NavLink to="/admin/employmentInfo/jobVacancy">
