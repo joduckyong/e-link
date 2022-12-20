@@ -1,7 +1,18 @@
-import React from "react";
+import React from 'react';
+import Menu from 'components/admin/Menu';
+import OfficialNoticeListForm from 'components/admin/investInfo/OfficialNoticeListForm';
+
+import 'styles/layout.css';
+import 'styles/layout_1440.css';
+import 'styles/layout_780.css';
 
 const OfficialNoticePage = () => {
-  return <div>투자정보 공시정보</div>;
+  return (
+    <div className="adminsub">
+      <Menu />
+      <OfficialNoticeListForm />
+    </div>
+  );
 };
 
 export default OfficialNoticePage;

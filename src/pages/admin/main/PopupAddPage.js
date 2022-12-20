@@ -1,17 +1,17 @@
 import React from 'react';
 import Menu from 'components/admin/Menu';
-import AnnounceListForm from 'components/admin/investInfo/AnnounceListForm';
+import PopUpAddForm from 'components/admin/main/PopUpAddForm';
 import 'styles/layout.css';
 import 'styles/layout_1440.css';
 import 'styles/layout_780.css';
 
-const AnnouncePage = () => {
+const PopupAddPage = () => {
   return (
     <div className="adminsub">
       <Menu />
-      <AnnounceListForm />
+      <PopUpAddForm />
     </div>
   );
 };
 
-export default AnnouncePage;
+export default PopupAddPage;
