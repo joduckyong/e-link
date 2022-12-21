@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from "aos";
-import "aos/dist/aos.css";
-import { Swiper, SwiperSlide } from "swiper/react"; // basic
+import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
-import "swiper/css"; //basic
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import "aos/dist/aos.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 
 SwiperCore.use([Navigation, Pagination]);
 gsap.registerPlugin(ScrollTrigger);
