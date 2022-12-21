@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+/* 관리자 */
 import LoginPage from './pages/admin/LoginPage';
 
 import PopupPage from './pages/admin/main/PopupPage';
@@ -30,6 +31,10 @@ import JobVacancyInfoPage from './pages/admin/employmentInfo/JobVacancyInfoPage'
 
 import ContactUsPage from './pages/admin/customerService/ContactUsPage';
 import ContactUsInfoPage from './pages/admin/customerService/ContactUsInfoPage';
+
+/* 클라이언트 */
+
+import MainPage from './pages/MainPage';
 
 const App = () => {
   return (
@@ -107,6 +112,11 @@ const App = () => {
         <Route
           path="/admin/customerService/contactUsInfo"
           element={<ContactUsInfoPage />}
+        />
+
+        <Route
+          path="/main"
+          element={<MainPage />}
         />
       </Routes>
     </Router>

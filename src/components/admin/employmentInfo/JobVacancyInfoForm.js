@@ -46,7 +46,7 @@ const JobVacancyInfoForm = () => {
                             <span className="tit">첨부파일</span>
                             <div className="text">
                                 <span>커넥터분리.pdf</span>
-                                <button className="btn-down"><img src="../../img/admin/ico-download.svg" alt="" /></button>
+                                <button className="btn-down"><img src="/img/admin/ico-download.svg" alt="" /></button>
                             </div>
                         </li>
                     </ul>

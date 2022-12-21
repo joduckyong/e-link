@@ -34,7 +34,7 @@ const JobVacancyAddForm = () => {
                                 <span className="upload-name">선택된 파일 없음</span>
                             </div>
                         </div>
-                        <NavLink to="" className="btn-add"><img src="../../img/admin/ico-plus.svg" alt="" /></NavLink>
+                        <NavLink to="" className="btn-add"><img src="/img/admin/ico-plus.svg" alt="" /></NavLink>
                     </div>
                 </div>
             </div>

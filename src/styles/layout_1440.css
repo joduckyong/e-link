@@ -1,23 +1,39 @@
 @media only screen and (max-width:1760px){
-	header .wrap{width: 100%; padding: 30px 20px;}
+	header .wrap{width: 100%; padding: 0px 20px;}
+	header .all-menu{padding: 0px;}
+	header .all-menu .middle,header .all-menu .bottom{padding: 0 20px;}
 }
-
+@media only screen and (max-width:1350px){
+	header .gnb>li>a{padding-left: 35px; padding-right: 35px;}
+}
 @media only screen and (max-width:1320px){
 	header .gnb{display: none;}
+	header .wrap{padding: 16px 20px;}
+	header .all-menu .big-menu strong{font-size: 22px; padding-bottom: 25px;}
+	header .all-menu .small-menu>li>a{font-size: 16px;}
+	header .all-menu .small-menu>li{margin-top: 25px;}
+	header .all-menu .small-menu>li:first-child{margin-top: 35px;}
+	header .all-menu .bottom ul li a,header .all-menu .bottom p{font-size: 14px;}
 }
 
 @media only screen and (max-width:1280px){
-	header .wrap{padding: 16px 20px;}
 	header h1{width: 100px;}
 	header h1 img{width: 100%;}
 	header a.menu{display: inline-block; width: 27px;}
 	header a.menu img{width: 100%;}
+	header .all-menu .middle{margin-top: 100px;}
+	header .all-menu .top{padding: 0;}
+	header .all-menu .close{display: inline-block; width: 25px;}
+	header .all-menu .close img{width: 100%;}
+	/*header .all-menu .big-menu > li{width: 25%;}*/
+	
+
 	.main{margin-top: 55px;}
 	.main .wrap,.sub .wrap{width: 100%; padding: 0 20px;}
 
 	.main .main-visual{height: 640px;}
 	.main .main-visual video{height: 100%;}
-	.main .main-visual h1{font-size: 40px;}
+	.main .main-visual h1{font-size: 40px; padding-top: 105px;}
 	.main .main-visual h1 span{line-height: 50px;}
 	.main .main-visual .search{width: 500px;}
 	.main .main-visual .search input{padding: 20px 0; font-size: 22px;}
@@ -33,17 +49,17 @@
 	.main .con1 p{font-size: 15px;}
 	.main .con1 a{background-size: 45px auto;}
 
-	.main .con2{padding-left: 48px; padding-right: 48px; background: #FFF;}
+	.main .con2{padding-left: 48px; padding-right: 48px; background: #FFF; height: 110vh;}
+	.main .con2 .con2-container{height: auto;}
 	.main .con2 .intro .main-section-headline{padding-bottom: 50px;}
-	.main .con2 .btn-area{font-size: 28px; line-height: 45px; word-break: keep-all;}
-	.main .con2 .intro .visual{height: 720px;}
+	.main .con2 .btn-area{font-size: 28px; line-height: 45px; word-break: keep-all; padding: 0 20px;}
 
 	.main .con3 .show-only-desktop{display: none;}
 	.main .con3 .mobile-show{display: block;}
 	.main .con3 .mobile-show .swiper-slide{padding-top: 110px; padding-right: 20px; padding-left: 20px; padding-bottom: 56%; background-size: cover; background-position: center !important;}
-	.main .con3 .mobile-show .text{color: #FFF; font-size: 28px; font-weight: bold; margin-bottom: 25px;}
-	.main .con3 .mobile-show .desc{font-size: 18px; color: #FFF;}
-	.main .con3 .business-page-link{font-size: 14px; margin-top: 60px;}
+	.main .con3 .mobile-show .text{color: #FFF; font-size: 28px; font-weight: bold; margin-bottom: 25px; line-height: 28px;}
+	.main .con3 .mobile-show .desc{font-size: 18px; color: #FFF; margin-bottom: 60px; line-height: 25px;}
+	.main .con3 .link{font-size: 14px; margin-top: 60px;}
 
 	.main .con4{padding: 100px 0 200px;}
 	.main .con4 .wrap{width: 100%; padding-top: 0;}
@@ -57,11 +73,11 @@
 	.main .con4 .right .small{font-size: 15px;}
 	.main .con4 .right>div:nth-child(odd){margin-left: 100px;}
 
-	.main .con5{padding-top: 100px;}
+	.main .con5{padding-top: 100px; overflow: hidden;}
 	.main .con5 .s-tit{font-size: 15px;}
-	.main .con5 .main-tit{font-size: 28px; line-height: 45px; margin-top: 45px; word-break: keep-all;}
+	.main .con5 .main-tit{font-size: 28px; line-height: 45px; margin-top: 45px; word-break: keep-all; padding: 0 20px;}
 	.main .con5 .swiper{padding: 85px 0 100px;}
-	.main .con5 .slide-tit{font-size: 22px; margin-bottom: 20px;}
+	.main .con5 .slide-tit{font-size: 22px; margin-bottom: 20px; line-height: 32px;}
 	.main .con5 p{font-size: 14px; line-height: 22px;}
 	.main .con5 .control > div{width: 48px; height: 48px; background-size: cover;}
 
@@ -79,7 +95,7 @@
 	.main .con8 ul li a{font-size: 15px; text-align: center;}
 
 	.sub .content{padding-top: 60px; padding-bottom: 60px;}
-	.sub .m-block{display: block;}
+	.m-block{display: block;}
 	.sub .sub-top{height: 400px;}
 	.sub .sub-top h2{font-size: 40px; line-height: 50px;}
 	.sub .sub-top .path{padding-left: 10px; margin-bottom: 80px;}

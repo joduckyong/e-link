@@ -1,4 +1,10 @@
 @media only screen and (max-width:980px){
+    header .all-menu{display: none;}
+    header .pc-menu{display: none;}
+    header .mo-menu{display: block;}
+
+    .tb-block{display: none;}
+
     .main .con8{padding: 90px 0; background-size: cover;}
     .main .con8 .wrap{flex-wrap: wrap;}
     .main .con8 .wrap .txt-area{width: 100%;}
@@ -35,7 +41,7 @@
    .main .con4 .pc-show{display: none;}
    .main .con4 .mobile-show{display: block;}
    .main .con4 .mobile-show .right{position: static; margin-top: 70px;}
-   .main .con4 .mobile-show .right>div{width: 50%; margin: 0 auto  80px !important;}
+   .main .con4 .mobile-show .right>div{width: 63%; margin: 0 auto  80px !important;}
    .main .con4 .mobile-show .right>div:first-child{margin-top: 0;}
    .main .con4 .mobile-show .right>div:nth-child(odd){margin-left: 0;}
    .main .con4 .mobile-show .right>div:nth-child(even){position: relative; left: 10%;}

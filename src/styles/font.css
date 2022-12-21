@@ -14,6 +14,7 @@ http://scripts.sil.org/OFL
 	font-family: 'Pretendard';
 	font-weight: 800;
 	font-display: swap;
+	src: '';
 	unicode-range: U+0030-0039,U+AC00-D7A3,U+0041-005A,U+0061-007A;
 }
 
@@ -21,6 +22,7 @@ http://scripts.sil.org/OFL
 	font-family: 'Pretendard';
 	font-weight: 700; 
 	font-display: swap;
+	src: '';
 	unicode-range: U+0030-0039,U+AC00-D7A3,U+0041-005A,U+0061-007A;
 }
 
@@ -28,6 +30,7 @@ http://scripts.sil.org/OFL
 	font-family: 'Pretendard';
 	font-weight: 600;
 	font-display: swap;
+	src: '';
 	unicode-range: U+0030-0039,U+AC00-D7A3,U+0041-005A,U+0061-007A;
 }
 
@@ -35,11 +38,13 @@ http://scripts.sil.org/OFL
 	font-family: 'Pretendard';
 	font-weight: 500;
 	font-display: swap;
+	src: '';
 }
 
 @font-face {
 	font-family: 'Pretendard';
 	font-weight: 400;
 	font-display: swap;
+	src: '';
 	unicode-range: U+0030-0039,U+AC00-D7A3,U+0041-005A,U+0061-007A;
 }
