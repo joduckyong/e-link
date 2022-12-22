@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import MainForm from 'components/client/MainForm';
+import BusinessplaceForm from 'components/client/company/BusinessplaceForm';
 
 const BusinessplacePage = () => {
   return (
     <div className="main">
       <Header />
-      <MainForm />
+      <BusinessplaceForm />
       <Footer />
     </div>
   );

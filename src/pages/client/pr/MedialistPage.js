@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import MainForm from 'components/client/MainForm';
+import MedialistForm from 'components/client/pr/MedialistForm';
 
 const MedialistPage = () => {
   return (
     <div className="main">
       <Header />
-      <MainForm />
+      <MedialistForm />
       <Footer />
     </div>
   );

@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import MainForm from 'components/client/MainForm';
+import CreditForm from 'components/client/investment/CreditForm';
 
 const CreditPage = () => {
   return (
     <div className="main">
       <Header />
-      <MainForm />
+      <CreditForm />
       <Footer />
     </div>
   );

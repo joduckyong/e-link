@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import MainForm from 'components/client/MainForm';
+import ManagementForm from 'components/client/investment/ManagementForm';
 
 const ManagementPage = () => {
   return (
     <div className="main">
       <Header />
-      <MainForm />
+      <ManagementForm />
       <Footer />
     </div>
   );

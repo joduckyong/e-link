@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import MainForm from 'components/client/MainForm';
+import BenefitsForm from 'components/client/recruit/BenefitsForm';
 
 const BenefitsPage = () => {
   return (
     <div className="main">
       <Header />
-      <MainForm />
+      <BenefitsForm />
       <Footer />
     </div>
   );

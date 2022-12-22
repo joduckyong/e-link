@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import MainForm from 'components/client/MainForm';
+import TransportationForm from 'components/client/business/ev/TransportationForm';
 
 const TransportationPage = () => {
   return (
     <div className="main">
       <Header />
-      <MainForm />
+      <TransportationForm />
       <Footer />
     </div>
   );

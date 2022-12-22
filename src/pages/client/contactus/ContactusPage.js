@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import MainForm from 'components/client/MainForm';
+import ContactusForm from 'components/client/contactus/ContactusForm';
 
 const ContactusPage = () => {
   return (
     <div className="main">
       <Header />
-      <MainForm />
+      <ContactusForm />
       <Footer />
     </div>
   );

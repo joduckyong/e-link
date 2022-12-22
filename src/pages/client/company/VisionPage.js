@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import MainForm from 'components/client/MainForm';
+import VisionForm from 'components/client/company/VisionForm';
 
 const VisionPage = () => {
   return (
     <div className="main">
       <Header />
-      <MainForm />
+      <VisionForm />
       <Footer />
     </div>
   );

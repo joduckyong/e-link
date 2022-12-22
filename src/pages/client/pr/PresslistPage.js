@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import MainForm from 'components/client/MainForm';
+import PresslistForm from 'components/client/pr/PresslistForm';
 
 const PresslistPage = () => {
   return (
     <div className="main">
       <Header />
-      <MainForm />
+      <PresslistForm />
       <Footer />
     </div>
   );
