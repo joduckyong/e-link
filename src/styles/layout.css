@@ -197,7 +197,7 @@ footer .fm:after{content: '+'; font-size: 16px; color: #121212; font-weight: 700
 .main .con5 .swiper-slide > div img{ width: 100%; }
 .main .con5 .slide-tit{font-size: 32px; font-weight: 800; color: #FFF; margin-bottom: 40px; line-height: 45px;}
 .main .con5 p{font-size: 18px; color: #FFF; line-height: 28px;}
-.main .con5 .control{display: flex; position: absolute; left: 50%; margin-left: 129px; top: 71%;}
+.main .con5 .control{display: flex; position: absolute; left: 50%; margin-left: 129px; top: 80%;}
 .main .con5 .control > div{ width: 60px; height: 60px; position: static; margin-left: 5px;}
 .main .con5 .swiper-button-prev{background: url('/public/img/main/con5-prev.svg') no-repeat; margin-left: 0;}
 .main .con5 .swiper-button-next{background: url('/public/img/main/con5-next.svg') no-repeat;}

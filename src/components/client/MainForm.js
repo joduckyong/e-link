@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from "aos";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,6 +15,9 @@ SwiperCore.use([Navigation, Pagination]);
 gsap.registerPlugin(ScrollTrigger);
 
 const MainForm = () => {
+
+    const navigationPrevRef = useRef(null);
+    const navigationNextRef = useRef(null);
 
     useEffect(() => {
         AOS.init();
@@ -34,6 +37,7 @@ const MainForm = () => {
     
         ScrollTrigger.refresh();
       }, []);
+      
 
     return (
         <>
@@ -139,15 +143,12 @@ const MainForm = () => {
                     </div>  
                 </div>
                 <div className="mobile-show">
-                    <div className="swiper mySwiper">
-                       <div className="swiper-wrapper">
                        <Swiper
                             slidesPerView={1}
                             spaceBetween={0}
                             loop={true}
                             speed={1000}
                             mousewheel={true}
-                            navigation
                         >
                             <SwiperSlide>
                             <div className="swiper-slide" style={{background: "url(/img/main/con3-img1.jpg) no-repeat", backgroundSize: "cover"}}>
@@ -177,8 +178,6 @@ const MainForm = () => {
                             </div>
                             </SwiperSlide>
                         </Swiper>
-                    </div>
-                    </div>
                 </div>            
             </div>
             
@@ -269,52 +268,72 @@ const MainForm = () => {
                     <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
                         LS E-Link는 전기자동차 충전인프라 부문에 혁신적인<br className="tb-block" />기술력을 남기며 성장하고 있습니다.<br />차별화된 LS E-Link의 충전 솔루션을 경험해보세요.
                     </div>
-                    <div className="swiper con5-swiper">
-                        <div className="swiper-wrapper">
-                            <div className="swiper-slide">
-                                <div className="img">
-                                    <img src="/img/main/con5-img1.png" alt="" />
-                                </div>
-                                <div className="txt">
-                                    <div className="slide-tit">초급속 / 천장형 / 전력분배 /<br />고객맞춤형 충전솔루션</div>
-                                    <p>LS E-Link는 전기자동차 충전인프라 부문에 <br />혁신적인 기술력을 남기며 성장하고 있습니다. <br />차별화된 LS E-Link의 충전 솔루션을 경험해 보세요.</p>
-                                </div>
-                            </div>
-                            <div className="swiper-slide">
-                                <div className="img">
-                                    <img src="/img/main/con5-img2.png" alt="" />
-                                </div>
-                                <div className="txt">
-                                    <div className="slide-tit">물류배송 / 버스운수 환경에 <br />특화된 ELVIS 관제시스템</div>
-                                    <p>ELVIS 관제시스템은 물류배송과 버스운수 사업자들에게 <br />전기트럭/전기버스의 안정적인 운행을 위한 최적의 <br />순차충전 / 충전스케쥴링을 제공하고 있습니다.<br />
-                                        ELVIS만의 특별한 서비스를 직접 체험해 보세요</p>
-                                </div>
-                            </div>
-                            <div className="swiper-slide">
-                                <div className="img">
-                                    <img src="/img/main/con5-img3.png" alt="" />
-                                </div>
-                                <div className="txt">
-                                    <div className="slide-tit">업계최고 전기차충전인프라 <br />시공능력</div>
-                                    <p>LS E-Link는 업계최고 충전인프라 시공능력과 IT 기술력을 <br />바탕으로 전기자동차 충전시장을 선도해 가고 있습니다. <br />LS E-Link와 함께 성장해 보세요.</p>
-                                </div>
-                            </div>
-                            <div className="swiper-slide">
-                                <div className="img">
-                                    <img src="/img/main/con5-img4.png" alt="" />
-                                </div>
-                                <div className="txt">
-                                    <div className="slide-tit">인프라 투자 / 자금조달 / 운영 Total <br />Solution을 제공하는 진정한 파트너</div>
-                                    <p>LS E-Link는 충전사업을 원하는 고객에게 인프라 투자, <br />자금조달, 및 운영 등 전기차 충전사업에 필요한 total solution을 <br />제공하는 진정한 파트너로 거듭나고 있습니다.<br />
-                                        LS E-Link의 파트너가 되어보세요.</p>
-                                </div>
-                            </div>class=
-                        </div>
+                        <Swiper
+                            slidesPerView={2}
+                            centeredSlides={true}
+                            spaceBetween={0}
+                            loop={true}
+                            speed={1000}
+                            mousewheel={true}
+                            navigation={{
+                                prevEl: navigationPrevRef.current,
+                                nextEl: navigationNextRef.current,
+                            }}
+                            onSwiper={(swiper) => {
+                                // Delay execution for the refs to be defined
+                                // Override prevEl & nextEl now that refs are defined
+                                swiper.params.navigation.prevEl = navigationPrevRef.current
+                                swiper.params.navigation.nextEl = navigationNextRef.current
+                    
+                                // Re-init navigation
+                                swiper.navigation.destroy()
+                                swiper.navigation.init()
+                                swiper.navigation.update()
+                            }}
+                        >
+                            <SwiperSlide>
+                                    <div className="img">
+                                        <img src="/img/main/con5-img1.png" alt="" />
+                                    </div>
+                                    <div className="txt">
+                                        <div className="slide-tit">초급속 / 천장형 / 전력분배 /<br />고객맞춤형 충전솔루션</div>
+                                        <p>LS E-Link는 전기자동차 충전인프라 부문에 <br />혁신적인 기술력을 남기며 성장하고 있습니다. <br />차별화된 LS E-Link의 충전 솔루션을 경험해 보세요.</p>
+                                    </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                    <div className="img">
+                                        <img src="/img/main/con5-img2.png" alt="" />
+                                    </div>
+                                    <div className="txt">
+                                        <div className="slide-tit">물류배송 / 버스운수 환경에 <br />특화된 ELVIS 관제시스템</div>
+                                        <p>ELVIS 관제시스템은 물류배송과 버스운수 사업자들에게 <br />전기트럭/전기버스의 안정적인 운행을 위한 최적의 <br />순차충전 / 충전스케쥴링을 제공하고 있습니다.<br />
+                                            ELVIS만의 특별한 서비스를 직접 체험해 보세요</p>
+                                    </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                    <div className="img">
+                                        <img src="/img/main/con5-img3.png" alt="" />
+                                    </div>
+                                    <div className="txt">
+                                        <div className="slide-tit">업계최고 전기차충전인프라 <br />시공능력</div>
+                                        <p>LS E-Link는 업계최고 충전인프라 시공능력과 IT 기술력을 <br />바탕으로 전기자동차 충전시장을 선도해 가고 있습니다. <br />LS E-Link와 함께 성장해 보세요.</p>
+                                    </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                    <div className="img">
+                                        <img src="/img/main/con5-img4.png" alt="" />
+                                    </div>
+                                    <div className="txt">
+                                        <div className="slide-tit">인프라 투자 / 자금조달 / 운영 Total <br />Solution을 제공하는 진정한 파트너</div>
+                                        <p>LS E-Link는 충전사업을 원하는 고객에게 인프라 투자, <br />자금조달, 및 운영 등 전기차 충전사업에 필요한 total solution을 <br />제공하는 진정한 파트너로 거듭나고 있습니다.<br />
+                                            LS E-Link의 파트너가 되어보세요.</p>
+                                    </div>
+                            </SwiperSlide>
+                        </Swiper>
                         <div className="control">
-                            <div className="swiper-button-prev"></div>
-                            <div className="swiper-button-next"></div> 
+                            <div className="swiper-button-prev" ref={navigationPrevRef}></div>
+                            <div className="swiper-button-next" ref={navigationNextRef}></div> 
                         </div>
-                    </div>
                 </div>
                 <div className="con5-video">
                     <video poster="/resources/front/ko/video/main-visual.jpg" autoPlay muted loop playsInline>
