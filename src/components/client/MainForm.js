@@ -141,27 +141,42 @@ const MainForm = () => {
                 <div className="mobile-show">
                     <div className="swiper mySwiper">
                        <div className="swiper-wrapper">
-                       <div className="swiper-slide" style={{background: "url(/img/main/con3-img1.jpg) no-repeat", backgroundSize: "cover"}}>
-                           <div className="slide-inner" style={{opacity: 1, transform: "translate(0px, 0px)"}}>
-                                <h3 className="text">전기차 충전사업</h3>
-                                <p className="desc">현장 맞춤형 충전 인프라 구축 및 충전서비스 제공</p>
-                                <NavLink to="/view/introduce/mobile.do" target="_self" className="link">VIEW MORE</NavLink>
+                       <Swiper
+                            slidesPerView={1}
+                            spaceBetween={0}
+                            loop={true}
+                            speed={1000}
+                            mousewheel={true}
+                            navigation
+                        >
+                            <SwiperSlide>
+                            <div className="swiper-slide" style={{background: "url(/img/main/con3-img1.jpg) no-repeat", backgroundSize: "cover"}}>
+                                <div className="slide-inner" style={{opacity: 1, transform: "translate(0px, 0px)"}}>
+                                        <h3 className="text">전기차 충전사업</h3>
+                                        <p className="desc">현장 맞춤형 충전 인프라 구축 및 충전서비스 제공</p>
+                                        <NavLink to="/view/introduce/mobile.do" target="_self" className="link">VIEW MORE</NavLink>
+                                    </div>
                             </div>
-                       </div>
-                       <div className="swiper-slide" style={{background: "url(/img/main/con3-img2.jpg) no-repeat", backgroundSize: "cover"}}>
-                           <div className="slide-inner" style={{opacity: 1, transform: "translate(0px, 0px)"}}>
-                                <h3 className="text">전기차 충전사업</h3>
-                                <p className="desc">현장 맞춤형 충전 인프라 구축 및 충전서비스 제공</p>
-                                <NavLink to="/view/introduce/mobile.do" target="_self" className="link">VIEW MORE</NavLink>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                            <div className="swiper-slide" style={{background: "url(/img/main/con3-img2.jpg) no-repeat", backgroundSize: "cover"}}>
+                                <div className="slide-inner" style={{opacity: 1, transform: "translate(0px, 0px)"}}>
+                                        <h3 className="text">전기차 충전사업</h3>
+                                        <p className="desc">현장 맞춤형 충전 인프라 구축 및 충전서비스 제공</p>
+                                        <NavLink to="/view/introduce/mobile.do" target="_self" className="link">VIEW MORE</NavLink>
+                                    </div>
                             </div>
-                       </div>
-                       <div className="swiper-slide" style={{background: "url(/img/main/con3-img3.jpg) no-repeat", backgroundSize: "cover"}}>
-                           <div className="slide-inner" style={{opacity: 1, transform: "translate(0px, 0px)"}}>
-                                <h3 className="text">전기차 충전사업</h3>
-                                <p className="desc">현장 맞춤형 충전 인프라 구축 및 충전서비스 제공</p>
-                                <NavLink to="/view/introduce/mobile.do" target="_self" className="link">VIEW MORE</NavLink>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                            <div className="swiper-slide" style={{background: "url(/img/main/con3-img3.jpg) no-repeat", backgroundSize: "cover"}}>
+                                <div className="slide-inner" style={{opacity: 1, transform: "translate(0px, 0px)"}}>
+                                        <h3 className="text">전기차 충전사업</h3>
+                                        <p className="desc">현장 맞춤형 충전 인프라 구축 및 충전서비스 제공</p>
+                                        <NavLink to="/view/introduce/mobile.do" target="_self" className="link">VIEW MORE</NavLink>
+                                    </div>
                             </div>
-                       </div>
+                            </SwiperSlide>
+                        </Swiper>
                     </div>
                     </div>
                 </div>            
