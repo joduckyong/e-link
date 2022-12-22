@@ -1,9 +1,6 @@
-import React from "react";
+import React from 'react';
 import Menu from 'components/admin/Menu';
-import PressReleaseListForm from 'components/admin/publicRelations/PressReleaseListForm'
-import 'styles/layout.css';
-import 'styles/layout_1440.css';
-import 'styles/layout_780.css';
+import PressReleaseListForm from 'components/admin/publicRelations/PressReleaseListForm';
 
 const PressReleasePage = () => {
   return (
