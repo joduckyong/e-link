@@ -5,6 +5,7 @@
 }
 @media only screen and (max-width:1350px){
 	header .gnb>li>a{padding-left: 35px; padding-right: 35px;}
+	.main .con5 .control{top: 73%;}
 }
 @media only screen and (max-width:1320px){
 	header .gnb{display: none;}
@@ -32,17 +33,18 @@
 	.main .wrap,.sub .wrap{width: 100%; padding: 0 20px;}
 
 	.main .main-visual{height: 640px;}
+	.main .main-visual .wrap{display: flex; flex-wrap: wrap; align-content: center; height: 100%;}
 	.main .main-visual video{height: 100%;}
-	.main .main-visual h1{font-size: 40px; padding-top: 105px;}
+	.main .main-visual h1{font-size: 40px; width: 100%; padding-top: 0;}
 	.main .main-visual h1 span{line-height: 50px;}
-	.main .main-visual .search{width: 500px;}
+	.main .main-visual .search{width: 500px; margin-top: 90px;}
 	.main .main-visual .search input{padding: 20px 0; font-size: 22px;}
 	.main .main-visual .recom a{font-size: 15px; margin-left: 20px;}
 	.main .main-visual .search button{width: 27px; height: 27px;}
 	.main .main-visual .search button img{width: 100%;}
 
 	.main .con1{padding: 110px 0; background-size: cover;}
-	.main .con1 .tit{font-size: 26px; line-height: 40px; word-break: keep-all;}
+	.main .con1 .tit{font-size: 28px; line-height: 40px; word-break: keep-all;}
 	.main .con1 .s-tit{font-size: 22px; margin-bottom: 15px;}
 	.main .con1 ul{margin-top: 0px; justify-content: space-between; flex-wrap: wrap;}
 	.main .con1 ul li{margin-left: 0; margin-top: 70px;}
@@ -54,37 +56,46 @@
 	.main .con2 .intro .main-section-headline{padding-bottom: 50px;}
 	.main .con2 .btn-area{font-size: 28px; line-height: 45px; word-break: keep-all; padding: 0 20px;}
 
-	.main .con3 .show-only-desktop{display: none;}
-	.main .con3 .mobile-show{display: block;}
-	.main .con3 .mobile-show .swiper-slide{padding-top: 110px; padding-right: 20px; padding-left: 20px; padding-bottom: 56%; background-size: cover; background-position: center !important;}
-	.main .con3 .mobile-show .text{color: #FFF; font-size: 28px; font-weight: bold; margin-bottom: 25px; line-height: 28px;}
-	.main .con3 .mobile-show .desc{font-size: 18px; color: #FFF; margin-bottom: 60px; line-height: 25px;}
-	.main .con3 .link{font-size: 14px; margin-top: 60px;}
+	.main .con3{position: relative;}
+	.main .con3 .swiper-slide .slide-bg{ background-size: cover;
+		background-position-x: calc(100% - 48%) !important;}
+	.main .con3 .text{color: #FFF; font-size: 30px; font-weight: bold; margin-bottom: 25px; line-height: 38px;}
+	.main .con3 .desc{font-size: 18px; color: #FFF; margin-bottom: 60px; line-height: 28px;}
+	.main .con3 .link{font-size: 14px; margin-top: 60px; padding-right: 45px;}
+	.main .con3 .slide-inner{margin-left: 20px; align-content: initial; display: block; margin-top: 175px;}
+	.main .con3 .swiper-pagination{top: 105px; margin-top: 0; left: 20px !important;}
+	.main .con3 .swiper-pagination span{display: inline-block; padding-left: 0 !important; margin-left: 25px; margin-top: 0 !important;}
+	.main .con3 .swiper-pagination span:first-child{margin-left: 0;}
+	.con3 .swiper-pagination span:after{display: none;}
+	.con3 .swiper-pagination:before{display: none;}
 
 	.main .con4{padding: 100px 0 200px;}
 	.main .con4 .wrap{width: 100%; padding-top: 0;}
 	.main .con4 .big-tit{font-size: 28px; line-height: 38px; margin-bottom: 30px;}
 	.main .con4 .right{padding-top: 0; left: initial; right: 20px;}
-	.main .con4 .right img{max-width: 100%;}
+	.main .con4 .right img{width: 100%;}
 	.main .con4 .right>div{margin-top: 100px; width: 78%;}
 	.main .con4 .right .txt{position: static; margin-top: 25px;}
 	.main .con4 .right .big b{font-size: 30px;}
-	.main .con4 .right .big{font-size: 25px;}
-	.main .con4 .right .small{font-size: 15px;}
+	.main .con4 .right .big{font-size: 25px; line-height: 32px; word-break: keep-all;}
+	.main .con4 .right .small{font-size: 15px; line-height: 20px; word-break: keep-all;}
 	.main .con4 .right>div:nth-child(odd){margin-left: 100px;}
 
 	.main .con5{padding-top: 100px; overflow: hidden;}
-	.main .con5 .s-tit{font-size: 15px;}
+	.main .con5 .s-tit{font-size: 18px;}
 	.main .con5 .main-tit{font-size: 28px; line-height: 45px; margin-top: 45px; word-break: keep-all; padding: 0 20px;}
 	.main .con5 .swiper{padding: 85px 0 100px;}
 	.main .con5 .slide-tit{font-size: 22px; margin-bottom: 20px; line-height: 32px;}
 	.main .con5 p{font-size: 14px; line-height: 22px;}
 	.main .con5 .control > div{width: 48px; height: 48px; background-size: cover;}
+	.main .con5 .pc-block{display: none;}
+
+	.main .con6 .in{height: 360px; background-size: cover;}
 
 	.main .con7{padding: 90px 0;}
 	.main .con7 a.more{right: 20px; display: inline-block; width: 21px; height: 21px; top: 3px;}
 	.main .con7 a.more img{width: 100%;}
-	.main .con7 .main-tit{font-size: 28px; margin-bottom: 65px;}
+	.main .con7 .main-tit{font-size: 30px; margin-bottom: 65px;}
 	.main .con7 .news-name{font-size: 14px; margin-bottom: 15px;}
 	.main .con7 .news-tit{font-size: 18px; word-break: keep-all; line-height: 25px;}
 	.main .con7 p{font-size: 14px; line-height: 22px; margin-top: 25px;}
@@ -291,7 +302,7 @@
 	.main .con5 .swiper-slide.swiper-slide-active{margin: 0;}
 	.main .con5 .swiper-slide > div.txt{width: 100%; position: relative; z-index: 2; padding-left: 0; margin-top: 60px;}
 	.main .con5 .swiper-slide > div.img{width: 100%;}
-	.main .con5 .control{margin-left: 116px; top: 73%;}
+	.main .con5 .control{margin-left: 116px; top: 60%;}
 
 	.sub.sub01-3 .t-wrap{flex-wrap: wrap;}
 	.sub.sub01-3 .t-wrap .title,.sub.sub01-3 .t-wrap .time-list{width: 100%;}
@@ -300,6 +311,9 @@
 }
 
 @media only screen and (max-width:1024px){	
+	.main .con4 .pc-show .left .lf-wrap{position: static;}
+	.main .con4 .mobile-show .right{position: static; margin-top: 70px;}
+
 	footer{padding: 30px 0;}
 	footer .menu{display: none;}
 	footer address{font-size: 14px;}

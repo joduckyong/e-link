@@ -5,11 +5,11 @@ import CoporateForm from 'components/client/business/ev/CoporateForm';
 
 const CoporatePage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <CoporateForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

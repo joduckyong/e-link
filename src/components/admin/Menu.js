@@ -21,12 +21,10 @@ const Menu = () => {
             </ul>
           </li>
           <li>
-            <NavLink to="">투자정보</NavLink>
+            <NavLink to="on">투자정보</NavLink>
             <ul>
               <li>
-                <NavLink to="/admin/investInfo/officialNotice">
-                  공시정보
-                </NavLink>
+                <NavLink to="/admin/investInfo/officialNotice">공시정보</NavLink>
               </li>
               <li>
                 <NavLink to="/admin/investInfo/announce">공고</NavLink>
@@ -37,9 +35,7 @@ const Menu = () => {
             <NavLink to="">홍보센터</NavLink>
             <ul>
               <li>
-                <NavLink to="/admin/publicRelations/pressRelease">
-                  보도자료
-                </NavLink>
+                <NavLink to="/admin/publicRelations/pressRelease">보도자료</NavLink>
               </li>
               <li>
                 <NavLink to="/admin/publicRelations/media">미디어</NavLink>
@@ -50,9 +46,7 @@ const Menu = () => {
             <NavLink to="/admin/employmentInfo/jobVacancy">채용정보</NavLink>
             <ul>
               <li>
-                <NavLink to="/admin/employmentInfo/jobVacancy">
-                  채용공고 관리
-                </NavLink>
+                <NavLink to="/admin/employmentInfo/jobVacancy">채용공고 관리</NavLink>
               </li>
             </ul>
           </li>
@@ -60,9 +54,7 @@ const Menu = () => {
             <NavLink to="/admin/customerService/contactUs">고객센터</NavLink>
             <ul>
               <li>
-                <NavLink to="/admin/customerService/contactUs">
-                  Contact Us
-                </NavLink>
+                <NavLink to="/admin/customerService/contactUs">Contact Us</NavLink>
               </li>
             </ul>
           </li>

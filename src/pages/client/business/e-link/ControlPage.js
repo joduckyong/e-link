@@ -5,11 +5,11 @@ import ControlForm from 'components/client/business/e-link/ControlForm';
 
 const ControlPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <ControlForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -5,11 +5,11 @@ import BusinessplaceForm from 'components/client/company/BusinessplaceForm';
 
 const BusinessplacePage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <BusinessplaceForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

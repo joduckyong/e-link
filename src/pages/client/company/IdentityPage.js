@@ -5,11 +5,11 @@ import IdentityForm from 'components/client/company/IdentityForm';
 
 const IdentityPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <IdentityForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

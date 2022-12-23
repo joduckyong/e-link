@@ -5,11 +5,11 @@ import LogiticsForm from 'components/client/business/ev/LogiticsForm';
 
 const LogiticsPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <LogiticsForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

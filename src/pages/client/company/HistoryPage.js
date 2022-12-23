@@ -5,11 +5,11 @@ import HistoryForm from 'components/client/company/HistoryForm';
 
 const HistoryPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <HistoryForm />
       <Footer />
-    </div>
+    </>
   );
 };
 
