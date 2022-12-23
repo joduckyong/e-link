@@ -5,11 +5,11 @@ import VisionForm from 'components/client/company/VisionForm';
 
 const VisionPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <VisionForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

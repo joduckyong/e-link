@@ -5,11 +5,11 @@ import LselinkForm from 'components/client/company/LselinkForm';
 
 const LselinkPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <LselinkForm />
       <Footer />
-    </div>
+    </>
   );
 };
 
