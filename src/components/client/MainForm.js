@@ -132,18 +132,19 @@ const MainForm = () => {
                   <strong className="main-section-headline">BUSINESS</strong>
                   <div className="btn-area">
                     <span>
-                      LS E-Link는 고도의 기술력을 가지고
-                      <br className="pc-block" />
-                      EV Charging 시장 변화에 발맞춰 지속적인 발전을
-                      <br className="pc-block" />
+                      LS E-Link는 <br className="m-block" />
+                      고도의 기술력을 가지고
+                      <br /> EV Charging 시장 변화에 <br class="m-block" />
+                      발맞춰 지속적인 발전을
+                      <br />
                       이루어 나가고 있습니다.<i className="icon-arrow-right-bk-30"></i>
                     </span>
                   </div>
                 </div>
                 <div className="visual">
                   <div className="_visual">
-                    <video poster="/resources/front/ko/video/main-visual.jpg" autoPlay muted loop playsInline>
-                      <source src="/img/main/con2-video.mp4" type="video/mp4" />
+                    <video poster="" autoplay="" muted="" loop="" playsinline="">
+                      <source src="/public/video/con2-video.mp4" type="video/mp4" />
                     </video>
                   </div>
                 </div>
@@ -354,10 +355,10 @@ const MainForm = () => {
               nextEl: navigationNextRef.current,
             }}
             breakpoints={{
-              780:{
+              780: {
                 slidesPerView: 2.4,
-                spaceBetween: 0
-              }
+                spaceBetween: 0,
+              },
             }}
             onSwiper={(swiper) => {
               swiper.params.navigation.prevEl = navigationPrevRef.current;
