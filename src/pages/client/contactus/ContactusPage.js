@@ -5,11 +5,11 @@ import ContactusForm from 'components/client/contactus/ContactusForm';
 
 const ContactusPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <ContactusForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

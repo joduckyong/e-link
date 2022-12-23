@@ -5,11 +5,11 @@ import PeopleForm from 'components/client/recruit/PeopleForm';
 
 const PeoplePage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <PeopleForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

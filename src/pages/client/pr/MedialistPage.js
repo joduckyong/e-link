@@ -5,11 +5,11 @@ import MedialistForm from 'components/client/pr/MedialistForm';
 
 const MedialistPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <MedialistForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

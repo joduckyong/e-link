@@ -5,11 +5,11 @@ import AnnounceForm from 'components/client/investment/AnnounceForm';
 
 const AnnouncePage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <AnnounceForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

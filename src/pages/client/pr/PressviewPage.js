@@ -5,11 +5,11 @@ import PressviewForm from 'components/client/pr/PressviewForm';
 
 const PressviewPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <PressviewForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

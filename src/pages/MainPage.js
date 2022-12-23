@@ -5,11 +5,13 @@ import MainForm from 'components/client/MainForm';
 
 const MainPage = () => {
   return (
-    <div className="main">
-      <Header />
-      <MainForm />
+    <>
+    <Header />
+      <div className="main">
+        <MainForm />
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

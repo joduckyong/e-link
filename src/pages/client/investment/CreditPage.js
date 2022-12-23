@@ -5,11 +5,11 @@ import CreditForm from 'components/client/investment/CreditForm';
 
 const CreditPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <CreditForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

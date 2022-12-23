@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
+  const [headerClass, setHeaderClass] = useState("");
+  const [pcMenuClass, setPcMenuClass] = useState("");
   return (
-    <header>
-      <div className="pc-menu">
+    <header className={headerClass}>
+      <div className="pc-menu" onClick={() => setPcMenuClass("on")}>
         <div className="wrap">
           <h1>
             <NavLink to="/">
               <img src="/img/common/ci.svg" alt="" />
             </NavLink>
           </h1>
-          <ul className="gnb">
+          <ul className="gnb" onMouseOver={() => setHeaderClass("on")} onMouseOut={() => setHeaderClass("")}>
             <li>
               <NavLink to="/company/lselink">회사소개</NavLink>
               <div className="depth-1">
@@ -132,13 +134,13 @@ const Header = () => {
           </NavLink>
         </div>
       </div>
-      <div className="all-menu">
+      <div className={`all-menu ${pcMenuClass}`}>
         <div className="top">
           <div className="wrap">
             <h1>
               <img src="/img/common/ci.svg" alt="" />
             </h1>
-            <NavLink to="" className="close">
+            <NavLink to="" className="close" onClick={() => setPcMenuClass("")}>
               <img src="/img/common/ico-close.svg" alt="" />
             </NavLink>
           </div>

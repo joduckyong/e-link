@@ -5,11 +5,11 @@ import BenefitsForm from 'components/client/recruit/BenefitsForm';
 
 const BenefitsPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <BenefitsForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -5,11 +5,11 @@ import FinancialForm from 'components/client/investment/FinancialForm';
 
 const FinancialPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <FinancialForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

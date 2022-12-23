@@ -5,11 +5,11 @@ import ManagementForm from 'components/client/investment/ManagementForm';
 
 const ManagementPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <ManagementForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

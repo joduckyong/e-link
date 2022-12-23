@@ -5,11 +5,11 @@ import PostingForm from 'components/client/recruit/PostingForm';
 
 const PostingPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <PostingForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

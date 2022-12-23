@@ -5,11 +5,11 @@ import MediaviewForm from 'components/client/pr/MediaviewForm';
 
 const MediaviewPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <MediaviewForm />
       <Footer />
-    </div>
+    </>
   );
 };
 

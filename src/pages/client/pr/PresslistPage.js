@@ -5,11 +5,11 @@ import PresslistForm from 'components/client/pr/PresslistForm';
 
 const PresslistPage = () => {
   return (
-    <div className="main">
+    <>
       <Header />
       <PresslistForm />
       <Footer />
-    </div>
+    </>
   );
 };
 
