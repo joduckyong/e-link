@@ -344,23 +344,25 @@ const MainForm = () => {
             차별화된 LS E-Link의 충전 솔루션을 경험해보세요.
           </div>
           <Swiper
-            slidesPerView={2}
+            slidesPerView={2.4}
             centeredSlides={true}
             spaceBetween={0}
             loop={true}
-            speed={1000}
-            mousewheel={true}
+            speed={1200}
             navigation={{
               prevEl: navigationPrevRef.current,
               nextEl: navigationNextRef.current,
             }}
+            breakpoints={{
+              780:{
+                slidesPerView: 2.4,
+                spaceBetween: 0
+              }
+            }}
             onSwiper={(swiper) => {
-              // Delay execution for the refs to be defined
-              // Override prevEl & nextEl now that refs are defined
               swiper.params.navigation.prevEl = navigationPrevRef.current;
               swiper.params.navigation.nextEl = navigationNextRef.current;
 
-              // Re-init navigation
               swiper.navigation.destroy();
               swiper.navigation.init();
               swiper.navigation.update();
