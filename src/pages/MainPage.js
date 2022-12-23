@@ -6,10 +6,8 @@ import MainForm from 'components/client/MainForm';
 const MainPage = () => {
   return (
     <>
-    <Header />
-      <div className="main">
-        <MainForm />
-      </div>
+      <Header />
+      <MainForm />
       <Footer />
     </>
   );

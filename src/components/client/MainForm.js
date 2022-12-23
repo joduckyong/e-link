@@ -66,7 +66,7 @@ const MainForm = () => {
   }, []);
 
   return (
-    <>
+    <div className="main">
       <div className="main-visual">
         <div className="wrap">
           <h1 data-aos="fade-right" data-aos-duration="1000">
@@ -516,7 +516,7 @@ const MainForm = () => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

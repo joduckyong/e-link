@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
   const [headerClass, setHeaderClass] = useState("");
   const [pcMenuClass, setPcMenuClass] = useState("");
+  const [moMenuActive, setMoMenuActive] = useState(false);
   return (
     <header className={headerClass}>
       <div className="pc-menu" onClick={() => setPcMenuClass("on")}>
@@ -309,11 +310,11 @@ const Header = () => {
           <h1>
             <img src="/img/common/ci.svg" alt="" />
           </h1>
-          <NavLink to="" className="menu">
+          <NavLink to="" className={moMenuActive ? "menu on" : "menu"} onClick={() => setMoMenuActive(!moMenuActive)}>
             <span></span>
           </NavLink>
         </div>
-        <div className="in">
+        <div className={moMenuActive ? "in active" : "in"}>
           <ul className="big-menu">
             <li className="mo-click">
               <NavLink to="">회사소개</NavLink>
