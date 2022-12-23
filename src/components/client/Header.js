@@ -7,7 +7,7 @@ const Header = () => {
   const [moMenuActive, setMoMenuActive] = useState(false);
   return (
     <header className={headerClass}>
-      <div className="pc-menu" onClick={() => setPcMenuClass("on")}>
+      <div className="pc-menu">
         <div className="wrap">
           <h1>
             <NavLink to="/">
@@ -130,7 +130,7 @@ const Header = () => {
               </div>
             </li>
           </ul>
-          <NavLink to="" className="menu">
+          <NavLink to="" className="menu" onClick={() => setPcMenuClass("on")}>
             <span></span>
           </NavLink>
         </div>
