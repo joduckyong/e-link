@@ -134,7 +134,7 @@ const MainForm = () => {
                     <span>
                       LS E-Link는 <br className="m-block" />
                       고도의 기술력을 가지고
-                      <br /> EV Charging 시장 변화에 <br class="m-block" />
+                      <br /> EV Charging 시장 변화에 <br className="m-block" />
                       발맞춰 지속적인 발전을
                       <br />
                       이루어 나가고 있습니다.<i className="icon-arrow-right-bk-30"></i>

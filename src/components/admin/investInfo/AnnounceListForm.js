@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectBoard } from 'store/boardReducer';
 
 const AnnounceListForm = () => {
+  const dispatch = useDispatch();
+  const boardList = useSelector((state) => state.boardReducer);
+
+  useEffect(() => {
+    dispatch(selectBoard('ANN', 1));
+  }, [dispatch]);
+
   return (
     <div className="a-content">
       <h2>
@@ -44,45 +53,26 @@ const AnnounceListForm = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>
-                  <label htmlFor="e01">
-                    <input type="checkbox" id="e01" />
-                    <span className="chkimg"></span>
-                  </label>
-                </th>
-                <td>5</td>
-                <td className="tal pl40">
-                  <Link to="/admin/investInfo/announceInfo">
-                    제 38기 결산공고
-                  </Link>
-                </td>
-                <td>2023-11-14</td>
-                <td>
-                  <Link to="/admin/investInfo/announceMod">
-                    <button className="btn btn-white btn-70">수정</button>
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="e01">
-                    <input type="checkbox" id="e01" />
-                    <span className="chkimg"></span>
-                  </label>
-                </th>
-                <td>5</td>
-                <td className="tal pl40">제 38기 결산공고</td>
-                <td>2023-11-14</td>
-                <td>
-                  <button
-                    className="btn btn-white btn-70"
-                    onclick="location.href='a02-2-view.html';"
-                  >
-                    수정
-                  </button>
-                </td>
-              </tr>
+              {boardList.map((list) => (
+                <tr>
+                  <th>
+                    <label htmlFor="e01">
+                      <input type="checkbox" key={list.boardId} />
+                      <span className="chkimg"></span>
+                    </label>
+                  </th>
+                  <td>{list.rnum}</td>
+                  <td className="tal pl40">
+                    <Link to="/admin/investInfo/announceInfo">{list.boardTitle}</Link>
+                  </td>
+                  <td>{list.createdDatetime}</td>
+                  <td>
+                    <Link to="/admin/investInfo/announceMod">
+                      <button className="btn btn-white btn-70">수정</button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
