@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
 
 const AnnounceAddForm = () => {
-  const navigate = useNavigate();
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContents, setBoardContents] = useState('');
 
@@ -25,7 +24,7 @@ const AnnounceAddForm = () => {
       const newList = { boardId: 'ANN', boardTitle: boardTitle, boardContents: boardContents };
       dispatch(insertBoard(newList));
       // alert('등록 되었습니다.');
-      navigate('/admin/investInfo/announce');
+      document.location.href = '/admin/investInfo/announce';
     }
   };
   return (

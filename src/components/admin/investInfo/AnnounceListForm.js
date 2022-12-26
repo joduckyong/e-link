@@ -6,8 +6,8 @@ import { selectBoard } from 'store/boardReducer';
 const AnnounceListForm = () => {
   const dispatch = useDispatch();
   const boardList = useSelector((state) => state.boardReducer);
+  const [totalCount, setTotalCount] = useState(0);
   const [searchKeyword, setSearchKeyword] = useState('');
-
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
 
@@ -20,6 +20,10 @@ const AnnounceListForm = () => {
     const newList = { boardId: 'ANN', pageIndex: 1, searchKeyword: searchKeyword };
     dispatch(selectBoard(newList));
   };
+
+  useEffect(() => {
+    boardList.map((list, index) => setTotalCount(list.totalCount));
+  }, [boardList]);
 
   const onKeyPress = (e) => {
     if (e.key === 'Enter') {
@@ -54,7 +58,7 @@ const AnnounceListForm = () => {
   return (
     <div className="a-content">
       <h2>
-        공고관리<span>총 {boardList.length}건</span>
+        공고관리<span>총 {totalCount}건</span>
       </h2>
       <div className="ban-list p0">
         <div className="search-box">

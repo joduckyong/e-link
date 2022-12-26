@@ -34,8 +34,8 @@ export const boardReducer = createSlice({
   extraReducers: {
     [selectBoard.fulfilled]: (state, { payload }) => [...payload],
     [selectBoardInfo.fulfilled]: (state, { payload }) => [state, payload],
-    [insertBoard.fulfilled]: (state, { payload }) => [state, ...payload],
-    [updateBoard.fulfilled]: (state, { payload }) => [state, ...payload],
+    [insertBoard.fulfilled]: (state, { payload }) => [...state, payload],
+    [updateBoard.fulfilled]: (state, { payload }) => [...state, payload],
     [deleteBoard.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
   },
 });
