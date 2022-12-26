@@ -8,7 +8,8 @@ const AnnounceListForm = () => {
   const boardList = useSelector((state) => state.boardReducer);
 
   useEffect(() => {
-    dispatch(selectBoard('ANN', 1));
+    const newList = { boardId: 'ANN', pageIndex: 1 };
+    dispatch(selectBoard(newList));
   }, [dispatch]);
 
   return (
@@ -63,11 +64,11 @@ const AnnounceListForm = () => {
                   </th>
                   <td>{list.rnum}</td>
                   <td className="tal pl40">
-                    <Link to="/admin/investInfo/announceInfo">{list.boardTitle}</Link>
+                    <Link to={`/admin/investInfo/announceInfo/${list.boardId}`}>{list.boardTitle}</Link>
                   </td>
                   <td>{list.createdDatetime}</td>
                   <td>
-                    <Link to="/admin/investInfo/announceMod">
+                    <Link to={`/admin/investInfo/announceMod/${list.boardId}`}>
                       <button className="btn btn-white btn-70">수정</button>
                     </Link>
                   </td>

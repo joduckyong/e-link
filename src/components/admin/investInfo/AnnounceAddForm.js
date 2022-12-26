@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
 
 const AnnounceAddForm = () => {
+  const navigate = useNavigate();
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContents, setBoardContents] = useState('');
 
@@ -11,11 +12,20 @@ const AnnounceAddForm = () => {
 
   const onCreate = (e) => {
     e.preventDefault();
-    if (boardTitle && boardContents) {
+
+    if (boardTitle === '') {
+      alert('제목을 입력하세요');
+      return;
+    }
+    if (boardContents === '') {
+      alert('내용을 입력하세요');
+      return;
+    }
+    if (window.confirm('등록 하시겠습니까?')) {
       const newList = { boardId: 'ANN', boardTitle: boardTitle, boardContents: boardContents };
       dispatch(insertBoard(newList));
-    } else {
-      console.log('적으세요!');
+      // alert('등록 되었습니다.');
+      navigate('/admin/investInfo/announce');
     }
   };
   return (
@@ -23,7 +33,9 @@ const AnnounceAddForm = () => {
       <h2>공고등록</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">
-          <button className="btn btn-white btn-120">취소</button>
+          <NavLink to="/admin/investInfo/announce">
+            <button className="btn btn-white btn-120">취소</button>
+          </NavLink>
           <button className="btn btn-blue btn-120" onClick={onCreate}>
             등록
           </button>

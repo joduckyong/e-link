@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { serverUrl } from './serverUrl';
 
-export const selectBoard = createAsyncThunk('LIST_BOARD', async (id, pageIndex) => {
-  const response = await axios.get(`${serverUrl}/api/board/${id}/1`);
+export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
+  const response = await axios.get(`${serverUrl}/api/board/${newList.boardId}/${newList.pageIndex}`);
   return response.data;
 });
 
@@ -33,17 +33,9 @@ export const boardReducer = createSlice({
   reducers: {},
   extraReducers: {
     [selectBoard.fulfilled]: (state, { payload }) => [...payload],
-    [selectBoardInfo.fulfilled]: (state, { payload }) => [...payload],
-    [insertBoard.fulfilled]: (state, { payload }) => [...state, payload],
-    [updateBoard.fulfilled]: (state, { payload }) => {
-      return state.map((list) => {
-        if (list.id === payload.listId) {
-          return { ...list };
-        } else {
-          return list;
-        }
-      });
-    },
+    [selectBoardInfo.fulfilled]: (state, { payload }) => [state, payload],
+    [insertBoard.fulfilled]: (state, { payload }) => [state, ...payload],
+    [updateBoard.fulfilled]: (state, { payload }) => [state, ...payload],
     [deleteBoard.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
   },
 });
