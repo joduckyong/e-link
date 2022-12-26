@@ -82,8 +82,8 @@ const App = () => {
         <Route path="/admin/investInfo/officialNotice" element={<OfficialNoticePage />} />
         <Route path="/admin/investInfo/announce" element={<AnnouncePage />} />
         <Route path="/admin/investInfo/announceAdd" element={<AnnounceAddPage />} />
-        <Route path="/admin/investInfo/announceMod" element={<AnnounceModPage />} />
-        <Route path="/admin/investInfo/announceInfo" element={<AnnounceInfoPage />} />
+        <Route path="/admin/investInfo/announceMod/:id" element={<AnnounceModPage />} />
+        <Route path="/admin/investInfo/announceInfo/:id" element={<AnnounceInfoPage />} />
         <Route path="/admin/publicRelations/pressRelease" element={<PressReleasePage />} />
         <Route path="/admin/publicRelations/pressReleaseAdd" element={<PressReleaseAddPage />} />
         <Route path="/admin/publicRelations/pressReleaseMod" element={<PressReleaseModPage />} />

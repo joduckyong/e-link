@@ -20,8 +20,8 @@ const Menu = () => {
               </li>
             </ul>
           </li>
-          <li>
-            <NavLink to="on">투자정보</NavLink>
+          <li className="on">
+            <NavLink to="">투자정보</NavLink>
             <ul>
               <li>
                 <NavLink to="/admin/investInfo/officialNotice">공시정보</NavLink>
