@@ -6,6 +6,8 @@ import LoginPage from './pages/admin/LoginPage';
 
 import PopupPage from './pages/admin/main/PopupPage';
 import PopupAddPage from './pages/admin/main/PopupAddPage';
+import PopupModPage from './pages/admin/main/PopupModPage';
+import PopupInfoPage from './pages/admin/main/PopupInfoPage';
 
 import OfficialNoticePage from './pages/admin/investInfo/OfficialNoticePage';
 
@@ -79,6 +81,8 @@ const App = () => {
         <Route path="/admin/login" element={<LoginPage />} />
         <Route path="/admin/main/popup" element={<PopupPage />} />
         <Route path="/admin/main/popupAdd" element={<PopupAddPage />} />
+        <Route path="/admin/main/popupMod/:id" element={<PopupModPage />} />
+        <Route path="/admin/main/popupInfo/:id" element={<PopupInfoPage />} />
         <Route path="/admin/investInfo/officialNotice" element={<OfficialNoticePage />} />
         <Route path="/admin/investInfo/announce" element={<AnnouncePage />} />
         <Route path="/admin/investInfo/announceAdd" element={<AnnounceAddPage />} />

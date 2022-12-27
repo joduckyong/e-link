@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, NavLink, useNavigate } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
 
 const AnnounceModForm = () => {
-  const navigate = useNavigate();
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContents, setBoardContents] = useState('');
 
@@ -17,7 +16,10 @@ const AnnounceModForm = () => {
   }, [dispatch, id]);
 
   useEffect(() => {
-    boardInfo.map((info) => (setBoardTitle(info.boardTitle), setBoardContents(info.boardContents)));
+    boardInfo.forEach((info) => {
+      setBoardTitle(info.boardTitle);
+      setBoardContents(info.boardContents);
+    });
   }, [boardInfo]);
 
   const onEdit = (e) => {
@@ -34,7 +36,7 @@ const AnnounceModForm = () => {
     if (window.confirm('수정 하시겠습니까?')) {
       const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents };
       dispatch(updateBoard(newList));
-      navigate('/admin/investInfo/announce');
+      document.location.href = '/admin/investInfo/announce';
     }
   };
 

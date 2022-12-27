@@ -1,29 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoard } from 'store/boardReducer';
+import Pagination from 'react-js-pagination';
 
 const AnnounceListForm = () => {
   const dispatch = useDispatch();
   const boardList = useSelector((state) => state.boardReducer);
-  const [searchKeyword, setSearchKeyword] = useState('');
-
+  const [searchKeyword, setSearchKeyword] = useState(null);
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const newList = { boardId: 'ANN', pageIndex: 1, searchKeyword: null };
+    const newList = { boardId: 'ANN', pageIndex: page, searchKeyword: null };
     dispatch(selectBoard(newList));
-  }, [dispatch, searchKeyword]);
+    console.log('searchKeyword : ' + searchKeyword);
+  }, []);
 
-  const onSearch = () => {
-    const newList = { boardId: 'ANN', pageIndex: 1, searchKeyword: searchKeyword };
+  const pageClick = (page) => {
+    setPage(page);
+    onSearch(page);
+  };
+
+  const onSearch = (page) => {
+    const newList = { boardId: 'ANN', pageIndex: page, searchKeyword: searchKeyword };
     dispatch(selectBoard(newList));
   };
 
+  useEffect(() => {
+    boardList.forEach((list, index) => {
+      if (index === 0) {
+        setTotalCount(list.totalCount);
+      }
+    });
+  }, [boardList]);
+
   const onKeyPress = (e) => {
     if (e.key === 'Enter') {
-      onSearch();
+      onSearch(0);
     }
   };
 
@@ -54,7 +71,7 @@ const AnnounceListForm = () => {
   return (
     <div className="a-content">
       <h2>
-        공고관리<span>총 {boardList.length}건</span>
+        공고관리<span>총 {totalCount}건</span>
       </h2>
       <div className="ban-list p0">
         <div className="search-box">
@@ -64,10 +81,10 @@ const AnnounceListForm = () => {
               placeholder="검색어를 입력해주세요."
               name="boardTitle"
               onChange={(e) => setSearchKeyword(e.target.value)}
-              value={searchKeyword}
+              value={searchKeyword || ''}
               onKeyPress={onKeyPress}
             />
-            <button className="btn-primary" onClick={() => onSearch()}></button>
+            <button className="btn-primary" onClick={() => onSearch(0)}></button>
           </div>
         </div>
         <div className="btn-area position">
@@ -135,32 +152,16 @@ const AnnounceListForm = () => {
             </tbody>
           </table>
         </div>
-        <div className="paging">
-          <NavLink to="" className="prev-btn">
-            <i></i>
-            <span className="text_blind">이전</span>
-          </NavLink>
-          <ul>
-            <li className="current">
-              <NavLink to="">1</NavLink>
-            </li>
-            <li>
-              <NavLink to="">2</NavLink>
-            </li>
-            <li>
-              <NavLink to="">3</NavLink>
-            </li>
-            <li>
-              <NavLink to="">4</NavLink>
-            </li>
-            <li>
-              <NavLink to="">5</NavLink>
-            </li>
-          </ul>
-          <NavLink to="" className="next-btn">
-            <i></i>
-            <span className="text_blind">다음</span>
-          </NavLink>
+        <div class="paging">
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={10}
+            totalItemsCount={totalCount}
+            pageRangeDisplayed={10}
+            prevPageText={'‹'}
+            nextPageText={'›'}
+            onChange={pageClick}
+          />
         </div>
       </div>
     </div>
