@@ -23,7 +23,6 @@ const AnnounceAddForm = () => {
     if (window.confirm('등록 하시겠습니까?')) {
       const newList = { boardId: 'ANN', boardTitle: boardTitle, boardContents: boardContents };
       dispatch(insertBoard(newList));
-      // alert('등록 되었습니다.');
       document.location.href = '/admin/investInfo/announce';
     }
   };

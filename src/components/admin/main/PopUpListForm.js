@@ -15,7 +15,7 @@ const PopUpListForm = () => {
   useEffect(() => {
     const newList = { popupId: 'POP', pageIndex: page };
     dispatch(selectPopup(newList));
-  }, []);
+  }, [dispatch, page]);
 
   const onRemove = (e) => {
     e.preventDefault();
@@ -27,8 +27,10 @@ const PopUpListForm = () => {
 
     if (window.confirm('삭제 하시겠습니까?')) {
       const newList = { ids: checkItems };
-      dispatch(deletePopupIds(newList));
-      document.location.href = '/admin/main/popup';
+      dispatch(deletePopupIds(newList)).then(() => {
+        const newList = { popupId: 'POP', pageIndex: page };
+        dispatch(selectPopup(newList));
+      });
     }
   };
 

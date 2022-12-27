@@ -11,14 +11,12 @@ const AnnounceListForm = () => {
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
-
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     const newList = { boardId: 'ANN', pageIndex: page, searchKeyword: null };
     dispatch(selectBoard(newList));
-    console.log('searchKeyword : ' + searchKeyword);
-  }, []);
+  }, [dispatch, page]);
 
   const onRemove = (e) => {
     e.preventDefault();
@@ -30,8 +28,10 @@ const AnnounceListForm = () => {
 
     if (window.confirm('삭제 하시겠습니까?')) {
       const newList = { ids: checkItems };
-      dispatch(deleteBoardIds(newList));
-      document.location.href = '/admin/investInfo/announce';
+      dispatch(deleteBoardIds(newList)).then(() => {
+        const newList = { boardId: 'ANN', pageIndex: page, searchKeyword: null };
+        dispatch(selectBoard(newList));
+      });
     }
   };
 
