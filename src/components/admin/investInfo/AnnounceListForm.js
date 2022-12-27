@@ -149,15 +149,17 @@ const AnnounceListForm = () => {
             </tbody>
           </table>
         </div>
-        <Pagination
-          activePage={page}
-          itemsCountPerPage={10}
-          totalItemsCount={totalCount}
-          pageRangeDisplayed={10}
-          prevPageText={'‹'}
-          nextPageText={'›'}
-          onChange={pageClick}
-        />
+        <div class="paging">
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={10}
+            totalItemsCount={totalCount}
+            pageRangeDisplayed={10}
+            prevPageText={'‹'}
+            nextPageText={'›'}
+            onChange={pageClick}
+          />
+        </div>
       </div>
     </div>
   );
