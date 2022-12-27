@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPopup } from 'store/popupReducer';
+import { selectPopup, deletePopupIds } from 'store/popupReducer';
 import Pagination from 'react-js-pagination';
 
 const PopUpListForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const popupList = useSelector((state) => state.popupReducer);
   // 체크된 아이템을 담을 배열
@@ -16,6 +17,23 @@ const PopUpListForm = () => {
     const newList = { popupId: 'POP', pageIndex: page };
     dispatch(selectPopup(newList));
   }, []);
+
+  const onRemove = (e) => {
+    e.preventDefault();
+
+    if (checkItems.length === 0) {
+      alert('항목을 선택하세요');
+      return;
+    }
+
+    if (window.confirm('삭제 하시겠습니까?')) {
+      const newList = { ids: checkItems };
+      dispatch(deletePopupIds(newList));
+      navigate('/admin/main/popup');
+      document.location.href = '/admin/main/popup';
+      //      dispatch(selectPopup(newList));
+    }
+  };
 
   const pageClick = (page) => {
     setPage(page);
@@ -59,7 +77,9 @@ const PopUpListForm = () => {
       </h2>
       <div className="ban-list p0">
         <div className="btn-area position">
-          <button className="btn btn-red btn-120">선택삭제</button>
+          <button className="btn btn-red btn-120" onClick={onRemove}>
+            선택삭제
+          </button>
           <Link to="/admin/main/popupAdd">
             <button className="btn btn-blue btn-120">팝업생성</button>
           </Link>
@@ -77,12 +97,11 @@ const PopUpListForm = () => {
             <thead>
               <tr>
                 <th>
-                  <label htmlFor="select-all">
+                  <label htmlFor="allchk">
                     <input
                       type="checkbox"
-                      name="select-all"
+                      id="allchk"
                       onChange={(e) => handleAllCheck(e.target.checked)}
-                      // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
                       checked={checkItems.length === popupList.length ? true : false}
                     />
                     <span className="chkimg"></span>
@@ -99,13 +118,12 @@ const PopUpListForm = () => {
               <tbody key={index}>
                 <tr>
                   <th>
-                    <label htmlFor={`select-${list.popupId}`}>
+                    <label htmlFor={`p01-${index}`}>
                       <input
                         type="checkbox"
-                        name={`select-${list.popupId}`}
-                        onChange={(e) => handleSingleCheck(e.target.checked, list.boardId)}
-                        // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                        checked={checkItems.includes(list.boardId) ? true : false}
+                        id={`p01-${index}`}
+                        onChange={(e) => handleSingleCheck(e.target.checked, list.popupId)}
+                        checked={checkItems.includes(list.popupId) ? true : false}
                       />
                       <span className="chkimg"></span>
                     </label>

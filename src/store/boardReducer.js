@@ -32,7 +32,7 @@ export const deleteBoard = createAsyncThunk('DEL_BOARD', async (id) => {
 });
 
 export const deleteBoardIds = createAsyncThunk('DEL_BOARD_IDS', async (newList) => {
-  const response = await axios.delete(`${serverUrl}/api/board/`, {data : newList});
+  const response = await axios.delete(`${serverUrl}/api/board/`, { data: newList });
   return response.data;
 });
 
@@ -46,5 +46,6 @@ export const boardReducer = createSlice({
     [insertBoard.fulfilled]: (state, { payload }) => [...state, payload],
     [updateBoard.fulfilled]: (state, { payload }) => [...state, payload],
     [deleteBoard.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
+    [deleteBoardIds.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
   },
 });

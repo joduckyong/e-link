@@ -3,10 +3,6 @@ import axios from 'axios';
 import { serverUrl } from './serverUrl';
 
 export const selectPopup = createAsyncThunk('LIST_POPUP', async (newList) => {
-  let keyWord = newList.searchKeyword;
-  if (keyWord === '') {
-    keyWord = null;
-  }
   const response = await axios.get(`${serverUrl}/api/popup/${newList.popupId}/${newList.pageIndex}`);
   return response.data;
 });
@@ -31,6 +27,11 @@ export const deletePopup = createAsyncThunk('DEL_POPUP', async (id) => {
   return response.data;
 });
 
+export const deletePopupIds = createAsyncThunk('DEL_POPUP_IDS', async (newList) => {
+  const response = await axios.delete(`${serverUrl}/api/popup/`, { data: newList });
+  return response.data;
+});
+
 export const popupReducer = createSlice({
   name: 'popup',
   initialState: [],
@@ -41,5 +42,6 @@ export const popupReducer = createSlice({
     [insertPopup.fulfilled]: (state, { payload }) => [...state, payload],
     [updatePopup.fulfilled]: (state, { payload }) => [...state, payload],
     [deletePopup.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
+    [deletePopupIds.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
   },
 });

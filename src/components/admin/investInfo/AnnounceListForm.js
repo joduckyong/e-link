@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoard } from 'store/boardReducer';
+import { selectBoard, deleteBoardIds } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
 
 const AnnounceListForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const boardList = useSelector((state) => state.boardReducer);
   const [searchKeyword, setSearchKeyword] = useState(null);
@@ -19,6 +20,23 @@ const AnnounceListForm = () => {
     dispatch(selectBoard(newList));
     console.log('searchKeyword : ' + searchKeyword);
   }, []);
+
+  const onRemove = (e) => {
+    e.preventDefault();
+
+    if (checkItems.length === 0) {
+      alert('항목을 선택하세요');
+      return;
+    }
+
+    if (window.confirm('삭제 하시겠습니까?')) {
+      const newList = { ids: checkItems };
+      dispatch(deleteBoardIds(newList));
+      // navigate('/admin/investInfo/announce');
+      document.location.href = '/admin/investInfo/announce';
+      //      dispatch(selectBoard(newList));
+    }
+  };
 
   const pageClick = (page) => {
     setPage(page);
@@ -47,10 +65,8 @@ const AnnounceListForm = () => {
   // 체크박스 단일 선택
   const handleSingleCheck = (checked, id) => {
     if (checked) {
-      // 단일 선택 시 체크된 아이템을 배열에 추가
       setCheckItems((prev) => [...prev, id]);
     } else {
-      // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
       setCheckItems(checkItems.filter((el) => el !== id));
     }
   };
@@ -58,12 +74,10 @@ const AnnounceListForm = () => {
   // 체크박스 전체 선택
   const handleAllCheck = (checked) => {
     if (checked) {
-      // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
       boardList.forEach((el) => idArray.push(el.boardId));
       setCheckItems(idArray);
     } else {
-      // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
       setCheckItems([]);
     }
   };
@@ -88,7 +102,9 @@ const AnnounceListForm = () => {
           </div>
         </div>
         <div className="btn-area position">
-          <button className="btn btn-red btn-120">선택삭제</button>
+          <button className="btn btn-red btn-120" onClick={onRemove}>
+            선택삭제
+          </button>
           <Link to="/admin/investInfo/announceAdd">
             <button className="btn btn-blue btn-120">글쓰기</button>
           </Link>
@@ -105,12 +121,11 @@ const AnnounceListForm = () => {
             <thead>
               <tr>
                 <th>
-                  <label htmlFor="select-all">
+                  <label htmlFor="allchk">
                     <input
                       type="checkbox"
-                      name="select-all"
+                      id="allchk"
                       onChange={(e) => handleAllCheck(e.target.checked)}
-                      // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
                       checked={checkItems.length === boardList.length ? true : false}
                     />
                     <span className="chkimg"></span>
@@ -126,12 +141,11 @@ const AnnounceListForm = () => {
               {boardList.map((list, index) => (
                 <tr key={index}>
                   <th>
-                    <label htmlFor={`select-${list.boardId}`}>
+                    <label htmlFor={`p01-${index}`}>
                       <input
                         type="checkbox"
-                        name={`select-${list.boardId}`}
+                        id={`p01-${index}`}
                         onChange={(e) => handleSingleCheck(e.target.checked, list.boardId)}
-                        // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                         checked={checkItems.includes(list.boardId) ? true : false}
                       />
                       <span className="chkimg"></span>
