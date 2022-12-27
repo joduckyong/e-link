@@ -1,14 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { insertPopup } from 'store/popupReducer';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import styled from 'styled-components';
+import { ko } from 'date-fns/esm/locale';
 
 const PopUpAddForm = () => {
+  const MyDatePicker = styled(DatePicker)`
+    width: 90%;
+    height: 100%;
+    font-size: 1.6rem;
+    background-color: transparent;
+    color: white;
+    border: 1px solid;
+  `;
+
+  const [popupTitle, setPopupTitle] = useState('');
+  const [popupLink, setPopupLink] = useState('');
+  const [popupClose1, setPopupClose1] = useState('');
+  const [popupClose2, setPopupClose2] = useState('');
+  const [popupHeight, setPopupHeight] = useState('');
+  const [popupWidth, setPopupWidth] = useState('');
+  const [popupStartdate, setPopupStartdate] = useState(new Date());
+  const [popupEnddate, setPopupEnddate] = useState(new Date());
+
+  const dispatch = useDispatch();
+
+  const onCreate = (e) => {
+    e.preventDefault();
+
+    if (popupTitle === '') {
+      alert('관리 타이틀를 입력하세요');
+      return;
+    }
+    if (popupLink === '') {
+      alert('팝업 링크를 입력하세요');
+      return;
+    }
+    if (popupClose1 === '') {
+      alert('닫기영역을 입력하세요');
+      return;
+    }
+    if (popupClose2 === '') {
+      alert('닫기영역을 입력하세요');
+      return;
+    }
+    if (popupHeight === '') {
+      alert('팝업위치 가로를 입력하세요');
+      return;
+    }
+    if (popupWidth === '') {
+      alert('팝업위치 세로를 입력하세요');
+      return;
+    }
+    if (popupStartdate === '') {
+      alert('팝업 게시기간을 입력하세요');
+      return;
+    }
+    if (popupEnddate === '') {
+      alert('팝업 게시기간을 입력하세요');
+      return;
+    }
+    if (window.confirm('등록 하시겠습니까?')) {
+      const newList = {
+        popupId: 'POP',
+        popupTitle: popupTitle,
+        popupLink: popupLink,
+        popupClose1: popupClose1,
+        popupClose2: popupClose2,
+        popupHeight: popupHeight,
+        popupWidth: popupWidth,
+        popupStartdate: popupStartdate,
+        popupEnddate: popupEnddate,
+      };
+      dispatch(insertPopup(newList));
+      document.location.href = '/admin/main/popup';
+    }
+  };
+
   return (
     <div className="a-content a01">
       <h2>팝업 등록</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">
-          <button className="btn btn-white btn-120">취소</button>
-          <button className="btn btn-blue btn-120">등록</button>
+          <NavLink to="/admin/main/popup">
+            <button className="btn btn-white btn-120">취소</button>
+          </NavLink>
+          <button className="btn btn-blue btn-120" onClick={onCreate}>
+            등록
+          </button>
         </div>
         <div className="pop-in">
           <div className="popimg-area">
@@ -36,12 +118,18 @@ const PopUpAddForm = () => {
                 type="text"
                 placeholder="파일명을 입력해주세요."
                 className="write-input"
+                name="popupTitle"
+                onChange={(e) => setPopupTitle(e.target.value)}
+                value={popupTitle}
               />
               <div className="s-tit">팝업 링크</div>
               <input
                 type="text"
                 placeholder="파일명을 입력해주세요."
                 className="write-input"
+                name="popupLink"
+                onChange={(e) => setPopupLink(e.target.value)}
+                value={popupLink}
               />
             </div>
             <div className="pop-close">
@@ -50,40 +138,40 @@ const PopUpAddForm = () => {
                 type="text"
                 placeholder="오늘 하루 이 창을 열지 않습니다."
                 className="input01"
+                name="popupClose1"
+                onChange={(e) => setPopupClose1(e.target.value)}
+                value={popupClose1}
               />
-              <input type="text" placeholder="닫기" className="input02" />
+              <input
+                type="text"
+                placeholder="닫기"
+                className="input02"
+                name="popupClose2"
+                onChange={(e) => setPopupClose2(e.target.value)}
+                value={popupClose2}
+              />
             </div>
             <div className="pop-where">
               <div className="s-tit">팝업 위치</div>
               <div className="input-wrap">
                 <div>
                   <span>가로</span>
-                  <input type="text" />
+                  <input type="text" name="popupHeight" onChange={(e) => setPopupHeight(e.target.value.replace(/[^0-9]/g, ''))} value={popupHeight} />
                 </div>
                 <div>
                   <span>세로</span>
-                  <input type="text" />
+                  <input type="text" name="popupWidth" onChange={(e) => setPopupWidth(e.target.value.replace(/[^0-9]/g, ''))} value={popupWidth} />
                 </div>
               </div>
             </div>
             <div className="pop-show">
               <div className="s-tit">팝업 게시기간</div>
               <span>
-                <input type="text" />
-                <NavLink to="">
-                  <i>
-                    <img src="/img/admin/ico-calendar.svg" alt="" />
-                  </i>
-                </NavLink>
+                <MyDatePicker locale={ko} dateFormat="yyyy-MM-dd" selected={popupStartdate} onChange={(date) => setPopupStartdate(date)} />
               </span>
               -
               <span>
-                <input type="text" />
-                <NavLink to="">
-                  <i>
-                    <img src="/img/admin/ico-calendar.svg" alt="" />
-                  </i>
-                </NavLink>
+                <MyDatePicker locale={ko} dateFormat="yyyy-MM-dd" selected={popupEnddate} onChange={(date) => setPopupEnddate(date)} />
               </span>
             </div>
           </div>

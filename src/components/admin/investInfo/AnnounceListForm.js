@@ -126,7 +126,7 @@ const AnnounceListForm = () => {
               {boardList.map((list, index) => (
                 <tr key={index}>
                   <th>
-                    <label htmlFor="e01">
+                    <label htmlFor={`select-${list.boardId}`}>
                       <input
                         type="checkbox"
                         name={`select-${list.boardId}`}

@@ -1,11 +1,61 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPopup } from 'store/popupReducer';
+import Pagination from 'react-js-pagination';
 
 const PopUpListForm = () => {
+  const dispatch = useDispatch();
+  const popupList = useSelector((state) => state.popupReducer);
+  // 체크된 아이템을 담을 배열
+  const [checkItems, setCheckItems] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    const newList = { popupId: 'POP', pageIndex: page };
+    dispatch(selectPopup(newList));
+  }, []);
+
+  const pageClick = (page) => {
+    setPage(page);
+  };
+
+  useEffect(() => {
+    popupList.forEach((list, index) => {
+      if (index === 0) {
+        setTotalCount(list.totalCount);
+      }
+    });
+  }, [popupList]);
+
+  // 체크박스 단일 선택
+  const handleSingleCheck = (checked, id) => {
+    if (checked) {
+      // 단일 선택 시 체크된 아이템을 배열에 추가
+      setCheckItems((prev) => [...prev, id]);
+    } else {
+      // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
+      setCheckItems(checkItems.filter((el) => el !== id));
+    }
+  };
+
+  // 체크박스 전체 선택
+  const handleAllCheck = (checked) => {
+    if (checked) {
+      // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
+      const idArray = [];
+      popupList.forEach((el) => idArray.push(el.popupId));
+      setCheckItems(idArray);
+    } else {
+      // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
+      setCheckItems([]);
+    }
+  };
   return (
     <div className="a-content a01">
       <h2>
-        팝업 관리<span>총 5건</span>
+        팝업 관리<span>총 {totalCount}건</span>
       </h2>
       <div className="ban-list p0">
         <div className="btn-area position">
@@ -27,8 +77,14 @@ const PopUpListForm = () => {
             <thead>
               <tr>
                 <th>
-                  <label htmlFor="allchk">
-                    <input type="checkbox" id="allchk" />
+                  <label htmlFor="select-all">
+                    <input
+                      type="checkbox"
+                      name="select-all"
+                      onChange={(e) => handleAllCheck(e.target.checked)}
+                      // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
+                      checked={checkItems.length === popupList.length ? true : false}
+                    />
                     <span className="chkimg"></span>
                   </label>
                 </th>
@@ -39,80 +95,55 @@ const PopUpListForm = () => {
                 <th>관리</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th>
-                  <label htmlFor="p01">
-                    <input type="checkbox" id="p01" />
-                    <span className="chkimg"></span>
-                  </label>
-                </th>
-                <td>1</td>
-                <td>
-                  <span className="pop-name">어린이날 행사(pc).jpg</span>
-                </td>
-                <td>
-                  <div className="shape-90"></div>
-                </td>
-                <td>
-                  <span className="pop-date">2022-08-01 ~ 2022-08-31</span>
-                </td>
-                <td>
-                  <button className="btn">수정</button>
-                </td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th>
-                  <label htmlFor="p01">
-                    <input type="checkbox" id="p01" />
-                    <span className="chkimg"></span>
-                  </label>
-                </th>
-                <td>2</td>
-                <td>
-                  <span className="pop-name">어린이날 행사(pc).jpg</span>
-                </td>
-                <td>
-                  <div className="shape-90"></div>
-                </td>
-                <td>
-                  <span className="pop-date">2022-08-01 ~ 2022-08-31</span>
-                </td>
-                <td>
-                  <button className="btn">수정</button>
-                </td>
-              </tr>
-            </tbody>
+            {popupList.map((list, index) => (
+              <tbody key={index}>
+                <tr>
+                  <th>
+                    <label htmlFor={`select-${list.popupId}`}>
+                      <input
+                        type="checkbox"
+                        name={`select-${list.popupId}`}
+                        onChange={(e) => handleSingleCheck(e.target.checked, list.boardId)}
+                        // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
+                        checked={checkItems.includes(list.boardId) ? true : false}
+                      />
+                      <span className="chkimg"></span>
+                    </label>
+                  </th>
+                  <td>{list.rnum}</td>
+                  <td>
+                    <Link to={`/admin/main/popupInfo/${list.popupId}`}>
+                      <span className="pop-name">{list.popupTitle}</span>{' '}
+                    </Link>
+                  </td>
+                  <td>
+                    <div className="shape-90"></div>
+                  </td>
+                  <td>
+                    <span className="pop-date">
+                      {list.popupStartdate} ~ {list.popupEnddate}
+                    </span>
+                  </td>
+                  <td>
+                    <Link to={`/admin/main/popupMod/${list.popupId}`}>
+                      <button className="btn">수정</button>
+                    </Link>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
           </table>
         </div>
         <div className="paging">
-          <NavLink to="" className="prev-btn">
-            <i></i>
-            <span className="text_blind">이전</span>
-          </NavLink>
-          <ul>
-            <li className="current">
-              <NavLink to="">1</NavLink>
-            </li>
-            <li>
-              <NavLink to="">2</NavLink>
-            </li>
-            <li>
-              <NavLink to="">3</NavLink>
-            </li>
-            <li>
-              <NavLink to="">4</NavLink>
-            </li>
-            <li>
-              <NavLink to="">5</NavLink>
-            </li>
-          </ul>
-          <NavLink to="" className="next-btn">
-            <i></i>
-            <span className="text_blind">다음</span>
-          </NavLink>
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={10}
+            totalItemsCount={totalCount}
+            pageRangeDisplayed={10}
+            prevPageText={'‹'}
+            nextPageText={'›'}
+            onChange={pageClick}
+          />
         </div>
       </div>
     </div>
