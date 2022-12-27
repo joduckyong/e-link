@@ -43,7 +43,7 @@ const Menu = () => {
             </ul>
           </li>
           <li className="on">
-            <NavLink to="/admin/employmentInfo/jobVacancy">채용정보</NavLink>
+            <NavLink to="">채용정보</NavLink>
             <ul>
               <li>
                 <NavLink to="/admin/employmentInfo/jobVacancy">채용공고 관리</NavLink>
@@ -51,7 +51,7 @@ const Menu = () => {
             </ul>
           </li>
           <li className="on">
-            <NavLink to="/admin/customerService/contactUs">고객센터</NavLink>
+            <NavLink to="">고객센터</NavLink>
             <ul>
               <li>
                 <NavLink to="/admin/customerService/contactUs">Contact Us</NavLink>
@@ -68,13 +68,13 @@ const Menu = () => {
           </p>
           <ul>
             <li>
-              <NavLink to="">
+              <NavLink to="/admin/logout">
                 <img src="/img/admin/ico-logout.png" alt="" />
                 로그아웃
               </NavLink>
             </li>
             <li>
-              <NavLink to="">
+              <NavLink to="/" target="_blank">
                 <img src="/img/admin/ico-home.png" alt="" />
                 홈페이지 바로가기
               </NavLink>

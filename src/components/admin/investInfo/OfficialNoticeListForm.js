@@ -1,7 +1,78 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectBoard, deleteBoardIds } from 'store/boardReducer';
+import Pagination from 'react-js-pagination';
 
 const OfficialNoticeListForm = () => {
+  const dispatch = useDispatch();
+  const boardList = useSelector((state) => state.boardReducer);
+  const [searchKeyword, setSearchKeyword] = useState(null);
+  // 체크된 아이템을 담을 배열
+  const [checkItems, setCheckItems] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: null };
+    dispatch(selectBoard(newList));
+    console.log('searchKeyword : ' + searchKeyword);
+  }, []);
+
+  const onRemove = (e) => {
+    e.preventDefault();
+
+    if (checkItems.length === 0) {
+      alert('항목을 선택하세요');
+      return;
+    }
+
+    if (window.confirm('삭제 하시겠습니까?')) {
+      const newList = { ids: checkItems };
+      dispatch(deleteBoardIds(newList));
+      document.location.href = '/admin/investInfo/officialNotice';
+    }
+  };
+
+  const pageClick = (page) => {
+    setPage(page);
+    onSearch(page);
+  };
+
+  const onSearch = (page) => {
+    const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: searchKeyword };
+    dispatch(selectBoard(newList));
+  };
+
+  useEffect(() => {
+    boardList.forEach((list, index) => {
+      if (index === 0) {
+        setTotalCount(list.totalCount);
+      }
+    });
+  }, [boardList]);
+
+  // 체크박스 단일 선택
+  const handleSingleCheck = (checked, id) => {
+    if (checked) {
+      setCheckItems((prev) => [...prev, id]);
+    } else {
+      setCheckItems(checkItems.filter((el) => el !== id));
+    }
+  };
+
+  // 체크박스 전체 선택
+  const handleAllCheck = (checked) => {
+    if (checked) {
+      const idArray = [];
+      boardList.forEach((el) => idArray.push(el.boardId));
+      setCheckItems(idArray);
+    } else {
+      setCheckItems([]);
+    }
+  };
+
   return (
     <div className="a-content a02">
       <h2>
@@ -62,19 +133,12 @@ const OfficialNoticeListForm = () => {
                   <input type="text" value="분기보고서 (2023.09)" />
                 </td>
                 <td>
-                  <input
-                    type="text"
-                    value="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20221114001528"
-                  />
+                  <input type="text" value="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20221114001528" />
                 </td>
                 <td>2023-11-14</td>
                 <td>
-                  <button className="btn btn-darkgray btn-70 btn-complete">
-                    수정완료
-                  </button>
-                  <button className="btn btn-white btn-70 btn-cancle">
-                    취소
-                  </button>
+                  <button className="btn btn-darkgray btn-70 btn-complete">수정완료</button>
+                  <button className="btn btn-white btn-70 btn-cancle">취소</button>
                 </td>
               </tr>
               <tr className="readonly">
@@ -86,9 +150,7 @@ const OfficialNoticeListForm = () => {
                 </th>
                 <td>4</td>
                 <td>분기보고서 (2023.09)</td>
-                <td>
-                  https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20221114001528
-                </td>
+                <td>https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20221114001528</td>
                 <td>2023-11-14</td>
                 <td>
                   <button className="btn btn-white">수정</button>
@@ -97,32 +159,16 @@ const OfficialNoticeListForm = () => {
             </tbody>
           </table>
         </div>
-        <div className="paging">
-          <NavLink to="" className="prev-btn">
-            <i></i>
-            <span className="text_blind">이전</span>
-          </NavLink>
-          <ul>
-            <li className="current">
-              <NavLink to="">1</NavLink>
-            </li>
-            <li>
-              <NavLink to="">2</NavLink>
-            </li>
-            <li>
-              <NavLink to="">3</NavLink>
-            </li>
-            <li>
-              <NavLink to="">4</NavLink>
-            </li>
-            <li>
-              <NavLink to="">5</NavLink>
-            </li>
-          </ul>
-          <NavLink to="" className="next-btn">
-            <i></i>
-            <span className="text_blind">다음</span>
-          </NavLink>
+        <div class="paging">
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={10}
+            totalItemsCount={totalCount}
+            pageRangeDisplayed={10}
+            prevPageText={'‹'}
+            nextPageText={'›'}
+            onChange={pageClick}
+          />
         </div>
       </div>
     </div>

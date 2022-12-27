@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoard, deleteBoardIds } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
 
 const AnnounceListForm = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const boardList = useSelector((state) => state.boardReducer);
   const [searchKeyword, setSearchKeyword] = useState(null);
@@ -32,9 +31,7 @@ const AnnounceListForm = () => {
     if (window.confirm('삭제 하시겠습니까?')) {
       const newList = { ids: checkItems };
       dispatch(deleteBoardIds(newList));
-      // navigate('/admin/investInfo/announce');
       document.location.href = '/admin/investInfo/announce';
-      //      dispatch(selectBoard(newList));
     }
   };
 

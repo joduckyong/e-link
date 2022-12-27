@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopup, deletePopupIds } from 'store/popupReducer';
 import Pagination from 'react-js-pagination';
 
 const PopUpListForm = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const popupList = useSelector((state) => state.popupReducer);
   // 체크된 아이템을 담을 배열
@@ -29,9 +28,7 @@ const PopUpListForm = () => {
     if (window.confirm('삭제 하시겠습니까?')) {
       const newList = { ids: checkItems };
       dispatch(deletePopupIds(newList));
-      navigate('/admin/main/popup');
       document.location.href = '/admin/main/popup';
-      //      dispatch(selectPopup(newList));
     }
   };
 
