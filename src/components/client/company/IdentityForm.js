@@ -29,7 +29,7 @@ const IdentityForm = () => {
               <NavLink to="">회사소개</NavLink>
               <ul className="links">
                 <li>
-                  <NavLink to="/company/lselink" className="on">
+                  <NavLink to="/company/lselink" classNameName="on">
                     회사소개
                   </NavLink>
                 </li>
@@ -66,7 +66,7 @@ const IdentityForm = () => {
                   <NavLink to="/company/history">연혁</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/company/identity" className="on">
+                  <NavLink to="/company/identity" classNameName="on">
                     CI·BI
                   </NavLink>
                 </li>
@@ -84,122 +84,189 @@ const IdentityForm = () => {
           <div className="ci-wrap">
             <div className="wrap">
               <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                CI 소개
+                Group Corporate Identity
               </h3>
               <p className="ci-introduce" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                LS E-Link의 로고는 가장 혁신적인 기술을 추구하는 LS E-Link의 기술력과 경쟁력을 상징하는
-                <br />
-                색상을 세계로 뻗어나가기 위한 LS E-Link의 혁신적인 비전을 이탤릭(Italic) 서체의 기울기에 담아내어 세계 일류 기업으로
-                <br />
-                도약하기 위한 미래지향적인 기업의 이미지를 표현하고 있습니다.
+                화살표 모양은 끊임없이 미래를 향해 전진하는 기업의 강한 의지와
+                <br className="pc-block" />
+                새로운 패러다임을 여는 무한 성장기업을 상징하며, 곡선 Line은 고객을 향한 LS의 마음을 의미합니다.
               </p>
-              <ul className="ci-infor">
-                <li>
-                  <div className="img" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                    <img src="/img/download/CI.png" alt="" />
+              <div className="represt">
+                <div className="img check-img">
+                  <img src="/img/logo/ls.svg" alt="LS" />
+                </div>
+                <ul className="color-notice">
+                  <li>
+                    <i className="blue"></i>Blue : 투명성과 건실함
+                  </li>
+                  <li>
+                    <i className="red"></i>Red : 도전적이고 진취적인 사고
+                  </li>
+                  <li>
+                    <NavLink to="">CI 규정 보러가기</NavLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="bg"></div>
+          <div className="ci-wrap">
+            <div className="wrap">
+              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                CI
+              </h3>
+              <p className="ci-introduce2" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                LS CI 매뉴얼을 기반으로, E1의 Orange 컬러를 혼합하여
+                <br className="pc-block" />
+                양사 파트너십 이미지를 반영하였습니다.
+                <NavLink to="/img/download/CI.zip" className="btn-down">
+                  다운로드
+                </NavLink>
+              </p>
+              <div className="represt">
+                <div className="img check-img">
+                  <img src="/img/logo/ls-link.svg" alt="LS" />
+                </div>
+                <p className="notice">
+                  LS E-Link CI 시그니처와 로고타입은 조형적인 특징 및 상징성이 가장 잘 드러나는 Identity의 대표적인 형태이므로, 적용시 규정과 원칙을
+                  반드시 준수하여
+                  <br className="pc-block" />
+                  왜곡, 변형, 오·남용 등 어떠한 이미지 손상도 발생하지 않도록 해야합니다.
+                </p>
+                <ul className="logo-list">
+                  <li>
+                    <div className="logo-tit">시그니처 </div>
+                    <div className="img">
+                      <img src="/img/logo/signature.svg" alt="" />
+                    </div>
+                  </li>
+                  <li>
+                    <div className="logo-tit">로고타입</div>
+                    <div className="img">
+                      <img src="/img/logo/logo-type.svg" alt="" />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="ci-wrap bg-gray">
+            <div className="wrap">
+              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                Wordmark
+              </h3>
+              <p className="ci-introduce2" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                E는 에너지(Energy)와 전기(Electricity)의 중의적의미를,
+                <br className="pc-block" />
+                Link는 전기와 관련한 LS의 모든 기술력이 연결된다는 의미가 결합 되었습니다.
+                <NavLink to="/img/download/Wordmark.zip" className="btn-down">
+                  다운로드
+                </NavLink>
+              </p>
+              <div className="wordmark-img">
+                <div>
+                  <div className="tit">심볼마크</div>
+                  <div className="in">
+                    <div className="big-img">
+                      <img src="/img/logo/symbol.svg" alt="" />
+                    </div>
+                    <div className="mini-img">
+                      <span>최소사이즈</span>
+                      <img src="/img/logo/mini-symbol.svg" alt="" />
+                      <p>심볼마크의 5mm이하 사용은 로고타입 사용 권장</p>
+                    </div>
                   </div>
-                  <dl data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                    <dt>CI</dt>
-                    <dd>
-                      <p>
-                        LS CI 매뉴얼을 기반으로, E1의 Orange 컬러를 혼합하여
-                        <br />
-                        양사 파트너십 이미지를 반영했습니다.
-                      </p>
-                      <NavLink to="">다운로드</NavLink>
-                    </dd>
-                  </dl>
+                </div>
+                <div>
+                  <div className="tit">로고타입</div>
+                  <div className="in">
+                    <div className="big-img">
+                      <img src="/img/logo/e-link-logo-type.svg" alt="" />
+                    </div>
+                    <div className="mini-img">
+                      <span>최소사이즈</span>
+                      <img src="/img/logo/mini-e-link-logo-type.svg" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul className="logo-list slogan">
+                <li>
+                  <div className="logo-tit">슬로건 조합1</div>
+                  <div className="img">
+                    <img src="/img/logo/slogan-1.svg" alt="" />
+                  </div>
                 </li>
                 <li>
-                  <div className="img" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                    <img src="/img/download/wordmark.png" alt="" />
+                  <div className="logo-tit">슬로건 조합2</div>
+                  <div className="img">
+                    <img src="/img/logo/slogan-2.svg" alt="" />
                   </div>
-                  <dl data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                    <dt>워드마크</dt>
-                    <dd>
-                      <p>
-                        E는 에너지(Energy)와 전기(Electricity)의 중의적 의미를,
-                        <br />
-                        Link는 전기와 관련한 LS의 모든 기술력이 연결된다는 의미가
-                        <br />
-                        결합 되었습니다.
-                      </p>
-                      <NavLink to="">다운로드</NavLink>
-                    </dd>
-                  </dl>
+                </li>
+                <li>
+                  <div className="logo-tit">합작사 동시 표기 조합</div>
+                  <div className="img">
+                    <img src="/img/logo/slogan-3.svg" alt="" />
+                  </div>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="bg"></div>
-          <div className="color">
+          <div className="ci-wrap color">
             <div className="wrap">
-              <div className="color-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                전용색상
-              </div>
-              <div className="color-infor">
-                <p className="col-txt" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  전용색상은 LS E-Link의 정체성을 표현하는 주요 요소 중 하나입니다.
-                  <br />
-                  공동 출자사인 E1의 오렌지 컬러와 LS의 네이비 컬러를 활용한 그라데이션 컬러 구성으로
-                  <br />
-                  일반적인 단색 컬러 구성의 CI와는 색다른 의미와 느낌을 전달하고 있습니다.
-                </p>
-                <div className="ver-color" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <div className="ver-tit">주색</div>
-                  <ul>
-                    <li>
-                      <div className="col-img blue"></div>
-                      <div className="col-name-wrap">
-                        <div className="col-name">E-LINK Blue</div>
-                        <p>PANTONE 281C Process</p>
-                        <p>Color : C100 M80 Y25 RGB</p>
-                        <p>Color : R10 G30 B90</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="col-img orange"></div>
-                      <div className="col-name-wrap">
-                        <div className="col-name">E-LINK Orange</div>
-                        <p>PANTONE 1669C Process</p>
-                        <p>Color : M72 Y100 K3</p>
-                        <p>RGB Color : R233 G102</p>
-                      </div>
-                    </li>
-                  </ul>
+              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                Color System
+              </h3>
+              <p className="ci-introduce2" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                전용색상은 LS E-Link의 정체성을 표현하는 주요 요소 중 하나입니다. <br className="pc-block" />
+                공동 출자사인 E1의 오렌지 컬러와 LS의 네이비 컬러를 활용한 그라데이션 컬러 구성으로 일반적인 단색 컬러 구성의 CI와는 색다른 의미와
+                느낌을 전달하고 있습니다.
+              </p>
+              <ul className="color-list">
+                <li>
+                  <div className="color-tit">E-LINK Blue</div>
+                  <div className="color-img blue"></div>
+                  <div className="infor">
+                    <p>PANTONE 281C</p>
+                    <p>Process Color : C100 M80 Y25</p>
+                    <p>RGB Color : R10 G30 B90</p>
+                  </div>
+                </li>
+                <li>
+                  <div className="color-tit">E-LINK Orange</div>
+                  <div className="color-img orange"></div>
+                  <div className="infor">
+                    <p>PANTONE 1669C</p>
+                    <p>Process Color : M72 Y100 K3</p>
+                    <p>RGB Color : R233 G102</p>
+                  </div>
+                </li>
+                <li>
+                  <div className="color-tit">E-LINK Yellow</div>
+                  <div className="color-img yellow"></div>
+                  <div className="infor">
+                    <p>PANTONE 108C</p>
+                    <p>Process Color : M15 Y100</p>
+                    <p>RGB Color : R255 G216</p>
+                  </div>
+                </li>
+              </ul>
+              <div className="gradient">
+                <div className="g-tit">E-LINK Gradient</div>
+                <div className="img">
+                  <img src="/img/logo/gradient.png" alt="" />
                 </div>
-
-                <div className="ver-color" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <div className="ver-tit">보조색</div>
-                  <ul>
-                    <li>
-                      <div className="col-img gray"></div>
-                      <div className="col-name-wrap">
-                        <div className="col-name">E-LINK Gray</div>
-                        <p>PANTONE 430C Process </p>
-                        <p>Color : C5 K50</p>
-                        <p>RGB Color : R125 G130 B130</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="col-img silver"></div>
-                      <div className="col-name-wrap">
-                        <div className="col-name">E-LINK Silver</div>
-                        <p>PANTONE 877C Process</p>
-                        <p>Color : C40 M30 Y30 K13</p>
-                        <p>RGB Color : R135 G130 B125</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="col-img gold"></div>
-                      <div className="col-name-wrap">
-                        <div className="col-name">E-LINK GOLD</div>
-                        <p>PANTONE 872C Process</p>
-                        <p>Color : C30 M40 Y80 K18</p>
-                        <p>RGB Color : R125 G13 B13</p>
-                      </div>
-                    </li>
-                  </ul>
+                <div className="txt">
+                  <p>
+                    PANTONE 1669C
+                    <br />
+                    M72 Y100 B3
+                  </p>
+                  <p>
+                    PANTONE 1669C
+                    <br />
+                    M72 Y100 B3
+                  </p>
                 </div>
               </div>
             </div>
