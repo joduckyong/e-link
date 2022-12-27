@@ -16,7 +16,10 @@ const AnnounceModForm = () => {
   }, [dispatch, id]);
 
   useEffect(() => {
-    boardInfo.map((info) => (setBoardTitle(info.boardTitle), setBoardContents(info.boardContents)));
+    boardInfo.forEach((info) => {
+      setBoardTitle(info.boardTitle);
+      setBoardContents(info.boardContents);
+    });
   }, [boardInfo]);
 
   const onEdit = (e) => {

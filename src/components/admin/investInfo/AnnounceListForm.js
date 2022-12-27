@@ -17,7 +17,6 @@ const AnnounceListForm = () => {
   useEffect(() => {
     const newList = { boardId: 'ANN', pageIndex: page, searchKeyword: null };
     dispatch(selectBoard(newList));
-
     console.log('searchKeyword : ' + searchKeyword);
   }, []);
 
@@ -32,7 +31,11 @@ const AnnounceListForm = () => {
   };
 
   useEffect(() => {
-    boardList.map((list, index) => setTotalCount(list.totalCount));
+    boardList.forEach((list, index) => {
+      if (index === 0) {
+        setTotalCount(list.totalCount);
+      }
+    });
   }, [boardList]);
 
   const onKeyPress = (e) => {
