@@ -6,6 +6,16 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
 import { ko } from 'date-fns/esm/locale';
+import moment from 'moment';
+
+export function changeFormat(date, format) {
+  //moment 변환을 함수로 미리 빼 두어서 사용.
+  if (moment(date).isValid()) {
+    return moment(date).format(format);
+  } else {
+    return null;
+  }
+}
 
 const PopUpAddForm = () => {
   const MyDatePicker = styled(DatePicker)`
@@ -42,10 +52,13 @@ const PopUpAddForm = () => {
       setPopupClose2(info.popupClose2);
       setPopupHeight(info.popupHeight);
       setPopupWidth(info.popupWidth);
-      setPopupStartdate(info.popupStartdate);
-      setPopupEnddate(info.popupEnddate);
+      setPopupStartdate(new Date(info.popupStartdate));
+      setPopupEnddate(new Date(info.popupEnddate));
     });
   }, [popupInfo]);
+
+  console.log('popupStartdate : ' + popupStartdate);
+  console.log('popupEnddate : ' + popupEnddate);
 
   const onEdit = (e) => {
     e.preventDefault();
@@ -91,8 +104,8 @@ const PopUpAddForm = () => {
         popupClose2: popupClose2,
         popupHeight: popupHeight,
         popupWidth: popupWidth,
-        popupStartdate: popupStartdate,
-        popupEnddate: popupEnddate,
+        popupStartdate: changeFormat(popupStartdate, 'yyyy-MM-DD') || '',
+        popupEnddate: changeFormat(popupEnddate, 'yyyy-MM-DD') || '',
       };
       dispatch(updatePopup(newList));
       document.location.href = '/admin/main/popup';
