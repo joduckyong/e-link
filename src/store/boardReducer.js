@@ -31,6 +31,11 @@ export const deleteBoard = createAsyncThunk('DEL_BOARD', async (id) => {
   return response.data;
 });
 
+export const deleteBoardIds = createAsyncThunk('DEL_BOARD_IDS', async (newList) => {
+  const response = await axios.delete(`${serverUrl}/api/board/`, {data : newList});
+  return response.data;
+});
+
 export const boardReducer = createSlice({
   name: 'board',
   initialState: [],
