@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { insertPopup } from 'store/popupReducer';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import styled from 'styled-components';
 import { ko } from 'date-fns/esm/locale';
 import moment from 'moment';
 
@@ -18,15 +17,6 @@ export function changeFormat(date, format) {
 }
 
 const PopUpAddForm = () => {
-  const MyDatePicker = styled(DatePicker)`
-    width: 90%;
-    height: 100%;
-    font-size: 1.6rem;
-    background-color: transparent;
-    color: white;
-    border: 1px solid;
-  `;
-
   const [popupTitle, setPopupTitle] = useState('');
   const [popupLink, setPopupLink] = useState('');
   const [popupClose1, setPopupClose1] = useState('');
@@ -177,11 +167,11 @@ const PopUpAddForm = () => {
             <div className="pop-show">
               <div className="s-tit">팝업 게시기간</div>
               <span>
-                <MyDatePicker locale={ko} dateFormat="yyyy-MM-dd" selected={popupStartdate} onChange={(date) => setPopupStartdate(date)} />
+                <DatePicker locale={ko} dateFormat="yyyy-MM-dd" selected={popupStartdate} onChange={(date) => setPopupStartdate(date)} />
               </span>
               -
               <span>
-                <MyDatePicker locale={ko} dateFormat="yyyy-MM-dd" selected={popupEnddate} onChange={(date) => setPopupEnddate(date)} />
+                <DatePicker locale={ko} dateFormat="yyyy-MM-dd" selected={popupEnddate} onChange={(date) => setPopupEnddate(date)} />
               </span>
             </div>
           </div>
