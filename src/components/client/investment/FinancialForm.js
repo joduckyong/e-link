@@ -15,14 +15,26 @@ const FinancialForm = () => {
             <div className="txt-wrap wrap">
                 <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">재무정보</h2>
                 <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                    <li><NavLink to="">투자정보</NavLink></li>
-                    <li className="on">
+                    <li><NavLink to="/"><img src="./../../img/sub/ico-home.svg" alt="" /></NavLink></li>
+                    <li className="link">
+                        <NavLink to="">투자정보</NavLink>
+                        <ul className="links">
+                            <li><NavLink to="/company/lselink">회사소개</NavLink></li>
+                            <li><NavLink to="/business/e-link/evcharge">사업영역</NavLink></li>
+                            <li><NavLink to="/investment/management">투자정보</NavLink></li>
+                            <li><NavLink to="/pr/press-list" className="on">홍보센터</NavLink></li>
+                            <li><NavLink to="/recruit/people">채용정보</NavLink></li>
+                            <li><NavLink to="/contactus">Contact Us</NavLink></li>
+                            <li><NavLink to="">EV 충전소</NavLink></li>
+                        </ul>
+                    </li>
+                    <li className="on link">
                         <NavLink to="">재무정보</NavLink>
                         <ul className="links">
-                            <li><NavLink to="./../investment/management.html">경영정보</NavLink></li>
-                            <li><NavLink to="./../investment/financial.html" className="on">재무정보</NavLink></li>
-                            <li><NavLink to="./../investment/credit.html">공시정보</NavLink></li>
-                            <li><NavLink to="./../investment/announce.html">공고</NavLink></li>
+                            <li><NavLink to="/investment/management">경영정보</NavLink></li>
+                            <li><NavLink to="/investment/financial" className="on">재무정보</NavLink></li>
+                            <li><NavLink to="/investment/credit">공시정보</NavLink></li>
+                            <li><NavLink to="/investment/announce">공고</NavLink></li>
                         </ul>
                     </li>
                 </ul>

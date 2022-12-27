@@ -15,12 +15,24 @@ const MedialistForm = () => {
             <div className="txt-wrap wrap">
                 <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">미디어</h2>
                 <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
-                    <li><NavLink to="">홍보센터</NavLink></li>
-                    <li className="on">
+                    <li><NavLink to="/"><img src="./../../img/sub/ico-home.svg" alt="" /></NavLink></li>
+                    <li className="link">
+                        <NavLink to="">홍보센터</NavLink>
+                        <ul className="links">
+                            <li><NavLink to="/company/lselink">회사소개</NavLink></li>
+                            <li><NavLink to="/business/e-link/evcharge">사업영역</NavLink></li>
+                            <li><NavLink to="/investment/management">투자정보</NavLink></li>
+                            <li><NavLink to="/pr/press-list" className="on">홍보센터</NavLink></li>
+                            <li><NavLink to="/recruit/people">채용정보</NavLink></li>
+                            <li><NavLink to="/contactus">Contact Us</NavLink></li>
+                            <li><NavLink to="">EV 충전소</NavLink></li>
+                        </ul>
+                    </li>
+                    <li className="on link">
                         <NavLink to="">미디어</NavLink>
                         <ul className="links">
-                            <li><NavLink to="./../pr/press-list.html">보도자료</NavLink></li>
-                            <li><NavLink to="./../pr/media-list.html" className="on">미디어</NavLink></li>
+                            <li><NavLink to="/pr/press-list">보도자료</NavLink></li>
+                            <li><NavLink to="/pr/media-list" className="on">미디어</NavLink></li>
                         </ul>
                     </li>
                 </ul>
