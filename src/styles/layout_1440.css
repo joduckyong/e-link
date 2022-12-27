@@ -149,6 +149,32 @@
 	.sub.sub01-3 .t-wrap .time-list dd{width: 100%;}
 	.sub.sub01-3 .t-wrap .time-list p{font-size: 18px; line-height: 25px;}
 
+	.sub.sub01-4 .ci-wrap{padding-top: 60px; padding-bottom: 60px;}
+	.sub .ci-bi .ci-introduce{font-size: 22px; line-height: 32px; margin: 45px 0; word-break: keep-all;}
+	.sub .ci-bi .represt ul.color-notice{margin-top: 30px;}
+	.sub .ci-bi .represt ul.color-notice li{font-size: 14px; align-items: center;}
+	.sub .ci-bi .represt ul.color-notice li a{background-size: 13px auto; background-position-y: 1px;}
+	.sub .ci-bi .represt ul.color-notice li i{width: 8px; height: 8px;}
+	.sub .ci-bi .bg{height: 260px;}
+	.sub .ci-bi .ci-introduce2{font-size: 22px; line-height: 30px; margin-top: 50px; margin-bottom: 35px;}
+	.sub .ci-bi .btn-down{font-size: 14px; height: 50px; line-height: 50px; width: 200px;}
+	.sub .ci-bi .notice{font-size: 14px; line-height: 22px; margin-top: 35px; margin-bottom: 55px;}
+	.sub .ci-bi .logo-list .logo-tit{font-size: 15px;}
+	.sub .ci-bi .wordmark-img .tit{font-size: 16px; margin-bottom: 25px;}
+	.sub .ci-bi .wordmark-img span{font-size: 13px;}
+	.sub .ci-bi .wordmark-img p{font-size: 13px; line-height: 18px; word-break: keep-all;}
+	.sub .ci-bi .color-tit{font-size: 15px; margin-bottom: 20px;}
+	.sub .ci-bi .color-list p{font-size: 13px; line-height: 20px;}
+	.sub .ci-bi .color-list{width: 100%;}
+	.sub .ci-bi .color-list li{margin-left: 8%;}
+	.sub .ci-bi .color-img{width: 100%;}
+	.sub .ci-bi .color-img{margin-bottom: 20px;}
+	.sub .ci-bi .gradient{margin-top: 60px;}
+	.sub .ci-bi .gradient .g-tit{font-size: 15px; margin-bottom: 20px;}
+	.sub .ci-bi .gradient .img img{width: 100%;}
+	.sub .ci-bi .gradient .txt p{font-size: 13px; line-height: 18px;}
+	.sub .ci-bi .gradient .txt{margin-top: 5px;}
+
 	.sub.sub01-5 .img{margin-top: -38px; width: 50%;}
 	.sub.sub01-5 .txt{margin-top: 45px;}
 	.sub.sub01-5 .txt dl{margin-top: 30px;}
@@ -313,6 +339,8 @@
 @media only screen and (max-width:1024px){	
 	.main .con4 .pc-show .left .lf-wrap{position: static;}
 	.main .con4 .mobile-show .right{position: static; margin-top: 70px;}
+
+	.sub .ci-bi .btn-down{position: static; width: 100%; margin-top: 35px;}
 
 	footer{padding: 30px 0;}
 	footer .menu{display: none;}
