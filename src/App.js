@@ -98,8 +98,8 @@ const App = () => {
         <Route path="/admin/publicRelations/mediaInfo/:id" element={<MediaInfoPage />} />
         <Route path="/admin/employmentInfo/jobVacancy" element={<JobVacancyPage />} />
         <Route path="/admin/employmentInfo/jobVacancyAdd" element={<JobVacancyAddPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyMod" element={<JobVacancyModPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyInfo" element={<JobVacancyInfoPage />} />
+        <Route path="/admin/employmentInfo/jobVacancyMod/:id" element={<JobVacancyModPage />} />
+        <Route path="/admin/employmentInfo/jobVacancyInfo/:id" element={<JobVacancyInfoPage />} />
         <Route path="/admin/customerService/contactUs" element={<ContactUsPage />} />
         <Route path="/admin/customerService/contactUsInfo" element={<ContactUsInfoPage />} />
 

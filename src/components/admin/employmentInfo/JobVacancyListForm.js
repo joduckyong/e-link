@@ -1,23 +1,99 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectBoard, deleteBoardIds } from 'store/boardReducer';
+import Pagination from 'react-js-pagination';
 
 const JobVacancyListForm = () => {
 
+    const dispatch = useDispatch();
+    const boardList = useSelector((state) => state.boardReducer.data);
+    const totalCount = useSelector((state) => state.boardReducer.totalCount);
+    const [searchKeyword, setSearchKeyword] = useState(null);
+    const [checkItems, setCheckItems] = useState([]);
+    const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        const newList = { boardId: 'JOB', pageIndex: page};
+        dispatch(selectBoard(newList));
+    }, [dispatch, page]);
+
+    const pageClick = (page) => {
+        setPage(page);
+        onSearch(page);
+      };
+    
+    const onSearch = (page) => {
+        const newList = { boardId: 'JOB', pageIndex: page, searchKeyword: searchKeyword };
+        dispatch(selectBoard(newList));
+    };
+
+    const onRemove = (e) => {
+        e.preventDefault();
+
+        if(checkItems.length === 0){
+            alert('항목을 선택하세요');
+            return;
+        }
+
+        if(window.confirm('삭제 하시겠습니까?')){
+            const newList = { ids: checkItems };
+
+            dispatch(deleteBoardIds(newList)).then(() => {
+                const newList = { boardId: 'JOB', pageIndex: page};
+                dispatch(selectBoard(newList));
+            });
+        }
+    }
+
+    const onKeyPress = (e) => {
+        if (e.key === 'Enter') {
+          onSearch(0);
+        }
+    };
+
+    // 체크박스 단일 선택
+    const handleSingleCheck = (checked, id) => {
+        if (checked) {
+        setCheckItems((prev) => [...prev, id]);
+        } else {
+        setCheckItems(checkItems.filter((el) => el !== id));
+        }
+    };
+
+    // 체크박스 전체 선택
+    const handleAllCheck = (checked) => {
+        if (checked) {
+        const idArray = [];
+        boardList.forEach((el) => idArray.push(el.boardId));
+        setCheckItems(idArray);
+        } else {
+        setCheckItems([]);
+        }
+    };
+
     return(
         <div className="a-content">
-            <h2>채용공고 관리<span>총 5건</span></h2>
+            <h2>채용공고 관리<span>총 {totalCount}건</span></h2>
             <div className="ban-list p0">
                 <div className="search-box">
                     <select name="" id="">
                         <option value="">이름</option>
                     </select>
                     <div className="search-input">
-                        <input type="text" placeholder="검색어를 입력해주세요." />
-                        <button className="btn-primary"></button>
+                        <input
+                            type="text"
+                            placeholder="검색어를 입력해주세요."
+                            name="boardTitle"
+                            onChange={(e) => setSearchKeyword(e.target.value)}
+                            value={searchKeyword || ''}
+                            onKeyPress={onKeyPress}
+                        />
+                        <button className="btn-primary" onClick={() => onSearch(0)}></button>
                     </div>
                 </div>
                 <div className="btn-area position">
-                    <button className="btn btn-red btn-120">선택삭제</button>
+                    <button className="btn btn-red btn-120" onClick={onRemove}>선택삭제</button>
                     <Link to="/admin/employmentInfo/jobVacancyAdd">
                         <button className="btn btn-blue btn-120">글쓰기</button>
                     </Link>
@@ -34,7 +110,17 @@ const JobVacancyListForm = () => {
                         </colgroup>
                         <thead>
                             <tr>
-                                <th><label htmlFor="allchk"><input type="checkbox" id="allchk" /><span className="chkimg"></span></label></th>
+                                <th>
+                                    <label htmlFor="allchk">
+                                        <input 
+                                            type="checkbox" 
+                                            id="allchk" 
+                                            onChange={(e) => handleAllCheck(e.target.checked)}
+                                            checked={checkItems.length === boardList.length ? true : false}
+                                        />
+                                        <span className="chkimg"></span>
+                                    </label>
+                                </th>
                                 <th>번호</th>
                                 <th>구분</th>
                                 <th>제목</th>
@@ -43,43 +129,47 @@ const JobVacancyListForm = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th><label htmlFor="p01"><input type="checkbox" id="p01" /><span className="chkimg"></span></label></th>
-                                <td>1</td>
-                                <td>신입</td>
-                                <td className="tal"><span className="pop-name">[신입_해외영업] 23년 신입사원 공개채용 (해외영업 분야)</span></td>
-                                <td><span className="pop-date">2022-08-01</span></td>
-                                <td>
-                                    <Link to="/admin/employmentInfo/jobVacancyInfo">
-                                        <button className="btn">수정</button>
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><label htmlFor="p01"><input type="checkbox" id="p01" /><span className="chkimg"></span></label></th>
-                                <td>2</td>
-                                <td>신입</td>
-                                <td className="tal"><span className="pop-name">[신입_해외영업] 23년 신입사원 공개채용 (해외영업 분야)</span></td>
-                                <td><span className="pop-date">2022-08-01</span></td>
-                                <td>
-                                    <Link to="/admin/employmentInfo/jobVacancyInfo">
-                                        <button className="btn">수정</button>
-                                    </Link>
-                                </td>
-                            </tr>
+                            {boardList.map((list, index) => (
+                                <tr key={index}>
+                                    <th>
+                                        <label htmlFor={`p01-${index}`}>
+                                            <input 
+                                                type="checkbox" 
+                                                id={`p01-${index}`} 
+                                                onChange={(e) => handleSingleCheck(e.target.checked, list.boardId)}
+                                                checked={checkItems.includes(list.boardId) ? true : false}
+                                            />
+                                            <span className="chkimg"></span>
+                                        </label>
+                                    </th>
+                                    <td>{list.rnum}</td>
+                                    <td>{list.boardType === '1' ? '신입' : '경력'}</td>
+                                    <td className="tal">
+                                        <Link to={`/admin/employmentInfo/jobVacancyInfo/${list.boardId}`}>
+                                            <span className="pop-name">{list.boardTitle}</span>
+                                        </Link>
+                                    </td>
+                                    <td><span className="pop-date">{list.createdDatetime}</span></td>
+                                    <td>
+                                        <Link to={`/admin/employmentInfo/jobVacancyMod/${list.boardId}`}>
+                                            <button className="btn">수정</button>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
                 <div className="paging">
-                    <NavLink to="" className="prev-btn"><i></i><span className="text_blind">이전</span></NavLink>
-                    <ul>
-                        <li className="current"><NavLink to="">1</NavLink></li>
-                        <li><NavLink to="">2</NavLink></li>
-                        <li><NavLink to="">3</NavLink></li>
-                        <li><NavLink to="">4</NavLink></li>
-                        <li><NavLink to="">5</NavLink></li>
-                    </ul>
-                    <NavLink to="" className="next-btn"><i></i><span className="text_blind">다음</span></NavLink>
+                    <Pagination
+                        activePage={page}
+                        itemsCountPerPage={10}
+                        totalItemsCount={totalCount}
+                        pageRangeDisplayed={10}
+                        prevPageText={'‹'}
+                        nextPageText={'›'}
+                        onChange={pageClick}
+                    />
                 </div>
             </div>
         </div>
