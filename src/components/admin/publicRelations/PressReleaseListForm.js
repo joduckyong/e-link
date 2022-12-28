@@ -1,7 +1,8 @@
 import React, { useEffect, useState} from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoard, deleteBoardIds } from 'store/boardReducer';
+import Pagination from 'react-js-pagination';
 
 const PressReleaseListForm = () => {
     const dispatch = useDispatch();
@@ -11,47 +12,57 @@ const PressReleaseListForm = () => {
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-        const newList = { boardId: 'PRE', pageIndex: 1, searchKeyword: null };
+        const newList = { boardId: 'PRE', pageIndex: page};
         dispatch(selectBoard(newList));
-    }, [dispatch]);
+    }, [dispatch, page]);
 
-const onRemove = (e) => {
-    e.preventDefault();
+    const pageClick = (page) => {
+        setPage(page);
+        onSearch(page);
+      };
+    
+    const onSearch = (page) => {
+        const newList = { boardId: 'PRE', pageIndex: page};
+        dispatch(selectBoard(newList));
+    };
 
-    if(checkItems.length === 0){
-        alert('항목을 선택하세요');
-        return;
+    const onRemove = (e) => {
+        e.preventDefault();
+
+        if(checkItems.length === 0){
+            alert('항목을 선택하세요');
+            return;
+        }
+
+        if(window.confirm('삭제 하시겠습니까?')){
+            const newList = { ids: checkItems };
+
+            dispatch(deleteBoardIds(newList)).then(() => {
+                const newList = { boardId: 'PRE', pageIndex: page};
+                dispatch(selectBoard(newList));
+            });
+        }
     }
 
-    if(window.confirm('삭제 하시겠습니까?')){
-        const newList = { ids: checkItems };
+    // 체크박스 단일 선택
+    const handleSingleCheck = (checked, id) => {
+        if (checked) {
+        setCheckItems((prev) => [...prev, id]);
+        } else {
+        setCheckItems(checkItems.filter((el) => el !== id));
+        }
+    };
 
-        dispatch(deleteBoardIds(newList)).then(() => {
-            const newList = { boardId: 'PRE', pageIndex: page, searchKeyword: null };
-            dispatch(selectBoard(newList));
-          });
-    }
-}
-
-// 체크박스 단일 선택
-const handleSingleCheck = (checked, id) => {
-    if (checked) {
-      setCheckItems((prev) => [...prev, id]);
-    } else {
-      setCheckItems(checkItems.filter((el) => el !== id));
-    }
-};
-
-  // 체크박스 전체 선택
-const handleAllCheck = (checked) => {
-    if (checked) {
-      const idArray = [];
-      boardList.forEach((el) => idArray.push(el.boardId));
-      setCheckItems(idArray);
-    } else {
-      setCheckItems([]);
-    }
-};
+    // 체크박스 전체 선택
+    const handleAllCheck = (checked) => {
+        if (checked) {
+        const idArray = [];
+        boardList.forEach((el) => idArray.push(el.boardId));
+        setCheckItems(idArray);
+        } else {
+        setCheckItems([]);
+        }
+    };
     
     return(
         <div className="a-content">
@@ -130,31 +141,15 @@ const handleAllCheck = (checked) => {
                     </table>
                 </div>
                 <div className="paging">
-                    <NavLink to="" className="prev-btn">
-                        <i></i>
-                        <span className="text_blind">이전</span>
-                    </NavLink>
-                    <ul>
-                        <li className="current">
-                            <NavLink to="">1</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="">2</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="">3</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="">4</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="">5</NavLink>
-                        </li>
-                    </ul>
-                    <NavLink to="" className="next-btn">
-                        <i></i>
-                        <span className="text_blind">다음</span>
-                    </NavLink>
+                <Pagination
+                    activePage={page}
+                    itemsCountPerPage={10}
+                    totalItemsCount={totalCount}
+                    pageRangeDisplayed={10}
+                    prevPageText={'‹'}
+                    nextPageText={'›'}
+                    onChange={pageClick}
+                />
                 </div>
             </div>
         </div>

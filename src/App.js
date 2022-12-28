@@ -94,12 +94,12 @@ const App = () => {
         <Route path="/admin/publicRelations/pressReleaseInfo/:id" element={<PressReleaseInfoPage />} />
         <Route path="/admin/publicRelations/media" element={<MediaPage />} />
         <Route path="/admin/publicRelations/mediaAdd" element={<MediaAddPage />} />
-        <Route path="/admin/publicRelations/mediaMod" element={<MediaModPage />} />
-        <Route path="/admin/publicRelations/mediaInfo" element={<MediaInfoPage />} />
+        <Route path="/admin/publicRelations/mediaMod/:id" element={<MediaModPage />} />
+        <Route path="/admin/publicRelations/mediaInfo/:id" element={<MediaInfoPage />} />
         <Route path="/admin/employmentInfo/jobVacancy" element={<JobVacancyPage />} />
         <Route path="/admin/employmentInfo/jobVacancyAdd" element={<JobVacancyAddPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyMod" element={<JobVacancyModPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyInfo" element={<JobVacancyInfoPage />} />
+        <Route path="/admin/employmentInfo/jobVacancyMod/:id" element={<JobVacancyModPage />} />
+        <Route path="/admin/employmentInfo/jobVacancyInfo/:id" element={<JobVacancyInfoPage />} />
         <Route path="/admin/customerService/contactUs" element={<ContactUsPage />} />
         <Route path="/admin/customerService/contactUsInfo" element={<ContactUsInfoPage />} />
 

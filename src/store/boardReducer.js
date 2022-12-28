@@ -4,8 +4,8 @@ import { serverUrl } from './serverUrl';
 
 export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
   let keyWord = newList.searchKeyword;
-  if (keyWord === '') {
-    keyWord = null;
+  if (!keyWord) {
+    keyWord = '';
   }
   const response = await axios.get(`${serverUrl}/api/board/${newList.boardId}/${newList.pageIndex}/${keyWord}`);
   return response.data;

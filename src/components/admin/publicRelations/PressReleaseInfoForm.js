@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo } from 'store/boardReducer';
 
 const PressReleaseInfoForm = () => {
-    const [boardTitle, setBoardTitle] = useState('');
-    const [boardContents, setBoardContents] = useState('');
-
     const {id} = useParams();
     const dispatch = useDispatch();
-    const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
+    const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
+    const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
 
     useEffect(() => {
         dispatch(selectBoardInfo(id));
     }, [dispatch, id]);
-
-    useEffect(() => {
-        setBoardTitle(boardInfo.boardTitle); 
-        setBoardContents(boardInfo.boardContents);
-    }, [boardInfo]);
 
     return (
         <div className="a-content">

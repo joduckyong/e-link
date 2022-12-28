@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { insertBoard } from 'store/boardReducer';
 
 const MediaAddForm = () => {
+    const [boardTitle, setBoardTitle] = useState('');
+    const [boardContents, setBoardContents] = useState('');
+
+    const dispatch = useDispatch();
+
+    const onCreate = (e) => {
+        e.preventDefault();
+
+        if(boardTitle === ''){
+            alert('제목을 입력하세요');
+            return;
+        }
+        if(boardContents === ''){
+            alert('내용을 입력하세요');
+            return;
+        }
+        if(window.confirm('등록 하시겠습니까?')){
+            const newList = { boardId: 'MED', boardTitle: boardTitle, boardContents: boardContents };
+            dispatch(insertBoard(newList));
+            document.location.href = '/admin/publicRelations/media';
+        }
+    }
+
     return (
         <div className="a-content">
             <h2>미디어 등록</h2>
@@ -10,15 +35,29 @@ const MediaAddForm = () => {
                     <Link to="/admin/publicRelations/media">
                         <button className="btn btn-white btn-120">취소</button>
                     </Link>
-                    <button className="btn btn-blue btn-120">등록</button>
+                    <button className="btn btn-blue btn-120" onClick={onCreate}>등록</button>
                 </div>
                 <div className="edit">
                     <div className="ed-tit">
                         <div className="s-tit">제목</div>
-                        <input type="text" placeholder="제목을 입력해주세요." />
+                        <input 
+                            type="text"
+                            name="boardTitle" 
+                            placeholder="제목을 입력해주세요." 
+                            onChange={(e) => setBoardTitle(e.target.value)}
+                            value={boardTitle}
+                        />
                     </div>
                     <div className="ed-area">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
+                        <textarea 
+                                name="" 
+                                id="" 
+                                cols="30" 
+                                rows="10" 
+                                placeholder="내용을 입력해주세요."
+                                onChange={(e) => setBoardContents(e.target.value)}
+                                value={boardContents}
+                        ></textarea>
                     </div>
                     <div className="ed-file">
                         <div className="s-tit">첨부파일</div>
