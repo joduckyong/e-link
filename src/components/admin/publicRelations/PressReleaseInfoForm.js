@@ -9,14 +9,15 @@ const PressReleaseInfoForm = () => {
 
     const {id} = useParams();
     const dispatch = useDispatch();
-    const boardInfo = useSelector((state) => state.boardReducer);
+    const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
 
     useEffect(() => {
         dispatch(selectBoardInfo(id));
     }, [dispatch, id]);
 
     useEffect(() => {
-        boardInfo.forEach((info) => {setBoardTitle(info.boardTitle); setBoardContents(info.boardContents);});
+        setBoardTitle(boardInfo.boardTitle); 
+        setBoardContents(boardInfo.boardContents);
     }, [boardInfo]);
 
     return (

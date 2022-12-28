@@ -38,14 +38,41 @@ export const deleteBoardIds = createAsyncThunk('DEL_BOARD_IDS', async (newList) 
 
 export const boardReducer = createSlice({
   name: 'board',
-  initialState: [],
+  initialState: {
+    status: null,
+    message: null,
+    totalCount: null,
+    data : [],
+    dataInfo : {}
+  },
   reducers: {},
   extraReducers: {
-    [selectBoard.fulfilled]: (state, { payload }) => [...payload],
-    [selectBoardInfo.fulfilled]: (state, { payload }) => [state, payload],
-    [insertBoard.fulfilled]: (state, { payload }) => [...state, payload],
-    [updateBoard.fulfilled]: (state, { payload }) => [...state, payload],
-    [deleteBoard.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
-    [deleteBoardIds.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
+    [selectBoard.fulfilled]: (state, { payload }) => ({
+        ...state, 
+        status: payload.status, 
+        message: payload.message, 
+        totalCount: payload.totalCount, 
+        data: payload.data
+      }),
+    [selectBoardInfo.fulfilled]: (state, { payload }) => ({
+        ...state, 
+        status: payload.status, 
+        message: payload.message, 
+        dataInfo: payload.data
+      }),
+    [insertBoard.fulfilled]: (state, { payload }) => ({
+      ...state,
+      dataInfo: payload.data
+    }),
+    [updateBoard.fulfilled]: (state, { payload }) => ({
+      ...state,
+      payload
+    }),
+    [deleteBoard.fulfilled]: (state, { payload }) => ({
+      ...state
+    }),
+    [deleteBoardIds.fulfilled]: (state, { payload }) => ({
+      ...state
+    }),
   },
 });

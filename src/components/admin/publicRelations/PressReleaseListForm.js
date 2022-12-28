@@ -1,14 +1,15 @@
 import React, { useEffect, useState} from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoard, deleteBoardIds } from 'store/boardReducer';
 
 const PressReleaseListForm = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const boardList = useSelector((state) => state.boardReducer);
+    const boardList = useSelector((state) => state.boardReducer.data);
+    const totalCount = useSelector((state) => state.boardReducer.totalCount);
     const [checkItems, setCheckItems] = useState([]);
-    
+    const [page, setPage] = useState(1);
+
     useEffect(() => {
         const newList = { boardId: 'PRE', pageIndex: 1, searchKeyword: null };
         dispatch(selectBoard(newList));
@@ -24,8 +25,11 @@ const onRemove = (e) => {
 
     if(window.confirm('삭제 하시겠습니까?')){
         const newList = { ids: checkItems };
-        dispatch(deleteBoardIds(newList));
-        navigate('/admin/publicRelations/pressRelease');
+
+        dispatch(deleteBoardIds(newList)).then(() => {
+            const newList = { boardId: 'PRE', pageIndex: page, searchKeyword: null };
+            dispatch(selectBoard(newList));
+          });
     }
 }
 
@@ -51,7 +55,7 @@ const handleAllCheck = (checked) => {
     
     return(
         <div className="a-content">
-            <h2>보도자료 관리<span>총 5건</span></h2>
+            <h2>보도자료 관리<span>총 {totalCount}건</span></h2>
             <div className="ban-list p0">
                 <div className="btn-area position">
                     <button className="btn btn-red btn-120" onClick={onRemove}>선택삭제</button>

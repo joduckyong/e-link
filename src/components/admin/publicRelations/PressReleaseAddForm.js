@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
 
 const PressReleaseAddForm = () => {
-    const navigate = useNavigate();
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
 
@@ -24,7 +23,7 @@ const PressReleaseAddForm = () => {
         if(window.confirm('등록 하시겠습니까?')){
             const newList = { boardId: 'PRE', boardTitle: boardTitle, boardContents: boardContents };
             dispatch(insertBoard(newList));
-            navigate('/admin/publicRelations/pressRelease');
+            document.location.href = '/admin/publicRelations/pressRelease';
         }
     }
 

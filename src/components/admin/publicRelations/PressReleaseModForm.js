@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
 
 const PressReleaseModForm = () => {
-    const navigate = useNavigate();
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
 
     const { id } = useParams();
     const dispatch = useDispatch();
-    const boardInfo = useSelector((state) => state.boardReducer);
+    const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
 
     useEffect(() => {
         dispatch(selectBoardInfo(id));
     }, [dispatch, id]);
     
     useEffect(() => {
-        boardInfo.forEach((info) => {setBoardTitle(info.boardTitle); setBoardContents(info.boardContents);});
+        setBoardTitle(boardInfo.boardTitle); 
+        setBoardContents(boardInfo.boardContents);
     }, [boardInfo]);
     
 
@@ -35,7 +35,7 @@ const PressReleaseModForm = () => {
         if (window.confirm('수정 하시겠습니까?')) {
             const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents };
             dispatch(updateBoard(newList));
-            navigate('/admin/publicRelations/pressRelease');
+            document.location.href = '/admin/publicRelations/pressRelease';
         }
     };
 
