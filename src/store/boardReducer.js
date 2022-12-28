@@ -8,10 +8,11 @@ export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
   let condition = newList.searchCondition;
   if (keyWord) {
     param += `/${keyWord}`;
+    if (condition) {
+      param += `/${condition}`;
+    }
   }
-  if (condition) {
-    param += `/${condition}`;
-  }
+  
   const response = await axios.get(`${serverUrl}/api/board/${param}`);
   return response.data;
 });
