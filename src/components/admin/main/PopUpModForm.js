@@ -35,20 +35,15 @@ const PopUpAddForm = () => {
   }, [dispatch, id]);
 
   useEffect(() => {
-    popupInfo.forEach((info) => {
-      setPopupTitle(info.popupTitle);
-      setPopupLink(info.popupLink);
-      setPopupClose1(info.popupClose1);
-      setPopupClose2(info.popupClose2);
-      setPopupHeight(info.popupHeight);
-      setPopupWidth(info.popupWidth);
-      setPopupStartdate(new Date(info.popupStartdate));
-      setPopupEnddate(new Date(info.popupEnddate));
-    });
+    setPopupTitle(popupInfo.dataInfo.popupTitle);
+    setPopupLink(popupInfo.dataInfo.popupLink);
+    setPopupClose1(popupInfo.dataInfo.popupClose1);
+    setPopupClose2(popupInfo.dataInfo.popupClose2);
+    setPopupHeight(popupInfo.dataInfo.popupHeight);
+    setPopupWidth(popupInfo.dataInfo.popupWidth);
+    setPopupStartdate(new Date(popupInfo.dataInfo.popupStartdate));
+    setPopupEnddate(new Date(popupInfo.dataInfo.popupEnddate));
   }, [popupInfo]);
-
-  console.log('popupStartdate : ' + popupStartdate);
-  console.log('popupEnddate : ' + popupEnddate);
 
   const onEdit = (e) => {
     e.preventDefault();

@@ -8,7 +8,6 @@ const OfficialNoticeListForm = () => {
   const boardList = useSelector((state) => state.boardReducer);
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
-  const [totalCount, setTotalCount] = useState(0);
   const [boardId, setboardId] = useState('');
   const [boardTitle, setBoardTitle] = useState('');
   const [url, setUrl] = useState('');
@@ -35,12 +34,14 @@ const OfficialNoticeListForm = () => {
     }
   };
 
+  //수정값 셋팅
   const setBoardData = (id, title, url) => {
     setboardId(id);
     setBoardTitle(title);
     setUrl(url);
   };
 
+  //수정
   const onEdit = (e) => {
     e.preventDefault();
 
@@ -61,6 +62,7 @@ const OfficialNoticeListForm = () => {
     }
   };
 
+  //등록
   const onCreate = (e) => {
     e.preventDefault();
 
@@ -81,23 +83,10 @@ const OfficialNoticeListForm = () => {
     }
   };
 
+  //페이징
   const pageClick = (page) => {
     setPage(page);
-    onSearch(page);
   };
-
-  const onSearch = (page) => {
-    const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: null };
-    dispatch(selectBoard(newList));
-  };
-
-  useEffect(() => {
-    boardList.forEach((list, index) => {
-      if (index === 0) {
-        setTotalCount(list.totalCount);
-      }
-    });
-  }, [boardList]);
 
   // 체크박스 단일 선택
   const handleSingleCheck = (checked, id) => {
@@ -122,7 +111,7 @@ const OfficialNoticeListForm = () => {
   return (
     <div className="a-content a02">
       <h2>
-        공시정보<span>총 {totalCount}건</span>
+        공시정보<span>총 {boardList.totalCount}건</span>
       </h2>
       <div className="ban-register p0">
         <h3>전자공고 등록</h3>
@@ -166,7 +155,7 @@ const OfficialNoticeListForm = () => {
                       type="checkbox"
                       id="allchk"
                       onChange={(e) => handleAllCheck(e.target.checked)}
-                      checked={checkItems.length === boardList.length ? true : false}
+                      checked={checkItems.length === boardList.data.length ? true : false}
                     />
                     <span className="chkimg"></span>
                   </label>
@@ -201,7 +190,7 @@ const OfficialNoticeListForm = () => {
                 </td>
               </tr>
               */}
-              {boardList.map((list, index) => (
+              {boardList.data.map((list, index) => (
                 <tr className="readonly" key={index}>
                   <th>
                     <label htmlFor={`e01-${index}`}>
@@ -228,11 +217,11 @@ const OfficialNoticeListForm = () => {
             </tbody>
           </table>
         </div>
-        <div class="paging">
+        <div className="paging">
           <Pagination
             activePage={page}
             itemsCountPerPage={10}
-            totalItemsCount={totalCount}
+            totalItemsCount={boardList.totalCount}
             pageRangeDisplayed={10}
             prevPageText={'‹'}
             nextPageText={'›'}

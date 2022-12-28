@@ -7,10 +7,11 @@ import Pagination from 'react-js-pagination';
 const AnnounceListForm = () => {
   const dispatch = useDispatch();
   const boardList = useSelector((state) => state.boardReducer);
+  // 검색키워드
   const [searchKeyword, setSearchKeyword] = useState(null);
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
-  const [totalCount, setTotalCount] = useState(0);
+  // 페이징 값
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -18,6 +19,7 @@ const AnnounceListForm = () => {
     dispatch(selectBoard(newList));
   }, [dispatch, page]);
 
+  // 삭제
   const onRemove = (e) => {
     e.preventDefault();
 
@@ -35,24 +37,18 @@ const AnnounceListForm = () => {
     }
   };
 
+  // 페이징
   const pageClick = (page) => {
     setPage(page);
-    onSearch(page);
   };
 
+  // 검색
   const onSearch = (page) => {
     const newList = { boardId: 'ANN', pageIndex: page, searchKeyword: searchKeyword };
     dispatch(selectBoard(newList));
   };
 
-  useEffect(() => {
-    boardList.forEach((list, index) => {
-      if (index === 0) {
-        setTotalCount(list.totalCount);
-      }
-    });
-  }, [boardList]);
-
+  // 검색 엔터
   const onKeyPress = (e) => {
     if (e.key === 'Enter') {
       onSearch(0);
@@ -72,7 +68,7 @@ const AnnounceListForm = () => {
   const handleAllCheck = (checked) => {
     if (checked) {
       const idArray = [];
-      boardList.forEach((el) => idArray.push(el.boardId));
+      boardList.data.forEach((el) => idArray.push(el.boardId));
       setCheckItems(idArray);
     } else {
       setCheckItems([]);
@@ -82,7 +78,7 @@ const AnnounceListForm = () => {
   return (
     <div className="a-content">
       <h2>
-        공고관리<span>총 {totalCount}건</span>
+        공고관리<span>총 {boardList.totalCount}건</span>
       </h2>
       <div className="ban-list p0">
         <div className="search-box">
@@ -123,7 +119,7 @@ const AnnounceListForm = () => {
                       type="checkbox"
                       id="allchk"
                       onChange={(e) => handleAllCheck(e.target.checked)}
-                      checked={checkItems.length === boardList.length ? true : false}
+                      checked={checkItems.length === boardList.data.length ? true : false}
                     />
                     <span className="chkimg"></span>
                   </label>
@@ -135,7 +131,7 @@ const AnnounceListForm = () => {
               </tr>
             </thead>
             <tbody>
-              {boardList.map((list, index) => (
+              {boardList.data.map((list, index) => (
                 <tr key={index}>
                   <th>
                     <label htmlFor={`p01-${index}`}>
@@ -163,11 +159,11 @@ const AnnounceListForm = () => {
             </tbody>
           </table>
         </div>
-        <div class="paging">
+        <div className="paging">
           <Pagination
             activePage={page}
             itemsCountPerPage={10}
-            totalItemsCount={totalCount}
+            totalItemsCount={boardList.totalCount}
             pageRangeDisplayed={10}
             prevPageText={'‹'}
             nextPageText={'›'}

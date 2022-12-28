@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo } from 'store/boardReducer';
 
 const AnnounceInfoForm = () => {
-  const [boardTitle, setBoardTitle] = useState('');
-  const [boardContents, setBoardContents] = useState('');
-
   const { id } = useParams();
   const dispatch = useDispatch();
   const boardInfo = useSelector((state) => state.boardReducer);
@@ -14,13 +11,6 @@ const AnnounceInfoForm = () => {
   useEffect(() => {
     dispatch(selectBoardInfo(id));
   }, [dispatch, id]);
-
-  useEffect(() => {
-    boardInfo.forEach((info) => {
-      setBoardTitle(info.boardTitle);
-      setBoardContents(info.boardContents);
-    });
-  }, [boardInfo]);
 
   return (
     <div className="a-content">
@@ -35,11 +25,11 @@ const AnnounceInfoForm = () => {
           <ul>
             <li>
               <span className="tit">제목</span>
-              <div className="text">{boardTitle}</div>
+              <div className="text">{boardInfo.dataInfo.boardTitle}</div>
             </li>
             <li>
               <span className="tit">내용</span>
-              <div className="text">{boardContents}</div>
+              <div className="text">{boardInfo.dataInfo.boardContents}</div>
             </li>
             <li>
               <span className="tit"></span>

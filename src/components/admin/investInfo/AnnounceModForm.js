@@ -15,13 +15,13 @@ const AnnounceModForm = () => {
     dispatch(selectBoardInfo(id));
   }, [dispatch, id]);
 
+  //값 셋팅
   useEffect(() => {
-    boardInfo.forEach((info) => {
-      setBoardTitle(info.boardTitle);
-      setBoardContents(info.boardContents);
-    });
+    setBoardTitle(boardInfo.dataInfo.boardTitle);
+    setBoardContents(boardInfo.dataInfo.boardContents);
   }, [boardInfo]);
 
+  //수정
   const onEdit = (e) => {
     e.preventDefault();
 

@@ -34,14 +34,41 @@ export const deletePopupIds = createAsyncThunk('DEL_POPUP_IDS', async (newList) 
 
 export const popupReducer = createSlice({
   name: 'popup',
-  initialState: [],
+  initialState: {
+    status: null,
+    message: null,
+    totalCount: null,
+    data: [],
+    dataInfo: {},
+  },
   reducers: {},
   extraReducers: {
-    [selectPopup.fulfilled]: (state, { payload }) => [...payload],
-    [selectPopupInfo.fulfilled]: (state, { payload }) => [state, payload],
-    [insertPopup.fulfilled]: (state, { payload }) => [...state, payload],
-    [updatePopup.fulfilled]: (state, { payload }) => [...state, payload],
-    [deletePopup.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
-    [deletePopupIds.fulfilled]: (state, { payload }) => state.filter((list) => list.id !== payload),
+    [selectPopup.fulfilled]: (state, { payload }) => ({
+      ...state,
+      status: payload.status,
+      message: payload.message,
+      totalCount: payload.totalCount,
+      data: payload.data,
+    }),
+    [selectPopupInfo.fulfilled]: (state, { payload }) => ({
+      ...state,
+      status: payload.status,
+      message: payload.message,
+      dataInfo: payload.data,
+    }),
+    [insertPopup.fulfilled]: (state, { payload }) => ({
+      ...state,
+      dataInfo: payload.data,
+    }),
+    [updatePopup.fulfilled]: (state, { payload }) => ({
+      ...state,
+      payload,
+    }),
+    [deletePopup.fulfilled]: (state, { payload }) => ({
+      ...state,
+    }),
+    [deletePopupIds.fulfilled]: (state, { payload }) => ({
+      ...state,
+    }),
   },
 });

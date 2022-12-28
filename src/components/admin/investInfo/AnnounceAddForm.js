@@ -9,6 +9,7 @@ const AnnounceAddForm = () => {
 
   const dispatch = useDispatch();
 
+  //등록
   const onCreate = (e) => {
     e.preventDefault();
 

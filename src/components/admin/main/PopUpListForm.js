@@ -9,7 +9,7 @@ const PopUpListForm = () => {
   const popupList = useSelector((state) => state.popupReducer);
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
-  const [totalCount, setTotalCount] = useState(0);
+  // 페이징 값
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const PopUpListForm = () => {
     dispatch(selectPopup(newList));
   }, [dispatch, page]);
 
+  // 삭제
   const onRemove = (e) => {
     e.preventDefault();
 
@@ -34,17 +35,10 @@ const PopUpListForm = () => {
     }
   };
 
+  // 페이징
   const pageClick = (page) => {
     setPage(page);
   };
-
-  useEffect(() => {
-    popupList.forEach((list, index) => {
-      if (index === 0) {
-        setTotalCount(list.totalCount);
-      }
-    });
-  }, [popupList]);
 
   // 체크박스 단일 선택
   const handleSingleCheck = (checked, id) => {
@@ -72,7 +66,7 @@ const PopUpListForm = () => {
   return (
     <div className="a-content a01">
       <h2>
-        팝업 관리<span>총 {totalCount}건</span>
+        팝업 관리<span>총 {popupList.totalCount}건</span>
       </h2>
       <div className="ban-list p0">
         <div className="btn-area position">
@@ -101,7 +95,7 @@ const PopUpListForm = () => {
                       type="checkbox"
                       id="allchk"
                       onChange={(e) => handleAllCheck(e.target.checked)}
-                      checked={checkItems.length === popupList.length ? true : false}
+                      checked={checkItems.length === popupList.data.length ? true : false}
                     />
                     <span className="chkimg"></span>
                   </label>
@@ -113,7 +107,7 @@ const PopUpListForm = () => {
                 <th>관리</th>
               </tr>
             </thead>
-            {popupList.map((list, index) => (
+            {popupList.data.map((list, index) => (
               <tbody key={index}>
                 <tr>
                   <th>
@@ -155,7 +149,7 @@ const PopUpListForm = () => {
           <Pagination
             activePage={page}
             itemsCountPerPage={10}
-            totalItemsCount={totalCount}
+            totalItemsCount={popupList.totalCount}
             pageRangeDisplayed={10}
             prevPageText={'‹'}
             nextPageText={'›'}

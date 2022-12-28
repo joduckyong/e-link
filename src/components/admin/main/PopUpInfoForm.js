@@ -1,18 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopupInfo } from 'store/popupReducer';
 
-const PopUpAddForm = () => {
-  const [popupTitle, setPopupTitle] = useState('');
-  const [popupLink, setPopupLink] = useState('');
-  const [popupClose1, setPopupClose1] = useState('');
-  const [popupClose2, setPopupClose2] = useState('');
-  const [popupHeight, setPopupHeight] = useState('');
-  const [popupWidth, setPopupWidth] = useState('');
-  const [popupStartdate, setPopupStartdate] = useState('');
-  const [popupEnddate, setPopupEnddate] = useState('');
-
+const PopUpInfoForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const popupInfo = useSelector((state) => state.popupReducer);
@@ -20,19 +11,6 @@ const PopUpAddForm = () => {
   useEffect(() => {
     dispatch(selectPopupInfo(id));
   }, [dispatch, id]);
-
-  useEffect(() => {
-    popupInfo.forEach((info) => {
-      setPopupTitle(info.popupTitle);
-      setPopupLink(info.popupLink);
-      setPopupClose1(info.popupClose1);
-      setPopupClose2(info.popupClose2);
-      setPopupHeight(info.popupHeight);
-      setPopupWidth(info.popupWidth);
-      setPopupStartdate(info.popupStartdate);
-      setPopupEnddate(info.popupEnddate);
-    });
-  }, [popupInfo]);
 
   return (
     <div className="a-content a01">
@@ -65,36 +43,36 @@ const PopUpAddForm = () => {
           <div className="popinfor-area">
             <div className="pop-tit">
               <div className="s-tit mt0">관리 타이틀</div>
-              <input type="text" placeholder="파일명을 입력해주세요." className="write-input" value={popupTitle} disabled />
+              <input type="text" placeholder="파일명을 입력해주세요." className="write-input" value={popupInfo.dataInfo.popupTitle} disabled />
               <div className="s-tit">팝업 링크</div>
-              <input type="text" placeholder="파일명을 입력해주세요." className="write-input" value={popupLink} disabled />
+              <input type="text" placeholder="파일명을 입력해주세요." className="write-input" value={popupInfo.dataInfo.popupLink} disabled />
             </div>
             <div className="pop-close">
               <div className="s-tit">닫기 영역</div>
-              <input type="text" placeholder="오늘 하루 이 창을 열지 않습니다." className="input01" value={popupClose1} disabled />
-              <input type="text" placeholder="닫기" className="input02" value={popupClose2} disabled />
+              <input type="text" placeholder="오늘 하루 이 창을 열지 않습니다." className="input01" value={popupInfo.dataInfo.popupClose1} disabled />
+              <input type="text" placeholder="닫기" className="input02" value={popupInfo.dataInfo.popupClose2} disabled />
             </div>
             <div className="pop-where">
               <div className="s-tit">팝업 위치</div>
               <div className="input-wrap">
                 <div>
                   <span>가로</span>
-                  <input type="text" value={popupHeight} disabled />
+                  <input type="text" value={popupInfo.dataInfo.popupHeight} disabled />
                 </div>
                 <div>
                   <span>세로</span>
-                  <input type="text" value={popupWidth} disabled />
+                  <input type="text" value={popupInfo.dataInfo.popupWidth} disabled />
                 </div>
               </div>
             </div>
             <div className="pop-show">
               <div className="s-tit">팝업 게시기간</div>
               <span>
-                <input type="text" value={popupStartdate} disabled />
+                <input type="text" value={popupInfo.dataInfo.popupStartdate} disabled />
               </span>
               -
               <span>
-                <input type="text" value={popupEnddate} disabled />
+                <input type="text" value={popupInfo.dataInfo.popupEnddate} disabled />
               </span>
             </div>
           </div>
@@ -104,4 +82,4 @@ const PopUpAddForm = () => {
   );
 };
 
-export default PopUpAddForm;
+export default PopUpInfoForm;
