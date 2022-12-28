@@ -3,11 +3,16 @@ import axios from 'axios';
 import { serverUrl } from './serverUrl';
 
 export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
+  let param = `${newList.boardId}/${newList.pageIndex}`;
   let keyWord = newList.searchKeyword;
-  if (!keyWord) {
-    keyWord = '';
+  let condition = newList.searchCondition;
+  if (keyWord) {
+    param += `/${keyWord}`;
   }
-  const response = await axios.get(`${serverUrl}/api/board/${newList.boardId}/${newList.pageIndex}/${keyWord}`);
+  if (condition) {
+    param += `/${condition}`;
+  }
+  const response = await axios.get(`${serverUrl}/api/board/${param}`);
   return response.data;
 });
 
