@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 /* 관리자 */
 import LoginPage from './pages/admin/LoginPage';
+import Logout from './components/admin/Logout';
 
 import PopupPage from './pages/admin/main/PopupPage';
 import PopupAddPage from './pages/admin/main/PopupAddPage';
@@ -79,6 +80,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/admin/login" element={<LoginPage />} />
+        <Route path="/admin/logout" element={<Logout />} />
         <Route path="/admin/main/popup" element={<PopupPage />} />
         <Route path="/admin/main/popupAdd" element={<PopupAddPage />} />
         <Route path="/admin/main/popupMod/:id" element={<PopupModPage />} />
