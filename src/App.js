@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
+
 /* 관리자 */
 import LoginPage from './pages/admin/LoginPage';
 import Logout from './components/admin/Logout';
