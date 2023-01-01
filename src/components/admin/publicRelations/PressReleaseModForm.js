@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
@@ -6,10 +6,16 @@ import { selectBoardInfo, updateBoard } from 'store/boardReducer';
 const PressReleaseModForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
+    const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
+    const [fileName, setFileName] = useState('선택된 파일 없음');
 
     const { id } = useParams();
     const dispatch = useDispatch();
     const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
+    const fileList = useSelector((state) => state.boardReducer.files);
+    
+    const thumbnailRef = useRef();
+    const fileRef = useRef();
 
     useEffect(() => {
         dispatch(selectBoardInfo(id));
@@ -19,10 +25,23 @@ const PressReleaseModForm = () => {
         setBoardTitle(boardInfo.boardTitle); 
         setBoardContents(boardInfo.boardContents);
     }, [boardInfo]);
+
+    useEffect(() => {
+        for(let file of fileList){
+            if(file.fileType === '1'){  //썸네일
+                setThumbnailName(file.fileOriginNm);
+            }else{
+                setFileName(file.fileOriginNm);
+            }
+        }
+    }, [fileList]);
     
 
     const onEdit = (e) => {
         e.preventDefault();
+
+        const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
+        const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
 
         if (boardTitle === '') {
             alert('제목을 입력하세요');
@@ -33,11 +52,27 @@ const PressReleaseModForm = () => {
             return;
         }
         if (window.confirm('수정 하시겠습니까?')) {
-            const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents };
+            const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, thumbnail: thumbnailObj, file: fileObj };
             dispatch(updateBoard(newList));
             document.location.href = '/admin/publicRelations/pressRelease';
         }
     };
+
+    const onUploadImage = useCallback((e) => {
+        if (!e.target.files) {
+            return;
+        }
+        setThumbnailName(e.target.files[0].name);
+        thumbnailRef.current = e.target.files[0];
+    }, []);
+
+    const onUploadFile = useCallback((e) => {
+        if (!e.target.files) {
+            return;
+        }
+        setFileName(e.target.files[0].name);
+        fileRef.current = e.target.files[0];
+    }, []);
 
     return (
         <div className="a-content">
@@ -76,9 +111,9 @@ const PressReleaseModForm = () => {
                         <div className="file-area">
                             <div className="input-box">
                                 <label htmlFor="e-choice01" className="file-choice">
-                                    <input type="file" id="e-choice01" className="file" />+ 파일선택
+                                    <input type="file" accept="image/*" id="e-choice01" className="file" ref={thumbnailRef} onChange={onUploadImage}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">선택된 파일 없음</span>
+                                <span className="upload-name">{thumbnailName}</span>
                             </div>
                         </div>
                     </div>
@@ -87,9 +122,9 @@ const PressReleaseModForm = () => {
                         <div className="file-area">
                             <div className="input-box">
                                 <label htmlFor="e-choice02" className="file-choice">
-                                    <input type="file" id="e-choice02" className="file" />+ 파일선택
+                                    <input type="file" id="e-choice02" className="file" ref={fileRef} onChange={onUploadFile}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">선택된 파일 없음</span>
+                                <span className="upload-name">{fileName}</span>
                             </div>
                         </div>
                     </div>

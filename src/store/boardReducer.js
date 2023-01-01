@@ -23,12 +23,40 @@ export const selectBoardInfo = createAsyncThunk('INFO_BOARD', async (id) => {
 });
 
 export const insertBoard = createAsyncThunk('ADD_BOARD', async (newList) => {
-  const response = await axios.post(`${serverUrl}/api/board`, newList);
+  const formData = new FormData();
+  formData.append('thumbnail', newList.thumbnail);
+  formData.append('file', newList.file);
+  formData.append('boardVo', new Blob([JSON.stringify(newList)], {
+    type: "application/json"
+  }));
+  
+  const response = await axios({
+    url: `${serverUrl}/api/board/`,
+    method: 'POST',
+    data: formData,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
   return response.data;
 });
 
 export const updateBoard = createAsyncThunk('MOD_BOARD', async (newList) => {
-  const response = await axios.put(`${serverUrl}/api/board/`, newList);
+  const formData = new FormData();
+  formData.append('thumbnail', newList.thumbnail);
+  formData.append('file', newList.file);
+  formData.append('boardVo', new Blob([JSON.stringify(newList)], {
+    type: "application/json"
+  }));
+  
+  const response = await axios({
+    url: `${serverUrl}/api/board/update`,
+    method: 'POST',
+    data: formData,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
   return response.data;
 });
 
@@ -49,7 +77,8 @@ export const boardReducer = createSlice({
     message: null,
     totalCount: null,
     data : [],
-    dataInfo : {}
+    dataInfo : {},
+    files : []
   },
   reducers: {},
   extraReducers: {
@@ -64,7 +93,8 @@ export const boardReducer = createSlice({
         ...state, 
         status: payload.status, 
         message: payload.message, 
-        dataInfo: payload.data
+        dataInfo: payload.data,
+        files: payload.files
       }),
     [insertBoard.fulfilled]: (state, { payload }) => ({
       ...state,
@@ -72,7 +102,7 @@ export const boardReducer = createSlice({
     }),
     [updateBoard.fulfilled]: (state, { payload }) => ({
       ...state,
-      payload
+      dataInfo: payload.data
     }),
     [deleteBoard.fulfilled]: (state, { payload }) => ({
       ...state
