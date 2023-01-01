@@ -41,8 +41,12 @@ const PopUpAddForm = () => {
     setPopupClose2(popupInfo.dataInfo.popupClose2);
     setPopupHeight(popupInfo.dataInfo.popupHeight);
     setPopupWidth(popupInfo.dataInfo.popupWidth);
-    setPopupStartdate(new Date(popupInfo.dataInfo.popupStartdate));
-    setPopupEnddate(new Date(popupInfo.dataInfo.popupEnddate));
+    if (popupInfo.dataInfo.popupStartdate !== undefined && typeof popupInfo.dataInfo.popupStartdate !== 'undefined') {
+      setPopupStartdate(new Date(popupInfo.dataInfo.popupStartdate));
+    }
+    if (popupInfo.dataInfo.popupEnddate !== undefined && typeof popupInfo.dataInfo.popupEnddate !== 'undefined') {
+      setPopupEnddate(new Date(popupInfo.dataInfo.popupEnddate));
+    }
   }, [popupInfo]);
 
   const onEdit = (e) => {

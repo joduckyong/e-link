@@ -62,24 +62,28 @@ export const logoutUser = async (credentials, accessToken) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
+      Authorization: accessToken,
     },
     body: JSON.stringify(credentials),
   };
 
-  const data = await getPromise(`${serverUrl}/api/logout`, option).catch(() => {
+  const data = await getPromise(`${serverUrl}/api/auth/logout`, option).catch(() => {
     return statusError;
   });
 
+  console.log('data  == ' + data);
   if (parseInt(Number(data.status) / 100) === 2) {
     const status = data.ok;
+
+    console.log('status  == ' + status);
     const code = data.status;
-    const text = await data.text();
-    const json = text.length ? JSON.parse(text) : '';
+    // const text = await data.text();
+    // const json = text.length ? JSON.parse(text) : '';
 
     return {
       status,
       code,
-      json,
+      // json,
     };
   } else {
     return statusError;

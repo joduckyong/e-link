@@ -14,7 +14,8 @@ export const setRefreshToken = (refreshToken) => {
 };
 
 export const getCookieToken = () => {
-  return cookies.get('refreshToken');
+  const token = cookies.get('refreshToken');
+  return token;
 };
 
 export const removeCookieToken = () => {

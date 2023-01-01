@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-
 import { ErrorMessage } from '@hookform/error-message';
-
 import { loginUser } from '../../api/Users';
-import { setRefreshToken } from '../../storage/Cookie';
+import { removeCookieToken, setRefreshToken } from '../../storage/Cookie';
 import { SET_TOKEN } from '../../store/Auth';
 
 import { useCookies } from 'react-cookie';
@@ -19,6 +17,10 @@ const LoginForm = () => {
   const [loginId, setLoginId] = useState('');
   const [isRemember, setIsRemember] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(['rememberId']);
+
+  useEffect(() => {
+    removeCookieToken();
+  }, []);
 
   useEffect(() => {
     if (cookies.rememberId !== undefined) {
@@ -48,13 +50,15 @@ const LoginForm = () => {
   // 백으로 유저 정보 전달
   const onValid = async ({ adminId, adminPw }) => {
     const response = await loginUser({ adminId, adminPw });
-
     if (response.status) {
       // 쿠키에 Refresh Token, store에 Access Token 저장
-      setRefreshToken(response.json.refreshToken);
+      // console.log('response.json.accessToken : ' + response.json.accessToken);
+      // console.log('response.json.refreshToken : ' + response.json.refreshToken);
+
+      setRefreshToken(response.json.accessToken);
+      // setRefreshToken(response.json.refreshToken);
       dispatch(SET_TOKEN(response.json.accessToken));
       return navigate('/admin/main/popup');
-      // document.location.href = '/admin/main/popup';
     } else {
       alert('아이디 비밀번호를 확인해주세요!');
       console.log(response.json);
