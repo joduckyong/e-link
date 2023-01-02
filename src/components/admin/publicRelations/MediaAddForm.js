@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
@@ -6,11 +6,17 @@ import { insertBoard } from 'store/boardReducer';
 const MediaAddForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
+    const [url, setUrl] = useState('http://');
+    const [fileName, setFileName] = useState('선택된 파일 없음');
+
+    const fileRef = useRef();
 
     const dispatch = useDispatch();
 
     const onCreate = (e) => {
         e.preventDefault();
+
+        const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
 
         if(boardTitle === ''){
             alert('제목을 입력하세요');
@@ -21,11 +27,20 @@ const MediaAddForm = () => {
             return;
         }
         if(window.confirm('등록 하시겠습니까?')){
-            const newList = { boardId: 'MED', boardTitle: boardTitle, boardContents: boardContents };
+            const newList = { boardId: 'MED', boardTitle: boardTitle, boardContents: boardContents, url: url, file: fileObj };
             dispatch(insertBoard(newList));
             document.location.href = '/admin/publicRelations/media';
         }
     }
+
+    const onUploadFile = useCallback((e) => {
+        if (!e.target.files) {
+            return;
+        }
+        setFileName(e.target.files[0].name);
+        fileRef.current = e.target.files[0];
+    }, []);
+    
 
     return (
         <div className="a-content">
@@ -64,15 +79,19 @@ const MediaAddForm = () => {
                         <div className="file-area">
                             <div className="input-box">
                                 <label htmlFor="e-choice01" className="file-choice">
-                                    <input type="file" id="e-choice01" className="file" />+ 파일선택
+                                    <input type="file" id="e-choice01" className="file" ref={fileRef} onChange={onUploadFile}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">선택된 파일 없음</span>
+                                <span className="upload-name">{fileName}</span>
                             </div>
                         </div>
                     </div>
                     <div className="ed-youtube">
                         <div className="s-tit">유튜브 링크</div>
-                        <input type="text" value="http://" />
+                        <input 
+                            type="text" 
+                            name="url" 
+                            onChange={(e) => setUrl(e.target.value)}
+                            value={url}/>
                     </div>
                 </div>
             </div>

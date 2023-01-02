@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoard, deleteBoardIds } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
+import ViewImage from 'components/common/ViewImage';
 
 const MediaListForm = () => {
     const dispatch = useDispatch();
@@ -121,7 +122,9 @@ const MediaListForm = () => {
                                     </th>
                                     <td>{list.rnum}</td>
                                     <td className="pl40">
-                                        <div className="shape-150"></div>
+                                        <div className="shape-150">
+                                            <ViewImage fileNm={list.thumbNm} />
+                                        </div>
                                     </td>
                                     <td className="tal pl40">
                                         <Link to={`/admin/publicRelations/mediaInfo/${list.boardId}`}>

@@ -8,29 +8,28 @@ const ViewImage = ({ fileNm }) => {
 
   useEffect(() => {
     if (fileNm) {
-      const token = getCookieToken();
-
-      fetch(url, {
-        method: 'GET',
-        headers: {
-          Authorization: token,
-        },
-      })
-        .then((res) => {
-          return res.blob();
-        })
-        .then((blob) => {
-          const url = window.URL.createObjectURL(blob);
-          setObjectUrl(url);
-
+      const showImage = async () => {
+        const token = getCookieToken();
+    
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+              Authorization: token,
+            },
+          })
+    
+          const blob = await response.blob();
+          const objUrl = window.URL.createObjectURL(blob);
+          setObjectUrl(objUrl);
+    
           setTimeout((_) => {
-            window.URL.revokeObjectURL(url);
+            window.URL.revokeObjectURL(objUrl);
           }, 60000);
-        })
-        .catch((err) => {
-          console.error('err: ', err);
-        });
+      }
+
+      showImage();
     }
+    
   }, [fileNm, url]);
 
   return <img src={objectUrl} alt="" />;
