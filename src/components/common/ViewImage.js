@@ -33,8 +33,8 @@ const ViewImage = ({ fileNm, width, height }) => {
     }
   }, [fileNm, url]);
 
-  console.log('width : ' + width);
-  console.log('height : ' + height);
+  // console.log('width : ' + width);
+  // console.log('height : ' + height);
   return <img src={objectUrl} alt="" width={width} height={height} />;
 };
 

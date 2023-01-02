@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopupInfo } from 'store/popupReducer';
@@ -6,13 +6,23 @@ import ViewImage from 'components/common/ViewImage';
 
 const PopUpInfoForm = () => {
   const { id } = useParams();
+  const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
   const dispatch = useDispatch();
   const popupInfo = useSelector((state) => state.popupReducer);
+  const fileList = useSelector((state) => state.popupReducer.files);
 
   useEffect(() => {
     dispatch(selectPopupInfo(id));
   }, [dispatch, id]);
 
+  useEffect(() => {
+    for (let file of fileList) {
+      setThumbnailName(file.fileNm);
+    }
+  }, [fileList]);
+
+  console.log('fileList.thumbNm : ' + thumbnailName);
+  //  console.log('fileList.thumbNm : ' + fileList.fileNm);
   return (
     <div className="a-content a01">
       <h2>팝업 상세</h2>
@@ -32,7 +42,7 @@ const PopUpInfoForm = () => {
               <label htmlFor="idvf">
                 <span>
                   <i>
-                    <ViewImage fileNm={popupInfo.dataInfo.thumbNm} width={250} height={290} />
+                    <ViewImage fileNm={thumbnailName} width={235} height={250} />
                   </i>
                 </span>
               </label>

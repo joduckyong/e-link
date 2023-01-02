@@ -15,7 +15,6 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const [adminId, setAdminId] = useState('');
-  const [adminPw, setAdminPw] = useState('');
   const [isRemember, setIsRemember] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(['rememberId']);
 
@@ -98,12 +97,7 @@ const LoginForm = () => {
                       </p>
                     )}
                   />
-                  <input
-                    type="password"
-                    name="adminPw"
-                    placeholder="비밀번호"
-                    {...register('adminPw', { onChange: (e) => setAdminPw(e.target.value) })}
-                  />
+                  <input type="password" name="adminPw" placeholder="비밀번호" {...register('adminPw')} />
                   <ErrorMessage
                     name="adminPw"
                     errors={errors}

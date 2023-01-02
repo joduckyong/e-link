@@ -36,6 +36,10 @@ const PopUpAddForm = () => {
 
     const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
 
+    if (thumbnailObj === false) {
+      alert('팝업 이미지를 등록 하세요');
+      return;
+    }
     if (popupTitle === '') {
       alert('관리 타이틀를 입력하세요');
       return;
