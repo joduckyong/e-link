@@ -135,9 +135,10 @@ const PopUpAddForm = () => {
     [storedFileArr, storedThumbnailName],
   );
 
+  console.log('thumbnailName:' + thumbnailName);
   return (
     <div className="a-content a01">
-      <h2>팝업 등록</h2>
+      <h2>팝업 수정</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">
           <NavLink to="/admin/main/popup">
@@ -163,6 +164,7 @@ const PopUpAddForm = () => {
                 </span>
                 <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
               </label>
+              <span className="upload-name">{thumbnailName}</span>
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>
           </div>

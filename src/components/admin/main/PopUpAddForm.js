@@ -122,6 +122,7 @@ const PopUpAddForm = () => {
                 </span>
                 <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
               </label>
+              <span className="upload-name">{thumbnailName}</span>
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>
           </div>
