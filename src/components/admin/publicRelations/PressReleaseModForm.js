@@ -8,6 +8,9 @@ const PressReleaseModForm = () => {
     const [boardContents, setBoardContents] = useState('');
     const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
     const [fileName, setFileName] = useState('선택된 파일 없음');
+    const [storedThumbnailName, setStoredThumbnailName] = useState('');
+    const [storedFileName, setStoredFileName] = useState('');
+    const [storedFileArr, setStoredFileArr] = useState([]); 
 
     const { id } = useParams();
     const dispatch = useDispatch();
@@ -30,8 +33,10 @@ const PressReleaseModForm = () => {
         for(let file of fileList){
             if(file.fileType === '1'){  //썸네일
                 setThumbnailName(file.fileOriginNm);
+                setStoredThumbnailName(file.fileNm);
             }else{
                 setFileName(file.fileOriginNm);
+                setStoredFileName(file.fileNm)
             }
         }
     }, [fileList]);
@@ -52,7 +57,7 @@ const PressReleaseModForm = () => {
             return;
         }
         if (window.confirm('수정 하시겠습니까?')) {
-            const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, thumbnail: thumbnailObj, file: fileObj };
+            const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, ids: storedFileArr, thumbnail: thumbnailObj, file: fileObj };
             dispatch(updateBoard(newList));
             document.location.href = '/admin/publicRelations/pressRelease';
         }
@@ -64,7 +69,10 @@ const PressReleaseModForm = () => {
         }
         setThumbnailName(e.target.files[0].name);
         thumbnailRef.current = e.target.files[0];
-    }, []);
+        if(!storedFileArr.includes(storedThumbnailName)){
+            setStoredFileArr([...storedFileArr, storedThumbnailName]);
+        }
+    }, [storedFileArr, storedThumbnailName]);
 
     const onUploadFile = useCallback((e) => {
         if (!e.target.files) {
@@ -72,7 +80,11 @@ const PressReleaseModForm = () => {
         }
         setFileName(e.target.files[0].name);
         fileRef.current = e.target.files[0];
-    }, []);
+        if(!storedFileArr.includes(storedFileName)){
+            setStoredFileArr([...storedFileArr, storedFileName]);
+        }
+        
+    }, [storedFileArr, storedFileName]);
 
     return (
         <div className="a-content">
