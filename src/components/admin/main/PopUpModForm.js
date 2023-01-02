@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopupInfo, updatePopup } from 'store/popupReducer';
@@ -25,10 +25,16 @@ const PopUpAddForm = () => {
   const [popupWidth, setPopupWidth] = useState('');
   const [popupStartdate, setPopupStartdate] = useState(new Date());
   const [popupEnddate, setPopupEnddate] = useState(new Date());
+  const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
+  const [storedThumbnailName, setStoredThumbnailName] = useState('');
+  const [storedFileArr, setStoredFileArr] = useState([]);
 
   const { id } = useParams();
   const dispatch = useDispatch();
   const popupInfo = useSelector((state) => state.popupReducer);
+  const fileList = useSelector((state) => state.popupReducer.files);
+
+  const thumbnailRef = useRef();
 
   useEffect(() => {
     dispatch(selectPopupInfo(id));
@@ -49,8 +55,20 @@ const PopUpAddForm = () => {
     }
   }, [popupInfo]);
 
+  useEffect(() => {
+    for (let file of fileList) {
+      // if (file.fileType === '0') {
+      //이미지
+      setThumbnailName(file.fileOriginNm);
+      setStoredThumbnailName(file.fileNm);
+      // }
+    }
+  }, [fileList]);
+
   const onEdit = (e) => {
     e.preventDefault();
+
+    const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
 
     if (popupTitle === '') {
       alert('관리 타이틀를 입력하세요');
@@ -95,11 +113,27 @@ const PopUpAddForm = () => {
         popupWidth: popupWidth,
         popupStartdate: changeFormat(popupStartdate, 'yyyy-MM-DD') || '',
         popupEnddate: changeFormat(popupEnddate, 'yyyy-MM-DD') || '',
+        ids: storedFileArr,
+        thumbnail: thumbnailObj,
       };
       dispatch(updatePopup(newList));
       document.location.href = '/admin/main/popup';
     }
   };
+
+  const onUploadImage = useCallback(
+    (e) => {
+      if (!e.target.files) {
+        return;
+      }
+      setThumbnailName(e.target.files[0].name);
+      thumbnailRef.current = e.target.files[0];
+      if (!storedFileArr.includes(storedThumbnailName)) {
+        setStoredFileArr([...storedFileArr, storedThumbnailName]);
+      }
+    },
+    [storedFileArr, storedThumbnailName],
+  );
 
   return (
     <div className="a-content a01">
@@ -127,7 +161,7 @@ const PopUpAddForm = () => {
                   </i>
                   이미지등록
                 </span>
-                <input type="file" id="idvf" name="u_file" accept="image/*" />
+                <input type="file" accept="image/*" id="e-choice01" className="file" ref={thumbnailRef} onChange={onUploadImage} />
               </label>
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>

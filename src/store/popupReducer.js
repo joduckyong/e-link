@@ -48,13 +48,25 @@ export const insertPopup = createAsyncThunk('ADD_POPUP', async (newList) => {
     document.location.href = loginUrl;
   }
 
-  const config = {
+  const formData = new FormData();
+  formData.append('thumbnail', newList.thumbnail);
+  formData.append(
+    'popupVo',
+    new Blob([JSON.stringify(newList)], {
+      type: 'application/json',
+    }),
+  );
+
+  const response = await axios({
+    url: `${serverUrl}/api/popup/`,
+    method: 'POST',
+    data: formData,
     headers: {
       Authorization: token,
+      'Content-Type': 'multipart/form-data',
     },
-  };
+  });
 
-  const response = await axios.post(`${serverUrl}/api/popup`, newList, config);
   return response.data;
 });
 
@@ -66,13 +78,25 @@ export const updatePopup = createAsyncThunk('MOD_POPUP', async (newList) => {
     document.location.href = loginUrl;
   }
 
-  const config = {
+  const formData = new FormData();
+  formData.append('thumbnail', newList.thumbnail);
+  formData.append(
+    'popupVo',
+    new Blob([JSON.stringify(newList)], {
+      type: 'application/json',
+    }),
+  );
+
+  const response = await axios({
+    url: `${serverUrl}/api/popup/update`,
+    method: 'POST',
+    data: formData,
     headers: {
       Authorization: token,
+      'Content-Type': 'multipart/form-data',
     },
-  };
+  });
 
-  const response = await axios.put(`${serverUrl}/api/popup/`, newList, config);
   return response.data;
 });
 
@@ -119,6 +143,7 @@ export const popupReducer = createSlice({
     totalCount: null,
     data: [],
     dataInfo: {},
+    files: [],
   },
   reducers: {},
   extraReducers: {
@@ -134,6 +159,7 @@ export const popupReducer = createSlice({
       status: payload.status,
       message: payload.message,
       dataInfo: payload.data,
+      files: payload.files,
     }),
     [insertPopup.fulfilled]: (state, { payload }) => ({
       ...state,

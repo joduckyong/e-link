@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertPopup } from 'store/popupReducer';
@@ -25,11 +25,16 @@ const PopUpAddForm = () => {
   const [popupWidth, setPopupWidth] = useState('');
   const [popupStartdate, setPopupStartdate] = useState();
   const [popupEnddate, setPopupEnddate] = useState();
+  const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
+
+  const thumbnailRef = useRef();
 
   const dispatch = useDispatch();
 
   const onCreate = (e) => {
     e.preventDefault();
+
+    const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
 
     if (popupTitle === '') {
       alert('관리 타이틀를 입력하세요');
@@ -74,11 +79,20 @@ const PopUpAddForm = () => {
         popupWidth: popupWidth,
         popupStartdate: changeFormat(popupStartdate, 'yyyy-MM-DD') || '',
         popupEnddate: changeFormat(popupEnddate, 'yyyy-MM-DD') || '',
+        thumbnail: thumbnailObj,
       };
       dispatch(insertPopup(newList));
       document.location.href = '/admin/main/popup';
     }
   };
+
+  const onUploadImage = useCallback((e) => {
+    if (!e.target.files) {
+      return;
+    }
+    setThumbnailName(e.target.files[0].name);
+    thumbnailRef.current = e.target.files[0];
+  }, []);
 
   return (
     <div className="a-content a01">
@@ -106,7 +120,7 @@ const PopUpAddForm = () => {
                   </i>
                   이미지등록
                 </span>
-                <input type="file" id="idvf" name="u_file" accept="image/*" />
+                <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
               </label>
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>

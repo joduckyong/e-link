@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopup, deletePopupIds } from 'store/popupReducer';
 import Pagination from 'react-js-pagination';
+import ViewImage from 'components/common/ViewImage';
 
 const PopUpListForm = () => {
   const dispatch = useDispatch();
   const popupList = useSelector((state) => state.popupReducer);
+  const totalCount = useSelector((state) => state.popupReducer.totalCount);
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
   // 페이징 값
@@ -66,7 +68,7 @@ const PopUpListForm = () => {
   return (
     <div className="a-content a01">
       <h2>
-        팝업 관리<span>총 {popupList.totalCount}건</span>
+        팝업 관리<span>총 {totalCount}건</span>
       </h2>
       <div className="ban-list p0">
         <div className="btn-area position">
@@ -128,7 +130,9 @@ const PopUpListForm = () => {
                     </Link>
                   </td>
                   <td>
-                    <div className="shape-90"></div>
+                    <div className="shape-90">
+                      <ViewImage fileNm={list.thumbNm} />
+                    </div>
                   </td>
                   <td>
                     <span className="pop-date">
@@ -149,7 +153,7 @@ const PopUpListForm = () => {
           <Pagination
             activePage={page}
             itemsCountPerPage={10}
-            totalItemsCount={popupList.totalCount}
+            totalItemsCount={totalCount}
             pageRangeDisplayed={10}
             prevPageText={'‹'}
             nextPageText={'›'}
