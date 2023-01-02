@@ -23,7 +23,7 @@ const LoginForm = () => {
   }, []);
 
   useEffect(() => {
-    console.log('cookies.rememberId : ' + cookies.rememberId);
+    // console.log('cookies.rememberId : ' + cookies.rememberId);
     if (cookies.rememberId !== undefined) {
       setAdminId(cookies.rememberId);
       setIsRemember(true);

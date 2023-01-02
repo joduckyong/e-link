@@ -6,7 +6,6 @@ import { getCookieToken } from '../storage/Cookie';
 const loginUrl = '/admin/login';
 export const selectPopup = createAsyncThunk('LIST_POPUP', async (newList) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -24,7 +23,6 @@ export const selectPopup = createAsyncThunk('LIST_POPUP', async (newList) => {
 
 export const selectPopupInfo = createAsyncThunk('INFO_POPUP', async (id) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -42,7 +40,6 @@ export const selectPopupInfo = createAsyncThunk('INFO_POPUP', async (id) => {
 
 export const insertPopup = createAsyncThunk('ADD_POPUP', async (newList) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -72,7 +69,6 @@ export const insertPopup = createAsyncThunk('ADD_POPUP', async (newList) => {
 
 export const updatePopup = createAsyncThunk('MOD_POPUP', async (newList) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -102,7 +98,6 @@ export const updatePopup = createAsyncThunk('MOD_POPUP', async (newList) => {
 
 export const deletePopup = createAsyncThunk('DEL_POPUP', async (id) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -120,7 +115,6 @@ export const deletePopup = createAsyncThunk('DEL_POPUP', async (id) => {
 
 export const deletePopupIds = createAsyncThunk('DEL_POPUP_IDS', async (newList) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;

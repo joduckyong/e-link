@@ -21,8 +21,6 @@ const PopUpInfoForm = () => {
     }
   }, [fileList]);
 
-  console.log('fileList.thumbNm : ' + thumbnailName);
-  //  console.log('fileList.thumbNm : ' + fileList.fileNm);
   return (
     <div className="a-content a01">
       <h2>팝업 상세</h2>

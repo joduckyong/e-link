@@ -6,7 +6,6 @@ import { getCookieToken } from '../storage/Cookie';
 const loginUrl = '/admin/login';
 export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
   const token = getCookieToken();
-  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -34,7 +33,6 @@ export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
 
 export const selectBoardInfo = createAsyncThunk('INFO_BOARD', async (id) => {
   const token = getCookieToken();
-  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -52,17 +50,10 @@ export const selectBoardInfo = createAsyncThunk('INFO_BOARD', async (id) => {
 
 export const insertBoard = createAsyncThunk('ADD_BOARD', async (newList) => {
   const token = getCookieToken();
-  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
   }
-
-  // const config = {
-  //   headers: {
-  //     Authorization: token,
-  //   },
-  // };
 
   const formData = new FormData();
   formData.append('thumbnail', newList.thumbnail);
@@ -88,17 +79,10 @@ export const insertBoard = createAsyncThunk('ADD_BOARD', async (newList) => {
 
 export const updateBoard = createAsyncThunk('MOD_BOARD', async (newList) => {
   const token = getCookieToken();
-  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
   }
-
-  // const config = {
-  //   headers: {
-  //     Authorization: token,
-  //   },
-  // };
 
   const formData = new FormData();
   formData.append('thumbnail', newList.thumbnail);
@@ -125,7 +109,6 @@ export const updateBoard = createAsyncThunk('MOD_BOARD', async (newList) => {
 
 export const deleteBoard = createAsyncThunk('DEL_BOARD', async (id) => {
   const token = getCookieToken();
-  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
