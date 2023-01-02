@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopupInfo } from 'store/popupReducer';
+import ViewImage from 'components/common/ViewImage';
 
 const PopUpInfoForm = () => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ const PopUpInfoForm = () => {
         </div>
         <div className="pop-in">
           <div className="popimg-area">
-            <div className="s-tit">팝업 이미지</div>
+            <div className="s-tit"></div>
             <div className="img-in">
               <div className="img-position">
                 <img src="" alt="" id="img" />
@@ -31,11 +32,9 @@ const PopUpInfoForm = () => {
               <label htmlFor="idvf">
                 <span>
                   <i>
-                    <img src="/img/admin/ico-upload.svg" alt="" />
+                    <ViewImage fileNm={popupInfo.dataInfo.thumbNm} width={250} height={290} />
                   </i>
-                  이미지등록
                 </span>
-                <input type="file" id="idvf" name="u_file" accept="image/*" />
               </label>
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>

@@ -161,7 +161,7 @@ const PopUpAddForm = () => {
                   </i>
                   이미지등록
                 </span>
-                <input type="file" accept="image/*" id="e-choice01" className="file" ref={thumbnailRef} onChange={onUploadImage} />
+                <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
               </label>
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>
