@@ -11,6 +11,7 @@ const JobVacancyListForm = () => {
     const totalCount = useSelector((state) => state.boardReducer.totalCount);
     const [searchKeyword, setSearchKeyword] = useState(null);
     const [checkItems, setCheckItems] = useState([]);
+    const [selectItem, setSelectItem] = useState('');
     const [page, setPage] = useState(1);
 
     useEffect(() => {
@@ -24,7 +25,8 @@ const JobVacancyListForm = () => {
       };
     
     const onSearch = (page) => {
-        const newList = { boardId: 'JOB', pageIndex: page, searchKeyword: searchKeyword };
+        const newList = { boardId: 'JOB', pageIndex: page, searchKeyword: searchKeyword, searchCondition: selectItem};
+        console.log(newList);
         dispatch(selectBoard(newList));
     };
 
@@ -77,8 +79,10 @@ const JobVacancyListForm = () => {
             <h2>채용공고 관리<span>총 {totalCount}건</span></h2>
             <div className="ban-list p0">
                 <div className="search-box">
-                    <select name="" id="">
-                        <option value="">이름</option>
+                    <select name="searchCondition" onChange={(e) => setSelectItem(e.target.value)}>
+                        <option value="">전체</option>
+                        <option value="title">제목</option>
+                        <option value="content">내용</option>
                     </select>
                     <div className="search-input">
                         <input

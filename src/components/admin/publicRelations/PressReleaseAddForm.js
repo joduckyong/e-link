@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
@@ -6,11 +6,19 @@ import { insertBoard } from 'store/boardReducer';
 const PressReleaseAddForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
+    const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
+    const [fileName, setFileName] = useState('선택된 파일 없음');
+
+    const thumbnailRef = useRef();
+    const fileRef = useRef();
 
     const dispatch = useDispatch();
 
     const onCreate = (e) => {
         e.preventDefault();
+
+        const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
+        const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
 
         if(boardTitle === ''){
             alert('제목을 입력하세요');
@@ -21,12 +29,28 @@ const PressReleaseAddForm = () => {
             return;
         }
         if(window.confirm('등록 하시겠습니까?')){
-            const newList = { boardId: 'PRE', boardTitle: boardTitle, boardContents: boardContents };
+            const newList = { boardId: 'PRE', boardTitle: boardTitle, boardContents: boardContents, thumbnail: thumbnailObj, file: fileObj};
             dispatch(insertBoard(newList));
             document.location.href = '/admin/publicRelations/pressRelease';
         }
     }
+  
+    const onUploadImage = useCallback((e) => {
+        if (!e.target.files) {
+            return;
+        }
+        setThumbnailName(e.target.files[0].name);
+        thumbnailRef.current = e.target.files[0];
+    }, []);
 
+    const onUploadFile = useCallback((e) => {
+        if (!e.target.files) {
+            return;
+        }
+        setFileName(e.target.files[0].name);
+        fileRef.current = e.target.files[0];
+    }, []);
+    
     return (
         <div className="a-content">
             <h2>보도자료 등록</h2>
@@ -64,9 +88,9 @@ const PressReleaseAddForm = () => {
                         <div className="file-area">
                             <div className="input-box">
                                 <label htmlFor="e-choice01" className="file-choice">
-                                    <input type="file" id="e-choice01" className="file" />+ 파일선택
+                                    <input type="file" accept="image/*" id="e-choice01" className="file" ref={thumbnailRef} onChange={onUploadImage}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">선택된 파일 없음</span>
+                                <span className="upload-name">{thumbnailName}</span>
                             </div>
                         </div>
                     </div>
@@ -75,9 +99,9 @@ const PressReleaseAddForm = () => {
                         <div className="file-area">
                             <div className="input-box">
                                 <label htmlFor="e-choice02" className="file-choice">
-                                    <input type="file" id="e-choice02" className="file" />+ 파일선택
+                                    <input type="file" id="e-choice02" className="file" ref={fileRef} onChange={onUploadFile}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">선택된 파일 없음</span>
+                                <span className="upload-name">{fileName}</span>
                             </div>
                         </div>
                     </div>

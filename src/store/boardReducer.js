@@ -6,7 +6,7 @@ import { getCookieToken } from '../storage/Cookie';
 const loginUrl = '/admin/login';
 export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
+  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -18,18 +18,23 @@ export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
     },
   };
 
+  let param = `${newList.boardId}/${newList.pageIndex}`;
   let keyWord = newList.searchKeyword;
-  if (!keyWord) {
-    keyWord = '';
+  let condition = newList.searchCondition;
+  if (keyWord) {
+    param += `/${keyWord}`;
+    if (condition) {
+      param += `/${condition}`;
+    }
   }
 
-  const response = await axios.get(`${serverUrl}/api/board/${newList.boardId}/${newList.pageIndex}/${keyWord}`, config);
+  const response = await axios.get(`${serverUrl}/api/board/${param}`, config);
   return response.data;
 });
 
 export const selectBoardInfo = createAsyncThunk('INFO_BOARD', async (id) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
+  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -47,43 +52,80 @@ export const selectBoardInfo = createAsyncThunk('INFO_BOARD', async (id) => {
 
 export const insertBoard = createAsyncThunk('ADD_BOARD', async (newList) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
+  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
   }
 
-  const config = {
+  // const config = {
+  //   headers: {
+  //     Authorization: token,
+  //   },
+  // };
+
+  const formData = new FormData();
+  formData.append('thumbnail', newList.thumbnail);
+  formData.append('file', newList.file);
+  formData.append(
+    'boardVo',
+    new Blob([JSON.stringify(newList)], {
+      type: 'application/json',
+    }),
+  );
+
+  const response = await axios({
+    url: `${serverUrl}/api/board/`,
+    method: 'POST',
+    data: formData,
     headers: {
       Authorization: token,
+      'Content-Type': 'multipart/form-data',
     },
-  };
-
-  const response = await axios.post(`${serverUrl}/api/board`, newList, config);
+  });
   return response.data;
 });
 
 export const updateBoard = createAsyncThunk('MOD_BOARD', async (newList) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
+  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
   }
 
-  const config = {
+  // const config = {
+  //   headers: {
+  //     Authorization: token,
+  //   },
+  // };
+
+  const formData = new FormData();
+  formData.append('thumbnail', newList.thumbnail);
+  formData.append('file', newList.file);
+  formData.append(
+    'boardVo',
+    new Blob([JSON.stringify(newList)], {
+      type: 'application/json',
+    }),
+  );
+
+  const response = await axios({
+    url: `${serverUrl}/api/board/update`,
+    method: 'POST',
+    data: formData,
     headers: {
       Authorization: token,
+      'Content-Type': 'multipart/form-data',
     },
-  };
+  });
 
-  const response = await axios.put(`${serverUrl}/api/board/`, newList, config);
   return response.data;
 });
 
 export const deleteBoard = createAsyncThunk('DEL_BOARD', async (id) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
+  // console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -124,6 +166,7 @@ export const boardReducer = createSlice({
     totalCount: null,
     data: [],
     dataInfo: {},
+    files: [],
   },
   reducers: {},
   extraReducers: {
@@ -139,6 +182,7 @@ export const boardReducer = createSlice({
       status: payload.status,
       message: payload.message,
       dataInfo: payload.data,
+      files: payload.files,
     }),
     [insertBoard.fulfilled]: (state, { payload }) => ({
       ...state,
@@ -146,7 +190,7 @@ export const boardReducer = createSlice({
     }),
     [updateBoard.fulfilled]: (state, { payload }) => ({
       ...state,
-      payload,
+      dataInfo: payload.data,
     }),
     [deleteBoard.fulfilled]: (state, { payload }) => ({
       ...state,
