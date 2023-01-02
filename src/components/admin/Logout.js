@@ -36,7 +36,7 @@ function Logout() {
   // 해당 컴포넌트가 요청된 후 한 번만 실행되면 되기 때문에 useEffect 훅을 사용
   useEffect(() => {
     logout();
-  }, []);
+  });
 
   return (
     <>
