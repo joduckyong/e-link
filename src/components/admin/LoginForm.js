@@ -14,7 +14,8 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [loginId, setLoginId] = useState('');
+  const [adminId, setAdminId] = useState('');
+  const [adminPw, setAdminPw] = useState('');
   const [isRemember, setIsRemember] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(['rememberId']);
 
@@ -23,16 +24,17 @@ const LoginForm = () => {
   }, []);
 
   useEffect(() => {
+    console.log('cookies.rememberId : ' + cookies.rememberId);
     if (cookies.rememberId !== undefined) {
-      setLoginId(cookies.rememberId);
+      setAdminId(cookies.rememberId);
       setIsRemember(true);
     }
   }, [cookies.rememberId]);
 
-  const handleOnChange = (e) => {
-    setIsRemember(e.target.check);
-    if (e.target.check) {
-      setCookie('rememberId', loginId, { maxAge: 2000 });
+  const handleOnChange = (checked) => {
+    setIsRemember(checked);
+    if (checked) {
+      setCookie('rememberId', adminId, { maxAge: 2000 });
     } else {
       removeCookie('rememberId');
     }
@@ -50,18 +52,18 @@ const LoginForm = () => {
   // 백으로 유저 정보 전달
   const onValid = async ({ adminId, adminPw }) => {
     const response = await loginUser({ adminId, adminPw });
+
     if (response.status) {
       // 쿠키에 Refresh Token, store에 Access Token 저장
       // console.log('response.json.accessToken : ' + response.json.accessToken);
       // console.log('response.json.refreshToken : ' + response.json.refreshToken);
-
       setRefreshToken(response.json.accessToken);
       // setRefreshToken(response.json.refreshToken);
       dispatch(SET_TOKEN(response.json.accessToken));
       return navigate('/admin/main/popup');
     } else {
       alert('아이디 비밀번호를 확인해주세요!');
-      console.log(response.json);
+      // console.log(response.json);
     }
     // input 태그 값 비워주는 코드
     setValue('adminPw', '');
@@ -80,21 +82,47 @@ const LoginForm = () => {
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="login-area">
                 <div className="in">
-                  <input type="text" name="adminId" placeholder="아이디" {...register('adminId', { required: '아이디를 입력해주세요' })} />
+                  <input
+                    type="text"
+                    name="adminId"
+                    defaultValue={adminId}
+                    placeholder="아이디"
+                    {...register('adminId', { onChange: (e) => setAdminId(e.target.value) })}
+                  />
                   <ErrorMessage
                     name="adminId"
                     errors={errors}
-                    render={({ message }) => <p className="text-sm font-medium text-rose-500">{message}</p>}
+                    render={({ message }) => (
+                      <p style={{ color: 'red' }} className="text-sm font-medium text-rose-500">
+                        {message}
+                      </p>
+                    )}
                   />
-                  <input type="password" name="adminPw" placeholder="비밀번호" {...register('adminPw', { required: '비밀번호를 입력해주세요' })} />
+                  <input
+                    type="password"
+                    name="adminPw"
+                    placeholder="비밀번호"
+                    {...register('adminPw', { onChange: (e) => setAdminPw(e.target.value) })}
+                  />
                   <ErrorMessage
                     name="adminPw"
                     errors={errors}
-                    render={({ message }) => <p className="text-sm font-medium text-rose-500">{message}</p>}
+                    render={({ message }) => (
+                      <p style={{ color: 'red' }} className="text-sm font-medium text-rose-500">
+                        {message}
+                      </p>
+                    )}
                   />
                   <div className="keep-chk">
                     <label htmfor="keep">
-                      <input type="checkbox" id="keep" onChange={handleOnChange} checked={isRemember} />
+                      <input
+                        type="checkbox"
+                        id="keep"
+                        onChange={(e) => {
+                          handleOnChange(e.target.checked);
+                        }}
+                        checked={isRemember}
+                      />
                       <span className="chkimg"></span>
                       아이디저장
                     </label>

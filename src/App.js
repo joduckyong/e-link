@@ -1,9 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-// import PrivateRoute from './routes/PrivateRoute';
-import PublicRoute from './routes/PublicRoute';
-
 /* 관리자 */
 import LoginPage from './pages/admin/LoginPage';
 import Logout from './components/admin/Logout';
@@ -82,15 +79,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/admin/login"
-          element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
-        {/* <Route element={<PrivateRoute />}> */}
+        <Route path="/admin/login" element={<LoginPage />} />
         <Route path="/admin/logout" element={<Logout />} />
         <Route path="/admin/main/popup" element={<PopupPage />} />
         <Route path="/admin/main/popupAdd" element={<PopupAddPage />} />
@@ -115,7 +104,6 @@ const App = () => {
         <Route path="/admin/employmentInfo/jobVacancyInfo/:id" element={<JobVacancyInfoPage />} />
         <Route path="/admin/customerService/contactUs" element={<ContactUsPage />} />
         <Route path="/admin/customerService/contactUsInfo" element={<ContactUsInfoPage />} />
-        {/* </Route> */}
 
         <Route path="/" element={<MainPage />} />
 
