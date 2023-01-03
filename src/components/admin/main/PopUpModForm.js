@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopupInfo, updatePopup } from 'store/popupReducer';
 import DatePicker from 'react-datepicker';
@@ -29,8 +29,10 @@ const PopUpAddForm = () => {
   const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
   const [storedThumbnailName, setStoredThumbnailName] = useState('');
   const [storedFileArr, setStoredFileArr] = useState([]);
+  const [imgCheck, setImgCheck] = useState(false);
 
   const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const popupInfo = useSelector((state) => state.popupReducer);
   const fileList = useSelector((state) => state.popupReducer.files);
@@ -66,7 +68,7 @@ const PopUpAddForm = () => {
     }
   }, [fileList]);
 
-  const onEdit = (e) => {
+  const onEdit = async (e) => {
     e.preventDefault();
 
     const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
@@ -117,8 +119,8 @@ const PopUpAddForm = () => {
         ids: storedFileArr,
         thumbnail: thumbnailObj,
       };
-      dispatch(updatePopup(newList));
-      document.location.href = '/admin/main/popup';
+      await dispatch(updatePopup(newList));
+      return navigate('/admin/main/popup');
     }
   };
 
@@ -127,7 +129,12 @@ const PopUpAddForm = () => {
       if (!e.target.files) {
         return;
       }
-      setThumbnailName(e.target.files[0].name);
+
+      setThumbnailName(URL.createObjectURL(e.target.files[0]));
+      if (!'blob'.includes(thumbnailName)) {
+        setImgCheck(true);
+      }
+      // setThumbnailName(e.target.files[0].name);
       thumbnailRef.current = e.target.files[0];
       if (!storedFileArr.includes(storedThumbnailName)) {
         setStoredFileArr([...storedFileArr, storedThumbnailName]);
@@ -136,7 +143,6 @@ const PopUpAddForm = () => {
     [storedFileArr, storedThumbnailName],
   );
 
-  console.log('thumbnailName:' + thumbnailName);
   return (
     <div className="a-content a01">
       <h2>팝업 수정</h2>
@@ -165,7 +171,11 @@ const PopUpAddForm = () => {
                   <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
                 </span>
               </label>
-              <ViewImage fileNm={storedThumbnailName} width={235} height={250} />
+              {imgCheck ? (
+                <img src={thumbnailName} alt="" width={220} height={240} />
+              ) : (
+                <ViewImage fileNm={storedThumbnailName} width={235} height={250} />
+              )}
               {/* {thumbnailName}</span> */}
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>
