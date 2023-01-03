@@ -6,7 +6,6 @@ import Pagination from 'react-js-pagination';
 const OfficialNoticeListForm = () => {
   const dispatch = useDispatch();
   const boardList = useSelector((state) => state.boardReducer);
-  const totalCount = useSelector((state) => state.boardReducer.totalCount);
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
   const [boardId, setboardId] = useState('');
@@ -112,7 +111,7 @@ const OfficialNoticeListForm = () => {
   return (
     <div className="a-content a02">
       <h2>
-        공시정보<span>총 {totalCount}건</span>
+        공시정보<span>총 {boardList.totalCount}건</span>
       </h2>
       <div className="ban-register p0">
         <h3>전자공고 등록</h3>
@@ -222,7 +221,7 @@ const OfficialNoticeListForm = () => {
           <Pagination
             activePage={page}
             itemsCountPerPage={10}
-            totalItemsCount={totalCount}
+            totalItemsCount={boardList.totalCount}
             pageRangeDisplayed={10}
             prevPageText={'‹'}
             nextPageText={'›'}

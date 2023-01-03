@@ -36,6 +36,10 @@ const PopUpAddForm = () => {
 
     const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
 
+    if (thumbnailObj === false) {
+      alert('팝업 이미지를 등록 하세요');
+      return;
+    }
     if (popupTitle === '') {
       alert('관리 타이틀를 입력하세요');
       return;
@@ -122,6 +126,7 @@ const PopUpAddForm = () => {
                 </span>
                 <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
               </label>
+              <span className="upload-name">{thumbnailName}</span>
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>
           </div>

@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 import moment from 'moment';
+import ViewImage from 'components/common/ViewImage';
 
 export function changeFormat(date, format) {
   //moment 변환을 함수로 미리 빼 두어서 사용.
@@ -135,9 +136,10 @@ const PopUpAddForm = () => {
     [storedFileArr, storedThumbnailName],
   );
 
+  console.log('thumbnailName:' + thumbnailName);
   return (
     <div className="a-content a01">
-      <h2>팝업 등록</h2>
+      <h2>팝업 수정</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">
           <NavLink to="/admin/main/popup">
@@ -160,9 +162,11 @@ const PopUpAddForm = () => {
                     <img src="/img/admin/ico-upload.svg" alt="" />
                   </i>
                   이미지등록
+                  <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
                 </span>
-                <input type="file" accept="image/*" id="e-choice01" className="file" ref={thumbnailRef} onChange={onUploadImage} />
               </label>
+              <ViewImage fileNm={storedThumbnailName} width={235} height={250} />
+              {/* {thumbnailName}</span> */}
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>
           </div>
