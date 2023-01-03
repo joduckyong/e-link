@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopupInfo, updatePopup } from 'store/popupReducer';
 import DatePicker from 'react-datepicker';
@@ -31,6 +31,7 @@ const PopUpAddForm = () => {
   const [storedFileArr, setStoredFileArr] = useState([]);
 
   const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const popupInfo = useSelector((state) => state.popupReducer);
   const fileList = useSelector((state) => state.popupReducer.files);
@@ -66,7 +67,7 @@ const PopUpAddForm = () => {
     }
   }, [fileList]);
 
-  const onEdit = (e) => {
+  const onEdit = async (e) => {
     e.preventDefault();
 
     const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
@@ -117,8 +118,8 @@ const PopUpAddForm = () => {
         ids: storedFileArr,
         thumbnail: thumbnailObj,
       };
-      dispatch(updatePopup(newList));
-      document.location.href = '/admin/main/popup';
+      await dispatch(updatePopup(newList));
+      return navigate('/admin/main/popup');
     }
   };
 

@@ -7,7 +7,7 @@ const ViewImage = ({ fileNm, width, height }) => {
   const url = `${serverUrl}/api/file/image/${fileNm}`;
 
   useEffect(() => {
-    console.log('fileNm : ' + fileNm);
+    // console.log('fileNm : ' + fileNm);
     if (fileNm) {
       const showImage = async () => {
         const token = getCookieToken();
