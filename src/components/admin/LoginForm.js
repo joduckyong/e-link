@@ -33,7 +33,7 @@ const LoginForm = () => {
   const handleOnChange = (checked) => {
     setIsRemember(checked);
     if (checked) {
-      setCookie('rememberId', adminId, { maxAge: 2000 });
+      setCookie('rememberId', adminId, { maxAge: 2592000 });
     } else {
       removeCookie('rememberId');
     }
