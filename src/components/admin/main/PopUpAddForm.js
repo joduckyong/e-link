@@ -25,7 +25,7 @@ const PopUpAddForm = () => {
   const [popupWidth, setPopupWidth] = useState('');
   const [popupStartdate, setPopupStartdate] = useState();
   const [popupEnddate, setPopupEnddate] = useState();
-  const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
+  const [thumbnailName, setThumbnailName] = useState();
 
   const thumbnailRef = useRef();
   const navigate = useNavigate();
@@ -127,9 +127,7 @@ const PopUpAddForm = () => {
                 </span>
                 <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
               </label>
-              <span className="upload-name">
-                <img src={thumbnailName} width="300" height="200" />
-              </span>
+              <span className="upload-name">{thumbnailName !== undefined && <img src={thumbnailName} alt="" width={220} height={240} />}</span>
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>
           </div>
