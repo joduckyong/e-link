@@ -3,7 +3,20 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoard, deleteBoardIds } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
-import ViewImage from 'components/common/ViewImage';
+
+const YoutubeImage = ({url, width, height}) => {
+    const [imageUrl, setImageUrl] = useState('');
+    
+    useEffect(() => {
+        if(url){
+            const param = url.indexOf('v=') > -1 ? url.substring(url.indexOf('v=')+2) : '';
+            const imgUrl = 'https://img.youtube.com/vi/'+param+'/0.jpg';
+            setImageUrl(imgUrl);
+        }
+    }, [url]);
+
+    return url !== null && <img src={imageUrl} alt="" width={width} heigth={height}/>;
+}
 
 const MediaListForm = () => {
     const dispatch = useDispatch();
@@ -123,7 +136,7 @@ const MediaListForm = () => {
                                     <td>{list.rnum}</td>
                                     <td className="pl40">
                                         <div className="shape-150">
-                                            <ViewImage fileNm={list.thumbNm} />
+                                            <YoutubeImage url={list.url} width={150} height={80} />
                                         </div>
                                     </td>
                                     <td className="tal pl40">

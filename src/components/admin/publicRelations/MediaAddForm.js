@@ -13,7 +13,7 @@ const MediaAddForm = () => {
 
     const dispatch = useDispatch();
 
-    const onCreate = (e) => {
+    const onCreate = async (e) => {
         e.preventDefault();
 
         const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
@@ -28,7 +28,7 @@ const MediaAddForm = () => {
         }
         if(window.confirm('등록 하시겠습니까?')){
             const newList = { boardId: 'MED', boardTitle: boardTitle, boardContents: boardContents, url: url, file: fileObj };
-            dispatch(insertBoard(newList));
+            await dispatch(insertBoard(newList));
             document.location.href = '/admin/publicRelations/media';
         }
     }

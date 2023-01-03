@@ -1,17 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
+
+const AddFileBox = ({fileName, fileRef, onUploadFile, fileCountList}) => {
+
+    return (
+        <>
+        {fileCountList.map((list, index) => (
+            <div className="input-box" key={index}>
+                <label htmlFor="e-choice01" className="file-choice">
+                    <input type="file" id="e-choice01" className="file" ref={fileRef} onChange={onUploadFile} />+ 파일선택
+                </label>
+                <span className="upload-name">{fileName}</span>
+            </div>
+        ))}
+        </>
+    );
+}
 
 const JobVacancyAddForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
     const [boardType, setBoardType] = useState('1');
+    const [fileName, setFileName] = useState('선택된 파일 없음');
+    const [fileCountList, setFileCountList] = useState([0]);
 
     const dispatch = useDispatch();
 
-    const onCreate = (e) => {
+    const fileRef = useRef();
+
+    const onCreate = async (e) => {
         e.preventDefault();
+
+        const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
 
         if(boardTitle === ''){
             alert('제목을 입력하세요');
@@ -22,10 +44,26 @@ const JobVacancyAddForm = () => {
             return;
         }
         if(window.confirm('등록 하시겠습니까?')){
-            const newList = { boardId: 'JOB', boardTitle: boardTitle, boardContents: boardContents, boardType: boardType };
-            dispatch(insertBoard(newList));
+            const newList = { boardId: 'JOB', boardTitle: boardTitle, boardContents: boardContents, boardType: boardType, file: fileObj };
+            await dispatch(insertBoard(newList));
             document.location.href = '/admin/employmentInfo/jobVacancy';
         }
+    }
+
+    const onUploadFile = useCallback((e) => {
+        if (!e.target.files) {
+            return;
+        }
+        setFileName(e.target.files[0].name);
+        fileRef.current = e.target.files[0];
+    }, []);
+
+    const onAddFileBox = () => {
+        let countArr = [...fileCountList]
+        let count = countArr.slice(-1)[0];
+        count += 1;
+        countArr.push(count);
+        setFileCountList(countArr);
     }
 
     return(
@@ -87,14 +125,15 @@ const JobVacancyAddForm = () => {
                     <div className="ed-file">
                         <div className="s-tit">첨부파일</div>
                         <div className="file-area">
-                            <div className="input-box">
+                            <AddFileBox fileName={fileName} fileRef={fileRef} onUploadFile={onUploadFile} fileCountList={fileCountList}/>
+                            {/* <div className="input-box">
                                 <label htmlFor="e-choice01" className="file-choice">
-                                    <input type="file" id="e-choice01" className="file" />+ 파일선택
+                                    <input type="file" id="e-choice01" className="file" ref={fileRef} onChange={onUploadFile} />+ 파일선택
                                 </label>
-                                <span className="upload-name">선택된 파일 없음</span>
-                            </div>
+                                <span className="upload-name">{fileName}</span>
+                            </div> */}
                         </div>
-                        <Link to="" className="btn-add"><img src="/img/admin/ico-plus.svg" alt="" /></Link>
+                        <Link to="" className="btn-add" onClick={onAddFileBox}><img src="/img/admin/ico-plus.svg" alt="" /></Link>
                     </div>
                 </div>
             </div>

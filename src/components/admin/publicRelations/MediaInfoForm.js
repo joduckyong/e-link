@@ -59,8 +59,10 @@ const MediaInfoForm = () => {
                 <div className="view-detail bg-white mt10">
                     <ul>
                         <li>
-                            <span className="tit">약관동의</span>
-                            <div className="text"><label htmlFor="allagree"><input type="checkbox" id="allagree" /><span className="chkimg"></span></label>개인정보 수집 및 이용에 동의합니다.</div>
+                            <span className="tit">유튜브 링크</span>
+                            <div className="text">
+                            <span>https://img.youtube.com/vi/2mkOUrmsUmA/0.jpg</span>
+                            </div>
                         </li>
                     </ul>
                 </div>

@@ -14,7 +14,7 @@ const PressReleaseAddForm = () => {
 
     const dispatch = useDispatch();
 
-    const onCreate = (e) => {
+    const onCreate = async (e) => {
         e.preventDefault();
 
         const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
@@ -30,7 +30,7 @@ const PressReleaseAddForm = () => {
         }
         if(window.confirm('등록 하시겠습니까?')){
             const newList = { boardId: 'PRE', boardTitle: boardTitle, boardContents: boardContents, thumbnail: thumbnailObj, file: fileObj};
-            dispatch(insertBoard(newList));
+            await dispatch(insertBoard(newList));
             document.location.href = '/admin/publicRelations/pressRelease';
         }
     }

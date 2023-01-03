@@ -42,7 +42,7 @@ const PressReleaseModForm = () => {
     }, [fileList]);
     
 
-    const onEdit = (e) => {
+    const onEdit = async (e) => {
         e.preventDefault();
 
         const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
@@ -58,7 +58,7 @@ const PressReleaseModForm = () => {
         }
         if (window.confirm('수정 하시겠습니까?')) {
             const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, ids: storedFileArr, thumbnail: thumbnailObj, file: fileObj };
-            dispatch(updateBoard(newList));
+            await dispatch(updateBoard(newList));
             document.location.href = '/admin/publicRelations/pressRelease';
         }
     };
