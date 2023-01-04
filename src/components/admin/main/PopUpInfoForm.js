@@ -23,7 +23,7 @@ const PopUpInfoForm = () => {
 
   return (
     <div className="a-content a01">
-      <h2>팝업 상세</h2>
+      <h2>팝업 관리</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">
           <NavLink to="/admin/main/popup">

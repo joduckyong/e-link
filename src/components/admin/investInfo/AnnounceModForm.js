@@ -3,19 +3,37 @@ import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
 
+const AddFileBox = ({ fileName, filesRef, onUploadFile, fileCountList }) => {
+  return (
+    <>
+      {fileCountList.map((list, index) => (
+        <div className="input-box" key={index}>
+          <label htmlFor={'e-choice01_' + index} className="file-choice">
+            <input type="file" id={'e-choice01_' + index} className="file" data-index={index} ref={filesRef[index]} onChange={onUploadFile} />+
+            파일선택
+          </label>
+          <span className="upload-name">{fileName[index] ? fileName[index] : '선택된 파일 없음'}</span>
+        </div>
+      ))}
+    </>
+  );
+};
+
 const AnnounceModForm = () => {
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContents, setBoardContents] = useState('');
-  const [fileName, setFileName] = useState('선택된 파일 없음');
-  const [storedFileName, setStoredFileName] = useState('');
+  const [boardType, setBoardType] = useState('1');
+  const [fileName, setFileName] = useState({});
+  const [fileCountList, setFileCountList] = useState([0]);
+  const [storedFileName, setStoredFileName] = useState({});
   const [storedFileArr, setStoredFileArr] = useState([]);
 
   const { id } = useParams();
   const dispatch = useDispatch();
-  const boardInfo = useSelector((state) => state.boardReducer);
-  const fileList = useSelector((state) => state.boardReducer.files);
   const navigate = useNavigate();
-  const fileRef = useRef();
+  const boardInfo = useSelector((state) => state.boardReducer);
+  const attachList = useSelector((state) => state.boardReducer.files);
+  const filesRef = useRef([]);
 
   useEffect(() => {
     dispatch(selectBoardInfo(id));
@@ -25,20 +43,16 @@ const AnnounceModForm = () => {
   useEffect(() => {
     setBoardTitle(boardInfo.dataInfo.boardTitle);
     setBoardContents(boardInfo.dataInfo.boardContents);
+    onInitFileBox();
   }, [boardInfo]);
-
-  useEffect(() => {
-    for (let file of fileList) {
-      setFileName(file.fileOriginNm);
-      setStoredFileName(file.fileNm);
-    }
-  }, [fileList]);
 
   //수정
   const onEdit = async (e) => {
     e.preventDefault();
 
-    const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
+    const files = filesRef.current.map((fileRef) => {
+      return fileRef.constructor.name === 'File' && fileRef;
+    });
 
     if (boardTitle === '') {
       alert('제목을 입력하세요');
@@ -49,7 +63,15 @@ const AnnounceModForm = () => {
       return;
     }
     if (window.confirm('수정 하시겠습니까?')) {
-      const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, ids: storedFileArr, file: fileObj };
+      const newList = {
+        boardId: id,
+        boardTitle: boardTitle,
+        boardContents: boardContents,
+        ids: storedFileArr,
+        boardType: boardType,
+        ids: storedFileArr,
+        files: files,
+      };
       await dispatch(updateBoard(newList));
       return navigate('/admin/investInfo/announce');
     }
@@ -60,14 +82,37 @@ const AnnounceModForm = () => {
       if (!e.target.files) {
         return;
       }
-      setFileName(e.target.files[0].name);
-      fileRef.current = e.target.files[0];
-      if (!storedFileArr.includes(storedFileName)) {
-        setStoredFileArr([...storedFileArr, storedFileName]);
+      const index = e.target.dataset.index;
+      setFileName({ ...fileName, [index]: e.target.files[0].name });
+      filesRef.current[index] = e.target.files[0];
+      if (!storedFileArr.includes(storedFileName[index])) {
+        setStoredFileArr([...storedFileArr, storedFileName[index]]);
       }
     },
-    [storedFileArr, storedFileName],
+    [fileName],
   );
+
+  const onAddFileBox = () => {
+    let countArr = [...fileCountList];
+    let count = countArr.slice(-1)[0];
+    count += 1;
+    countArr.push(count);
+    setFileCountList(countArr);
+  };
+
+  const onInitFileBox = () => {
+    let countArr = [];
+    let fileObj = {};
+    let storedFiles = {};
+    for (let i = 0; i < attachList.length; i++) {
+      countArr.push(i);
+      fileObj[i] = attachList[i].fileOriginNm;
+      storedFiles[i] = attachList[i].fileNm;
+    }
+    setFileName(fileObj);
+    setFileCountList(countArr);
+    setStoredFileName(storedFiles);
+  };
 
   return (
     <div className="a-content">
@@ -99,16 +144,11 @@ const AnnounceModForm = () => {
           <div className="ed-file">
             <div className="s-tit">첨부파일</div>
             <div className="file-area">
-              <div className="input-box">
-                <label htmlFor="e-choice01" className="file-choice">
-                  <input type="file" id="e-choice01" className="file" ref={fileRef} onChange={onUploadFile} />+ 파일선택
-                </label>
-                <span className="upload-name">{fileName}</span>
-              </div>
+              <AddFileBox fileName={fileName} filesRef={filesRef} onUploadFile={onUploadFile} fileCountList={fileCountList} />
+              <NavLink to="" className="btn-add" onClick={onAddFileBox}>
+                <img src="/img/admin/ico-plus.svg" alt="" />
+              </NavLink>
             </div>
-            <NavLink to="" className="btn-add">
-              <img src="/img/admin/ico-plus.svg" alt="" />
-            </NavLink>
           </div>
         </div>
       </div>

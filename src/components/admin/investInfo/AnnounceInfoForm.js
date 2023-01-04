@@ -9,7 +9,7 @@ const AnnounceInfoForm = () => {
   const dispatch = useDispatch();
   const boardInfo = useSelector((state) => state.boardReducer);
   const fileList = useSelector((state) => state.boardReducer.files);
-  const attachList = fileList.filter((file) => file.fileType !== '1'); //썸네일 제외
+  const attachList = useSelector((state) => state.boardReducer.files);
 
   useEffect(() => {
     dispatch(selectBoardInfo(id));
@@ -17,7 +17,7 @@ const AnnounceInfoForm = () => {
 
   return (
     <div className="a-content">
-      <h2>공고상세</h2>
+      <h2>공고관리</h2>
       <div className="ban-list p0">
         <div className="btn-area position">
           <NavLink to="/admin/investInfo/announce">
@@ -44,7 +44,7 @@ const AnnounceInfoForm = () => {
           <div className="view-detail bg-white mt10">
             <ul>
               {attachList.map((list, index) => (
-                <li>
+                <li key={index}>
                   <span className="tit">첨부파일</span>
                   <div className="text">
                     <span>{list.fileOriginNm}</span>
