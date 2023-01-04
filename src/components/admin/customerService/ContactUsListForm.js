@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContactUs, deleteContactUsIds } from 'store/contactUsReducer';
 import Pagination from 'react-js-pagination';
@@ -80,6 +80,7 @@ const ContactUsListForm = () => {
                 <div className="search-box">
                     <select name="searchCondition" onChange={(e) => setSelectItem(e.target.value)}>
                         <option value="">전체</option>
+                        <option value="name">이름</option>
                         <option value="title">제목</option>
                         <option value="content">내용</option>
                     </select>
@@ -87,7 +88,7 @@ const ContactUsListForm = () => {
                         <input
                             type="text"
                             placeholder="검색어를 입력해주세요."
-                            name="boardTitle"
+                            name="contactTitle"
                             onChange={(e) => setSearchKeyword(e.target.value)}
                             value={searchKeyword || ''}
                             onKeyPress={onKeyPress}
@@ -135,7 +136,7 @@ const ContactUsListForm = () => {
                                             <input 
                                                 type="checkbox" 
                                                 id={`p01-${index}`} 
-                                                onChange={(e) => handleSingleCheck(e.target.checked, list.boardId)}
+                                                onChange={(e) => handleSingleCheck(e.target.checked, list.contactId)}
                                                 checked={checkItems.includes(list.contactId) ? true : false}
                                             />
                                             <span className="chkimg"></span>
@@ -148,7 +149,7 @@ const ContactUsListForm = () => {
                                     <td className="fb">{list.contactTitle}</td>
                                     <td>{list.createdDatetime}</td>
                                     <td>
-                                        <Link to="/admin/customerService/contactUsInfo">
+                                        <Link to={`/admin/customerService/contactUsInfo/${list.contactId}`}>
                                             <button className="btn">보기</button>
                                         </Link>
                                     </td>
@@ -158,15 +159,15 @@ const ContactUsListForm = () => {
                     </table>
                 </div>
                 <div className="paging">
-                    <NavLink to="" className="prev-btn"><i></i><span className="text_blind">이전</span></NavLink>
-                    <ul>
-                        <li className="current"><NavLink to="">1</NavLink></li>
-                        <li><NavLink to="">2</NavLink></li>
-                        <li><NavLink to="">3</NavLink></li>
-                        <li><NavLink to="">4</NavLink></li>
-                        <li><NavLink to="">5</NavLink></li>
-                    </ul>
-                    <NavLink to="" className="next-btn"><i></i><span className="text_blind">다음</span></NavLink>
+                <Pagination
+                    activePage={page}
+                    itemsCountPerPage={10}
+                    totalItemsCount={totalCount}
+                    pageRangeDisplayed={10}
+                    prevPageText={'‹'}
+                    nextPageText={'›'}
+                    onChange={pageClick}
+                />
                 </div>
             </div>
         </div>
