@@ -1,16 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
+
+const AddFileBox = ({fileName, filesRef, onUploadFile, fileCountList}) => {
+    
+    return (
+        <>
+        {fileCountList.map((list, index) => (
+            <div className="input-box" key={index}>
+                <label htmlFor={"e-choice01_"+index} className="file-choice">
+                    <input type="file" id={"e-choice01_"+index} className="file" data-index={index} ref={filesRef[index]} onChange={onUploadFile} />+ 파일선택
+                </label>
+                <span className="upload-name">{fileName[index] ? fileName[index] : '선택된 파일 없음'}</span>
+            </div>
+        ))}
+        </>
+    );
+}
 
 const JobVacancyModForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
     const [boardType, setBoardType] = useState('1');
+    const [fileName, setFileName] = useState({});
+    const [fileCountList, setFileCountList] = useState([0]);
+    const [storedFileName, setStoredFileName] = useState({});
+    const [storedFileArr, setStoredFileArr] = useState([]);
 
     const { id } = useParams();
     const dispatch = useDispatch();
     const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
+    const attachList = useSelector((state) => state.boardReducer.files);
+    const filesRef = useRef([]);
 
     useEffect(() => {
         dispatch(selectBoardInfo(id));
@@ -20,11 +42,16 @@ const JobVacancyModForm = () => {
         setBoardTitle(boardInfo.boardTitle); 
         setBoardContents(boardInfo.boardContents);
         setBoardType(boardInfo.boardType);
+        onInitFileBox();
     }, [boardInfo]);
     
 
-    const onEdit = (e) => {
+    const onEdit = async (e) => {
         e.preventDefault();
+
+        const files = filesRef.current.map((fileRef) => {
+            return fileRef.constructor.name === 'File' && fileRef;
+        })
 
         if (boardTitle === '') {
             alert('제목을 입력하세요');
@@ -35,15 +62,49 @@ const JobVacancyModForm = () => {
             return;
         }
         if (window.confirm('수정 하시겠습니까?')) {
-            const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, boardType: boardType };
-            dispatch(updateBoard(newList));
+            const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, boardType: boardType, ids: storedFileArr, files: files };
+            await dispatch(updateBoard(newList));
             document.location.href = '/admin/employmentInfo/jobVacancy';
         }
     };
 
+    const onUploadFile = useCallback((e) => {
+        if (!e.target.files) {
+            return;
+        }
+        const index = e.target.dataset.index;
+        setFileName({...fileName, [index]: e.target.files[0].name});
+        filesRef.current[index] = e.target.files[0];
+        if(!storedFileArr.includes(storedFileName[index])){
+            setStoredFileArr([...storedFileArr, storedFileName[index]]);
+        }
+    }, [fileName]);
+
+    const onAddFileBox = () => {
+        let countArr = [...fileCountList]
+        let count = countArr.slice(-1)[0];
+        count += 1;
+        countArr.push(count);
+        setFileCountList(countArr);
+    }
+
+    const onInitFileBox = () => {
+        let countArr = [];
+        let fileObj = {};
+        let storedFiles = {};
+        for(let i=0; i<attachList.length; i++){
+            countArr.push(i);
+            fileObj[i] = attachList[i].fileOriginNm;
+            storedFiles[i] = attachList[i].fileNm;
+        }
+        setFileName(fileObj);
+        setFileCountList(countArr);
+        setStoredFileName(storedFiles);
+    }
+
     return(
         <div className="a-content">
-            <h2>보도자료 등록</h2>
+            <h2>채용공고 수정</h2>
             <div className="ban-list bg-white"> 
                 <div className="btn-area position">
                     <Link to="/admin/employmentInfo/jobVacancy">
@@ -98,25 +159,10 @@ const JobVacancyModForm = () => {
                         ></textarea>
                     </div>
                     <div className="ed-file">
-                        <div className="s-tit">썸네일</div>
-                        <div className="file-area">
-                            <div className="input-box">
-                                <label htmlFor="e-choice01" className="file-choice">
-                                    <input type="file" id="e-choice01" className="file" />+ 파일선택
-                                </label>
-                                <span className="upload-name">선택된 파일 없음</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="ed-file">
                         <div className="s-tit">첨부파일</div>
                         <div className="file-area">
-                            <div className="input-box">
-                                <label htmlFor="e-choice02" className="file-choice">
-                                    <input type="file" id="e-choice02" className="file" />+ 파일선택
-                                </label>
-                                <span className="upload-name">선택된 파일 없음</span>
-                            </div>
+                            <AddFileBox fileName={fileName} filesRef={filesRef} onUploadFile={onUploadFile} fileCountList={fileCountList}/>
+                            <Link to="" className="btn-add" onClick={onAddFileBox}><img src="/img/admin/ico-plus.svg" alt="" /></Link>
                         </div>
                     </div>
                 </div>

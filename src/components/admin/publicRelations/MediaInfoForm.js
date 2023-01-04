@@ -9,6 +9,7 @@ const MediaInfoForm = () => {
     const dispatch = useDispatch();
     const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
     const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
+    const url = useSelector((state) => state.boardReducer.dataInfo.url);
     const fileList = useSelector((state) => state.boardReducer.files);
     const attachList = fileList.filter(file => file.fileType !== '1') //썸네일 제외
 
@@ -61,7 +62,7 @@ const MediaInfoForm = () => {
                         <li>
                             <span className="tit">유튜브 링크</span>
                             <div className="text">
-                            <span>https://img.youtube.com/vi/2mkOUrmsUmA/0.jpg</span>
+                            <span>{url}</span>
                             </div>
                         </li>
                     </ul>

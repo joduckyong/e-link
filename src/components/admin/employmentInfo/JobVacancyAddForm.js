@@ -129,12 +129,6 @@ const JobVacancyAddForm = () => {
                         <div className="s-tit">첨부파일</div>
                         <div className="file-area">
                             <AddFileBox fileName={fileName} filesRef={filesRef} onUploadFile={onUploadFile} fileCountList={fileCountList}/>
-                            {/* <div className="input-box">
-                                <label htmlFor="e-choice01" className="file-choice">
-                                    <input type="file" id="e-choice01" className="file" ref={fileRef} onChange={onUploadFile} />+ 파일선택
-                                </label>
-                                <span className="upload-name">{fileName}</span>
-                            </div> */}
                         </div>
                         <Link to="" className="btn-add" onClick={onAddFileBox}><img src="/img/admin/ico-plus.svg" alt="" /></Link>
                     </div>

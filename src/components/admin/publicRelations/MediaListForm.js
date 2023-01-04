@@ -15,7 +15,7 @@ const YoutubeImage = ({url, width, height}) => {
         }
     }, [url]);
 
-    return url !== null && <img src={imageUrl} alt="" width={width} heigth={height}/>;
+    return url !== null && <img src={imageUrl} alt="" width={width} height={height}/>;
 }
 
 const MediaListForm = () => {

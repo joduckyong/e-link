@@ -69,7 +69,7 @@ const MediaModForm = () => {
 
     return (
         <div className="a-content">
-            <h2>보도자료 등록</h2>
+            <h2>미디어 수정</h2>
             <div className="ban-list bg-white"> 
                 <div className="btn-area position">
                     <Link to="/admin/publicRelations/media">

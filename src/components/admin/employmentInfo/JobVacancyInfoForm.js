@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo } from 'store/boardReducer';
+import { downloadFile } from 'common/download';
 
 const JobVacancyInfoForm = () => {
     const {id} = useParams();
@@ -9,6 +10,7 @@ const JobVacancyInfoForm = () => {
     const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
     const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
     const boardType = useSelector((state) => state.boardReducer.dataInfo.boardType);
+    const attachList = useSelector((state) => state.boardReducer.files);
 
     useEffect(() => {
         dispatch(selectBoardInfo(id));
@@ -44,25 +46,21 @@ const JobVacancyInfoForm = () => {
                         </li>
                     </ul>
                 </div>
+                {attachList.length > 0 &&
                 <div className="view-detail bg-white mt10">
                     <ul>
-                        <li>
-                            <span className="tit">첨부파일</span>
-                            <div className="text">
-                                <span>커넥터분리.pdf</span>
-                                <button className="btn-down"><img src="/img/admin/ico-download.svg" alt="" /></button>
-                            </div>
-                        </li>
+                        {attachList.map((list, index) => (
+                            <li>
+                                <span className="tit">첨부파일</span>
+                                <div className="text">
+                                    <span>{list.fileOriginNm}</span>
+                                    <button className="btn-down" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}><img src="/img/admin/ico-download.svg" alt="" /></button>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 </div>
-                <div className="view-detail bg-white mt10">
-                    <ul>
-                        <li>
-                            <span className="tit">약관동의</span>
-                            <div className="text"><label htmlFor="allagree"><input type="checkbox" id="allagree" /><span className="chkimg"></span></label>개인정보 수집 및 이용에 동의합니다.</div>
-                        </li>
-                    </ul>
-                </div>
+                }
             </div>
         </div>
     );
