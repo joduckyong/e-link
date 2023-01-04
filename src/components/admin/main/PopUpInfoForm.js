@@ -8,7 +8,7 @@ const PopUpInfoForm = () => {
   const { id } = useParams();
   const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
   const dispatch = useDispatch();
-  const popupInfo = useSelector((state) => state.popupReducer);
+  const popupInfo = useSelector((state) => state.popupReducer.dataInfo);
   const fileList = useSelector((state) => state.popupReducer.files);
 
   useEffect(() => {
@@ -50,36 +50,36 @@ const PopUpInfoForm = () => {
           <div className="popinfor-area">
             <div className="pop-tit">
               <div className="s-tit mt0">관리 타이틀</div>
-              <input type="text" placeholder="파일명을 입력해주세요." className="write-input" value={popupInfo.dataInfo.popupTitle} disabled />
+              <input type="text" placeholder="파일명을 입력해주세요." className="write-input" value={popupInfo.popupTitle} disabled />
               <div className="s-tit">팝업 링크</div>
-              <input type="text" placeholder="파일명을 입력해주세요." className="write-input" value={popupInfo.dataInfo.popupLink} disabled />
+              <input type="text" placeholder="파일명을 입력해주세요." className="write-input" value={popupInfo.popupLink} disabled />
             </div>
             <div className="pop-close">
               <div className="s-tit">닫기 영역</div>
-              <input type="text" placeholder="오늘 하루 이 창을 열지 않습니다." className="input01" value={popupInfo.dataInfo.popupClose1} disabled />
-              <input type="text" placeholder="닫기" className="input02" value={popupInfo.dataInfo.popupClose2} disabled />
+              <input type="text" placeholder="오늘 하루 이 창을 열지 않습니다." className="input01" value={popupInfo.popupClose1} disabled />
+              <input type="text" placeholder="닫기" className="input02" value={popupInfo.popupClose2} disabled />
             </div>
             <div className="pop-where">
               <div className="s-tit">팝업 위치</div>
               <div className="input-wrap">
                 <div>
                   <span>가로</span>
-                  <input type="text" value={popupInfo.dataInfo.popupHeight} disabled />
+                  <input type="text" value={popupInfo.popupHeight} disabled />
                 </div>
                 <div>
                   <span>세로</span>
-                  <input type="text" value={popupInfo.dataInfo.popupWidth} disabled />
+                  <input type="text" value={popupInfo.popupWidth} disabled />
                 </div>
               </div>
             </div>
             <div className="pop-show">
               <div className="s-tit">팝업 게시기간</div>
               <span>
-                <input type="text" value={popupInfo.dataInfo.popupStartdate} disabled />
+                <input type="text" value={popupInfo.popupStartdate} disabled />
               </span>
               -
               <span>
-                <input type="text" value={popupInfo.dataInfo.popupEnddate} disabled />
+                <input type="text" value={popupInfo.popupEnddate} disabled />
               </span>
             </div>
           </div>

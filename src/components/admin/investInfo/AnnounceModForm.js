@@ -22,7 +22,6 @@ const AddFileBox = ({ fileName, filesRef, onUploadFile, fileCountList }) => {
 const AnnounceModForm = () => {
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContents, setBoardContents] = useState('');
-  const [boardType, setBoardType] = useState('1');
   const [fileName, setFileName] = useState({});
   const [fileCountList, setFileCountList] = useState([0]);
   const [storedFileName, setStoredFileName] = useState({});
@@ -31,7 +30,7 @@ const AnnounceModForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const boardInfo = useSelector((state) => state.boardReducer);
+  const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
   const attachList = useSelector((state) => state.boardReducer.files);
   const filesRef = useRef([]);
 
@@ -41,10 +40,27 @@ const AnnounceModForm = () => {
 
   //값 셋팅
   useEffect(() => {
-    setBoardTitle(boardInfo.dataInfo.boardTitle);
-    setBoardContents(boardInfo.dataInfo.boardContents);
-    onInitFileBox();
+    setBoardTitle(boardInfo.boardTitle);
+    setBoardContents(boardInfo.boardContents);
   }, [boardInfo]);
+
+  useEffect(() => {
+    const onInitFileBox = (e) => {
+      let countArr = [];
+      let fileObj = {};
+      let storedFiles = {};
+      for (let i = 0; i < attachList.length; i++) {
+        countArr.push(i);
+        fileObj[i] = attachList[i].fileOriginNm;
+        storedFiles[i] = attachList[i].fileNm;
+      }
+      setFileName(fileObj);
+      setFileCountList(countArr);
+      setStoredFileName(storedFiles);
+    };
+
+    onInitFileBox();
+  }, [attachList]);
 
   //수정
   const onEdit = async (e) => {
@@ -68,8 +84,6 @@ const AnnounceModForm = () => {
         boardTitle: boardTitle,
         boardContents: boardContents,
         ids: storedFileArr,
-        boardType: boardType,
-        ids: storedFileArr,
         files: files,
       };
       await dispatch(updateBoard(newList));
@@ -89,7 +103,7 @@ const AnnounceModForm = () => {
         setStoredFileArr([...storedFileArr, storedFileName[index]]);
       }
     },
-    [fileName],
+    [fileName, storedFileArr, storedFileName],
   );
 
   const onAddFileBox = () => {
@@ -98,20 +112,6 @@ const AnnounceModForm = () => {
     count += 1;
     countArr.push(count);
     setFileCountList(countArr);
-  };
-
-  const onInitFileBox = () => {
-    let countArr = [];
-    let fileObj = {};
-    let storedFiles = {};
-    for (let i = 0; i < attachList.length; i++) {
-      countArr.push(i);
-      fileObj[i] = attachList[i].fileOriginNm;
-      storedFiles[i] = attachList[i].fileNm;
-    }
-    setFileName(fileObj);
-    setFileCountList(countArr);
-    setStoredFileName(storedFiles);
   };
 
   return (
