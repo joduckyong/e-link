@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
 
@@ -12,6 +12,7 @@ const PressReleaseAddForm = () => {
     const thumbnailRef = useRef();
     const fileRef = useRef();
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const onCreate = async (e) => {
@@ -31,7 +32,7 @@ const PressReleaseAddForm = () => {
         if(window.confirm('등록 하시겠습니까?')){
             const newList = { boardId: 'PRE', boardTitle: boardTitle, boardContents: boardContents, thumbnail: thumbnailObj, file: fileObj};
             await dispatch(insertBoard(newList));
-            document.location.href = '/admin/publicRelations/pressRelease';
+            return navigate('/admin/publicRelations/pressRelease');
         }
     }
   

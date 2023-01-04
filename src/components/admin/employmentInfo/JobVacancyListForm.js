@@ -26,7 +26,6 @@ const JobVacancyListForm = () => {
     
     const onSearch = (page) => {
         const newList = { boardId: 'JOB', pageIndex: page, searchKeyword: searchKeyword, searchCondition: selectItem};
-        console.log(newList);
         dispatch(selectBoard(newList));
     };
 

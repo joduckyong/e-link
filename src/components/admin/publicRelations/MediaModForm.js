@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
 
@@ -12,6 +12,7 @@ const MediaModForm = () => {
     const [storedFileArr, setStoredFileArr] = useState([]); 
 
     const { id } = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
     const fileList = useSelector((state) => state.boardReducer.files);
@@ -51,7 +52,7 @@ const MediaModForm = () => {
         if (window.confirm('수정 하시겠습니까?')) {
             const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, url: url, ids: storedFileArr, file: fileObj };
             await dispatch(updateBoard(newList));
-            document.location.href = '/admin/publicRelations/media';
+            return navigate('/admin/publicRelations/media');
         }
     };
 
