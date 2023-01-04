@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
 
@@ -26,6 +26,7 @@ const JobVacancyAddForm = () => {
     const [fileName, setFileName] = useState({});
     const [fileCountList, setFileCountList] = useState([0]);
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const filesRef = useRef([]);
@@ -48,7 +49,7 @@ const JobVacancyAddForm = () => {
         if(window.confirm('등록 하시겠습니까?')){
             const newList = { boardId: 'JOB', boardTitle: boardTitle, boardContents: boardContents, boardType: boardType, files: files };
             await dispatch(insertBoard(newList));
-            document.location.href = '/admin/employmentInfo/jobVacancy';
+            return navigate('/admin/employmentInfo/jobVacancy');
         }
     }
 

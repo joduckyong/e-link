@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
 
@@ -29,6 +29,7 @@ const JobVacancyModForm = () => {
     const [storedFileArr, setStoredFileArr] = useState([]);
 
     const { id } = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
     const attachList = useSelector((state) => state.boardReducer.files);
@@ -42,8 +43,26 @@ const JobVacancyModForm = () => {
         setBoardTitle(boardInfo.boardTitle); 
         setBoardContents(boardInfo.boardContents);
         setBoardType(boardInfo.boardType);
-        onInitFileBox();
+        
     }, [boardInfo]);
+
+    useEffect(() => {
+        const onInitFileBox = (e) => {
+            let countArr = [];
+            let fileObj = {};
+            let storedFiles = {};
+            for(let i=0; i<attachList.length; i++){
+                countArr.push(i);
+                fileObj[i] = attachList[i].fileOriginNm;
+                storedFiles[i] = attachList[i].fileNm;
+            }
+            setFileName(fileObj);
+            setFileCountList(countArr);
+            setStoredFileName(storedFiles);
+        }
+
+        onInitFileBox();
+    }, [attachList])
     
 
     const onEdit = async (e) => {
@@ -64,7 +83,7 @@ const JobVacancyModForm = () => {
         if (window.confirm('수정 하시겠습니까?')) {
             const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, boardType: boardType, ids: storedFileArr, files: files };
             await dispatch(updateBoard(newList));
-            document.location.href = '/admin/employmentInfo/jobVacancy';
+            return navigate('/admin/employmentInfo/jobVacancy');
         }
     };
 
@@ -78,7 +97,7 @@ const JobVacancyModForm = () => {
         if(!storedFileArr.includes(storedFileName[index])){
             setStoredFileArr([...storedFileArr, storedFileName[index]]);
         }
-    }, [fileName]);
+    }, [fileName, storedFileArr, storedFileName]);
 
     const onAddFileBox = () => {
         let countArr = [...fileCountList]
@@ -86,20 +105,6 @@ const JobVacancyModForm = () => {
         count += 1;
         countArr.push(count);
         setFileCountList(countArr);
-    }
-
-    const onInitFileBox = () => {
-        let countArr = [];
-        let fileObj = {};
-        let storedFiles = {};
-        for(let i=0; i<attachList.length; i++){
-            countArr.push(i);
-            fileObj[i] = attachList[i].fileOriginNm;
-            storedFiles[i] = attachList[i].fileNm;
-        }
-        setFileName(fileObj);
-        setFileCountList(countArr);
-        setStoredFileName(storedFiles);
     }
 
     return(

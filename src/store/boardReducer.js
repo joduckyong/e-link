@@ -58,9 +58,13 @@ export const insertBoard = createAsyncThunk('ADD_BOARD', async (newList) => {
   const formData = new FormData();
   formData.append('thumbnail', newList.thumbnail);
   formData.append('file', newList.file);
-  for (let i = 0; i < newList.files.length; i++) { 
-    formData.append("files", newList.files[i]);
+  
+  if(newList.files){
+    for (let i = 0; i < newList.files.length; i++) { 
+      formData.append("files", newList.files[i]);
+    }
   }
+
   formData.append(
     'boardVo',
     new Blob([JSON.stringify(newList)], {
@@ -90,9 +94,13 @@ export const updateBoard = createAsyncThunk('MOD_BOARD', async (newList) => {
   const formData = new FormData();
   formData.append('thumbnail', newList.thumbnail);
   formData.append('file', newList.file);
-  for (let i = 0; i < newList.files.length; i++) { 
-    formData.append("files", newList.files[i]);
+
+  if(newList.files){
+    for (let i = 0; i < newList.files.length; i++) { 
+      formData.append("files", newList.files[i]);
+    }
   }
+  
   formData.append(
     'boardVo',
     new Blob([JSON.stringify(newList)], {
