@@ -7,8 +7,7 @@ import { downloadFile } from 'common/download';
 const AnnounceInfoForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const boardInfo = useSelector((state) => state.boardReducer);
-  const fileList = useSelector((state) => state.boardReducer.files);
+  const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
   const attachList = useSelector((state) => state.boardReducer.files);
 
   useEffect(() => {
@@ -28,11 +27,11 @@ const AnnounceInfoForm = () => {
           <ul>
             <li>
               <span className="tit">제목</span>
-              <div className="text">{boardInfo.dataInfo.boardTitle}</div>
+              <div className="text">{boardInfo.boardTitle}</div>
             </li>
             <li>
               <span className="tit">내용</span>
-              <div className="text">{boardInfo.dataInfo.boardContents}</div>
+              <div className="text">{boardInfo.boardContents}</div>
             </li>
             <li>
               <span className="tit"></span>

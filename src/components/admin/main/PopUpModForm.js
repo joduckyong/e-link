@@ -34,7 +34,7 @@ const PopUpAddForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const popupInfo = useSelector((state) => state.popupReducer);
+  const popupInfo = useSelector((state) => state.popupReducer.dataInfo);
   const fileList = useSelector((state) => state.popupReducer.files);
 
   const thumbnailRef = useRef();
@@ -44,17 +44,17 @@ const PopUpAddForm = () => {
   }, [dispatch, id]);
 
   useEffect(() => {
-    setPopupTitle(popupInfo.dataInfo.popupTitle);
-    setPopupLink(popupInfo.dataInfo.popupLink);
-    setPopupClose1(popupInfo.dataInfo.popupClose1);
-    setPopupClose2(popupInfo.dataInfo.popupClose2);
-    setPopupHeight(popupInfo.dataInfo.popupHeight);
-    setPopupWidth(popupInfo.dataInfo.popupWidth);
-    if (popupInfo.dataInfo.popupStartdate !== undefined && typeof popupInfo.dataInfo.popupStartdate !== 'undefined') {
-      setPopupStartdate(new Date(popupInfo.dataInfo.popupStartdate));
+    setPopupTitle(popupInfo.popupTitle);
+    setPopupLink(popupInfo.popupLink);
+    setPopupClose1(popupInfo.popupClose1);
+    setPopupClose2(popupInfo.popupClose2);
+    setPopupHeight(popupInfo.popupHeight);
+    setPopupWidth(popupInfo.popupWidth);
+    if (popupInfo.popupStartdate !== undefined && typeof popupInfo.popupStartdate !== 'undefined') {
+      setPopupStartdate(new Date(popupInfo.popupStartdate));
     }
-    if (popupInfo.dataInfo.popupEnddate !== undefined && typeof popupInfo.dataInfo.popupEnddate !== 'undefined') {
-      setPopupEnddate(new Date(popupInfo.dataInfo.popupEnddate));
+    if (popupInfo.popupEnddate !== undefined && typeof popupInfo.popupEnddate !== 'undefined') {
+      setPopupEnddate(new Date(popupInfo.popupEnddate));
     }
   }, [popupInfo]);
 

@@ -22,14 +22,13 @@ const AddFileBox = ({ fileName, filesRef, onUploadFile, fileCountList }) => {
 const AnnounceAddForm = () => {
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContents, setBoardContents] = useState('');
-  const [boardType, setBoardType] = useState('1');
   const [fileName, setFileName] = useState({});
   const [fileCountList, setFileCountList] = useState([0]);
 
-  const filesRef = useRef([]);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const filesRef = useRef([]);
 
   //등록
   const onCreate = async (e) => {
@@ -48,7 +47,7 @@ const AnnounceAddForm = () => {
       return;
     }
     if (window.confirm('등록 하시겠습니까?')) {
-      const newList = { boardId: 'ANN', boardTitle: boardTitle, boardContents: boardContents, boardType: boardType, files: files };
+      const newList = { boardId: 'ANN', boardTitle: boardTitle, boardContents: boardContents, files: files };
       await dispatch(insertBoard(newList));
       return navigate('/admin/investInfo/announce');
     }
@@ -108,6 +107,7 @@ const AnnounceAddForm = () => {
               value={boardContents}
             ></textarea>
           </div>
+
           <div className="ed-file">
             <div className="s-tit">첨부파일</div>
             <div className="file-area">
