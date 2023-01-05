@@ -16,14 +16,15 @@ function Logout() {
   const navigate = useNavigate();
 
   // Cookie에 저장된 Refresh Token 정보를 받아 온다
-  const refreshToken = getCookieToken();
+  // const refreshToken = getCookieToken();
 
-  console.log('refreshToken == ' + refreshToken);
+  //  console.log('refreshToken == ' + refreshToken);
 
   async function logout() {
     // 백으로부터 받은 응답
     // const data = await logoutUser({ refreshToken: refreshToken }, accessToken);
 
+    localStorage.setItem('index', 0);
     // if (data.status) {
     // store에 저장된 Access Token 정보를 삭제
     dispatch(DELETE_TOKEN());
