@@ -48,12 +48,7 @@ export const selectContactUsInfo = createAsyncThunk('INFO_CONTACTUS', async (id)
   return response.data;
 });
 
-export const insertContactUs = createAsyncThunk('ADD_CONTACTUS', async (newList) => {
-  // const token = getCookieToken();
-
-  // if (token === undefined && typeof token === 'undefined') {
-  //   document.location.href = loginUrl;
-  // }
+export const insertContactUs = createAsyncThunk('CLIENT_ADD_CONTACTUS', async (newList) => {
 
   const formData = new FormData();
   formData.append('file', newList.file);
@@ -69,7 +64,6 @@ export const insertContactUs = createAsyncThunk('ADD_CONTACTUS', async (newList)
     method: 'POST',
     data: formData,
     headers: {
-      // Authorization: token,
       'Content-Type': 'multipart/form-data',
     },
   });

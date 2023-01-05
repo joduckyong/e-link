@@ -1,12 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
+import classnames from 'classnames';
 
 const BenefitsForm = () => {
+    const [activeMenu1, setActiveMenu1] = useState(false);
+    const [activeMenu2, setActiveMenu2] = useState(false);
 
-  useEffect(() => {
-    AOS.init();
-  });
+    useEffect(() => {
+        AOS.init();
+    });
+
+    const onClickMenuLink = (menu) => {
+        if(menu === '1'){
+            setActiveMenu1(!activeMenu1);
+            setActiveMenu2(false);
+        }else if(menu === '2'){
+            setActiveMenu1(false);
+            setActiveMenu2(!activeMenu2);
+        }
+    }
 
   return (
     <div className="sub sub05">
@@ -16,9 +29,9 @@ const BenefitsForm = () => {
                 <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">복리후생</h2>
                 <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
                     <li><NavLink to="/"><img src="./../../img/sub/ico-home.svg" alt="" /></NavLink></li>
-                    <li className="link">
-                        <NavLink to="">채용정보</NavLink>
-                        <ul className="links">
+                    <li className={classnames('link', {show: activeMenu1})}>
+                        <NavLink to="" onClick={(e) => onClickMenuLink('1')}>채용정보</NavLink>
+                        <ul className={classnames('links', {active: activeMenu1})}>
                             <li><NavLink to="/company/lselink">회사소개</NavLink></li>
                             <li><NavLink to="/business/e-link/evcharge">사업영역</NavLink></li>
                             <li><NavLink to="/investment/management">투자정보</NavLink></li>
@@ -28,9 +41,9 @@ const BenefitsForm = () => {
                             <li><NavLink to="">EV 충전소</NavLink></li>
                         </ul>
                     </li>
-                    <li className="on link">
-                        <NavLink to="">복리후생</NavLink>
-                        <ul className="links">
+                    <li className={classnames('on link', {show: activeMenu2})}>
+                        <NavLink to="" onClick={(e) => onClickMenuLink('2')}>복리후생</NavLink>
+                        <ul className={classnames('links', {active: activeMenu2})}>
                             <li><NavLink to="/recruit/people">인재상</NavLink></li>
                             <li><NavLink to="/recruit/benefits" className="on">복리후생</NavLink></li>
                             <li><NavLink to="/recruit/posting">채용공고</NavLink></li>

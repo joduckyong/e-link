@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertContactUs } from 'store/contactUsReducer';
 import AOS from 'aos';
+import classnames from 'classnames';
 
 const ContactusForm = () => {
     const [contactNm, setContactNm] = useState('');
@@ -12,6 +13,8 @@ const ContactusForm = () => {
     const [contactContents, setContactContents] = useState('');
     const [contactAgree, setContactAgree] = useState(false);
     const [fileName, setFileName] = useState('선택된 파일 없음');
+    const [activeMenu1, setActiveMenu1] = useState(false);
+    const [activeMenu2, setActiveMenu2] = useState(false);
 
     const fileRef = useRef();
 
@@ -20,6 +23,16 @@ const ContactusForm = () => {
     useEffect(() => {
         AOS.init();
     });
+
+    const onClickMenuLink = (menu) => {
+        if(menu === '1'){
+            setActiveMenu1(!activeMenu1);
+            setActiveMenu2(false);
+        }else if(menu === '2'){
+            setActiveMenu1(false);
+            setActiveMenu2(!activeMenu2);
+        }
+    }
 
     const onCreate = async (e) => {
         e.preventDefault();
@@ -84,9 +97,9 @@ const ContactusForm = () => {
                     <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">Contact us</h2>
                     <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
                         <li><NavLink to="/"><img src="./../img/sub/ico-home.svg" alt="" /></NavLink></li>
-                        <li className="link">
-                            <NavLink to="">Contact us</NavLink>
-                            <ul className="links">
+                        <li className={classnames('link', {show: activeMenu1})}>
+                            <NavLink to="" onClick={(e) => onClickMenuLink('1')}>Contact us</NavLink>
+                            <ul className={classnames('links', {active: activeMenu1})}>
                                 <li><NavLink to="/company/lselink">회사소개</NavLink></li>
                                 <li><NavLink to="/business/e-link/evcharge">사업영역</NavLink></li>
                                 <li><NavLink to="/investment/management">투자정보</NavLink></li>
@@ -96,7 +109,9 @@ const ContactusForm = () => {
                                 <li><NavLink to="">EV 충전소</NavLink></li>
                             </ul>
                         </li>
-                        <li className="on link"><NavLink to="/contactus">Contact us</NavLink></li>
+                        <li className="on link">
+                            <NavLink to="/contactus" onClick={(e) => onClickMenuLink('2')}>Contact us</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>

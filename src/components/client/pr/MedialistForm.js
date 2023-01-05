@@ -1,12 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
+import classnames from 'classnames';
 
 const MedialistForm = () => {
 
-  useEffect(() => {
-    AOS.init();
-  });
+    const [activeMenu1, setActiveMenu1] = useState(false);
+    const [activeMenu2, setActiveMenu2] = useState(false);
+
+    useEffect(() => {
+        AOS.init();
+    });
+
+    const onClickMenuLink = (menu) => {
+        if(menu === '1'){
+            setActiveMenu1(!activeMenu1);
+            setActiveMenu2(false);
+        }else if(menu === '2'){
+            setActiveMenu1(false);
+            setActiveMenu2(!activeMenu2);
+        }
+    }
 
   return (
     <div className="sub sub04">
@@ -16,9 +30,9 @@ const MedialistForm = () => {
                 <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">미디어</h2>
                 <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
                     <li><NavLink to="/"><img src="./../../img/sub/ico-home.svg" alt="" /></NavLink></li>
-                    <li className="link">
-                        <NavLink to="">홍보센터</NavLink>
-                        <ul className="links">
+                    <li className={classnames('link', {show: activeMenu1})}>
+                        <NavLink to="" onClick={(e) => onClickMenuLink('1')}>홍보센터</NavLink>
+                        <ul className={classnames('links', {active: activeMenu1})}>
                             <li><NavLink to="/company/lselink">회사소개</NavLink></li>
                             <li><NavLink to="/business/e-link/evcharge">사업영역</NavLink></li>
                             <li><NavLink to="/investment/management">투자정보</NavLink></li>
@@ -28,9 +42,9 @@ const MedialistForm = () => {
                             <li><NavLink to="">EV 충전소</NavLink></li>
                         </ul>
                     </li>
-                    <li className="on link">
-                        <NavLink to="">미디어</NavLink>
-                        <ul className="links">
+                    <li className={classnames('on link', {show: activeMenu2})}>
+                        <NavLink to="" onClick={(e) => onClickMenuLink('2')}>미디어</NavLink>
+                        <ul className={classnames('links', {active: activeMenu2})}>
                             <li><NavLink to="/pr/press-list">보도자료</NavLink></li>
                             <li><NavLink to="/pr/media-list" className="on">미디어</NavLink></li>
                         </ul>

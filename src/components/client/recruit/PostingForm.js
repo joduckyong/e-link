@@ -1,12 +1,62 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectClientBoard } from 'store/boardReducer';
+import Pagination from 'react-js-pagination';
 import AOS from 'aos';
+import classnames from 'classnames';
 
 const PostingForm = () => {
 
-  useEffect(() => {
-    AOS.init();
-  });
+    const dispatch = useDispatch();
+    const boardList = useSelector((state) => state.boardReducer.data);
+    const totalCount = useSelector((state) => state.boardReducer.totalCount);
+    const [jobType, setJobType] = useState('');
+    const [page, setPage] = useState(1);
+    const [activeMenu1, setActiveMenu1] = useState(false);
+    const [activeMenu2, setActiveMenu2] = useState(false);
+
+    useEffect(() => {
+        AOS.init();
+    });
+
+    const onClickMenuLink = (menu) => {
+        if(menu === '1'){
+            setActiveMenu1(!activeMenu1);
+            setActiveMenu2(false);
+        }else if(menu === '2'){
+            setActiveMenu1(false);
+            setActiveMenu2(!activeMenu2);
+        }
+    }
+
+    useEffect(() => {
+        const newList = { boardId: 'JOB', pageIndex: page, boardType: jobType};
+        dispatch(selectClientBoard(newList));
+    }, [dispatch, page, jobType]);
+
+    const pageClick = (page) => {
+        setPage(page);
+        onSearch(page);
+      };
+    
+    const onSearch = (page) => {
+        const newList = { boardId: 'JOB', pageIndex: page};
+        dispatch(selectClientBoard(newList));
+    };
+
+    const getboardType = (type) => {
+        let boardTypeName = '';
+        if(type === '1'){
+            boardTypeName = '신입';
+        }else if(type === '2'){
+            boardTypeName = '경력';
+        }else if(type === '3'){
+            boardTypeName = '인턴';
+        }
+
+        return boardTypeName;
+    }
 
   return (
     <div className="sub sub05">
@@ -16,9 +66,9 @@ const PostingForm = () => {
                 <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">채용공고</h2>
                 <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
                     <li><NavLink to="/"><img src="./../../img/sub/ico-home.svg" alt="" /></NavLink></li>
-                    <li className="link">
-                        <NavLink to="">채용정보</NavLink>
-                        <ul className="links">
+                    <li className={classnames('link', {show: activeMenu1})}>
+                        <NavLink to="" onClick={(e) => onClickMenuLink('1')}>채용정보</NavLink>
+                        <ul className={classnames('links', {active: activeMenu1})}>
                             <li><NavLink to="/company/lselink">회사소개</NavLink></li>
                             <li><NavLink to="/business/e-link/evcharge">사업영역</NavLink></li>
                             <li><NavLink to="/investment/management">투자정보</NavLink></li>
@@ -28,9 +78,9 @@ const PostingForm = () => {
                             <li><NavLink to="">EV 충전소</NavLink></li>
                         </ul>
                     </li>
-                    <li className="on link">
-                        <NavLink to="">채용공고</NavLink>
-                        <ul className="links">
+                    <li className={classnames('on link', {show: activeMenu2})}>
+                        <NavLink to="" onClick={(e) => onClickMenuLink('2')}>채용공고</NavLink>
+                        <ul className={classnames('links', {active: activeMenu2})}>
                             <li><NavLink to="/recruit/people">인재상</NavLink></li>
                             <li><NavLink to="/recruit/benefits">복리후생</NavLink></li>
                             <li><NavLink to="/recruit/posting" className="on">채용공고</NavLink></li>
@@ -44,50 +94,34 @@ const PostingForm = () => {
             <div className="wrap">
                 <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">LS E-Link는 도전적이고,<br />창의적인 인재를 기다리고 있습니다.</h3>
                 <ul className="hire-tab">
-                    <li className="on"><NavLink to="">전체</NavLink></li>
-                    <li><NavLink to="">신입</NavLink></li>
-                    <li><NavLink to="">경력</NavLink></li>
-                    <li><NavLink to="">인턴</NavLink></li>
+                    <li className={jobType === '' && 'on'}><NavLink to="" onClick={e => setJobType('')}>전체</NavLink></li>
+                    <li className={jobType === '1' && 'on'}><NavLink to="" onClick={e => setJobType('1')}>신입</NavLink></li>
+                    <li className={jobType === '2' && 'on'}><NavLink to="" onClick={e => setJobType('2')}>경력</NavLink></li>
+                    <li className={jobType === '3' && 'on'}><NavLink to="" onClick={e => setJobType('3')}>인턴</NavLink></li>
                 </ul>   
                 <ul className="hire-list">
-                    <li>
-                        <NavLink to="">
-                            <div className="division">
-                                <span>신입</span>
-                                <p>2023.01.20(F) 10:00 - 2023.01.27(F) 18:00</p>
-                            </div>
-                            <div className="tit">[신입_해외영업] 23년 신입사원 공개채용 (해외영업 분야)</div>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="">
-                            <div className="division">
-                                <span>신입</span>
-                                <p>2023.01.20(F) 10:00 - 2023.01.27(F) 18:00</p>
-                            </div>
-                            <div className="tit">[신입_해외영업] 23년 신입사원 공개채용 (해외영업 분야)</div>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="">
-                            <div className="division">
-                                <span>신입</span>
-                                <p>2023.01.20(F) 10:00 - 2023.01.27(F) 18:00</p>
-                            </div>
-                            <div className="tit">[신입_해외영업] 23년 신입사원 공개채용 (해외영업 분야)</div>
-                        </NavLink>
-                    </li>   
+                    {boardList.map((list, index) => (
+                        <li key={index}>
+                            <NavLink to="">
+                                <div className="division">
+                                    <span>{getboardType(list.boardType)}</span>
+                                    <p>2023.01.20(F) 10:00 - 2023.01.27(F) 18:00</p>
+                                </div>
+                                <div className="tit">{list.boardTitle}</div>
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>  
                 <div className="paging">
-                    <NavLink to="" className="prev-btn"><i></i><span className="text_blind">이전</span></NavLink>
-                    <ul>
-                        <li className="current"><NavLink to="">1</NavLink></li>
-                        <li><NavLink to="">2</NavLink></li>
-                        <li><NavLink to="">3</NavLink></li>
-                        <li><NavLink to="">4</NavLink></li>
-                        <li><NavLink to="">5</NavLink></li>
-                    </ul>
-                    <NavLink to="" className="next-btn"><i></i><span className="text_blind">다음</span></NavLink>
+                    <Pagination
+                        activePage={page}
+                        itemsCountPerPage={10}
+                        totalItemsCount={totalCount}
+                        pageRangeDisplayed={10}
+                        prevPageText={'‹'}
+                        nextPageText={'›'}
+                        onChange={pageClick}
+                    />
                 </div>    
             </div>
         </div>

@@ -155,6 +155,23 @@ export const deleteBoardIds = createAsyncThunk('DEL_BOARD_IDS', async (newList) 
   return response.data;
 });
 
+export const selectClientBoard = createAsyncThunk('CLIENT_LIST_BOARD', async (newList) => {
+
+  let param = `${newList.boardId}/${newList.pageIndex}`;
+  let boardType = newList.boardType;
+  if (boardType) {
+    param += `/${boardType}`;
+  }
+
+  const response = await axios.get(`${serverUrl}/api/client/board/${param}`);
+  return response.data;
+});
+
+export const selectClientBoardInfo = createAsyncThunk('CLIENT_INFO_BOARD', async (id) => {
+  const response = await axios.get(`${serverUrl}/api/client/board/${id}`);
+  return response.data;
+});
+
 export const boardReducer = createSlice({
   name: 'board',
   initialState: {
@@ -194,6 +211,20 @@ export const boardReducer = createSlice({
     }),
     [deleteBoardIds.fulfilled]: (state, { payload }) => ({
       ...state,
+    }),
+    [selectClientBoard.fulfilled]: (state, { payload }) => ({
+      ...state,
+      status: payload.status,
+      message: payload.message,
+      totalCount: payload.totalCount,
+      data: payload.data,
+    }),
+    [selectClientBoardInfo.fulfilled]: (state, { payload }) => ({
+      ...state,
+      status: payload.status,
+      message: payload.message,
+      dataInfo: payload.data,
+      files: payload.files,
     }),
   },
 });
