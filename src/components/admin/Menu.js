@@ -14,12 +14,12 @@ const Menu = () => {
           <img src="/img/common/logo.svg" alt="" />
         </h1>
         <ul className="menu-list">
-          <li className={localStorage.getItem('index') === '0' && 'on'}>
+          <li className={(localStorage.getItem('index') === '0' || localStorage.getItem('index') === null) && 'on'}>
             <NavLink to="/admin/main/popup" onClick={(e) => handleOnClick(e, 0)}>
               메인페이지
             </NavLink>
             <ul>
-              <li className={localStorage.getItem('index') === '0' && 'on'}>
+              <li className={(localStorage.getItem('index') === '0' || localStorage.getItem('index') === null) && 'on'}>
                 <NavLink to="/admin/main/popup" onClick={(e) => handleOnClick(e, 0)}>
                   팝업 관리
                 </NavLink>
