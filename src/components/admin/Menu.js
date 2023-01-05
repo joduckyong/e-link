@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Menu = () => {
-  const handleOnClick = (e, index) => {
+  const handleOnClick = useCallback((e, index) => {
     localStorage.setItem('index', index);
-  };
+  }, []);
 
   return (
     <div className="lnb">

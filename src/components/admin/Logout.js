@@ -24,7 +24,6 @@ function Logout() {
     // 백으로부터 받은 응답
     // const data = await logoutUser({ refreshToken: refreshToken }, accessToken);
 
-    localStorage.setItem('index', 0);
     // if (data.status) {
     // store에 저장된 Access Token 정보를 삭제
     dispatch(DELETE_TOKEN());

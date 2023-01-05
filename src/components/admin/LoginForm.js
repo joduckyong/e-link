@@ -19,6 +19,7 @@ const LoginForm = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['rememberId']);
 
   useEffect(() => {
+    localStorage.setItem('index', 0);
     removeCookieToken();
   }, []);
 
