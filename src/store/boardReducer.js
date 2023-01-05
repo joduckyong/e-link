@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { serverUrl } from './serverUrl';
+import { serverUrl, loginUrl } from './serverUrl';
 import { getCookieToken } from '../storage/Cookie';
 
-const loginUrl = '/admin/login';
 export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
   const token = getCookieToken();
 
@@ -58,10 +57,10 @@ export const insertBoard = createAsyncThunk('ADD_BOARD', async (newList) => {
   const formData = new FormData();
   formData.append('thumbnail', newList.thumbnail);
   formData.append('file', newList.file);
-  
-  if(newList.files){
-    for (let i = 0; i < newList.files.length; i++) { 
-      formData.append("files", newList.files[i]);
+
+  if (newList.files) {
+    for (let i = 0; i < newList.files.length; i++) {
+      formData.append('files', newList.files[i]);
     }
   }
 
@@ -95,12 +94,12 @@ export const updateBoard = createAsyncThunk('MOD_BOARD', async (newList) => {
   formData.append('thumbnail', newList.thumbnail);
   formData.append('file', newList.file);
 
-  if(newList.files){
-    for (let i = 0; i < newList.files.length; i++) { 
-      formData.append("files", newList.files[i]);
+  if (newList.files) {
+    for (let i = 0; i < newList.files.length; i++) {
+      formData.append('files', newList.files[i]);
     }
   }
-  
+
   formData.append(
     'boardVo',
     new Blob([JSON.stringify(newList)], {

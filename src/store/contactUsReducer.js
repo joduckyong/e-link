@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { serverUrl } from './serverUrl';
+import { serverUrl, loginUrl } from './serverUrl';
 import { getCookieToken } from '../storage/Cookie';
 
-const loginUrl = '/admin/login';
 export const selectContactUs = createAsyncThunk('LIST_CONTACTUS', async (newList) => {
   const token = getCookieToken();
 
@@ -69,7 +68,6 @@ export const insertContactUs = createAsyncThunk('CLIENT_ADD_CONTACTUS', async (n
   });
   return response.data;
 });
-
 
 export const deleteContactUsIds = createAsyncThunk('DEL_CONTACTUS_IDS', async (newList) => {
   const token = getCookieToken();

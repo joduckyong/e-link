@@ -58,6 +58,10 @@ const OfficialNoticeListForm = () => {
       dispatch(updateBoard(newList)).then(() => {
         const newList = { boardId: 'OFF', pageIndex: 1, searchKeyword: null };
         dispatch(selectBoard(newList));
+
+        setboardId('');
+        setBoardTitle('');
+        setUrl('');
       });
     }
   };
@@ -79,6 +83,10 @@ const OfficialNoticeListForm = () => {
       dispatch(insertBoard(newList)).then(() => {
         const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: null };
         dispatch(selectBoard(newList));
+
+        setboardId('');
+        setBoardTitle('');
+        setUrl('');
       });
     }
   };
@@ -101,7 +109,7 @@ const OfficialNoticeListForm = () => {
   const handleAllCheck = (checked) => {
     if (checked) {
       const idArray = [];
-      boardList.forEach((el) => idArray.push(el.boardId));
+      boardList.data.forEach((el) => idArray.push(el.boardId));
       setCheckItems(idArray);
     } else {
       setCheckItems([]);
