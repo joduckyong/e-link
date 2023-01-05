@@ -109,7 +109,7 @@ const OfficialNoticeListForm = () => {
   const handleAllCheck = (checked) => {
     if (checked) {
       const idArray = [];
-      boardList.forEach((el) => idArray.push(el.boardId));
+      boardList.data.forEach((el) => idArray.push(el.boardId));
       setCheckItems(idArray);
     } else {
       setCheckItems([]);
