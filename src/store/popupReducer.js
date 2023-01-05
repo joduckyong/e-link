@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { serverUrl } from './serverUrl';
+import { serverUrl, loginUrl } from './serverUrl';
 import { getCookieToken } from '../storage/Cookie';
 
-const loginUrl = '/admin/login';
 export const selectPopup = createAsyncThunk('LIST_POPUP', async (newList) => {
   const token = getCookieToken();
 
