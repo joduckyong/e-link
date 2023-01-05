@@ -73,6 +73,19 @@ const JobVacancyListForm = () => {
         }
     };
 
+    const getboardType = (type) => {
+        let boardTypeName = '';
+        if(type === '1'){
+            boardTypeName = '신입';
+        }else if(type === '2'){
+            boardTypeName = '경력';
+        }else if(type === '3'){
+            boardTypeName = '인턴';
+        }
+
+        return boardTypeName;
+    }
+
     return(
         <div className="a-content">
             <h2>채용공고 관리<span>총 {totalCount}건</span></h2>
@@ -146,7 +159,7 @@ const JobVacancyListForm = () => {
                                         </label>
                                     </th>
                                     <td>{list.rnum}</td>
-                                    <td>{list.boardType === '1' ? '신입' : '경력'}</td>
+                                    <td>{getboardType(list.boardType)}</td>
                                     <td className="tal">
                                         <Link to={`/admin/employmentInfo/jobVacancyInfo/${list.boardId}`}>
                                             <span className="pop-name">{list.boardTitle}</span>

@@ -12,9 +12,31 @@ const JobVacancyInfoForm = () => {
     const boardType = useSelector((state) => state.boardReducer.dataInfo.boardType);
     const attachList = useSelector((state) => state.boardReducer.files);
 
+    let boardTypeName = '';
+    if(boardType === '1'){
+        boardTypeName = '신입';
+    }else if(boardType === '2'){
+        boardTypeName = '경력';
+    }else if(boardType === '3'){
+        boardTypeName = '인턴';
+    }
+
     useEffect(() => {
         dispatch(selectBoardInfo(id));
     }, [dispatch, id]);
+
+    const getboardType = (type) => {
+        let boardTypeName = '';
+        if(type === '1'){
+            boardTypeName = '신입';
+        }else if(type === '2'){
+            boardTypeName = '경력';
+        }else if(type === '3'){
+            boardTypeName = '인턴';
+        }
+
+        return boardTypeName;
+    }
 
 
     return(
@@ -30,7 +52,7 @@ const JobVacancyInfoForm = () => {
                     <ul>
                         <li>
                             <span className="tit">구분</span>
-                            <div className="text">{boardType === '1' ? '신입' : '경력'}</div>
+                            <div className="text">{getboardType(boardType)}</div>
                         </li>
                         <li>
                             <span className="tit">제목</span>

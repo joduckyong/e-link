@@ -104,6 +104,17 @@ const JobVacancyAddForm = () => {
                             />
                             <span className="rdimg"></span>경력
                         </label>
+                        <label htmlFor="intern">
+                            <input 
+                                type="radio" 
+                                id="intern" 
+                                name="dist"
+                                value="3"
+                                checked={boardType === '3' ? true : false}
+                                onChange={(e) => setBoardType(e.target.value)}
+                            />
+                            <span className="rdimg"></span>인턴
+                        </label>
                     </div>
                     <div className="ed-tit">
                         <div className="s-tit">제목</div>
