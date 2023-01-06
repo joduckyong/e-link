@@ -1,15 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
+import classnames from 'classnames';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const EvchargeForm = () => {
+  const [activeMenu1, setActiveMenu1] = useState(false);
+  const [activeMenu2, setActiveMenu2] = useState(false);
+
   useEffect(() => {
     AOS.init();
   });
+
+  const onClickMenuLink = (menu) => {
+    if (menu === '1') {
+      setActiveMenu1(!activeMenu1);
+      setActiveMenu2(false);
+    } else if (menu === '2') {
+      setActiveMenu1(false);
+      setActiveMenu2(!activeMenu2);
+    }
+  };
+
   return (
     <div className="sub sub02-1-1">
       <div className="sub-top">
@@ -24,9 +39,11 @@ const EvchargeForm = () => {
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
-            <li className="link">
-              <NavLink to="">사업영역</NavLink>
-              <ul className="links">
+            <li className={classnames('link', { show: activeMenu1 })}>
+              <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
+                사업영역
+              </NavLink>
+              <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
                   <NavLink to="/company/lselink">회사소개</NavLink>
                 </li>
@@ -52,9 +69,11 @@ const EvchargeForm = () => {
                 </li>
               </ul>
             </li>
-            <li className="on link">
-              <NavLink to="">전기차 충전사업</NavLink>
-              <ul className="links">
+            <li className={classnames('on link', { show: activeMenu2 })}>
+              <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
+                전기차 충전사업
+              </NavLink>
+              <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
                   <NavLink to="/business/e-link/evcharge" className="on">
                     전기차 충전사업
@@ -75,7 +94,9 @@ const EvchargeForm = () => {
         <div className="nav-slide">
           <ul className="swiper-wrapper">
             <li className="swiper-slide on">
-              <NavLink to="/business/e-link/evcharge">전기차 충전</NavLink>
+              <NavLink to="/business/e-link/evcharge" className="on">
+                전기차 충전
+              </NavLink>
             </li>
             <li className="swiper-slide">
               <NavLink to="/business/e-link/control">관제시스템 구축</NavLink>

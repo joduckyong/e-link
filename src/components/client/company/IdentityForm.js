@@ -1,16 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { downloadFile } from 'common/download';
 import AOS from 'aos';
+import classnames from 'classnames';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const IdentityForm = () => {
+  const [activeMenu1, setActiveMenu1] = useState(false);
+  const [activeMenu2, setActiveMenu2] = useState(false);
+
   useEffect(() => {
     AOS.init();
   });
+
+  const onClickMenuLink = (menu) => {
+    if (menu === '1') {
+      setActiveMenu1(!activeMenu1);
+      setActiveMenu2(false);
+    } else if (menu === '2') {
+      setActiveMenu1(false);
+      setActiveMenu2(!activeMenu2);
+    }
+  };
 
   return (
     <div className="sub sub01-4">
@@ -26,9 +40,11 @@ const IdentityForm = () => {
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
-            <li className="link">
-              <NavLink to="">회사소개</NavLink>
-              <ul className="links">
+            <li className={classnames('link', { show: activeMenu1 })}>
+              <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
+                회사소개
+              </NavLink>
+              <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
                   <NavLink to="/company/lselink" classNameName="on">
                     회사소개
@@ -54,9 +70,11 @@ const IdentityForm = () => {
                 </li>
               </ul>
             </li>
-            <li className="on link">
-              <NavLink to="">CI·BI</NavLink>
-              <ul className="links">
+            <li className={classnames('on link', { show: activeMenu2 })}>
+              <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
+                CI·BI
+              </NavLink>
+              <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
                   <NavLink to="/company/lselink">LS E-Link</NavLink>
                 </li>
@@ -67,7 +85,7 @@ const IdentityForm = () => {
                   <NavLink to="/company/history">연혁</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/company/identity" classNameName="on">
+                  <NavLink to="/company/identity" className="on">
                     CI·BI
                   </NavLink>
                 </li>
