@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { downloadFile } from 'common/download';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'swiper/css';
@@ -119,9 +120,9 @@ const IdentityForm = () => {
                 LS CI 매뉴얼을 기반으로, E1의 Orange 컬러를 혼합하여
                 <br className="pc-block" />
                 양사 파트너십 이미지를 반영하였습니다.
-                <NavLink to="/img/download/CI.zip" className="btn-down">
+                <button className="btn-down" onClick={() => downloadFile('CI.zip', 'CI.zip')}>
                   다운로드
-                </NavLink>
+                </button>
               </p>
               <div className="represt">
                 <div className="img check-img">
@@ -159,9 +160,9 @@ const IdentityForm = () => {
                 E는 에너지(Energy)와 전기(Electricity)의 중의적의미를,
                 <br className="pc-block" />
                 Link는 전기와 관련한 LS의 모든 기술력이 연결된다는 의미가 결합 되었습니다.
-                <NavLink to="/img/download/Wordmark.zip" className="btn-down">
+                <button className="btn-down" onClick={() => downloadFile('Wordmark.zip', 'Wordmark.zip')}>
                   다운로드
-                </NavLink>
+                </button>
               </p>
               <div className="wordmark-img">
                 <div>
