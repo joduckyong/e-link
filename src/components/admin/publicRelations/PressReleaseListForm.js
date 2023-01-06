@@ -126,7 +126,7 @@ const PressReleaseListForm = () => {
                   <td>{list.rnum}</td>
                   <td className="pl40">
                     <div className="shape-150">
-                      <ViewImage fileNm={list.thumbNm} />
+                      <ViewImage fileNm={list.thumbNm}/>
                     </div>
                   </td>
                   <td className="tal pl40">
