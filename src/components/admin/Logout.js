@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { getCookieToken, removeCookieToken } from '../../storage/Cookie';
+import { removeCookieToken } from '../../storage/Cookie';
 import { DELETE_TOKEN } from '../../store/Auth';
 // import { logoutUser } from '../../api/Users';
 

@@ -10,6 +10,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Modal from './popup/Modal';
+// import MainMp4 from '/img/video/main.mp4';
 
 SwiperCore.use([Navigation, Pagination]);
 gsap.registerPlugin(ScrollTrigger);
@@ -21,7 +22,7 @@ const MainForm = () => {
   const [scrollCur, setScrollCur] = useState(0);
   const scrollRef = useRef();
   const scrollStyleChange = useRef();
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const closeModal = () => {
     setModalVisible(false);
@@ -82,7 +83,7 @@ const MainForm = () => {
               <span>for tomorrow</span>
             </h1>
             <div className="search" data-aos="fade-up" data-aos-duration="1000">
-              <div className="input">
+              <div class="input">
                 <input type="text" placeholder="전기차충전소 찾기" />
                 <button>
                   <img src="/img/main/ico-search.svg" alt="검색" />
@@ -96,8 +97,8 @@ const MainForm = () => {
             </div>
           </div>
           <div className="video-wrap">
-            <video poster="/resources/front/ko/video/main-visual.jpg" autoPlay muted loop playsInline>
-              <source src="http://thon.sibizi.me/e-link/html/video/main.mov" type="video/quicktime" />
+            <video poster="" autoplay="" muted="" loop="" playsinline="">
+              <source src="/video/main.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
@@ -505,19 +506,19 @@ const MainForm = () => {
                 <br />
                 함께 성장할 인재를 기다립니다.
               </div>
-              <NavLink to="" className="more" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+              <NavLink to="/recruit/posting" className="more" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
                 VIEW MORE
               </NavLink>
             </div>
             <ul>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="700">
-                <NavLink to="">
+                <NavLink to="/recruit/people">
                   <i></i>
                   인재상
                 </NavLink>
               </li>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="700">
-                <NavLink to="">
+                <NavLink to="/recruit/benefits">
                   <i></i>
                   복리후생
                 </NavLink>
