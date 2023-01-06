@@ -102,9 +102,6 @@ const BusinessplaceForm = () => {
             <div className="img" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
               <img src="/img/sub/company.jpg" alt="" />
             </div>
-            <NavLink to="" className="show-map" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-              지도보기
-            </NavLink>
           </div>
         </div>
       </div>
