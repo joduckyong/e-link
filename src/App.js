@@ -10,6 +10,11 @@ import PopupAddPage from './pages/admin/main/PopupAddPage';
 import PopupModPage from './pages/admin/main/PopupModPage';
 import PopupInfoPage from './pages/admin/main/PopupInfoPage';
 
+import FinancialPage from './pages/admin/investInfo/FinancialPage';
+import FinancialAddPage from './pages/admin/investInfo/FinancialAddPage';
+import FinancialModPage from './pages/admin/investInfo/FinancialModPage';
+import FinancialInfoPage from './pages/admin/investInfo/FinancialInfoPage';
+
 import OfficialNoticePage from './pages/admin/investInfo/OfficialNoticePage';
 
 import AnnouncePage from './pages/admin/investInfo/AnnouncePage';
@@ -57,7 +62,7 @@ import RenewablePage from './pages/client/business/renewable/RenewablePage';
 
 /* 투자정보 */
 import ManagementPage from './pages/client/investment/ManagementPage';
-import FinancialPage from './pages/client/investment/FinancialPage';
+import ClientFinancialPage from './pages/client/investment/FinancialPage';
 import CreditPage from './pages/client/investment/CreditPage';
 import InvAnnouncePage from './pages/client/investment/AnnouncePage';
 
@@ -86,6 +91,10 @@ const App = () => {
         <Route path="/admin/main/popupMod/:id" element={<PopupModPage />} />
         <Route path="/admin/main/popupInfo/:id" element={<PopupInfoPage />} />
         <Route path="/admin/investInfo/officialNotice" element={<OfficialNoticePage />} />
+        <Route path="/admin/investInfo/financial" element={<FinancialPage />} />
+        <Route path="/admin/investInfo/financialAdd" element={<FinancialAddPage />} />
+        <Route path="/admin/investInfo/financialMod/:id" element={<FinancialModPage />} />
+        <Route path="/admin/investInfo/financialInfo/:id" element={<FinancialInfoPage />} />
         <Route path="/admin/investInfo/announce" element={<AnnouncePage />} />
         <Route path="/admin/investInfo/announceAdd" element={<AnnounceAddPage />} />
         <Route path="/admin/investInfo/announceMod/:id" element={<AnnounceModPage />} />
@@ -122,7 +131,7 @@ const App = () => {
         <Route path="/business/renewable/renewable" element={<RenewablePage />} />
 
         <Route path="/investment/management" element={<ManagementPage />} />
-        <Route path="/investment/financial" element={<FinancialPage />} />
+        <Route path="/investment/financial" element={<ClientFinancialPage />} />
         <Route path="/investment/credit" element={<CreditPage />} />
         <Route path="/investment/announce" element={<InvAnnouncePage />} />
 
