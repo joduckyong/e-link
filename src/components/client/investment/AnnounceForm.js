@@ -1,15 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectClientBoard } from 'store/boardReducer';
 import AOS from 'aos';
 import classnames from 'classnames';
+import Pagination from 'react-js-pagination';
 
 const AnnounceForm = () => {
+  const dispatch = useDispatch();
+  const boardList = useSelector((state) => state.boardReducer);
+  // 검색키워드
+  const [searchKeyword, setSearchKeyword] = useState(null);
+
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
+  // 페이징 값
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     AOS.init();
   });
+
+  useEffect(() => {
+    const newList = { boardId: 'ANN', pageIndex: page, searchKeyword: null };
+    dispatch(selectClientBoard(newList));
+  }, [dispatch, page]);
+
+  // 페이징
+  const pageClick = (page) => {
+    setPage(page);
+  };
+
+  // 검색
+  const onSearch = (page) => {
+    const newList = { boardId: 'ANN', pageIndex: page, searchKeyword: searchKeyword };
+    dispatch(selectClientBoard(newList));
+  };
 
   const onClickMenuLink = (menu) => {
     if (menu === '1') {
@@ -94,80 +120,35 @@ const AnnounceForm = () => {
         <div className="wrap">
           <div className="list-top">
             <p className="t-ver">
-              Total <strong>59</strong> / 5 Page
+              Total <strong>{boardList.totalCount}</strong> / {page} Page
             </p>
             <select name="" id="">
               <option value="">2022</option>
             </select>
           </div>
           <ul className="con3-list-box">
-            <li>
-              <NavLink to="">
-                <div className="list-num">
-                  <span>No.14</span>2022-11-30
-                </div>
-                <div className="tit-wrap">제 1기 정기 주주총회 소집 공고</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="">
-                <div className="list-num">
-                  <span>No.14</span>2022-11-30
-                </div>
-                <div className="tit-wrap">제 1기 정기 주주총회 소집 공고</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="">
-                <div className="list-num">
-                  <span>No.14</span>2022-11-30
-                </div>
-                <div className="tit-wrap">제 1기 정기 주주총회 소집 공고</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="">
-                <div className="list-num">
-                  <span>No.14</span>2022-11-30
-                </div>
-                <div className="tit-wrap">제 1기 정기 주주총회 소집 공고</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="">
-                <div className="list-num">
-                  <span>No.14</span>2022-11-30
-                </div>
-                <div className="tit-wrap">제 1기 정기 주주총회 소집 공고</div>
-              </NavLink>
-            </li>
+            {boardList.data.map((list, index) => (
+              <li key={index}>
+                <NavLink to={`/investment/announce/${list.boardId}`}>
+                  <div className="list-num">
+                    <span>No.{list.rnum}</span>
+                    {list.createdDatetime}
+                  </div>
+                  <div className="tit-wrap">{list.boardTitle}</div>
+                </NavLink>
+              </li>
+            ))}
           </ul>
           <div className="paging">
-            <NavLink to="" className="prev-btn">
-              <i></i>
-              <span className="text_blind">이전</span>
-            </NavLink>
-            <ul>
-              <li className="current">
-                <NavLink to="">1</NavLink>
-              </li>
-              <li>
-                <NavLink to="">2</NavLink>
-              </li>
-              <li>
-                <NavLink to="">3</NavLink>
-              </li>
-              <li>
-                <NavLink to="">4</NavLink>
-              </li>
-              <li>
-                <NavLink to="">5</NavLink>
-              </li>
-            </ul>
-            <NavLink to="" className="next-btn">
-              <i></i>
-              <span className="text_blind">다음</span>
-            </NavLink>
+            <Pagination
+              activePage={page}
+              itemsCountPerPage={10}
+              totalItemsCount={boardList.totalCount}
+              pageRangeDisplayed={10}
+              prevPageText={'‹'}
+              nextPageText={'›'}
+              onChange={pageClick}
+            />
           </div>
         </div>
       </div>

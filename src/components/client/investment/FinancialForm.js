@@ -1,15 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectClientBoard } from 'store/boardReducer';
 import AOS from 'aos';
 import classnames from 'classnames';
+import Pagination from 'react-js-pagination';
 
 const FinancialForm = () => {
+  const dispatch = useDispatch();
+  const boardList = useSelector((state) => state.boardReducer);
+  // 검색키워드
+  const [searchKeyword, setSearchKeyword] = useState(null);
+
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
+  // 페이징 값
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     AOS.init();
   });
+
+  useEffect(() => {
+    const newList = { boardId: 'FIN', pageIndex: page, searchKeyword: null };
+    dispatch(selectClientBoard(newList));
+  }, [dispatch, page]);
+
+  // 페이징
+  const pageClick = (page) => {
+    setPage(page);
+  };
+
+  // 검색
+  const onSearch = (page) => {
+    const newList = { boardId: 'FIN', pageIndex: page, searchKeyword: searchKeyword };
+    dispatch(selectClientBoard(newList));
+  };
 
   const onClickMenuLink = (menu) => {
     if (menu === '1') {
@@ -90,149 +116,39 @@ const FinancialForm = () => {
         </div>
       </div>
 
-      <div className="content pt0">
-        <div className="tab-list" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
-          <ul>
-            <li className="on">
-              <NavLink to="">별도</NavLink>
-            </li>
-            <li>
-              <NavLink to="">연결</NavLink>
-            </li>
-          </ul>
-        </div>
+      <div className="content">
         <div className="wrap">
-          <div className="gh-boxwrap">
-            <div className="gh-box" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
-              <div className="con3-tit">매출액</div>
-              <img src="../img/sub/con3-graph1.jpg" alt="" />
-            </div>
-            <div className="gh-box" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
-              <div className="con3-tit">영업이익</div>
-              <img src="../img/sub/con3-graph1.jpg" alt="" />
-            </div>
-            <div className="gh-box" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
-              <div className="con3-tit">단기순이익</div>
-              <img src="../img/sub/con3-graph1.jpg" alt="" />
-            </div>
+          <div className="list-top">
+            <p className="t-ver">
+              Total <strong>{boardList.totalCount}</strong> / {page} Page
+            </p>
+            <select name="" id="">
+              <option value="">2022</option>
+            </select>
           </div>
-          <div className="con3-tit" data-aos="fade-right" data-aos-duration="1500" data-aos-once="true">
-            요약 재무상태표
-          </div>
-          <div className="tb-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
-            <span className="unit">단위 : 백만원</span>
-            <div className="scroll">
-              <table>
-                <thead>
-                  <tr>
-                    <th>구성</th>
-                    <th>2021</th>
-                    <th>2022</th>
-                    <th>2023</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th>유동자산</th>
-                    <td>358,090</td>
-                    <td>358,090</td>
-                    <td>358,090</td>
-                  </tr>
-                  <tr>
-                    <th>비유동자산</th>
-                    <td>245,932</td>
-                    <td>245,932</td>
-                    <td>245,932</td>
-                  </tr>
-                  <tr className="all">
-                    <th>총계</th>
-                    <td>604,022</td>
-                    <td>604,022</td>
-                    <td>604,022</td>
-                  </tr>
-                  <tr>
-                    <th>유동부채</th>
-                    <td>213,479</td>
-                    <td>213,479</td>
-                    <td>213,479</td>
-                  </tr>
-                  <tr>
-                    <th>비유동부채</th>
-                    <td>123,323</td>
-                    <td>123,323</td>
-                    <td>123,323</td>
-                  </tr>
-                  <tr className="all">
-                    <th>부채총계</th>
-                    <td>336,802</td>
-                    <td>336,802</td>
-                    <td>336,802</td>
-                  </tr>
-                  <tr>
-                    <th>자본금</th>
-                    <td>20,802</td>
-                    <td>20,802</td>
-                    <td>20,802</td>
-                  </tr>
-                  <tr className="all">
-                    <th>자본총계</th>
-                    <td>267,220</td>
-                    <td>267,220</td>
-                    <td>267,220</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div className="con3-tit" data-aos="fade-right" data-aos-duration="1500" data-aos-once="true">
-            요약 손익계약서
-          </div>
-          <div className="tb-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
-            <span className="unit">단위 : 백만원</span>
-            <div className="scroll">
-              <table>
-                <thead>
-                  <tr>
-                    <th>구성</th>
-                    <th>2021</th>
-                    <th>2022</th>
-                    <th>2023</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th>매출액</th>
-                    <td>358,090</td>
-                    <td>358,090</td>
-                    <td>358,090</td>
-                  </tr>
-                  <tr>
-                    <th>매출총이익</th>
-                    <td>245,932</td>
-                    <td>245,932</td>
-                    <td>245,932</td>
-                  </tr>
-                  <tr>
-                    <th>영업이익</th>
-                    <td>604,022</td>
-                    <td>604,022</td>
-                    <td>604,022</td>
-                  </tr>
-                  <tr>
-                    <th>세전이익</th>
-                    <td>213,479</td>
-                    <td>213,479</td>
-                    <td>213,479</td>
-                  </tr>
-                  <tr>
-                    <th>당기순이익</th>
-                    <td>123,323</td>
-                    <td>123,323</td>
-                    <td>123,323</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <ul className="con3-list-box">
+            {boardList.data.map((list, index) => (
+              <li key={index}>
+                <NavLink to={`/investment/financial/${list.boardId}`}>
+                  <div className="list-num">
+                    <span>No.{list.rnum}</span>
+                    {list.createdDatetime}
+                  </div>
+                  <div className="tit-wrap">{list.boardTitle}</div>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          <div className="paging">
+            <Pagination
+              activePage={page}
+              itemsCountPerPage={10}
+              totalItemsCount={boardList.totalCount}
+              pageRangeDisplayed={10}
+              prevPageText={'‹'}
+              nextPageText={'›'}
+              onChange={pageClick}
+            />
           </div>
         </div>
       </div>
