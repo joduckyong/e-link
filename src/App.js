@@ -136,9 +136,9 @@ const App = () => {
         <Route path="/investment/announce" element={<InvAnnouncePage />} />
 
         <Route path="/pr/press-list" element={<PresslistPage />} />
-        <Route path="/pr/press-view" element={<PressviewPage />} />
+        <Route path="/pr/press-view/:id" element={<PressviewPage />} />
         <Route path="/pr/media-list" element={<MedialistPage />} />
-        <Route path="/pr/media-view" element={<MediaviewPage />} />
+        <Route path="/pr/media-view/:id" element={<MediaviewPage />} />
 
         <Route path="/recruit/people" element={<PeoplePage />} />
         <Route path="/recruit/benefits" element={<BenefitsPage />} />

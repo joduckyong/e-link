@@ -157,12 +157,18 @@ export const deleteBoardIds = createAsyncThunk('DEL_BOARD_IDS', async (newList) 
 export const selectClientBoard = createAsyncThunk('CLIENT_LIST_BOARD', async (newList) => {
 
   let param = `${newList.boardId}/${newList.pageIndex}`;
+  let keyWord = newList.searchKeyword;
   let boardType = newList.boardType;
-  if (boardType) {
-    param += `/${boardType}`;
+  if (keyWord) {
+    param += `/${keyWord}`;
+  }
+  if (!boardType) {
+    boardType = '';
   }
 
-  const response = await axios.get(`${serverUrl}/api/client/board/${param}`);
+  console.log(param)
+
+  const response = await axios.get(`${serverUrl}/api/client/board/${param}?boardType=${boardType}`);
   return response.data;
 });
 

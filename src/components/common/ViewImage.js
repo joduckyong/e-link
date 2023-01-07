@@ -5,6 +5,10 @@ import { getCookieToken } from '../../storage/Cookie';
 const ViewImage = ({ fileNm, width, height }) => {
   const [objectUrl, setObjectUrl] = useState('');
   const url = `${serverUrl}/api/file/image/${fileNm}`;
+  const style = {
+    maxWidth: '100%',
+    height: 'auto'
+  }
 
   useEffect(() => {
     // console.log('fileNm : ' + fileNm);
@@ -32,7 +36,7 @@ const ViewImage = ({ fileNm, width, height }) => {
     }
   }, [fileNm, url]);
 
-  return fileNm !== null && <img src={objectUrl} alt="" width={width} height={height} />;
+  return fileNm !== null && <img src={objectUrl} style={style} alt="" />;
 };
 
 export default ViewImage;

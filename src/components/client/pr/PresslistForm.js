@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectClientBoard } from 'store/boardReducer';
+import Pagination from 'react-js-pagination';
+import ViewImage from 'components/common/ViewImage';
 import AOS from 'aos';
 import classnames from 'classnames';
 
 const PresslistForm = () => {
+
+    const dispatch = useDispatch();
+    const boardList = useSelector((state) => state.boardReducer.data);
+    const [searchKeyword, setSearchKeyword] = useState(null);
+    const totalCount = useSelector((state) => state.boardReducer.totalCount);
+    const [page, setPage] = useState(1);
 
     const [activeMenu1, setActiveMenu1] = useState(false);
     const [activeMenu2, setActiveMenu2] = useState(false);
@@ -11,6 +21,27 @@ const PresslistForm = () => {
     useEffect(() => {
         AOS.init();
     });
+
+    useEffect(() => {
+        const newList = { boardId: 'PRE', pageIndex: page };
+            dispatch(selectClientBoard(newList));
+        }, [dispatch, page]);
+        
+    const pageClick = (page) => {
+        setPage(page);
+        onSearch(page);
+    };
+    
+    const onSearch = (page) => {
+        const newList = { boardId: 'PRE', pageIndex: page, searchKeyword: searchKeyword };
+        dispatch(selectClientBoard(newList));
+    };
+
+    const onKeyPress = (e) => {
+        if (e.key === 'Enter') {
+          onSearch(0);
+        }
+    };
 
     const onClickMenuLink = (menu) => {
         if(menu === '1'){
@@ -57,64 +88,46 @@ const PresslistForm = () => {
             <div className="wrap">
                 <div className="list-top">
                     <p className="t-ver">
-                        Total <strong>59</strong> / 5 Page
+                        Total <strong>{totalCount}</strong> / {Math.ceil(totalCount/10)} Page
                     </p>
                     <div className="sh-box">
-                        <input type="text" />
-                        <button><img src="../../img/common/ico-search.svg" alt="" /></button>
+                        <input
+                            type="text"
+                            onChange={(e) => setSearchKeyword(e.target.value)}
+                            value={searchKeyword || ''}
+                            onKeyPress={onKeyPress}
+                        />
+                        <button onClick={() => onSearch(0)}><img src="../../img/common/ico-search.svg" alt="" /></button>
                     </div>
                 </div>
                 <ul className="con4-list-box">
-                    <li>
-                        <NavLink to="">
-                            <div className="img"><img src="../../img/sub/sub04-1-img1.jpg" alt="" /></div>
-                            <div className="text">
-                                <div className="list-num"><span>No.14</span>2022-11-30</div>
-                                <div className="tit-wrap">제 1기 정기 주주총회 소집 공고</div>
-                                <p>
-                                    LS그룹(회장 구자은)이 EV 충전 신규 법인 설립으로 전기차 사업에 드라이브를 걸고 있다. 
-                                    LS의 지주회사인 ㈜LS는 ‘EV 충전 인프라 구축과 운영 사업 개발’을 위해 신규 법인 LS E-Link(엘에스이링크, 대표 김대근)를 E1과 ..
-                                </p>
-                            </div>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="">
-                            <div className="img"><img src="../../img/sub/sub04-1-img1.jpg" alt="" /></div>
-                            <div className="text">
-                                <div className="list-num"><span>No.14</span>2022-11-30</div>
-                                <div className="tit-wrap">제 1기 정기 주주총회 소집 공고</div>
-                                <p>
-                                    LS그룹(회장 구자은)이 EV 충전 신규 법인 설립으로 전기차 사업에 드라이브를 걸고 있다. 
-                                    LS의 지주회사인 ㈜LS는 ‘EV 충전 인프라 구축과 운영 사업 개발’을 위해 신규 법인 LS E-Link(엘에스이링크, 대표 김대근)를 E1과 ..
-                                </p>
-                            </div>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="">
-                            <div className="img"><img src="../../img/sub/sub04-1-img1.jpg" alt="" /></div>
-                            <div className="text">
-                                <div className="list-num"><span>No.14</span>2022-11-30</div>
-                                <div className="tit-wrap">제 1기 정기 주주총회 소집 공고</div>
-                                <p>
-                                    LS그룹(회장 구자은)이 EV 충전 신규 법인 설립으로 전기차 사업에 드라이브를 걸고 있다. 
-                                    LS의 지주회사인 ㈜LS는 ‘EV 충전 인프라 구축과 운영 사업 개발’을 위해 신규 법인 LS E-Link(엘에스이링크, 대표 김대근)를 E1과 ..
-                                </p>
-                            </div>
+                    {boardList.map((list, index) => (
+                        <li>
+                            <NavLink to={`/pr/press-view/${list.boardId}`}>
+                                <div className="img">
+                                    <ViewImage fileNm={list.thumbNm}/>
+                                </div>
+                                <div className="text">
+                                    <div className="list-num"><span>No.{(totalCount+1)-list.rnum}</span>{list.createdDatetime}</div>
+                                    <div className="tit-wrap">{list.boardTitle}</div>
+                                    <p>
+                                        {list.boardContents}
+                                    </p>
+                                </div>
                             </NavLink>
                         </li>
+                    ))}
                     </ul>
                     <div className="paging">
-                        <NavLink to="" className="prev-btn"><i></i><span className="text_blind">이전</span></NavLink>
-                        <ul>
-                            <li className="current"><NavLink to="">1</NavLink></li>
-                            <li><NavLink to="">2</NavLink></li>
-                            <li><NavLink to="">3</NavLink></li>
-                            <li><NavLink to="">4</NavLink></li>
-                            <li><NavLink to="">5</NavLink></li>
-                        </ul>
-                        <NavLink to="" className="next-btn"><i></i><span className="text_blind">다음</span></NavLink>
+                        <Pagination
+                            activePage={page}
+                            itemsCountPerPage={10}
+                            totalItemsCount={totalCount}
+                            pageRangeDisplayed={10}
+                            prevPageText={'‹'}
+                            nextPageText={'›'}
+                            onChange={pageClick}
+                        />
                     </div>
                 </div>
             </div>
