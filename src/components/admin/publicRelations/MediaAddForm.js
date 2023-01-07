@@ -6,7 +6,7 @@ import { insertBoard } from 'store/boardReducer';
 const MediaAddForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
-    const [url, setUrl] = useState('http://');
+    const [url, setUrl] = useState('');
     const [fileName, setFileName] = useState('선택된 파일 없음');
 
     const fileRef = useRef();

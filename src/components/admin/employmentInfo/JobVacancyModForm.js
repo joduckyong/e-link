@@ -2,6 +2,19 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { ko } from 'date-fns/esm/locale';
+import moment from 'moment';
+
+export function changeFormat(date, format) {
+    //moment 변환을 함수로 미리 빼 두어서 사용.
+    if (moment(date).isValid()) {
+      return moment(date).format(format);
+    } else {
+      return null;
+    }
+  }
 
 const AddFileBox = ({fileName, filesRef, onUploadFile, fileCountList}) => {
     
@@ -27,6 +40,9 @@ const JobVacancyModForm = () => {
     const [fileCountList, setFileCountList] = useState([0]);
     const [storedFileName, setStoredFileName] = useState({});
     const [storedFileArr, setStoredFileArr] = useState([]);
+    const [url, setUrl] = useState('');
+    const [boardStartDatetime, setBoardStartDatetime] = useState();
+    const [boardEndDatetime, setBoardEndDatetime] = useState();
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -43,7 +59,13 @@ const JobVacancyModForm = () => {
         setBoardTitle(boardInfo.boardTitle); 
         setBoardContents(boardInfo.boardContents);
         setBoardType(boardInfo.boardType);
-        
+        setUrl(boardInfo.url);
+        if (boardInfo.boardStartDatetime) {
+            setBoardStartDatetime(new Date(boardInfo.boardStartDatetime));
+          }
+          if (boardInfo.boardEndDatetime) {
+            setBoardEndDatetime(new Date(boardInfo.boardEndDatetime));
+          }
     }, [boardInfo]);
 
     useEffect(() => {
@@ -80,8 +102,27 @@ const JobVacancyModForm = () => {
             alert('내용을 입력하세요');
             return;
         }
+        if (!boardStartDatetime) {
+            alert('시작 날짜를 입력하세요');
+            return;
+        }
+        if (!boardEndDatetime) {
+            alert('종료 날짜를 입력하세요');
+            return;
+        }
+
         if (window.confirm('수정 하시겠습니까?')) {
-            const newList = { boardId: id, boardTitle: boardTitle, boardContents: boardContents, boardType: boardType, ids: storedFileArr, files: files };
+            const newList = { 
+                boardId: id, 
+                boardTitle: boardTitle, 
+                boardContents: boardContents, 
+                boardType: boardType, 
+                ids: storedFileArr,
+                url: url,
+                boardStartDatetime: changeFormat(boardStartDatetime, 'yyyy-MM-DD HH:mm:ss') || '',
+                boardEndDatetime: changeFormat(boardEndDatetime, 'yyyy-MM-DD HH:mm:ss') || '', 
+                files: files 
+            };
             await dispatch(updateBoard(newList));
             return navigate('/admin/employmentInfo/jobVacancy');
         }
@@ -153,6 +194,16 @@ const JobVacancyModForm = () => {
                             <span className="rdimg"></span>인턴
                         </label>
                     </div>
+                    <div className="pop-show" style={{marginBottom: 20}}>
+                        <div className="s-tit">접수기간</div>
+                        <span style={{width:'40%'}}>
+                            <DatePicker locale={ko} dateFormat="yyyy-MM-dd HH:mm:ss" showTimeSelect selected={boardStartDatetime} onChange={(date) => setBoardStartDatetime(date)} />
+                        </span>
+                        -
+                        <span style={{width:'40%'}}>
+                            <DatePicker locale={ko} dateFormat="yyyy-MM-dd HH:mm:ss" showTimeSelect selected={boardEndDatetime} onChange={(date) => setBoardEndDatetime(date)} />
+                        </span>
+                    </div>
                     <div className="ed-tit">
                         <div className="s-tit">제목</div>
                         <input 
@@ -180,6 +231,14 @@ const JobVacancyModForm = () => {
                             <AddFileBox fileName={fileName} filesRef={filesRef} onUploadFile={onUploadFile} fileCountList={fileCountList}/>
                             <Link to="" className="btn-add" onClick={onAddFileBox}><img src="/img/admin/ico-plus.svg" alt="" /></Link>
                         </div>
+                    </div>
+                    <div className="ed-youtube">
+                        <div className="s-tit">지원서 링크</div>
+                        <input 
+                            type="text" 
+                            name="url" 
+                            onChange={(e) => setUrl(e.target.value)}
+                            value={url}/>
                     </div>
                 </div>
             </div>

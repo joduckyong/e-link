@@ -6,7 +6,7 @@ import { selectBoardInfo, updateBoard } from 'store/boardReducer';
 const MediaModForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
-    const [url, setUrl] = useState('http://');
+    const [url, setUrl] = useState('');
     const [fileName, setFileName] = useState('선택된 파일 없음');
     const [storedFileName, setStoredFileName] = useState('');
     const [storedFileArr, setStoredFileArr] = useState([]); 
