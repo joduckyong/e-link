@@ -1,41 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClientBoard } from 'store/boardReducer';
+import { selectClientBoardInfo } from 'store/boardReducer';
 import AOS from 'aos';
 import classnames from 'classnames';
-import Pagination from 'react-js-pagination';
+import { downloadFile } from 'common/download';
 
-const FinancialForm = () => {
+const FinancialviewForm = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
-  const boardList = useSelector((state) => state.boardReducer);
-  // 검색키워드
-  const [searchKeyword, setSearchKeyword] = useState(null);
+  const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
+  const createdDatetime = useSelector((state) => state.boardReducer.dataInfo.createdDatetime);
+  const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
+  const fileList = useSelector((state) => state.boardReducer.files);
 
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
-  // 페이징 값
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     AOS.init();
   });
 
   useEffect(() => {
-    const newList = { boardId: 'FIN', pageIndex: page, searchKeyword: null };
-    dispatch(selectClientBoard(newList));
-  }, [dispatch, page]);
-
-  // 페이징
-  const pageClick = (page) => {
-    setPage(page);
-  };
-
-  // 검색
-  const onSearch = (page) => {
-    const newList = { boardId: 'FIN', pageIndex: page, searchKeyword: searchKeyword };
-    dispatch(selectClientBoard(newList));
-  };
+    dispatch(selectClientBoardInfo(id));
+  }, [dispatch, id]);
 
   const onClickMenuLink = (menu) => {
     if (menu === '1') {
@@ -48,14 +36,14 @@ const FinancialForm = () => {
   };
 
   return (
-    <div className="sub sub03">
+    <div className="sub sub04">
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             재무정보
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -118,37 +106,36 @@ const FinancialForm = () => {
 
       <div className="content">
         <div className="wrap">
-          <div className="list-top">
-            <p className="t-ver">
-              Total <strong>{boardList.totalCount}</strong> / {page} Page
-            </p>
-            <select name="" id="">
-              <option value="">2022</option>
-            </select>
-          </div>
-          <ul className="con3-list-box">
-            {boardList.data.map((list, index) => (
-              <li key={index}>
-                <NavLink to={`/investment/financial-view/${list.boardId}`}>
+          <div className="con4-list-view">
+            <h3 className="tit">{boardTitle}</h3>
+            <div className="list-num">{createdDatetime}</div>
+            <div className="view-area">
+              <p className="mt30">{boardContents}</p>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div className="file">
+              {fileList.map((list, index) => (
+                <button className="btn-down" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}>
                   <div className="list-num">
-                    <span>No.{list.rnum}</span>
-                    {list.createdDatetime}
+                    {list.fileOriginNm}
+                    {fileList.length !== index + 1 ? ' , ' : ''}
                   </div>
-                  <div className="tit-wrap">{list.boardTitle}</div>
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-          <div className="paging">
-            <Pagination
-              activePage={page}
-              itemsCountPerPage={10}
-              totalItemsCount={boardList.totalCount}
-              pageRangeDisplayed={10}
-              prevPageText={'‹'}
-              nextPageText={'›'}
-              onChange={pageClick}
-            />
+                </button>
+              ))}
+            </div>
+            <div className="view-control">
+              <NavLink to="" className="prev-btn disable">
+                이전글
+              </NavLink>
+              <NavLink to="/investment/financial" className="list-btn">
+                목록
+              </NavLink>
+              <NavLink to="" className="next-btn">
+                다음글
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
@@ -156,4 +143,4 @@ const FinancialForm = () => {
   );
 };
 
-export default FinancialForm;
+export default FinancialviewForm;

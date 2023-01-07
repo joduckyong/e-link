@@ -63,8 +63,10 @@ import RenewablePage from './pages/client/business/renewable/RenewablePage';
 /* 투자정보 */
 import ManagementPage from './pages/client/investment/ManagementPage';
 import ClientFinancialPage from './pages/client/investment/FinancialPage';
+import ClientFinancialviewPage from './pages/client/investment/FinancialviewPage';
 import CreditPage from './pages/client/investment/CreditPage';
 import InvAnnouncePage from './pages/client/investment/AnnouncePage';
+import InvAnnounceviewPage from './pages/client/investment/AnnounceviewPage';
 
 /* 흥보센터 */
 import PresslistPage from './pages/client/pr/PresslistPage';
@@ -132,8 +134,10 @@ const App = () => {
 
         <Route path="/investment/management" element={<ManagementPage />} />
         <Route path="/investment/financial" element={<ClientFinancialPage />} />
+        <Route path="/investment/financial-view/:id" element={<ClientFinancialviewPage />} />
         <Route path="/investment/credit" element={<CreditPage />} />
         <Route path="/investment/announce" element={<InvAnnouncePage />} />
+        <Route path="/investment/announce-view/:id" element={<InvAnnounceviewPage />} />
 
         <Route path="/pr/press-list" element={<PresslistPage />} />
         <Route path="/pr/press-view/:id" element={<PressviewPage />} />

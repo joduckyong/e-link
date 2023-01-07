@@ -132,7 +132,7 @@ const CreditForm = () => {
           <ul className="con3-list-box">
             {boardList.data.map((list, index) => (
               <li key={index}>
-                <NavLink to={`/investment/credit/${list.boardId}`}>
+                <NavLink to={list.url} target="_blank">
                   <div className="list-num">
                     <span>No.{list.rnum}</span>
                     {list.createdDatetime}
