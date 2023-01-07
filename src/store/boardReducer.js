@@ -50,6 +50,7 @@ export const selectBoardInfo = createAsyncThunk('INFO_BOARD', async (id) => {
 export const insertBoard = createAsyncThunk('ADD_BOARD', async (newList) => {
   const token = getCookieToken();
 
+  console.log(newList);
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
   }
@@ -166,8 +167,6 @@ export const selectClientBoard = createAsyncThunk('CLIENT_LIST_BOARD', async (ne
     boardType = '';
   }
 
-  console.log(param)
-
   const response = await axios.get(`${serverUrl}/api/client/board/${param}?boardType=${boardType}`);
   return response.data;
 });
@@ -186,6 +185,7 @@ export const boardReducer = createSlice({
     data: [],
     dataInfo: {},
     files: [],
+    prevNextData: {},
   },
   reducers: {},
   extraReducers: {
@@ -230,6 +230,7 @@ export const boardReducer = createSlice({
       message: payload.message,
       dataInfo: payload.data,
       files: payload.files,
+      prevNextData: payload.prevNextData,
     }),
   },
 });

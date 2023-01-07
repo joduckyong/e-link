@@ -10,16 +10,10 @@ const JobVacancyInfoForm = () => {
     const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
     const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
     const boardType = useSelector((state) => state.boardReducer.dataInfo.boardType);
+    const url = useSelector((state) => state.boardReducer.dataInfo.url);
+    const boardStartDatetime = useSelector((state) => state.boardReducer.dataInfo.boardStartDatetime);
+    const boardEndDatetime = useSelector((state) => state.boardReducer.dataInfo.boardEndDatetime);
     const attachList = useSelector((state) => state.boardReducer.files);
-
-    let boardTypeName = '';
-    if(boardType === '1'){
-        boardTypeName = '신입';
-    }else if(boardType === '2'){
-        boardTypeName = '경력';
-    }else if(boardType === '3'){
-        boardTypeName = '인턴';
-    }
 
     useEffect(() => {
         dispatch(selectBoardInfo(id));
@@ -54,6 +48,18 @@ const JobVacancyInfoForm = () => {
                             <span className="tit">구분</span>
                             <div className="text">{getboardType(boardType)}</div>
                         </li>
+                        <li className="pop-show">
+                            <span className="tit">접수기간</span>
+                            <div className="text">
+                                <span>
+                                    <input type="text" value={boardStartDatetime} disabled />
+                                </span>
+                                -
+                                <span>
+                                    <input type="text" value={boardEndDatetime} disabled />
+                                </span>
+                            </div>
+                        </li>
                         <li>
                             <span className="tit">제목</span>
                             <div className="text">{boardTitle}</div>
@@ -83,6 +89,16 @@ const JobVacancyInfoForm = () => {
                     </ul>
                 </div>
                 }
+                <div className="view-detail bg-white mt10">
+                    <ul>
+                        <li>
+                            <span className="tit">지원서 링크</span>
+                            <div className="text">
+                            <span>{url}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     );

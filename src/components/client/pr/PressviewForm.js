@@ -15,6 +15,8 @@ const PressviewForm = () => {
     const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
     const fileList = useSelector((state) => state.boardReducer.files);
     const thumbnailList = fileList.filter((file) => file.fileType === '1'); //썸네일
+    const prevBoardId = useSelector((state) => state.boardReducer.prevNextData.prevBoardId);
+    const nextBoardId = useSelector((state) => state.boardReducer.prevNextData.nextBoardId);
 
     const [activeMenu1, setActiveMenu1] = useState(false);
     const [activeMenu2, setActiveMenu2] = useState(false);
@@ -72,7 +74,7 @@ const PressviewForm = () => {
             <div className="wrap">
                 <div className="con4-list-view">
                     <h3 className="tit">{boardTitle}</h3>
-                    <div className="list-num"><span>No.14</span>{createdDatetime}</div>
+                    <div className="list-num">{createdDatetime}</div>
                     <div className="view-area">
                         <div className="img">
                             <ViewImage fileNm={thumbnailList.length > 0 && thumbnailList[0].fileNm}/>
@@ -82,9 +84,9 @@ const PressviewForm = () => {
                         </p>
                     </div>
                     <div className="view-control">
-                        <NavLink to="" className="prev-btn disable">이전글</NavLink>
-                        <NavLink to="" className="list-btn">목록</NavLink>
-                        <NavLink to="" className="next-btn">다음글</NavLink>
+                        <NavLink to={prevBoardId && `/pr/press-view/${prevBoardId}`} className={classnames('prev-btn', {disable: !prevBoardId})}>이전글</NavLink>
+                        <NavLink to="/pr/press-list" className="list-btn">목록</NavLink>
+                        <NavLink to={nextBoardId && `/pr/press-view/${nextBoardId}`} className={classnames('next-btn', {disable: !nextBoardId})}>다음글</NavLink>
                     </div>
                 </div>
             </div>

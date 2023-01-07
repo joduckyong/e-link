@@ -65,9 +65,13 @@ const MediaviewForm = () => {
             <div className="wrap">
                 <div className="con4-media-view">
                     <h3>2023 LS E-Link 공식 홍보영상</h3>
-                    <div className="list-num"><span>No.14</span>2022-11-30</div>
+                    <div className="list-num-wrap">
+                        <div className="list-num"><span>No.14</span>2022-11-30</div>
+                        <div className="file">2023_LS_E-Link.mp4</div> 
+                    </div>
                     <div className="view-area">
                         <img src="./../../img/sub/sub04-media-view-img.jpg" alt="" />
+                        <p class="view-txt">LS그룹(회장 구자은)이 EV 충전 신규 법인 설립으로 전기차 사업에 드라이브를 걸고 있다. LS의 지주회사인 ㈜LS는 ‘EV 충전 인프라 구축과 운영 사업 개발’을 위해 신규 법인 LS E-Link(엘에스이링크, 대표 김대근)를 E1과 공동 투자하여 설립한다고 27일 공시했다.</p>
                     </div>
                     <div className="other-media">
                         <div className="oth-tit">다른 영상</div>
