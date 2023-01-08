@@ -134,7 +134,7 @@ const MediaviewForm = () => {
                         </Swiper>
                     </div>
                     <div className="view-control">
-                        <NavLink to="" className="list-btn">목록</NavLink>
+                        <NavLink to="/pr/media-list" className="list-btn">목록</NavLink>
                     </div>
                 </div>
             </div>

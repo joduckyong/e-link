@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectClientBoard } from 'store/boardReducer';
+import Pagination from 'react-js-pagination';
 import AOS from 'aos';
 import classnames from 'classnames';
 
 const MedialistForm = () => {
+
+    const dispatch = useDispatch();
+    const boardList = useSelector((state) => state.boardReducer.data);
+    const [searchKeyword, setSearchKeyword] = useState(null);
+    const totalCount = useSelector((state) => state.boardReducer.totalCount);
+    const [page, setPage] = useState(1);
 
     const [activeMenu1, setActiveMenu1] = useState(false);
     const [activeMenu2, setActiveMenu2] = useState(false);
@@ -11,6 +20,27 @@ const MedialistForm = () => {
     useEffect(() => {
         AOS.init();
     });
+
+    useEffect(() => {
+        const newList = { boardId: 'MED', pageIndex: page };
+            dispatch(selectClientBoard(newList));
+        }, [dispatch, page]);
+        
+    const pageClick = (page) => {
+        setPage(page);
+        onSearch(page);
+    };
+    
+    const onSearch = (page) => {
+        const newList = { boardId: 'MED', pageIndex: page, searchKeyword: searchKeyword };
+        dispatch(selectClientBoard(newList));
+    };
+
+    const onKeyPress = (e) => {
+        if (e.key === 'Enter') {
+          onSearch(0);
+        }
+    };
 
     const onClickMenuLink = (menu) => {
         if(menu === '1'){
@@ -20,6 +50,16 @@ const MedialistForm = () => {
             setActiveMenu1(false);
             setActiveMenu2(!activeMenu2);
         }
+    }
+
+    const getImageUrl = (url) => {
+        let imgUrl = '';
+        if(url){
+            let param = url.indexOf('v=') > -1 ? url.substring(url.indexOf('v=')+2) : '';
+            imgUrl = 'https://img.youtube.com/vi/'+param+'/0.jpg';
+        }
+
+        return imgUrl;
     }
 
   return (
@@ -62,56 +102,48 @@ const MedialistForm = () => {
                         <div className="txt">
                             <div className="date">2022-11-30</div>
                             <div className="tit">2023 LS E-Link 공식 홍보영상</div>
-                            <NavLink to=""><img src="../img/sub/media-btn.svg" alt="" /></NavLink>
                         </div>
                     </div>
                     <div className="media-list">
                         <div className="list-top">
                             <p className="t-ver">
-                                Total <strong>59</strong> / 5 Page
+                                Total <strong>{totalCount}</strong> / {Math.ceil(totalCount/10)} Page
                             </p>
                             <div className="sh-box">
-                                <input type="text" />
-                                <button><img src="./../../img/common/ico-search.svg" alt="" /></button>
+                            <input
+                                type="text"
+                                onChange={(e) => setSearchKeyword(e.target.value)}
+                                value={searchKeyword || ''}
+                                onKeyPress={onKeyPress}
+                            />
+                                <button onClick={() => onSearch(0)}><img src="./../../img/common/ico-search.svg" alt="" /></button>
                             </div>
                         </div>
                         <ul className="">
-                            <li>
-                                <NavLink to="">
-                                    <div className="list-img">
-                                        <div className="in" style={{background: 'url(./../../img/sub/con4-media-list-img1.jpg) center no-repeat', backgroundSize: 'cover'}}></div>
-                                    </div>
-                                    <div className="list-tit">LS E-Link EV</div>
-                                    <div className="list-date">2022-11-30</div>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="">
-                                    <div className="list-img">
-                                        <div className="in" style={{background: 'url(./../../img/sub/con4-media-list-img2.jpg) center no-repeat', backgroundSize: 'cover'}}></div>
-                                    </div>
-                                    <div className="list-tit">LS E-Link EV</div>
-                                    <div className="list-date">2022-11-30</div>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="">
-                                    <div className="list-img">
-                                        <div className="in" style={{background: 'url(./../../img/sub/con4-media-list-img3.jpg) center no-repeat', backgroundSize: 'cover'}}></div>
-                                    </div>
-                                    <div className="list-tit">LS E-Link EV</div>
-                                    <div className="list-date">2022-11-30</div>
-                                </NavLink>
-                            </li>
+                            {boardList.map((list, index) => (
+                                <li>
+                                    <NavLink to={`/pr/media-view/${list.boardId}`}>
+                                        <div className="list-img">
+                                            <div className="in" style={{background: `url(${getImageUrl(list.url)}) center no-repeat`, backgroundSize: 'cover'}}>
+                                            </div>
+                                        </div>
+                                        <div className="list-tit">{list.boardTitle}</div>
+                                        <div className="list-date">{list.createdDatetime}</div>
+                                    </NavLink>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className="paging">
-                        <NavLink to="" className="prev-btn"><i></i><span className="text_blind">이전</span></NavLink>
-                        <ul>
-                            <li className="current"><NavLink to="">1</NavLink></li>
-                            <li><NavLink to="">2</NavLink></li>
-                        </ul>
-                        <NavLink to="" className="next-btn"><i></i><span className="text_blind">다음</span></NavLink>
+                        <Pagination
+                            activePage={page}
+                            itemsCountPerPage={3}
+                            totalItemsCount={totalCount}
+                            pageRangeDisplayed={10}
+                            prevPageText={'‹'}
+                            nextPageText={'›'}
+                            onChange={pageClick}
+                        />
                     </div>
                 </div>
             </div>

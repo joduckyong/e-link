@@ -71,6 +71,7 @@ import MediaviewPage from './pages/client/pr/MediaviewPage';
 import PeoplePage from './pages/client/recruit/PeoplePage';
 import BenefitsPage from './pages/client/recruit/BenefitsPage';
 import PostingPage from './pages/client/recruit/PostingPage';
+import PostingviewPage from './pages/client/recruit/PostingviewPage';
 
 /* Contact US */
 import ContactusPage from './pages/client/contactus/ContactusPage';
@@ -134,6 +135,7 @@ const App = () => {
         <Route path="/recruit/people" element={<PeoplePage />} />
         <Route path="/recruit/benefits" element={<BenefitsPage />} />
         <Route path="/recruit/posting" element={<PostingPage />} />
+        <Route path="/recruit/posting-view/:id" element={<PostingviewPage />} />
 
         <Route path="/contactus" element={<ContactusPage />} />
       </Routes>

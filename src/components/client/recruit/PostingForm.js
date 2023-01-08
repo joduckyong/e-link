@@ -5,6 +5,16 @@ import { selectClientBoard } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
 import AOS from 'aos';
 import classnames from 'classnames';
+import moment from 'moment';
+
+export function changeFormat(date, format) {
+    //moment 변환을 함수로 미리 빼 두어서 사용.
+    if (moment(date).isValid()) {
+      return moment(date).format(format);
+    } else {
+      return null;
+    }
+  }
 
 const PostingForm = () => {
 
@@ -102,10 +112,10 @@ const PostingForm = () => {
                 <ul className="hire-list">
                     {boardList.map((list, index) => (
                         <li key={index}>
-                            <NavLink to="">
+                            <NavLink to={`/recruit/posting-view/${list.boardId}`}>
                                 <div className="division">
                                     <span>{getboardType(list.boardType)}</span>
-                                    <p>2023.01.20(F) 10:00 - 2023.01.27(F) 18:00</p>
+                                    <p>{changeFormat(list.boardStartDatetime, 'yyyy-MM-DD HH:mm') || ''} - {changeFormat(list.boardEndDatetime, 'yyyy-MM-DD HH:mm') || ''}</p>
                                 </div>
                                 <div className="tit">{list.boardTitle}</div>
                             </NavLink>
