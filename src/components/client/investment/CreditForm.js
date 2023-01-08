@@ -15,11 +15,9 @@ const CreditForm = () => {
 
   const dispatch = useDispatch();
   const boardList = useSelector((state) => state.boardReducer);
-  // 검색키워드
   const [searchKeyword, setSearchKeyword] = useState(now.getFullYear());
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
-  // 페이징 값
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -49,6 +47,10 @@ const CreditForm = () => {
       setActiveMenu1(false);
       setActiveMenu2(!activeMenu2);
     }
+  };
+
+  const dartUrl = (url) => {
+    window.open(url, 'width=430,height=500,location=no,status=no,scrollbars=yes', '_blank');
   };
 
   return (
@@ -140,7 +142,7 @@ const CreditForm = () => {
           <ul className="con3-list-box">
             {boardList.data.map((list, index) => (
               <li key={index}>
-                <NavLink to={list.url} target="_blank">
+                <NavLink onClick={() => dartUrl(list.url)}>
                   <div className="list-num">
                     <span>No.{list.rnum}</span>
                     {list.createdDatetime}

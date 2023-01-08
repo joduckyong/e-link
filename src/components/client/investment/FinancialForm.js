@@ -15,12 +15,9 @@ const FinancialForm = () => {
 
   const dispatch = useDispatch();
   const boardList = useSelector((state) => state.boardReducer);
-  // 검색키워드
   const [searchKeyword, setSearchKeyword] = useState(now.getFullYear());
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
-
-  // 페이징 값
   const [page, setPage] = useState(1);
 
   useEffect(() => {
