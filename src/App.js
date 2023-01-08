@@ -43,6 +43,7 @@ import ContactUsInfoPage from './pages/admin/customerService/ContactUsInfoPage';
 /* 클라이언트 */
 
 import MainPage from './pages/MainPage';
+import ClientPopupPage from './pages/PopupPage';
 
 /* 회사소개 */
 import LselinkPage from './pages/client/company/LselinkPage';
@@ -117,6 +118,7 @@ const App = () => {
         <Route path="/admin/customerService/contactUsInfo/:id" element={<ContactUsInfoPage />} />
 
         <Route path="/" element={<MainPage />} />
+        <Route path="/popup/:id" element={<ClientPopupPage />} />
 
         <Route path="/company/lselink" element={<LselinkPage />} />
         <Route path="/company/vision" element={<VisionPage />} />

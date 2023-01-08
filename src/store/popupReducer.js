@@ -131,7 +131,13 @@ export const deletePopupIds = createAsyncThunk('DEL_POPUP_IDS', async (newList) 
 });
 
 export const selectClientPopup = createAsyncThunk('CLIENT_LIST_POPUP', async (newList) => {
-  const response = await axios.get(`${serverUrl}/api/client/popup/${newList.popupId}/${newList.pageIndex}/now`);
+  let param = `${newList.popupId}/${newList.pageIndex}`;
+  const response = await axios.get(`${serverUrl}/api/client/popup/${param}/now`);
+  return response.data;
+});
+
+export const selectClientPopupInfo = createAsyncThunk('CLIENT_INFO_POPUP', async (id) => {
+  const response = await axios.get(`${serverUrl}/api/client/popup/${id}`);
   return response.data;
 });
 
@@ -182,6 +188,13 @@ export const popupReducer = createSlice({
       message: payload.message,
       totalCount: payload.totalCount,
       data: payload.data,
+    }),
+    [selectClientPopupInfo.fulfilled]: (state, { payload }) => ({
+      ...state,
+      status: payload.status,
+      message: payload.message,
+      dataInfo: payload.data,
+      files: payload.files,
     }),
   },
 });

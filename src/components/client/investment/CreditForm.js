@@ -49,7 +49,7 @@ const CreditForm = () => {
     }
   };
 
-  const dartUrl = (url) => {
+  const dartPopup = (url) => {
     window.open(url, 'width=430,height=500,location=no,status=no,scrollbars=yes', '_blank');
   };
 
@@ -142,7 +142,7 @@ const CreditForm = () => {
           <ul className="con3-list-box">
             {boardList.data.map((list, index) => (
               <li key={index}>
-                <NavLink onClick={() => dartUrl(list.url)}>
+                <NavLink onClick={() => dartPopup(list.url)}>
                   <div className="list-num">
                     <span>No.{list.rnum}</span>
                     {list.createdDatetime}
