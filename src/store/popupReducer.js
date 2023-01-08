@@ -16,7 +16,9 @@ export const selectPopup = createAsyncThunk('LIST_POPUP', async (newList) => {
     },
   };
 
-  const response = await axios.get(`${serverUrl}/api/popup/${newList.popupId}/${newList.pageIndex}`, config);
+  let param = `${newList.popupId}/${newList.pageIndex}`;
+
+  const response = await axios.get(`${serverUrl}/api/popup/${param}`, config);
   return response.data;
 });
 

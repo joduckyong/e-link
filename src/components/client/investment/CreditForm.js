@@ -7,11 +7,16 @@ import classnames from 'classnames';
 import Pagination from 'react-js-pagination';
 
 const CreditForm = () => {
+  const now = new Date();
+  let years = [];
+  for (let y = now.getFullYear(); y >= 2022; y -= 1) {
+    years.push(y);
+  }
+
   const dispatch = useDispatch();
   const boardList = useSelector((state) => state.boardReducer);
   // 검색키워드
-  const [searchKeyword, setSearchKeyword] = useState(null);
-
+  const [searchKeyword, setSearchKeyword] = useState(now.getFullYear());
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
   // 페이징 값
@@ -22,9 +27,9 @@ const CreditForm = () => {
   });
 
   useEffect(() => {
-    const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: null };
+    const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: searchKeyword, searchCondition: 'year' };
     dispatch(selectClientBoard(newList));
-  }, [dispatch, page]);
+  }, [dispatch, page, searchKeyword]);
 
   // 페이징
   const pageClick = (page) => {
@@ -32,9 +37,8 @@ const CreditForm = () => {
   };
 
   // 검색
-  const onSearch = (page) => {
-    const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: searchKeyword };
-    dispatch(selectClientBoard(newList));
+  const handleSelect = (e) => {
+    setSearchKeyword(e.target.value);
   };
 
   const onClickMenuLink = (menu) => {
@@ -125,8 +129,12 @@ const CreditForm = () => {
             <p className="t-ver">
               Total <strong>{boardList.totalCount}</strong> / {page} Page
             </p>
-            <select name="" id="">
-              <option value="">2022</option>
+            <select onChange={handleSelect} value={searchKeyword}>
+              {years.map((item) => (
+                <option value={item} key={item}>
+                  {item}
+                </option>
+              ))}
             </select>
           </div>
           <ul className="con3-list-box">

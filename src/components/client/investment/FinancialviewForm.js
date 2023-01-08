@@ -13,6 +13,8 @@ const FinancialviewForm = () => {
   const createdDatetime = useSelector((state) => state.boardReducer.dataInfo.createdDatetime);
   const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
   const fileList = useSelector((state) => state.boardReducer.files);
+  const prevBoardId = useSelector((state) => state.boardReducer.prevNextData.prevBoardId);
+  const nextBoardId = useSelector((state) => state.boardReducer.prevNextData.nextBoardId);
 
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
@@ -126,13 +128,13 @@ const FinancialviewForm = () => {
               ))}
             </div>
             <div className="view-control">
-              <NavLink to="" className="prev-btn disable">
+              <NavLink to={prevBoardId && `/investment/financial-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
                 이전글
               </NavLink>
               <NavLink to="/investment/financial" className="list-btn">
                 목록
               </NavLink>
-              <NavLink to="" className="next-btn">
+              <NavLink to={nextBoardId && `/investment/financial-view/${nextBoardId}`} className={classnames('next-btn', { disable: !nextBoardId })}>
                 다음글
               </NavLink>
             </div>
