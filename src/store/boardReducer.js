@@ -140,7 +140,6 @@ export const deleteBoard = createAsyncThunk('DEL_BOARD', async (id) => {
 
 export const deleteBoardIds = createAsyncThunk('DEL_BOARD_IDS', async (newList) => {
   const token = getCookieToken();
-  console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
     document.location.href = loginUrl;
@@ -156,12 +155,15 @@ export const deleteBoardIds = createAsyncThunk('DEL_BOARD_IDS', async (newList) 
 });
 
 export const selectClientBoard = createAsyncThunk('CLIENT_LIST_BOARD', async (newList) => {
-
   let param = `${newList.boardId}/${newList.pageIndex}`;
   let keyWord = newList.searchKeyword;
+  let condition = newList.searchCondition;
   let boardType = newList.boardType;
   if (keyWord) {
     param += `/${keyWord}`;
+    if (condition) {
+      param += `/${condition}`;
+    }
   }
   if (!boardType) {
     boardType = '';

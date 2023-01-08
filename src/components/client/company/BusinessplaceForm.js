@@ -1,15 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
+import classnames from 'classnames';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const BusinessplaceForm = () => {
+  const [activeMenu1, setActiveMenu1] = useState(false);
+  const [activeMenu2, setActiveMenu2] = useState(false);
+
   useEffect(() => {
     AOS.init();
   });
+
+  const onClickMenuLink = (menu) => {
+    if (menu === '1') {
+      setActiveMenu1(!activeMenu1);
+      setActiveMenu2(false);
+    } else if (menu === '2') {
+      setActiveMenu1(false);
+      setActiveMenu2(!activeMenu2);
+    }
+  };
 
   return (
     <div className="sub sub01-5">
@@ -25,9 +39,11 @@ const BusinessplaceForm = () => {
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
-            <li className="link">
-              <NavLink to="">회사소개</NavLink>
-              <ul className="links">
+            <li className={classnames('link', { show: activeMenu1 })}>
+              <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
+                회사소개
+              </NavLink>
+              <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
                   <NavLink to="/company/lselink" className="on">
                     회사소개
@@ -53,9 +69,11 @@ const BusinessplaceForm = () => {
                 </li>
               </ul>
             </li>
-            <li className="on link">
-              <NavLink to="">사업장 안내</NavLink>
-              <ul className="links">
+            <li className={classnames('on link', { show: activeMenu2 })}>
+              <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
+                사업장 안내
+              </NavLink>
+              <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
                   <NavLink to="/company/lselink">LS E-Link</NavLink>
                 </li>
@@ -102,9 +120,6 @@ const BusinessplaceForm = () => {
             <div className="img" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
               <img src="/img/sub/company.jpg" alt="" />
             </div>
-            <NavLink to="" className="show-map" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-              지도보기
-            </NavLink>
           </div>
         </div>
       </div>

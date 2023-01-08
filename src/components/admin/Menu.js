@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Menu = () => {
-  const handleOnClick = useCallback((e, index) => {
-    localStorage.setItem('index', index);
+  const handleOnClick = useCallback((e, nm) => {
+    localStorage.setItem('menuNm', nm);
   }, []);
 
   return (
@@ -14,71 +14,81 @@ const Menu = () => {
           <img src="/img/common/logo.svg" alt="" />
         </h1>
         <ul className="menu-list">
-          <li className={(localStorage.getItem('index') === '0' || localStorage.getItem('index') === null) && 'on'}>
-            <NavLink to="/admin/main/popup" onClick={(e) => handleOnClick(e, 0)}>
+          <li className={(localStorage.getItem('menuNm') === 'POP' || localStorage.getItem('menuNm') === null) && 'on'}>
+            <NavLink to="/admin/main/popup" onClick={(e) => handleOnClick(e, 'POP')}>
               메인페이지
             </NavLink>
             <ul>
-              <li className={(localStorage.getItem('index') === '0' || localStorage.getItem('index') === null) && 'on'}>
-                <NavLink to="/admin/main/popup" onClick={(e) => handleOnClick(e, 0)}>
+              <li className={(localStorage.getItem('menuNm') === 'POP' || localStorage.getItem('menuNm') === null) && 'on'}>
+                <NavLink to="/admin/main/popup" onClick={(e) => handleOnClick(e, 'POP')}>
                   팝업 관리
                 </NavLink>
               </li>
             </ul>
           </li>
-          <li className={(localStorage.getItem('index') === '1' || localStorage.getItem('index') === '2') && 'on'}>
-            <NavLink to="/admin/investInfo/officialNotice" onClick={(e) => handleOnClick(e, 1)}>
+          <li
+            className={
+              (localStorage.getItem('menuNm') === 'FIN' || localStorage.getItem('menuNm') === 'OFF' || localStorage.getItem('menuNm') === 'ANN') &&
+              'on'
+            }
+          >
+            <NavLink to="/admin/investInfo/financial" onClick={(e) => handleOnClick(e, 'FIN')}>
               투자정보
             </NavLink>
             <ul>
-              <li className={localStorage.getItem('index') === '1' && 'on'}>
-                <NavLink to="/admin/investInfo/officialNotice" onClick={(e) => handleOnClick(e, 1)}>
+              <li className={localStorage.getItem('menuNm') === 'FIN' && 'on'}>
+                <NavLink to="/admin/investInfo/financial" onClick={(e) => handleOnClick(e, 'FIN')}>
+                  재무정보
+                </NavLink>
+              </li>
+              <li className={localStorage.getItem('menuNm') === 'OFF' && 'on'}>
+                <NavLink to="/admin/investInfo/officialNotice" onClick={(e) => handleOnClick(e, 'OFF')}>
                   공시정보
                 </NavLink>
               </li>
-              <li className={localStorage.getItem('index') === '2' && 'on'}>
-                <NavLink to="/admin/investInfo/announce" onClick={(e) => handleOnClick(e, 2)}>
+              <li className={localStorage.getItem('menuNm') === 'ANN' && 'on'}>
+                <NavLink to="/admin/investInfo/announce" onClick={(e) => handleOnClick(e, 'ANN')}>
                   공고
                 </NavLink>
               </li>
             </ul>
           </li>
-          <li className={(localStorage.getItem('index') === '3' || localStorage.getItem('index') === '4') && 'on'}>
-            <NavLink to="/admin/publicRelations/pressRelease" onClick={(e) => handleOnClick(e, 3)}>
+          <li className={(localStorage.getItem('menuNm') === 'PRE' || localStorage.getItem('menuNm') === 'MED') && 'on'}>
+            <NavLink to="/admin/publicRelations/pressRelease" onClick={(e) => handleOnClick(e, 'PRE')}>
               홍보센터
             </NavLink>
             <ul>
-              <li className={localStorage.getItem('index') === '3' && 'on'}>
-                <NavLink to="/admin/publicRelations/pressRelease" onClick={(e) => handleOnClick(e, 3)}>
+              <li className={localStorage.getItem('menuNm') === 'PRE' && 'on'}>
+                <NavLink to="/admin/publicRelations/pressRelease" onClick={(e) => handleOnClick(e, 'PRE')}>
                   보도자료
                 </NavLink>
               </li>
-              <li className={localStorage.getItem('index') === '4' && 'on'}>
-                <NavLink to="/admin/publicRelations/media" onClick={(e) => handleOnClick(e, 4)}>
+              <li className={localStorage.getItem('menuNm') === 'MED' && 'on'}>
+                <NavLink to="/admin/publicRelations/media" onClick={(e) => handleOnClick(e, 'MED')}>
                   미디어
                 </NavLink>
               </li>
             </ul>
           </li>
-          <li className={localStorage.getItem('index') === '5' && 'on'}>
-            <NavLink to="/admin/employmentInfo/jobVacancy" onClick={(e) => handleOnClick(e, 5)}>
+          <li className={localStorage.getItem('menuNm') === 'JOB' && 'on'}>
+            <NavLink to="/admin/employmentInfo/jobVacancy" onClick={(e) => handleOnClick(e, 'JOB')}>
               채용정보
             </NavLink>
             <ul>
-              <li className={localStorage.getItem('index') === '5' && 'on'}>
-                <NavLink to="/admin/employmentInfo/jobVacancy" onClick={(e) => handleOnClick(e, 5)}>
+              <li className={localStorage.getItem('menuNm') === 'JOB' && 'on'}>
+                <NavLink to="/admin/employmentInfo/jobVacancy" onClick={(e) => handleOnClick(e, 'JOB')}>
                   채용공고 관리
                 </NavLink>
               </li>
             </ul>
           </li>
-          <li className={localStorage.getItem('index') === '6' && 'on'}>
-            <NavLink to="/admin/customerService/contactUs" onClick={(e) => handleOnClick(e, 6)}>
+          <li className={localStorage.getItem('menuNm') === 'CON' && 'on'}>
+            <NavLink to="/admin/customerService/contactUs" onClick={(e) => handleOnClick(e, 'CON')}>
               고객센터
             </NavLink>
             <ul>
-              <li className={localStorage.getItem('index') === '6' && 'on'}>
-                <NavLink to="/admin/customerService/contactUs" onClick={(e) => handleOnClick(e, 6)}>
+              <li className={localStorage.getItem('menuNm') === 'CON' && 'on'}>
+                <NavLink to="/admin/customerService/contactUs" onClick={(e) => handleOnClick(e, 'CON')}>
                   Contact Us
                 </NavLink>
               </li>

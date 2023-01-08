@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
+  const [familyActive, setFamilyActive] = useState(false);
+
   return (
     <footer>
       <div className="wrap">
@@ -54,9 +56,76 @@ const Footer = () => {
               <NavLink to="">사이트맵</NavLink>
             </li>
           </ul>
-          <NavLink to="" className="fm">
-            FAMILY SITE
-          </NavLink>
+          <div className={familyActive ? 'fm on' : 'fm'} onClick={() => setFamilyActive(!familyActive)}>
+            <NavLink to="">FAMILY SITE</NavLink>
+            <ul className="family-link">
+              <li>
+                <NavLink to="https://www.lsholdings.com/" target="_blank">
+                  LS그룹
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://www.e1.co.kr/" target="_blank">
+                  주식회사 E1
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://www.lselectric.co.kr/" target="_blank">
+                  LS ELECTRIC
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://www.lscns.co.kr/kr/main.asp" target="_blank">
+                  LS전선(주)
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="http://www.lsmtron.co.kr/page/lsmtronMain.asp?naviId=s01" target="_blank">
+                  LS엠트론(주)
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="http://www.lsmnm.com/mnm/index.aspx" target="_blank">
+                  LS MnM
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://gaoncable.com/" target="_blank">
+                  가온전선(주)
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://www.yescoholdings.com/main" target="_blank">
+                  (주)예스코
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://www.lsnetworks.co.kr/" target="_blank">
+                  LS네트웍스
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://www.lsglobalinc.com" target="_blank">
+                  LS글로벌
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://www.ls-ind.co.kr" target="_blank">
+                  LS I&D
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://www.lsmetal.biz/" target="_blank">
+                  LS Metal
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="https://lsautomotive.com/" target="_blank">
+                  LS 오토모티브
+                </NavLink>
+              </li>
+            </ul>
+          </div>
           <p className="copy">ⓒ LS E-Link. ALL RIGHT RESERVED.</p>
         </div>
       </div>

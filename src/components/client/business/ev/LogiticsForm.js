@@ -1,15 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
+import classnames from 'classnames';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const LogiticsForm = () => {
+  const [activeMenu1, setActiveMenu1] = useState(false);
+  const [activeMenu2, setActiveMenu2] = useState(false);
+
   useEffect(() => {
     AOS.init();
   });
+
+  const onClickMenuLink = (menu) => {
+    if (menu === '1') {
+      setActiveMenu1(!activeMenu1);
+      setActiveMenu2(false);
+    } else if (menu === '2') {
+      setActiveMenu1(false);
+      setActiveMenu2(!activeMenu2);
+    }
+  };
 
   return (
     <div className="sub sub02-2">
@@ -25,9 +39,11 @@ const LogiticsForm = () => {
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
-            <li className="link">
-              <NavLink to="">사업영역</NavLink>
-              <ul className="links">
+            <li className={classnames('link', { show: activeMenu1 })}>
+              <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
+                사업영역
+              </NavLink>
+              <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
                   <NavLink to="/company/lselink">회사소개</NavLink>
                 </li>
@@ -53,9 +69,11 @@ const LogiticsForm = () => {
                 </li>
               </ul>
             </li>
-            <li className="on link">
-              <NavLink to="">물류</NavLink>
-              <ul className="links">
+            <li className={classnames('on link', { show: activeMenu2 })}>
+              <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
+                물류
+              </NavLink>
+              <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
                   <NavLink to="/business/ev/transportation">운수</NavLink>
                 </li>
