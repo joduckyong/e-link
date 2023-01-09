@@ -114,18 +114,17 @@ const FinancialviewForm = () => {
             <div className="view-area">
               <p className="mt30">{boardContents}</p>
             </div>
-            <br />
-            <br />
-            <br />
-            <div className="file">
-              {fileList.map((list, index) => (
-                <button className="btn-down" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}>
-                  <div className="list-num">
-                    {list.fileOriginNm}
-                    {fileList.length !== index + 1 ? ' , ' : ''}
-                  </div>
-                </button>
-              ))}
+            <div className="list-num-wrap">
+              <div className="file">
+                {fileList.map((list, index) => (
+                  <button className="btn-down" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}>
+                    <div className="list-num">
+                      {list.fileOriginNm}
+                      {fileList.length !== index + 1 ? ' , ' : ''}
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="view-control">
               <NavLink to={prevBoardId && `/investment/financial-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
