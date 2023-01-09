@@ -82,8 +82,10 @@ const PostingviewForm = () => {
                     </div>
                     <div className="view-control">
                         <NavLink to={prevBoardId && `/recruit/posting-view/${prevBoardId}`} className={classnames('prev-btn', {disable: !prevBoardId})}>이전글</NavLink>
-                        <NavLink to="/recruit/posting" className="list-btn">목록</NavLink>
-                        <NavLink to="" onClick={() => window.open(url, '_blank')} class="apply-btn">지원서 작성</NavLink>
+                        <div class="btn-wrap">
+                            <NavLink to="/recruit/posting" className="list-btn">목록</NavLink>
+                            <NavLink to="" className="apply-btn" onClick={() => window.open(url, '_blank')} >지원서 작성</NavLink>
+                        </div>
                         <NavLink to={nextBoardId && `/recruit/posting-view/${nextBoardId}`} className={classnames('next-btn', {disable: !nextBoardId})}>다음글</NavLink>
                     </div>
                 </div>

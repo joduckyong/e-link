@@ -59,7 +59,7 @@ const JobVacancyModForm = () => {
         setBoardTitle(boardInfo.boardTitle); 
         setBoardContents(boardInfo.boardContents);
         setBoardType(boardInfo.boardType);
-        setUrl(boardInfo.url);
+        setUrl(boardInfo.url ? boardInfo.url : '');
         if (boardInfo.boardStartDatetime) {
             setBoardStartDatetime(new Date(boardInfo.boardStartDatetime));
           }
