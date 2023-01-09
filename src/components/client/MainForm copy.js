@@ -179,70 +179,94 @@ const MainForm = () => {
           </section>
         </div>
       </div>
-
       <div className="con3">
-        <div className="container">
-          <div className="swiper mySwiper">
-            <div className="swiper-wrapper">
-              <Swiper slidesPerView={1} spaceBetween={0} loop={true} speed={1000} mousewheel={true}>
-                <SwiperSlide>
-                  <div className="swiper-slide">
-                    <div className="slide-bg" style={{ background: '#EC6800 url(/img/main/con3-img1.jpg) no-repeat', backgroundSize: 'cover' }}>
-                      <div className="slide-inner">
-                        <h3 className="text">전기차 충전사업</h3>
-                        <p className="desc">
-                          현장 맞춤형 충전 인프라 구축 <br />및 충전서비스 제공
-                        </p>
-                        <NavLink to="/business/ev/transportation" target="_self" className="link">
-                          VIEW MORE
-                        </NavLink>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="swiper-slide">
-                    <div className="slide-bg" style={{ background: '#12A84E url(/img/main/con3-img2.jpg) no-repeat', backgroundSize: 'cover' }}>
-                      <div className="slide-inner">
-                        <h3 className="text">
-                          신재생에너지 융합형
-                          <br />
-                          충전 인프라 구축
-                        </h3>
-                        <p className="desc">
-                          전기차 충전장 캐노피 등에 태양광을 설치, <br />
-                          신재생에너지 발전 사업
-                        </p>
-                        <NavLink to="/business/e-link/renewable" target="_self" className="link">
-                          VIEW MORE
-                        </NavLink>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="swiper-slide">
-                    <div className="slide-bg" style={{ background: '#1E2F63 url(/img/main/con3-img3.jpg) no-repeat', backgroundSize: 'cover' }}>
-                      <div className="slide-inner">
-                        <h3 className="text">
-                          관제시스템 구축·구독 <br />
-                          서비스
-                        </h3>
-                        <p className="desc">
-                          고객 특화 기능의 관제시스템 <br />
-                          구축 서비스 제공
-                        </p>
-                        <NavLink to="/business/e-link/control" target="_self" className="link">
-                          VIEW MORE
-                        </NavLink>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              </Swiper>
-            </div>
-            <div className="swiper-pagination"></div>
+        <div className="show-only-desktop">
+          <div className="container">
+            <section className="panel one" style={{ background: 'url(/img/main/con3-img1.jpg) no-repeat', backgroundSize: 'cover' }}>
+              <div className="slide-inner">
+                <div className="wrap">
+                  <h3 className="text">전기차 충전사업</h3>
+                  <p className="desc">
+                    현장 맞춤형 충전 인프라 구축 및<br /> 충전서비스 제공
+                  </p>
+                  <NavLink to="/view/introduce/mobile.do" target="_self" className="link">
+                    VIEW MORE
+                  </NavLink>
+                </div>
+              </div>
+            </section>
+            <section className="panel two" style={{ background: 'url(/img/main/con3-img2.jpg) no-repeat', backgroundSize: 'cover' }}>
+              <div className="slide-inner">
+                <div className="wrap">
+                  <h3 className="text">
+                    신재생에너지 융합형
+                    <br /> 충전 인프라 구축
+                  </h3>
+                  <p className="desc">
+                    전기차 충전장 캐노피 등에 태양광을 설치,
+                    <br /> 신재생에너지 발전 사업
+                  </p>
+                  <NavLink to="/view/introduce/mobile.do" target="_self" className="link">
+                    VIEW MORE
+                  </NavLink>
+                </div>
+              </div>
+            </section>
+            <section className="panel three" style={{ background: 'url(/img/main/con3-img3.jpg) no-repeat', backgroundSize: 'cover' }}>
+              <div className="slide-inner">
+                <div className="wrap">
+                  <h3 className="text">
+                    관제시스템 구축·구독
+                    <br /> 서비스
+                  </h3>
+                  <p className="desc">
+                    고객 특화 기능의 관제시스템
+                    <br /> 구축 서비스 제공
+                  </p>
+                  <NavLink to="/view/introduce/mobile.do" target="_self" className="link">
+                    VIEW MORE
+                  </NavLink>
+                </div>
+              </div>
+            </section>
           </div>
+        </div>
+        <div className="mobile-show">
+          <Swiper slidesPerView={1} spaceBetween={0} loop={true} speed={1000} mousewheel={true}>
+            <SwiperSlide>
+              <div className="swiper-slide" style={{ background: 'url(/img/main/con3-img1.jpg) no-repeat', backgroundSize: 'cover' }}>
+                <div className="slide-inner" style={{ opacity: 1, transform: 'translate(0px, 0px)' }}>
+                  <h3 className="text">전기차 충전사업</h3>
+                  <p className="desc">현장 맞춤형 충전 인프라 구축 및 충전서비스 제공</p>
+                  <NavLink to="/view/introduce/mobile.do" target="_self" className="link">
+                    VIEW MORE
+                  </NavLink>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="swiper-slide" style={{ background: 'url(/img/main/con3-img2.jpg) no-repeat', backgroundSize: 'cover' }}>
+                <div className="slide-inner" style={{ opacity: 1, transform: 'translate(0px, 0px)' }}>
+                  <h3 className="text">전기차 충전사업</h3>
+                  <p className="desc">현장 맞춤형 충전 인프라 구축 및 충전서비스 제공</p>
+                  <NavLink to="/view/introduce/mobile.do" target="_self" className="link">
+                    VIEW MORE
+                  </NavLink>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="swiper-slide" style={{ background: 'url(/img/main/con3-img3.jpg) no-repeat', backgroundSize: 'cover' }}>
+                <div className="slide-inner" style={{ opacity: 1, transform: 'translate(0px, 0px)' }}>
+                  <h3 className="text">전기차 충전사업</h3>
+                  <p className="desc">현장 맞춤형 충전 인프라 구축 및 충전서비스 제공</p>
+                  <NavLink to="/view/introduce/mobile.do" target="_self" className="link">
+                    VIEW MORE
+                  </NavLink>
+                </div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
 
@@ -339,18 +363,13 @@ const MainForm = () => {
           <div className="s-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
             TECHNOLOGICAL INNOVATION
           </div>
-          <div class="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
-            LS E-Link는 <br className="m-block" />
-            전기자동차 충전인프라 <br className="m-block" />
-            부문에 혁신적인 <br className="pc-block" />
-            기술력을 <br className="m-block" />
-            남기며 성장하고 있습니다.
+          <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
+            LS E-Link는 전기자동차 충전인프라 부문에 혁신적인
+            <br className="tb-block" />
+            기술력을 남기며 성장하고 있습니다.
             <br />
-            차별화된 LS E-Link의 <br className="m-block" />
-            충전 솔루션을 경험해보세요.
+            차별화된 LS E-Link의 충전 솔루션을 경험해보세요.
           </div>
-          {/* <div className="swiper con5-swiper"> */}
-          {/* <div className="swiper-wrapper"> */}
           <Swiper
             slidesPerView={2.4}
             centeredSlides={true}
@@ -377,7 +396,6 @@ const MainForm = () => {
             }}
           >
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <div className="img">
                 <img src="/img/main/con5-img1.png" alt="" />
               </div>
@@ -392,10 +410,8 @@ const MainForm = () => {
                   차별화된 LS E-Link의 충전 솔루션을 경험해 보세요.
                 </p>
               </div>
-              {/* </div> */}
             </SwiperSlide>
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <div className="img">
                 <img src="/img/main/con5-img2.png" alt="" />
               </div>
@@ -412,10 +428,8 @@ const MainForm = () => {
                   ELVIS만의 특별한 서비스를 직접 체험해 보세요
                 </p>
               </div>
-              {/* </div> */}
             </SwiperSlide>
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <div className="img">
                 <img src="/img/main/con5-img3.png" alt="" />
               </div>
@@ -430,15 +444,13 @@ const MainForm = () => {
                   LS E-Link와 함께 성장해 보세요.
                 </p>
               </div>
-              {/* </div> */}
             </SwiperSlide>
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <div className="img">
                 <img src="/img/main/con5-img4.png" alt="" />
               </div>
               <div className="txt">
-                <div class="slide-tit">
+                <div className="slide-tit">
                   인프라 투자 / 자금조달 / 운영 Total <br />
                   Solution을 제공하는 진정한 파트너
                 </div>
@@ -450,27 +462,15 @@ const MainForm = () => {
                   LS E-Link의 파트너가 되어보세요.
                 </p>
               </div>
-              {/* </div> */}
             </SwiperSlide>
           </Swiper>
-          {/* </div> */}
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
           <div className="control">
             <div className="swiper-button-prev" ref={navigationPrevRef}></div>
             <div className="swiper-button-next" ref={navigationNextRef}></div>
           </div>
-          {/* </div> */}
         </div>
-        <div class="con5-video">
-          <video muted autoPlay loop>
+        <div className="con5-video">
+          <video poster="/resources/front/ko/video/main-visual.jpg" autoPlay muted loop playsInline>
             <source src="http://thon.sibizi.me/e-link/img/main/technological innovation.mp4" type="video/mp4" />
           </video>
           <img style={{ position: 'absolute', zIndex: 1, top: 0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
@@ -484,7 +484,7 @@ const MainForm = () => {
           <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
             보도자료
           </div>
-          <NavLink to="/pr/press-list" className="more">
+          <NavLink to="" className="more">
             <img src="/img/main/ico-plus.svg" alt="" />
           </NavLink>
           <ul data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
