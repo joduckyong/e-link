@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClientBoard } from 'store/boardReducer';
+import { selectClientBoard, selectClientBoardInfoWithPinup } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
 import AOS from 'aos';
 import classnames from 'classnames';
@@ -10,6 +10,7 @@ const MedialistForm = () => {
 
     const dispatch = useDispatch();
     const boardList = useSelector((state) => state.boardReducer.data);
+    const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
     const [searchKeyword, setSearchKeyword] = useState(null);
     const totalCount = useSelector((state) => state.boardReducer.totalCount);
     const [page, setPage] = useState(1);
@@ -24,6 +25,7 @@ const MedialistForm = () => {
     useEffect(() => {
         const newList = { boardId: 'MED', pageIndex: page };
             dispatch(selectClientBoard(newList));
+            dispatch(selectClientBoardInfoWithPinup());
         }, [dispatch, page]);
         
     const pageClick = (page) => {
@@ -34,6 +36,7 @@ const MedialistForm = () => {
     const onSearch = (page) => {
         const newList = { boardId: 'MED', pageIndex: page, searchKeyword: searchKeyword };
         dispatch(selectClientBoard(newList));
+        dispatch(selectClientBoardInfoWithPinup());
     };
 
     const onKeyPress = (e) => {
@@ -60,6 +63,16 @@ const MedialistForm = () => {
         }
 
         return imgUrl;
+    }
+
+    const getEmbedVideoUrl = (url) => {
+        let videoUrl = '';
+        if(url){
+            let param = url.indexOf('v=') > -1 ? url.substring(url.indexOf('v=')+2) : '';
+            videoUrl = 'https://youtube.com/embed/'+param;
+        }
+  
+        return videoUrl;
     }
 
   return (
@@ -98,10 +111,13 @@ const MedialistForm = () => {
                 <div className="con4-media">
                     <h3>LS E-Link 내일의 에너지를 충전합니다.</h3>
                     <div className="big-media">
-                        <div className="img"><img src="./../../img/sub/sub04-2-big.jpg" alt="" /></div>
+                        <div className="img" style={{width: 740}}>
+                            {/* <img src="./../../img/sub/sub04-2-big.jpg" alt="" /> */}
+                            <iframe title="youtubeFrame" width={'100%'} height={400} src={`${getEmbedVideoUrl(boardInfo.url)}`}></iframe>
+                        </div>
                         <div className="txt">
-                            <div className="date">2022-11-30</div>
-                            <div className="tit">2023 LS E-Link 공식 홍보영상</div>
+                            <div className="date">{boardInfo.createdDatetime}</div>
+                            <div className="tit">{boardInfo.boardTitle}</div>
                         </div>
                     </div>
                     <div className="media-list">

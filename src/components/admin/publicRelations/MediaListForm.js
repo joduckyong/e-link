@@ -1,8 +1,10 @@
 import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoard, deleteBoardIds } from 'store/boardReducer';
+import { selectBoard, deleteBoardIds, selectPinupId, updatePinupId } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
+import '../../../styles/custom.css';
+import classnames from 'classnames';
 
 const YoutubeImage = ({url, width, height}) => {
     const [imageUrl, setImageUrl] = useState('');
@@ -22,12 +24,15 @@ const MediaListForm = () => {
     const dispatch = useDispatch();
     const boardList = useSelector((state) => state.boardReducer.data);
     const totalCount = useSelector((state) => state.boardReducer.totalCount);
+    const pinupId = useSelector((state) => state.boardReducer.pinupData);
     const [checkItems, setCheckItems] = useState([]);
     const [page, setPage] = useState(1);
+    
 
     useEffect(() => {
         const newList = { boardId: 'MED', pageIndex: page};
         dispatch(selectBoard(newList));
+        dispatch(selectPinupId());
     }, [dispatch, page]);
 
     const pageClick = (page) => {
@@ -38,6 +43,7 @@ const MediaListForm = () => {
     const onSearch = (page) => {
         const newList = { boardId: 'MED', pageIndex: page};
         dispatch(selectBoard(newList));
+        dispatch(selectPinupId());
     };
 
     const onRemove = (e) => {
@@ -78,6 +84,14 @@ const MediaListForm = () => {
         }
     };
 
+    const onClickStar = (id) => {
+        const newList = { boardId: id};
+
+        dispatch(updatePinupId(newList)).then(() => {
+            dispatch(selectPinupId());
+        });
+
+    }
 
     return(
         <div className="a-content">
@@ -94,8 +108,9 @@ const MediaListForm = () => {
                         <colgroup>
                             <col width="10%" />
                             <col width="5%" />
+                            <col width="5%" />
                             <col width="15%" />
-                            <col width="45%" />
+                            <col width="40%" />
                             <col width="10%" />
                             <col width="15%" />
                         </colgroup>
@@ -112,6 +127,7 @@ const MediaListForm = () => {
                                         <span className="chkimg"></span>
                                     </label>
                                 </th>
+                                <th></th>
                                 <th>번호</th>
                                 <th className="pl40">미리보기</th>
                                 <th>제목</th>
@@ -133,6 +149,7 @@ const MediaListForm = () => {
                                             <span className="chkimg"></span>
                                         </label>
                                     </th>
+                                    <td className={classnames('star-chk', {on: pinupId === list.boardId})} onClick={(e) => onClickStar(`${list.boardId}`)}></td>
                                     <td>{list.rnum}</td>
                                     <td className="pl40">
                                         <div className="shape-150">

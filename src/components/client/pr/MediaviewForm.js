@@ -1,24 +1,32 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import AOS from 'aos';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectClientBoardInfo } from 'store/boardReducer';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
+import AOS from 'aos';
 import classnames from 'classnames';
 
 SwiperCore.use([Navigation, Pagination]);
 
 const MediaviewForm = () => {
 
+    const { id } = useParams();
+    const dispatch = useDispatch();
+    const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
+    const createdDatetime = useSelector((state) => state.boardReducer.dataInfo.createdDatetime);
+    const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
+    const url = useSelector((state) => state.boardReducer.dataInfo.url);
+
     const [activeMenu1, setActiveMenu1] = useState(false);
     const [activeMenu2, setActiveMenu2] = useState(false);
-
-
-    const navigationPrevRef = useRef(null);
-    const navigationNextRef = useRef(null);
 
     useEffect(() => {
       AOS.init();
     });
+
+    useEffect(() => {
+      dispatch(selectClientBoardInfo(id));
+    }, [dispatch, id]);
 
     const onClickMenuLink = (menu) => {
       if(menu === '1'){
@@ -28,6 +36,16 @@ const MediaviewForm = () => {
           setActiveMenu1(false);
           setActiveMenu2(!activeMenu2);
       }
+    }
+
+    const getEmbedVideoUrl = (url) => {
+      let videoUrl = '';
+      if(url){
+          let param = url.indexOf('v=') > -1 ? url.substring(url.indexOf('v=')+2) : '';
+          videoUrl = 'https://youtube.com/embed/'+param;
+      }
+
+      return videoUrl;
     }
 
   return (
@@ -64,74 +82,14 @@ const MediaviewForm = () => {
         <div className="content">
             <div className="wrap">
                 <div className="con4-media-view">
-                    <h3>2023 LS E-Link 공식 홍보영상</h3>
+                    <h3>{boardTitle}</h3>
                     <div className="list-num-wrap">
-                        <div className="list-num"><span>No.14</span>2022-11-30</div>
+                        <div className="list-num">{createdDatetime}</div>
                         <div className="file">2023_LS_E-Link.mp4</div> 
                     </div>
                     <div className="view-area">
-                        <img src="./../../img/sub/sub04-media-view-img.jpg" alt="" />
-                        <p class="view-txt">LS그룹(회장 구자은)이 EV 충전 신규 법인 설립으로 전기차 사업에 드라이브를 걸고 있다. LS의 지주회사인 ㈜LS는 ‘EV 충전 인프라 구축과 운영 사업 개발’을 위해 신규 법인 LS E-Link(엘에스이링크, 대표 김대근)를 E1과 공동 투자하여 설립한다고 27일 공시했다.</p>
-                    </div>
-                    <div className="other-media">
-                        <div className="oth-tit">다른 영상</div>
-                        <div className="btns">
-                            <NavLink to="" className="prev-btn swiper-button-prev" ref={navigationPrevRef}></NavLink>
-                            <NavLink to="" className="next-btn swiper-button-next" ref={navigationNextRef}></NavLink>
-                        </div>
-                        <Swiper
-                          className="media-list media-slide"
-                          slidesPerView={1}
-                          spaceBetween={0}
-                          loop={true}
-                          wrapperTag="ul"
-                          navigation={{
-                            prevEl: navigationPrevRef.current,
-                            nextEl: navigationNextRef.current,
-                          }}
-                          breakpoints={{
-                            780:{
-                              slidesPerView: 3,
-                              spaceBetween: 20
-                            }
-                          }}
-                          onSwiper={(swiper) => {
-                            swiper.params.navigation.prevEl = navigationPrevRef.current;
-                            swiper.params.navigation.nextEl = navigationNextRef.current;
-
-                            swiper.navigation.destroy();
-                            swiper.navigation.init();
-                            swiper.navigation.update();
-                          }}
-                        >
-                          <SwiperSlide tag="li">
-                            <NavLink to="">
-                                <div className="list-img">
-                                    <div className="in" style={{background: 'url(./../../img/sub/con4-media-list-img1.jpg) center no-repeat', backgroundSize: 'cover'}}></div>
-                                </div>
-                                <div className="list-tit">LS E-Link EV</div>
-                                <div className="list-date">2022-11-30</div>
-                            </NavLink>
-                          </SwiperSlide>
-                          <SwiperSlide tag="li">
-                            <NavLink to="">
-                                <div className="list-img">
-                                    <div className="in" style={{background: 'url(./../../img/sub/con4-media-list-img2.jpg) center no-repeat', backgroundSize: 'cover'}}></div>
-                                </div>
-                                <div className="list-tit">LS E-Link EV</div>
-                                <div className="list-date">2022-11-30</div>
-                            </NavLink>
-                          </SwiperSlide>
-                          <SwiperSlide tag="li">
-                            <NavLink to="">
-                                <div className="list-img">
-                                    <div className="in" style={{background: 'url(./../../img/sub/con4-media-list-img3.jpg) center no-repeat', backgroundSize: 'cover'}}></div>
-                                </div>
-                                <div className="list-tit">LS E-Link EV</div>
-                                <div className="list-date">2022-11-30</div>
-                            </NavLink>
-                          </SwiperSlide>
-                        </Swiper>
+                        <iframe title="youtubeFrame" width={'100%'} height={600} src={`${getEmbedVideoUrl(url)}`}></iframe>
+                        <p className="view-txt">{boardContents}</p>
                     </div>
                     <div className="view-control">
                         <NavLink to="/pr/media-list" className="list-btn">목록</NavLink>

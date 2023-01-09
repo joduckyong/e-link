@@ -121,6 +121,42 @@ export const updateBoard = createAsyncThunk('MOD_BOARD', async (newList) => {
   return response.data;
 });
 
+export const selectPinupId = createAsyncThunk('INFO_PINUP', async () => {
+  const token = getCookieToken();
+
+  if (token === undefined && typeof token === 'undefined') {
+    document.location.href = loginUrl;
+  }
+
+  const config = {
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  const response = await axios.get(`${serverUrl}/api/board/pinup`, config);
+  return response.data;
+});
+
+export const updatePinupId = createAsyncThunk('MOD_PINUP', async (newList) => {
+  const token = getCookieToken();
+
+  if (token === undefined && typeof token === 'undefined') {
+    document.location.href = loginUrl;
+  }
+
+  const response = await axios({
+    url: `${serverUrl}/api/board/update/pinup`,
+    method: 'POST',
+    data: newList,
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  return response.data;
+});
+
 export const deleteBoard = createAsyncThunk('DEL_BOARD', async (id) => {
   const token = getCookieToken();
 
@@ -178,6 +214,11 @@ export const selectClientBoardInfo = createAsyncThunk('CLIENT_INFO_BOARD', async
   return response.data;
 });
 
+export const selectClientBoardInfoWithPinup = createAsyncThunk('CLIENT_INFO_BOARD_WITH_PINUP', async () => {
+  const response = await axios.get(`${serverUrl}/api/client/board/WithPinup`);
+  return response.data;
+});
+
 export const boardReducer = createSlice({
   name: 'board',
   initialState: {
@@ -204,6 +245,12 @@ export const boardReducer = createSlice({
       message: payload.message,
       dataInfo: payload.data,
       files: payload.files,
+    }),
+    [selectPinupId.fulfilled]: (state, { payload }) => ({
+      ...state,
+      status: payload.status,
+      message: payload.message,
+      pinupData: payload.pinupData,
     }),
     [insertBoard.fulfilled]: (state, { payload }) => ({
       ...state,
@@ -233,6 +280,12 @@ export const boardReducer = createSlice({
       dataInfo: payload.data,
       files: payload.files,
       prevNextData: payload.prevNextData,
+    }),
+    [selectClientBoardInfoWithPinup.fulfilled]: (state, { payload }) => ({
+      ...state,
+      status: payload.status,
+      message: payload.message,
+      dataInfo: payload.data,
     }),
   },
 });
