@@ -32,7 +32,7 @@ const PopupForm = () => {
   const dayPopupClose = (id) => {
     const expires = getExpiredDate(1);
     setPopupCookies('POPUP_' + id, true, { path: '/', expires });
-    // window.close();
+    window.close();
   };
 
   return (
