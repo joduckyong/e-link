@@ -36,11 +36,7 @@ const ViewImage = ({ fileNm, width, height }) => {
     }
   }, [fileNm, url]);
 
-  if (width && height) {
-    return fileNm !== null && <img src={objectUrl} width={width} height={height} alt="" />;
-  } else {
-    return fileNm !== null && <img src={objectUrl} style={style} alt="" />;
-  }
+  return fileNm !== null && <img src={objectUrl} style={style} alt="" />;
 };
 
 export default ViewImage;
