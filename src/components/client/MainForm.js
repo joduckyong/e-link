@@ -84,7 +84,10 @@ const MainForm = () => {
 
   const mainPopup = (id, top, left) => {
     if (!popupCookies['POPUP_' + id]) {
-      window.open('/popup/' + id, id, 'width=500,height=633,location=no,status=no,scrollbars=no,top=' + top + ',left=' + left);
+      let tops = Number(parseInt(top) + 220);
+      const popupX = window.screen.width / 2 - left / 2;
+      const popupY = window.screen.height / 2 - tops / 2;
+      window.open('/popup/' + id, id, 'width=' + left + ',height=' + tops + ',left=' + popupX + ',top=' + popupY);
     }
   };
 

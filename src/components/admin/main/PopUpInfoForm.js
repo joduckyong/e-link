@@ -40,7 +40,7 @@ const PopUpInfoForm = () => {
               <label htmlFor="idvf">
                 <span>
                   <i>
-                    <ViewImage fileNm={thumbnailName} width={235} height={250} />
+                    <ViewImage fileNm={thumbnailName} />
                   </i>
                 </span>
               </label>

@@ -32,13 +32,13 @@ const PopupForm = () => {
   const dayPopupClose = (id) => {
     const expires = getExpiredDate(1);
     setPopupCookies('POPUP_' + id, true, { path: '/', expires });
-    window.close();
+    // window.close();
   };
 
   return (
     <div className="main_pop">
       <a className="img_area" rel="noreferrer" href={popupInfo.popupLink} target="_blank">
-        <ViewImage fileNm={thumbnailName} width={440} height={490} />
+        <ViewImage fileNm={thumbnailName} />
       </a>
       <div className="text">
         <button onClick={() => dayPopupClose(popupInfo.popupId)}>{popupInfo.popupClose1}</button>

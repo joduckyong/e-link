@@ -7,8 +7,8 @@ const ViewImage = ({ fileNm, width, height }) => {
   const url = `${serverUrl}/api/file/image/${fileNm}`;
   const style = {
     maxWidth: '100%',
-    height: 'auto'
-  }
+    height: 'auto',
+  };
 
   useEffect(() => {
     // console.log('fileNm : ' + fileNm);

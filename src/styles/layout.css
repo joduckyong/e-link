@@ -259,7 +259,7 @@ transition: all 0.5s;}
 }
 
 /* popup */
-.main_pop{position:absolute; top:100px; left:160px; z-index:9;}
+.main_pop{position:absolute; top:0px; left:160px; z-index:9;}
 .main_pop .img_area{width:100%;}
 .main_pop .img_area img{width:100%;max-width:100%;}
 .main_pop .text{display:flex;justify-content:end;align-items:center;gap:10px;height:50px; padding:0 20px; text-align:right; background:#222;  line-height:50px;}
@@ -565,31 +565,37 @@ top: 0; bottom: 0; left: 0; right: 0; position: fixed; z-index: -10;}
 .sub.sub03 .con3-list-box .tit:before{content: ''; display: block; width: 1px; height: 24px; background: #DDDDDD; position: absolute; left: 0; top: 4px;}
 
 .sub.sub04 .sub-top .bg{background: url('/public/img/sub/sub04-top.jpg') center 0 no-repeat; background-size: cover;}
-.sub.sub04 .con4-list-box li{border-bottom: 1px #D9D9D9 solid;}
-.sub.sub04 .con4-list-box a{display: flex; padding: 50px 45px; align-items: center;}
-.sub.sub04 .con4-list-box .text{margin-left: 70px;}
-.sub.sub04 .con4-list-box .tit-wrap{font-size: 26px; font-weight: 600; color: #121212; margin: 40px 0 30px;}
-.sub.sub04 .con4-list-box p{font-size: 18px; color: #444; line-height: 28px;}
-.sub.sub04 .con4-list-view .tit{margin-bottom: 40px;}
-.sub.sub04 .con4-list-view .view-area{margin-top: 40px; border-top: 1px #444 solid; padding: 70px 100px 100px; border-bottom: 1px #444 solid;}
-.sub.sub04 .con4-list-view .view-area .img img{width: 100%;}
-.sub.sub04 .view-area p{font-size: 18px; color: #121212; line-height: 30px; font-weight: 400; word-break: keep-all;}
+.sub .con4-list-box li{border-bottom: 1px #D9D9D9 solid;}
+.sub .con4-list-box a{display: flex; padding: 50px 45px; align-items: center;}
+.sub .con4-list-box .text{margin-left: 70px;}
+.sub .con4-list-box .tit-wrap{font-size: 26px; font-weight: 600; color: #121212; margin: 40px 0 30px;}
+.sub .con4-list-box p{font-size: 18px; color: #444; line-height: 28px;}
+.sub .con4-list-view .tit{margin-bottom: 40px;}
+.sub .con4-list-view .view-area{margin-top: 40px; border-top: 1px #444 solid; padding: 70px 100px 100px; border-bottom: 1px #444 solid;}
+.sub .con4-list-view .view-area .img img{width: 100%;}
+.sub .view-area p{font-size: 18px; color: #121212; line-height: 30px; font-weight: 400; word-break: keep-all;}
 
-.sub.sub04 .view-control{display: flex; justify-content: space-between; align-items: center; padding-top: 70px;}
-.sub.sub04 .view-control a{font-size: 18px; position: relative;}
-.sub.sub04 .view-control .list-btn{width: 200px; height: 60px; color: #444;  border: 1px #444 solid; text-align: center; line-height: 60px;}
-.sub.sub04 .view-control .next-btn{padding-right: 50px;}
-.sub.sub04 .view-control .next-btn.disable{color: #aaa;}
-.sub.sub04 .view-control .next-btn:hover:before{right: 0;}
-.sub.sub04 .view-control .next-btn:before{content: ''; display: block; width: 18px; height: 17px; background: url('/public/img/sub/view-arrow.svg') no-repeat;
+.sub.sub04 .view-txt{margin-top: 30px; word-break: keep-all;}
+.sub.sub04 .list-num-wrap{margin: 40px 0;}
+.sub.sub04 .list-num-wrap .file{background: url('/public/img/sub/ico-clip.svg') left center no-repeat; padding-left: 24px; font-size: 16px; color: #666;}
+.sub.sub04 .list-num-wrap{display: flex; align-items: center; justify-content: space-between;}
+
+.sub .view-control{display: flex; justify-content: space-between; align-items: center; padding-top: 70px;}
+.sub .view-control a{font-size: 18px; position: relative; display: inline-block;}
+.sub .view-control .list-btn{width: 200px; height: 60px; color: #444;  border: 1px #444 solid; text-align: center; line-height: 60px;}
+.sub .view-control .apply-btn{width: 200px; height: 60px;  border: 1px #EC6800 solid; text-align: center; line-height: 60px; color: #FFF; background: #EC6800; margin-left: 10px;}
+.sub .view-control .next-btn{padding-right: 50px;}
+.sub .view-control .next-btn.disable{color: #aaa;}
+.sub .view-control .next-btn:hover:before{right: 0;}
+.sub .view-control .next-btn:before{content: ''; display: block; width: 18px; height: 17px; background: url('/public/img/sub/view-arrow.svg') no-repeat;
 position: absolute; right: 10px; top: 0; transition: all 0.3s;}
-.sub.sub04 .view-control .next-btn.disable:before{background: url('/public/img/sub/view-arrow-disable.svg') no-repeat; transform: rotate(180deg);}
-.sub.sub04 .view-control .prev-btn{padding-left: 50px;}
-.sub.sub04 .view-control .prev-btn.disable{color: #aaa;}
-.sub.sub04 .view-control .prev-btn:before{content: ''; display: block; width: 18px; height: 17px; background: url('/public/img/sub/view-arrow.svg') no-repeat;
+.sub .view-control .next-btn.disable:before{background: url('/public/img/sub/view-arrow-disable.svg') no-repeat; transform: rotate(180deg);}
+.sub .view-control .prev-btn{padding-left: 50px;}
+.sub .view-control .prev-btn.disable{color: #aaa;}
+.sub .view-control .prev-btn:before{content: ''; display: block; width: 18px; height: 17px; background: url('/public/img/sub/view-arrow.svg') no-repeat;
   position: absolute; left: 10px; top: 0; transition: all 0.3s; transform: rotate(180deg);}
-.sub.sub04 .view-control .prev-btn.disable:before{background: url('/public/img/sub/view-arrow-disable.svg') no-repeat; transform: rotate(0deg);}
-.sub.sub04 .view-control .prev-btn:hover:before{left: 0;}
+.sub .view-control .prev-btn.disable:before{background: url('/public/img/sub/view-arrow-disable.svg') no-repeat; transform: rotate(0deg);}
+.sub .view-control .prev-btn:hover:before{left: 0;}
 .sub.sub04 .con4-media h3{margin-bottom: 100px; margin-top: 30px;}
 .sub.sub04 .big-media{display: flex; align-items: center; flex-wrap: wrap;}
 .sub.sub04 .big-media .img img{width: 100%;}
@@ -672,6 +678,8 @@ justify-content: center;}
 margin-right: 15px;}
 .sub.sub05 .hire-list .division p{font-size:18px;}
 .sub.sub05 .hire-list .tit{color: #121212; font-weight: 600; font-size: 26px; margin-top: 25px;}
+.sub.sub05 .apply-content{text-align: center;}
+.sub.sub05 .apply-content img{max-width: 100%;}
 
 .sub.sub06 .sub-top .bg{background: url('/public/img/sub/sub06-top.jpg') center 0 no-repeat; background-size: cover;}
 .sub.sub06 .term{display: flex; justify-content: space-between; border-bottom: 1px #444 solid; padding-bottom: 30px; margin-top: 90px; align-items: baseline;}

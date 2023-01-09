@@ -48,6 +48,7 @@ export const insertPopup = createAsyncThunk('ADD_POPUP', async (newList) => {
 
   const formData = new FormData();
   formData.append('thumbnail', newList.thumbnail);
+  formData.append('file', newList.file);
   formData.append(
     'popupVo',
     new Blob([JSON.stringify(newList)], {
@@ -77,6 +78,7 @@ export const updatePopup = createAsyncThunk('MOD_POPUP', async (newList) => {
 
   const formData = new FormData();
   formData.append('thumbnail', newList.thumbnail);
+  formData.append('file', newList.file);
   formData.append(
     'popupVo',
     new Blob([JSON.stringify(newList)], {
