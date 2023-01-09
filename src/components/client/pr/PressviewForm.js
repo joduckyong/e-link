@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectClientBoardInfo } from 'store/boardReducer';
+import { downloadFile } from 'common/download';
 import ViewImage from 'components/common/ViewImage';
 import AOS from 'aos';
 import classnames from 'classnames';
@@ -15,6 +16,7 @@ const PressviewForm = () => {
     const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
     const fileList = useSelector((state) => state.boardReducer.files);
     const thumbnailList = fileList.filter((file) => file.fileType === '1'); //썸네일
+    const realImageNm = thumbnailList.length > 0 ? thumbnailList[0].fileNm.replace('s_','') : '';
     const prevBoardId = useSelector((state) => state.boardReducer.prevNextData.prevBoardId);
     const nextBoardId = useSelector((state) => state.boardReducer.prevNextData.nextBoardId);
 
@@ -74,10 +76,20 @@ const PressviewForm = () => {
             <div className="wrap">
                 <div className="con4-list-view">
                     <h3 className="tit">{boardTitle}</h3>
-                    <div className="list-num">{createdDatetime}</div>
+                    <div className="list-num-wrap">
+                        <div className="list-num">{createdDatetime}</div>
+                        <ul>
+                            {fileList.map((list, index) => (
+                                list.fileType !== '1' &&
+                                <li style={{padding: '5px 0 5px 0'}}>
+                                    <NavLink to="" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}><div className="file">{list.fileOriginNm}</div></NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                     <div className="view-area">
                         <div className="img">
-                            <ViewImage fileNm={thumbnailList.length > 0 && thumbnailList[0].fileNm}/>
+                            <ViewImage fileNm={realImageNm}/>
                         </div>
                         <p className="mt30">
                             {boardContents}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectClientBoardInfo } from 'store/boardReducer';
+import { downloadFile } from 'common/download';
 import AOS from 'aos';
 import classnames from 'classnames';
 
@@ -11,6 +12,7 @@ const PostingviewForm = () => {
     const dispatch = useDispatch();
     const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
     const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
+    const fileList = useSelector((state) => state.boardReducer.files);
     const boardStartDatetime = useSelector((state) => state.boardReducer.dataInfo.boardStartDatetime);
     const boardEndDatetime = useSelector((state) => state.boardReducer.dataInfo.boardEndDatetime);
     const url = useSelector((state) => state.boardReducer.dataInfo.url);
@@ -74,7 +76,16 @@ const PostingviewForm = () => {
             <div className="wrap">
                 <div className="con4-list-view">
                     <h3 className="tit">{boardTitle}</h3>
-                    <div className="list-num">{boardStartDatetime} - {boardEndDatetime}</div>
+                    <div className="list-num-wrap">
+                        <div className="list-num">{boardStartDatetime} - {boardEndDatetime}</div>
+                        <ul>
+                            {fileList.map((list, index) => (
+                                <li style={{padding: '5px 0 5px 0'}}>
+                                    <NavLink to="" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}><div className="file">{list.fileOriginNm}</div></NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                     <div className="view-area">
                         <p className="mt30">
                             {boardContents}

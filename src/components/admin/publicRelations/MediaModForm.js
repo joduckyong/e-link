@@ -26,13 +26,17 @@ const MediaModForm = () => {
     useEffect(() => {
         setBoardTitle(boardInfo.boardTitle); 
         setBoardContents(boardInfo.boardContents);
-        setUrl(boardInfo.url);
+        setUrl(boardInfo.url ? boardInfo.url : '');
     }, [boardInfo]);
     
     useEffect(() => {
+        if(fileList.length == 0){
+            setFileName('선택된 파일 없음');
+            setStoredFileName('');
+        }
         for(let file of fileList){
             setFileName(file.fileOriginNm);
-            setStoredFileName(file.fileNm)
+            setStoredFileName(file.fileNm);
         }
     }, [fileList]);
 

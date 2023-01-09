@@ -31,6 +31,10 @@ const PressReleaseModForm = () => {
     }, [boardInfo]);
 
     useEffect(() => {
+        setThumbnailName('선택된 파일 없음');
+        setFileName('선택된 파일 없음');
+        setStoredThumbnailName('');
+        setStoredFileName('');
         for(let file of fileList){
             if(file.fileType === '1'){  //썸네일
                 setThumbnailName(file.fileOriginNm);

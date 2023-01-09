@@ -5,6 +5,16 @@ import { selectClientBoard, selectClientBoardInfoWithPinup } from 'store/boardRe
 import Pagination from 'react-js-pagination';
 import AOS from 'aos';
 import classnames from 'classnames';
+import moment from 'moment';
+
+export function changeFormat(date, format) {
+    //moment 변환을 함수로 미리 빼 두어서 사용.
+    if (moment(date).isValid()) {
+      return moment(date).format(format);
+    } else {
+      return null;
+    }
+  }
 
 const MedialistForm = () => {
 
@@ -116,7 +126,7 @@ const MedialistForm = () => {
                             <iframe title="youtubeFrame" width={'100%'} height={400} src={`${getEmbedVideoUrl(boardInfo.url)}`}></iframe>
                         </div>
                         <div className="txt">
-                            <div className="date">{boardInfo.createdDatetime}</div>
+                            <div className="date">{changeFormat(boardInfo.createdDatetime, 'yyyy-MM-DD') || ''}</div>
                             <div className="tit">{boardInfo.boardTitle}</div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectClientBoardInfo } from 'store/boardReducer';
+import { downloadFile } from 'common/download';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import AOS from 'aos';
 import classnames from 'classnames';
@@ -16,6 +17,7 @@ const MediaviewForm = () => {
     const createdDatetime = useSelector((state) => state.boardReducer.dataInfo.createdDatetime);
     const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
     const url = useSelector((state) => state.boardReducer.dataInfo.url);
+    const fileList = useSelector((state) => state.boardReducer.files);
 
     const [activeMenu1, setActiveMenu1] = useState(false);
     const [activeMenu2, setActiveMenu2] = useState(false);
@@ -85,7 +87,14 @@ const MediaviewForm = () => {
                     <h3>{boardTitle}</h3>
                     <div className="list-num-wrap">
                         <div className="list-num">{createdDatetime}</div>
-                        <div className="file">2023_LS_E-Link.mp4</div> 
+                        <ul>
+                            {fileList.map((list, index) => (
+                                <li style={{padding: '5px 0 5px 0'}}>
+                                    <NavLink to="" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}><div className="file">{list.fileOriginNm}</div></NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                        
                     </div>
                     <div className="view-area">
                         <iframe title="youtubeFrame" width={'100%'} height={600} src={`${getEmbedVideoUrl(url)}`}></iframe>
