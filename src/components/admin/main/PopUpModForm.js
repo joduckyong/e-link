@@ -26,8 +26,10 @@ const PopUpAddForm = () => {
   const [popupWidth, setPopupWidth] = useState('');
   const [popupStartdate, setPopupStartdate] = useState(new Date());
   const [popupEnddate, setPopupEnddate] = useState(new Date());
-  const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
-  const [storedThumbnailName, setStoredThumbnailName] = useState('');
+  // const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
+  const [fileName, setFileName] = useState('선택된 파일 없음');
+  // const [storedThumbnailName, setStoredThumbnailName] = useState('');
+  const [storedFileName, setStoredFileName] = useState('');
   const [storedFileArr, setStoredFileArr] = useState([]);
   const [imgCheck, setImgCheck] = useState(false);
 
@@ -37,7 +39,8 @@ const PopUpAddForm = () => {
   const popupInfo = useSelector((state) => state.popupReducer.dataInfo);
   const fileList = useSelector((state) => state.popupReducer.files);
 
-  const thumbnailRef = useRef();
+  // const thumbnailRef = useRef();
+  const fileRef = useRef();
 
   useEffect(() => {
     dispatch(selectPopupInfo(id));
@@ -62,8 +65,10 @@ const PopUpAddForm = () => {
     for (let file of fileList) {
       // if (file.fileType === '0') {
       //이미지
-      setThumbnailName(file.fileOriginNm);
-      setStoredThumbnailName(file.fileNm);
+      // setThumbnailName(file.fileOriginNm);
+      // setStoredThumbnailName(file.fileNm);
+      setFileName(file.fileOriginNm);
+      setStoredFileName(file.fileNm);
       // }
     }
   }, [fileList]);
@@ -71,7 +76,8 @@ const PopUpAddForm = () => {
   const onEdit = async (e) => {
     e.preventDefault();
 
-    const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
+    // const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
+    const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
 
     if (popupTitle === '') {
       alert('관리 타이틀를 입력하세요');
@@ -117,30 +123,50 @@ const PopUpAddForm = () => {
         popupStartdate: changeFormat(popupStartdate, 'yyyy-MM-DD') || '',
         popupEnddate: changeFormat(popupEnddate, 'yyyy-MM-DD') || '',
         ids: storedFileArr,
-        thumbnail: thumbnailObj,
+        // thumbnail: thumbnailObj,
+        file: fileObj,
       };
       await dispatch(updatePopup(newList));
       return navigate('/admin/main/popup');
     }
   };
 
-  const onUploadImage = useCallback(
+  // const onUploadImage = useCallback(
+  //   (e) => {
+  //     if (!e.target.files) {
+  //       return;
+  //     }
+
+  //     setThumbnailName(URL.createObjectURL(e.target.files[0]));
+  //     if (!'blob'.includes(thumbnailName)) {
+  //       setImgCheck(true);
+  //     }
+  //     // setThumbnailName(e.target.files[0].name);
+  //     thumbnailRef.current = e.target.files[0];
+  //     if (!storedFileArr.includes(storedThumbnailName)) {
+  //       setStoredFileArr([...storedFileArr, storedThumbnailName]);
+  //     }
+  //   },
+  //   [storedFileArr, storedThumbnailName],
+  // );
+
+  const onUploadFile = useCallback(
     (e) => {
       if (!e.target.files) {
         return;
       }
 
-      setThumbnailName(URL.createObjectURL(e.target.files[0]));
-      if (!'blob'.includes(thumbnailName)) {
+      setFileName(URL.createObjectURL(e.target.files[0]));
+      if (!'blob'.includes(fileName)) {
         setImgCheck(true);
       }
-      // setThumbnailName(e.target.files[0].name);
-      thumbnailRef.current = e.target.files[0];
-      if (!storedFileArr.includes(storedThumbnailName)) {
-        setStoredFileArr([...storedFileArr, storedThumbnailName]);
+
+      fileRef.current = e.target.files[0];
+      if (!storedFileArr.includes(storedFileName)) {
+        setStoredFileArr([...storedFileArr, storedFileName]);
       }
     },
-    [storedFileArr, storedThumbnailName],
+    [storedFileArr, storedFileName],
   );
 
   return (
@@ -168,15 +194,10 @@ const PopUpAddForm = () => {
                     <img src="/img/admin/ico-upload.svg" alt="" />
                   </i>
                   이미지등록
-                  <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
+                  <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={fileRef} onChange={onUploadFile} />
                 </span>
               </label>
-              {imgCheck ? (
-                <img src={thumbnailName} alt="" width={220} height={240} />
-              ) : (
-                <ViewImage fileNm={storedThumbnailName} width={235} height={250} />
-              )}
-              {/* {thumbnailName}</span> */}
+              {imgCheck ? <img src={fileName} alt="" width={220} height={240} /> : <ViewImage fileNm={storedFileName} />}
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>
           </div>

@@ -62,6 +62,11 @@
    .main .con7 ul li{margin-left: 0; margin-top: 50px;}
    .main .con7 ul li:first-child{margin-top: 0;}
 
+	/* popup */
+	.main_pop{width:90vw; text-align:center;}
+	.main_pop .text{height:40px;}
+	.main_pop .text button{font-size:14px;}
+
    .sub .sub-top .path{position: absolute; right: 20px; bottom: 0;}
    .pc-block{display: none;}
 
@@ -174,6 +179,9 @@
 
     .sub.sub01-3 .t-wrap .time-list{margin-top: 0;}
     .sub.sub02-2 .dist-solution-img{padding-bottom: 80%;}
+    .sub .view-control .btn-wrap{width: 100%;}
+    .sub .view-control .btn-wrap a{width: 100%;}
+    .sub .view-control .apply-btn{margin-left: 0; margin-top: 10px;}
 
     footer address{line-height: 30px;}
     footer .privacy{flex-direction: column; width: 100%;}

@@ -25,18 +25,25 @@ const PopUpAddForm = () => {
   const [popupWidth, setPopupWidth] = useState('');
   const [popupStartdate, setPopupStartdate] = useState();
   const [popupEnddate, setPopupEnddate] = useState();
-  const [thumbnailName, setThumbnailName] = useState();
+  // const [thumbnailName, setThumbnailName] = useState();
+  const [fileName, setFileName] = useState();
 
-  const thumbnailRef = useRef();
+  // const thumbnailRef = useRef();
+  const fileRef = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const onCreate = async (e) => {
     e.preventDefault();
 
-    const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
+    // const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
+    const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
 
-    if (thumbnailObj === false) {
+    // if (thumbnailObj === false) {
+    //   alert('팝업 이미지를 등록 하세요');
+    //   return;
+    // }
+    if (fileObj === false) {
       alert('팝업 이미지를 등록 하세요');
       return;
     }
@@ -83,20 +90,29 @@ const PopUpAddForm = () => {
         popupWidth: popupWidth,
         popupStartdate: changeFormat(popupStartdate, 'yyyy-MM-DD') || '',
         popupEnddate: changeFormat(popupEnddate, 'yyyy-MM-DD') || '',
-        thumbnail: thumbnailObj,
+        // thumbnail: thumbnailObj,
+        file: fileObj,
       };
       await dispatch(insertPopup(newList));
       return navigate('/admin/main/popup');
     }
   };
 
-  const onUploadImage = useCallback((e) => {
+  // const onUploadImage = useCallback((e) => {
+  //   if (!e.target.files) {
+  //     return;
+  //   }
+  //   // setThumbnailName(e.target.files[0].name);
+  //   setThumbnailName(URL.createObjectURL(e.target.files[0]));
+  //   thumbnailRef.current = e.target.files[0];
+  // }, []);
+
+  const onUploadFile = useCallback((e) => {
     if (!e.target.files) {
       return;
     }
-    // setThumbnailName(e.target.files[0].name);
-    setThumbnailName(URL.createObjectURL(e.target.files[0]));
-    thumbnailRef.current = e.target.files[0];
+    setFileName(URL.createObjectURL(e.target.files[0]));
+    fileRef.current = e.target.files[0];
   }, []);
 
   return (
@@ -125,9 +141,9 @@ const PopUpAddForm = () => {
                   </i>
                   이미지등록
                 </span>
-                <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={thumbnailRef} onChange={onUploadImage} />
+                <input type="file" accept="image/*" id="idvf" name="u_file" className="file" ref={fileRef} onChange={onUploadFile} />
               </label>
-              <span className="upload-name">{thumbnailName !== undefined && <img src={thumbnailName} alt="" width={220} height={240} />}</span>
+              <span className="upload-name">{fileName !== undefined && <img src={fileName} alt="" />}</span>
             </div>
             <p className="notice">※ 권장 : 가로 440px * 세로 490px</p>
           </div>

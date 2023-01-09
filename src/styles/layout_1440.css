@@ -105,6 +105,9 @@
 	.main .con8 .more{font-size: 14px;}
 	.main .con8 ul li a{font-size: 15px; text-align: center;}
 
+	/* popup */
+	.main_pop{left:5vw;}
+
 	.sub .content{padding-top: 60px; padding-bottom: 60px;}
 	.m-block{display: block;}
 	.sub .sub-top{height: 400px;}
@@ -222,8 +225,8 @@
 	.sub.sub02-3 .renew-list .list05{background-size: 55px auto; background-position-x: 10px;}
 	.sub.sub02-3 .renew-list .list06{background-size: 55px auto; background-position-x: 10px;}
 
-	.sub.sub04 .con4-list-view .tit{margin-bottom: 30px;}
-	.sub.sub04 .con4-list-view .view-area{padding: 40px 20px; margin: 40px -20px;}
+	.sub .con4-list-view .tit{margin-bottom: 30px;}
+	.sub .con4-list-view .view-area{padding: 40px 20px; margin: 40px -20px;}
 	.sub.sub04 .view-area p{font-size: 14px; line-height: 25px; margin-top: 40px;}
 
 	.sub.sub04 .con4-media h3{margin-bottom: 50px; margin-top: 0;}
@@ -257,7 +260,9 @@
     .sub.sub04 .con4-list-box p{font-size: 16px; line-height: 22px;}
     .sub.sub04 .con4-list-box .tit-wrap{margin-top: 25px;}
 
-	.sub.sub04 .con4-media-view .list-num{font-size: 14px; margin: 30px 0 35px;}
+	.sub.sub04 .con4-media-view .list-num-wrap{margin: 30px 0 35px;}
+	.sub.sub04 .con4-media-view .list-num{font-size: 14px;}
+	.sub.sub04 .con4-media-view .list-num-wrap .file{font-size: 14px; background-size: contain;}
 	.sub.sub04 .con4-media-view .oth-tit{font-size: 22px;}
 	.sub.sub04 .con4-media-view .btns a{width: 22px; height: 19px; background-size: 22px auto;}
 	.sub.sub04 .con4-media-view .btns a.disable{background-size: 22px auto;}
@@ -267,11 +272,11 @@
 	.sub.sub04 .media-list .list-tit{font-size: 18px; margin-top: 20px; margin-bottom: 15px;}
 	.sub.sub04 .media-list .list-date{font-size: 14px;}
 	.sub.sub04 .con4-media-view .view-control{padding-top: 40px; margin-top: 40px;}
-	.sub.sub04 .view-control{padding-top: 0;}
-	.sub.sub04 .view-control .list-btn{font-size: 14px; height: 50px; line-height: 50px; width: 140px;}
-	 .sub.sub04 .view-control .next-btn,.sub.sub04 .view-control .prev-btn{font-size: 0;}
-	.sub.sub04 .view-control .next-btn:before{top: -6px; right: 0;}
-	.sub.sub04 .view-control .prev-btn:before{top: -6px; left: 0;}
+	.sub .view-control{padding-top: 0;}
+	.sub .view-control .list-btn,.sub .view-control .apply-btn{font-size: 14px; height: 50px; line-height: 50px; width: 140px;}
+	.sub .view-control .next-btn,.sub .view-control .prev-btn{font-size: 0;}
+	.sub .view-control .next-btn:before{top: -6px; right: 0;}
+	.sub .view-control .prev-btn:before{top: -6px; left: 0;}
 
 	.sub.sub05 .ideal-list{padding-top: 50px;}
 	.sub.sub05 .ideal-list .tit{font-size: 22px; margin-bottom: 10px;}

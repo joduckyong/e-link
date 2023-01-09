@@ -126,7 +126,7 @@ const PopUpListForm = () => {
                   </td>
                   <td>
                     <div className="shape-90">
-                      <ViewImage fileNm={list.thumbNm} width={90} height={95} />
+                      <ViewImage fileNm={list.thumbNm} />
                     </div>
                   </td>
                   <td>

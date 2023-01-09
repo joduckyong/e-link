@@ -7,8 +7,8 @@ const ViewImage = ({ fileNm, width, height }) => {
   const url = `${serverUrl}/api/file/image/${fileNm}`;
   const style = {
     maxWidth: '100%',
-    height: 'auto'
-  }
+    height: 'auto',
+  };
 
   useEffect(() => {
     // console.log('fileNm : ' + fileNm);
@@ -36,7 +36,11 @@ const ViewImage = ({ fileNm, width, height }) => {
     }
   }, [fileNm, url]);
 
-  return fileNm !== null && <img src={objectUrl} style={style} alt="" />;
+  if (width && height) {
+    return fileNm !== null && <img src={objectUrl} width={width} height={height} alt="" />;
+  } else {
+    return fileNm !== null && <img src={objectUrl} style={style} alt="" />;
+  }
 };
 
 export default ViewImage;
