@@ -13,7 +13,6 @@ import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-// import MainMp4 from '/img/video/main.mp4';
 
 SwiperCore.use([Navigation, Pagination]);
 gsap.registerPlugin(ScrollTrigger);
@@ -23,9 +22,16 @@ const MainForm = () => {
   const navigationNextRef = useRef(null);
   const [scrollTop, setScrollTop] = useState(0);
   const [scrollCur, setScrollCur] = useState(0);
+  const [scrollView, setScrollView] = useState(false);
+  const [scrollStyleView, setScrollStyleView] = useState(false);
   const scrollRef = useRef();
-  const scrollStyleChange = useRef();
+  // const scrollStyleChange = useRef();
   const [popupCookies, setPopupCookies] = useCookies();
+
+  const styleObj = {
+    transform: 'scale(1)',
+    bottom: 0,
+  };
 
   const dispatch = useDispatch();
   const popupList = useSelector((state) => state.popupReducer);
@@ -45,10 +51,6 @@ const MainForm = () => {
     AOS.init();
   });
 
-  useEffect(() => {
-    setScrollCur(scrollRef.current.scrollHeight);
-  }, []);
-
   function onScroll() {
     setScrollTop(window.scrollY);
   }
@@ -61,15 +63,25 @@ const MainForm = () => {
   }, []);
 
   useEffect(() => {
-    if (scrollTop > Number(scrollCur + 500)) {
-      // console.log('scrollTop : ' + scrollTop + ', scrollCur : ' + Number(scrollCur + 500));
-      scrollStyleChange.current.style = 'transform:scale(1);bottom:0;';
-    } else {
-      scrollStyleChange.current.style = '';
-    }
-  });
+    setScrollCur(scrollRef.current.scrollHeight);
+  }, []);
 
-  //  console.log('scrollTop : ' + scrollTop);
+  useEffect(() => {
+    setScrollCur(scrollRef.current.scrollHeight);
+  }, []);
+
+  useEffect(() => {
+    if (scrollCur > scrollTop) {
+      setScrollView(false);
+    } else if (scrollTop > scrollCur && scrollTop < Number(scrollCur + 500)) {
+      setScrollView(true);
+      setScrollStyleView(false);
+    } else if (scrollTop > Number(scrollCur + 500)) {
+      setScrollView(false);
+      setScrollStyleView(true);
+    }
+  }, [scrollCur, scrollTop]);
+
   useEffect(() => {
     const sections = gsap.utils.toArray('.panel');
     gsap.to(sections, {
@@ -152,12 +164,7 @@ const MainForm = () => {
       </div>
 
       <div className="con2" ref={scrollRef}>
-        <div
-          ref={scrollStyleChange}
-          className={
-            scrollCur > scrollTop ? 'con2-container' : scrollCur && scrollTop < Number(scrollCur + 500) ? 'con2-container on' : 'con2-container'
-          }
-        >
+        <div className={scrollView ? 'con2-container on' : 'con2-container'} style={styleObj}>
           <section className="section intro" data-section-color="transparent">
             <div>
               <article className="_intro">
@@ -191,16 +198,16 @@ const MainForm = () => {
         <div className="container">
           <div className="swiper mySwiper">
             <div className="swiper-wrapper">
-              <Swiper 
-                  slidesPerView={1} 
-                  spaceBetween={0} 
-                  loop={true} 
-                  speed={1000} 
-                  mousewheel={true}
-                  pagination={{ 
-                    el: '.swiper-pagination',
-                    clickable: true,
-                 }}    
+              <Swiper
+                slidesPerView={1}
+                spaceBetween={0}
+                loop={true}
+                speed={1000}
+                mousewheel={true}
+                pagination={{
+                  el: '.swiper-pagination',
+                  clickable: true,
+                }}
               >
                 <SwiperSlide>
                   <div className="swiper-slide">
@@ -258,7 +265,7 @@ const MainForm = () => {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div class="swiper-pagination"></div>
+            <div className="swiper-pagination"></div>
           </div>
         </div>
       </div>
@@ -356,7 +363,7 @@ const MainForm = () => {
           <div className="s-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
             TECHNOLOGICAL INNOVATION
           </div>
-          <div class="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
+          <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
             LS E-Link는 <br className="m-block" />
             전기자동차 충전인프라 <br className="m-block" />
             부문에 혁신적인 <br className="pc-block" />
@@ -455,7 +462,7 @@ const MainForm = () => {
                 <img src="/img/main/con5-img4.png" alt="" />
               </div>
               <div className="txt">
-                <div class="slide-tit">
+                <div className="slide-tit">
                   인프라 투자 / 자금조달 / 운영 Total <br />
                   Solution을 제공하는 진정한 파트너
                 </div>
@@ -477,7 +484,7 @@ const MainForm = () => {
           {/* </div> */}
           {/* </div> */}
         </div>
-        <div class="con5-video">
+        <div className="con5-video">
           <video muted autoPlay loop>
             <source src="http://thon.sibizi.me/e-link/img/main/technological innovation.mp4" type="video/mp4" />
           </video>
@@ -499,7 +506,7 @@ const MainForm = () => {
             {boardList
               .filter((list, index) => index < 3)
               .map((list, index) => (
-                <li>
+                <li key={index}>
                   <NavLink to={`/pr/press-view/${list.boardId}`}>
                     <div className="news-name">{list.createdDatetime}</div>
                     <div className="news-tit">{list.boardTitle}</div>
