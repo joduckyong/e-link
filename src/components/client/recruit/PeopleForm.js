@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import classnames from 'classnames';
+import { ParallaxProvider, Parallax } from 'react-skrollr';
 
 const PeopleForm = () => {
 
@@ -88,10 +89,14 @@ const PeopleForm = () => {
                 </ul>                   
             </div>
             <div className="hire">
-                <div className="bg" data-bottom-center="left: 5%; right: 5%;" data-bottom="left: 0%; right: 0%;"></div>
+                <ParallaxProvider>
+                    <Parallax>
+                        <div className="bg" data-bottom-center="left: 5%; right: 5%;" data-bottom="left: 0%; right: 0%;"></div>
+                    </Parallax>
+                </ParallaxProvider>
                 <div className="wrap">
                     <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">현재 진행중인 채용공고를 확인해 보세요.</p>
-                    <NavLink to="" data-aos="flip-left" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">채용공고 보기</NavLink>
+                    <NavLink to="/recruit/posting" data-aos="flip-left" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">채용공고 보기</NavLink>
                 </div>
             </div>
         </div>
