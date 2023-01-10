@@ -13,7 +13,6 @@ import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-// import MainMp4 from '/img/video/main.mp4';
 
 SwiperCore.use([Navigation, Pagination]);
 gsap.registerPlugin(ScrollTrigger);
@@ -23,6 +22,7 @@ const MainForm = () => {
   const navigationNextRef = useRef(null);
   const [scrollTop, setScrollTop] = useState(0);
   const [scrollCur, setScrollCur] = useState(0);
+  const [scrollView, setScrollView] = useState(false);
   const scrollRef = useRef();
   const scrollStyleChange = useRef();
   const [popupCookies, setPopupCookies] = useCookies();
@@ -45,10 +45,6 @@ const MainForm = () => {
     AOS.init();
   });
 
-  useEffect(() => {
-    setScrollCur(scrollRef.current.scrollHeight);
-  }, []);
-
   function onScroll() {
     setScrollTop(window.scrollY);
   }
@@ -61,15 +57,21 @@ const MainForm = () => {
   }, []);
 
   useEffect(() => {
-    if (scrollTop > Number(scrollCur + 500)) {
-      // console.log('scrollTop : ' + scrollTop + ', scrollCur : ' + Number(scrollCur + 500));
-      scrollStyleChange.current.style = 'transform:scale(1);bottom:0;';
-    } else {
-      scrollStyleChange.current.style = '';
-    }
-  });
+    setScrollCur(scrollRef.current.getBoundingClientRect().top);
+  }, [scrollCur]);
 
-  //  console.log('scrollTop : ' + scrollTop);
+  useEffect(() => {
+    if (scrollCur > scrollTop) {
+      setScrollView(false);
+    } else if (scrollTop > scrollCur && scrollTop < Number(scrollCur + 500)) {
+      setScrollView(true);
+      scrollStyleChange.current.style = '';
+    } else if (scrollTop > Number(scrollCur + 500)) {
+      setScrollView(false);
+      scrollStyleChange.current.style = 'transform:scale(1);bottom:0';
+    }
+  }, [scrollCur, scrollTop]);
+
   useEffect(() => {
     const sections = gsap.utils.toArray('.panel');
     gsap.to(sections, {
@@ -152,12 +154,7 @@ const MainForm = () => {
       </div>
 
       <div className="con2" ref={scrollRef}>
-        <div
-          ref={scrollStyleChange}
-          className={
-            scrollCur > scrollTop ? 'con2-container' : scrollCur && scrollTop < Number(scrollCur + 500) ? 'con2-container on' : 'con2-container'
-          }
-        >
+        <div className={scrollView ? 'con2-container on' : 'con2-container'} ref={scrollStyleChange}>
           <section className="section intro" data-section-color="transparent">
             <div>
               <article className="_intro">
@@ -191,16 +188,16 @@ const MainForm = () => {
         <div className="container">
           <div className="swiper mySwiper">
             <div className="swiper-wrapper">
-              <Swiper 
-                  slidesPerView={1} 
-                  spaceBetween={0} 
-                  loop={true} 
-                  speed={1000} 
-                  mousewheel={true}
-                  pagination={{ 
-                    el: '.swiper-pagination',
-                    clickable: true,
-                 }}    
+              <Swiper
+                slidesPerView={1}
+                spaceBetween={0}
+                loop={true}
+                speed={1000}
+                mousewheel={true}
+                pagination={{
+                  el: '.swiper-pagination',
+                  clickable: true,
+                }}
               >
                 <SwiperSlide>
                   <div className="swiper-slide">
@@ -366,8 +363,6 @@ const MainForm = () => {
             차별화된 LS E-Link의 <br className="m-block" />
             충전 솔루션을 경험해보세요.
           </div>
-          {/* <div className="swiper con5-swiper"> */}
-          {/* <div className="swiper-wrapper"> */}
           <Swiper
             slidesPerView={2.4}
             centeredSlides={true}
@@ -479,7 +474,7 @@ const MainForm = () => {
         </div>
         <div className="con5-video">
           <video muted autoPlay loop>
-            <source src="/img/main/technological innovation.mp4" type="video/mp4" />
+            <source src="/video/technological-innovation.mp4" type="video/mp4" />
           </video>
           <img style={{ position: 'absolute', zIndex: 1, top: 0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
         </div>
@@ -499,11 +494,11 @@ const MainForm = () => {
             {boardList
               .filter((list, index) => index < 3)
               .map((list, index) => (
-                <li>
+                <li key={index}>
                   <NavLink to={`/pr/press-view/${list.boardId}`}>
                     <div className="news-name">{list.createdDatetime}</div>
                     <div className="news-tit">{list.boardTitle}</div>
-                    <p>{list.boardContents.substr(0, 126) + '...'}</p>
+                    <p>{list.boardContents.length > 126 ? list.boardContents.substr(0, 126) + '...' : list.boardContents}</p>
                   </NavLink>
                 </li>
               ))}
