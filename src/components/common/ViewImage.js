@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { serverUrl } from '../../store/serverUrl';
 import { getCookieToken } from '../../storage/Cookie';
 
-const ViewImage = ({ fileNm, width, height }) => {
+const ViewImage = ({ fileNm, basicStyle=false }) => {
   const [objectUrl, setObjectUrl] = useState('');
   const url = `${serverUrl}/api/file/image/${fileNm}`;
   const style = {
     maxWidth: '100%',
     height: 'auto',
   };
+  
 
   useEffect(() => {
     // console.log('fileNm : ' + fileNm);
@@ -36,7 +37,7 @@ const ViewImage = ({ fileNm, width, height }) => {
     }
   }, [fileNm, url]);
 
-  return fileNm !== null && <img src={objectUrl} style={style} alt="" />;
+  return fileNm !== null && <img src={objectUrl} style={!basicStyle ? style : {}} alt="" />;
 };
 
 export default ViewImage;

@@ -120,16 +120,18 @@ const MedialistForm = () => {
             <div className="wrap">
                 <div className="con4-media">
                     <h3>LS E-Link 내일의 에너지를 충전합니다.</h3>
-                    <div className="big-media">
-                        <div className="img" style={{width: 740}}>
-                            {/* <img src="./../../img/sub/sub04-2-big.jpg" alt="" /> */}
-                            <iframe title="youtubeFrame" width={'100%'} height={400} src={`${getEmbedVideoUrl(boardInfo.url)}`}></iframe>
+                    {boardInfo &&
+                        <div className="big-media">
+                            <div className="img" style={{width: 740}}>
+                                {/* <img src="./../../img/sub/sub04-2-big.jpg" alt="" /> */}
+                                <iframe title="youtubeFrame" width={'100%'} height={400} src={`${getEmbedVideoUrl(boardInfo.url)}`}></iframe>
+                            </div>
+                            <div className="txt">
+                                <div className="date">{changeFormat(boardInfo.createdDatetime, 'yyyy-MM-DD') || ''}</div>
+                                <div className="tit">{boardInfo.boardTitle}</div>
+                            </div>
                         </div>
-                        <div className="txt">
-                            <div className="date">{changeFormat(boardInfo.createdDatetime, 'yyyy-MM-DD') || ''}</div>
-                            <div className="tit">{boardInfo.boardTitle}</div>
-                        </div>
-                    </div>
+                    }
                     <div className="media-list">
                         <div className="list-top">
                             <p className="t-ver">

@@ -258,7 +258,7 @@ const MainForm = () => {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div class="swiper-pagination"></div>
+            <div className="swiper-pagination"></div>
           </div>
         </div>
       </div>
@@ -356,7 +356,7 @@ const MainForm = () => {
           <div className="s-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
             TECHNOLOGICAL INNOVATION
           </div>
-          <div class="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
+          <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
             LS E-Link는 <br className="m-block" />
             전기자동차 충전인프라 <br className="m-block" />
             부문에 혁신적인 <br className="pc-block" />
@@ -455,7 +455,7 @@ const MainForm = () => {
                 <img src="/img/main/con5-img4.png" alt="" />
               </div>
               <div className="txt">
-                <div class="slide-tit">
+                <div className="slide-tit">
                   인프라 투자 / 자금조달 / 운영 Total <br />
                   Solution을 제공하는 진정한 파트너
                 </div>
@@ -477,9 +477,9 @@ const MainForm = () => {
           {/* </div> */}
           {/* </div> */}
         </div>
-        <div class="con5-video">
+        <div className="con5-video">
           <video muted autoPlay loop>
-            <source src="http://thon.sibizi.me/e-link/img/main/technological innovation.mp4" type="video/mp4" />
+            <source src="/img/main/technological innovation.mp4" type="video/mp4" />
           </video>
           <img style={{ position: 'absolute', zIndex: 1, top: 0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
         </div>

@@ -105,13 +105,13 @@ const PresslistForm = () => {
                         <li>
                             <NavLink to={`/pr/press-view/${list.boardId}`}>
                                 <div className="img">
-                                    <ViewImage fileNm={list.thumbNm}/>
+                                    <ViewImage fileNm={list.thumbNm} basicStyle={true}/>
                                 </div>
                                 <div className="text">
                                     <div className="list-num"><span>No.{(totalCount+1)-list.rnum}</span>{list.createdDatetime}</div>
                                     <div className="tit-wrap">{list.boardTitle}</div>
                                     <p>
-                                        {list.boardContents}
+                                        {list.boardContents.length > 100 ? list.boardContents.substring(0,100) + '...' : list.boardContents}
                                     </p>
                                 </div>
                             </NavLink>
