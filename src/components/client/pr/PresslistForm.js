@@ -111,7 +111,7 @@ const PresslistForm = () => {
                                     <div className="list-num"><span>No.{(totalCount+1)-list.rnum}</span>{list.createdDatetime}</div>
                                     <div className="tit-wrap">{list.boardTitle}</div>
                                     <p>
-                                        {list.boardContents.length > 150 ? list.boardContents.substring(0,150) + '...' : list.boardContents}
+                                        {list.boardContents.length > 200 ? list.boardContents.substring(0,200) + '...' : list.boardContents}
                                     </p>
                                 </div>
                             </NavLink>
