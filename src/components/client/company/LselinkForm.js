@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import classnames from 'classnames';
+import { ParallaxProvider, Parallax } from 'react-skrollr';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -105,7 +106,11 @@ const LselinkForm = () => {
           </h3>
           <div className="company-infor">
             <div className="img" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-              <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
+              <ParallaxProvider>
+                <Parallax>
+                  <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
+                </Parallax>
+              </ParallaxProvider>
             </div>
             <div className="txt">
               <div className="big" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
