@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import classnames from 'classnames';
+import { ParallaxProvider, Parallax } from 'react-skrollr';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -100,47 +101,51 @@ const HistoryForm = () => {
       <div className="content p0">
         <div className="history">
           <div className="wrap">
-            <div className="t-wrap" id="y-1" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-              <div className="title" data-top="transform:translateY(0%);" data-800-top="transform:translateY(50px);">
-                <div className="time">2022 - 현재</div>
-                <div className="time-tit">
-                  LS E-Link
-                  <br />
-                  미래 종합 에너지 솔루션
-                  <br />
-                  기업의 탄생
+            <ParallaxProvider>
+              <Parallax>
+                <div className="t-wrap" id="y-1" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+                  <div className="title" data-top="transform:translateY(0%);" data-800-top="transform:translateY(50px);">
+                    <div className="time">2022 - 현재</div>
+                    <div className="time-tit">
+                      LS E-Link
+                      <br />
+                      미래 종합 에너지 솔루션
+                      <br />
+                      기업의 탄생
+                    </div>
+                  </div>
+                  <ul className="time-list" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
+                      <dl>
+                        <dt>2023.00</dt>
+                        <dd>
+                          <p>부산 강서공영차고지 에너지센터</p>
+                          <div className="img">
+                            <img src="/img/sub/y-1-img1.png" alt="" />
+                          </div>
+                        </dd>
+                      </dl>
+                    </li>
+                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
+                      <dl>
+                        <dt>2022.12</dt>
+                        <dd>
+                          <p>쿠팡 부산2캠프 전기차충전 구축 및 운영</p>
+                        </dd>
+                      </dl>
+                    </li>
+                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
+                      <dl>
+                        <dt>2022.05</dt>
+                        <dd>
+                          <p>LS E-Link㈜ 설립</p>
+                        </dd>
+                      </dl>
+                    </li>
+                  </ul>
                 </div>
-              </div>
-              <ul className="time-list" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                  <dl>
-                    <dt>2023.00</dt>
-                    <dd>
-                      <p>부산 강서공영차고지 에너지센터</p>
-                      <div className="img">
-                        <img src="/public/img/sub/y-1-img1.png" alt="" />
-                      </div>
-                    </dd>
-                  </dl>
-                </li>
-                <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                  <dl>
-                    <dt>2022.12</dt>
-                    <dd>
-                      <p>쿠팡 부산2캠프 전기차충전 구축 및 운영</p>
-                    </dd>
-                  </dl>
-                </li>
-                <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                  <dl>
-                    <dt>2022.05</dt>
-                    <dd>
-                      <p>LS E-Link㈜ 설립</p>
-                    </dd>
-                  </dl>
-                </li>
-              </ul>
-            </div>
+              </Parallax>
+            </ParallaxProvider>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import classnames from 'classnames';
+import { ParallaxProvider, Parallax } from 'react-skrollr';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -125,7 +126,11 @@ const TransportationForm = () => {
                 </p>
               </div>
               <div className="img">
-                <div className="in" data-top-top="background-position: 50% 100%;" data-center-top="background-position:100% 100%;"></div>
+                <ParallaxProvider>
+                  <Parallax>
+                    <div className="in" data-top-top="background-position: 50% 100%;" data-center-top="background-position:100% 100%;"></div>
+                  </Parallax>
+                </ParallaxProvider>
               </div>
             </div>
           </div>
@@ -157,7 +162,11 @@ const TransportationForm = () => {
                 </div>
               </div>
               <div className="img img1">
-                <div className="in" data-top-top="background-position: 100% 50%;" data-center-top="background-position:100% 100%;"></div>
+                <ParallaxProvider>
+                  <Parallax>
+                    <div className="in" data-top-top="background-position: 100% 50%;" data-center-top="background-position:100% 100%;"></div>
+                  </Parallax>
+                </ParallaxProvider>
               </div>
               <div className="infor">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
@@ -168,7 +177,11 @@ const TransportationForm = () => {
                 </div>
               </div>
               <div className="img img2">
-                <div className="in" data-top-top="background-position: 100% 50%;" data-center-top="background-position:100% 100%;"></div>
+                <ParallaxProvider>
+                  <Parallax>
+                    <div className="in" data-top-top="background-position: 100% 50%;" data-center-top="background-position:100% 100%;"></div>
+                  </Parallax>
+                </ParallaxProvider>
               </div>
             </div>
           </div>

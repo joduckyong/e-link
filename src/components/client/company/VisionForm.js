@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import classnames from 'classnames';
+import { ParallaxProvider, Parallax } from 'react-skrollr';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -136,28 +137,44 @@ const VisionForm = () => {
             <ul>
               <li className="list01" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                 <div className="img">
-                  <div className="bg" data-top="transform:scale(1.0)" data-800-top="transform:scale(1.3)"></div>
+                  <ParallaxProvider>
+                    <Parallax>
+                      <div className="bg" data-top="transform:scale(1.0)" data-800-top="transform:scale(1.3)"></div>
+                    </Parallax>
+                  </ParallaxProvider>
                 </div>
                 <div className="core-tit">고객중심</div>
                 <p>customer</p>
               </li>
               <li className="list02" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="50" data-aos-once="true">
                 <div className="img">
-                  <div className="bg" data-top="transform:scale(1.0)" data-800-top="transform:scale(1.3)"></div>
+                  <ParallaxProvider>
+                    <Parallax>
+                      <div className="bg" data-top="transform:scale(1.0)" data-800-top="transform:scale(1.3)"></div>
+                    </Parallax>
+                  </ParallaxProvider>
                 </div>
                 <div className="core-tit">전문성</div>
                 <p>expertise</p>
               </li>
               <li className="list03" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="100" data-aos-once="true">
                 <div className="img">
-                  <div className="bg" data-top="transform:scale(1.0)" data-800-top="transform:scale(1.3)"></div>
+                  <ParallaxProvider>
+                    <Parallax>
+                      <div className="bg" data-top="transform:scale(1.0)" data-800-top="transform:scale(1.3)"></div>
+                    </Parallax>
+                  </ParallaxProvider>
                 </div>
                 <div className="core-tit">소통</div>
                 <p>communication</p>
               </li>
               <li className="list04" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="150" data-aos-once="true">
                 <div className="img">
-                  <div className="bg" data-top="transform:scale(1.0)" data-800-top="transform:scale(1.3)"></div>
+                  <ParallaxProvider>
+                    <Parallax>
+                      <div className="bg" data-top="transform:scale(1.0)" data-800-top="transform:scale(1.3)"></div>
+                    </Parallax>
+                  </ParallaxProvider>
                 </div>
                 <div className="core-tit">도전정신</div>
                 <p>challenge</p>
