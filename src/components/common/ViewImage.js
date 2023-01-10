@@ -37,7 +37,7 @@ const ViewImage = ({ fileNm, basicStyle=false }) => {
     }
   }, [fileNm, url]);
 
-  return fileNm !== null && <img src={objectUrl} style={!basicStyle ? style : {}} alt="" />;
+  return fileNm !== null && <img src={objectUrl} style={basicStyle ? {} : style} alt="" />;
 };
 
 export default ViewImage;
