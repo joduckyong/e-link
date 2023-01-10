@@ -23,15 +23,9 @@ const MainForm = () => {
   const [scrollTop, setScrollTop] = useState(0);
   const [scrollCur, setScrollCur] = useState(0);
   const [scrollView, setScrollView] = useState(false);
-  const [scrollStyleView, setScrollStyleView] = useState(false);
   const scrollRef = useRef();
-  // const scrollStyleChange = useRef();
+  const scrollStyleChange = useRef();
   const [popupCookies, setPopupCookies] = useCookies();
-
-  const styleObj = {
-    transform: 'scale(1)',
-    bottom: 0,
-  };
 
   const dispatch = useDispatch();
   const popupList = useSelector((state) => state.popupReducer);
@@ -63,22 +57,18 @@ const MainForm = () => {
   }, []);
 
   useEffect(() => {
-    setScrollCur(scrollRef.current.scrollHeight);
-  }, []);
-
-  useEffect(() => {
-    setScrollCur(scrollRef.current.scrollHeight);
-  }, []);
+    setScrollCur(scrollRef.current.getBoundingClientRect().top);
+  }, [scrollCur]);
 
   useEffect(() => {
     if (scrollCur > scrollTop) {
       setScrollView(false);
     } else if (scrollTop > scrollCur && scrollTop < Number(scrollCur + 500)) {
       setScrollView(true);
-      setScrollStyleView(false);
+      scrollStyleChange.current.style = '';
     } else if (scrollTop > Number(scrollCur + 500)) {
       setScrollView(false);
-      setScrollStyleView(true);
+      scrollStyleChange.current.style = 'transform:scale(1);bottom:0';
     }
   }, [scrollCur, scrollTop]);
 
@@ -164,7 +154,7 @@ const MainForm = () => {
       </div>
 
       <div className="con2" ref={scrollRef}>
-        <div className={scrollView ? 'con2-container on' : 'con2-container'} style={styleObj}>
+        <div className={scrollView ? 'con2-container on' : 'con2-container'} ref={scrollStyleChange}>
           <section className="section intro" data-section-color="transparent">
             <div>
               <article className="_intro">
@@ -373,8 +363,6 @@ const MainForm = () => {
             차별화된 LS E-Link의 <br className="m-block" />
             충전 솔루션을 경험해보세요.
           </div>
-          {/* <div className="swiper con5-swiper"> */}
-          {/* <div className="swiper-wrapper"> */}
           <Swiper
             slidesPerView={2.4}
             centeredSlides={true}
@@ -486,7 +474,7 @@ const MainForm = () => {
         </div>
         <div className="con5-video">
           <video muted autoPlay loop>
-            <source src="http://thon.sibizi.me/e-link/img/main/technological innovation.mp4" type="video/mp4" />
+            <source src="video/technological-innovation.mp4" type="video/mp4" />
           </video>
           <img style={{ position: 'absolute', zIndex: 1, top: 0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
         </div>
@@ -510,7 +498,7 @@ const MainForm = () => {
                   <NavLink to={`/pr/press-view/${list.boardId}`}>
                     <div className="news-name">{list.createdDatetime}</div>
                     <div className="news-tit">{list.boardTitle}</div>
-                    <p>{list.boardContents.substr(0, 126) + '...'}</p>
+                    <p>{list.boardContents.length > 126 ? list.boardContents.substr(0, 126) + '...' : list.boardContents}</p>
                   </NavLink>
                 </li>
               ))}
