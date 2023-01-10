@@ -452,21 +452,12 @@ const MainForm = () => {
               </div>
               {/* </div> */}
             </SwiperSlide>
+            <div className="control">
+              <div className="swiper-button-prev" ref={navigationPrevRef}></div>
+              <div className="swiper-button-next" ref={navigationNextRef}></div>
+            </div>
           </Swiper>
           {/* </div> */}
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <div className="control">
-            <div className="swiper-button-prev" ref={navigationPrevRef}></div>
-            <div className="swiper-button-next" ref={navigationNextRef}></div>
-          </div>
           {/* </div> */}
         </div>
         <div class="con5-video">
