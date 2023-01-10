@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ScrollToTop from './components/common/ScrollToTop';
 
 /* 관리자 */
 import LoginPage from './pages/admin/LoginPage';
@@ -87,6 +88,7 @@ import ContactusPage from './pages/client/contactus/ContactusPage';
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/admin/login" element={<LoginPage />} />
         <Route path="/admin/logout" element={<Logout />} />
