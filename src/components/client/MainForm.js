@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectClientPopup } from 'store/popupReducer';
+import { selectClientBoard } from 'store/boardReducer';
 import { useCookies } from 'react-cookie';
 import AOS from 'aos';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -28,10 +29,16 @@ const MainForm = () => {
 
   const dispatch = useDispatch();
   const popupList = useSelector((state) => state.popupReducer);
+  const boardList = useSelector((state) => state.boardReducer.data);
 
   useEffect(() => {
     const newList = { popupId: 'POP', pageIndex: 1 };
     dispatch(selectClientPopup(newList));
+  }, [dispatch]);
+
+  useEffect(() => {
+    const newList = { boardId: 'PRE', pageIndex: 1 };
+    dispatch(selectClientBoard(newList));
   }, [dispatch]);
 
   useEffect(() => {
@@ -193,7 +200,7 @@ const MainForm = () => {
                         <p className="desc">
                           현장 맞춤형 충전 인프라 구축 <br />및 충전서비스 제공
                         </p>
-                        <NavLink to="/business/ev/transportation" target="_self" className="link">
+                        <NavLink to="/business/ev/transportation" className="link">
                           VIEW MORE
                         </NavLink>
                       </div>
@@ -213,7 +220,7 @@ const MainForm = () => {
                           전기차 충전장 캐노피 등에 태양광을 설치, <br />
                           신재생에너지 발전 사업
                         </p>
-                        <NavLink to="/business/e-link/renewable" target="_self" className="link">
+                        <NavLink to="/business/e-link/renewable" className="link">
                           VIEW MORE
                         </NavLink>
                       </div>
@@ -232,7 +239,7 @@ const MainForm = () => {
                           고객 특화 기능의 관제시스템 <br />
                           구축 서비스 제공
                         </p>
-                        <NavLink to="/business/e-link/control" target="_self" className="link">
+                        <NavLink to="/business/e-link/control" className="link">
                           VIEW MORE
                         </NavLink>
                       </div>
@@ -241,7 +248,12 @@ const MainForm = () => {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div className="swiper-pagination"></div>
+            {/* <div className="swiper-pagination"></div> */}
+            <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+              <span className="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+              <span className="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
+              <span className="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -479,30 +491,17 @@ const MainForm = () => {
             <img src="/img/main/ico-plus.svg" alt="" />
           </NavLink>
           <ul data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-            <li>
-              <div className="news-name">중앙일보</div>
-              <div className="news-tit">LS그룹, EV 충전 사업 본격 진출... E-Link 설립</div>
-              <p>
-                LS그룹(회장 구자은)이 EV 충전 신규법인 설립 등 전기차 사업에 드라이브를 걸고 있어 관심을 모은다. LS의 지주회사인 ㈜LS는 ‘EV 충전
-                인프라 구축과 운영 사업 개발’을 위해 신규법인 LS E-Link(엘에스이 ..
-              </p>
-            </li>
-            <li>
-              <div className="news-name">중앙일보</div>
-              <div className="news-tit">LS그룹, EV 충전 사업 본격 진출... E-Link 설립</div>
-              <p>
-                LS그룹(회장 구자은)이 EV 충전 신규법인 설립 등 전기차 사업에 드라이브를 걸고 있어 관심을 모은다. LS의 지주회사인 ㈜LS는 ‘EV 충전
-                인프라 구축과 운영 사업 개발’을 위해 신규법인 LS E-Link(엘에스이 ..
-              </p>
-            </li>
-            <li>
-              <div className="news-name">중앙일보</div>
-              <div className="news-tit">LS그룹, EV 충전 사업 본격 진출... E-Link 설립</div>
-              <p>
-                LS그룹(회장 구자은)이 EV 충전 신규법인 설립 등 전기차 사업에 드라이브를 걸고 있어 관심을 모은다. LS의 지주회사인 ㈜LS는 ‘EV 충전
-                인프라 구축과 운영 사업 개발’을 위해 신규법인 LS E-Link(엘에스이 ..
-              </p>
-            </li>
+            {boardList
+              .filter((list, index) => index < 3)
+              .map((list, index) => (
+                <li>
+                  <NavLink to={`/pr/press-view/${list.boardId}`}>
+                    <div className="news-name">{list.createdDatetime}</div>
+                    <div className="news-tit">{list.boardTitle}</div>
+                    <p>{list.boardContents.substr(0, 126) + '...'}</p>
+                  </NavLink>
+                </li>
+              ))}
           </ul>
         </div>
       </div>
