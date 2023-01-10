@@ -191,7 +191,17 @@ const MainForm = () => {
         <div className="container">
           <div className="swiper mySwiper">
             <div className="swiper-wrapper">
-              <Swiper slidesPerView={1} spaceBetween={0} loop={true} speed={1000} mousewheel={true}>
+              <Swiper 
+                  slidesPerView={1} 
+                  spaceBetween={0} 
+                  loop={true} 
+                  speed={1000} 
+                  mousewheel={true}
+                  pagination={{ 
+                    el: '.swiper-pagination',
+                    clickable: true,
+                 }}    
+              >
                 <SwiperSlide>
                   <div className="swiper-slide">
                     <div className="slide-bg" style={{ background: '#EC6800 url(/img/main/con3-img1.jpg) no-repeat', backgroundSize: 'cover' }}>
@@ -248,12 +258,7 @@ const MainForm = () => {
                 </SwiperSlide>
               </Swiper>
             </div>
-            {/* <div className="swiper-pagination"></div> */}
-            <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
-              <span className="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
-              <span className="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
-              <span className="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span>
-            </div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
       </div>
