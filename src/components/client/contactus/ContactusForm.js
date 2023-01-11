@@ -70,17 +70,36 @@ const ContactusForm = () => {
                 contactAgree: contactAgree ? 'Y' : 'N',
                 file: fileObj
             }
-            await dispatch(insertContactUs(newList));
-            alert("등록 되었습니다.");
-            document.location.href = '/contactUs';
-
+            const result = await dispatch(insertContactUs(newList));
+            if(result.payload.data > 0){
+                alert("등록 되었습니다.");
+                document.location.href = '/contactUs';
+            }else{
+                alert("등록에 실패하였습니다.");
+            }
+            
         }
     }
 
     const onUploadFile = useCallback((e) => {
+
+        const acceptFileTypes= /(\.|\/)(jpg|gif|png|jpeg|pdf|hwp|xlsx|docx|ppt|pptx)$/i;
+        const acceptFileSize = 50 * 1024 * 1024;
+
         if (!e.target.files) {
             return;
         }
+
+        if (!acceptFileTypes.test(e.target.files[0].name)) {
+            alert("첨부파일은 jpg, png, gif, jpeg, pdf, hwp, xlsx, docx, ppt, pptx 파일만 업로드 가능합니다.");
+            return;
+        }
+
+        if(e.target.files[0].size > acceptFileSize){
+            alert("첨부파일은 최대 50MB 이하의 파일만 업로드 가능합니다.");
+            return;
+        }
+
         setFileName(e.target.files[0].name);
         fileRef.current = e.target.files[0];
     }, []);
