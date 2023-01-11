@@ -2,6 +2,8 @@ import React, { useState, useRef, useCallback } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const AddFileBox = ({ fileName, filesRef, onUploadFile, fileCountList }) => {
   return (
@@ -97,15 +99,14 @@ const AnnounceAddForm = () => {
             />
           </div>
           <div className="ed-area">
-            <textarea
-              name="boardContents"
-              id=""
-              cols="30"
-              rows="10"
-              placeholder="내용을 입력해주세요."
-              onChange={(e) => setBoardContents(e.target.value)}
-              value={boardContents}
-            ></textarea>
+            <CKEditor
+              editor={ClassicEditor}
+              data=""
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setBoardContents(data);
+              }}
+            />
           </div>
 
           <div className="ed-file">

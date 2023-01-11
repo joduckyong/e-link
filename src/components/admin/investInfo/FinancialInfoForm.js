@@ -31,7 +31,9 @@ const FinancialInfoForm = () => {
             </li>
             <li>
               <span className="tit">내용</span>
-              <div className="text">{boardInfo.boardContents}</div>
+            </li>
+            <li>
+              <div dangerouslySetInnerHTML={{ __html: boardInfo.boardContents }}></div>
             </li>
             <li>
               <span className="tit"></span>

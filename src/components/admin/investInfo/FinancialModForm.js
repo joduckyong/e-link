@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const AddFileBox = ({ fileName, filesRef, onUploadFile, fileCountList }) => {
   return (
@@ -132,14 +134,14 @@ const FinancialModForm = () => {
             <input type="text" placeholder="제목을 입력해주세요." onChange={(e) => setBoardTitle(e.target.value)} value={boardTitle} />
           </div>
           <div className="ed-area">
-            <textarea
-              name="boardContents"
-              cols="30"
-              rows="10"
-              placeholder="내용을 입력해주세요."
-              onChange={(e) => setBoardContents(e.target.value)}
-              value={boardContents}
-            ></textarea>
+            <CKEditor
+              editor={ClassicEditor}
+              data={boardContents}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setBoardContents(data);
+              }}
+            />
           </div>
           <div className="ed-file">
             <div className="s-tit">첨부파일</div>
