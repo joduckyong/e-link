@@ -5,6 +5,15 @@ const Header = () => {
   const [headerClass, setHeaderClass] = useState("");
   const [pcMenuClass, setPcMenuClass] = useState("");
   const [moMenuActive, setMoMenuActive] = useState(false);
+  const [moMenuClass, setMoMenuClass] = useState("");
+
+  const onClickMoMenu = (menu) => {
+    if(moMenuClass === menu){
+      setMoMenuClass('');
+    }else{
+      setMoMenuClass(menu);
+    }
+  }
   return (
     <header className={headerClass}>
       <div className="pc-menu">
@@ -308,7 +317,9 @@ const Header = () => {
       <div className="mo-menu">
         <div className="wrap">
           <h1>
-            <img src="/img/common/ci.svg" alt="" />
+            <NavLink to="/">
+              <img src="/img/common/ci.svg" alt="" />
+            </NavLink>
           </h1>
           <NavLink to="" className={moMenuActive ? "menu on" : "menu"} onClick={() => setMoMenuActive(!moMenuActive)}>
             <span></span>
@@ -316,9 +327,9 @@ const Header = () => {
         </div>
         <div className={moMenuActive ? "in active" : "in"}>
           <ul className="big-menu">
-            <li className="mo-click">
+            <li className={moMenuClass === '1' ? "mo-click on" : "mo-click"} onClick={() => onClickMoMenu('1')}>
               <NavLink to="">회사소개</NavLink>
-              <div className="depth-1">
+              <div className="depth-1" style={moMenuClass === '1' ? {display:'block'} : {display:'none'}}>
                 <ul>
                   <li>
                     <NavLink to="/company/lselink">LS E-Link</NavLink>
@@ -338,9 +349,9 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            <li className="mo-click">
+            <li className={moMenuClass === '2' ? "mo-click on" : "mo-click"} onClick={() => onClickMoMenu('2')}>
               <NavLink to="">사업영역</NavLink>
-              <div className="depth-1">
+              <div className="depth-1" style={moMenuClass === '2' ? {display:'block'} : {display:'none'}}>
                 <ul>
                   <li>
                     <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
@@ -354,9 +365,9 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            <li className="mo-click">
+            <li className={moMenuClass === '3' ? "mo-click on" : "mo-click"} onClick={() => onClickMoMenu('3')}>
               <NavLink to="">투자정보</NavLink>
-              <div className="depth-1">
+              <div className="depth-1" style={moMenuClass === '3' ? {display:'block'} : {display:'none'}}>
                 <ul>
                   <li>
                     <NavLink to="/investment/management">경영정보</NavLink>
@@ -373,9 +384,9 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            <li className="mo-click">
+            <li className={moMenuClass === '4' ? "mo-click on" : "mo-click"} onClick={() => onClickMoMenu('4')}>
               <NavLink to="">홍보센터</NavLink>
-              <div className="depth-1">
+              <div className="depth-1" style={moMenuClass === '4' ? {display:'block'} : {display:'none'}}>
                 <ul>
                   <li>
                     <NavLink to="/pr/press-list">보도자료</NavLink>
@@ -386,9 +397,9 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            <li className="mo-click">
+            <li className={moMenuClass === '5' ? "mo-click on" : "mo-click"} onClick={() => onClickMoMenu('5')}>
               <NavLink to="">채용정보</NavLink>
-              <div className="depth-1">
+              <div className="depth-1" style={moMenuClass === '5' ? {display:'block'} : {display:'none'}}>
                 <ul>
                   <li>
                     <NavLink to="/recruit/people">인재상</NavLink>
@@ -405,9 +416,9 @@ const Header = () => {
             <li>
               <NavLink to="/contactus">Contact Us</NavLink>
             </li>
-            <li className="mo-click">
+            <li className={moMenuClass === '7' ? "mo-click on" : "mo-click"} onClick={() => onClickMoMenu('7')}>
               <NavLink to="">EV 충전소</NavLink>
-              <div className="depth-1">
+              <div className="depth-1" style={moMenuClass === '7' ? {display:'block'} : {display:'none'}}>
                 <ul>
                   <li>
                     <NavLink to="">브랜드 소개</NavLink>
