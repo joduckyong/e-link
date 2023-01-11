@@ -112,7 +112,7 @@ const AnnounceviewForm = () => {
             <h3 className="tit">{boardTitle}</h3>
             <div className="list-num">{createdDatetime}</div>
             <div className="view-area">
-              <p className="mt30">{boardContents}</p>
+              <p className="mt30" dangerouslySetInnerHTML={{ __html: boardContents }}></p>
             </div>
             {fileList.map((list, index) => (
               <div className="list-num-wrap">
