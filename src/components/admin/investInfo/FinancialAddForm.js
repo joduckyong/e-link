@@ -29,7 +29,6 @@ const FinancialAddForm = () => {
   const [boardContents, setBoardContents] = useState('');
   const [fileName, setFileName] = useState({});
   const [fileCountList, setFileCountList] = useState([0]);
-  const [image, setImage] = useState(null);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -80,10 +79,8 @@ const FinancialAddForm = () => {
   };
 
   const [flag, setFlag] = useState(false);
-  const imgLink = 'http://localhost:3000/img';
 
   const customUploadAdapter = (loader) => {
-    // (2)
     return {
       upload() {
         return new Promise((resolve, reject) => {
@@ -95,22 +92,16 @@ const FinancialAddForm = () => {
           };
           const data = new FormData();
           loader.file.then((file) => {
-            data.append('name', file.name);
+            // data.append('name', file.name);
             data.append('file', file);
-
-            console.log('name : ' + file.name);
             axios
               .post(serverUrl + '/api/file/', data, config)
               .then((res) => {
                 if (!flag) {
-                  console.log('filename : ' + res.data.filename);
                   setFlag(true);
-                  // setImage(res.data.filename);
-                  setImage('5bd0e843-7c73-4ec2-96ac-468bde7e6462.png');
                 }
                 resolve({
-                  // default: `${imgLink}/${res.data.filename}`,
-                  default: `${imgLink}/download/wordmark.png`,
+                  default: `${serverUrl}/api/file/img/${res.data}`,
                 });
               })
               .catch((err) => reject(err));

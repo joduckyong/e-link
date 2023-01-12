@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import classNames from 'classnames';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -154,7 +155,7 @@ const MainForm = () => {
       </div>
 
       <div className="con2" ref={scrollRef}>
-        <div className={scrollView ? 'con2-container on' : 'con2-container'} ref={scrollStyleChange}>
+        <div className={classNames('con2-container', { on: scrollView })} ref={scrollStyleChange}>
           <section className="section intro" data-section-color="transparent">
             <div>
               <article className="_intro">
