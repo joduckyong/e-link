@@ -8,7 +8,7 @@ import { getCookieToken } from 'storage/Cookie';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-const AddFileBox = ({ fileName, filesRef, onUploadFile, fileCountList }) => {
+const AddFileBox = ({ fileName, filesRef, onUploadFile, onDeleteFile, fileCountList }) => {
   return (
     <>
       {fileCountList.map((list, index) => (
@@ -17,7 +17,15 @@ const AddFileBox = ({ fileName, filesRef, onUploadFile, fileCountList }) => {
             <input type="file" id={'e-choice01_' + index} className="file" data-index={index} ref={filesRef[index]} onChange={onUploadFile} />+
             파일선택
           </label>
-          <span className="upload-name">{fileName[index] ? fileName[index] : '선택된 파일 없음'}</span>
+          <span className="upload-name">
+            {fileName[index] ? fileName[index] : '선택된 파일 없음'}
+            {fileName[index] && (
+              <NavLink to="" onClick={(e) => onDeleteFile(e, index)}>
+                {' '}
+                <img src="/img/admin/ico-x.svg" alt="" />
+              </NavLink>
+            )}
+          </span>
         </div>
       ))}
     </>
@@ -66,6 +74,15 @@ const AnnounceAddForm = () => {
       const index = e.target.dataset.index;
       setFileName({ ...fileName, [index]: e.target.files[0].name });
       filesRef.current[index] = e.target.files[0];
+    },
+    [fileName],
+  );
+
+  const onDeleteFile = useCallback(
+    (e, index) => {
+      e.preventDefault();
+      setFileName({ ...fileName, [index]: '' });
+      filesRef.current[index] = '';
     },
     [fileName],
   );
@@ -156,7 +173,13 @@ const AnnounceAddForm = () => {
           <div className="ed-file">
             <div className="s-tit">첨부파일</div>
             <div className="file-area">
-              <AddFileBox fileName={fileName} filesRef={filesRef} onUploadFile={onUploadFile} fileCountList={fileCountList} />
+              <AddFileBox
+                fileName={fileName}
+                filesRef={filesRef}
+                onUploadFile={onUploadFile}
+                onDeleteFile={onDeleteFile}
+                fileCountList={fileCountList}
+              />
             </div>
             <NavLink to="" className="btn-add" onClick={onAddFileBox}>
               <img src="/img/admin/ico-plus.svg" alt="" />
