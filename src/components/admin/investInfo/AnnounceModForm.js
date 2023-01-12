@@ -180,7 +180,7 @@ const AnnounceModForm = () => {
               config={{
                 extraPlugins: [uploadPlugin],
               }}
-              data={boardContents}
+              data={boardContents ? boardContents : ''}
               onChange={(event, editor) => {
                 const data = editor.getData();
                 setBoardContents(data);

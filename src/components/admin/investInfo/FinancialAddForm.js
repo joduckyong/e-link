@@ -79,7 +79,6 @@ const FinancialAddForm = () => {
   };
 
   const [flag, setFlag] = useState(false);
-
   const customUploadAdapter = (loader) => {
     return {
       upload() {
