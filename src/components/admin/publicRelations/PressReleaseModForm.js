@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo, updateBoard } from 'store/boardReducer';
 import { serverUrl } from 'store/serverUrl';
@@ -11,8 +11,8 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const PressReleaseModForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
-    const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
-    const [fileName, setFileName] = useState('선택된 파일 없음');
+    const [thumbnailName, setThumbnailName] = useState('');
+    const [fileName, setFileName] = useState('');
     const [storedThumbnailName, setStoredThumbnailName] = useState('');
     const [storedFileName, setStoredFileName] = useState('');
     const [storedFileArr, setStoredFileArr] = useState([]); 
@@ -36,8 +36,8 @@ const PressReleaseModForm = () => {
     }, [boardInfo]);
 
     useEffect(() => {
-        setThumbnailName('선택된 파일 없음');
-        setFileName('선택된 파일 없음');
+        setThumbnailName('');
+        setFileName('');
         setStoredThumbnailName('');
         setStoredFileName('');
         for(let file of fileList){
@@ -94,6 +94,22 @@ const PressReleaseModForm = () => {
             setStoredFileArr([...storedFileArr, storedFileName]);
         }
         
+    }, [storedFileArr, storedFileName]);
+
+    const onDeleteThumbnail = useCallback(() => {
+        setThumbnailName('');
+        thumbnailRef.current = '';
+        if(!storedFileArr.includes(storedThumbnailName)){
+            setStoredFileArr([...storedFileArr, storedThumbnailName]);
+        }
+    }, [storedFileArr, storedThumbnailName]);
+
+    const onDeleteFile = useCallback(() => {
+        setFileName('');
+        fileRef.current = '';
+        if(!storedFileArr.includes(storedFileName)){
+            setStoredFileArr([...storedFileArr, storedFileName]);
+        }
     }, [storedFileArr, storedFileName]);
 
     const [flag, setFlag] = useState(false);
@@ -161,7 +177,7 @@ const PressReleaseModForm = () => {
                             config={{
                                 extraPlugins: [uploadPlugin],
                             }}
-                            data={boardContents}
+                            data={boardContents ? boardContents : ''}
                             onChange={(event, editor) => {
                                 const data = editor.getData();
                                 setBoardContents(data);
@@ -175,7 +191,11 @@ const PressReleaseModForm = () => {
                                 <label htmlFor="e-choice01" className="file-choice">
                                     <input type="file" accept="image/*" id="e-choice01" className="file" ref={thumbnailRef} onChange={onUploadImage}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">{thumbnailName}</span>
+                                <span className="upload-name">{thumbnailName ? thumbnailName : '선택된 파일 없음'}
+                                    {thumbnailName &&
+                                        <NavLink to="" onClick={onDeleteThumbnail}> <img src="/img/admin/ico-x.svg" alt="" /></NavLink>
+                                    }
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -186,7 +206,11 @@ const PressReleaseModForm = () => {
                                 <label htmlFor="e-choice02" className="file-choice">
                                     <input type="file" id="e-choice02" className="file" ref={fileRef} onChange={onUploadFile}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">{fileName}</span>
+                                <span className="upload-name">{fileName ? fileName : '선택된 파일 없음'}
+                                    {fileName &&
+                                        <NavLink to="" onClick={onDeleteFile}> <img src="/img/admin/ico-x.svg" alt="" /></NavLink>
+                                    }
+                                </span>
                             </div>
                         </div>
                     </div>

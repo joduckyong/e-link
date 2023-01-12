@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
 import { serverUrl } from 'store/serverUrl';
@@ -12,7 +12,7 @@ const MediaAddForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
     const [url, setUrl] = useState('');
-    const [fileName, setFileName] = useState('선택된 파일 없음');
+    const [fileName, setFileName] = useState('');
 
     const fileRef = useRef();
 
@@ -45,6 +45,11 @@ const MediaAddForm = () => {
         }
         setFileName(e.target.files[0].name);
         fileRef.current = e.target.files[0];
+    }, []);
+
+    const onDeleteFile = useCallback(() => {
+        setFileName('');
+        fileRef.current = '';
     }, []);
 
     const [flag, setFlag] = useState(false);
@@ -127,7 +132,11 @@ const MediaAddForm = () => {
                                 <label htmlFor="e-choice01" className="file-choice">
                                     <input type="file" id="e-choice01" className="file" ref={fileRef} onChange={onUploadFile}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">{fileName}</span>
+                                <span className="upload-name">{fileName ? fileName : '선택된 파일 없음'}
+                                    {fileName &&
+                                        <NavLink to="" onClick={onDeleteFile}> <img src="/img/admin/ico-x.svg" alt="" /></NavLink>
+                                    }
+                                </span>
                             </div>
                         </div>
                     </div>

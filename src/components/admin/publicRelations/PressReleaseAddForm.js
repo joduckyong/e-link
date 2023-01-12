@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
 import { serverUrl } from 'store/serverUrl';
@@ -11,8 +11,8 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const PressReleaseAddForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
     const [boardContents, setBoardContents] = useState('');
-    const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
-    const [fileName, setFileName] = useState('선택된 파일 없음');
+    const [thumbnailName, setThumbnailName] = useState('');
+    const [fileName, setFileName] = useState('');
 
     const thumbnailRef = useRef();
     const fileRef = useRef();
@@ -55,6 +55,16 @@ const PressReleaseAddForm = () => {
         }
         setFileName(e.target.files[0].name);
         fileRef.current = e.target.files[0];
+    }, []);
+
+    const onDeleteThumbnail = useCallback(() => {
+        setThumbnailName('');
+        thumbnailRef.current = '';
+    }, []);
+
+    const onDeleteFile = useCallback(() => {
+        setFileName('');
+        fileRef.current = '';
     }, []);
 
     const [flag, setFlag] = useState(false);
@@ -136,7 +146,11 @@ const PressReleaseAddForm = () => {
                                 <label htmlFor="e-choice01" className="file-choice">
                                     <input type="file" accept="image/*" id="e-choice01" className="file" ref={thumbnailRef} onChange={onUploadImage}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">{thumbnailName}</span>
+                                <span className="upload-name">{thumbnailName ? thumbnailName : '선택된 파일 없음'}
+                                    {thumbnailName &&
+                                        <NavLink to="" onClick={onDeleteThumbnail}> <img src="/img/admin/ico-x.svg" alt="" /></NavLink>
+                                    }
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -147,7 +161,11 @@ const PressReleaseAddForm = () => {
                                 <label htmlFor="e-choice02" className="file-choice">
                                     <input type="file" id="e-choice02" className="file" ref={fileRef} onChange={onUploadFile}/>+ 파일선택
                                 </label>
-                                <span className="upload-name">{fileName}</span>
+                                <span className="upload-name">{fileName ? fileName : '선택된 파일 없음'}
+                                    {fileName &&
+                                        <NavLink to="" onClick={onDeleteFile}> <img src="/img/admin/ico-x.svg" alt="" /></NavLink>
+                                    }
+                                </span>
                             </div>
                         </div>
                     </div>
