@@ -1,7 +1,12 @@
 import React, { useState, useRef, useCallback } from 'react';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertBoard } from 'store/boardReducer';
+import { serverUrl } from 'store/serverUrl';
+import { getCookieToken } from 'storage/Cookie';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const MediaAddForm = () => {
     const [boardTitle, setBoardTitle] = useState('');
@@ -41,6 +46,44 @@ const MediaAddForm = () => {
         setFileName(e.target.files[0].name);
         fileRef.current = e.target.files[0];
     }, []);
+
+    const [flag, setFlag] = useState(false);
+    const customUploadAdapter = (loader) => {
+        return {
+        upload() {
+            return new Promise((resolve, reject) => {
+            const token = getCookieToken();
+            const config = {
+                headers: {
+                Authorization: token,
+                },
+            };
+            const data = new FormData();
+            loader.file.then((file) => {
+                // data.append('name', file.name);
+                data.append('file', file);
+                axios
+                .post(serverUrl + '/api/file/', data, config)
+                .then((res) => {
+                    if (!flag) {
+                    setFlag(true);
+                    }
+                    resolve({
+                    default: `${serverUrl}/api/file/img/${res.data}`,
+                    });
+                })
+                .catch((err) => reject(err));
+            });
+            });
+        },
+        };
+    };
+
+    function uploadPlugin(editor) {
+        editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+        return customUploadAdapter(loader);
+        };
+    }
     
 
     return (
@@ -65,15 +108,17 @@ const MediaAddForm = () => {
                         />
                     </div>
                     <div className="ed-area">
-                        <textarea 
-                                name="" 
-                                id="" 
-                                cols="30" 
-                                rows="10" 
-                                placeholder="내용을 입력해주세요."
-                                onChange={(e) => setBoardContents(e.target.value)}
-                                value={boardContents}
-                        ></textarea>
+                        <CKEditor
+                            editor={ClassicEditor}
+                            config={{
+                                extraPlugins: [uploadPlugin],
+                            }}
+                            data=""
+                            onChange={(event, editor) => {
+                                const data = editor.getData();
+                                setBoardContents(data);
+                            }}
+                        />
                     </div>
                     <div className="ed-file">
                         <div className="s-tit">첨부파일</div>
