@@ -220,10 +220,6 @@ const JobVacancyModForm = () => {
         });
       };
       
-      function onEditorChange(value) {
-        setBoardContents(value);
-      }
-      
       const modules = useMemo(() => {
         return {
           toolbar: {

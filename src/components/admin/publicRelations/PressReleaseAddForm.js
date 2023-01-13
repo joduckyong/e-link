@@ -121,10 +121,6 @@ const PressReleaseAddForm = () => {
         });
       };
     
-      function onEditorChange(value) {
-        setBoardContents(value);
-      }
-    
       const modules = useMemo(() => {
         return {
           toolbar: {
