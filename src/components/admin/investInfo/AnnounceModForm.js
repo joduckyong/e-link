@@ -198,6 +198,30 @@ const AnnounceModForm = () => {
             <CKEditor
               editor={ClassicEditor}
               config={{
+                language: 'ko',
+                toolbar: [
+                  'heading',
+                  '|',
+                  'bold',
+                  'italic',
+                  'link',
+                  // 'bulletedList',
+                  // 'numberedList',
+                  'blockQuote',
+                  '|',
+                  'imageTextAlternative',
+                  'imageUpload',
+                  'imageStyle:full',
+                  'imageStyle:side',
+                  '|',
+                  'insertTable',
+                  'tableColumn',
+                  'tableRow',
+                  'mergeTableCells',
+                  '|',
+                  'undo',
+                  'redo',
+                ],
                 extraPlugins: [uploadPlugin],
               }}
               data={boardContents ? boardContents : ''}

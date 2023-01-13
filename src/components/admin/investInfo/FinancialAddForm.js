@@ -158,15 +158,6 @@ const FinancialAddForm = (props) => {
           </div>
           <div className="ed-area">
             <CKEditor
-              onInit={(editor) => {
-                // You can store the "editor" and use when it is needed.
-                console.log('Editor is ready to use!', editor);
-                console.log('toolbar: ', Array.from(editor.ui.componentFactory.names()));
-                console.log(
-                  'plugins: ',
-                  ClassicEditor.builtinPlugins.map((plugin) => plugin.pluginName),
-                );
-              }}
               editor={ClassicEditor}
               config={{
                 language: 'ko',
@@ -176,17 +167,15 @@ const FinancialAddForm = (props) => {
                   'bold',
                   'italic',
                   'link',
-                  'bulletedList',
-                  'numberedList',
+                  // 'bulletedList',
+                  // 'numberedList',
                   'blockQuote',
-                  'ckfinder',
                   '|',
                   'imageTextAlternative',
                   'imageUpload',
                   'imageStyle:full',
                   'imageStyle:side',
                   '|',
-                  'mediaEmbed',
                   'insertTable',
                   'tableColumn',
                   'tableRow',
@@ -201,12 +190,6 @@ const FinancialAddForm = (props) => {
               onChange={(event, editor) => {
                 const data = editor.getData();
                 setBoardContents(data);
-              }}
-              onBlur={(editor) => {
-                console.log('Blur.', editor);
-              }}
-              onFocus={(editor) => {
-                console.log('Focus.', editor);
               }}
             />
           </div>
