@@ -8,7 +8,7 @@ import './styles/layout.css';
 import './styles/layout_1440.css';
 import './styles/layout_780.css';
 import './styles/paging.css';
-import './styles/ckeditor.css';
+import './styles/custom.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoard, deleteBoardIds, selectPinupId, updatePinupId } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
-import '../../../styles/custom.css';
 import classnames from 'classnames';
 
 const YoutubeImage = ({url, width, height}) => {

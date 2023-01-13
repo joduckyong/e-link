@@ -4,4 +4,9 @@
 .star-chk.on{background-image: url('/public/img/admin/ico-star-fill.png');}
 .star-chk:hover{opacity: 1;}
 
+.ql-editor{
+    min-height: 400px;
+    margin-bottom: 20px;
+  }
+
 
