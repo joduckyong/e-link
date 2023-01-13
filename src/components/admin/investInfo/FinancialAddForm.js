@@ -149,10 +149,6 @@ const FinancialAddForm = (props) => {
     });
   };
 
-  function onEditorChange(value) {
-    setBoardContents(value);
-  }
-
   const modules = useMemo(() => {
     return {
       toolbar: {
