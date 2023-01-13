@@ -149,10 +149,6 @@ const AnnounceAddForm = () => {
     });
   };
 
-  function onEditorChange(value) {
-    setBoardContents(value);
-  }
-
   const modules = useMemo(() => {
     return {
       toolbar: {
