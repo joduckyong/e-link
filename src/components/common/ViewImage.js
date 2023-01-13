@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { serverUrl } from '../../store/serverUrl';
 import { getCookieToken } from '../../storage/Cookie';
 
-const ViewImage = ({ fileNm, basicStyle=false }) => {
+const ViewImage = ({ fileNm, basicStyle = false }) => {
   const [objectUrl, setObjectUrl] = useState('');
-  const url = `${serverUrl}/api/file/image/${fileNm}`;
+  const url = `${process.env.REACT_APP_API_URL}/api/file/image/${fileNm}`;
   const style = {
     maxWidth: '100%',
     height: 'auto',
   };
-  
 
   useEffect(() => {
     // console.log('fileNm : ' + fileNm);

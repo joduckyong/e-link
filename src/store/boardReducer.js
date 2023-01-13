@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { serverUrl, loginUrl } from './serverUrl';
 import { getCookieToken } from '../storage/Cookie';
 
 export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const config = {
@@ -26,7 +25,7 @@ export const selectBoard = createAsyncThunk('LIST_BOARD', async (newList) => {
     }
   }
 
-  const response = await axios.get(`${serverUrl}/api/board/${param}`, config);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/board/${param}`, config);
   return response.data;
 });
 
@@ -34,7 +33,7 @@ export const selectBoardInfo = createAsyncThunk('INFO_BOARD', async (id) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const config = {
@@ -43,7 +42,7 @@ export const selectBoardInfo = createAsyncThunk('INFO_BOARD', async (id) => {
     },
   };
 
-  const response = await axios.get(`${serverUrl}/api/board/${id}`, config);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/board/${id}`, config);
   return response.data;
 });
 
@@ -52,7 +51,7 @@ export const insertBoard = createAsyncThunk('ADD_BOARD', async (newList) => {
 
   console.log(newList);
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const formData = new FormData();
@@ -73,7 +72,7 @@ export const insertBoard = createAsyncThunk('ADD_BOARD', async (newList) => {
   );
 
   const response = await axios({
-    url: `${serverUrl}/api/board/`,
+    url: `${process.env.REACT_APP_API_URL}/api/board/`,
     method: 'POST',
     data: formData,
     headers: {
@@ -88,7 +87,7 @@ export const updateBoard = createAsyncThunk('MOD_BOARD', async (newList) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const formData = new FormData();
@@ -109,7 +108,7 @@ export const updateBoard = createAsyncThunk('MOD_BOARD', async (newList) => {
   );
 
   const response = await axios({
-    url: `${serverUrl}/api/board/update`,
+    url: `${process.env.REACT_APP_API_URL}/api/board/update`,
     method: 'POST',
     data: formData,
     headers: {
@@ -125,7 +124,7 @@ export const selectPinupId = createAsyncThunk('INFO_PINUP', async () => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const config = {
@@ -134,7 +133,7 @@ export const selectPinupId = createAsyncThunk('INFO_PINUP', async () => {
     },
   };
 
-  const response = await axios.get(`${serverUrl}/api/board/pinup`, config);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/board/pinup`, config);
   return response.data;
 });
 
@@ -142,11 +141,11 @@ export const updatePinupId = createAsyncThunk('MOD_PINUP', async (newList) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const response = await axios({
-    url: `${serverUrl}/api/board/update/pinup`,
+    url: `${process.env.REACT_APP_API_URL}/api/board/update/pinup`,
     method: 'POST',
     data: newList,
     headers: {
@@ -161,7 +160,7 @@ export const deleteBoard = createAsyncThunk('DEL_BOARD', async (id) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const config = {
@@ -170,7 +169,7 @@ export const deleteBoard = createAsyncThunk('DEL_BOARD', async (id) => {
     },
   };
 
-  const response = await axios.delete(`${serverUrl}/api/board/${id}`, config);
+  const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/board/${id}`, config);
   return response.data;
 });
 
@@ -178,10 +177,10 @@ export const deleteBoardIds = createAsyncThunk('DEL_BOARD_IDS', async (newList) 
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
-  const response = await axios.delete(`${serverUrl}/api/board/`, {
+  const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/board/`, {
     headers: {
       Authorization: token,
     },
@@ -205,17 +204,17 @@ export const selectClientBoard = createAsyncThunk('CLIENT_LIST_BOARD', async (ne
     boardType = '';
   }
 
-  const response = await axios.get(`${serverUrl}/api/client/board/${param}?boardType=${boardType}`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/client/board/${param}?boardType=${boardType}`);
   return response.data;
 });
 
 export const selectClientBoardInfo = createAsyncThunk('CLIENT_INFO_BOARD', async (id) => {
-  const response = await axios.get(`${serverUrl}/api/client/board/${id}`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/client/board/${id}`);
   return response.data;
 });
 
 export const selectClientBoardInfoWithPinup = createAsyncThunk('CLIENT_INFO_BOARD_WITH_PINUP', async () => {
-  const response = await axios.get(`${serverUrl}/api/client/board/WithPinup`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/client/board/WithPinup`);
   return response.data;
 });
 

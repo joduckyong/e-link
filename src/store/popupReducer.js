@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { serverUrl, loginUrl } from './serverUrl';
 import { getCookieToken } from '../storage/Cookie';
 
 export const selectPopup = createAsyncThunk('LIST_POPUP', async (newList) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const config = {
@@ -18,7 +17,7 @@ export const selectPopup = createAsyncThunk('LIST_POPUP', async (newList) => {
 
   let param = `${newList.popupId}/${newList.pageIndex}`;
 
-  const response = await axios.get(`${serverUrl}/api/popup/${param}`, config);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/popup/${param}`, config);
   return response.data;
 });
 
@@ -26,7 +25,7 @@ export const selectPopupInfo = createAsyncThunk('INFO_POPUP', async (id) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const config = {
@@ -35,7 +34,7 @@ export const selectPopupInfo = createAsyncThunk('INFO_POPUP', async (id) => {
     },
   };
 
-  const response = await axios.get(`${serverUrl}/api/popup/${id}`, config);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/popup/${id}`, config);
   return response.data;
 });
 
@@ -43,7 +42,7 @@ export const insertPopup = createAsyncThunk('ADD_POPUP', async (newList) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const formData = new FormData();
@@ -57,7 +56,7 @@ export const insertPopup = createAsyncThunk('ADD_POPUP', async (newList) => {
   );
 
   const response = await axios({
-    url: `${serverUrl}/api/popup/`,
+    url: `${process.env.REACT_APP_API_URL}/api/popup/`,
     method: 'POST',
     data: formData,
     headers: {
@@ -73,7 +72,7 @@ export const updatePopup = createAsyncThunk('MOD_POPUP', async (newList) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const formData = new FormData();
@@ -87,7 +86,7 @@ export const updatePopup = createAsyncThunk('MOD_POPUP', async (newList) => {
   );
 
   const response = await axios({
-    url: `${serverUrl}/api/popup/update`,
+    url: `${process.env.REACT_APP_API_URL}/api/popup/update`,
     method: 'POST',
     data: formData,
     headers: {
@@ -103,7 +102,7 @@ export const deletePopup = createAsyncThunk('DEL_POPUP', async (id) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const config = {
@@ -112,7 +111,7 @@ export const deletePopup = createAsyncThunk('DEL_POPUP', async (id) => {
     },
   };
 
-  const response = await axios.delete(`${serverUrl}/api/popup/${id}`, config);
+  const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/popup/${id}`, config);
   return response.data;
 });
 
@@ -120,10 +119,10 @@ export const deletePopupIds = createAsyncThunk('DEL_POPUP_IDS', async (newList) 
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
-  const response = await axios.delete(`${serverUrl}/api/popup/`, {
+  const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/popup/`, {
     headers: {
       Authorization: token,
     },
@@ -134,12 +133,12 @@ export const deletePopupIds = createAsyncThunk('DEL_POPUP_IDS', async (newList) 
 
 export const selectClientPopup = createAsyncThunk('CLIENT_LIST_POPUP', async (newList) => {
   let param = `${newList.popupId}/${newList.pageIndex}`;
-  const response = await axios.get(`${serverUrl}/api/client/popup/${param}/now`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/client/popup/${param}/now`);
   return response.data;
 });
 
 export const selectClientPopupInfo = createAsyncThunk('CLIENT_INFO_POPUP', async (id) => {
-  const response = await axios.get(`${serverUrl}/api/client/popup/${id}`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/client/popup/${id}`);
   return response.data;
 });
 

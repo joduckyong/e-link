@@ -1,5 +1,3 @@
-import { serverUrl } from '../store/serverUrl';
-
 // promise 요청 타임아웃 시간 선언
 const TIME_OUT = 300 * 1000;
 
@@ -36,7 +34,7 @@ export const loginUser = async (credentials) => {
     body: JSON.stringify(credentials),
   };
 
-  const data = await getPromise(`${serverUrl}/api/auth`, option).catch(() => {
+  const data = await getPromise(`${process.env.REACT_APP_API_URL}/api/auth`, option).catch(() => {
     return statusError;
   });
 
@@ -67,7 +65,7 @@ export const logoutUser = async (credentials, accessToken) => {
     body: JSON.stringify(credentials),
   };
 
-  const data = await getPromise(`${serverUrl}/api/auth/logout`, option).catch(() => {
+  const data = await getPromise(`${process.env.REACT_APP_API_URL}/api/auth/logout`, option).catch(() => {
     return statusError;
   });
 
@@ -99,7 +97,7 @@ export const requestToken = async (refreshToken) => {
     body: JSON.stringify({ refreshToken: refreshToken }),
   };
 
-  const data = await getPromise(`${serverUrl}/api/auth`, option).catch(() => {
+  const data = await getPromise(`${process.env.REACT_APP_API_URL}/api/auth`, option).catch(() => {
     return statusError;
   });
 

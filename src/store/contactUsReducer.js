@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { serverUrl, loginUrl } from './serverUrl';
 import { getCookieToken } from '../storage/Cookie';
 
 export const selectContactUs = createAsyncThunk('LIST_CONTACTUS', async (newList) => {
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const config = {
@@ -26,7 +25,7 @@ export const selectContactUs = createAsyncThunk('LIST_CONTACTUS', async (newList
     }
   }
 
-  const response = await axios.get(`${serverUrl}/api/contactUs/${param}`, config);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/contactUs/${param}`, config);
   return response.data;
 });
 
@@ -34,7 +33,7 @@ export const selectContactUsInfo = createAsyncThunk('INFO_CONTACTUS', async (id)
   const token = getCookieToken();
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
   const config = {
@@ -43,12 +42,11 @@ export const selectContactUsInfo = createAsyncThunk('INFO_CONTACTUS', async (id)
     },
   };
 
-  const response = await axios.get(`${serverUrl}/api/contactUs/${id}`, config);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/contactUs/${id}`, config);
   return response.data;
 });
 
 export const insertContactUs = createAsyncThunk('CLIENT_ADD_CONTACTUS', async (newList) => {
-
   const formData = new FormData();
   formData.append('file', newList.file);
   formData.append(
@@ -59,7 +57,7 @@ export const insertContactUs = createAsyncThunk('CLIENT_ADD_CONTACTUS', async (n
   );
 
   const response = await axios({
-    url: `${serverUrl}/api/client/contactUs/`,
+    url: `${process.env.REACT_APP_API_URL}/api/client/contactUs/`,
     method: 'POST',
     data: formData,
     headers: {
@@ -74,10 +72,10 @@ export const deleteContactUsIds = createAsyncThunk('DEL_CONTACTUS_IDS', async (n
   console.log('token : ' + token);
 
   if (token === undefined && typeof token === 'undefined') {
-    document.location.href = loginUrl;
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
   }
 
-  const response = await axios.delete(`${serverUrl}/api/contactUs/`, {
+  const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/contactUs/`, {
     headers: {
       Authorization: token,
     },

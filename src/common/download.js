@@ -1,7 +1,6 @@
-import { serverUrl } from '../store/serverUrl';
 import { getCookieToken } from '../storage/Cookie';
 export const downloadFile = (fileNm, fileOriginNm) => {
-  let url = `${serverUrl}/api/file/download/${fileNm}`;
+  let url = `${process.env.REACT_APP_API_URL}/api/file/download/${fileNm}`;
   const token = getCookieToken();
 
   fetch(url, {
