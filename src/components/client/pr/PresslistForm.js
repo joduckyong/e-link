@@ -110,8 +110,7 @@ const PresslistForm = () => {
                                 <div className="text">
                                     <div className="list-num"><span>No.{(totalCount+1)-list.rnum}</span>{list.createdDatetime}</div>
                                     <div className="tit-wrap">{list.boardTitle}</div>
-                                    <p>
-                                        {list.boardContents.length > 200 ? list.boardContents.substring(0,200) + '...' : list.boardContents}
+                                    <p dangerouslySetInnerHTML={{ __html: list.boardContents.length > 200 ? list.boardContents.substring(0,200) + '...' : list.boardContents }}>
                                     </p>
                                 </div>
                             </NavLink>

@@ -98,7 +98,7 @@ const MediaviewForm = () => {
                     </div>
                     <div className="view-area">
                         <iframe title="youtubeFrame" width={'100%'} height={600} src={`${getEmbedVideoUrl(url)}`}></iframe>
-                        <p className="view-txt">{boardContents}</p>
+                        <p className="view-txt" dangerouslySetInnerHTML={{ __html: boardContents }}></p>
                     </div>
                     <div className="view-control">
                         <NavLink to="/pr/media-list" className="list-btn">목록</NavLink>

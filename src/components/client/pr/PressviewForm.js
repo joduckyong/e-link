@@ -91,8 +91,7 @@ const PressviewForm = () => {
                         <div className="img">
                             <ViewImage fileNm={realImageNm}/>
                         </div>
-                        <p className="mt30">
-                            {boardContents}
+                        <p className="mt30" dangerouslySetInnerHTML={{ __html: boardContents }}>
                         </p>
                     </div>
                     <div className="view-control">

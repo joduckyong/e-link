@@ -87,8 +87,7 @@ const PostingviewForm = () => {
                         </ul>
                     </div>
                     <div className="view-area">
-                        <p className="mt30">
-                            {boardContents}
+                        <p className="mt30" dangerouslySetInnerHTML={{ __html: boardContents }}>
                         </p>
                     </div>
                     <div className="view-control">
