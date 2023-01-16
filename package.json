@@ -3,13 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-build-balloon": "^35.4.0",
-    "@ckeditor/ckeditor5-build-balloon-block": "^35.4.0",
-    "@ckeditor/ckeditor5-build-classic": "^35.4.0",
-    "@ckeditor/ckeditor5-build-decoupled-document": "^35.4.0",
-    "@ckeditor/ckeditor5-build-inline": "^35.4.0",
-    "@ckeditor/ckeditor5-heading": "^35.4.0",
-    "@ckeditor/ckeditor5-react": "^5.0.6",
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^2.9.10",
     "@reduxjs/toolkit": "^1.9.1",
@@ -42,7 +35,6 @@
     "redux-logger": "^3.0.6",
     "styled-components": "^5.3.6",
     "swiper": "^8.4.5",
-    "tui-editor": "^1.4.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
