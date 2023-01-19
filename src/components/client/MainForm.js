@@ -6,7 +6,7 @@ import { selectClientBoard } from 'store/boardReducer';
 import { useCookies } from 'react-cookie';
 import AOS from 'aos';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import classNames from 'classnames';
@@ -16,7 +16,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-SwiperCore.use([Navigation, Pagination]);
+SwiperCore.use([Navigation, Pagination, Autoplay]);
 gsap.registerPlugin(ScrollTrigger);
 
 const MainForm = () => {
@@ -211,6 +211,7 @@ const MainForm = () => {
                   loop={true}
                   speed={1000}
                   mousewheel={true}
+                  autoplay={{ delay: 3000 }}
                   pagination={{
                     el: '.swiper-pagination',
                     clickable: true,
