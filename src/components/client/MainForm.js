@@ -215,6 +215,27 @@ const MainForm = () => {
                     el: '.swiper-pagination',
                     clickable: true,
                   }}
+                  onSlideChange={(e) => {
+                    console.log('이벤트');
+                    console.log('e :' + e.activeIndex);
+                    if (e.activeIndex === 3 || e.activeIndex === 1) {
+                      e.mousewheel.disable();
+                      setTimeout(() => {
+                        e.mousewheel.enable();
+                      }, 2000);
+                    }
+                  }}
+                  onReachBeginning={(e) => {
+                    console.log('init');
+                    e.mousewheel.enable();
+                  }}
+                  onReachEnd={(e) => {
+                    console.log('end');
+                    e.mousewheel.disable();
+                    setTimeout(() => {
+                      e.mousewheel.enable();
+                    }, 2000);
+                  }}
                 >
                   <SwiperSlide>
                     <div className="swiper-slide">
