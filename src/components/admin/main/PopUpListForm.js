@@ -104,7 +104,7 @@ const PopUpListForm = () => {
                 <th>관리</th>
               </tr>
             </thead>
-            {popupList.data.map((list, index) => (
+            {popupList.data?.map((list, index) => (
               <tbody key={index}>
                 <tr>
                   <th>
@@ -148,7 +148,7 @@ const PopUpListForm = () => {
           <Pagination
             activePage={page}
             itemsCountPerPage={10}
-            totalItemsCount={popupList.totalCount}
+            totalItemsCount={popupList.totalCount ?? 0}
             pageRangeDisplayed={10}
             prevPageText={'‹'}
             nextPageText={'›'}

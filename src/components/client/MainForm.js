@@ -216,7 +216,7 @@ const MainForm = () => {
                     clickable: true,
                   }}
                   onSlideChange={(e) => {
-                    console.log('이벤트');
+                    // console.log('이벤트');
                     console.log('e :' + e.activeIndex);
                     if (e.activeIndex === 3 || e.activeIndex === 1) {
                       e.mousewheel.disable();

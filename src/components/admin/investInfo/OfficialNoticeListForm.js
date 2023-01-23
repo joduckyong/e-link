@@ -198,7 +198,7 @@ const OfficialNoticeListForm = () => {
                 </td>
               </tr>
               */}
-              {boardList.data.map((list, index) => (
+              {boardList.data?.map((list, index) => (
                 <tr className="readonly" key={index}>
                   <th>
                     <label htmlFor={`e01-${index}`}>
@@ -229,7 +229,7 @@ const OfficialNoticeListForm = () => {
           <Pagination
             activePage={page}
             itemsCountPerPage={10}
-            totalItemsCount={boardList.totalCount}
+            totalItemsCount={boardList.totalCount ?? 0}
             pageRangeDisplayed={10}
             prevPageText={'‹'}
             nextPageText={'›'}

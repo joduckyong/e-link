@@ -131,7 +131,7 @@ const AnnounceListForm = () => {
               </tr>
             </thead>
             <tbody>
-              {boardList.data.map((list, index) => (
+              {boardList.data?.map((list, index) => (
                 <tr key={index}>
                   <th>
                     <label htmlFor={`p01-${index}`}>
@@ -163,7 +163,7 @@ const AnnounceListForm = () => {
           <Pagination
             activePage={page}
             itemsCountPerPage={10}
-            totalItemsCount={boardList.totalCount}
+            totalItemsCount={boardList.totalCount ?? 0}
             pageRangeDisplayed={10}
             prevPageText={'‹'}
             nextPageText={'›'}
