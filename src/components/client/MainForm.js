@@ -89,20 +89,6 @@ const MainForm = () => {
     ScrollTrigger.refresh();
   }, []);
 
-  // useEffect(() => {
-  //   // popupList.data.forEach((el) => mainPopup(el.popupId, el.popupHeight, el.popupWidth));
-  //   popupList.data.forEach((el) => mainPopup(el.popupLink, el.popupId, el.popupClose1, el.popupClose2, dayPopupClose, modalClose));
-  // }, [popupList]);
-
-  // const mainPopup = (id, top, left) => {
-  //   if (!popupCookies['POPUP_' + id]) {
-  //     let tops = Number(parseInt(top) + 220);
-  //     const popupX = window.screen.width / 2 - left / 2;
-  //     const popupY = window.screen.height / 2 - tops / 2;
-  //     window.open('/popup/' + id, id, 'width=' + left + ',height=' + tops + ',left=' + popupX + ',top=' + popupY);
-  //   }
-  // };
-
   return (
     <>
       {popupList
