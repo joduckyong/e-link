@@ -62,7 +62,7 @@ const PopUpAddForm = () => {
       // if (file.fileType === '0') {
       //이미지
 
-      console.log('file.fileNm===' + file.fileNm);
+      // console.log('file.fileNm===' + file.fileNm);
       setThumbnailName(file.fileNm);
       setStoredThumbnailName(file.fileNm);
       // setFileName(file.fileOriginNm);
