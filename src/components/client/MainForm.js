@@ -194,7 +194,7 @@ const MainForm = () => {
                 <Swiper
                   slidesPerView={1}
                   spaceBetween={0}
-                  loop={true}
+                  // loop={true}
                   speed={1000}
                   mousewheel={true}
                   pagination={{
@@ -202,25 +202,22 @@ const MainForm = () => {
                     clickable: true,
                   }}
                   onSlideChange={(e) => {
-                    // console.log('이벤트');
-                    console.log('e :' + e.activeIndex);
-                    if (e.activeIndex === 3 || e.activeIndex === 1) {
-                      e.mousewheel.disable();
-                      setTimeout(() => {
-                        e.mousewheel.enable();
-                      }, 2000);
-                    }
+                    e.params.touchReleaseOnEdges = false;  
+							      e.params.mousewheel.releaseOnEdges = false;
                   }}
                   onReachBeginning={(e) => {
-                    console.log('init');
-                    e.mousewheel.enable();
+                    // console.log('init');
+                    setTimeout(() => {
+                      e.params.touchReleaseOnEdges = true;  
+							        e.params.mousewheel.releaseOnEdges = true;
+                    }, 500);
                   }}
                   onReachEnd={(e) => {
-                    console.log('end');
-                    e.mousewheel.disable();
+                    // console.log('end');
                     setTimeout(() => {
-                      e.mousewheel.enable();
-                    }, 2000);
+                      e.params.touchReleaseOnEdges = true;  
+							        e.params.mousewheel.releaseOnEdges = true;
+                    }, 500);
                   }}
                 >
                   <SwiperSlide>
