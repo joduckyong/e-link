@@ -117,13 +117,20 @@ const RenewableForm = () => {
           <div className="bg"></div>
           <div className="business-wrap pb0">
             <div className="wrap pb70">
-              <div className="infor mt0 mb0">
+              <div className="infor mt0 mb75" >
                 <div className="infor-tit mb0" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  전기차 충전장 또는 건물 옥상부 등에 태양광 발전 시설을 구축, 부대수익 창출은 물론,
-                  <br className="pc-block" />
-                  미래 분산 전원 시대를 선제적으로 대응합니다.
+	  				전기차 충전 솔루션을 넘어 PV-ESS, R(Reuse Battery)-ESS, DR, V2G 까지 
+					<br className="pc-block" />
+					미래 분산 전원 시대를 선도하는 당신의 믿음직한 파트너가 되겠습니다.
                 </div>
+				
               </div>
+				<img src="/img/sub/empty_bg.jpg" style={{ 'width': '100%' }}/>
+				<div className="infor-tit infor-tit2 mt120" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+	  				대규모 EV Fleet을 운영하는 고객사에게 분산전원 시대를 대비하여 PV-ESS, <br className="pc-block" />
+					R(Reuse Battery)-ESS, DR, V2G 솔루션 제공을 통해 EaaS(Energy As A Service) 시대에 <br className="pc-block" />
+					고객 가치를 극대화 시켜드리는 1등 파트너가 되겠습니다.
+                </div>
             </div>
             <div className="img out-img">
               <div className="in" style={{ 'background-size': 'cover' }}></div>

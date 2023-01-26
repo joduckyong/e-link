@@ -35,9 +35,6 @@ const Footer = () => {
           <li>
             <span>TEL</span>1660-3175
           </li>
-          <li>
-            <span>FAX</span>0000-0000
-          </li>
         </ul>
         <div className="bottom">
           <ul className="privacy">
@@ -126,7 +123,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <p className="copy">ⓒ LS E-Link. ALL RIGHT RESERVED.</p>
+          <p className="copy">COPYRIGHT ⓒ LS E-Link. ALL RIGHTS RESERVED.</p>
         </div>
       </div>
     </footer>

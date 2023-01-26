@@ -72,12 +72,12 @@ const EvchargeForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                전기차 충전사업
+                B2B 특화 전기차 충전 사업
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
                   <NavLink to="/business/e-link/evcharge" className="on">
-                    전기차 충전사업
+                    B2B 특화 전기차 충전 사업
                   </NavLink>
                 </li>
                 <li>
@@ -96,7 +96,7 @@ const EvchargeForm = () => {
           <ul className="swiper-wrapper">
             <li className="swiper-slide on">
               <NavLink to="/business/e-link/evcharge" className="on">
-                전기차 충전
+                B2B 특화 전기차 충전 사업
               </NavLink>
             </li>
             <li className="swiper-slide">
@@ -113,21 +113,21 @@ const EvchargeForm = () => {
           <div className="business-wrap">
             <div className="wrap">
               <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                전기차 충전 사업
+                B2B 특화 전기차 충전 사업
               </h3>
             </div>
           </div>
           <div className="bg"></div>
-          <div className="business-wrap">
+          <div className="business-wrap business-infor">
             <div className="wrap pb70">
               <div className="infor mt0">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  전기차 충전 사업자
+                  B2B 특화 전기차 충전 사업자
                 </div>
                 <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                  최적의 충전 인프라 구축을 통한 안정적인 충전서비스 제공은 물론, 경쟁력 있는 가격으로
+                  LS그룹의 축적된 전기 기술력을 바탕으로 Fleet 운영에 최적화된
                   <br className="pc-block" />
-                  전력을 공급합니다.
+                  충전 솔루션 및 배터리 관리 서비스를 제공합니다.
                 </div>
               </div>
               <div className="img img1">
@@ -142,9 +142,9 @@ const EvchargeForm = () => {
                   충전 인프라 구축, 위탁운영 사업
                 </div>
                 <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                  충전설비 자체 구축을 통한 충전 사업을 직접 운영를 원하시는 고객에게 인허가부터
+                  충전인프라 구축 및 충전사업을 운영을 원하시는 고객에게 사업성 검토, 인허가
                   <br className="pc-block" />
-                  충전인프라 구축 서비스와 운영시스템 제공을 통해 안정적인 사업구조 수립을 도와드립니다.
+                  인프라 구축, 운영 및 Financing까지 Total Solution을 제공합니다.
                 </div>
               </div>
               <div className="img img2">

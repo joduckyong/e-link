@@ -71,7 +71,7 @@ const CoporateForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                Corporate
+                에너지 센터
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
@@ -82,7 +82,7 @@ const CoporateForm = () => {
                 </li>
                 <li>
                   <NavLink to="/business/ev/coporate" className="on">
-                    Corporate
+                    에너지 센터
                   </NavLink>
                 </li>
               </ul>
@@ -100,7 +100,7 @@ const CoporateForm = () => {
               <NavLink to="/business/ev/logitics">물류</NavLink>
             </li>
             <li className="swiper-slide on">
-              <NavLink to="/business/e-link/renewable">Corporate</NavLink>
+              <NavLink to="/business/e-link/renewable">에너지 센터</NavLink>
             </li>
           </ul>
         </div>
@@ -110,7 +110,7 @@ const CoporateForm = () => {
           <div className="business-wrap">
             <div className="wrap">
               <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                Corporate{' '}
+                에너지 센터{' '}
               </h3>
             </div>
           </div>
@@ -120,7 +120,7 @@ const CoporateForm = () => {
               <div className="infor mt0">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
                   전기명가 LS의 기술력이 집결된 <br className="pc-block" />
-                  전기차 전용 충전 Place
+                  전기차 Fleet 전용 에너지 센터
                 </div>
                 <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
                   전력 장비와 전선부터 충전기 및 IT플랫폼까지 LS의 모든 역량이 집결된 전기차 전용 충전 Place <br className="pc-block" />

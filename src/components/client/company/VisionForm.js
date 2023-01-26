@@ -121,12 +121,8 @@ const VisionForm = () => {
             <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
               전기차 충전분야에서 고객의 가치를 최우선으로 실현하는
               <br />
-              전기 및 에너지 분야에서 최고의 전문성을 가진 No.1 파트너 입니다.
+              최고의 전문성을 가진 No.1 파트너입니다.
             </p>
-            <div className="goal" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-              Biz. Goal :<br />
-              2030년 연결 매출 3천억, 영업이익 5백억
-            </div>
           </div>
         </div>
         <div className="wrap">

@@ -57,8 +57,14 @@
 	.main .con2 .btn-area{font-size: 28px; line-height: 45px; word-break: keep-all; padding: 0 20px;}
 
 	.main .con3{position: relative;}
-	.main .con3 .swiper-slide .slide-bg{ background-size: cover;
-		background-position-x: calc(100% - 48%) !important;}
+	/*.main .con3 .swiper-slide .slide-bg{ background-size: cover;
+	}*/
+	.main .con3 .slide2 .slide-bg{background-size: 90% auto !important;}
+	.main .con3 .slide2 .cloud1{right: 28%;}
+	.main .con3 .slide2 .cloud3{top: 60%; right: 46%;}
+	.main .con3 .slide3 .cloud1{right: 47%;}
+	.main .con3 .slide3 .cloud3{top: 36%; right: 19%;}
+	.main .con3 .air{top: 27%; right: 21%;}
 	.main .con3 .text{color: #FFF; font-size: 30px; font-weight: bold; margin-bottom: 25px; line-height: 38px;}
 	.main .con3 .desc{font-size: 18px; color: #FFF; margin-bottom: 60px; line-height: 28px;}
 	.main .con3 .link{font-size: 14px; margin-top: 60px; padding-right: 45px;}
@@ -66,8 +72,8 @@
 	.main .con3 .swiper-pagination{top: 105px; margin-top: 0; left: 20px !important;}
 	.main .con3 .swiper-pagination span{display: inline-block; padding-left: 0 !important; margin-left: 25px; margin-top: 0 !important;}
 	.main .con3 .swiper-pagination span:first-child{margin-left: 0;}
-	.con3 .swiper-pagination span:after{display: none;}
-	.con3 .swiper-pagination:before{display: none;}
+	.main .con3 .swiper-pagination span:after{display: none;}
+	.main .con3 .swiper-pagination:before{display: none;}
 
 	.main .con4{padding: 100px 0 200px;}
 	.main .con4 .wrap{width: 100%; padding-top: 0;}
@@ -190,12 +196,15 @@
 	.sub .business .infor{flex-wrap: wrap; margin-bottom: 35px; margin-top: 60px;}
 	.sub .business .infor-tit{font-size: 22px; margin-bottom: 20px; line-height: 30px;}
 	.sub .business .infor-txt{font-size: 14px;}
-	.sub .business .img{padding-bottom: 45%; height: auto;}
+	.sub .business .img{padding-bottom: 55%; height: auto;}
 	.sub .business .out-img{padding-bottom: 0; height: 260px;}
 
 	.sub.sub02-1-1 .electronic-car .infor-tit{width: 100%;}
+	.sub.sub02-1-1 .energy .infor {margin-bottom: 30px !important;}
+	.sub.sub02-1-1 .energy .infor-tit2 {margin-top: 50px !important;margin-bottom: 0;}
 	.sub.sub02-2 .drive .infor-tit{width: 100%;}
 	.sub .infor-down{padding: 65px 0 50px;}
+	
 	.sub .infor-down .tit{font-size: 22px;}
 	.sub .infor-down p{font-size: 14px; margin-bottom: 35px; margin-top: 20px; margin-bottom: 20px;}
 	.sub .infor-down .img{width: 100%;}
@@ -203,12 +212,26 @@
 
 	.sub.sub02-2 .system{padding: 55px 0;}
 	.sub.sub02-2 .sys-tit{font-size: 22px; margin-bottom: 35px;}
+	.sub.sub02-2 .dist .infor-down .tit-wrap {margin-bottom: 0;}
+	.sub.sub02-2 .drive .infor-down .tit-wrap {margin-bottom: 0;}
+	
 
 	.sub.sub02-2 .dist-solution-img{background-size: 100% auto;}
 	.sub.sub02-2 .dist .infor-down .in{background-size: cover;}
 	.sub.sub02-2 .dist-solution-img .dist-tit{font-size: 22px; line-height: 32px; margin-bottom: 25px;}
 	.sub.sub02-2 .dist-solution-img p{font-size: 14px; line-height: 25px; word-break: keep-all;}
 	.sub.sub02-2 .dist .infor-txt{margin-top: 30px;}
+	.sub.sub02-2 .dist .dist-list li { padding: 25px; }
+	.sub.sub02-2 .dist .dist-list li .img-box { margin-right: 25px; }
+	.sub.sub02-2 .dist .dist-list li .tit{font-size: 15px;line-height: 25px;margin-bottom: 9px;}
+	.sub.sub02-2 .dist .dist-list li .txt{font-size: 14px;line-height: 24px;}
+	.sub.sub02-2 .drive .infor-down .in {background-size: cover;}
+	.sub.sub02-2 .drive .infor-down2 {padding: 0 0 50px;}
+	.sub.sub02-2 .drive .infor-down3 {padding: 0 0 0;}
+	.sub.sub02-2 .drive .drive-list {margin-bottom: 0;padding-bottom: 50px;}
+	.sub.sub02-2 .drive .drive-list .tit {font-size: 15px;margin-bottom: 4px;}
+	.sub.sub02-2 .drive .drive-list .txt p {line-height: 24px;margin-bottom: 0;}
+
 
 	.sub.sub02-2 .corporate .infor-tit{width: 100%;}
 	.sub.sub02-2 .corporate .infor-txt{width: 100%;}
@@ -236,6 +259,7 @@
 	.sub.sub04 .big-media{width: 100%;}
     .sub.sub04 .big-media .txt{margin-left: 0; margin-top: 30px; width: 100%;}
     .sub.sub04 .big-media .tit{margin-bottom: 30px;}
+	
 
     .sub .list-top select{height: 40px; font-size: 14px; padding: 0 15px; background-position-x: calc(100% - 15px);}
     .sub .list-top .t-ver{font-size: 14px;}
@@ -277,13 +301,19 @@
 	.sub .view-control .next-btn,.sub .view-control .prev-btn{font-size: 0;}
 	.sub .view-control .next-btn:before{top: -6px; right: 0;}
 	.sub .view-control .prev-btn:before{top: -6px; left: 0;}
-
-	.sub.sub05 .ideal-list{padding-top: 50px;}
+	
+	.sub.sub05 .title .inner {width: 100%;padding: 0 20px;}
+	.sub.sub05 .title h3 {font-size: 28px;line-height: 44px;}
+    .sub.sub05 .title p {font-size: 18px;margin-bottom: 23px;}
+	.sub.sub05 .ideal-list li img {width: 120px;}
+    .sub.sub05 .ideal-list li .tit {font-size: 22px;margin: 20px 0 10px;}
+	.sub.sub05 .ideal-list li .txt {font-size: 14px;line-height: 24px;}
+	/* .sub.sub05 .ideal-list{padding-top: 50px;}
 	.sub.sub05 .ideal-list .tit{font-size: 22px; margin-bottom: 10px;}
 	.sub.sub05 .ideal-list p{font-size: 15px; line-height: 25px;}
 	.sub.sub05 .ideal-list li{margin-top: 50px;}
 	.sub.sub05 .ideal-list .txt{padding-left: 60px;}
-	.sub.sub05 .ideal-list .img{height: auto; padding-bottom: 30%;}
+	.sub.sub05 .ideal-list .img{height: auto; padding-bottom: 30%;} */
 
 	.sub.sub05 .fire-img{margin: 60px 0 50px;}
 	.sub.sub05 .welfare .big{font-size: 23px; margin-bottom: 0px;}
@@ -334,11 +364,16 @@
 	.main .con5 .swiper-slide > div.txt{width: 100%; position: relative; z-index: 2; padding-left: 0; margin-top: 60px;}
 	.main .con5 .swiper-slide > div.img{width: 100%;}
 	.main .con5 .control{margin-left: 116px; top: 60%;}
+	
 
 	.sub.sub01-3 .t-wrap{flex-wrap: wrap;}
 	.sub.sub01-3 .t-wrap .title,.sub.sub01-3 .t-wrap .time-list{width: 100%;}
 	.sub.sub01-3 .t-wrap .time-list{margin-top: 50px;}
 	.sub.sub01-3 .t-wrap .time-list .img img{max-width: 100%;}
+
+	.sub.sub02-2 .drive .drive-list li {padding: 20px;margin-right: 10px;border-radius: 15px;}
+	.sub.sub02-2 .drive .drive-list2 .img-box {margin-right: 27px;}
+	.sub.sub02-2 .drive .drive-list2 .img-box img {width: 46px;}
 }
 
 @media only screen and (max-width:1024px){	
@@ -346,6 +381,8 @@
 	.main .con4 .mobile-show .right{position: static; margin-top: 70px;}
 
 	.sub .ci-bi .btn-down{position: static; width: 100%; margin-top: 35px;}
+
+	.sub.sub02-3 .renew-list li {width: 100%;}
 
 	footer{padding: 30px 0;}
 	footer .menu{display: none;}

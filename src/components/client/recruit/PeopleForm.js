@@ -55,7 +55,7 @@ const PeopleForm = () => {
             </div>
         </div>
 
-        <div className="content pb0">
+	{/*<div className="content pb0">
             <div className="wrap">
                 <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">LS E-Link는 LS 파트너십을 바탕으로<br />밝고, 창의적이며, 전문성을 가진 인재가 함께 만들어가는 회사입니다.</h3>
                 <ul className="ideal-list">
@@ -99,7 +99,44 @@ const PeopleForm = () => {
                     <NavLink to="/recruit/posting" data-aos="flip-left" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">채용공고 보기</NavLink>
                 </div>
             </div>
+        </div> */}
+
+
+		<div className="content pb0" style={{ 'padding-top': '0' }}>
+			<div className="title">
+				<div className="inner">
+					<p>Positive·Creative·Professional</p>
+					<h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+						LS E-Link는 LS 파트너십을 바탕으로 <br className="pc-block" />
+						<span>밝고, 창의적이며, 전문성을 가진 인재가 <br className="pc-block" /></span>
+						함께 만들어가는 회사입니다.
+					</h3>
+				</div>
+			</div>
+            <div className="wrap">
+				
+                <ul className="ideal-list">
+                    <li>
+						<img src="/img/sub/sub05-1-ico1.png" alt="" />
+						<p className="tit">Positive</p>
+						<p className="txt">밝은 기운과 <span>긍정적 Mind</span>를 갖추고 함께 일하는 사람들과 더불어 <span>상생</span>을 도모하며, <span>윤리적 절차</span>와 기본을 준수하는 인재</p>
+                    </li>
+                    <li>
+						<img src="/img/sub/sub05-1-ico2.png" alt="" />
+						<p className="tit">Creative</p>
+						<p className="txt"><span>창의력</span>을 바탕으로 <span>변화와 혁신</span>을 추구하며 가치를 창출하고 Global 기업으로의 <span>성장을 주도</span>하는 인재</p>
+                    </li>
+					<li>
+						<img src="/img/sub/sub05-1-ico3.png" alt="" />
+						<p className="tit">Professional</p>
+						<p className="txt">자신의 분야에서 최고가 되기 위해 <span>꾸준히 노력</span>하며 Global 감각을 보유하고 세계 무대에서 경쟁할 수 있는 <span>전문성</span>과 <span>열정</span>을 가진 인재</p>
+                    </li>
+                </ul> 
+				<NavLink to="" className="btn">채용안내</NavLink>
+            </div>
         </div>
+
+
     </div>
   );
 };
