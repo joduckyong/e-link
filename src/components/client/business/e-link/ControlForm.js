@@ -120,7 +120,7 @@ const ControlForm = () => {
               <div className="infor mt0">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
                   독자적인 관제시스템 구축을 통한 특화된 관제시스템을 통한 <br className="pc-block" />
-                  충전사업 운영을 희망하시는 고객에게 차별화된 관제시스템 구축 서비스 제공합니다.
+                  충전사업 운영을 희망하시는 고객에게 차별화된 관제시스템 구축 서비스를 제공합니다.
                 </div>
               </div>
               <div className="img img1">

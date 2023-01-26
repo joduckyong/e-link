@@ -122,7 +122,8 @@ const IdentityForm = () => {
                     <i className="red"></i>Red : 도전적이고 진취적인 사고
                   </li>
                   <li>
-                    <NavLink to="">CI 규정 보러가기</NavLink>
+                    <NavLink to="https://www.lsholdings.com/ko/media/ci/" target="_blank">CI 규정 보러가기</NavLink>
+				
                   </li>
                 </ul>
               </div>

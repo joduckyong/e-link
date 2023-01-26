@@ -83,7 +83,7 @@ const LogiticsForm = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/coporate">Corporate</NavLink>
+                  <NavLink to="/business/ev/coporate">에너지 센터</NavLink>
                 </li>
               </ul>
             </li>
@@ -100,7 +100,7 @@ const LogiticsForm = () => {
               <NavLink to="/business/ev/logitics">물류</NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/business/ev/coporate">Corporate</NavLink>
+              <NavLink to="/business/ev/coporate">에너지 센터</NavLink>
             </li>
           </ul>
         </div>
@@ -119,11 +119,10 @@ const LogiticsForm = () => {
             <div className="wrap">
               <div className="tit-wrap">
                 <div className="tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  전기버스 충전 솔루션
+                  맞춤형 충전 솔루션
                 </div>
                 <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  현장상황, 예상 사용량에 맞추어 충전 솔루션을 <br className="pc-block" />
-                  제공합니다.
+                 시간적·공간적 제약, Fleet 규모, 및 전력사용환경 등 고객사의 개별 물류 환경에 최적화된 충전Infra 맞춤 솔루션 제공
                 </p>
               </div>
               <div className="img">
@@ -138,9 +137,9 @@ const LogiticsForm = () => {
                 충전 관제 솔루션
               </div>
               <p data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                Innovated technology가 구현된 고도의 <br className="pc-block" />
-                관제시스템을 통해 사용 환경에 최적화된 전력분배
-                <br className="pc-block" />및 순차충전 자동 제어합니다.
+                Innovated technology가 구현된 <br className="pc-block" />
+				고도의 관제시스템을 통해 사용 환경에 최적화된 <br className="pc-block" />
+				전력분배 및 순차충전 자동 제어합니다.
               </p>
             </div>
           </div>
@@ -162,6 +161,36 @@ const LogiticsForm = () => {
                 보장하고 <br className="pc-block" />
                 사용자에게 경제성 증가 효과를 제공합니다.
               </div>
+	  		<ul className="dist-list">
+                <li>
+                    <span className="img-box">
+						<img src="/img/sub/dist-list-ico1.png" alt="" />
+					</span>
+	  				<div>
+						<p className="tit">TCO 절감</p>
+						<p className="txt">
+							EV로 유지 보수 비용을 낮추고 에너지 관리 기능으로<br className="pc-block" />
+							전기 비용을 낮게 유지하십시오. 차량 텔레매틱스 통합 및<br className="pc-block" />
+							경로 관리 플랫폼을 통해 시간이 지남에 따라 차량 성능을<br className="pc-block" />
+							높이고 유지 관리 비용을 줄이십시오. 
+						</p>
+					</div>
+                </li>
+				<li>
+                    <span className="img-box">
+						<img src="/img/sub/dist-list-ico2.png" alt="" />
+					</span>
+	  				<div>
+						<p className="tit">애플리케이션 프로그래밍 인터페이스(API) <br className="pc-block" />
+						통합을 통한 차량제어</p>
+						<p className="txt">
+						   다른 기존 차량 관리 솔루션과 API를 통해 통합된 <br className="pc-block" />
+							EV 충전 시스템으로 전체 차량을 계속 제어하세요.
+						</p>
+					</div>
+                </li>
+              </ul>
+
             </div>
           </div>
         </div>
