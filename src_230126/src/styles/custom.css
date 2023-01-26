@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+.star-chk{background-image: url('/public/img/admin/ico-star-base.png'); background-position: center; background-repeat: no-repeat; opacity: 0.5; cursor: pointer;}
+.star-chk.on{background-image: url('/public/img/admin/ico-star-fill.png');}
+.star-chk:hover{opacity: 1;}
+
+
