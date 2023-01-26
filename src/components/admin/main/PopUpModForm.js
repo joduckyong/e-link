@@ -53,8 +53,12 @@ const PopUpAddForm = () => {
     setPopupClose2(popupInfo.popupClose2);
     setPopupHeight(popupInfo.popupHeight);
     setPopupWidth(popupInfo.popupWidth);
-    popupInfo.popupStartdate ?? setPopupStartdate(new Date(popupInfo.popupStartdate));
-    popupInfo.popupEnddate ?? setPopupEnddate(new Date(popupInfo.popupEnddate));
+    if (popupInfo.popupStartdate !== undefined && typeof popupInfo.popupStartdate !== 'undefined') {
+      setPopupStartdate(new Date(popupInfo.popupStartdate));
+    }
+    if (popupInfo.popupEnddate !== undefined && typeof popupInfo.popupEnddate !== 'undefined') {
+      setPopupEnddate(new Date(popupInfo.popupEnddate));
+    }
   }, [popupInfo]);
 
   useEffect(() => {
