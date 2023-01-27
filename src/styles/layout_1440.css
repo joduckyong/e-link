@@ -85,6 +85,7 @@
 	.main .con4 .right .big b{font-size: 30px;}
 	.main .con4 .right .big{font-size: 25px; line-height: 32px; word-break: keep-all;}
 	.main .con4 .right .small{font-size: 15px; line-height: 20px; word-break: keep-all;}
+	.main .con4 .right .small.long{width:90%;margin-left: 10%;}
 	.main .con4 .right>div:nth-child(odd){margin-left: 100px;}
 
 	.main .con5{padding-top: 100px; overflow: hidden;}
@@ -124,7 +125,7 @@
 	.sub h3{font-size: 30px; line-height: 38px;}
 	.sub .nav-slide{width: 100%;}
 	.sub .nav-slide-wrap .wrap{padding: 0;}
-	.sub .nav-slide-wrap .swiper-slide a{font-size: 14px; padding: 17px 0;}
+	.sub .nav-slide-wrap .swiper-slide a{font-size: 14px;line-height:1.2;word-break:keep-all; padding: 17px 0;}
 	.sub .list-num{font-size: 14px;}
 	.sub .list-num span{margin-right: 10px;}
 
@@ -201,7 +202,7 @@
 
 	.sub.sub02-1-1 .electronic-car .infor-tit{width: 100%;}
 	.sub.sub02-1-1 .energy .infor {margin-bottom: 30px !important;}
-	.sub.sub02-1-1 .energy .infor-tit2 {margin-top: 50px !important;margin-bottom: 0;}
+	.sub.sub02-1-1 .energy .infor-tit2 {margin-top: 50px !important;margin-bottom: 30px !important;}
 	.sub.sub02-2 .drive .infor-tit{width: 100%;}
 	.sub .infor-down{padding: 65px 0 50px;}
 	
@@ -239,7 +240,7 @@
 	.sub.sub02-2 .corporate .img img{max-width: 100%;}
 
 	.sub.sub02-3 .renew-tit{font-size: 18px; margin-bottom: 15px; line-height: 25px; word-break: keep-all;}
-	.sub.sub02-3 .renew-list p{font-size: 14px; line-height: 22px; word-break: keep-all;}
+	.sub.sub02-3 .renew-list p{display:inline;font-size: 14px; line-height: 22px; word-break: keep-all;}
 	.sub.sub02-3 .renew-list li{padding-left: 90px; padding-top: 45px; padding-bottom: 45px;}
 	.sub.sub02-3 .renew-list .list01{background-size: 55px auto; background-position-x: 10px;}
 	.sub.sub02-3 .renew-list .list02{background-size: 45px auto; background-position-x: 10px;}

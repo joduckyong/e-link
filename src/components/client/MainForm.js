@@ -126,9 +126,11 @@ const MainForm = () => {
             </div>
           </div>
           <div className="video-wrap">
-            <video muted autoPlay loop>
+            <video muted autoPlay loop className="main-video-pc">
               <source src="/video/main.mp4" type="video/mp4" />
             </video>
+
+            <video className="main-video-mo" src="/video/main.mp4" playsinline="" loop="" muted autoplay=""></video>
           </div>
         </div>
         <div className="con1">
@@ -176,9 +178,11 @@ const MainForm = () => {
                   </div>
                   <div className="visual">
                     <div className="_visual">
-                      <video muted autoPlay loop>
+                      <video muted autoPlay loop className="con2-video-pc">
                         <source src="/video/con2-video.mp4" type="video/mp4" />
                       </video>
+
+                      <video className="con2-video-mo" src="/video/con2-video.mp4" playsinline="" loop="" muted="" autoplay=""></video>
                     </div>
                   </div>
                 </article>
@@ -202,21 +206,21 @@ const MainForm = () => {
                     clickable: true,
                   }}
                   onSlideChange={(e) => {
-                    e.params.touchReleaseOnEdges = false;  
-							      e.params.mousewheel.releaseOnEdges = false;
+                    e.params.touchReleaseOnEdges = false;
+                    e.params.mousewheel.releaseOnEdges = false;
                   }}
                   onReachBeginning={(e) => {
                     // console.log('init');
                     setTimeout(() => {
-                      e.params.touchReleaseOnEdges = true;  
-							        e.params.mousewheel.releaseOnEdges = true;
+                      e.params.touchReleaseOnEdges = true;
+                      e.params.mousewheel.releaseOnEdges = true;
                     }, 500);
                   }}
                   onReachEnd={(e) => {
                     // console.log('end');
                     setTimeout(() => {
-                      e.params.touchReleaseOnEdges = true;  
-							        e.params.mousewheel.releaseOnEdges = true;
+                      e.params.touchReleaseOnEdges = true;
+                      e.params.mousewheel.releaseOnEdges = true;
                     }, 500);
                   }}
                 >
@@ -314,7 +318,7 @@ const MainForm = () => {
                     <img src="/img/main/con4-img3.png" alt="" />
                     <div className="txt">
                       <div className="big">Fleet Management로</div>
-                      <div className="small">복잡하고 어려운 물류환경에서의 유연한 적용</div>
+                      <div className="small long">복잡하고 어려운 물류환경에서의 유연한 적용</div>
                     </div>
                   </div>
                   <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
@@ -355,7 +359,7 @@ const MainForm = () => {
                   <img src="/img/main/con4-img3.png" alt="" />
                   <div className="txt">
                     <div className="big">Fleet Management로</div>
-                    <div className="small">복잡하고 어려운 물류환경에서의 유연한 적용</div>
+                    <div className="small long">복잡하고 어려운 물류환경에서의 유연한 적용</div>
                   </div>
                 </div>
                 <div>
@@ -385,7 +389,7 @@ const MainForm = () => {
               충전 솔루션을 경험해보세요.
             </div>
             <Swiper
-              slidesPerView={2.4}
+              slidesPerView={1}
               centeredSlides={true}
               spaceBetween={0}
               loop={true}
@@ -494,14 +498,22 @@ const MainForm = () => {
             {/* </div> */}
           </div>
           <div className="con5-video">
-            <video muted autoPlay loop>
+            <video muted autoPlay loop className="con5-video-pc">
               <source src="/video/technological-innovation.mp4" type="video/mp4" />
             </video>
+
+            <video className="con5-video-mo" src="/video/technological-innovation.mp4" playsinline="" loop="" muted="" autoplay=""></video>
             <img style={{ position: 'absolute', zIndex: 1, top: 0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
           </div>
         </div>
         <div className="con6">
-          <div className="in"></div>
+          {/*<div className="in"></div>*/}
+
+          <video muted autoPlay loop playsinline className="con6-video-pc">
+            <source src="/video/main_con6_video.mp4" type="video/mp4" />
+          </video>
+
+          <video className="con6-video-mo" src="/video/main_con6_video.mp4" playsinline="" loop="" muted="" autoplay=""></video>
         </div>
         <div className="con7">
           <div className="wrap">

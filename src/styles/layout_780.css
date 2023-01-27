@@ -4,7 +4,8 @@
     header .mo-menu{display: block;}
 
     .tb-block{display: none;}
-
+	
+	.main .con6 {height: 360px;}
     .main .con8{padding: 90px 0; background-size: cover;}
     .main .con8 .wrap{flex-wrap: wrap;}
     .main .con8 .wrap .txt-area{width: 100%;}
@@ -61,7 +62,7 @@
    .main .con4 .mobile-show{display: block;}
    .main .con4 .mobile-show .right{display: flex; flex-wrap: wrap;}
    .main .con4 .mobile-show .right>div{width: 63%;}
-   .main .con4 .right .small{white-space: pre;}
+   /* .main .con4 .right .small{white-space: pre;} */
    .main .con4 .mobile-show .right>div:first-child{margin-top: 0;}
    .main .con4 .mobile-show .right>div:nth-child(odd){margin-left: auto;}
    .main .con4 .mobile-show .right>div:nth-child(even){margin-right: auto; left: 0;}
@@ -70,6 +71,8 @@
    .main .con5 .swiper-slide.swiper-slide-active .img{transform: scale(1);}
    .main .con5 .swiper-slide > div.txt{margin-top: 50px;}
    .main .con5 .control{left: initial; right: 0; margin-left: 0; top: 67%;}
+	
+	.main .con6 video {width: 178%;}
 
    .main .con7 ul{flex-wrap: wrap;}
    .main .con7 ul li{margin-left: 0; margin-top: 50px;flex: auto;}
@@ -83,7 +86,9 @@
    .sub .sub-top .path{position: absolute; right: 20px; bottom: 0;}
    .pc-block{display: none;}
 	
+	.sub.sub01-1 .company-infor .swiper {width: 100%;}
 	.sub.sub01-1 .company-infor .swiper-pointer-events {width: 100%;}
+	.sub.sub01-1 .company-infor .img {border-radius: 20px;}
 
    .sub.sub01-2 .core-value ul{flex-wrap: wrap;}
    .sub.sub01-2 .core-value ul li{flex: none; width: 49%; margin-left: 2%; margin-bottom: 30px;}
@@ -125,10 +130,14 @@
 
    .sub .business .img{border-radius: 10px;}
    .sub .business .out-img{border-radius: 0;}
+   .sub .business .pc-energy-img{display:none;}
+   .sub .business .mo-energy-img{display:block;}
 
    .sub.sub02-2 .dist-solution-img .dist-tit{margin-left: 0; margin-bottom: 15px;}
    .sub.sub02-2 .dist-solution-img p{margin-left: 0;}
    .sub.sub02-1-1 .electronic-car:before{background-position-x: calc(100% - 35%);}
+   .sub.sub02-1-1 .energy .pc-graph{display:none;}
+   .sub.sub02-1-1 .energy .mo-graph{display:block;}
    .sub.sub02-2 .dist-solution-img{background: #E9ECF1 url('/public/img/sub/dist-mo-img.png') center bottom+30px no-repeat; padding-top: 50px; padding-bottom: 60%;}
    .sub.sub02-2 .dist .dist-list {display: block;margin-top: 30px;}
    .sub.sub02-2 .dist .dist-list li {margin-bottom: 10px;margin-right: 0;border-radius: 15px;}
@@ -201,14 +210,15 @@
 }
 
 @media only screen and (max-width:650px){
-    .sub .nav-slide ul{width: 650px;}
+	.mo-br{display:block;}
+    .sub .nav-slide ul{width: 100%;}
     /*.sub.sub02-1-1 .nav-slide-wrap .swiper-slide{width: 20%;}*/
 	.sub.sub02-2 .drive .drive-list2 li {width: 100%;margin-right: 0;}
 }
 
 @media only screen and (max-width:570px){
 
-    .sub.sub01-3 .t-wrap .time-list{margin-top: 0;}
+    .sub.sub01-3 .t-wrap .time-list{margin-top: 44px;}
     .sub.sub02-2 .dist-solution-img{padding-bottom: 80%;}
     .sub .view-control .btn-wrap{width: 100%;}
     .sub .view-control .btn-wrap a{width: 100%;}
@@ -224,12 +234,22 @@
 }
 
 @media only screen and (max-width:435px){
-    .main .con3 .mobile-show .swiper-slide{background-position-y: bottom !important; background-size: 250% auto !important;}
-    .main .con5 .control{top: 51%;}
-    .main .con8 ul{width: 100%; justify-content: space-between;}
+    .main .video-wrap .main-video-pc {display: none;}
+	.main .video-wrap .main-video-mo {display: block;object-position:right;}
+	.main .con2 .intro .visual .con2-video-pc {display: none;}
+	.main .con2 .intro .visual .con2-video-mo {display: block;}
+	.main .con3 .mobile-show .swiper-slide{background-position-y: bottom !important; background-size: 250% auto !important;}
+    .main .con5 .con5-video .con5-video-pc {display: none;}
+	.main .con5 .con5-video .con5-video-mo {display: block;}
+	.main .con5 .control{top: 51%;}
+	.main .con6 .con6-video-pc {display: none;}
+	.main .con6 .con6-video-mo {display: block;}
+	.main .con8 ul{width: 100%; justify-content: space-between;}
 
     .sub.sub02-2 .dist-solution-img{background-size: 100% auto; padding-bottom: 100%;}
     .sub.sub06 .term .agree{width: 100%;}
     .sub.sub06 .term a{display: inline-block; margin-left: auto; margin-top: 20px;}
+	
+
 }
 
