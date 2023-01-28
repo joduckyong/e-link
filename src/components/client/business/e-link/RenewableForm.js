@@ -94,7 +94,7 @@ const RenewableForm = () => {
         <div className="nav-slide">
           <ul className="swiper-wrapper">
             <li className="swiper-slide">
-              <NavLink to="/business/e-link/evcharge">전기차 충전</NavLink>
+              <NavLink to="/business/e-link/evcharge">B2B 특화 전기차 <span className="mo-br">충전 사업</span></NavLink>
             </li>
             <li className="swiper-slide">
               <NavLink to="/business/e-link/control">관제시스템 구축</NavLink>

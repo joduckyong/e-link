@@ -96,7 +96,7 @@ const EvchargeForm = () => {
           <ul className="swiper-wrapper">
             <li className="swiper-slide on">
               <NavLink to="/business/e-link/evcharge" className="on">
-                B2B 특화 전기차 충전 사업
+                B2B 특화 전기차 <span className="mo-br">충전 사업</span>
               </NavLink>
             </li>
             <li className="swiper-slide">
