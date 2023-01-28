@@ -43,8 +43,8 @@
 
    .main .con2{padding-left: 20px; padding-right: 20px; background: #FFF;}
 
-   .main .con3 .swiper-slide .slide-bg{/*background-size: 200% !important;*/ background-position-y: 100% !important;}
-   .main .con3 .slide1 .slide-bg{background-size: 130% auto !important; background-position-x: -50% !important; background-position-y: 90% !important;}
+   .main .con3 .swiper-slide .slide-bg{background-position-y: 100% !important;}
+   .main .con3 .slide1 .slide-bg{animation:mcarani 4s infinite alternate; background-position-x:calc(100% - 100%)}
    .main .con3 .slide2 .slide-bg{background-size: 130% auto !important; background-position-x: -3% !important;}
    .main .con3 .slide3 .slide-bg{background-size: 82% auto !important; background-position-x: 150% !important; background-position-y: 90% !important;}
    .main .con3 .slide2 .cloud1 img,.main .con3 .slide2 .cloud2 img,.main .con3 .slide2 .cloud3 img{width: 100%;}
@@ -56,6 +56,13 @@
    .main .con3 .slide3 .cloud2{width: 10%; top: 72%;}
    .main .con3 .slide3 .cloud3{width: 10%; top: 82%; right: 33%;}
    .main .con3 .air{width: 11%; top: 68%; right: 16%;}
+
+   @keyframes mcarani{
+    0%{background: #EC6800 url('/public/img/main/car.png') bottom no-repeat; background-size: 110% auto; background-position-x:calc(100% - 100%)}
+    25%{background: #EC6800 url('/public/img/main/car-on.png') bottom no-repeat; background-size: 110% auto; background-position-x:calc(100% - 100%)}
+    75%{background: #EC6800 url('/public/img/main/car-1.png') bottom no-repeat; background-size: 110% auto; background-position-x:calc(100% - 100%)}
+    100%{background: #EC6800 url('/public/img/main/car-2.png') bottom no-repeat; background-size: 110% auto; background-position-x:calc(100% - 100%)}
+  }
 
    .main .con4{padding-bottom: 80px;}
    .main .con4 .pc-show{display: none;}
@@ -211,7 +218,7 @@
 
 @media only screen and (max-width:650px){
 	.mo-br{display:block;}
-    .sub .nav-slide ul{width: 100%;}
+    .sub .nav-slide ul{width: 100%; align-items: center;}
     /*.sub.sub02-1-1 .nav-slide-wrap .swiper-slide{width: 20%;}*/
 	.sub.sub02-2 .drive .drive-list2 li {width: 100%;margin-right: 0;}
 }
@@ -238,6 +245,7 @@
 	.main .video-wrap .main-video-mo {display: block;object-position:right;}
 	.main .con2 .intro .visual .con2-video-pc {display: none;}
 	.main .con2 .intro .visual .con2-video-mo {display: block;}
+    .main .con2 .intro .visual video{object-position: 35%;}
 	.main .con3 .mobile-show .swiper-slide{background-position-y: bottom !important; background-size: 250% auto !important;}
     .main .con5 .con5-video .con5-video-pc {display: none;}
 	.main .con5 .con5-video .con5-video-mo {display: block;}

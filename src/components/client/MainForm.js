@@ -225,8 +225,8 @@ const MainForm = () => {
                   }}
                 >
                   <SwiperSlide>
-                    <div className="swiper-slide">
-                      <div className="slide-bg" style={{ background: '#EC6800 url(/img/main/con3-img1.jpg) no-repeat', backgroundSize: 'cover' }}>
+                    <div className="swiper-slide slide1">
+                      <div className="slide-bg" style={{ background: '#EC6800 url(/img/main/car.png) right bottom no-repeat' }}>
                         <div className="slide-inner">
                           <h3 className="text">전기차 충전사업</h3>
                           <p className="desc">
@@ -240,8 +240,8 @@ const MainForm = () => {
                     </div>
                   </SwiperSlide>
                   <SwiperSlide>
-                    <div className="swiper-slide">
-                      <div className="slide-bg" style={{ background: '#12A84E url(/img/main/con3-img2.jpg) no-repeat', backgroundSize: 'cover' }}>
+                    <div className="swiper-slide slide2">
+                      <div className="slide-bg" style={{ background: '#12A84E url(/img/main/con3-img2.png) right center no-repeat' }}>
                         <div className="slide-inner">
                           <h3 className="text">
                             신재생에너지 융합형
@@ -255,13 +255,22 @@ const MainForm = () => {
                           <NavLink to="/business/e-link/renewable" className="link">
                             VIEW MORE
                           </NavLink>
+                          <span class="cloud1">
+                            <img src="/img/main/con3-img2-cloud1.png" alt="" />
+                          </span>
+                          <span class="cloud2">
+                            <img src="/img/main/con3-img2-cloud2.png" alt="" />
+                          </span>
+                          <span class="cloud3">
+                            <img src="/img/main/con3-img2-cloud3.png" alt="" />
+                          </span>
                         </div>
                       </div>
                     </div>
                   </SwiperSlide>
                   <SwiperSlide>
-                    <div className="swiper-slide">
-                      <div className="slide-bg" style={{ background: '#1E2F63 url(/img/main/con3-img3.jpg) no-repeat', backgroundSize: 'cover' }}>
+                    <div className="swiper-slide slide3">
+                      <div className="slide-bg" style={{ background: '#1E2F63 url(/img/main/con3-pad.png) right center no-repeat' }}>
                         <div className="slide-inner">
                           <h3 className="text">
                             관제시스템 구축·구독 <br />
@@ -274,6 +283,18 @@ const MainForm = () => {
                           <NavLink to="/business/e-link/control" className="link">
                             VIEW MORE
                           </NavLink>
+                          <span class="air">
+                            <img src="/img/main/air.png" alt="" />
+                          </span>
+                          <span class="cloud1">
+                            <img src="/img/main/cloud1.png" alt="" />
+                          </span>
+                          <span class="cloud2">
+                            <img src="/img/main/cloud2.png" alt="" />
+                          </span>
+                          <span class="cloud3">
+                            <img src="/img/main/cloud3.png" alt="" />
+                          </span>
                         </div>
                       </div>
                     </div>
