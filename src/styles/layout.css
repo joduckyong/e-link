@@ -305,7 +305,7 @@ transition: all 0.5s;}
     /* animation: big_frames 3s ease-out;
     animation-fill-mode: forwards; */
   }
-.sub{overflow-x: hidden;}
+.sub{overflow: hidden;}
 .m-block{display: none;}
 .tb-block{display: block;}
 .sub .content{padding-bottom: 150px; padding-top: 110px;}
@@ -357,11 +357,13 @@ width: 130px; margin-left: -65px;}
 .sub .links a.on,.sub .links a:hover{color: rgba(255,255,255,1) !important;}
 .sub .nav-slide-wrap{border-bottom: 1px #E5E8EF solid; background: #FFF; overflow: hidden; width: 100%;}
 .sub .nav-slide{width: 1280px; margin: 0 auto -1px;}
-.sub .nav-slide-wrap .swiper-slide{text-align: center; width: 33.333%;}
-.sub .nav-slide-wrap .swiper-slide a{font-size: 18px; font-weight: 600; display: block; padding: 30px 0; color: #888888;}
-.sub .nav-slide-wrap .swiper-slide.on a{border-bottom: 2px #EC6800 solid; color: #EC6800;}
+.sub .nav-slide-wrap .swiper-slide{text-align: center; width: 33.333%; align-self: stretch; height: auto;}
+.sub .nav-slide-wrap .swiper-slide a{font-size: 18px; font-weight: 600; display: flex; padding: 30px 0; color: #888888; align-items: center; justify-content: center; height: 100%;}
+.sub .nav-slide-wrap .swiper-slide.on:before{content:''; position: absolute; display: block; height: 2px; width: 100%; left: 0; right: 0; bottom: 1px; background: #EC6800;}
+.sub .nav-slide-wrap .swiper-slide.on a{color: #EC6800;}
 @media (hover: hover) {
-  .sub .nav-slide-wrap .swiper-slide:hover a{border-bottom: 2px #EC6800 solid; color: #EC6800;}
+  .sub .nav-slide-wrap .swiper-slide:hover:before{content:''; position: absolute; display: block; height: 2px; width: 100%; left: 0; right: 0; bottom: 1px; background: #EC6800;}
+  .sub .nav-slide-wrap .swiper-slide:hover a{color: #EC6800;}
 }
 /*[e]서브공통*/
 

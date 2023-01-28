@@ -230,6 +230,7 @@
     .sub .view-control .btn-wrap{width: 100%;}
     .sub .view-control .btn-wrap a{width: 100%;}
     .sub .view-control .apply-btn{margin-left: 0; margin-top: 10px;}
+    .sub .nav-slide-wrap .swiper-slide a{flex-direction: column;}
 
     footer address{line-height: 30px;}
     footer .privacy{flex-direction: column; width: 100%;}
