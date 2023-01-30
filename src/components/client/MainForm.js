@@ -552,7 +552,11 @@ const MainForm = () => {
                     <NavLink to={`/pr/press-view/${list.boardId}`}>
                       <div className="news-name">{list.createdDatetime}</div>
                       <div className="news-tit">{list.boardTitle}</div>
-                      <p>{list.boardContents.length > 126 ? list.boardContents.substr(0, 126) + '...' : list.boardContents}</p>
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: list.boardContents.substr(0, 126),
+                        }}
+                      ></p>
                     </NavLink>
                   </li>
                 ))}
