@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
   const [headerClass, setHeaderClass] = useState("");
   const [pcMenuClass, setPcMenuClass] = useState("");
+  const [elinkMenuActive, setElinkMenuActive] = useState(false);
+  const [evMenuActive, setEvMenuActive] = useState(false);
   const [moMenuActive, setMoMenuActive] = useState(false);
   const [moMenuClass, setMoMenuClass] = useState("");
 
@@ -184,9 +186,9 @@ const Header = () => {
                 <strong>사업영역</strong>
               </NavLink>
               <ul className="small-menu">
-                <li className="click">
-                  <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
-                  <ul className="hide">
+                <li className={elinkMenuActive ? "click on" : "click"} onClick={() => setElinkMenuActive(!elinkMenuActive)}>
+                  <NavLink to="">E-Link BUSINESS</NavLink>
+                  <ul className="hide" style={elinkMenuActive ? {display: 'block'} : {display: 'none'}}>
                     <li>
                       <NavLink to="/business/e-link/evcharge">전기차충전</NavLink>
                     </li>
@@ -198,9 +200,9 @@ const Header = () => {
                     </li>
                   </ul>
                 </li>
-                <li className="click">
-                  <NavLink to="/business/ev/transportation">전기차 충전사업</NavLink>
-                  <ul className="hide">
+                <li className={evMenuActive ? "click on" : "click"} onClick={() => setEvMenuActive(!evMenuActive)}>
+                  <NavLink to="">전기차 충전사업</NavLink>
+                  <ul className="hide" style={evMenuActive ? {display: 'block'} : {display: 'none'}}>
                     <li>
                       <NavLink to="/business/ev/transportation">운수</NavLink>
                     </li>
@@ -355,9 +357,19 @@ const Header = () => {
                 <ul>
                   <li>
                     <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
+                    <ul class="hide">
+                        <li><NavLink href="/business/e-link/evcharge">전기차충전</NavLink></li>
+                        <li><NavLink href="/business/e-link/control">관제시스템</NavLink></li>
+                        <li><NavLink href="/business/e-link/renewable">신재생</NavLink></li>
+                    </ul>
                   </li>
                   <li>
                     <NavLink to="/business/ev/transportation">전기차 충전사업</NavLink>
+                    <ul class="hide">
+                        <li><NavLink href="/business/ev/transportation">운수</NavLink></li>
+                        <li><NavLink href="/business/ev/logitics">물류</NavLink></li>
+                        <li><NavLink href="/business/ev/coporate">Corporate</NavLink></li>
+                    </ul>
                   </li>
                   <li>
                     <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
