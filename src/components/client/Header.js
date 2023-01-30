@@ -358,17 +358,17 @@ const Header = () => {
                   <li>
                     <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
                     <ul class="hide">
-                        <li><NavLink href="/business/e-link/evcharge">전기차충전</NavLink></li>
-                        <li><NavLink href="/business/e-link/control">관제시스템</NavLink></li>
-                        <li><NavLink href="/business/e-link/renewable">신재생</NavLink></li>
+                        <li><NavLink to="/business/e-link/evcharge">전기차충전</NavLink></li>
+                        <li><NavLink to="/business/e-link/control">관제시스템</NavLink></li>
+                        <li><NavLink to="/business/e-link/renewable">신재생</NavLink></li>
                     </ul>
                   </li>
                   <li>
                     <NavLink to="/business/ev/transportation">전기차 충전사업</NavLink>
                     <ul class="hide">
-                        <li><NavLink href="/business/ev/transportation">운수</NavLink></li>
-                        <li><NavLink href="/business/ev/logitics">물류</NavLink></li>
-                        <li><NavLink href="/business/ev/coporate">Corporate</NavLink></li>
+                        <li><NavLink to="/business/ev/transportation">운수</NavLink></li>
+                        <li><NavLink to="/business/ev/logitics">물류</NavLink></li>
+                        <li><NavLink to="/business/ev/coporate">Corporate</NavLink></li>
                     </ul>
                   </li>
                   <li>
