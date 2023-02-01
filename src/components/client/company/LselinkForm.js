@@ -5,11 +5,11 @@ import classnames from 'classnames';
 import { ParallaxProvider, Parallax } from 'react-skrollr';
 import 'aos/dist/aos.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
+import SwiperCore, { Navigation, EffectFade, Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-SwiperCore.use([Navigation, Pagination, Autoplay]); // Swiper
+SwiperCore.use([Navigation, EffectFade, Pagination, Autoplay]); // Swiper
 
 const LselinkForm = () => {
   const [activeMenu1, setActiveMenu1] = useState(false);
