@@ -65,6 +65,8 @@ const JobVacancyInfoForm = () => {
             </li>
             <li>
               <span className="tit">내용</span>
+            </li>
+            <li>
               <div dangerouslySetInnerHTML={{ __html: boardContents }}></div>
             </li>
             <li>
