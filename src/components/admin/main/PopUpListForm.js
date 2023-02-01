@@ -118,7 +118,7 @@ const PopUpListForm = () => {
                       <span className="chkimg"></span>
                     </label>
                   </th>
-                  <td>{list.num}</td>
+                  <td>{popupList.totalCount - (list.rnum - 1)}</td>
                   <td>
                     <Link to={`/admin/main/popupInfo/${list.popupId}`}>
                       <span className="pop-name">{list.popupTitle}</span>{' '}

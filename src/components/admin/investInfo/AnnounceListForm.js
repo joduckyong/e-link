@@ -144,7 +144,7 @@ const AnnounceListForm = () => {
                       <span className="chkimg"></span>
                     </label>
                   </th>
-                  <td>{list.num}</td>
+                  <td>{boardList.totalCount - (list.rnum - 1)}</td>
                   <td className="tal pl40">
                     <Link to={`/admin/investInfo/announceInfo/${list.boardId}`}>{list.boardTitle}</Link>
                   </td>
