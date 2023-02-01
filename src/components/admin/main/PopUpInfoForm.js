@@ -64,11 +64,11 @@ const PopUpInfoForm = () => {
               <div className="input-wrap">
                 <div>
                   <span>가로</span>
-                  <input type="text" value={popupInfo.popupHeight} disabled />
+                  <input type="text" value={popupInfo.popupWidth} disabled />
                 </div>
                 <div>
                   <span>세로</span>
-                  <input type="text" value={popupInfo.popupWidth} disabled />
+                  <input type="text" value={popupInfo.popupHeight} disabled />
                 </div>
               </div>
             </div>

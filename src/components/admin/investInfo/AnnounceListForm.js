@@ -144,7 +144,7 @@ const AnnounceListForm = () => {
                       <span className="chkimg"></span>
                     </label>
                   </th>
-                  <td>{list.rnum}</td>
+                  <td>{list.num}</td>
                   <td className="tal pl40">
                     <Link to={`/admin/investInfo/announceInfo/${list.boardId}`}>{list.boardTitle}</Link>
                   </td>
