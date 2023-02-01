@@ -158,7 +158,7 @@ const JobVacancyListForm = () => {
                                             <span className="chkimg"></span>
                                         </label>
                                     </th>
-                                    <td>{list.rnum}</td>
+                                    <td>{totalCount-(list.rnum-1)}</td>
                                     <td>{getboardType(list.boardType)}</td>
                                     <td className="tal">
                                         <Link to={`/admin/employmentInfo/jobVacancyInfo/${list.boardId}`}>

@@ -149,7 +149,7 @@ const MediaListForm = () => {
                                         </label>
                                     </th>
                                     <td className={classnames('star-chk', {on: pinupId === list.boardId})} onClick={(e) => onClickStar(`${list.boardId}`)}></td>
-                                    <td>{list.rnum}</td>
+                                    <td>{totalCount-(list.rnum-1)}</td>
                                     <td className="pl40">
                                         <div className="shape-150">
                                             <YoutubeImage url={list.url} width={150} height={80} />

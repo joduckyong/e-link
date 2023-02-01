@@ -123,7 +123,7 @@ const PressReleaseListForm = () => {
                       <span className="chkimg"></span>
                     </label>
                   </th>
-                  <td>{list.rnum}</td>
+                  <td>{totalCount-(list.rnum-1)}</td>
                   <td className="pl40">
                     <div className="shape-150">
                       <ViewImage fileNm={list.thumbNm}/>

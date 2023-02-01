@@ -142,7 +142,7 @@ const ContactUsListForm = () => {
                                             <span className="chkimg"></span>
                                         </label>
                                     </th>
-                                    <td>{list.rnum}</td>
+                                    <td>{totalCount-(list.rnum-1)}</td>
                                     <td>{list.contactNm}</td>
                                     <td>{list.contactPhone}</td>
                                     <td>{list.contactMail}</td>
