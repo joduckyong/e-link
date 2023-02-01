@@ -7,6 +7,57 @@ import ViewImage from 'components/common/ViewImage';
 import AOS from 'aos';
 import classnames from 'classnames';
 
+const OtherViewImage = ({ text }) => {
+    const [objectUrl, setObjectUrl] = useState('');
+    const regex = /<img[^>]+src=[\\"']?([^>\\"']+)[\\"']?[^>]*>/g;
+    const extractUrl = regex.exec(text);
+    const style = {
+        maxWidth: '100%',
+        height: 'auto',
+      };
+    const width = 320;
+    const height = 220;
+
+    useEffect(() => {
+        if (extractUrl) {
+            const showImage = async () => {
+        
+                const response = await fetch(extractUrl[1], {
+                method: 'GET',
+                });
+        
+                const blob = await response.blob();
+
+                let dataURI = '';
+                const reader = new FileReader();
+                reader.readAsDataURL(blob);
+                
+                reader.onload = function  () {
+                    const tempImage = new Image();
+                    tempImage.src = reader.result;
+                    tempImage.onload = function () {
+                        const canvas = document.createElement('canvas');
+                        const canvasContext = canvas.getContext("2d");
+            
+                        canvas.width = width; 
+                        canvas.height = height;
+            
+                        canvasContext.drawImage(this, 0, 0, width, height);
+            
+                        dataURI = canvas.toDataURL(blob.type);
+                        setObjectUrl(dataURI)
+
+                    };
+                };
+
+            };
+        
+            showImage();
+        }
+    }, []);
+    return extractUrl !== null && <img src={objectUrl} style={style} alt="" />;
+}
+
 const PresslistForm = () => {
 
     const dispatch = useDispatch();
@@ -51,6 +102,12 @@ const PresslistForm = () => {
             setActiveMenu1(false);
             setActiveMenu2(!activeMenu2);
         }
+    }
+
+    const removeImgTag = (text) => {
+        const regex = /<IMG(.*?)>/gi;
+        return text.replace(regex, '');
+
     }
 
   return (
@@ -105,12 +162,16 @@ const PresslistForm = () => {
                         <li>
                             <NavLink to={`/pr/press-view/${list.boardId}`}>
                                 <div className="img">
+                                {list.thumbNm ? 
                                     <ViewImage fileNm={list.thumbNm} basicStyle={true}/>
+                                    :
+                                    <OtherViewImage text={list.boardContents}/>
+                                }
                                 </div>
                                 <div className="text">
                                     <div className="list-num"><span>No.{(totalCount+1)-list.rnum}</span>{list.createdDatetime}</div>
                                     <div className="tit-wrap">{list.boardTitle}</div>
-                                    <p dangerouslySetInnerHTML={{ __html: list.boardContents.length > 200 ? list.boardContents.substring(0,200) + '...' : list.boardContents }}>
+                                    <p dangerouslySetInnerHTML={{ __html: removeImgTag(list.boardContents).length > 200 ? removeImgTag(list.boardContents).substring(0,200) + '...' : removeImgTag(list.boardContents) }}>
                                     </p>
                                 </div>
                             </NavLink>
