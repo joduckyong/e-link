@@ -23,7 +23,7 @@ export function changeFormat(date, format) {
 const AddFileBox = ({ fileName, filesRef, onUploadFile, onDeleteFile, fileCountList }) => {
   return (
     <>
-      {fileCountList.map((list, index) => (
+      {fileCountList.map((index, idx) => (
         <div className="input-box" key={index}>
           <label htmlFor={'e-choice01_' + index} className="file-choice">
             <input type="file" id={'e-choice01_' + index} className="file" data-index={index} ref={filesRef[index]} onChange={onUploadFile} />+
@@ -163,13 +163,15 @@ const JobVacancyModForm = () => {
       if (!storedFileArr.includes(storedFileName[index])) {
         setStoredFileArr([...storedFileArr, storedFileName[index]]);
       }
+      let countArr = fileCountList.filter(i => i !== index);
+      setFileCountList(countArr);
     },
     [fileName, storedFileArr, storedFileName],
   );
 
   const onAddFileBox = () => {
     let countArr = [...fileCountList];
-    let count = countArr.slice(-1)[0];
+    let count = countArr.slice(-1)[0] ? countArr.slice(-1)[0] : 0;
     count += 1;
     countArr.push(count);
     setFileCountList(countArr);
