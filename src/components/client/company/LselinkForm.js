@@ -4,9 +4,12 @@ import AOS from 'aos';
 import classnames from 'classnames';
 import { ParallaxProvider, Parallax } from 'react-skrollr';
 import 'aos/dist/aos.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, EffectFade, Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+SwiperCore.use([Navigation, EffectFade, Pagination, Autoplay]); // Swiper
 
 const LselinkForm = () => {
   const [activeMenu1, setActiveMenu1] = useState(false);
@@ -104,14 +107,51 @@ const LselinkForm = () => {
           <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
             LS E-Link 홈페이지 방문을 환영합니다.
           </h3>
+
           <div className="company-infor">
-            <div className="img" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-              <ParallaxProvider>
-                <Parallax>
-                  <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
-                </Parallax>
-              </ParallaxProvider>
-            </div>
+            <Swiper
+              effect={'fade'}
+              slidesPerView={1}
+              spaceBetween={0}
+              loop={true}
+              speed={1000}
+              mousewheel={true}
+              autoplay={{ delay: 2000 }}
+              pagination={{
+                el: '.swiper-pagination',
+                clickable: true,
+              }}
+            >
+              <SwiperSlide>
+                <div className="img" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+                  <ParallaxProvider>
+                    <Parallax>
+                      <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
+                    </Parallax>
+                  </ParallaxProvider>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="img img2" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+                  <ParallaxProvider>
+                    <Parallax>
+                      <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
+                    </Parallax>
+                  </ParallaxProvider>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="img img3" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+                  <ParallaxProvider>
+                    <Parallax>
+                      <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
+                    </Parallax>
+                  </ParallaxProvider>
+                </div>
+              </SwiperSlide>
+            </Swiper>
+
+            <div className="swiper-pagination"></div>
             <div className="txt">
               <div className="big" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                 LS E-Link는 전기, 전력분야의 글로벌 리딩 기업군을 이끌고 있는 ㈜LS와 에너지 서비스 선도기업 ㈜E1이 전기화(Electrification)시대
