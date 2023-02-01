@@ -30,7 +30,7 @@ const Footer = () => {
             <NavLink to="">EV 충전소</NavLink>
           </li>
         </ul>
-        <address>서울특별시 용산구 한강대로 92, LS용산타워 17층 LS E-Link</address>
+        <address>서울특별시 용산구 한강대로 92, <br class="m-block" />LS용산타워 17층 LS E-Link</address>
         <ul className="tel">
           <li>
             <span>TEL</span>1660-3175
