@@ -118,7 +118,7 @@ const PopUpListForm = () => {
                       <span className="chkimg"></span>
                     </label>
                   </th>
-                  <td>{list.rnum}</td>
+                  <td>{list.num}</td>
                   <td>
                     <Link to={`/admin/main/popupInfo/${list.popupId}`}>
                       <span className="pop-name">{list.popupTitle}</span>{' '}
