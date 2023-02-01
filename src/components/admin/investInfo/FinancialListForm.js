@@ -144,7 +144,7 @@ const FinancialListForm = () => {
                       <span className="chkimg"></span>
                     </label>
                   </th>
-                  <td>{list.rnum}</td>
+                  <td>{list.num}</td>
                   <td className="tal pl40">
                     <Link to={`/admin/investInfo/financialInfo/${list.boardId}`}>{list.boardTitle}</Link>
                   </td>

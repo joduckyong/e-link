@@ -211,7 +211,7 @@ const OfficialNoticeListForm = () => {
                       <span className="chkimg"></span>
                     </label>
                   </th>
-                  <td>{list.rnum}</td>
+                  <td>{list.num}</td>
                   <td>{list.boardTitle}</td>
                   <td>{list.url}</td>
                   <td>{list.createdDatetime}</td>

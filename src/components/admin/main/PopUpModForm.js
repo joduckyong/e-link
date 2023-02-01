@@ -97,11 +97,11 @@ const PopUpAddForm = () => {
       alert('닫기영역을 입력하세요');
       return;
     }
-    if (popupHeight === '') {
+    if (popupWidth === '') {
       alert('팝업위치 가로를 입력하세요');
       return;
     }
-    if (popupWidth === '') {
+    if (popupHeight === '') {
       alert('팝업위치 세로를 입력하세요');
       return;
     }
@@ -111,6 +111,10 @@ const PopUpAddForm = () => {
     }
     if (popupEnddate === '') {
       alert('팝업 게시기간을 입력하세요');
+      return;
+    }
+    if ((changeFormat(popupStartdate, 'yyyyMMDD') || '') > (changeFormat(popupEnddate, 'yyyyMMDD') || '')) {
+      alert('팝업 게시기간을 확인해주세요');
       return;
     }
     if (window.confirm('수정 하시겠습니까?')) {
@@ -252,11 +256,11 @@ const PopUpAddForm = () => {
               <div className="input-wrap">
                 <div>
                   <span>가로</span>
-                  <input type="text" name="popupHeight" onChange={(e) => setPopupHeight(e.target.value.replace(/[^0-9]/g, ''))} value={popupHeight} />
+                  <input type="text" name="popupWidth" onChange={(e) => setPopupWidth(e.target.value.replace(/[^0-9]/g, ''))} value={popupWidth} />
                 </div>
                 <div>
                   <span>세로</span>
-                  <input type="text" name="popupWidth" onChange={(e) => setPopupWidth(e.target.value.replace(/[^0-9]/g, ''))} value={popupWidth} />
+                  <input type="text" name="popupHeight" onChange={(e) => setPopupHeight(e.target.value.replace(/[^0-9]/g, ''))} value={popupHeight} />
                 </div>
               </div>
             </div>
