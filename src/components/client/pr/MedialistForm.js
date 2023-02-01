@@ -129,6 +129,7 @@ const MedialistForm = () => {
                             <div className="txt">
                                 <div className="date">{changeFormat(boardInfo.createdDatetime, 'yyyy-MM-DD') || ''}</div>
                                 <div className="tit">{boardInfo.boardTitle}</div>
+                                <a href=""><img src="/img/sub/media-btn.svg" alt="" /></a>
                             </div>
                         </div>
                     }

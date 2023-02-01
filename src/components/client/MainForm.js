@@ -136,10 +136,10 @@ const MainForm = () => {
         <div className="con1">
           <div className="wrap">
             <div className="tit" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-              LS E-Link는 보다 깨끗하고 안전한
+              LS E-Link는<br class="m-block" /> 보다 깨끗하고 안전한
               <br />
               전기차 충전 솔루션으로
-              <br />더 큰 가치를 만들어 나갑니다.
+              <br />더 큰 가치를 만들어<br class="m-block" /> 나갑니다.
             </div>
             <ul>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
@@ -226,12 +226,18 @@ const MainForm = () => {
                 >
                   <SwiperSlide>
                     <div className="swiper-slide slide1">
-                      <div className="slide-bg" style={{ background: '#EC6800 url(/img/main/car.png) right bottom no-repeat' }}>
+                      <div className="slide-bg" style={{ background: '#EC6800 url() right bottom no-repeat' }}>
                         <div className="slide-inner">
                           <h3 className="text">전기차 충전사업</h3>
                           <p className="desc">
                             현장 맞춤형 충전 인프라 구축 <br />및 충전서비스 제공
                           </p>
+                          <div class="car-wrap">
+                            <div class="on"><img src="/img/main/car.png" alt="" /></div>
+                            <div><img src="/img/main/car-on.png" alt="" /></div>
+                            <div><img src="/img/main/car-1.png" alt="" /></div>
+                            <div><img src="/img/main/car-2.png" alt="" /></div>
+                          </div>
                           <NavLink to="/business/ev/transportation" className="link">
                             VIEW MORE
                           </NavLink>
