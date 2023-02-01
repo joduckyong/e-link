@@ -357,7 +357,7 @@ const Header = () => {
                 <ul>
                   <li>
                     <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
-                    <ul class="hide">
+                    {/* <ul class="hide">
                       <li>
                         <NavLink to="/business/e-link/evcharge">전기차충전</NavLink>
                       </li>
@@ -367,11 +367,11 @@ const Header = () => {
                       <li>
                         <NavLink to="/business/e-link/renewable">신재생</NavLink>
                       </li>
-                    </ul>
+                    </ul> */}
                   </li>
                   <li>
                     <NavLink to="/business/ev/transportation">전기차 충전사업</NavLink>
-                    <ul class="hide">
+                    {/* <ul class="hide">
                       <li>
                         <NavLink to="/business/ev/transportation">운수</NavLink>
                       </li>
@@ -381,7 +381,7 @@ const Header = () => {
                       <li>
                         <NavLink to="/business/ev/coporate">Corporate</NavLink>
                       </li>
-                    </ul>
+                    </ul> */}
                   </li>
                   <li>
                     <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>

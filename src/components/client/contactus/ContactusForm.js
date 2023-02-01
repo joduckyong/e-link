@@ -12,7 +12,7 @@ const ContactusForm = () => {
     const [contactMail, setContactMail] = useState('');
     const [contactContents, setContactContents] = useState('');
     const [contactAgree, setContactAgree] = useState(false);
-    const [fileName, setFileName] = useState('선택된 파일 없음');
+    const [fileName, setFileName] = useState('');
     const [activeMenu1, setActiveMenu1] = useState(false);
     const [activeMenu2, setActiveMenu2] = useState(false);
 
@@ -103,6 +103,15 @@ const ContactusForm = () => {
         setFileName(e.target.files[0].name);
         fileRef.current = e.target.files[0];
     }, []);
+
+    const onDeleteFile = useCallback(
+        (e) => {
+          e.preventDefault();
+          setFileName('');
+          fileRef.current = '';
+        },
+        [],
+      );
 
     const checkHandler = (e) => {
         setContactAgree(!contactAgree);
@@ -212,7 +221,7 @@ const ContactusForm = () => {
                             <label htmlFor="choice" className="file-choice">
                                 <input type="file" id="choice" className="file" ref={fileRef} onChange={onUploadFile}/>파일첨부 +
                             </label>
-                            <span className="upload-name">{fileName}</span>
+                            <span className={fileName ? 'upload-name on' : 'upload-name'} onClick={onDeleteFile}>{fileName}</span>
                         </div>
                         <p>※ 첨부파일은 최대 50MB 이하의 jpg, png, gif, jpeg, pdf, hwp, xlsx, docx, ppt, pptx 파일만 업로드 가능합니다.</p>
                     </div>    

@@ -92,7 +92,7 @@ const JobVacancyModForm = () => {
         storedFiles[i] = attachList[i].fileNm;
       }
       setFileName(fileObj);
-      setFileCountList(countArr);
+      setFileCountList(countArr.length > 0 ? countArr : [0]);
       setStoredFileName(storedFiles);
     };
 
@@ -152,7 +152,7 @@ const JobVacancyModForm = () => {
         setStoredFileArr([...storedFileArr, storedFileName[index]]);
       }
     },
-    [fileName, storedFileArr, storedFileName],
+    [fileName, storedFileArr, storedFileName, fileCountList],
   );
 
   const onDeleteFile = useCallback(
@@ -166,7 +166,7 @@ const JobVacancyModForm = () => {
       let countArr = fileCountList.filter(i => i !== index);
       setFileCountList(countArr);
     },
-    [fileName, storedFileArr, storedFileName],
+    [fileName, storedFileArr, storedFileName, fileCountList],
   );
 
   const onAddFileBox = () => {
