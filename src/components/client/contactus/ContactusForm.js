@@ -102,6 +102,8 @@ const ContactusForm = () => {
 
         setFileName(e.target.files[0].name);
         fileRef.current = e.target.files[0];
+        e.target.value = ''; 
+        
     }, []);
 
     const onDeleteFile = useCallback(

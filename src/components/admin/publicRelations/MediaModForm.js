@@ -75,6 +75,7 @@ const MediaModForm = () => {
       if (!storedFileArr.includes(storedFileName)) {
         setStoredFileArr([...storedFileArr, storedFileName]);
       }
+      e.target.value = ''; //파일 삭제 후 다시 같은 파일 정상 입력 위해
     },
     [storedFileArr, storedFileName],
   );
