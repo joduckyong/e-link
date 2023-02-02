@@ -3,8 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertPopup } from 'store/popupReducer';
 import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
-import '../../../styles/react-datepicker.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 import moment from 'moment';
 

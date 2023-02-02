@@ -28,6 +28,7 @@ const MainForm = () => {
   const scrollRef = useRef();
   const scrollStyleChange = useRef();
   const [popupCookies, setPopupCookies] = useCookies();
+  const [carVal, setCarVal] = useState(0);
 
   const dispatch = useDispatch();
   const popupList = useSelector((state) => state.popupReducer.data);
@@ -89,6 +90,13 @@ const MainForm = () => {
     ScrollTrigger.refresh();
   }, []);
 
+  setTimeout(() => {
+    setCarVal(carVal + 1);
+    if (carVal === 4) {
+      setCarVal(0);
+    }
+  }, 1000);
+
   return (
     <>
       {popupList
@@ -136,10 +144,12 @@ const MainForm = () => {
         <div className="con1">
           <div className="wrap">
             <div className="tit" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-              LS E-Link는<br class="m-block" /> 보다 깨끗하고 안전한
+              LS E-Link는
+              <br class="m-block" /> 보다 깨끗하고 안전한
               <br />
               전기차 충전 솔루션으로
-              <br />더 큰 가치를 만들어<br class="m-block" /> 나갑니다.
+              <br />더 큰 가치를 만들어
+              <br class="m-block" /> 나갑니다.
             </div>
             <ul>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
@@ -232,11 +242,19 @@ const MainForm = () => {
                           <p className="desc">
                             현장 맞춤형 충전 인프라 구축 <br />및 충전서비스 제공
                           </p>
-                          <div class="car-wrap">
-                            <div class="on"><img src="/img/main/car.png" alt="" /></div>
-                            <div><img src="/img/main/car-on.png" alt="" /></div>
-                            <div><img src="/img/main/car-1.png" alt="" /></div>
-                            <div><img src="/img/main/car-2.png" alt="" /></div>
+                          <div className="car-wrap">
+                            <div className={classNames({ on: carVal === 0 || carVal === 1 })}>
+                              <img src="/img/main/car.png" alt="" />
+                            </div>
+                            <div className={classNames({ on: carVal === 2 })}>
+                              <img src="/img/main/car-on.png" alt="" />
+                            </div>
+                            <div className={classNames({ on: carVal === 3 })}>
+                              <img src="/img/main/car-1.png" alt="" />
+                            </div>
+                            <div className={classNames({ on: carVal === 4 })}>
+                              <img src="/img/main/car-2.png" alt="" />
+                            </div>
                           </div>
                           <NavLink to="/business/ev/transportation" className="link">
                             VIEW MORE
