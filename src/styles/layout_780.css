@@ -88,7 +88,7 @@
    .main .con7 ul li:first-child{margin-top: 0;}
 
 	/* popup */
-	.main_pop{width:90vw; text-align:center;}
+	.main_pop{text-align:center; left: 5% !important; right: 5% !important;}
 	.main_pop .text{height:40px;}
 	.main_pop .text button{font-size:14px;}
 

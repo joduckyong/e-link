@@ -810,7 +810,7 @@ background: #FFF;}
 .adminsub input[type="radio"]:checked + .rdimg:after{content: ""; display: block; width: 12px; height: 12px; background: #0A1E5A; border-radius: 50%; 
 position: absolute; top: 50%; margin-top: -6px; left: 50%; margin-left: -6px;}
 
-.adminsub .a-content{padding-top: 75px; padding-left: 110px; width: 83%; padding-right: 120px; margin-left: 17%; padding-bottom: 110px; background: #F5F6F8; min-height: 100%;}
+.adminsub .a-content{padding-top: 75px; padding-left: 110px; width: 83%; padding-right: 120px; margin-left: 17%; padding-bottom: 110px; background: #F5F6F8; min-height: 100vh;}
 .adminsub .a-content h2{font-size: 36px; font-weight: bold; padding-bottom: 35px; color: #121212;}
 .adminsub .a-content h2 span{color: #515151; font-size: 16px; margin-left: 15px;}
 .adminsub .a-content h3{font-size: 24px; color: #0A1E5A; font-weight: 600; margin-top: 50px; margin-bottom: 35px;}
@@ -863,7 +863,7 @@ position: absolute; top: 50%; margin-top: -6px; left: 50%; margin-left: -6px;}
 .adminsub .pop-where .input-wrap span{font-size: 16px; color: #5A5E6D; font-weight: 700; background: #E5E8EF; display: inline-block; width: 90px; height: 100%;
 border-radius: 5px 0 0 5px;text-align: center; line-height: 53px;}
 .adminsub .pop-where .input-wrap input{width: calc(100% - 90px); border-radius: 0 5px 5px 0; text-align: right; padding-right: 42px; font-weight: 700;}
-.adminsub .pop-show > span{position: relative; font-size: 15px; color: #515151;  height: 53px; display: inline-block;}
+.adminsub .pop-show span{position: relative; font-size: 15px; color: #515151;  height: 53px; display: inline-block;}
 .adminsub .pop-show input{padding: 0 50px 0px 13px; width: 310px; font-size: 15px; color: #515151; height: 50px;}
 .adminsub .pop-show a{position: absolute; right: 0px; top: 0; background: #E5E8EF; display: block; width: 53px; height: 53px; display: flex; align-items: center; justify-content: center;
 border-radius: 0 5px 5px 0;}
