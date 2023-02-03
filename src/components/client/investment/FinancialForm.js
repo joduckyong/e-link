@@ -137,7 +137,7 @@ const FinancialForm = () => {
               <li key={index}>
                 <NavLink to={`/investment/financial-view/${list.boardId}`}>
                   <div className="list-num">
-                    <span>No.{list.rnum}</span>
+                    <span>No.{boardList.totalCount - (list.rnum - 1)}</span>
                     {list.createdDatetime}
                   </div>
                   <div className="tit-wrap">{list.boardTitle}</div>

@@ -144,7 +144,7 @@ const CreditForm = () => {
               <li key={index}>
                 <NavLink onClick={() => dartPopup(list.url)}>
                   <div className="list-num">
-                    <span>No.{list.rnum}</span>
+                    <span>No.{boardList.totalCount - (list.rnum - 1)}</span>
                     {list.createdDatetime}
                   </div>
                   <div className="tit-wrap">
