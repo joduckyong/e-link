@@ -119,7 +119,8 @@ const MainForm = () => {
               <span>EV Charging Innovation</span>
               <span>for tomorrow</span>
             </h1>
-            <div className="search" data-aos="fade-up" data-aos-duration="1000">
+            {/*
+			<div className="search" data-aos="fade-up" data-aos-duration="1000">
               <div className="input">
                 <input type="text" placeholder="전기차충전소 찾기" />
                 <button>
@@ -132,35 +133,42 @@ const MainForm = () => {
                 <NavLink to="">#부산</NavLink>
               </div>
             </div>
+			*/}
+            <div className="scroll_wp">
+              <div className="bar_wp">
+                <div className="bar"></div>
+              </div>
+              <h3>Scroll down</h3>
+            </div>
           </div>
           <div className="video-wrap">
             <video muted autoPlay loop className="main-video-pc">
               <source src="/video/main.mp4" type="video/mp4" />
             </video>
 
-            <video className="main-video-mo" src="/video/main.mp4" playsinline="" loop="" muted autoplay=""></video>
+            <video className="main-video-mo" src="/video/main.mp4" playsInline="" loop="" muted autoPlay=""></video>
           </div>
         </div>
         <div className="con1">
           <div className="wrap">
             <div className="tit" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
               LS E-Link는
-              <br class="m-block" /> 보다 깨끗하고 안전한
+              <br className="m-block" /> 보다 깨끗하고 안전한
               <br />
               전기차 충전 솔루션으로
               <br />더 큰 가치를 만들어
-              <br class="m-block" /> 나갑니다.
+              <br className="m-block" /> 나갑니다.
             </div>
             <ul>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
                 <NavLink to="">
-                  <div className="s-tit">충전기 설치신청</div>
+                  <div className="s-tit">충전기 상담신청</div>
                   <p>전기차 충전 인프라 구축이 필요하신가요?</p>
                 </NavLink>
               </li>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
                 <NavLink to="">
-                  <div className="s-tit">고장신고</div>
+                  <div className="s-tit">불편신고</div>
                   <p>고장이 나셨나요? 빠르게 대응하겠습니다.</p>
                 </NavLink>
               </li>
@@ -178,11 +186,11 @@ const MainForm = () => {
                     <div className="btn-area">
                       <span>
                         LS E-Link는 <br className="m-block" />
-                        고도의 기술력을 가지고
+                        충전 인프라 구축, 투자 컨설팅,
                         <br /> EV Charging 시장 변화에 <br className="m-block" />
-                        발맞춰 지속적인 발전을
+                        최적의 Fleet 운영을 포함한
                         <br />
-                        이루어 나가고 있습니다.<i className="icon-arrow-right-bk-30"></i>
+                        Total Solution을 제공하고 있습니다.<i className="icon-arrow-right-bk-30"></i>
                       </span>
                     </div>
                   </div>
@@ -192,7 +200,7 @@ const MainForm = () => {
                         <source src="/video/con2-video.mp4" type="video/mp4" />
                       </video>
 
-                      <video className="con2-video-mo" src="/video/con2-video.mp4" playsinline="" loop="" muted="" autoplay=""></video>
+                      <video className="con2-video-mo" src="/video/con2-video.mp4" playsInline="" loop="" muted autoPlay=""></video>
                     </div>
                   </div>
                 </article>
@@ -240,7 +248,7 @@ const MainForm = () => {
                         <div className="slide-inner">
                           <h3 className="text">전기차 충전사업</h3>
                           <p className="desc">
-                            현장 맞춤형 충전 인프라 구축 <br />및 충전서비스 제공
+                            고객 맞춤형 충전 인프라 구축 <br />및 ONM서비스 제공
                           </p>
                           <div className="car-wrap">
                             <div className={classNames({ on: carVal === 0 || carVal === 1 })}>
@@ -273,19 +281,19 @@ const MainForm = () => {
                             충전 인프라 구축
                           </h3>
                           <p className="desc">
-                            전기차 충전장 캐노피 등에 태양광을 설치, <br />
-                            신재생에너지 발전 사업
+                            신재생에너지 발전과 연계한 EV충전 인프라 구축 및 <br />
+                            운영 컨설팅
                           </p>
                           <NavLink to="/business/e-link/renewable" className="link">
                             VIEW MORE
                           </NavLink>
-                          <span class="cloud1">
+                          <span className="cloud1">
                             <img src="/img/main/con3-img2-cloud1.png" alt="" />
                           </span>
-                          <span class="cloud2">
+                          <span className="cloud2">
                             <img src="/img/main/con3-img2-cloud2.png" alt="" />
                           </span>
-                          <span class="cloud3">
+                          <span className="cloud3">
                             <img src="/img/main/con3-img2-cloud3.png" alt="" />
                           </span>
                         </div>
@@ -297,26 +305,26 @@ const MainForm = () => {
                       <div className="slide-bg" style={{ background: '#1E2F63 url(/img/main/con3-pad.png) right center no-repeat' }}>
                         <div className="slide-inner">
                           <h3 className="text">
-                            관제시스템 구축·구독 <br />
-                            서비스
+                            EV CSMS
+                            <br />
                           </h3>
                           <p className="desc">
-                            고객 특화 기능의 관제시스템 <br />
+                            고객 특화/차종 특화 기능의 관제시스템 <br />
                             구축 서비스 제공
                           </p>
                           <NavLink to="/business/e-link/control" className="link">
                             VIEW MORE
                           </NavLink>
-                          <span class="air">
+                          <span className="air">
                             <img src="/img/main/air.png" alt="" />
                           </span>
-                          <span class="cloud1">
+                          <span className="cloud1">
                             <img src="/img/main/cloud1.png" alt="" />
                           </span>
-                          <span class="cloud2">
+                          <span className="cloud2">
                             <img src="/img/main/cloud2.png" alt="" />
                           </span>
-                          <span class="cloud3">
+                          <span className="cloud3">
                             <img src="/img/main/cloud3.png" alt="" />
                           </span>
                         </div>
@@ -348,7 +356,7 @@ const MainForm = () => {
                   <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
                     <img src="/img/main/con4-img1.png" alt="" />
                     <div className="txt">
-                      <div className="small">전선·전력분야</div>
+                      <div className="small">전기·전력분야</div>
                       <div className="big">글로벌 리딩기업 LS</div>
                     </div>
                   </div>
@@ -356,21 +364,21 @@ const MainForm = () => {
                     <img src="/img/main/con4-img2.png" alt="" />
                     <div className="txt">
                       <div className="small">전기화시대 글로벌리딩기업 LS와</div>
-                      <div className="big">친환경에너지서비스 선도기업 E1</div>
+                      <div className="big">친환경에너지 선도기업 E1</div>
                     </div>
                   </div>
                   <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
                     <img src="/img/main/con4-img3.png" alt="" />
                     <div className="txt">
                       <div className="big">Fleet Management로</div>
-                      <div className="small long">복잡하고 어려운 물류환경에서의 유연한 적용</div>
+                      <div className="small long">고객의 운행여건에 최적화된 충전 솔루션 제공</div>
                     </div>
                   </div>
                   <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
                     <img src="/img/main/con4-img4.png" alt="" />
                     <div className="txt">
                       <div className="small">'함께하여 더 큰 가치'</div>
-                      <div className="big">LS Partnetship</div>
+                      <div className="big">LS Partnership</div>
                     </div>
                   </div>
                 </div>
@@ -411,7 +419,7 @@ const MainForm = () => {
                   <img src="/img/main/con4-img4.png" alt="" />
                   <div className="txt">
                     <div className="small">'함께하여 더 큰 가치'</div>
-                    <div className="big">LS Partnetship</div>
+                    <div className="big">LS Partnership</div>
                   </div>
                 </div>
               </div>
@@ -425,10 +433,10 @@ const MainForm = () => {
             </div>
             <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
               LS E-Link는 <br className="m-block" />
-              전기자동차 충전인프라 <br className="m-block" />
-              부문에 혁신적인 <br className="pc-block" />
-              기술력을 <br className="m-block" />
-              남기며 성장하고 있습니다.
+              LS그룹의 전기 전력분야 <br className="m-block" />
+              기술력을 바탕으로 <br className="pc-block" />
+              EV 충전 인프라 기술혁신을 <br className="m-block" />
+              선도하고 있습니다.
               <br />
               차별화된 LS E-Link의 <br className="m-block" />
               충전 솔루션을 경험해보세요.
@@ -465,12 +473,12 @@ const MainForm = () => {
                 </div>
                 <div className="txt">
                   <div className="slide-tit">
-                    초급속 / 천장형 / 전력분배 /<br />
-                    고객맞춤형 충전솔루션
+                    충전기에서 전력계통 연계까지 <br />
+                    고객맞춤형 충전 솔루션
                   </div>
                   <p>
-                    LS E-Link는 전기자동차 충전인프라 부문에 <br />
-                    혁신적인 기술력을 남기며 성장하고 있습니다. <br />
+                    LS E-Link는 LS그룹의 전기 전력분야 기술력을 바탕으로 <br />
+                    EV 충전 인프라 기술혁신을 선도하고 있습니다. <br />
                     차별화된 LS E-Link의 충전 솔루션을 경험해 보세요.
                   </p>
                 </div>
@@ -526,8 +534,8 @@ const MainForm = () => {
                   </div>
                   <p>
                     LS E-Link는 충전사업을 원하는 고객에게 인프라 투자, <br />
-                    자금조달, 및 운영 등 전기차 충전사업에 필요한 total solution을 <br />
-                    제공하는 진정한 파트너로 거듭나고 있습니다.
+                    자금조달 및 운영 등 전기차 충전사업에 필요한 <br />
+                    Total Solution을 제공하는 진정한 파트너,
                     <br />
                     LS E-Link의 파트너가 되어보세요.
                   </p>
@@ -547,18 +555,18 @@ const MainForm = () => {
               <source src="/video/technological-innovation.mp4" type="video/mp4" />
             </video>
 
-            <video className="con5-video-mo" src="/video/technological-innovation.mp4" playsinline="" loop="" muted="" autoplay=""></video>
+            <video className="con5-video-mo" src="/video/technological-innovation.mp4" playsInline="" loop="" muted="" autoPlay=""></video>
             <img style={{ position: 'absolute', zIndex: 1, top: 0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
           </div>
         </div>
         <div className="con6">
           {/*<div className="in"></div>*/}
 
-          <video muted autoPlay loop playsinline className="con6-video-pc">
+          <video muted autoPlay loop playsInline className="con6-video-pc">
             <source src="/video/main_con6_video.mp4" type="video/mp4" />
           </video>
 
-          <video className="con6-video-mo" src="/video/main_con6_video.mp4" playsinline="" loop="" muted="" autoplay=""></video>
+          <video className="con6-video-mo" src="/video/main_con6_video.mp4" playsInline="" loop="" muted="" autoPlay=""></video>
         </div>
         <div className="con7">
           <div className="wrap">
@@ -595,9 +603,9 @@ const MainForm = () => {
                 <br />
                 함께 성장할 인재를 기다립니다.
               </div>
-              <NavLink to="/recruit/posting" className="more" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+              {/*<NavLink to="/recruit/posting" className="more" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
                 VIEW MORE
-              </NavLink>
+              </NavLink>*/}
             </div>
             <ul>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="700">
@@ -609,7 +617,7 @@ const MainForm = () => {
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="700">
                 <NavLink to="/recruit/benefits">
                   <i></i>
-                  복리후생
+                  채용공고
                 </NavLink>
               </li>
             </ul>
