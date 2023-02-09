@@ -31,7 +31,8 @@ const RenewableForm = () => {
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            E-Link<br class="m-block" /> BUSINESS
+            E-Link
+            <br class="m-block" /> BUSINESS
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
             <li>
@@ -94,7 +95,9 @@ const RenewableForm = () => {
         <div className="nav-slide">
           <ul className="swiper-wrapper">
             <li className="swiper-slide">
-              <NavLink to="/business/e-link/evcharge">B2B 특화 전기차 <span className="mo-br">충전 사업</span></NavLink>
+              <NavLink to="/business/e-link/evcharge">
+                B2B 특화 전기차 <span className="mo-br">충전 사업</span>
+              </NavLink>
             </li>
             <li className="swiper-slide">
               <NavLink to="/business/e-link/control">관제시스템 구축</NavLink>
@@ -117,24 +120,26 @@ const RenewableForm = () => {
           <div className="bg"></div>
           <div className="business-wrap pb0">
             <div className="wrap pb70">
-              <div className="infor mt0 mb75" >
+              <div className="infor mt0 mb75">
                 <div className="infor-tit mb0" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-	  				전기차 충전 솔루션을 넘어 PV-ESS, R(Reuse Battery)-ESS, DR, V2G 까지 
-					<br className="pc-block" />
-					미래 분산 전원 시대를 선도하는 당신의 믿음직한 파트너가 되겠습니다.
+                  전기차 충전 솔루션을 넘어 PV-ESS, R(Reuse Battery)-ESS, DR,
+                  <br className="pc-block" />
+                  V2G까지 분산 전원 시대를 선도합니다.
                 </div>
-				
               </div>
-				<img src="/img/sub/empty_bg.jpg" style={{ 'width': '100%' }}/>
-				<div className="infor-tit infor-tit2 mt120" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-	  				대규모 EV Fleet을 운영하는 고객사에게 분산전원 시대를 대비하여 PV-ESS, <br className="pc-block" />
-					R(Reuse Battery)-ESS, DR, V2G 솔루션 제공을 통해 EaaS(Energy As A Service) 시대에 <br className="pc-block" />
-					고객 가치를 극대화 시켜드리는 1등 파트너가 되겠습니다.
-                </div>
+              <img src="/img/sub/renewable_graph.png" className="pc-img" style={{ width: '100%' }} />
+              <img src="/img/sub/m_renewable_graph.png" className="mo-img" style={{ width: '100%' }} />
+              <div className="infor-tit infor-tit2 mt120" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                대규모 EV Fleet을 운영하는 고객사에게 분산 전원 시대를 대비하여 PV-ESS, <br className="pc-block" />
+                R(Reuse Battery)-ESS, DR, V2G 솔루션을 제공합니다.
+              </div>
+              <img src="/img/sub/renewable_img.png" className="pc-img" style={{ width: '100%' }} />
+              <img src="/img/sub/m_renewable_img.png" className="mo-img" style={{ width: '100%' }} />
             </div>
-            <div className="img out-img">
+
+            {/*<div className="img out-img">
               <div className="in" style={{ 'background-size': 'cover' }}></div>
-            </div>
+            </div>*/}
           </div>
         </div>
       </div>
