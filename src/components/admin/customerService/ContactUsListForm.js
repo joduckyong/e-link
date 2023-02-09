@@ -12,11 +12,12 @@ const ContactUsListForm = () => {
   const [checkItems, setCheckItems] = useState([]);
   const [selectItem, setSelectItem] = useState('');
   const [page, setPage] = useState(1);
+  const [contactType, setContactType] = useState('A');    // A: 상담신청, B: 불편신고, C: 문의하기
 
   useEffect(() => {
-    const newList = { contactId: 'CON', pageIndex: page };
+    const newList = { contactId: 'CON', contactType: contactType, pageIndex: page };
     dispatch(selectContactUs(newList));
-  }, [dispatch, page]);
+  }, [dispatch, page, contactType]);
 
   const pageClick = (page) => {
     setPage(page);
@@ -24,7 +25,7 @@ const ContactUsListForm = () => {
   };
 
   const onSearch = (page) => {
-    const newList = { contactId: 'CON', pageIndex: page, searchKeyword: searchKeyword, searchCondition: selectItem };
+    const newList = { contactId: 'CON', contactType: contactType, pageIndex: page, searchKeyword: searchKeyword, searchCondition: selectItem };
     dispatch(selectContactUs(newList));
   };
 
@@ -72,29 +73,37 @@ const ContactUsListForm = () => {
     }
   };
 
+  const onContactType = (type) => {
+    setContactType(type);
+    setSearchKeyword('');
+    setCheckItems([]);
+    setSelectItem('');
+    setPage(1);
+  }
+
   return (
     <div className="a-content">
       <h2>
         Contact Us<span>총 {totalCount}건</span>
       </h2>
       <ul className="sub-tab">
-        <li className="active">
-          <Link to="">상담신청</Link>
+        <li className={contactType === 'A' && 'active'}>
+          <Link to="" onClick={() => onContactType('A')}>상담신청</Link>
         </li>
-        <li>
-          <Link to="">불편신고</Link>
+        <li className={contactType === 'B' && 'active'}>
+          <Link to="" onClick={() => onContactType('B')}>불편신고</Link>
         </li>
-        <li>
-          <Link to="">문의하기</Link>
+        <li className={contactType === 'C' && 'active'}>
+          <Link to="" onClick={() => onContactType('C')}>문의하기</Link>
         </li>
       </ul>
       <div className="ban-list p0">
         <div className="search-box">
           <select name="searchCondition" onChange={(e) => setSelectItem(e.target.value)}>
-            <option value="">전체</option>
-            <option value="name">이름</option>
-            <option value="title">제목</option>
-            <option value="content">내용</option>
+            <option value="" selected={selectItem === '' && true}>전체</option>
+            <option value="name" selected={selectItem === 'name' && true}>이름</option>
+            <option value="title" selected={selectItem === 'title' && true}>제목</option>
+            <option value="content" selected={selectItem === 'content' && true}>내용</option>
           </select>
           <div className="search-input">
             <input
