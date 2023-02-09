@@ -11,7 +11,7 @@
     .main .con8 .wrap{flex-wrap: wrap;}
     .main .con8 .wrap .txt-area{width: 100%;}
     .main .con8 .main-tit{margin-bottom: 65px; word-break: keep-all;}
-    .main .con8 ul{margin-top: 65px;}
+    /* .main .con8 ul{margin-top: 65px;} */
     .main .con8 ul li{width: 155px; height: 155px;}
     .main .con8 ul li i{width: 54px; height: 54px;}
     .main .con8 ul li:first-child i{background-size: 45px auto;}
@@ -33,6 +33,9 @@
 }
 
 @media only screen and (max-width:780px){
+	.pc-img{display:none;}
+	.mo-img{display:block;}
+
    .main{overflow: hidden; width: 100%;}
    .main .main-visual:before{background: url('/public/img/main/main-m-cover.png') center no-repeat; background-size: cover;}
    .main .main-visual .search{width: 100%;}
@@ -84,7 +87,7 @@
 	.main .con6 video {width: 178%;}
 
    .main .con7 ul{flex-wrap: wrap;}
-   .main .con7 ul li{margin-left: 0; margin-top: 50px;flex: auto;}
+   .main .con7 ul li{width:100%;margin-left: 0; margin-top: 50px;flex: auto;}
    .main .con7 ul li:first-child{margin-top: 0;}
 
 	/* popup */

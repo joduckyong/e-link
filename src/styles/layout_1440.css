@@ -42,6 +42,10 @@
 	.main .main-visual .recom a{font-size: 15px; margin-left: 20px;}
 	.main .main-visual .search button{width: 27px; height: 27px;}
 	.main .main-visual .search button img{width: 100%;}
+	.main .main-visual .scroll_wp{bottom:58px;left:-38px;}
+	.main .main-visual .scroll_wp .bar_wp{width:50px;}
+	.main .main-visual .scroll_wp .bar_wp .bar{width:15px;}
+	.main .main-visual .scroll_wp h3{font-size: 12px;}
 
 	.main .con1{padding: 110px 0; background-size: cover;}
 	.main .con1 .tit{font-size: 28px; line-height: 40px; word-break: keep-all;}
@@ -53,7 +57,7 @@
 
 	.main .con2{padding-left: 48px; padding-right: 48px; background: #FFF; height: 110vh;}
 	.main .con2 .con2-container{height: auto;}
-	.main .con2 .intro .main-section-headline{padding-bottom: 50px;}
+	.main .con2 .intro .main-section-headline{padding-bottom: 50px;font-size: 18px;line-height: 22px;}
 	.main .con2 .btn-area{font-size: 28px; line-height: 45px; word-break: keep-all; padding: 0 20px;}
 
 	.main .con3{position: relative;}
@@ -134,7 +138,7 @@
 	.sub.sub01-1 .company-infor{margin-top: 50px;}
 	.sub.sub01-1 .company-infor .big{font-size: 22px; line-height: 33px;}
 	.sub.sub01-1 .company-infor p{font-size: 15px; line-height: 27px; margin-top: 20px;}
-	.sub.sub01-1 .company-infor strong{font-size: 17px; margin-top: 30px;}
+	.sub.sub01-1 .company-infor strong{font-size: 17px;line-height: 26px; margin-top: 30px;}
 	.sub.sub01-1 .company-infor .txt{width: 50%; margin-left: 5%;}
 
 	.sub.sub01-2 .vision-mission{margin-top: 65px;}
