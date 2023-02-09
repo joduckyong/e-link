@@ -113,7 +113,7 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <NavLink to="/contactus">Contact Us</NavLink>
+              <NavLink to="/contactus/consult">Contact Us</NavLink>
             </li>
             <li>
               <NavLink to="">EV 충전소</NavLink>
@@ -268,7 +268,7 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <NavLink to="/contactus">
+              <NavLink to="/contactus/consult">
                 <strong>Contact Us</strong>
               </NavLink>
             </li>
@@ -416,7 +416,7 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <NavLink to="/contactus">Contact Us</NavLink>
+              <NavLink to="/contactus/consult">Contact Us</NavLink>
             </li>
             <li className={moMenuClass === '7' ? 'mo-click on' : 'mo-click'} onClick={() => onClickMoMenu('7')}>
               <NavLink to="">EV 충전소</NavLink>

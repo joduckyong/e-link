@@ -83,7 +83,9 @@ import PostingPage from './pages/client/recruit/PostingPage';
 import PostingviewPage from './pages/client/recruit/PostingviewPage';
 
 /* Contact US */
-import ContactusPage from './pages/client/contactus/ContactusPage';
+import ConsultPage from './pages/client/contactus/ConsultPage';
+import InconveniencePage from './pages/client/contactus/InconveniencePage';
+import InquiryPage from './pages/client/contactus/InquiryPage';
 
 const App = () => {
   return (
@@ -154,7 +156,9 @@ const App = () => {
         <Route path="/recruit/posting" element={<PostingPage />} />
         <Route path="/recruit/posting-view/:id" element={<PostingviewPage />} />
 
-        <Route path="/contactus" element={<ContactusPage />} />
+        <Route path="/contactus/consult" element={<ConsultPage />} />
+        <Route path="/contactus/inconvenience" element={<InconveniencePage />} />
+        <Route path="/contactus/inquiry" element={<InquiryPage />} />
       </Routes>
     </Router>
   );

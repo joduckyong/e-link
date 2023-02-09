@@ -5,7 +5,7 @@ import { insertContactUs } from 'store/contactUsReducer';
 import AOS from 'aos';
 import classnames from 'classnames';
 
-const ContactusForm = () => {
+const ConsultForm = () => {
   const [contactNm, setContactNm] = useState('');
   const [contactTitle, setContactTitle] = useState('');
   const [contactPhone, setContactPhone] = useState('');
@@ -68,12 +68,13 @@ const ContactusForm = () => {
         contactMail: contactMail,
         contactContents: contactContents,
         contactAgree: contactAgree ? 'Y' : 'N',
+        contactType: 'A',
         file: fileObj,
       };
       const result = await dispatch(insertContactUs(newList));
       if (result.payload.data > 0) {
         alert('등록 되었습니다.');
-        document.location.href = '/contactUs';
+        document.location.href = '/contactUs/consult';
       } else {
         alert('등록에 실패하였습니다.');
       }
@@ -148,7 +149,7 @@ const ContactusForm = () => {
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus" className="on">
+                  <NavLink to="/contactus/consult" className="on">
                     Contact Us
                   </NavLink>
                 </li>
@@ -166,15 +167,15 @@ const ContactusForm = () => {
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/contactus" className="on">
+                  <NavLink to="/contactus/consult" className="on">
                     상담신청
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">불편신고</NavLink>
+                  <NavLink to="/contactus/inconvenience">불편신고</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">문의하기</NavLink>
+                  <NavLink to="/contactus/inquiry">문의하기</NavLink>
                 </li>
               </ul>
             </li>
@@ -185,15 +186,15 @@ const ContactusForm = () => {
         <div className="nav-slide">
           <ul className="swiper-wrapper">
             <li className="swiper-slide on">
-              <NavLink to="/contactus" className="on">
+              <NavLink to="/contactus/consult" className="on">
                 상담신청
               </NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/contactus">불편신고</NavLink>
+              <NavLink to="/contactus/inconvenience">불편신고</NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/contactus">문의하기</NavLink>
+              <NavLink to="/contactus/inquiry">문의하기</NavLink>
             </li>
           </ul>
         </div>
@@ -274,4 +275,4 @@ const ContactusForm = () => {
   );
 };
 
-export default ContactusForm;
+export default ConsultForm;

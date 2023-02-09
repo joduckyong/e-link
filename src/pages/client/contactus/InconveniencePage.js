@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import ContactusForm from 'components/client/contactus/ContactusForm';
+import InconvenienceForm from 'components/client/contactus/InconvenienceForm';
 
-const ContactusPage = () => {
+const InconveniencePage = () => {
   return (
     <>
       <Header />
-      <ContactusForm />
+      <InconvenienceForm />
       <Footer />
     </>
   );
 };
 
-export default ContactusPage;
+export default InconveniencePage;
