@@ -302,7 +302,7 @@ const MainForm = () => {
                   </SwiperSlide>
                   <SwiperSlide>
                     <div className="swiper-slide slide3">
-                      <div className="slide-bg" style={{ background: '#1E2F63 url(/img/main/con3-pad.png) right center no-repeat' }}>
+                      <div className="slide-bg" style={{ background: '#1E2F63 url(/img/main/con3-pad.png) 70% center no-repeat' }}>
                         <div className="slide-inner">
                           <h3 className="text">
                             EV CSMS
@@ -391,7 +391,7 @@ const MainForm = () => {
                   <br />
                   충전합니다.
                 </div>
-                <img src="/img/common/mainlogo.svg" alt="" />
+                <img className="mo_logo" src="/img/common/logo.svg" alt="" />
               </div>
               <div className="right">
                 <div>

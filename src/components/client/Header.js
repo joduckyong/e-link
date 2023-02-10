@@ -113,7 +113,21 @@ const Header = () => {
               </div>
             </li>
             <li>
+              {/* <NavLink to="/contactus/consult">Contact Us</NavLink> */}
               <NavLink to="/contactus/consult">Contact Us</NavLink>
+	  		      <div className="depth-1">
+                <ul>
+                  <li>
+                    <NavLink to="">상담신청</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="">불편신고</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="">문의하기</NavLink>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li>
               <NavLink to="">EV 충전소</NavLink>
@@ -271,6 +285,17 @@ const Header = () => {
               <NavLink to="/contactus/consult">
                 <strong>Contact Us</strong>
               </NavLink>
+              <ul className="small-menu">
+                <li>
+                  <NavLink to="">상담신청</NavLink>
+                </li>
+                <li>
+                  <NavLink to="">불편신고</NavLink>
+                </li>
+                <li>
+                  <NavLink to="">문의하기</NavLink>
+                </li>
+              </ul>
             </li>
             <li>
               <NavLink to="">
@@ -415,8 +440,21 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            <li>
-              <NavLink to="/contactus/consult">Contact Us</NavLink>
+            <li className={moMenuClass === '6' ? 'mo-click on' : 'mo-click'} onClick={() => onClickMoMenu('6')}>
+              <NavLink to="/contactus">Contact Us</NavLink>
+	  		      <div className="depth-1" style={moMenuClass === '6' ? { display: 'block' } : { display: 'none' }}>
+                <ul>
+                  <li>
+                    <NavLink to="">상담신청</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="">불편신고</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="">문의하기</NavLink>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li className={moMenuClass === '7' ? 'mo-click on' : 'mo-click'} onClick={() => onClickMoMenu('7')}>
               <NavLink to="">EV 충전소</NavLink>

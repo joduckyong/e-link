@@ -84,6 +84,7 @@
 	.main .con4{padding: 100px 0 200px;}
 	.main .con4 .wrap{width: 100%; padding-top: 0;}
 	.main .con4 .big-tit{font-size: 28px; line-height: 38px; margin-bottom: 30px;}
+	.main .con4 .mo_logo{width:177px;}
 	.main .con4 .right{padding-top: 0; left: initial; right: 20px;}
 	.main .con4 .right img{width: 100%;}
 	.main .con4 .right>div{margin-top: 100px; width: 78%;}
@@ -128,6 +129,7 @@
 	.sub .sub-top .path{padding-left: 10px; margin-bottom: 80px;}
 	.sub .sub-top .path li{margin-left: 20px;}
 	.sub .sub-top .path a{font-size: 14px;}
+	.sub h3{font-size: 30px; line-height: 38px !important;}
 	.sub h3{font-size: 30px; line-height: 38px;}
 	.sub .nav-slide{width: 100%;}
 	.sub .nav-slide-wrap .wrap{padding: 0;}
@@ -179,6 +181,7 @@
 	.sub .ci-bi .wordmark-img .tit{font-size: 16px; margin-bottom: 25px;}
 	.sub .ci-bi .wordmark-img span{font-size: 13px;}
 	.sub .ci-bi .wordmark-img p{font-size: 13px; line-height: 18px; word-break: keep-all;}
+	.sub .ci-bi .wordmark-img .mini-img .img_wp::after{right:-39px;font-size: 13px;}
 	.sub .ci-bi .color-tit{font-size: 15px; margin-bottom: 20px;}
 	.sub .ci-bi .color-list p{font-size: 13px; line-height: 20px;}
 	.sub .ci-bi .color-list{width: 100%;}
@@ -248,6 +251,7 @@
 	.sub.sub02-3 .renew-tit{font-size: 18px; margin-bottom: 15px; line-height: 25px; word-break: keep-all;}
 	.sub.sub02-3 .renew-list p{display:inline;font-size: 14px; line-height: 22px; word-break: keep-all;}
 	.sub.sub02-3 .renew-list li{padding-left: 90px; padding-top: 45px; padding-bottom: 45px;}
+	.sub.sub02-3 .renew-list li:nth-of-type(odd){margin-right: 0;}
 	.sub.sub02-3 .renew-list .list01{background-size: 55px auto; background-position-x: 10px;}
 	.sub.sub02-3 .renew-list .list02{background-size: 45px auto; background-position-x: 10px;}
 	.sub.sub02-3 .renew-list .list03{background-size: 49px auto; background-position-x: 10px;}

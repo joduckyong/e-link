@@ -125,9 +125,7 @@ const EvchargeForm = () => {
                   B2B 특화 전기차 충전 사업자
                 </div>
                 <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                  LS그룹의 축적된 전기 기술력을 바탕으로 Fleet 운영에 최적화된
-                  <br className="pc-block" />
-                  충전 솔루션 및 배터리 관리 서비스를 제공합니다.
+                LS그룹의 축적된 전기 기술력을 바탕으로 Fleet 운영에 최적화된 충전 솔루션 및 배터리 관리 서비스를 제공합니다.
                 </div>
               </div>
               <div className="img img1">
@@ -142,9 +140,7 @@ const EvchargeForm = () => {
                   충전 인프라 구축, 위탁운영 사업
                 </div>
                 <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                  충전인프라 구축 및 충전사업을 운영을 원하시는 고객에게 사업성 검토, 인허가
-                  <br className="pc-block" />
-                  인프라 구축, 운영 및 Financing까지 Total Solution을 제공합니다.
+                사업성 검토, 인허가, 인프라 구축, 운영 및 Financing까지 Total Solution을 제공합니다.
                 </div>
               </div>
               <div className="img img2">

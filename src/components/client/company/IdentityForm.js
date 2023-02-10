@@ -192,7 +192,7 @@ const IdentityForm = () => {
                     </div>
                     <div className="mini-img">
                       <span>최소사이즈</span>
-                      <img src="/img/logo/mini-symbol.svg" alt="" />
+                      <div className="img_wp wp01"><img src="/img/logo/mini-symbol.svg" alt="" /></div>
                       <p>심볼마크의 5mm이하 사용은 로고타입 사용 권장</p>
                     </div>
                   </div>
@@ -205,7 +205,7 @@ const IdentityForm = () => {
                     </div>
                     <div className="mini-img">
                       <span>최소사이즈</span>
-                      <img src="/img/logo/mini-e-link-logo-type.svg" alt="" />
+                      <div className="img_wp wp02"><img src="/img/logo/mini-e-link-logo-type.svg" alt="" /></div>
                     </div>
                   </div>
                 </div>

@@ -539,7 +539,7 @@ position: absolute; right: 0; top: 0; background: #FFF;}
 .sub .infor-down .wrap{display: flex; justify-content: space-between; flex-wrap: wrap;}
 .sub .infor-down .tit-wrap{padding-top: 20px;}
 .sub .infor-down .tit{font-size: 32px;line-height: 48px;letter-spacing: -0.03em;}
-.sub .infor-down p{font-size: 18px; color: #444; margin-top: 40px; line-height: 25px; font-weight: 400;}
+.sub .infor-down p{font-size: 18px; color: #444; margin-top: 40px; line-height: 30px; font-weight: 400;}
 .sub .infor-down{font-size: 32px; color: #121212; font-weight: 600;}
 .sub .infor-down .img{width: 632px; padding-bottom: 30%; border-radius: 20px; overflow: hidden; position: relative;}
 

@@ -101,7 +101,7 @@ const RenewableForm = () => {
             </div>
           </div>
           <div className="bg"></div>
-          <div className="business-wrap">
+          <div className="business-wrap renewable-wrap">
             <div className="wrap">
               <div className="infor mt0">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">

@@ -3,6 +3,8 @@
     속성순서 : Display > Position > Box Model > Design > Paragraph
 
 -------------------------------------------------------------------*/
+*{letter-spacing:-0.03em}
+h1, h2, h3, h4, h5, h6, h1 *, h2 *, h3 *, h4 *, h5 *, h6 *{letter-spacing:0;}
 .text_blind{font-size: 0; text-indent: -9999;}
 html,body{width: 100%;}
 /* 초기화 */

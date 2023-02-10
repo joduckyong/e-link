@@ -123,7 +123,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <p className="copy">COPYRIGHT ⓒ LS E-Link. ALL RIGHTS RESERVED.</p>
+          <p className="copy">ⓒ2023. LS E-Link ALL RIGHT RESERVED.</p>
         </div>
       </div>
     </footer>
