@@ -434,7 +434,7 @@ const MainForm = () => {
             <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
               LS E-Link는 <br className="m-block" />
               LS그룹의 전기 전력분야 <br className="m-block" />
-              기술력을 바탕으로 <br className="pc-block" />
+              기술력을 바탕으로 <br />
               EV 충전 인프라 기술혁신을 <br className="m-block" />
               선도하고 있습니다.
               <br />
@@ -454,6 +454,9 @@ const MainForm = () => {
               breakpoints={{
                 780: {
                   slidesPerView: 2.4,
+                  spaceBetween: 30,
+                },
+                1280: {
                   spaceBetween: 0,
                 },
               }}

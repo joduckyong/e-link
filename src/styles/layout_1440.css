@@ -51,7 +51,7 @@
 	.main .con1 .tit{font-size: 28px; line-height: 40px; word-break: keep-all;}
 	.main .con1 .s-tit{font-size: 22px; margin-bottom: 15px;}
 	.main .con1 ul{margin-top: 0px; justify-content: space-between; flex-wrap: wrap;}
-	.main .con1 ul li{margin-left: 0; margin-top: 70px;}
+	.main .con1 ul li{width:100%;margin-left: 0; margin-top: 70px;}
 	.main .con1 p{font-size: 15px;}
 	.main .con1 a{background-size: 45px auto;}
 
