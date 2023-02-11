@@ -622,7 +622,8 @@ top: 0; bottom: 0; left: 0; right: 0; position: fixed; z-index: -10;}
 top: 0; bottom: 0; left: 0; right: 0; position: fixed; z-index: -10;}
 .sub.sub02-3 .renew-img img{width: 100%;}
 .sub.sub02-3 .renew-tit{font-size: 26px; color: #121212; font-weight: 600; margin-bottom: 20px;}
-.sub.sub02-3 .renew-list p{font-size: 18px;line-height:32px; color: #121212;}
+.sub.sub02-3 .renew-list{display:flex;flex-wrap:wrap;}
+.sub.sub02-3 .renew-list p{height:64px;font-size: 18px;line-height:32px; color: #121212;}
 .sub.sub02-3 .renew-list li{position: relative; padding-left: 210px; padding-top: 85px; padding-bottom: 85px; border-bottom: 1px #EAEAEA solid;display: inline-block;width: calc(50% - 8px);}
 .sub.sub02-3 .renew-list li:nth-of-type(odd){margin-right:16px;}
 .sub.sub02-3 .renew-list .list01{background: url('/public/img/sub/ico-hand.svg') 50px center no-repeat;}
