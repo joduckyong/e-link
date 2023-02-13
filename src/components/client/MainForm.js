@@ -559,7 +559,7 @@ const MainForm = () => {
             </video>
 
             <video className="con5-video-mo" src="/video/technological-innovation.mp4" playsInline="" loop="" muted="" autoPlay=""></video>
-            <img style={{ position: 'absolute', zIndex: 1, top: 0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
+            <img style={{ position: 'absolute', zIndex: 1, top: 0, left:0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
           </div>
         </div>
         <div className="con6">

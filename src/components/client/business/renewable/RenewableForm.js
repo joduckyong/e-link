@@ -112,7 +112,7 @@ const RenewableForm = () => {
               <div className="renew-img" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                 <picture>
                   <source srcSet="/img/sub/sub02-3-mo-img.png" media="(max-width: 780px)" />
-                  {/* <img src="/img/sub/sub02-3-pc-img.png" alt="" />*/}
+                  <img src="/img/sub/sub02-3-pc-img.png" alt="" />
                 </picture>
               </div>
               <ul className="renew-list">
