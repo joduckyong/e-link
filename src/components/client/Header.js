@@ -338,7 +338,7 @@ const Header = () => {
               <NavLink to="">사이버신문고</NavLink>
             </li>
           </ul>
-          <p>ⓒ LS E-Link. ALL RIGHT RESERVED.</p>
+          <p>ⓒ2023. LS E-Link ALL RIGHT RESERVED.</p>
         </div>
       </div>
       <div className="mo-menu">

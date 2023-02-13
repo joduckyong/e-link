@@ -333,7 +333,7 @@ transition: all 0.5s;}
 .m-block{display: none;}
 .tb-block{display: block;}
 .sub .content{padding-bottom: 150px; padding-top: 110px;}
-.sub h3{font-size: 48px; font-weight: 600;line-height: 70px !important;color: #121212; line-height: 65px; word-break: keep-all;}
+.sub h3{font-size: 48px; font-weight: 600;line-height: 70px !important;color: #121212; line-height: 65px; word-break: keep-all;letter-spacing:-0.03em;}
 .sub .sub-top{height: 740px; /*overflow: hidden;*/  position: relative; z-index: 2;}
 .sub .sub-top h2{color: #FFF; font-size: 80px; font-weight: 800; word-break: keep-all;}
 .sub .sub-top .path{display: flex; position: relative; margin-top: auto; margin-bottom: 110px; align-items: center;}
@@ -597,7 +597,7 @@ margin-top: -15px;}
 top: 0; bottom: 0; left: 0; right: 0; position: fixed; z-index: -10;}
 .sub.sub02-2 .dist .infor-down .in{position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('/public/img/sub/sol-img2.jpg') center no-repeat;} 
 .sub.sub02-2 .dist-solution-img{background: #E9ECF1 url('/public/img/sub/dist-pc-img.png') center no-repeat; padding-top: 150px; padding-bottom: 450px;} 
-.sub.sub02-2 .dist-solution-img .dist-tit{font-size: 32px; color: #121212; line-height: 45px; font-weight: 600; margin-bottom: 50px; margin-left: 49%; word-break: keep-all;}
+.sub.sub02-2 .dist-solution-img .dist-tit{font-size: 32px; color: #121212; line-height: 45px; font-weight: 600; margin-bottom: 40px; margin-left: 49%; word-break: keep-all;}
 .sub.sub02-2 .dist-solution-img p{font-size: 18px; color: #444; line-height: 27px; margin-left: 49.5%; word-break: keep-all;}
 .sub.sub02-2 .dist .img1 .in{background: url('/public/img/sub/dist-img.jpg') center 0 no-repeat; position: absolute; top: 0; left: 0;right: 0; bottom: 0; background-size: cover;}
 .sub.sub02-2 .dist .infor-txt{margin-top: 30px;margin-bottom: 80px;}
