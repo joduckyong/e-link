@@ -457,6 +457,7 @@ const MainForm = () => {
                   spaceBetween: 30,
                 },
                 1280: {
+                  slidesPerView: 2.4,
                   spaceBetween: 0,
                 },
               }}
