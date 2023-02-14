@@ -30,6 +30,8 @@
     .sub.sub05 .fire-img{height: 0px; border-radius: 15px; position: relative; padding-bottom: 45%;}
     .sub.sub05 .fire-img .bg{position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: auto;}
     .sub.sub05 .welfare{grid-template-columns: 1fr; grid-gap: 30px;}
+
+    
 }
 
 @media only screen and (max-width:780px){
