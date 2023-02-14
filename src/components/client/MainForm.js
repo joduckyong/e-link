@@ -34,6 +34,10 @@ const MainForm = () => {
   const popupList = useSelector((state) => state.popupReducer.data);
   const boardList = useSelector((state) => state.boardReducer.data);
 
+  const removeImgTag = (text) => {
+    const regex = /<IMG(.*?)><br>/gi;
+    return text.replace(regex, '').replace('<br>', '');
+  };
   useEffect(() => {
     const newList = { popupId: 'POP', pageIndex: 1 };
     dispatch(selectClientPopup(newList));
@@ -589,7 +593,10 @@ const MainForm = () => {
                       <div className="news-tit">{list.boardTitle}</div>
                       <p
                         dangerouslySetInnerHTML={{
-                          __html: list.boardContents.substr(0, 126),
+                          __html:
+                            removeImgTag(list.boardContents).length > 126
+                              ? removeImgTag(list.boardContents).substring(0, 126) + '...'
+                              : removeImgTag(list.boardContents),
                         }}
                       ></p>
                     </NavLink>
