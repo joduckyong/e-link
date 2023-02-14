@@ -34,6 +34,10 @@ const MainForm = () => {
   const popupList = useSelector((state) => state.popupReducer.data);
   const boardList = useSelector((state) => state.boardReducer.data);
 
+  const removeImgTag = (text) => {
+    const regex = /<IMG(.*?)><br>/gi;
+    return text.replace(regex, '').replace('<br>', '');
+  };
   useEffect(() => {
     const newList = { popupId: 'POP', pageIndex: 1 };
     dispatch(selectClientPopup(newList));
@@ -570,7 +574,7 @@ const MainForm = () => {
             <source src="/video/main_con6_video.mp4" type="video/mp4" />
           </video> */}
 
-          <video className="con6-video-mo" src="/video/main_con6_video.mp4" playsInline loop muted autoPlay></video>
+          <video src="/video/main_con6_video.mp4" playsInline loop muted autoPlay></video>
         </div>
         <div className="con7">
           <div className="wrap">
@@ -590,7 +594,10 @@ const MainForm = () => {
                       <div className="news-tit">{list.boardTitle}</div>
                       <p
                         dangerouslySetInnerHTML={{
-                          __html: list.boardContents.substr(0, 126),
+                          __html:
+                            removeImgTag(list.boardContents).length > 126
+                              ? removeImgTag(list.boardContents).substring(0, 126) + '...'
+                              : removeImgTag(list.boardContents),
                         }}
                       ></p>
                     </NavLink>
