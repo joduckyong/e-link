@@ -24,7 +24,7 @@ const Footer = () => {
             <NavLink to="/recruit/people">채용정보</NavLink>
           </li>
           <li>
-            <NavLink to="/contactus">Contact Us</NavLink>
+            <NavLink to="/contactus/consult">Contact Us</NavLink>
           </li>
           <li>
             <NavLink to="">EV 충전소</NavLink>

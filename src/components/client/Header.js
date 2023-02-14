@@ -118,13 +118,13 @@ const Header = () => {
 	  		      <div className="depth-1">
                 <ul>
                   <li>
-                    <NavLink to="">상담신청</NavLink>
+                    <NavLink to="/contactus/consult">상담신청</NavLink>
                   </li>
                   <li>
-                    <NavLink to="">불편신고</NavLink>
+                    <NavLink to="/contactus/inconvenience">불편신고</NavLink>
                   </li>
                   <li>
-                    <NavLink to="">문의하기</NavLink>
+                    <NavLink to="/contactus/inquiry">문의하기</NavLink>
                   </li>
                 </ul>
               </div>
@@ -287,13 +287,13 @@ const Header = () => {
               </NavLink>
               <ul className="small-menu">
                 <li>
-                  <NavLink to="">상담신청</NavLink>
+                  <NavLink to="/contactus/consult">상담신청</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">불편신고</NavLink>
+                  <NavLink to="/contactus/inconvenience">불편신고</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">문의하기</NavLink>
+                  <NavLink to="/contactus/inquiry">문의하기</NavLink>
                 </li>
               </ul>
             </li>
@@ -441,17 +441,17 @@ const Header = () => {
               </div>
             </li>
             <li className={moMenuClass === '6' ? 'mo-click on' : 'mo-click'} onClick={() => onClickMoMenu('6')}>
-              <NavLink to="/contactus">Contact Us</NavLink>
+              <NavLink to="/contactus/consult">Contact Us</NavLink>
 	  		      <div className="depth-1" style={moMenuClass === '6' ? { display: 'block' } : { display: 'none' }}>
                 <ul>
                   <li>
-                    <NavLink to="">상담신청</NavLink>
+                    <NavLink to="/contactus/consult">상담신청</NavLink>
                   </li>
                   <li>
-                    <NavLink to="">불편신고</NavLink>
+                    <NavLink to="/contactus/inconvenience">불편신고</NavLink>
                   </li>
                   <li>
-                    <NavLink to="">문의하기</NavLink>
+                    <NavLink to="/contactus/inquiry">문의하기</NavLink>
                   </li>
                 </ul>
               </div>
