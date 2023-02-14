@@ -3,6 +3,10 @@
 	header .all-menu{padding: 0px;}
 	header .all-menu .middle,header .all-menu .bottom{padding: 0 20px;}
 }
+@media only screen and (max-width:1460px){
+	header .pc-menu a.menu{margin-left: 0;}
+}
+
 @media only screen and (max-width:1350px){
 	header .gnb>li>a{padding-left: 35px; padding-right: 35px;}
 	.main .con5 .control{top: 73%;}
@@ -64,9 +68,11 @@
 	/*.main .con3 .swiper-slide .slide-bg{ background-size: cover;
 	}*/
 
-	.main .con3 .slide2 .slide-bg{background-size: 90% auto !important;}
-	.main .con3 .slide2 .cloud1{right: 28%;}
-	.main .con3 .slide2 .cloud3{top: 60%; right: 46%;}
+	.main .con3 .slide2 .slide-bg{background-size: 90% auto !important;background-position:190% center !important;}
+	.main .con3 .slide2 .cloud1{right: 8%;}
+	.main .con3 .slide2 .cloud2{right:0;}
+	.main .con3 .slide2 .cloud3{top: 60%; right: 26%;}
+	.main .con3 .slide3 .slide-bg{background-size: 60% auto !important;background-position:85% center !important;}
 	.main .con3 .slide3 .cloud1{right: 47%;}
 	.main .con3 .slide3 .cloud3{top: 36%; right: 19%;}
 	.main .con3 .air{top: 27%; right: 21%;}
@@ -138,7 +144,7 @@
 	.sub .list-num span{margin-right: 10px;}
 
 	.sub.sub01-1 .company-infor{margin-top: 50px;}
-	.sub.sub01-1 .company-infor .big{font-size: 22px; line-height: 33px;}
+	.sub.sub01-1 .company-infor .big{margin-top:0;font-size: 22px; line-height: 33px;}
 	.sub.sub01-1 .company-infor p{font-size: 15px; line-height: 27px; margin-top: 20px;}
 	.sub.sub01-1 .company-infor strong{font-size: 17px;line-height: 26px; margin-top: 30px;}
 	.sub.sub01-1 .company-infor .txt{width: 50%; margin-left: 5%;}
@@ -390,6 +396,7 @@
 @media only screen and (max-width:1024px){	
 	.con3 .container{height:600px;}
 	.main .con4 .pc-show .left .lf-wrap{position: static;}
+	.main .con4 .pc-show .left .lf-wrap img{width: 177px;}
 	.main .con4 .mobile-show .right{position: static; margin-top: 70px;}
 
 	.sub .ci-bi .btn-down{position: static; width: 100%; margin-top: 35px;}
@@ -404,7 +411,7 @@
 	footer .privacy li a{font-size: 14px;}
 	footer .privacy li a:before{height: 12px;}
 	footer .fm{font-size: 13px;}
-	footer .fm:after{top: -3px;}
+	/* footer .fm:after{top: -3px;} */
 	footer .bottom{flex-wrap: wrap;}
 	footer .copy{font-size: 13px;}
 

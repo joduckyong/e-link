@@ -25,7 +25,7 @@ header.on .pc-menu .depth-1{visibility: visible; opacity: 1; }
 header .pc-menu .depth-1 li{text-align: center; margin-top: 30px;}
 header .pc-menu .depth-1 li:first-child{margin-top: 0px;}
 header .pc-menu .depth-1 li a{font-size: 16px; color: #444; font-weight: 400; transition: all 0.2s;}
-header .pc-menu a.menu{position: relative; height: 20px; display: inline-block; width: 28px;}
+header .pc-menu a.menu{position: relative; height: 20px; display: inline-block; width: 28px;margin-left:122px;}
 header .pc-menu a.menu:before{content: ''; display: inline-block; width: 100%; height: 2px; background: #111; position: absolute; top: 0; left: 0; transition: 0.3s}
 header .pc-menu a.menu:after{content: ''; display: inline-block; width: 100%; height: 2px; background: #111; position: absolute; bottom: 0; left: 0; transition: 0.3s}
 header .pc-menu a.menu span{position: absolute; display: inline-block; width: 21px; height: 2px; top: 50%; right: 0; background: #111; margin-top: -1px; transition: 0.3s}
@@ -125,7 +125,7 @@ footer .family-link li a{line-height: 20px;}
 top: 0; bottom: 0; left: 0; right: 0; position: fixed; z-index: -10;}
 .main{margin-top: 95px; position: relative;}
 .main .video-wrap{position: absolute; top: 0; left: 0; right: 0; bottom: 0; object-fit: cover; z-index: 0; overflow: hidden;}
-.main .video-wrap video{width: 100%; height: 100%; object-fit: cover;}
+.main .video-wrap video{width: 100%; height: 100%; object-fit: cover;object-position:right;}
 .main .video-wrap .main-video-mo {display: none;}
 .main .main-visual .scroll_wp{position:absolute;bottom:70px;left:-80px;transform:rotate(-90deg);display:flex;align-items:center;gap:14px;z-index:2;}
 .main .main-visual .scroll_wp .bar_wp{width: 60px;height: 1px;background:rgba(255,255,255,.2);overflow:hidden;}
@@ -398,6 +398,7 @@ width: 130px; margin-left: -65px;}
 
 .sub.sub01-1 .sub-top .bg{background: url('/public/img/sub/sub01-1-top.jpg') center 0 no-repeat; background-size: cover;}
 .sub.sub01-1 .company-infor{display: flex; flex-wrap: wrap; margin-top: 125px;position: relative;}
+.sub.sub01-1 .company-infor .swiper{width:40%;}
 .sub.sub01-1 .company-infor .swiper-pointer-events {width: 40%;}
 .sub.sub01-1 .company-infor .img{width: 100%;height: 100%;padding-bottom: 50%; position: relative; border-radius: 30px; overflow: hidden;}  
 .sub.sub01-1 .company-infor .img .bg{position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('/public/img/sub/sub01-1-img.jpg') center no-repeat; background-size: cover; transition: all 0.7s ease-out;}
@@ -676,6 +677,8 @@ top: 0; bottom: 0; left: 0; right: 0; position: fixed; z-index: -10;}
 .sub .con4-list-view .view-area{margin-top: 40px; border-top: 1px #444 solid; padding: 70px 100px 100px; border-bottom: 1px #444 solid;}
 .sub .con4-list-view .view-area .img img{width: 100%;}
 .sub .view-area p{font-size: 18px; color: #121212; line-height: 30px; font-weight: 400; word-break: keep-all;}
+.sub .view-area img{max-width:100%;}
+.sub .view-area video{max-width:100%;}
 
 .sub.sub04 .view-txt{margin-top: 30px; word-break: keep-all;}
 .sub.sub04 .list-num-wrap{margin: 40px 0;}
