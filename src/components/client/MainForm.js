@@ -146,11 +146,11 @@ const MainForm = () => {
             </div>
           </div>
           <div className="video-wrap">
-            {/* <video muted autoPlay loop className="main-video-pc">
+            <video muted autoPlay loop className="main-video-pc">
               <source src="/video/main.mp4" type="video/mp4" />
-            </video> */}
+            </video>
 
-            <video src="/video/main.mp4"  playsInline loop muted autoPlay></video>
+            <video className="main-video-mo" src="/video/main.mp4" playsInline="" loop="" muted autoPlay=""></video>
           </div>
         </div>
         <div className="con1">
