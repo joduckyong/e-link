@@ -30,7 +30,7 @@ const Footer = () => {
             <NavLink to="">EV 충전소</NavLink>
           </li>
         </ul>
-        <address>서울특별시 용산구 한강대로 92, <br class="m-block" />LS용산타워 17층 LS E-Link</address>
+        <address>(04386) 서울특별시 용산구 한강대로 92,  <br class="m-block" />LS용산타워 17층 LS E-Link(주)</address>
         <ul className="tel">
           <li>
             <span>TEL</span>1660-3175
@@ -40,17 +40,14 @@ const Footer = () => {
           <ul className="privacy">
             <li>
               <NavLink to="">
-                <strong>개인정보처리방침</strong>
+                <strong>개인정보보호처리방침</strong>
               </NavLink>
             </li>
             <li>
-              <NavLink to="">이메일무단수집거부</NavLink>
+              <NavLink to="">서비스 이용약관</NavLink>
             </li>
             <li>
-              <NavLink to="">사이버신문고</NavLink>
-            </li>
-            <li>
-              <NavLink to="">사이트맵</NavLink>
+              <NavLink to="">위치기반 서비스 이용약관</NavLink>
             </li>
           </ul>
           <div className={familyActive ? 'fm on' : 'fm'} onClick={() => setFamilyActive(!familyActive)}>

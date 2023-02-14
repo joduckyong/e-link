@@ -626,7 +626,7 @@ const MainForm = () => {
                 </NavLink>
               </li>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="700">
-                <NavLink to="/recruit/benefits">
+                <NavLink to="/recruit/posting">
                   <i></i>
                   채용공고
                 </NavLink>

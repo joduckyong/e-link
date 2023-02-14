@@ -25,7 +25,7 @@ header.on .pc-menu .depth-1{visibility: visible; opacity: 1; }
 header .pc-menu .depth-1 li{text-align: center; margin-top: 30px;}
 header .pc-menu .depth-1 li:first-child{margin-top: 0px;}
 header .pc-menu .depth-1 li a{font-size: 16px; color: #444; font-weight: 400; transition: all 0.2s;}
-header .pc-menu a.menu{position: relative; height: 20px; display: inline-block; width: 28px;}
+header .pc-menu a.menu{position: relative; height: 20px; display: inline-block; width: 28px;margin-left:122px;}
 header .pc-menu a.menu:before{content: ''; display: inline-block; width: 100%; height: 2px; background: #111; position: absolute; top: 0; left: 0; transition: 0.3s}
 header .pc-menu a.menu:after{content: ''; display: inline-block; width: 100%; height: 2px; background: #111; position: absolute; bottom: 0; left: 0; transition: 0.3s}
 header .pc-menu a.menu span{position: absolute; display: inline-block; width: 21px; height: 2px; top: 50%; right: 0; background: #111; margin-top: -1px; transition: 0.3s}

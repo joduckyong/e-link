@@ -3,6 +3,10 @@
 	header .all-menu{padding: 0px;}
 	header .all-menu .middle,header .all-menu .bottom{padding: 0 20px;}
 }
+@media only screen and (max-width:1460px){
+	header .pc-menu a.menu{margin-left: 0;}
+}
+
 @media only screen and (max-width:1350px){
 	header .gnb>li>a{padding-left: 35px; padding-right: 35px;}
 	.main .con5 .control{top: 73%;}
@@ -140,7 +144,7 @@
 	.sub .list-num span{margin-right: 10px;}
 
 	.sub.sub01-1 .company-infor{margin-top: 50px;}
-	.sub.sub01-1 .company-infor .big{font-size: 22px; line-height: 33px;}
+	.sub.sub01-1 .company-infor .big{margin-top:0;font-size: 22px; line-height: 33px;}
 	.sub.sub01-1 .company-infor p{font-size: 15px; line-height: 27px; margin-top: 20px;}
 	.sub.sub01-1 .company-infor strong{font-size: 17px;line-height: 26px; margin-top: 30px;}
 	.sub.sub01-1 .company-infor .txt{width: 50%; margin-left: 5%;}
