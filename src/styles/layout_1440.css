@@ -392,6 +392,7 @@
 @media only screen and (max-width:1024px){	
 	.con3 .container{height:600px;}
 	.main .con4 .pc-show .left .lf-wrap{position: static;}
+	.main .con4 .pc-show .left .lf-wrap img{width: 177px;}
 	.main .con4 .mobile-show .right{position: static; margin-top: 70px;}
 
 	.sub .ci-bi .btn-down{position: static; width: 100%; margin-top: 35px;}
