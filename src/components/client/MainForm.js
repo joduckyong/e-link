@@ -146,11 +146,11 @@ const MainForm = () => {
             </div>
           </div>
           <div className="video-wrap">
-            <video muted autoPlay loop className="main-video-pc">
+            {/* <video muted autoPlay loop className="main-video-pc">
               <source src="/video/main.mp4" type="video/mp4" />
-            </video>
+            </video> */}
 
-            <video className="main-video-mo" src="/video/main.mp4" playsInline="" loop="" muted autoPlay=""></video>
+            <video src="/video/main.mp4"  playsInline loop muted autoPlay></video>
           </div>
         </div>
         <div className="con1">
@@ -200,11 +200,11 @@ const MainForm = () => {
                   </div>
                   <div className="visual">
                     <div className="_visual">
-                      <video muted autoPlay loop className="con2-video-pc">
+                      {/* <video muted autoPlay loop className="con2-video-pc">
                         <source src="/video/con2-video.mp4" type="video/mp4" />
-                      </video>
+                      </video> */}
 
-                      <video className="con2-video-mo" src="/video/con2-video.mp4" playsInline="" loop="" muted autoPlay=""></video>
+                      <video src="/video/con2-video.mp4" playsInline loop muted autoPlay></video>
                     </div>
                   </div>
                 </article>
@@ -559,22 +559,22 @@ const MainForm = () => {
             {/* </div> */}
           </div>
           <div className="con5-video">
-            <video muted autoPlay loop className="con5-video-pc">
+            {/* <video muted autoPlay loop className="con5-video-pc">
               <source src="/video/technological-innovation.mp4" type="video/mp4" />
-            </video>
+            </video> */}
 
-            <video className="con5-video-mo" src="/video/technological-innovation.mp4" playsInline="" loop="" muted="" autoPlay=""></video>
+            <video src="/video/technological-innovation.mp4" playsInline loop muted autoPlay></video>
             <img style={{ position: 'absolute', zIndex: 1, top: 0, left:0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
           </div>
         </div>
         <div className="con6">
           {/*<div className="in"></div>*/}
 
-          <video muted autoPlay loop playsInline className="con6-video-pc">
+          {/* <video muted autoPlay loop playsInline className="con6-video-pc">
             <source src="/video/main_con6_video.mp4" type="video/mp4" />
-          </video>
+          </video> */}
 
-          <video className="con6-video-mo" src="/video/main_con6_video.mp4" playsInline="" loop="" muted="" autoPlay=""></video>
+          <video src="/video/main_con6_video.mp4" playsInline loop muted autoPlay></video>
         </div>
         <div className="con7">
           <div className="wrap">
