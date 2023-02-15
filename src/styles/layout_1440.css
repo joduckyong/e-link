@@ -370,6 +370,23 @@
 	.sub.sub06 .file p{font-size: 13px; line-height: 20px;}
 	.sub.sub06 .qa-btn{font-size: 15px; padding: 22px 0; margin-top: 45px;}
 
+	.sub.sub07 .policy{padding: 50px 0 60px;}
+	.sub.sub07 h2{font-size: 30px;line-height: 44px;}
+	.sub.sub07 h3{margin-top: 40px;margin-bottom: 20px; font-size: 20px;line-height: 30px;}
+	.sub.sub07 h3:first-of-type{margin-top: 46px;}
+	.sub.sub07 h4{margin-top: 24px; font-size: 14px;line-height: 24px;}
+	.sub.sub07.sub07-2 h3{margin-top: 40px;}
+	.sub.sub07.sub07-2 h3.mt40{margin-top: 10px !important;}
+	.sub.sub07.sub07-2 h4{margin-top: 46px;}
+	.sub.sub07.sub07-2 h4:first-of-type{margin-top: 46px;}
+	.sub.sub07 .depth01_p{margin-top: 24px; font-size: 14px;line-height: 24px;}
+	.sub.sub07 .depth02_p{font-size: 13px;line-height: 24px;}
+	.sub.sub07 .notice_p{font-size: 13px;line-height: 24px;}
+	.sub.sub07 .table_basic{margin-top: 20px;}
+	.sub.sub07 .table_basic th{padding: 13px 15px;font-size: 13px;line-height: 23px;}
+	.sub.sub07 .table_basic td{padding: 13px 15px;font-size: 13px;line-height: 24px;}
+
+
 	footer .wrap{width: 100%; padding: 0px 20px;}
 	footer .fm{right: 20px;}
 

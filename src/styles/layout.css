@@ -824,6 +824,29 @@ margin-right: 15px;}
 .sub.sub06 .file p{font-size: 16px; color: #888; margin-top: 30px;}
 .sub.sub06 .qa-btn{display: block; width: 100%; font-size: 20px; color: #FFF; font-weight: 600; background: #121212; text-align: center; padding: 30px 0; margin-top: 70px;}
 
+.sub.sub07-1 .sub-top .bg{background: url('/public/img/sub/sub07-1-top.jpg') center 0 no-repeat; background-size: cover;}
+.sub.sub07-2 .sub-top .bg{background: url('/public/img/sub/sub07-2-top.jpg') center 0 no-repeat; background-size: cover;}
+.sub.sub07-3 .sub-top .bg{background: url('/public/img/sub/sub07-3-top.jpg') center 0 no-repeat; background-size: cover;}
+.sub.sub07 .ml20{margin-left: 20px;}
+.sub.sub07 .policy{padding:110px 0 150px;}
+.sub.sub07 h2{font-weight: 600;font-size: 48px;line-height: 70px;}
+.sub.sub07 h3{margin-top: 100px;margin-bottom: 40px; font-weight: 600;font-size: 30px;line-height: 30px;}
+.sub.sub07 h3:first-of-type{margin-top: 80px;}
+.sub.sub07 h4{margin-top: 30px; font-weight: 600;font-size: 18px;line-height: 28px;color: #0A1E5A;}
+.sub.sub07.sub07-2 h3{margin-top: 100px;}
+.sub.sub07.sub07-2 h4{margin-top: 100px;}
+.sub.sub07.sub07-2 h4:first-of-type{margin-top: 80px;}
+.sub.sub07 .depth01_p{margin-top: 28px; font-weight: 400;font-size: 18px;line-height: 28px;}
+.sub.sub07 .depth02_p{font-weight: 400;font-size: 16px;line-height: 28px;color: #444444;}
+.sub.sub07 .notice_p{font-weight: 400;font-size: 16px;line-height: 28px;color: #0A1E5A;}
+.sub.sub07 .table_basic{width:100%;margin-top: 28px; border-top: 1px solid #444444;}
+.sub.sub07 .table_basic tr{border-bottom: 1px solid #EAEAEA;}
+.sub.sub07 .table_basic th{padding: 25px 36px;background: #F3F5F8;font-weight: 600;font-size: 16px;color: #444444;}
+.sub.sub07 .table_basic td{padding: 25px 36px; font-weight: 400;font-size: 16px;line-height: 30px;color: #444444;}
+.sub.sub07 .table_basic.tb01 th{width:33%;text-align:left;}
+.sub.sub07 .table_basic.tb02 td{text-align:center;}
+
+
 /*관리자페이지*/
 .adminsub{height: 100%; min-width: 1440px;}
 .adminsub .bg-white{background: #FFF;}
