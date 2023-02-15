@@ -327,15 +327,15 @@ const Header = () => {
         <div className="bottom">
           <ul>
             <li>
-              <NavLink to="">
-                <strong>개인정보처리방침</strong>
+              <NavLink to="/policy/privacy">
+                <strong>개인정보보호처리방침</strong>
               </NavLink>
             </li>
             <li>
-              <NavLink to="">이메일무단수집거부</NavLink>
+              <NavLink to="/policy/terms">서비스 이용약관</NavLink>
             </li>
             <li>
-              <NavLink to="">사이버신문고</NavLink>
+              <NavLink to="/policy/location">위치기반 서비스 이용약관</NavLink>
             </li>
           </ul>
           <p>ⓒ2023. LS E-Link ALL RIGHT RESERVED.</p>
