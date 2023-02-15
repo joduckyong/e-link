@@ -87,6 +87,11 @@ import ConsultPage from './pages/client/contactus/ConsultPage';
 import InconveniencePage from './pages/client/contactus/InconveniencePage';
 import InquiryPage from './pages/client/contactus/InquiryPage';
 
+/* 약간 */
+import PrivacyPage from './pages/client/policy/PrivacyPage';
+import TermsPage from './pages/client/policy/TermsPage';
+import LocationPage from './pages/client/policy/LocationPage';
+
 const App = () => {
   return (
     <Router>
@@ -159,6 +164,10 @@ const App = () => {
         <Route path="/contactus/consult" element={<ConsultPage />} />
         <Route path="/contactus/inconvenience" element={<InconveniencePage />} />
         <Route path="/contactus/inquiry" element={<InquiryPage />} />
+
+        <Route path="/policy/privacy" element={<PrivacyPage />} />
+        <Route path="/policy/terms" element={<TermsPage />} />
+        <Route path="/policy/location" element={<LocationPage />} />
       </Routes>
     </Router>
   );
