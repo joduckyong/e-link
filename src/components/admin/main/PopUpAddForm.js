@@ -51,10 +51,6 @@ const PopUpAddForm = () => {
       alert('관리 타이틀를 입력하세요');
       return;
     }
-    if (popupLink === '') {
-      alert('팝업 링크를 입력하세요');
-      return;
-    }
     if (popupClose1 === '') {
       alert('닫기영역을 입력하세요');
       return;
