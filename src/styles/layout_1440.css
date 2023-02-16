@@ -210,6 +210,7 @@
 	.sub .business-wrap{padding-top: 60px; padding-bottom: 50px;}
 	.sub .business .bg{height: 260px;}
 	.sub .business .infor{flex-wrap: wrap; margin-bottom: 35px; margin-top: 60px;}
+	.sub .business .infor.mb30{margin-bottom: 0;}
 	.sub .business .infor-tit{font-size: 22px; margin-bottom: 20px; line-height: 30px;}
 	.sub .business .infor-txt{font-size: 14px;}
 	.sub .business .img{padding-bottom: 55%; height: auto;}
