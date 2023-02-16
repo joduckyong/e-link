@@ -527,6 +527,7 @@ position: absolute; right: 0; top: 0; background: #FFF;}
 .sub .business-wrap{background: #FFF; padding-top: 130px; padding-bottom: 85px;}
 .sub .renewable-wrap{padding-bottom: 150px;}
 .sub .business .infor{display: flex; align-items: center; margin-bottom: 70px; margin-top: 100px;}
+.sub .business .infor.mb30{margin-bottom: 30px;}
 .sub .business .business-infor .infor {display: block;}
 .sub .business .business-infor .infor-txt {margin-top: 20px;}
 .sub .business .infor-tit{font-size: 32px; color: #121212; font-weight: 600; word-break: keep-all; line-height: 45px; letter-spacing: -0.03em;}

@@ -119,7 +119,7 @@ const CoporateForm = () => {
             <div className="wrap">
               <div className="infor mt0">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  전기명가 LS의 기술력이 집결된 <br className="pc-block" />
+                  전기名家 LS의 기술력이 집결된 <br className="pc-block" />
                   전기차 Fleet 전용 에너지 센터
                 </div>
                 <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">

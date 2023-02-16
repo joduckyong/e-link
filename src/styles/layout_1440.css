@@ -236,7 +236,7 @@
 	.sub.sub02-2 .dist .infor-down .in{background-size: cover;}
 	.sub.sub02-2 .dist-solution-img .dist-tit{font-size: 22px; line-height: 32px; margin-bottom: 25px;}
 	.sub.sub02-2 .dist-solution-img p{font-size: 14px; line-height: 25px; word-break: keep-all;}
-	.sub.sub02-2 .dist .infor-txt{margin-top: 30px;}
+	.sub.sub02-2 .dist .infor-txt{margin-top: 0px;margin-bottom: 30px;}
 	.sub.sub02-2 .dist .dist-list li { padding: 25px; }
 	.sub.sub02-2 .dist .dist-list li .img-box { margin-right: 25px; }
 	.sub.sub02-2 .dist .dist-list li .tit{font-size: 15px;line-height: 25px;margin-bottom: 9px;}
