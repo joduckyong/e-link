@@ -145,20 +145,19 @@ const LogiticsForm = () => {
           </div>
           <div className="business-wrap">
             <div className="wrap pb70">
-              <div className="infor mt0">
+              <div className="infor mt0 mb30">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                사용자에게 안정성과 경제성을 제공하는 LS E-Link BMS 솔루션
+                사용자에게 안정성과 경제성을 제공하는 <br className="pc-block" />LS E-Link BMS 솔루션
                 </div>
+              </div>
+              <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
+                Battery의 온도 분석과 셀 이상유무를 사전에 진단하여 열폭주를 방지하고 운전자에게 안정성을 제공합니다.<br className="pc-block" />
+                AI가 접목된 BMS로 배터리의 충전 방법을 가이드 및 이력을 관리함으로써 잔존가치를 보장하고 사용자에게 경제적 효과를 제공합니다.
               </div>
               <div className="img img1">
                 <div className="in"></div>
               </div>
-              <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-              Battery의 온도 분석과 셀 이상유무를 사전에 진단하여 열폭주를 방지하고 운전자에게 안정성을 제공합니다.
-                <br className="pc-block" />
-                <br className="pc-block" />
-                AI가 접목된 BMS로 배터리의 충전 방법을 가이드 및 이력을 관리함으로써 잔존가치를 보장하고 사용자에게 경제적 효과를 제공합니다.
-              </div>
+              
 	  		<ul className="dist-list">
                 <li>
                     <span className="img-box">
