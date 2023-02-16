@@ -122,16 +122,16 @@ const RenewableForm = () => {
             <div className="wrap pb70">
               <div className="infor mt0 mb75">
                 <div className="infor-tit mb0" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  전기차 충전 솔루션을 넘어 PV-ESS, R(Reuse Battery)-ESS, DR,
+                전기차 충전 솔루션을 넘어 PV-ESS, R(Reuse Battery)-ESS,
                   <br className="pc-block" />
-                  V2G까지 분산 전원 시대를 선도합니다.
+                  DR, V2G까지 분산 전원 시대를 선도합니다.
                 </div>
               </div>
               <img src="/img/sub/renewable_graph.png" className="pc-img" style={{ width: '100%' }} />
               <img src="/img/sub/m_renewable_graph.png" className="mo-img" style={{ width: '100%' }} />
               <div className="infor-tit infor-tit2 mt120" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                대규모 EV Fleet을 운영하는 고객사에게 분산 전원 시대를 대비하여 PV-ESS, <br className="pc-block" />
-                R(Reuse Battery)-ESS, DR, V2G 솔루션을 제공합니다.
+              대규모 EV Fleet을 운영하는 고객사에게 분산 전원 시대를 대비하여 <br className="pc-block" />
+              PV-ESS, R(Reuse Battery)-ESS, DR, V2G 솔루션을 제공합니다.
               </div>
               <img src="/img/sub/renewable_img.png" className="pc-img" style={{ width: '100%' }} />
               <img src="/img/sub/m_renewable_img.png" className="mo-img" style={{ width: '100%' }} />

@@ -119,8 +119,7 @@ const ControlForm = () => {
             <div className="wrap pb70">
               <div className="infor mt0">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  독자적인 관제시스템 구축을 통한 특화된 관제시스템을 통한 <br className="pc-block" />
-                  충전사업 운영을 희망하시는 고객에게 차별화된 관제시스템 구축 서비스를 제공합니다.
+                고객별, 차종별 UI/UX 적용된 맞춤형 관제시스템 제공
                 </div>
               </div>
               <div className="img img1">
@@ -128,8 +127,7 @@ const ControlForm = () => {
               </div>
               <div className="infor">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  관제시스템의 구축에 따른 투자비 부담이 있으신 고객에게는 <br className="pc-block" />
-                  업계 최고의 효율성으로 서비스를 제공합니다.
+                서버구축이 불필요한 고객에게 최고의 가성비로 맞춤형 구독서비스 제공
                 </div>
               </div>
               <div className="img img2">

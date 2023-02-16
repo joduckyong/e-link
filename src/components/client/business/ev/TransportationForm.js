@@ -121,7 +121,7 @@ const TransportationForm = () => {
               <div className="tit-wrap">
                 <div className="tit">전기버스 충전 솔루션</div>
                 <p>
-                  현장상황, 예상 사용량에 맞추어 충전 솔루션을 제공합니다.
+				차고지, 운행패턴, 수전여건에 맞추어 충전 솔루션을 제공합니다.
                 </p>
               </div>
               <div className="img">
@@ -155,15 +155,12 @@ const TransportationForm = () => {
 			<div className="infor-down infor-down2">
 				<div className="wrap">
 					<div className="tit-wrap">
-						<div className="tit">차세대 차량 충전 솔루션</div>
+						<div className="tit">차세대 버스 충전 솔루션</div>
 						<p>
-							LS E-Link의 맞춤형 EV 충전 솔루션은 LS E-Link의 10년 간의 충전 설치 경험과 함께 차량 운영자에게 무공해 차량을 확장할 수 있는 포괄적인 제품 세트를 제공합니다.<br className="pc-block" />
-							LS E-Link는 고객의 우선순위에 따라 사용성, 물리적 공간, 전력 또는 비용에 최적화된 각 프로젝트에 이상적인 차량 충전 솔루션을 권장합니다. <br className="pc-block" />
-							DC 고속 충전기의 전력 범위는 60kW ~ 450kW이며 차량 충전 요구 사항에 맞게 정확한 전력을 정확하게 선택합니다.
-
+						LS E-Link의 EV 버스 충전 솔루션은 전력분배, 순차충전, 충전속도제어 등 Fleet운영을 위한 최적의 충전 솔루션을 제공하여 고객 경제성을 극대화 시킵니다. <br className="pc-block" />나아가 LS E-Link의 AI기술이 적용된 BMS(Battery Management System)를 통해 고객의 배터리 안정성을 향상시킵니다.
 						</p>
 					</div>
-					<ul className="drive-list">
+					{/* <ul className="drive-list">
 						<li>
 							<p className="tit">믿을 수 있는</p>
 							<div className="txt">
@@ -191,7 +188,7 @@ const TransportationForm = () => {
 								<p>60kW ~ 1440kW의 다양한 전력 수준으로 제공</p>
 							</div>
 						</li>
-					</ul>
+					</ul> */}
 					<img src="/img/sub/vod.jpg" alt="" style={{ 'width': '100%' }}/>
 				</div>
 			</div>
@@ -202,7 +199,7 @@ const TransportationForm = () => {
 					<div className="tit-wrap">
 						<div className="tit">운영 최적화, 비용 절감</div>
 						<p>
-							LS E-Link의 Valence 차량 및 에너지 관리 플랫폼은 차량 및 충전 작업을 최적화하고 비용을 절감하기 위해 배터리 전기차량 차량 및<br className="pc-block" />
+							LS E-Link의 차량 및 에너지 관리 플랫폼은 충전 작업을 최적화하고 비용을 절감하기 위해 배터리 전기차량 및<br className="pc-block" />
 							충전기에 대한 기록 및 실시간 성능 정보를 제공하는 클라우드 기반 데이터 플랫폼입니다.
 						</p>
 					</div>
