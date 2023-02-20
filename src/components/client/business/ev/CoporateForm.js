@@ -115,10 +115,10 @@ const CoporateForm = () => {
             </div>
           </div>
           <div className="bg"></div>
-          <div className="business-wrap">
+          <div className="business-wrap m-pt50">
             <div className="wrap">
-              <div className="infor mt0">
-                <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <div className="infor m-mt0">
+                <div className="infor-tit m-mb10" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
                   전기名家 LS의 기술력이 집결된 <br className="pc-block" />
                   전기차 Fleet 전용 에너지 센터
                 </div>

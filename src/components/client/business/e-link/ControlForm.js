@@ -118,7 +118,7 @@ const ControlForm = () => {
           <div className="business-wrap">
             <div className="wrap pb70">
               <div className="infor mt0">
-                <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                <div className="infor-tit m-lf34" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
                 고객별, 차종별 UI/UX 적용된 맞춤형 관제시스템 제공
                 </div>
               </div>

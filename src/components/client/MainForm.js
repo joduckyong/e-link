@@ -165,13 +165,13 @@ const MainForm = () => {
             </div>
             <ul>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <NavLink to="">
+                <NavLink to="/contactus/consult">
                   <div className="s-tit">충전기 상담신청</div>
                   <p>전기차 충전 인프라 구축이 필요하신가요?</p>
                 </NavLink>
               </li>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <NavLink to="">
+                <NavLink to="/contactus/inconvenience">
                   <div className="s-tit">불편신고</div>
                   <p>고장이 나셨나요? 빠르게 대응하겠습니다.</p>
                 </NavLink>
@@ -252,7 +252,7 @@ const MainForm = () => {
                         <div className="slide-inner">
                           <h3 className="text">전기차 충전사업</h3>
                           <p className="desc">
-                            고객 맞춤형 충전 인프라 구축 <br />및 ONM서비스 제공
+                            고객 맞춤형 충전 인프라 구축 <br />및 O&M서비스 제공
                           </p>
                           <div className="car-wrap">
                             <div className={classNames({ on: carVal === 0 || carVal === 1 })}>
@@ -285,7 +285,7 @@ const MainForm = () => {
                             충전 인프라 구축
                           </h3>
                           <p className="desc">
-                            신재생에너지 발전과 연계한 EV충전 인프라 구축 및 <br />
+                            신재생에너지 발전과 연계한 EV충전 <br className="m-block" />인프라 구축 및 <br className="pc-block" />
                             운영 컨설팅
                           </p>
                           <NavLink to="/business/e-link/renewable" className="link">
@@ -313,7 +313,7 @@ const MainForm = () => {
                             <br />
                           </h3>
                           <p className="desc">
-                            고객 특화/차종 특화 기능의 관제시스템 <br />
+                            고객 특화/차종 특화 기능의 <br className="m-block" />관제시스템 <br className="pc-block" />
                             구축 서비스 제공
                           </p>
                           <NavLink to="/business/e-link/control" className="link">

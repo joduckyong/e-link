@@ -126,7 +126,7 @@ const PressviewForm = () => {
               {/* <div className="img">
                 <ViewImage fileNm={realImageNm} />
               </div> */}
-              <p className="mt30" dangerouslySetInnerHTML={{ __html: boardContents }}></p>
+              <p className="mt40" dangerouslySetInnerHTML={{ __html: boardContents }}></p>
             </div>
             <div className="view-control">
               <NavLink to={prevBoardId && `/pr/press-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
