@@ -146,7 +146,7 @@ const LogiticsForm = () => {
           <div className="business-wrap">
             <div className="wrap pb70">
               <div className="infor mt0 mb30">
-                <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                <div className="infor-tit mb30" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
                 사용자에게 안정성과 경제성을 제공하는 <br className="pc-block" />LS E-Link BMS 솔루션
                 </div>
               </div>

@@ -27,7 +27,7 @@
     .sub.sub02-2 .system ul li img{max-width: 100%; padding: 0 10px;}
 	
 	.sub.sub05 .ideal-list li {padding: 40px 38px 48px;border-radius: 15px;}
-    .sub.sub05 .fire-img{height: 0px; border-radius: 15px; position: relative; padding-bottom: 45%;}
+    .sub.sub05 .fire-img{height: 0px; border-radius: 15px; position: relative; padding-bottom: 56.25%;}
     .sub.sub05 .fire-img .bg{position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: auto;}
     .sub.sub05 .welfare{grid-template-columns: 1fr; grid-gap: 30px;}
 
@@ -52,15 +52,15 @@
    .main .con3 .swiper-slide .slide-bg{background-position-y: 100% !important;}
    .main .con3 .slide1 .slide-bg{animation:mcarani 4s infinite alternate; background-position-x:calc(100% - 100%)}
    .main .con3 .slide2 .slide-bg{background-size: 137% auto !important; background-position-x: -19% !important; background-position-y: 69% !important;}
-   .main .con3 .slide3 .slide-bg{background-size: 87% auto !important; background-position-x: 305% !important; background-position-y: 58% !important;}
+   .main .con3 .slide3 .slide-bg{background-size: 94% auto !important; background-position-x: 670% !important; background-position-y: 62% !important;}
    .main .con3 .slide2 .cloud1 img,.main .con3 .slide2 .cloud2 img,.main .con3 .slide2 .cloud3 img{width: 100%;}
-   .main .con3 .slide2 .cloud1{width: 30%; top: 53%; right: 7%;}
+   .main .con3 .slide2 .cloud1{width: 30%; top: 59%; right: 7%;}
    .main .con3 .slide2 .cloud2{width: 30%; top: 64%; right: -17%;}
    .main .con3 .slide2 .cloud3{width: 30%; top: 67%; right: 23%;}
    .main .con3 .slide3 .cloud1 img,.main .con3 .slide3 .cloud2 img, .main .con3 .slide3 .cloud1 img,.main .con3 .air img{width: 100%;}
-   .main .con3 .slide3 .cloud1{width: 10%; top: 48%; right: 41%;}
-   .main .con3 .slide3 .cloud2{width: 10%; top: 72%; display: none;}
-   .main .con3 .slide3 .cloud3{width: 10%; top: 82%; right: 33%; display: none;}
+   .main .con3 .slide3 .cloud1{width: 7%; top: 51%; right: 41%;}
+   .main .con3 .slide3 .cloud2{width: 7%; top: 72%; display: none;}
+   .main .con3 .slide3 .cloud3{width: 7%; top: 82%; right: 33%; display: none;}
    .main .con3 .air{width: 11%; top: 68%; right: -8%; display: none;}
    .main .con3 .car-wrap{right: -100%; top: 37%;}
 
