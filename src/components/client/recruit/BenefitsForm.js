@@ -56,10 +56,13 @@ const BenefitsForm = () => {
 
         <div className="content pb0">
             <div className="wrap">
-                <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">LS E-Link는 밝고 자유로운 기업 문화 아래<br />다양한 복리후생 제도를 통해 구성원의 행복한 삶을 지원하고 있습니다.</h3>
+                <h3 className="m-lh44" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">LS E-Link는 밝고 자유로운 기업 문화 아래<br />다양한 복리후생 제도를 통해 구성원의 행복한 삶을 지원하고 있습니다.</h3>
                 <div className="fire-img"  data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                    <div className="bg" data-top-top="background-position-y: 50%;" data-center-top="background-position-y: 20%;"></div>
+                    <div className="bg"></div>
                 </div>   
+                {/* <div className="fire-img"  data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+                    <div className="bg" data-top-top="background-position-y: 50%;" data-center-top="background-position-y: 20%;"></div>
+                </div>   */}
                 <ul className="welfare">
                     <li data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                         <div className="img"><span><img src="../../img/sub/ico-house.svg" alt="" /></span></div>
