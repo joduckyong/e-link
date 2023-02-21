@@ -203,7 +203,7 @@ const ContactusForm = () => {
       <div className="content">
         <div className="wrap">
           <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            고객님의 질의와 소중한 제안을 받습니다.
+          고객님의 질의와 소중한 제안을 받습니다.
           </h3>
           <div className="term">
             <div className="agree">

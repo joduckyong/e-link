@@ -203,7 +203,7 @@ const ConsultForm = () => {
       <div className="content">
         <div className="wrap">
           <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            고객님의 질의와 소중한 제안을 받습니다.
+          고객님에게 알맞은 맞춤 충전 솔루션을 제안합니다. 
           </h3>
           <div className="term">
             <div className="agree">
