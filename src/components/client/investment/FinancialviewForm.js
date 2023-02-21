@@ -86,9 +86,9 @@ const FinancialviewForm = () => {
                 재무정보
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
-                <li>
+                {/* <li>
                   <NavLink to="/investment/management">경영정보</NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/investment/financial" className="on">
                     재무정보
