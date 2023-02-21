@@ -68,9 +68,9 @@ const Header = () => {
               <NavLink to="/investment/financial">투자정보</NavLink>
               <div className="depth-1">
                 <ul>
-                  <li>
+                  {/* <li>
                     <NavLink to="/investment/management">경영정보</NavLink>
-                  </li>
+                  </li> */}
                   <li>
                     <NavLink to="/investment/financial">재무정보</NavLink>
                   </li>
@@ -250,9 +250,9 @@ const Header = () => {
                 <strong>투자정보</strong>
               </NavLink>
               <ul className="small-menu">
-                <li>
+                {/* <li>
                   <NavLink to="/investment/management">경영정보</NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/investment/financial">재무정보</NavLink>
                 </li>
@@ -420,9 +420,9 @@ const Header = () => {
               <NavLink to="">투자정보</NavLink>
               <div className="depth-1" style={moMenuClass === '3' ? { display: 'block' } : { display: 'none' }}>
                 <ul>
-                  <li>
+                  {/* <li>
                     <NavLink to="/investment/management">경영정보</NavLink>
-                  </li>
+                  </li> */}
                   <li>
                     <NavLink to="/investment/financial">재무정보</NavLink>
                   </li>

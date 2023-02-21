@@ -91,8 +91,7 @@ const ManagementForm = () => {
       </div>
 
       <div className="content pt0">
-        <h2 className="prepare-txt">준비중입니다.</h2>
-        {/* <div className="wrap">
+        <div className="wrap">
           <div className="con3-tit" data-aos="fade-right" data-aos-duration="1500" data-aos-once="true">
             기업개요
           </div>
@@ -170,7 +169,7 @@ const ManagementForm = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
