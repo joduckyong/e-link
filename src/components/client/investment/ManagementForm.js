@@ -92,7 +92,10 @@ const ManagementForm = () => {
 
       <div className="content pt0">
         <div className="wrap">
-          <div className="con3-tit" data-aos="fade-right" data-aos-duration="1500" data-aos-once="true">
+          <h3 className="m-lh44" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+            준비중입니다.
+          </h3>
+          {/* <div className="con3-tit" data-aos="fade-right" data-aos-duration="1500" data-aos-once="true">
             기업개요
           </div>
           <div className="tb-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
@@ -168,7 +171,7 @@ const ManagementForm = () => {
                 <div className="td">2025년 12월 31일 까지</div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

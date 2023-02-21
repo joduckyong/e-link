@@ -76,9 +76,9 @@ const PeopleForm = () => {
                     인재상
                   </NavLink>
                 </li>
-                {/* <li>
+                <li>
                   <NavLink to="/recruit/benefits">복리후생</NavLink>
-                </li> */}
+                </li>
                 <li>
                   <NavLink to="/recruit/posting">채용공고</NavLink>
                 </li>
