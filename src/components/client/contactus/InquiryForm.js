@@ -16,7 +16,7 @@ const ContactusForm = () => {
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
 
-  const [clickActive, setClickActive] = useState(false);
+  const [agreeActive, setAgreeActive] = useState(false);
 
   const fileRef = useRef();
 
@@ -215,12 +215,12 @@ const ContactusForm = () => {
                 개인정보 수집 및 이용에 동의합니다.
               </label>
             </div>
-            <NavLink to="" className={clickActive ? 'open' : ''} onClick={() => setClickActive(!clickActive)}>
+            <NavLink to="" className={agreeActive ? 'open' : ''} onClick={() => setAgreeActive(!agreeActive)}>
               약관보기
             </NavLink>
           </div>
           <div className="agree-detail-wp">
-            <div className="agree-detail-box" style={clickActive ? { display: 'block' } : { display: 'none' }}>
+            <div className="agree-detail-box" style={agreeActive ? { display: 'block' } : { display: 'none' }}>
               <h3>1. 총칙</h3>
               <p className="depth01_p">
                 엘에스이링크 주식회사(이하 "회사")는 회사가 운영하는 엘에스이링크(주) ELVIS 전기차 충전 서비스(이하 "전기차 충전 서비스")를 이용하는
