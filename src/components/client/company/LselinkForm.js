@@ -116,7 +116,7 @@ const LselinkForm = () => {
               loop={true}
               speed={1000}
               mousewheel={true}
-              autoplay={{ delay: 2000 }}
+              autoplay={{ delay: 5000 }}
               pagination={{
                 el: '.swiper-pagination',
                 clickable: true,
