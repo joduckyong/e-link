@@ -218,7 +218,7 @@ const ContactusForm = () => {
           <ul className="write">
             <li>
               <div className="input-wrap">
-                <span className="tit">이름</span>
+                <span className="tit">이름d</span>
                 <input type="text" placeholder="이름을 입력해주세요." onChange={(e) => setContactNm(e.target.value)} value={contactNm} />
               </div>
               <div className="input-wrap pc-block"></div>
