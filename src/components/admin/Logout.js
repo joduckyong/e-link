@@ -29,7 +29,7 @@ function Logout() {
     dispatch(DELETE_TOKEN());
     // Cookie에 저장된 Refresh Token 정보를 삭제
     removeCookieToken();
-    return navigate('/admin/login');
+    return navigate('/admin');
     // }
   }
 
@@ -40,7 +40,7 @@ function Logout() {
 
   return (
     <>
-      <Link to="/admin/login" />
+      <Link to="/admin" />
     </>
   );
 }

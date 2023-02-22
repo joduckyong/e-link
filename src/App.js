@@ -97,7 +97,7 @@ const App = () => {
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path="/admin/login" element={<LoginPage />} />
+        <Route path="/admin" element={<LoginPage />} />
         <Route path="/admin/logout" element={<Logout />} />
         <Route path="/admin/main/popup" element={<PopupPage />} />
         <Route path="/admin/main/popupAdd" element={<PopupAddPage />} />
