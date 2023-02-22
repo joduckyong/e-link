@@ -203,7 +203,7 @@ const InconvenienceForm = () => {
       <div className="content">
         <div className="wrap">
           <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            고객님의 질의와 소중한 제안을 받습니다.
+          불편사항을 접수해주시면 담당자가 확인 후 빠르게 연락드리겠습니다.
           </h3>
           <div className="term">
             <div className="agree">

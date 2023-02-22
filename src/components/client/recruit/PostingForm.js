@@ -119,7 +119,9 @@ const PostingForm = () => {
                 <li>
                   <NavLink to="/recruit/people">인재상</NavLink>
                 </li>
-                {/* <li><NavLink to="/recruit/benefits">복리후생</NavLink></li> */}
+                <li>
+                  <NavLink to="/recruit/benefits">복리후생</NavLink>
+                </li>
                 <li>
                   <NavLink to="/recruit/posting" className="on">
                     채용공고

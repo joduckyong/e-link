@@ -65,12 +65,12 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <NavLink to="/investment/management">투자정보</NavLink>
+              <NavLink to="/investment/financial">투자정보</NavLink>
               <div className="depth-1">
                 <ul>
-                  {/* <li>
+                  <li>
                     <NavLink to="/investment/management">경영정보</NavLink>
-                  </li> */}
+                  </li>
                   <li>
                     <NavLink to="/investment/financial">재무정보</NavLink>
                   </li>
@@ -103,9 +103,9 @@ const Header = () => {
                   <li>
                     <NavLink to="/recruit/people">인재상</NavLink>
                   </li>
-                  {/* <li>
+                  <li>
                     <NavLink to="/recruit/benefits">복리후생</NavLink>
-                  </li> */}
+                  </li>
                   <li>
                     <NavLink to="/recruit/posting">채용공고</NavLink>
                   </li>
@@ -130,7 +130,7 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <NavLink to="">EV 충전소</NavLink>
+              <NavLink to="" onClick={() => alert('준비중 입니다')}>EV 충전소</NavLink>
               <div className="depth-1">
                 <ul>
                   <li>
@@ -186,7 +186,7 @@ const Header = () => {
         <div className="middle">
           <ul className="big-menu">
             <li>
-              <NavLink to="">
+              <NavLink to="/company/lselink">
                 <strong>회사소개</strong>
               </NavLink>
               <ul className="small-menu">
@@ -208,7 +208,7 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <NavLink to="">
+              <NavLink to="/business/e-link/evcharge">
                 <strong>사업영역</strong>
               </NavLink>
               <ul className="small-menu">
@@ -246,13 +246,13 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <NavLink to="">
+              <NavLink to="/investment/financial">
                 <strong>투자정보</strong>
               </NavLink>
               <ul className="small-menu">
-                {/* <li>
+                <li>
                   <NavLink to="/investment/management">경영정보</NavLink>
-                </li> */}
+                </li>
                 <li>
                   <NavLink to="/investment/financial">재무정보</NavLink>
                 </li>
@@ -265,7 +265,7 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <NavLink to="">
+              <NavLink to="/pr/press-list">
                 <strong>홍보센터</strong>
               </NavLink>
               <ul className="small-menu">
@@ -278,16 +278,16 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <NavLink to="">
+              <NavLink to="/recruit/people">
                 <strong>채용정보</strong>
               </NavLink>
               <ul className="small-menu">
                 <li>
                   <NavLink to="/recruit/people">인재상</NavLink>
                 </li>
-                {/* <li>
+                <li>
                   <NavLink to="/recruit/benefits">복리후생</NavLink>
-                </li> */}
+                </li>
                 <li>
                   <NavLink to="/recruit/posting">채용공고</NavLink>
                 </li>
@@ -310,7 +310,7 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <NavLink to="">
+              <NavLink to="" onClick={() => alert('준비중 입니다')}>
                 <strong>EV 충전소</strong>
               </NavLink>
               <ul className="small-menu">
@@ -420,9 +420,9 @@ const Header = () => {
               <NavLink to="">투자정보</NavLink>
               <div className="depth-1" style={moMenuClass === '3' ? { display: 'block' } : { display: 'none' }}>
                 <ul>
-                  {/* <li>
+                  <li>
                     <NavLink to="/investment/management">경영정보</NavLink>
-                  </li> */}
+                  </li>
                   <li>
                     <NavLink to="/investment/financial">재무정보</NavLink>
                   </li>
@@ -455,9 +455,9 @@ const Header = () => {
                   <li>
                     <NavLink to="/recruit/people">인재상</NavLink>
                   </li>
-                  {/* <li>
+                  <li>
                     <NavLink to="/recruit/benefits">복리후생</NavLink>
-                  </li> */}
+                  </li>
                   <li>
                     <NavLink to="/recruit/posting">채용공고</NavLink>
                   </li>
@@ -465,7 +465,7 @@ const Header = () => {
               </div>
             </li>
             <li className={moMenuClass === '6' ? 'mo-click on' : 'mo-click'} onClick={() => onClickMoMenu('6')}>
-              <NavLink to="/contactus/consult">Contact Us</NavLink>
+              <NavLink to="">Contact Us</NavLink>
               <div className="depth-1" style={moMenuClass === '6' ? { display: 'block' } : { display: 'none' }}>
                 <ul>
                   <li>
