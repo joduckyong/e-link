@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import classnames from 'classnames';
-import { ParallaxProvider, Parallax } from 'react-skrollr';
+// import { ParallaxProvider, Parallax } from 'react-skrollr';
 import 'aos/dist/aos.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, EffectFade, Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
+import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 SwiperCore.use([Navigation, EffectFade, Pagination, Autoplay]); // Swiper
@@ -111,11 +112,7 @@ const LselinkForm = () => {
           <div className="company-infor">
             <Swiper
               effect={'fade'}
-              slidesPerView={1}
-              spaceBetween={0}
               loop={true}
-              speed={1000}
-              mousewheel={true}
               autoplay={{ delay: 2000 }}
               pagination={{
                 el: '.swiper-pagination',
@@ -124,29 +121,17 @@ const LselinkForm = () => {
             >
               <SwiperSlide>
                 <div className="img" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <ParallaxProvider>
-                    <Parallax>
-                      <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
-                    </Parallax>
-                  </ParallaxProvider>
+                  <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="img img2" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <ParallaxProvider>
-                    <Parallax>
-                      <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
-                    </Parallax>
-                  </ParallaxProvider>
+                  <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="img img3" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <ParallaxProvider>
-                    <Parallax>
-                      <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
-                    </Parallax>
-                  </ParallaxProvider>
+                  <div className="bg" data-top-top="background-position: 50% 50%;" data-center-top="background-position:100% 50%;"></div>
                 </div>
               </SwiperSlide>
             </Swiper>
