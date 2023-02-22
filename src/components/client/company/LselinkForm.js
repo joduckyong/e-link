@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, EffectFade, Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
+import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 SwiperCore.use([Navigation, EffectFade, Pagination, Autoplay]); // Swiper
@@ -111,11 +112,7 @@ const LselinkForm = () => {
           <div className="company-infor">
             <Swiper
               effect={'fade'}
-              slidesPerView={3}
-              spaceBetween={0}
-              // loop={true}
-              // speed={1000}
-              // mousewheel={true}
+              loop={true}
               autoplay={{ delay: 2000 }}
               pagination={{
                 el: '.swiper-pagination',
