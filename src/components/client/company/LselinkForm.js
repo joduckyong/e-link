@@ -139,7 +139,7 @@ const LselinkForm = () => {
             <div className="swiper-pagination"></div>
             <div className="txt">
               <div className="big" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                LS E-Link는 전기, 전력분야의 글로벌 리딩 기업군을 이끌고 있는 ㈜LS와 에너지 서비스 선도기업 ㈜E1이 전기화(Electrification)시대
+                LS E-Link는 전기·전력분야의 글로벌 리딩 기업군을 이끌고 있는 ㈜LS와 에너지 서비스 선도기업 ㈜E1이 전기화(Electrification)시대
                 전기차량(EV) 충전인프라 구축 및 운영서비스를 위해 함께 설립한 회사입니다.
               </div>
               <p data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">

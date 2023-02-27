@@ -71,19 +71,19 @@ const CoporateForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                에너지 센터
+              전기차 충전사업
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/ev/transportation">운수</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/ev/logitics">물류</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/ev/coporate" className="on">
-                    에너지 센터
+                  <NavLink to="/business/e-link/evcharge">
+                  E-Link BUSINESS
                   </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/business/ev/transportation" className="on">전기차 충전사업</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
                 </li>
               </ul>
             </li>

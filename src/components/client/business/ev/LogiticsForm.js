@@ -71,19 +71,19 @@ const LogiticsForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                물류
+              전기차 충전사업
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/ev/transportation">운수</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/ev/logitics" className="on">
-                    물류
+                  <NavLink to="/business/e-link/evcharge">
+                  E-Link BUSINESS
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/coporate">에너지 센터</NavLink>
+                  <NavLink to="/business/ev/transportation" className="on">전기차 충전사업</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
                 </li>
               </ul>
             </li>
@@ -122,7 +122,7 @@ const LogiticsForm = () => {
                   맞춤형 충전 솔루션
                 </div>
                 <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                 시간적·공간적 제약, Fleet 규모, 및 전력사용환경 등 고객사의 개별 물류 환경에 최적화된 충전Infra 맞춤 솔루션 제공
+                 시간적·공간적 제약, Fleet 규모, 및 전력사용환경 등 고객사의 개별 물류 환경에 최적화된 충전Infra 맞춤 솔루션을 제공합니다.
                 </p>
               </div>
               <div className="img">
@@ -133,13 +133,11 @@ const LogiticsForm = () => {
           <div className="dist-solution-img">
             <div className="wrap">
               <div className="dist-tit" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                물류 환경에 최적화된 <br className="pc-block" />
+                물류 환경에 최적화된 <br />
                 충전 관제 솔루션
               </div>
               <p data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                Innovated technology가 구현된 <br className="pc-block" />
-				고도의 관제시스템을 통해 사용 환경에 최적화된 <br className="pc-block" />
-				전력분배 및 순차충전 자동 제어합니다.
+               cutting-edge technology가 구현된 <br />고도의 관제시스템을 통해 사용 환경에 최적화된 <br />전력분배 및 순차충전 자동 제어합니다.
               </p>
             </div>
           </div>
@@ -182,7 +180,7 @@ const LogiticsForm = () => {
 						통합을 통한 차량제어</p>
 						<p className="txt">
 						   다른 기존 차량 관리 솔루션과 API를 통해 통합된 <br className="pc-block" />
-							EV 충전 시스템으로 전체 차량을 계속 제어하세요.
+							EV 충전 시스템으로 전체 차량을 계속 제어하십시오.
 						</p>
 					</div>
                 </li>
