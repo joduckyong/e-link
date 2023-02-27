@@ -72,19 +72,19 @@ const RenewableForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                신재생 에너지사업
+              E-Link BUSINESS
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">전기차 충전사업</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/e-link/control">관제시스템</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/e-link/renewable" className="on">
-                    신재생 에너지사업
+                  <NavLink to="/business/e-link/evcharge" className="on">
+                  E-Link BUSINESS
                   </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/business/ev/transportation">전기차 충전사업</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
                 </li>
               </ul>
             </li>

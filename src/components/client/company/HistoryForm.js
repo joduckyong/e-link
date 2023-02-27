@@ -115,38 +115,38 @@ const HistoryForm = () => {
                     </div>
                   </div>
                   <ul className="time-list" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
+                    {/* <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
                       <dl>
                         <dt>23.01.00</dt>
                         <dd>
                           <p>OCPP 1.6 인증</p>
 							{/*<div className="img">
                             <img src="/img/sub/y-1-img1.png" alt="" />
-                          </div>*/}
+                          </div>
+                        </dd>
+                      </dl>
+                    </li> */}
+                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
+                      <dl>
+                        <dt>23.02.20</dt>
+                        <dd>
+                          <p>전기공사업 등록</p>
                         </dd>
                       </dl>
                     </li>
                     <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
                       <dl>
-                        <dt>23.01.00</dt>
+                        <dt>23.01.05</dt>
                         <dd>
                           <p>관제시스템 구축 완료</p>
                         </dd>
                       </dl>
                     </li>
-                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>22.00.00</dt>
-                        <dd>
-                          <p>전기차충전 신사업 등록</p>
-                        </dd>
-                      </dl>
-                    </li>
 					<li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
                       <dl>
-                        <dt>22.00.00</dt>
+                        <dt>22.07.08</dt>
                         <dd>
-                          <p>전기공사업체 등록</p>
+                          <p>전기차충전 신사업 등록</p>
                         </dd>
                       </dl>
                     </li>

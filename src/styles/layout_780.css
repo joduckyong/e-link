@@ -153,7 +153,7 @@
    .sub.sub02-1-1 .electronic-car:before{background-position-x: calc(100% - 35%);}
    .sub.sub02-1-1 .energy .pc-graph{display:none;}
    .sub.sub02-1-1 .energy .mo-graph{display:block;}
-   .sub.sub02-2 .dist-solution-img{background: #E9ECF1 url('/public/img/sub/dist-mo-img.png') center bottom+30px no-repeat; padding-top: 50px; padding-bottom: 60%;}
+   .sub.sub02-2 .dist-solution-img{background: #E9ECF1 url('/public/img/sub/dist-mo-img.png') no-repeat center bottom 5% / contain; padding-top: 50px; padding-bottom: 60%;}
    .sub.sub02-2 .dist .dist-list {display: block;margin-top: 10px;}
    .sub.sub02-2 .dist .dist-list li {margin-bottom: 10px;margin-right: 0;border-radius: 15px;}
    .sub.sub02-2 .dist .dist-list li .img-box img {width: 47px;}
@@ -267,7 +267,7 @@
 	.main .con6 .con6-video-mo {display: block;}
 	.main .con8 ul{width: 100%; justify-content: space-between;}
 
-    .sub.sub02-2 .dist-solution-img{background-size: 100% auto; padding-bottom: 100%;}
+    .sub.sub02-2 .dist-solution-img{background-size: 100% auto;background-position: center bottom 20%; padding-bottom: 100%;}
     .sub.sub06 .term .agree{width: 100%;}
     .sub.sub06 .term a{display: inline-block; margin-left: auto; margin-top: 20px;}
 	

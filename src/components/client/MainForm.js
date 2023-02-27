@@ -191,7 +191,7 @@ const MainForm = () => {
                       <span>
                         LS E-Link는 <br className="m-block" />
                         충전 인프라 구축, 투자 컨설팅,
-                        <br /> EV Charging 시장 변화에 <br className="m-block" />
+                        <br />
                         최적의 Fleet 운영을 포함한
                         <br />
                         Total Solution을 제공하고 있습니다.<i className="icon-arrow-right-bk-30"></i>
@@ -437,7 +437,7 @@ const MainForm = () => {
             </div>
             <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
               LS E-Link는 <br className="m-block" />
-              LS그룹의 전기 전력분야 <br className="m-block" />
+              LS그룹의 전기·전력분야 <br className="m-block" />
               기술력을 바탕으로 <br />
               EV 충전 인프라 기술혁신을 <br className="m-block" />
               선도하고 있습니다.
@@ -485,7 +485,7 @@ const MainForm = () => {
                     고객맞춤형 충전 솔루션
                   </div>
                   <p>
-                    LS E-Link는 LS그룹의 전기 전력분야 기술력을 바탕으로 <br />
+                    LS E-Link는 LS그룹의 전기·전력분야 기술력을 바탕으로 <br />
                     EV 충전 인프라 기술혁신을 선도하고 있습니다. <br />
                     차별화된 LS E-Link의 충전 솔루션을 경험해 보세요.
                   </p>
@@ -507,7 +507,7 @@ const MainForm = () => {
                     전기트럭/전기버스의 안정적인 운행을 위한 최적의 <br />
                     순차충전 / 충전스케쥴링을 제공하고 있습니다.
                     <br />
-                    ELVIS만의 특별한 서비스를 직접 체험해 보세요
+                    ELVIS만의 특별한 서비스를 직접 체험해 보세요.
                   </p>
                 </div>
                 {/* </div> */}
@@ -543,7 +543,7 @@ const MainForm = () => {
                   <p>
                     LS E-Link는 충전사업을 원하는 고객에게 인프라 투자, <br />
                     자금조달 및 운영 등 전기차 충전사업에 필요한 <br />
-                    Total Solution을 제공하는 진정한 파트너,
+                    Total Solution을 제공하는 진정한 파트너입니다.
                     <br />
                     LS E-Link의 파트너가 되어보세요.
                   </p>
@@ -574,7 +574,7 @@ const MainForm = () => {
             <source src="/video/main_con6_video.mp4" type="video/mp4" />
           </video> */}
 
-          <video src="/video/main_con6_video.mp4" playsInline loop muted autoPlay></video>
+          <video src="/video/main_con6_video.mov" playsInline loop muted autoPlay></video>
         </div>
         <div className="con7">
           <div className="wrap">

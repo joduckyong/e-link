@@ -72,19 +72,19 @@ const TransportationForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                운수
+              전기차 충전사업
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/ev/transportation" className="on">
-                    운수
+                  <NavLink to="/business/e-link/evcharge">
+                  E-Link BUSINESS
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/logitics">물류</NavLink>
+                  <NavLink to="/business/ev/transportation" className="on">전기차 충전사업</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/coporate">에너지 센터</NavLink>
+                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
                 </li>
               </ul>
             </li>
@@ -199,7 +199,7 @@ const TransportationForm = () => {
 					<div className="tit-wrap">
 						<div className="tit">운영 최적화, 비용 절감</div>
 						<p>
-							LS E-Link의 차량 및 에너지 관리 플랫폼은 충전 작업을 최적화하고 비용을 절감하기 위해 배터리 전기차량 및<br className="pc-block" />
+							LS E-Link의 차량 및 에너지 관리 플랫폼은 충전 작업을 최적화하고 비용을 절감하기 위해 배터리 전기차량과<br className="pc-block" />
 							충전기에 대한 기록 및 실시간 성능 정보를 제공하는 클라우드 기반 데이터 플랫폼입니다.
 						</p>
 					</div>
