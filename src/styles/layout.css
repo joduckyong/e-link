@@ -602,7 +602,7 @@ top: 0; bottom: 0; left: 0; right: 0; position: fixed; z-index: -10;}
 .sub.sub02-2 .dist-solution-img{background: #E9ECF1 url('/public/img/sub/dist-pc-img.png') center no-repeat; padding-top: 150px; padding-bottom: 450px;} 
 .sub.sub02-2 .dist-solution-img .dist-tit{font-size: 32px; color: #121212; line-height: 45px; font-weight: 600; margin-bottom: 30px; margin-left: 49%; word-break: keep-all;}
 .sub.sub02-2 .dist-solution-img p{font-size: 18px; color: #444; line-height: 27px; margin-left: 49.5%; word-break: keep-all;}
-.sub.sub02-2 .dist .img1 .in{background: url('/public/img/sub/dist-img.jpg') center 0 no-repeat; position: absolute; top: 0; left: 0;right: 0; bottom: 0; background-size: cover;}
+.sub.sub02-2 .dist .img1 .in{background: url('/public/img/sub/dist-img.png') center 0 no-repeat; position: absolute; top: 0; left: 0;right: 0; bottom: 0; background-size: cover;}
 .sub.sub02-2 .dist .infor-txt{margin-top: 30px;margin-bottom: 80px;}
 .sub.sub02-2 .dist .infor-down .wrap .img {width: 100%;}
 .sub.sub02-2 .dist .infor-down .tit-wrap {margin-bottom: 70px;}
