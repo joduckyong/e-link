@@ -7,6 +7,8 @@ html{overflow-x: hidden;}
 
 .mo-img{display:none;}
 
+.pre-basic{white-space: pre-wrap;}
+
 /*header*/
 header{ position: fixed; top: 0; left: 0; right: 0; background: #FFF; z-index: 2; border-bottom: 1px #E8E8E8 solid; z-index: 10;}
 header.on .gnb:before{visibility: visible; opacity: 1; }
@@ -93,7 +95,7 @@ footer address{color: #444; font-size: 18px; font-size: 18px;}
 footer .tel{margin-top: 25px; margin-bottom: 70px;}
 footer .tel li{color: #444; font-size: 18px; margin-left: 20px;}
 footer .tel li:first-child{margin-left: 0;}
-footer .tel li span{font-weight: 700; margin-right: 5px;}
+footer .tel li span, footer address span{font-weight: 700; margin-right: 5px;}
 footer .bottom{display: flex; justify-content: space-between;}
 footer .privacy li a{margin-left: 25px; padding-left: 25px; position: relative;}
 footer .privacy li a:before{content: ''; display: block; width: 1px; height: 14px; background: #ddd; position: absolute; top: 2px; left: 0;}

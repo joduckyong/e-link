@@ -31,12 +31,18 @@ const Footer = () => {
           </li>
         </ul>
         <address>
-          (04386) 서울특별시 용산구 한강대로 92, <br class="m-block" />
+          <span>ADD</span>(04386) 서울특별시 용산구 한강대로 92, <br class="m-block" />
           LS용산타워 17층 LS E-Link(주)
         </address>
+        
         <ul className="tel">
           <li>
             <span>TEL</span>1660-3175
+          </li>
+        </ul>
+        <ul className="tel">
+          <li>
+          대표 : 김대근&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호 : 744-86-02437
           </li>
         </ul>
         <div className="bottom">
