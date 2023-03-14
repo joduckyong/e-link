@@ -38,7 +38,7 @@ const AnnounceviewForm = () => {
   };
 
   return (
-    <div className="sub sub04">
+    <div className="sub sub03">
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
