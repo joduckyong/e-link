@@ -15,7 +15,7 @@ export const selectContactUs = createAsyncThunk('LIST_CONTACTUS', async (newList
     },
   };
 
-  let param = `${newList.contactId}/${newList.pageIndex}/${newList.contactType}`;
+  let param = `${newList.contactId}/${newList.contactType}/${newList.pageIndex}`;
   let keyWord = newList.searchKeyword;
   let condition = newList.searchCondition;
   if (keyWord) {
