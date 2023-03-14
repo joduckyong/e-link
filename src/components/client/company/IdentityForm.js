@@ -26,6 +26,10 @@ const IdentityForm = () => {
     }
   };
 
+  const handleOpenNewTab = (url) => {
+    window.open(url, '_blank', 'noopener, noreferrer');
+  };
+
   return (
     <div className="sub sub01-4">
       <div className="sub-top">
@@ -122,8 +126,7 @@ const IdentityForm = () => {
                     <i className="red"></i>Red : 도전적이고 진취적인 사고
                   </li>
                   <li>
-                    <NavLink to="https://www.lsholdings.com/ko/media/ci/" target="_blank">CI 규정 보러가기</NavLink>
-				
+                    <NavLink onClick={() => handleOpenNewTab('https://www.lsholdings.com/ko/media/ci/')}>CI 규정 보러가기</NavLink>
                   </li>
                 </ul>
               </div>
@@ -192,7 +195,9 @@ const IdentityForm = () => {
                     </div>
                     <div className="mini-img">
                       <span>최소사이즈</span>
-                      <div className="img_wp wp01"><img src="/img/logo/mini-symbol.svg" alt="" /></div>
+                      <div className="img_wp wp01">
+                        <img src="/img/logo/mini-symbol.svg" alt="" />
+                      </div>
                       <p>심볼마크의 5mm이하 사용은 로고타입 사용 권장</p>
                     </div>
                   </div>
@@ -205,7 +210,9 @@ const IdentityForm = () => {
                     </div>
                     <div className="mini-img">
                       <span>최소사이즈</span>
-                      <div className="img_wp wp02"><img src="/img/logo/mini-e-link-logo-type.svg" alt="" /></div>
+                      <div className="img_wp wp02">
+                        <img src="/img/logo/mini-e-link-logo-type.svg" alt="" />
+                      </div>
                     </div>
                   </div>
                 </div>
