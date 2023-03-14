@@ -16,8 +16,8 @@ const PressviewForm = () => {
   const fileList = useSelector((state) => state.boardReducer.files);
   //   const thumbnailList = fileList.filter((file) => file.fileType === '1'); //썸네일
   //   const realImageNm = thumbnailList.length > 0 ? thumbnailList[0].fileNm.replace('s_', '') : '';
-  const prevBoardId = useSelector((state) => state.boardReducer.prevNextData.prevBoardId);
-  const nextBoardId = useSelector((state) => state.boardReducer.prevNextData.nextBoardId);
+  const prevBoardId = useSelector((state) => state.boardReducer.prevNextData?.prevBoardId);
+  const nextBoardId = useSelector((state) => state.boardReducer.prevNextData?.nextBoardId);
 
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);

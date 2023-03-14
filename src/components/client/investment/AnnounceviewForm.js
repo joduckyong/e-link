@@ -13,8 +13,8 @@ const AnnounceviewForm = () => {
   const createdDatetime = useSelector((state) => state.boardReducer.dataInfo.createdDatetime);
   const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
   const fileList = useSelector((state) => state.boardReducer.files);
-  const prevBoardId = useSelector((state) => state.boardReducer.prevNextData.prevBoardId);
-  const nextBoardId = useSelector((state) => state.boardReducer.prevNextData.nextBoardId);
+  const prevBoardId = useSelector((state) => state.boardReducer.prevNextData?.prevBoardId);
+  const nextBoardId = useSelector((state) => state.boardReducer.prevNextData?.nextBoardId);
 
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
