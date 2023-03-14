@@ -40,12 +40,12 @@ const PostingviewForm = () => {
   };
 
   return (
-    <div className="sub sub04">
+    <div className="sub sub05">
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
-            보도자료
+            채용공고
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             <li>
