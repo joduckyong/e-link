@@ -61,6 +61,10 @@ const InconvenienceForm = () => {
       alert('내용을 입력하세요');
       return;
     }
+    if (!contactAgree) {
+      alert('개인정보 수집및 이용에 동의에 체크하세요');
+      return;
+    }
     if (window.confirm('등록 하시겠습니까?')) {
       const newList = {
         contactId: 'CON',
