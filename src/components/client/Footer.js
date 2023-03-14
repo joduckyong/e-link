@@ -4,6 +4,10 @@ import { NavLink } from 'react-router-dom';
 const Footer = () => {
   const [familyActive, setFamilyActive] = useState(false);
 
+  const handleOpenNewTab = (url) => {
+    window.open(url, '_blank', 'noopener, noreferrer');
+  };
+
   return (
     <footer>
       <div className="wrap">
@@ -34,16 +38,14 @@ const Footer = () => {
           <span>ADD</span>(04386) 서울특별시 용산구 한강대로 92, <br class="m-block" />
           LS용산타워 17층 LS E-Link(주)
         </address>
-        
+
         <ul className="tel">
           <li>
             <span>TEL</span>1660-3175
           </li>
         </ul>
         <ul className="tel">
-          <li>
-          대표 : 김대근&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호 : 744-86-02437
-          </li>
+          <li>대표 : 김대근&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호 : 744-86-02437</li>
         </ul>
         <div className="bottom">
           <ul className="privacy">
@@ -63,69 +65,43 @@ const Footer = () => {
             <NavLink to="">FAMILY SITE</NavLink>
             <ul className="family-link">
               <li>
-                <NavLink to="https://www.lsholdings.com/" target="_blank">
-                  LS그룹
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lsholdings.com/')}>LS그룹</NavLink>
               </li>
               <li>
-                <NavLink to="https://www.e1.co.kr/" target="_blank">
-                  주식회사 E1
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.e1.co.kr/')}>주식회사 E1</NavLink>
               </li>
               <li>
-                <NavLink to="https://www.lselectric.co.kr/" target="_blank">
-                  LS ELECTRIC
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lselectric.co.kr/')}>LS ELECTRIC</NavLink>
               </li>
               <li>
-                <NavLink to="https://www.lscns.co.kr/kr/main.asp" target="_blank">
-                  LS전선(주)
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lscns.co.kr/kr/main.asp')}>LS전선(주)</NavLink>
               </li>
               <li>
-                <NavLink to="http://www.lsmtron.co.kr/page/lsmtronMain.asp?naviId=s01" target="_blank">
-                  LS엠트론(주)
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('http://www.lsmtron.co.kr/page/lsmtronMain.asp?naviId=s01')}>LS엠트론(주)</NavLink>
               </li>
               <li>
-                <NavLink to="http://www.lsmnm.com/mnm/index.aspx" target="_blank">
-                  LS MnM
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('http://www.lsmnm.com/mnm/index.aspx')}>LS MnM</NavLink>
               </li>
               <li>
-                <NavLink to="https://gaoncable.com/" target="_blank">
-                  가온전선(주)
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://gaoncable.com/')}>가온전선(주)</NavLink>
               </li>
               <li>
-                <NavLink to="https://www.yescoholdings.com/main" target="_blank">
-                  (주)예스코
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.yescoholdings.com/main')}>(주)예스코</NavLink>
               </li>
               <li>
-                <NavLink to="https://www.lsnetworks.co.kr/" target="_blank">
-                  LS네트웍스
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lsnetworks.co.kr/')}>LS네트웍스</NavLink>
               </li>
               <li>
-                <NavLink to="https://www.lsglobalinc.com" target="_blank">
-                  LS글로벌
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lsglobalinc.com/')}>LS글로벌</NavLink>
               </li>
               <li>
-                <NavLink to="https://www.ls-ind.co.kr" target="_blank">
-                  LS I&D
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.ls-ind.co.kr/')}>LS I&D</NavLink>
               </li>
               <li>
-                <NavLink to="https://www.lsmetal.biz/" target="_blank">
-                  LS Metal
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lsmetal.biz/')}>LS Metal</NavLink>
               </li>
               <li>
-                <NavLink to="https://lsautomotive.com/" target="_blank">
-                  LS 오토모티브
-                </NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://lsautomotive.com/')}>LS 오토모티브</NavLink>
               </li>
             </ul>
           </div>
