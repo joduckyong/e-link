@@ -148,8 +148,7 @@ const CreditForm = () => {
                     {list.createdDatetime}
                   </div>
                   <div className="tit-wrap">
-                    {list.createdDatetime2}
-                    <span className="tit">{list.boardTitle}</span>
+                    <div className="tit-wrap">{list.boardTitle}</div>
                   </div>
                 </NavLink>
               </li>
