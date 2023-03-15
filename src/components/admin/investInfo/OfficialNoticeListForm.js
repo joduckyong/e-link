@@ -62,6 +62,9 @@ const OfficialNoticeListForm = () => {
     e.preventDefault();
 
     console.log('boardTitle2 : ' + boardTitle2[index]);
+
+    // 테스트
+
     // if (boardTitle2 === '') {
     //   alert('제목을 입력하세요');
     //   return;
