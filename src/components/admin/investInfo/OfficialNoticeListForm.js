@@ -42,25 +42,25 @@ const OfficialNoticeListForm = () => {
   };
 
   // 제목 input
-  const onChange1 = (index, event) => {
+  const onChange1 = (index, e) => {
     const values = [...inputs1.boardTitle];
 
-    console.log('values1 : ' + values);
-    values[index] = event.target.value;
+    // console.log('values1 : ' + values);
+    values[index] = e.target.value;
     setInputs1({ boardTitle: values });
 
-    console.log('inputs : ' + inputs1.boardTitle);
+    // console.log('inputs : ' + inputs1.boardTitle);
   };
 
   // 	Dart URL (링크)input
-  const onChange2 = (index, event) => {
+  const onChange2 = (index, e) => {
     const values = [...inputs2.url];
 
-    console.log('values2 : ' + values);
-    values[index] = event.target.value;
+    // console.log('values2 : ' + values);
+    values[index] = e.target.value;
     setInputs2({ url: values });
 
-    console.log('inputs : ' + inputs2.url);
+    // console.log('inputs : ' + inputs2.url);
   };
 
   //수정값 셋팅
@@ -73,9 +73,9 @@ const OfficialNoticeListForm = () => {
   //수정
   const onEdit = (e, index, boardId) => {
     e.preventDefault();
-    console.log('boardTitle : ' + inputs1.boardTitle[index]);
-    console.log('url : ' + inputs2.url[index]);
-    console.log('boardId : ' + boardId);
+    // console.log('boardTitle : ' + inputs1.boardTitle[index]);
+    // console.log('url : ' + inputs2.url[index]);
+    // console.log('boardId : ' + boardId);
 
     if (inputs1.boardTitle[index] === '') {
       alert('제목을 입력하세요');
@@ -206,27 +206,6 @@ const OfficialNoticeListForm = () => {
               </tr>
             </thead>
             <tbody>
-              {/* <tr className="editwrite">
-                <th>
-                  <label htmlFor="e01">
-                    <input type="checkbox" id="e01" />
-                    <span className="chkimg"></span>
-                  </label>
-                </th>
-                <td>5</td>
-                <td>
-                  <input type="text" value="분기보고서 (2023.09)" />
-                </td>
-                <td>
-                  <input type="text" value="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20221114001528" />
-                </td>
-                <td>2023-11-14</td>
-                <td>
-                  <button className="btn btn-darkgray btn-70 btn-complete">수정완료</button>
-                  <button className="btn btn-white btn-70 btn-cancle">취소</button>
-                </td>
-              </tr> */}
-
               {boardList.data?.map((list, index) => (
                 <tr className={list.boardId === keyId ? 'editwrite' : 'readonly'} key={index}>
                   <th>
