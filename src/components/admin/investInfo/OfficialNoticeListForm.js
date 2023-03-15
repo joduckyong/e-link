@@ -8,31 +8,22 @@ const OfficialNoticeListForm = () => {
   const boardList = useSelector((state) => state.boardReducer);
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
-  const [boardId, setboardId] = useState('');
   const [boardTitle, setBoardTitle] = useState('');
   const [url, setUrl] = useState('');
-
-  const [boardTitle2, setBoardTitle2] = useState([]);
-  const [url2, setUrl2] = useState([]);
-
   const [page, setPage] = useState(1);
-
   const [keyId, setKeyId] = useState('');
+
+  const [inputs1, setInputs1] = useState({
+    boardTitle: [''],
+  });
+  const [inputs2, setInputs2] = useState({
+    url: [''],
+  });
 
   useEffect(() => {
     const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: null };
     dispatch(selectBoard(newList));
   }, [dispatch, page]);
-
-  useEffect(() => {
-    boardList.data?.forEach((list, index) => {
-      console.log('index : ' + index);
-      console.log('boardTitle : ' + list.boardTitle);
-
-      //    setBoardTitle2[index](list.boardTitle);
-      //      setUrl2[index](list.url);
-    });
-  }, [boardList]);
 
   const onRemove = (e) => {
     e.preventDefault();
@@ -50,6 +41,28 @@ const OfficialNoticeListForm = () => {
     }
   };
 
+  // 제목 input
+  const onChange1 = (index, event) => {
+    const values = [...inputs1.boardTitle];
+
+    console.log('values1 : ' + values);
+    values[index] = event.target.value;
+    setInputs1({ boardTitle: values });
+
+    console.log('inputs : ' + inputs1.boardTitle);
+  };
+
+  // 	Dart URL (링크)input
+  const onChange2 = (index, event) => {
+    const values = [...inputs2.url];
+
+    console.log('values2 : ' + values);
+    values[index] = event.target.value;
+    setInputs2({ url: values });
+
+    console.log('inputs : ' + inputs2.url);
+  };
+
   //수정값 셋팅
   // const setBoardData = (id, title, url) => {
   //   setboardId(id);
@@ -58,32 +71,29 @@ const OfficialNoticeListForm = () => {
   // };
 
   //수정
-  const onEdit = (e, index) => {
+  const onEdit = (e, index, boardId) => {
     e.preventDefault();
+    console.log('boardTitle : ' + inputs1.boardTitle[index]);
+    console.log('url : ' + inputs2.url[index]);
+    console.log('boardId : ' + boardId);
 
-    console.log('boardTitle2 : ' + boardTitle2[index]);
+    if (inputs1.boardTitle[index] === '') {
+      alert('제목을 입력하세요');
+      return;
+    }
+    if (inputs2.url[index] === '') {
+      alert('Dart URL을 입력하세요');
+      return;
+    }
+    if (window.confirm('수정 하시겠습니까?')) {
+      const newList = { boardId: boardId, boardTitle: inputs1.boardTitle[index], url: inputs2.url[index] };
+      dispatch(updateBoard(newList)).then(() => {
+        const newList = { boardId: 'OFF', pageIndex: 1, searchKeyword: null };
+        dispatch(selectBoard(newList));
 
-    // 테스트
-
-    // if (boardTitle2 === '') {
-    //   alert('제목을 입력하세요');
-    //   return;
-    // }
-    // if (url2 === '') {
-    //   alert('Dart URL을 입력하세요');
-    //   return;
-    // }
-    // if (window.confirm('수정 하시겠습니까?')) {
-    //   const newList = { boardId: boardId, boardTitle: boardTitle2, url: url2 };
-    //   dispatch(updateBoard(newList)).then(() => {
-    //     const newList = { boardId: 'OFF', pageIndex: 1, searchKeyword: null };
-    //     dispatch(selectBoard(newList));
-
-    //     setboardId('');
-    //     // setBoardTitle2('');
-    //     // setUrl2('');
-    //   });
-    // }
+        setKeyId(0);
+      });
+    }
   };
 
   //등록
@@ -104,9 +114,9 @@ const OfficialNoticeListForm = () => {
         const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: null };
         dispatch(selectBoard(newList));
 
-        setboardId('');
         setBoardTitle('');
         setUrl('');
+        setKeyId(0);
       });
     }
   };
@@ -147,9 +157,9 @@ const OfficialNoticeListForm = () => {
           <button className="btn btn-blue btn-120" onClick={onCreate}>
             등록
           </button>
-          <button className="btn btn-blue btn-120" onClick={onEdit}>
+          {/* <button className="btn btn-blue btn-120" onClick={onEdit}>
             수정
-          </button>
+          </button> */}
         </div>
         <div className="ban-input">
           <div className="ban-tit">
@@ -218,7 +228,7 @@ const OfficialNoticeListForm = () => {
               </tr> */}
 
               {boardList.data?.map((list, index) => (
-                <tr className={list.boardId === keyId ? 'editwrite' : 'readonly'} key={list.boardId}>
+                <tr className={list.boardId === keyId ? 'editwrite' : 'readonly'} key={index}>
                   <th>
                     <label htmlFor={`e01-${index}`}>
                       <input
@@ -231,17 +241,13 @@ const OfficialNoticeListForm = () => {
                     </label>
                   </th>
                   <td>{boardList.totalCount - (list.rnum - 1)}</td>
-                  <td>
-                    <input type="text" name="boardTitle2[]" onChange={(e) => setBoardTitle2(e.target.value)} value={boardTitle2[list.index]} />
-                  </td>
-                  <td>
-                    <input type="text" name="url2[]" onChange={(e) => setUrl2(e.target.value)} value={url2[list.index]} />
-                  </td>
+                  <td>{list.boardId === keyId ? <input type="text" name="boardTitle" onChange={(e) => onChange1(index, e)} /> : list.boardTitle}</td>
+                  <td>{list.boardId === keyId ? <input type="text" name="url" onChange={(e) => onChange2(index, e)} /> : list.url}</td>
                   <td>{list.createdDatetime}</td>
                   <td>
                     {list.boardId === keyId ? (
                       <>
-                        <button className="btn btn-darkgray btn-70 btn-complete" onClick={(e) => onEdit(e, index)}>
+                        <button className="btn btn-darkgray btn-70 btn-complete" onClick={(e) => onEdit(e, index, list.boardId)}>
                           수정완료
                         </button>
                         <button className="btn btn-white btn-70 btn-cancle" onClick={() => setKeyId(index)}>
