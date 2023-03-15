@@ -11,12 +11,28 @@ const OfficialNoticeListForm = () => {
   const [boardId, setboardId] = useState('');
   const [boardTitle, setBoardTitle] = useState('');
   const [url, setUrl] = useState('');
+
+  const [boardTitle2, setBoardTitle2] = useState([]);
+  const [url2, setUrl2] = useState([]);
+
   const [page, setPage] = useState(1);
+
+  const [keyId, setKeyId] = useState('');
 
   useEffect(() => {
     const newList = { boardId: 'OFF', pageIndex: page, searchKeyword: null };
     dispatch(selectBoard(newList));
   }, [dispatch, page]);
+
+  useEffect(() => {
+    boardList.data?.forEach((list, index) => {
+      console.log('index : ' + index);
+      console.log('boardTitle : ' + list.boardTitle);
+
+      //    setBoardTitle2[index](list.boardTitle);
+      //      setUrl2[index](list.url);
+    });
+  }, [boardList]);
 
   const onRemove = (e) => {
     e.preventDefault();
@@ -35,35 +51,36 @@ const OfficialNoticeListForm = () => {
   };
 
   //수정값 셋팅
-  const setBoardData = (id, title, url) => {
-    setboardId(id);
-    setBoardTitle(title);
-    setUrl(url);
-  };
+  // const setBoardData = (id, title, url) => {
+  //   setboardId(id);
+  //   setBoardTitle(title);
+  //   setUrl(url);
+  // };
 
   //수정
-  const onEdit = (e) => {
+  const onEdit = (e, index) => {
     e.preventDefault();
 
-    if (boardTitle === '') {
-      alert('제목을 입력하세요');
-      return;
-    }
-    if (url === '') {
-      alert('Dart URL을 입력하세요');
-      return;
-    }
-    if (window.confirm('수정 하시겠습니까?')) {
-      const newList = { boardId: boardId, boardTitle: boardTitle, url: url };
-      dispatch(updateBoard(newList)).then(() => {
-        const newList = { boardId: 'OFF', pageIndex: 1, searchKeyword: null };
-        dispatch(selectBoard(newList));
+    console.log('boardTitle2 : ' + boardTitle2[index]);
+    // if (boardTitle2 === '') {
+    //   alert('제목을 입력하세요');
+    //   return;
+    // }
+    // if (url2 === '') {
+    //   alert('Dart URL을 입력하세요');
+    //   return;
+    // }
+    // if (window.confirm('수정 하시겠습니까?')) {
+    //   const newList = { boardId: boardId, boardTitle: boardTitle2, url: url2 };
+    //   dispatch(updateBoard(newList)).then(() => {
+    //     const newList = { boardId: 'OFF', pageIndex: 1, searchKeyword: null };
+    //     dispatch(selectBoard(newList));
 
-        setboardId('');
-        setBoardTitle('');
-        setUrl('');
-      });
-    }
+    //     setboardId('');
+    //     // setBoardTitle2('');
+    //     // setUrl2('');
+    //   });
+    // }
   };
 
   //등록
@@ -176,8 +193,7 @@ const OfficialNoticeListForm = () => {
               </tr>
             </thead>
             <tbody>
-              {/*
-              <tr className="editwrite">
+              {/* <tr className="editwrite">
                 <th>
                   <label htmlFor="e01">
                     <input type="checkbox" id="e01" />
@@ -196,10 +212,10 @@ const OfficialNoticeListForm = () => {
                   <button className="btn btn-darkgray btn-70 btn-complete">수정완료</button>
                   <button className="btn btn-white btn-70 btn-cancle">취소</button>
                 </td>
-              </tr>
-              */}
+              </tr> */}
+
               {boardList.data?.map((list, index) => (
-                <tr className="readonly" key={index}>
+                <tr className={list.boardId === keyId ? 'editwrite' : 'readonly'} key={list.boardId}>
                   <th>
                     <label htmlFor={`e01-${index}`}>
                       <input
@@ -212,13 +228,28 @@ const OfficialNoticeListForm = () => {
                     </label>
                   </th>
                   <td>{boardList.totalCount - (list.rnum - 1)}</td>
-                  <td>{list.boardTitle}</td>
-                  <td>{list.url}</td>
+                  <td>
+                    <input type="text" name="boardTitle2[]" onChange={(e) => setBoardTitle2(e.target.value)} value={boardTitle2[list.index]} />
+                  </td>
+                  <td>
+                    <input type="text" name="url2[]" onChange={(e) => setUrl2(e.target.value)} value={url2[list.index]} />
+                  </td>
                   <td>{list.createdDatetime}</td>
                   <td>
-                    <button className="btn btn-white" onClick={() => setBoardData(list.boardId, list.boardTitle, list.url)}>
-                      수정
-                    </button>
+                    {list.boardId === keyId ? (
+                      <>
+                        <button className="btn btn-darkgray btn-70 btn-complete" onClick={(e) => onEdit(e, index)}>
+                          수정완료
+                        </button>
+                        <button className="btn btn-white btn-70 btn-cancle" onClick={() => setKeyId(index)}>
+                          취소
+                        </button>
+                      </>
+                    ) : (
+                      <button className="btn btn-white" onClick={() => setKeyId(list.boardId)}>
+                        수정
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}
