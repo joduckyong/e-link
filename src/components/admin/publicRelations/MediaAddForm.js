@@ -11,8 +11,10 @@ const MediaAddForm = () => {
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContents, setBoardContents] = useState('');
   const [url, setUrl] = useState('');
+  const [thumbnailName, setThumbnailName] = useState('');
   const [fileName, setFileName] = useState('');
 
+  const thumbnailRef = useRef();
   const fileRef = useRef();
   const quillRef = useRef();
 
@@ -22,6 +24,7 @@ const MediaAddForm = () => {
   const onCreate = async (e) => {
     e.preventDefault();
 
+    const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
     const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
 
     if (boardTitle === '') {
@@ -33,11 +36,20 @@ const MediaAddForm = () => {
       return;
     }
     if (window.confirm('등록 하시겠습니까?')) {
-      const newList = { boardId: 'MED', boardTitle: boardTitle, boardContents: boardContents, url: url, file: fileObj };
+      const newList = { boardId: 'MED', boardTitle: boardTitle, boardContents: boardContents, url: url, thumbnail: thumbnailObj, file: fileObj };
       await dispatch(insertBoard(newList));
       return navigate('/admin/publicRelations/media');
     }
   };
+
+  const onUploadImage = useCallback((e) => {
+    if (!e.target.files) {
+      return;
+    }
+    setThumbnailName(e.target.files[0].name);
+    thumbnailRef.current = e.target.files[0];
+    e.target.value = ''; //파일 삭제 후 다시 같은 파일 정상 입력 위해
+  }, []);
 
   const onUploadFile = useCallback((e) => {
     if (!e.target.files) {
@@ -46,6 +58,11 @@ const MediaAddForm = () => {
     setFileName(e.target.files[0].name);
     fileRef.current = e.target.files[0];
     e.target.value = ''; //파일 삭제 후 다시 같은 파일 정상 입력 위해
+  }, []);
+
+  const onDeleteThumbnail = useCallback(() => {
+    setThumbnailName('');
+    thumbnailRef.current = '';
   }, []);
 
   const onDeleteFile = useCallback(() => {
@@ -196,11 +213,30 @@ const MediaAddForm = () => {
             <ReactQuill ref={quillRef} value={boardContents} onChange={setBoardContents} modules={modules} />
           </div>
           <div className="ed-file">
-            <div className="s-tit">첨부파일</div>
+            <div className="s-tit">썸네일</div>
             <div className="file-area">
               <div className="input-box">
                 <label htmlFor="e-choice01" className="file-choice">
-                  <input type="file" id="e-choice01" className="file" ref={fileRef} onChange={onUploadFile} />+ 파일선택
+                  <input type="file" accept="image/*" id="e-choice01" className="file" ref={thumbnailRef} onChange={onUploadImage} />+ 파일선택
+                </label>
+                <span className="upload-name">
+                  {thumbnailName ? thumbnailName : '선택된 파일 없음'}
+                  {thumbnailName && (
+                    <NavLink to="" onClick={onDeleteThumbnail}>
+                      {' '}
+                      <img src="/img/admin/ico-x.svg" alt="" />
+                    </NavLink>
+                  )}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="ed-file">
+            <div className="s-tit">첨부파일</div>
+            <div className="file-area">
+              <div className="input-box">
+                <label htmlFor="e-choice02" className="file-choice">
+                  <input type="file" id="e-choice02" className="file" ref={fileRef} onChange={onUploadFile} />+ 파일선택
                 </label>
                 <span className="upload-name">
                   {fileName ? fileName : '선택된 파일 없음'}

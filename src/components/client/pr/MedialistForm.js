@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectClientBoard, selectClientBoardInfoWithPinup } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
+import ViewImage from 'components/common/ViewImage';
 import AOS from 'aos';
 import classnames from 'classnames';
 import moment from 'moment';
@@ -183,7 +184,13 @@ const MedialistForm = () => {
                   <li>
                     <NavLink to={`/pr/media-view/${list.boardId}`}>
                       <div className="list-img">
-                        <div className="in" style={{ background: `url(${getImageUrl(list.url)}) center no-repeat`, backgroundSize: 'cover' }}></div>
+                        {list.url ? (
+                          <div className="in" style={{ background: `url(${getImageUrl(list.url)}) center no-repeat`, backgroundSize: 'cover' }}></div>
+                        ) : (
+                          <div className="in" style={{ backgroundSize: 'cover' }}>
+                            <ViewImage fileNm={list.thumbNm} basicStyle={true} />
+                          </div>
+                        )}
                       </div>
                       <div className="list-tit">{list.boardTitle}</div>
                       <div className="list-date">{list.createdDatetime}</div>

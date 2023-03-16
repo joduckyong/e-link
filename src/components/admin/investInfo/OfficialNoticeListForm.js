@@ -182,8 +182,12 @@ const OfficialNoticeListForm = () => {
         <div className="table-wrap">
           <table>
             <colgroup>
-              <col width="7%" />
-              <col width="7%" />
+              <col width="5%" />
+              <col width="5%" />
+              <col width="20%" />
+              <col width="40%" />
+              <col width="10%" />
+              <col width="20%" />
             </colgroup>
             <thead>
               <tr>
@@ -220,8 +224,20 @@ const OfficialNoticeListForm = () => {
                     </label>
                   </th>
                   <td>{boardList.totalCount - (list.rnum - 1)}</td>
-                  <td>{list.boardId === keyId ? <input type="text" name="boardTitle" onChange={(e) => onChange1(index, e)} /> : list.boardTitle}</td>
-                  <td>{list.boardId === keyId ? <input type="text" name="url" onChange={(e) => onChange2(index, e)} /> : list.url}</td>
+                  <td>
+                    {list.boardId === keyId ? (
+                      <input type="text" name="boardTitle" onChange={(e) => onChange1(index, e)} defaultValue={list.boardTitle} />
+                    ) : (
+                      list.boardTitle
+                    )}
+                  </td>
+                  <td>
+                    {list.boardId === keyId ? (
+                      <input type="text" name="url" onChange={(e) => onChange2(index, e)} defaultValue={list.url} />
+                    ) : (
+                      list.url
+                    )}
+                  </td>
                   <td>{list.createdDatetime}</td>
                   <td>
                     {list.boardId === keyId ? (

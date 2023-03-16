@@ -119,13 +119,16 @@ const MediaviewForm = () => {
             <div className="list-num-wrap">
               <div className="list-num">{createdDatetime}</div>
               <ul>
-                {fileList.map((list, index) => (
-                  <li style={{ padding: '5px 0 5px 0' }}>
-                    <NavLink to="" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}>
-                      <div className="file">{list.fileOriginNm}</div>
-                    </NavLink>
-                  </li>
-                ))}
+                {fileList.map(
+                  (list, index) =>
+                    list.fileType !== '1' && (
+                      <li style={{ padding: '5px 0 5px 0' }}>
+                        <NavLink to="" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}>
+                          <div className="file">{list.fileOriginNm}</div>
+                        </NavLink>
+                      </li>
+                    ),
+                )}
               </ul>
             </div>
             <div className="view-area">
