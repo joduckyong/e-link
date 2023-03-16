@@ -186,10 +186,14 @@ const MedialistForm = () => {
                       <div className="list-img">
                         {list.thumbNm ? (
                           <div className="in" style={{ backgroundSize: 'cover' }}>
-                            <ViewImage fileNm={list.thumbNm} basicStyle={true} />
+                            <ViewImage fileNm={list.thumbNm.replace('s_', '')} basicStyle={true} />
                           </div>
-                        ) : (
+                        ) : list.url ? (
                           <div className="in" style={{ background: `url(${getImageUrl(list.url)}) center no-repeat`, backgroundSize: 'cover' }}></div>
+                        ) : (
+                          <div className="in" style={{ backgroundSize: 'cover' }}>
+                            <img src="/img/logo/non.png" alt="" />
+                          </div>
                         )}
                       </div>
                       <div className="list-tit">{list.boardTitle}</div>

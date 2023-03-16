@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoard, deleteBoardIds, selectPinupId, updatePinupId } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
+import ViewImage from 'components/common/ViewImage';
 import classnames from 'classnames';
 
 const YoutubeImage = ({ url, width, height }) => {
@@ -154,7 +155,13 @@ const MediaListForm = () => {
                   <td>{totalCount - (list.rnum - 1)}</td>
                   <td className="pl40">
                     <div className="shape-150">
-                      <YoutubeImage url={list.url} width={150} height={80} />
+                      {list.thumbNm ? (
+                        <ViewImage fileNm={list.thumbNm} basicStyle={true} />
+                      ) : list.url ? (
+                        <YoutubeImage url={list.url} width={150} height={80} />
+                      ) : (
+                        <img src="/img/logo/non.png" width={150} height={80} alt="" />
+                      )}
                     </div>
                   </td>
                   <td className="tal pl40">
