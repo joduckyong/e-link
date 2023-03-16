@@ -727,6 +727,7 @@ position: absolute; right: 10px; top: 0; transition: all 0.3s;}
 .sub.sub04 .media-list a:hover .in{transform: scale(1.1);}
 .sub.sub04 .media-list .list-img{position: relative; padding-bottom: 56.5%; overflow: hidden;}
 .sub.sub04 .media-list .list-img .in{position: absolute; top: 0; left: 0; right: 0; bottom: 0; transition: all 0.8s;}
+.sub.sub04 .media-list .list-img .in img {width: 100%;height: 100%;}
 .sub.sub04 .media-list .list-tit{font-size: 26px; font-weight: 600; margin-top: 35px; margin-bottom: 25px;}
 .sub.sub04 .media-list .list-date{font-size: 18px;}
 .sub.sub04 .other-media{margin-top: 70px; position: relative;}
