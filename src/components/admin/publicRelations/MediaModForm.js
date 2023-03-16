@@ -68,6 +68,7 @@ const MediaModForm = () => {
       alert('내용을 입력하세요');
       return;
     }
+
     if (window.confirm('수정 하시겠습니까?')) {
       const newList = {
         boardId: id,

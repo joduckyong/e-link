@@ -71,22 +71,27 @@ const OfficialNoticeListForm = () => {
   // };
 
   //수정
-  const onEdit = (e, index, boardId) => {
+  const onEdit = (e, index, boardId, url) => {
     e.preventDefault();
     // console.log('boardTitle : ' + inputs1.boardTitle[index]);
     // console.log('url : ' + inputs2.url[index]);
+    console.log('url : ' + url);
     // console.log('boardId : ' + boardId);
 
-    if (inputs1.boardTitle[index] === '') {
-      alert('제목을 입력하세요');
-      return;
-    }
-    if (inputs2.url[index] === '') {
-      alert('Dart URL을 입력하세요');
-      return;
-    }
+    // if (inputs1.boardTitle[index] === '') {
+    //   alert('제목을 입력하세요');
+    //   return;
+    // }
+    // if (inputs2.url[index] === '') {
+    //   alert('Dart URL을 입력하세요');
+    //   return;
+    // }
+
+    const urlVal = inputs2.url[index] === '' ? url : inputs2.url[index];
+    console.log('urlVal : ' + urlVal);
+
     if (window.confirm('수정 하시겠습니까?')) {
-      const newList = { boardId: boardId, boardTitle: inputs1.boardTitle[index], url: inputs2.url[index] };
+      const newList = { boardId: boardId, boardTitle: inputs1.boardTitle[index], url: urlVal };
       dispatch(updateBoard(newList)).then(() => {
         const newList = { boardId: 'OFF', pageIndex: 1, searchKeyword: null };
         dispatch(selectBoard(newList));
@@ -242,7 +247,7 @@ const OfficialNoticeListForm = () => {
                   <td>
                     {list.boardId === keyId ? (
                       <>
-                        <button className="btn btn-darkgray btn-70 btn-complete" onClick={(e) => onEdit(e, index, list.boardId)}>
+                        <button className="btn btn-darkgray btn-70 btn-complete" onClick={(e) => onEdit(e, index, list.boardId, list.url)}>
                           수정완료
                         </button>
                         <button className="btn btn-white btn-70 btn-cancle" onClick={() => setKeyId(index)}>

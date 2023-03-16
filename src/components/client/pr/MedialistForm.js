@@ -184,12 +184,12 @@ const MedialistForm = () => {
                   <li>
                     <NavLink to={`/pr/media-view/${list.boardId}`}>
                       <div className="list-img">
-                        {list.url ? (
-                          <div className="in" style={{ background: `url(${getImageUrl(list.url)}) center no-repeat`, backgroundSize: 'cover' }}></div>
-                        ) : (
+                        {list.thumbNm ? (
                           <div className="in" style={{ backgroundSize: 'cover' }}>
                             <ViewImage fileNm={list.thumbNm} basicStyle={true} />
                           </div>
+                        ) : (
+                          <div className="in" style={{ background: `url(${getImageUrl(list.url)}) center no-repeat`, backgroundSize: 'cover' }}></div>
                         )}
                       </div>
                       <div className="list-tit">{list.boardTitle}</div>
