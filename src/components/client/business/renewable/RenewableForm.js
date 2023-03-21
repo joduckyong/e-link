@@ -118,11 +118,11 @@ const RenewableForm = () => {
               <ul className="renew-list">
                 <li className="list01" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                   <div className="renew-tit">전기 품질 및 신뢰도 향상</div>
-                  <p>맞춤형 전원 공급을 통해 부하에 공급, 및 보호</p>
+                  <p>맞춤형 전원 공급을 통해 부하에 공급 및 보호</p>
                 </li>
                 <li className="list02" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                   <div className="renew-tit">상용 전력 망에 안정성 기여</div>
-                  <p>Blackout등 다양한 상황에 대처 가능 (독립 운전), 지속적으로 부하에 에너지 공급</p>
+                  <p>Blackout등 다양한 상황에 대처 가능 (독립 운전), <br className="pc-block" />지속적으로 부하에 에너지 공급</p>
                 </li>
                 <li className="list03" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                   <div className="renew-tit">소비자 에너지 비용 최적</div>
@@ -130,11 +130,11 @@ const RenewableForm = () => {
                 </li>
                 <li className="list04" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                   <div className="renew-tit">친환경</div>
-                  <p>화석 연료 운영 최소화,가능</p>
+                  <p>화석 연료 운영 최소화 가능</p>
                 </li>
                 <li className="list05" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                   <div className="renew-tit">발전 원가 비용 최소화</div>
-                  <p>ESS로 에너지를 저장하였다가, 필요시 에너지를 방전하여 디젤 발전기 등 지역 운영 비용 절감</p>
+                  <p>ESS로 에너지를 저장하였다가, 필요시 에너지를 방전하여 <br className="pc-block" />디젤 발전기 등 지역 운영 비용 절감</p>
                 </li>
                 <li className="list06" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                   <div className="renew-tit">에너지 자립</div>
