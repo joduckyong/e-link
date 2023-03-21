@@ -16,7 +16,7 @@ const MediaviewForm = () => {
   const createdDatetime = useSelector((state) => state.boardReducer.dataInfo?.createdDatetime);
   const boardContents = useSelector((state) => state.boardReducer.dataInfo?.boardContents);
   const url = useSelector((state) => state.boardReducer.dataInfo?.url);
-  const fileList = useSelector((state) => state.boardReducer.files);
+  const fileList = useSelector((state) => state.boardReducer?.files);
 
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
