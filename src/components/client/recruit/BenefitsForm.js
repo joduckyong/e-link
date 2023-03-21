@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import classnames from 'classnames';
-import { ParallaxProvider, Parallax } from 'react-skrollr';
+// import { ParallaxProvider, Parallax } from 'react-skrollr';
 
 const BenefitsForm = () => {
   const [activeMenu1, setActiveMenu1] = useState(false);

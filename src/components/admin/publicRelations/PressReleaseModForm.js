@@ -7,23 +7,47 @@ import { getCookieToken } from 'storage/Cookie';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+const AddFileBox = ({ fileName, filesRef, onUploadFile, onDeleteFile, fileCountList }) => {
+  return (
+    <>
+      {fileCountList.map((index, idx) => (
+        <div className="input-box" key={index}>
+          <label htmlFor={'e-choice01_' + index} className="file-choice">
+            <input type="file" id={'e-choice01_' + index} className="file" data-index={index} ref={filesRef[index]} onChange={onUploadFile} />+
+            파일선택
+          </label>
+          <span className="upload-name">
+            {fileName[index] ? fileName[index] : '선택된 파일 없음'}
+            {fileName[index] && (
+              <NavLink to="" onClick={(e) => onDeleteFile(e, index)}>
+                {' '}
+                <img src="/img/admin/ico-x.svg" alt="" />
+              </NavLink>
+            )}
+          </span>
+        </div>
+      ))}
+    </>
+  );
+};
+
 const PressReleaseModForm = () => {
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContents, setBoardContents] = useState('');
   const [thumbnailName, setThumbnailName] = useState('');
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState({});
+  const [fileCountList, setFileCountList] = useState([0]);
   const [storedThumbnailName, setStoredThumbnailName] = useState('');
-  const [storedFileName, setStoredFileName] = useState('');
+  const [storedFileName, setStoredFileName] = useState({});
   const [storedFileArr, setStoredFileArr] = useState([]);
 
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
-  const fileList = useSelector((state) => state.boardReducer.files);
-
+  const attachList = useSelector((state) => state.boardReducer.files);
+  const filesRef = useRef([]);
   const thumbnailRef = useRef();
-  const fileRef = useRef();
   const quillRef = useRef();
 
   useEffect(() => {
@@ -35,28 +59,53 @@ const PressReleaseModForm = () => {
     setBoardContents(boardInfo.boardContents);
   }, [boardInfo]);
 
+  // useEffect(() => {
+  //   setThumbnailName('');
+  //   setFileName('');
+  //   setStoredThumbnailName('');
+  //   setStoredFileName('');
+  //   for (let file of fileList) {
+  //     if (file.fileType === '1') {
+  //       //썸네일
+  //       setThumbnailName(file.fileOriginNm);
+  //       setStoredThumbnailName(file.fileNm);
+  //     } else {
+  //       setFileName(file.fileOriginNm);
+  //       setStoredFileName(file.fileNm);
+  //     }
+  //   }
+  // }, [fileList]);
+
   useEffect(() => {
-    setThumbnailName('');
-    setFileName('');
-    setStoredThumbnailName('');
-    setStoredFileName('');
-    for (let file of fileList) {
-      if (file.fileType === '1') {
-        //썸네일
-        setThumbnailName(file.fileOriginNm);
-        setStoredThumbnailName(file.fileNm);
-      } else {
-        setFileName(file.fileOriginNm);
-        setStoredFileName(file.fileNm);
+    const onInitFileBox = (e) => {
+      let countArr = [];
+      let fileObj = {};
+      let storedFiles = {};
+      for (let i = 0; i < attachList.length; i++) {
+        if (attachList[i].fileType === '1') {
+          setThumbnailName(attachList[i].fileOriginNm);
+          setStoredThumbnailName(attachList[i].fileNm);
+        } else {
+          countArr.push(i);
+          fileObj[i] = attachList[i].fileOriginNm;
+          storedFiles[i] = attachList[i].fileNm;
+        }
       }
-    }
-  }, [fileList]);
+      setFileName(fileObj);
+      setFileCountList(countArr.length > 0 ? countArr : [0]);
+      setStoredFileName(storedFiles);
+    };
+
+    onInitFileBox();
+  }, [attachList]);
 
   const onEdit = async (e) => {
     e.preventDefault();
 
     const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
-    const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
+    const files = filesRef.current.map((fileRef) => {
+      return fileRef.constructor.name === 'File' && fileRef;
+    });
 
     if (boardTitle === '') {
       alert('제목을 입력하세요');
@@ -73,7 +122,7 @@ const PressReleaseModForm = () => {
         boardContents: boardContents,
         ids: storedFileArr,
         thumbnail: thumbnailObj,
-        file: fileObj,
+        files: files,
       };
       await dispatch(updateBoard(newList));
       return navigate('/admin/publicRelations/pressRelease');
@@ -100,14 +149,14 @@ const PressReleaseModForm = () => {
       if (!e.target.files) {
         return;
       }
-      setFileName(e.target.files[0].name);
-      fileRef.current = e.target.files[0];
-      if (!storedFileArr.includes(storedFileName)) {
-        setStoredFileArr([...storedFileArr, storedFileName]);
+      const index = e.target.dataset.index;
+      setFileName({ ...fileName, [index]: e.target.files[0].name });
+      filesRef.current[index] = e.target.files[0];
+      if (!storedFileArr.includes(storedFileName[index])) {
+        setStoredFileArr([...storedFileArr, storedFileName[index]]);
       }
-      e.target.value = ''; //파일 삭제 후 다시 같은 파일 정상 입력 위해
     },
-    [storedFileArr, storedFileName],
+    [fileName, storedFileArr, storedFileName, fileCountList],
   );
 
   const onDeleteThumbnail = useCallback(() => {
@@ -118,13 +167,27 @@ const PressReleaseModForm = () => {
     }
   }, [storedFileArr, storedThumbnailName]);
 
-  const onDeleteFile = useCallback(() => {
-    setFileName('');
-    fileRef.current = '';
-    if (!storedFileArr.includes(storedFileName)) {
-      setStoredFileArr([...storedFileArr, storedFileName]);
-    }
-  }, [storedFileArr, storedFileName]);
+  const onDeleteFile = useCallback(
+    (e, index) => {
+      e.preventDefault();
+      setFileName({ ...fileName, [index]: '' });
+      filesRef.current[index] = '';
+      if (!storedFileArr.includes(storedFileName[index])) {
+        setStoredFileArr([...storedFileArr, storedFileName[index]]);
+      }
+      let countArr = fileCountList.filter((i) => i !== index);
+      setFileCountList(countArr);
+    },
+    [fileName, storedFileArr, storedFileName, fileCountList],
+  );
+
+  const onAddFileBox = () => {
+    let countArr = [...fileCountList];
+    let count = countArr.slice(-1)[0] ? countArr.slice(-1)[0] : 0;
+    count += 1;
+    countArr.push(count);
+    setFileCountList(countArr);
+  };
 
   const imageHandler = () => {
     console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
@@ -290,20 +353,16 @@ const PressReleaseModForm = () => {
           <div className="ed-file">
             <div className="s-tit">첨부파일</div>
             <div className="file-area">
-              <div className="input-box">
-                <label htmlFor="e-choice02" className="file-choice">
-                  <input type="file" id="e-choice02" className="file" ref={fileRef} onChange={onUploadFile} />+ 파일선택
-                </label>
-                <span className="upload-name">
-                  {fileName ? fileName : '선택된 파일 없음'}
-                  {fileName && (
-                    <NavLink to="" onClick={onDeleteFile}>
-                      {' '}
-                      <img src="/img/admin/ico-x.svg" alt="" />
-                    </NavLink>
-                  )}
-                </span>
-              </div>
+              <AddFileBox
+                fileName={fileName}
+                filesRef={filesRef}
+                onUploadFile={onUploadFile}
+                onDeleteFile={onDeleteFile}
+                fileCountList={fileCountList}
+              />
+              <NavLink to="" className="btn-add" onClick={onAddFileBox}>
+                <img src="/img/admin/ico-plus.svg" alt="" />
+              </NavLink>
             </div>
           </div>
         </div>

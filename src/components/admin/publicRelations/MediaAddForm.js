@@ -7,15 +7,40 @@ import { getCookieToken } from 'storage/Cookie';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+const AddFileBox = ({ fileName, filesRef, onUploadFile, onDeleteFile, fileCountList }) => {
+  return (
+    <>
+      {fileCountList.map((index, idx) => (
+        <div className="input-box" key={index}>
+          <label htmlFor={'e-choice01_' + index} className="file-choice">
+            <input type="file" id={'e-choice01_' + index} className="file" data-index={index} ref={filesRef[index]} onChange={onUploadFile} />+
+            파일선택
+          </label>
+          <span className="upload-name">
+            {fileName[index] ? fileName[index] : '선택된 파일 없음'}
+            {fileName[index] && (
+              <NavLink to="" onClick={(e) => onDeleteFile(e, index)}>
+                {' '}
+                <img src="/img/admin/ico-x.svg" alt="" />
+              </NavLink>
+            )}
+          </span>
+        </div>
+      ))}
+    </>
+  );
+};
+
 const MediaAddForm = () => {
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContents, setBoardContents] = useState('');
   const [url, setUrl] = useState('');
   const [thumbnailName, setThumbnailName] = useState('');
   const [fileName, setFileName] = useState('');
+  const [fileCountList, setFileCountList] = useState([0]);
 
   const thumbnailRef = useRef();
-  const fileRef = useRef();
+  const filesRef = useRef([]);
   const quillRef = useRef();
 
   const navigate = useNavigate();
@@ -25,7 +50,9 @@ const MediaAddForm = () => {
     e.preventDefault();
 
     const thumbnailObj = thumbnailRef.current.constructor.name === 'File' && thumbnailRef.current;
-    const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
+    const files = filesRef.current.map((fileRef) => {
+      return fileRef.constructor.name === 'File' && fileRef;
+    });
 
     if (boardTitle === '') {
       alert('제목을 입력하세요');
@@ -36,7 +63,7 @@ const MediaAddForm = () => {
       return;
     }
     if (window.confirm('등록 하시겠습니까?')) {
-      const newList = { boardId: 'MED', boardTitle: boardTitle, boardContents: boardContents, url: url, thumbnail: thumbnailObj, file: fileObj };
+      const newList = { boardId: 'MED', boardTitle: boardTitle, boardContents: boardContents, url: url, thumbnail: thumbnailObj, files: files };
       await dispatch(insertBoard(newList));
       return navigate('/admin/publicRelations/media');
     }
@@ -51,24 +78,41 @@ const MediaAddForm = () => {
     e.target.value = ''; //파일 삭제 후 다시 같은 파일 정상 입력 위해
   }, []);
 
-  const onUploadFile = useCallback((e) => {
-    if (!e.target.files) {
-      return;
-    }
-    setFileName(e.target.files[0].name);
-    fileRef.current = e.target.files[0];
-    e.target.value = ''; //파일 삭제 후 다시 같은 파일 정상 입력 위해
-  }, []);
+  const onUploadFile = useCallback(
+    (e) => {
+      if (!e.target.files) {
+        return;
+      }
+      const index = e.target.dataset.index;
+      setFileName({ ...fileName, [index]: e.target.files[0].name });
+      filesRef.current[index] = e.target.files[0];
+    },
+    [fileName],
+  );
 
   const onDeleteThumbnail = useCallback(() => {
     setThumbnailName('');
     thumbnailRef.current = '';
   }, []);
 
-  const onDeleteFile = useCallback(() => {
-    setFileName('');
-    fileRef.current = '';
-  }, []);
+  const onDeleteFile = useCallback(
+    (e, index) => {
+      e.preventDefault();
+      setFileName({ ...fileName, [index]: '' });
+      filesRef.current[index] = '';
+      let countArr = fileCountList.filter((i) => i !== index);
+      setFileCountList(countArr);
+    },
+    [fileName],
+  );
+
+  const onAddFileBox = () => {
+    let countArr = [...fileCountList];
+    let count = countArr.slice(-1)[0] ? countArr.slice(-1)[0] : 0;
+    count += 1;
+    countArr.push(count);
+    setFileCountList(countArr);
+  };
 
   const imageHandler = () => {
     console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
@@ -234,21 +278,17 @@ const MediaAddForm = () => {
           <div className="ed-file">
             <div className="s-tit">첨부파일</div>
             <div className="file-area">
-              <div className="input-box">
-                <label htmlFor="e-choice02" className="file-choice">
-                  <input type="file" id="e-choice02" className="file" ref={fileRef} onChange={onUploadFile} />+ 파일선택
-                </label>
-                <span className="upload-name">
-                  {fileName ? fileName : '선택된 파일 없음'}
-                  {fileName && (
-                    <NavLink to="" onClick={onDeleteFile}>
-                      {' '}
-                      <img src="/img/admin/ico-x.svg" alt="" />
-                    </NavLink>
-                  )}
-                </span>
-              </div>
+              <AddFileBox
+                fileName={fileName}
+                filesRef={filesRef}
+                onUploadFile={onUploadFile}
+                onDeleteFile={onDeleteFile}
+                fileCountList={fileCountList}
+              />
             </div>
+            <NavLink to="" className="btn-add" onClick={onAddFileBox}>
+              <img src="/img/admin/ico-plus.svg" alt="" />
+            </NavLink>
           </div>
           <div className="ed-youtube">
             <div className="s-tit">유튜브 링크</div>
