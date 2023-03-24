@@ -41,11 +41,9 @@ const FinancialAddForm = (props) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [boardContents, setBoardContents] = useState('');
 
-  const handleEditorStateChange = async (state) => {
-    await setEditorState(state);
-    const html = draftjsToHtml(convertToRaw(editorState.getCurrentContent().getPlainText()));
-    console.log(html);
-    // setBoardContents(html);
+  const onEditorStateChange = (editorState) => {
+    // editorState에 값 설정
+    setEditorState(editorState);
   };
 
   const uploadImageCallBack = async (file) => {
@@ -82,19 +80,20 @@ const FinancialAddForm = (props) => {
   const onCreate = async (e) => {
     e.preventDefault();
 
-    const files = filesRef.current.map((fileRef) => {
-      return fileRef.constructor.name === 'File' && fileRef;
-    });
+    // const files = filesRef.current.map((fileRef) => {
+    //   return fileRef.constructor.name === 'File' && fileRef;
+    // });
 
-    if (boardTitle === '') {
-      alert('제목을 입력하세요');
-      return;
-    }
-    if (boardContents === '') {
-      alert('내용을 입력하세요');
-      return;
-    }
+    // if (boardTitle === '') {
+    //   alert('제목을 입력하세요');
+    //   return;
+    // }
+    // if (boardContents === '') {
+    //   alert('내용을 입력하세요');
+    //   return;
+    // }
 
+    console.log('editorState : ' + draftjsToHtml(editorState));
     console.log('boardContents : ' + boardContents);
     // console.log('boardContents : ' + JSON.stringify(boardContents));
     // console.log('boardContents : ' + draftToHtml(JSON.stringify(boardContents)));
@@ -171,8 +170,8 @@ const FinancialAddForm = (props) => {
           <div className="ed-area">
             <Editor
               placeholder="게시글을 작성해주세요"
-              editorState={boardContents}
-              onEditorStateChange={handleEditorStateChange}
+              editorState={editorState}
+              onEditorStateChange={onEditorStateChange}
               toolbar={{
                 // fontFamily: {
                 //   options: ['Arial', 'Georgia', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
