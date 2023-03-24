@@ -132,7 +132,8 @@ const MediaviewForm = () => {
               </ul>
             </div>
             <div className="view-area">
-              {url !== '' && <iframe title="youtubeFrame" width={'100%'} height={600} src={`${getEmbedVideoUrl(url)}`}></iframe>}
+              {console.log('url==' + url)}
+              {url !== '' && url !== null ? <iframe title="youtubeFrame" width={'100%'} height={600} src={`${getEmbedVideoUrl(url)}`}></iframe> : ''}
               <p className="view-txt" dangerouslySetInnerHTML={{ __html: boardContents }}></p>
             </div>
             <div className="view-control">

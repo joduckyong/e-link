@@ -156,7 +156,7 @@ const MediaListForm = () => {
                   <td className="pl40">
                     <div className="shape-150">
                       {list.thumbNm ? (
-                        <ViewImage fileNm={list.thumbNm} basicStyle={true} />
+                        <ViewImage fileNm={list.thumbNm} basicStyle={false} width={150} height={80} />
                       ) : list.url ? (
                         <YoutubeImage url={list.url} width={150} height={80} />
                       ) : (
