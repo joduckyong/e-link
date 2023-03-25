@@ -163,7 +163,7 @@ const JobVacancyModForm = () => {
       if (!storedFileArr.includes(storedFileName[index])) {
         setStoredFileArr([...storedFileArr, storedFileName[index]]);
       }
-      let countArr = fileCountList.filter(i => i !== index);
+      let countArr = fileCountList.filter((i) => i !== index);
       setFileCountList(countArr);
     },
     [fileName, storedFileArr, storedFileName, fileCountList],
@@ -234,12 +234,14 @@ const JobVacancyModForm = () => {
     return {
       toolbar: {
         container: [
-          [{ header: [1, 2, 3, 4, 5, 6, false] }],
+          [{ size: ['small', false, 'large', 'huge'] }], // custom dropdown
+          [{ header: [1, 2, 3, 4, 5, 6] }],
           [{ font: [] }],
+          [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
+          [{ direction: 'rtl' }], // text direction
           [{ align: [] }],
-          ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+          ['bold', 'italic', 'underline', 'strike', 'blockquote', 'link', 'code-block', 'formula'],
           [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
-          ['link'],
           [
             {
               color: [
