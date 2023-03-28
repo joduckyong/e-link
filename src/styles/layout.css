@@ -537,6 +537,7 @@ position: absolute; right: 0; top: 0; background: #FFF;}
 .sub .business .infor-txt{font-size: 18px; color: #444; line-height: 30px; word-break: keep-all; letter-spacing: -0.03em;}
 .sub .business .in{transition: all 0.7s ease-out;}
 .sub .business .img{height: 500px; position: relative; overflow: hidden; border-radius: 30px;}
+.sub .business .img.prepare{height:auto;}
 .sub .business .out-img{border-radius: 0;}
 .sub .business .pc-energy-img{display:block;}
 .sub .business .mo-energy-img{display:none;}

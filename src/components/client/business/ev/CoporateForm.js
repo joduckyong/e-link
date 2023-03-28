@@ -129,8 +129,9 @@ const CoporateForm = () => {
                   자동세차 등의 All-in-one Care Service 제공
                 </div>
               </div>
-              <div className="img img1" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                <img src="/img/sub/coporate-img1.png" alt="" />
+              {/* 사진 수정하면 class prepare 지우기 */}
+              <div className="img img1 prepare" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+                <img src="/img/sub/prepare_img.jpg" alt="" />
               </div>
             </div>
           </div>
