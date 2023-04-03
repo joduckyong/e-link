@@ -11,6 +11,8 @@ import PopupAddPage from './pages/admin/main/PopupAddPage';
 import PopupModPage from './pages/admin/main/PopupModPage';
 import PopupInfoPage from './pages/admin/main/PopupInfoPage';
 
+import OutlinePage from './pages/admin/company/OutlinePage';
+
 import FinancialPage from './pages/admin/investInfo/FinancialPage';
 import FinancialAddPage from './pages/admin/investInfo/FinancialAddPage';
 import FinancialModPage from './pages/admin/investInfo/FinancialModPage';
@@ -40,6 +42,10 @@ import JobVacancyInfoPage from './pages/admin/employmentInfo/JobVacancyInfoPage'
 
 import ContactUsPage from './pages/admin/customerService/ContactUsPage';
 import ContactUsInfoPage from './pages/admin/customerService/ContactUsInfoPage';
+
+import MgmtPage from './pages/admin/role/MgmtPage';
+import MgmtAddPage from './pages/admin/role/MgmtAddPage';
+import MgmtModPage from './pages/admin/role/MgmtModPage';
 
 /* 클라이언트 */
 
@@ -92,6 +98,54 @@ import PrivacyPage from './pages/client/policy/PrivacyPage';
 import TermsPage from './pages/client/policy/TermsPage';
 import LocationPage from './pages/client/policy/LocationPage';
 
+/* EV 충전소 */
+//브랜드 소개
+import IndexPage from './pages/client/ev/IndexPage';
+
+//충전소 찾기
+import FindPage from './pages/client/ev/FindPage';
+
+//로그인
+import LoginEvPage from './pages/client/ev/loginPage';
+
+//회원가입 약관동의
+import Join1Page from './pages/client/ev/Join1Page';
+//회원가입 정보입력
+import Join2Page from './pages/client/ev/Join2Page';
+//회원가입 가입완료
+import Join3Page from './pages/client/ev/Join3Page';
+
+//아이디 찾기
+import FindIdPage from './pages/client/ev/FindIdPage';
+//아이디 결과
+import FindId2Page from './pages/client/ev/FindId2Page';
+
+//비밀번호 찾기
+import FindPwPage from './pages/client/ev/FindPwPage';
+//비밀번호 재설정
+import RepwPage from './pages/client/ev/RepwPage';
+
+//고객센터 공지사항
+import NoticePage from './pages/client/ev/NoticePage';
+//고객센터 공지사항 View
+import NoticeInfoPage from './pages/client/ev/NoticeInfoPage';
+//고객센터 Faq
+import FaqPage from './pages/client/ev/FaqPage';
+//고객센터 문의하기
+import InquiryEvPage from './pages/client/ev/InquiryPage';
+//고객센터 문의하기 View
+import InquiryInfoPage from './pages/client/ev/InquiryInfoPage';
+//고객센터 문의하기 Write
+import InquiryAddPage from './pages/client/ev/InquiryAddPage';
+
+//마이페이지 이용내역
+import MyPage1 from './pages/client/ev/MyPage1';
+//마이페이지 Elvis 캐시
+import MyPage2 from './pages/client/ev/MyPage2';
+
+//관제센터
+import ControlEvPage from './pages/client/ev/ControlPage';
+
 const App = () => {
   return (
     <Router>
@@ -103,6 +157,7 @@ const App = () => {
         <Route path="/admin/main/popupAdd" element={<PopupAddPage />} />
         <Route path="/admin/main/popupMod/:id" element={<PopupModPage />} />
         <Route path="/admin/main/popupInfo/:id" element={<PopupInfoPage />} />
+        <Route path="/admin/company/outline" element={<OutlinePage />} />
         <Route path="/admin/investInfo/officialNotice" element={<OfficialNoticePage />} />
         <Route path="/admin/investInfo/financial" element={<FinancialPage />} />
         <Route path="/admin/investInfo/financialAdd" element={<FinancialAddPage />} />
@@ -126,6 +181,9 @@ const App = () => {
         <Route path="/admin/employmentInfo/jobVacancyInfo/:id" element={<JobVacancyInfoPage />} />
         <Route path="/admin/customerService/contactUs" element={<ContactUsPage />} />
         <Route path="/admin/customerService/contactUsInfo/:id" element={<ContactUsInfoPage />} />
+        <Route path="/admin/role/mgmt" element={<MgmtPage />} />
+        <Route path="/admin/role/mgmtAdd" element={<MgmtAddPage />} />
+        <Route path="/admin/role/mgmtMod/:id" element={<MgmtModPage />} />
 
         <Route path="/" element={<MainPage />} />
         <Route path="/popup/:id" element={<ClientPopupPage />} />
@@ -168,6 +226,34 @@ const App = () => {
         <Route path="/policy/privacy" element={<PrivacyPage />} />
         <Route path="/policy/terms" element={<TermsPage />} />
         <Route path="/policy/location" element={<LocationPage />} />
+
+        <Route path="/ev/index" element={<IndexPage />} />
+
+        <Route path="/ev/find" element={<FindPage />} />
+
+        <Route path="/ev/login" element={<LoginEvPage />} />
+
+        <Route path="/ev/join1" element={<Join1Page />} />
+        <Route path="/ev/join2" element={<Join2Page />} />
+        <Route path="/ev/join3" element={<Join3Page />} />
+
+        <Route path="/ev/findId" element={<FindIdPage />} />
+        <Route path="/ev/findId2" element={<FindId2Page />} />
+
+        <Route path="/ev/findPw" element={<FindPwPage />} />
+        <Route path="/ev/rePw" element={<RepwPage />} />
+
+        <Route path="/ev/notice" element={<NoticePage />} />
+        <Route path="/ev/noticeInfo" element={<NoticeInfoPage />} />
+        <Route path="/ev/faq" element={<FaqPage />} />
+        <Route path="/ev/inquiry" element={<InquiryEvPage />} />
+        <Route path="/ev/inquiryInfo" element={<InquiryInfoPage />} />
+        <Route path="/ev/inquiryAdd" element={<InquiryAddPage />} />
+
+        <Route path="/ev/mypage1" element={<MyPage1 />} />
+        <Route path="/ev/mypage2" element={<MyPage2 />} />
+
+        <Route path="/ev/control" element={<ControlEvPage />} />
       </Routes>
     </Router>
   );

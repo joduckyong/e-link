@@ -26,6 +26,18 @@ const Menu = () => {
               </li>
             </ul>
           </li>
+          <li className={localStorage.getItem('menuNm') === 'COM' && 'on'}>
+            <NavLink to="/admin/company/outline" onClick={(e) => handleOnClick(e, 'COM')}>
+              회사소개
+            </NavLink>
+            <ul>
+              <li>
+                <NavLink to="/admin/company/outline" onClick={(e) => handleOnClick(e, 'COM')}>
+                  연혁
+                </NavLink>
+              </li>
+            </ul>
+          </li>
           <li
             className={
               (localStorage.getItem('menuNm') === 'FIN' || localStorage.getItem('menuNm') === 'OFF' || localStorage.getItem('menuNm') === 'ANN') &&
@@ -90,6 +102,18 @@ const Menu = () => {
               <li className={localStorage.getItem('menuNm') === 'CON' && 'on'}>
                 <NavLink to="/admin/customerService/contactUs" onClick={(e) => handleOnClick(e, 'CON')}>
                   Contact Us
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+          <li className={localStorage.getItem('menuNm') === 'MGM' && 'on'}>
+            <NavLink to="/admin/role/mgmt" onClick={(e) => handleOnClick(e, 'MGM')}>
+              관리자권한
+            </NavLink>
+            <ul>
+              <li>
+                <NavLink to="/admin/role/mgmt" onClick={(e) => handleOnClick(e, 'MGM')}>
+                  전체 관리자 목록
                 </NavLink>
               </li>
             </ul>

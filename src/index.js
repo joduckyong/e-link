@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store/index';
 import './styles/layout.css';
+import './styles/ev.css';
 import './styles/layout_1440.css';
 import './styles/layout_780.css';
 import './styles/paging.css';
