@@ -11,6 +11,8 @@ const MmgmtListForm = () => {
   const [checkItems, setCheckItems] = useState([]);
   const [page, setPage] = useState(1);
 
+  const userList = managerList.filter((el) => el.adminRole !== 'ADMIN');
+
   useEffect(() => {
     const newList = { pageIndex: page };
     dispatch(selectManager(newList));
@@ -28,6 +30,7 @@ const MmgmtListForm = () => {
       return;
     }
 
+    console.log(checkItems);
     if (window.confirm('삭제 하시겠습니까?')) {
       const newList = { ids: checkItems };
 
@@ -51,7 +54,8 @@ const MmgmtListForm = () => {
   const handleAllCheck = (checked) => {
     if (checked) {
       const idArray = [];
-      managerList.forEach((el) => idArray.push(el.adminNo));
+      
+      managerList.forEach((el) => el.adminRole !== 'ADMIN' && idArray.push(el.adminNo));
       setCheckItems(idArray);
     } else {
       setCheckItems([]);
@@ -100,7 +104,7 @@ const MmgmtListForm = () => {
       </h2>
       <div className="ban-list p0">
         <div className="btn-area position">
-          <button className="btn btn-red btn-120">선택삭제</button>
+          <button className="btn btn-red btn-120" onClick={onRemove}>선택삭제</button>
           <Link to="/admin/role/mgmtAdd">
             <button className="btn btn-blue btn-120">계정 생성</button>
           </Link>
@@ -124,7 +128,7 @@ const MmgmtListForm = () => {
                       type="checkbox"
                       id="allchk"
                       onChange={(e) => handleAllCheck(e.target.checked)}
-                      checked={checkItems.length === managerList.length ? true : false}
+                      checked={(checkItems.length === userList.length & userList.length > 0) ? true : false}
                     />
                     <span className="chkimg"></span>
                   </label>
@@ -145,7 +149,8 @@ const MmgmtListForm = () => {
                     type="checkbox"
                     id={`p01-${index}`}
                     onChange={(e) => handleSingleCheck(e.target.checked, list.adminNo)}
-                    checked={checkItems.includes(list.adminNo) ? true : false}
+                    checked={(checkItems.includes(list.adminNo) & list.adminRole !== 'ADMIN') ? true : false}
+                    disabled={list.adminRole === 'ADMIN' && true}
                   />
                     <span className="chkimg"></span>
                   </label>

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertManager } from 'store/managerReducer';
 
@@ -75,7 +75,9 @@ const MgmtAddForm = () => {
       <h2>상세 관리자 정보</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">
+          <Link to="/admin/role/mgmt">
           <button className="btn btn-white btn-120">취소</button>
+          </Link>
           <button className="btn btn-blue btn-120" onClick={onCreate}>저장</button>
         </div>
         <div className="ad-in">
@@ -83,12 +85,12 @@ const MgmtAddForm = () => {
             <div className="ad-tit">
               <div className="s-tit mt0">상태</div>
               <div className="radio">
-                <label for="active">
+                <label htmlFor="active">
                   <input type="radio" id="active" name="dist" onChange={(e) => setUseYn(e.target.value)} value="Y" checked={useYn === 'Y' ? true : false} />
                   <span className="rdimg"></span>활성화
                 </label>
-                <label for="inactive">
-                  <input type="radio" id="inactive" name="dist"onChange={(e) => setUseYn(e.target.value)} value="N" checked={useYn === 'N' ? true : false}/>
+                <label htmlFor="inactive">
+                  <input type="radio" id="inactive" name="dist" onChange={(e) => setUseYn(e.target.value)} value="N" checked={useYn === 'N' ? true : false} />
                   <span className="rdimg"></span>비활성화
                 </label>
               </div>
@@ -131,11 +133,11 @@ const MgmtAddForm = () => {
               <div className="radio-wp">
                 <p>메인페이지 관리</p>
                 <div className="radio">
-                  <label for="permit1">
+                  <label htmlFor="permit1">
                     <input type="radio" id="permit1" name="dist1" onChange={(e) => setRoleMain(e.target.value)} value="Y" checked={roleMain === 'Y' ? true : false} />
                     <span className="rdimg"></span>허용
                   </label>
-                  <label for="nopermit1">
+                  <label htmlFor="nopermit1">
                     <input type="radio" id="nopermit1" name="dist1" onChange={(e) => setRoleMain(e.target.value)} value="N" checked={roleMain === 'N' ? true : false} />
                     <span className="rdimg"></span>허용안함
                   </label>
@@ -144,11 +146,11 @@ const MgmtAddForm = () => {
               <div className="radio-wp">
                 <p>홍보센터 관리</p>
                 <div className="radio">
-                  <label for="permit2">
+                  <label htmlFor="permit2">
                     <input type="radio" id="permit2" name="dist2" onChange={(e) => setRoleProm(e.target.value)} value="Y" checked={roleProm === 'Y' ? true : false} />
                     <span className="rdimg"></span>허용
                   </label>
-                  <label for="nopermit2">
+                  <label htmlFor="nopermit2">
                     <input type="radio" id="nopermit2" name="dist2" onChange={(e) => setRoleProm(e.target.value)} value="N" checked={roleProm === 'N' ? true : false} />
                     <span className="rdimg"></span>허용안함
                   </label>
@@ -157,11 +159,11 @@ const MgmtAddForm = () => {
               <div className="radio-wp">
                 <p>Contact Us 관리</p>
                 <div className="radio">
-                  <label for="permit3">
+                  <label htmlFor="permit3">
                     <input type="radio" id="permit3" name="dist3" onChange={(e) => setRoleCont(e.target.value)} value="Y" checked={roleCont === 'Y' ? true : false} />
                     <span className="rdimg"></span>허용
                   </label>
-                  <label for="nopermit3">
+                  <label htmlFor="nopermit3">
                     <input type="radio" id="nopermit3" name="dist3" onChange={(e) => setRoleCont(e.target.value)} value="N" checked={roleCont === 'N' ? true : false} />
                     <span className="rdimg"></span>허용안함
                   </label>
@@ -170,11 +172,11 @@ const MgmtAddForm = () => {
               <div className="radio-wp">
                 <p>관리자권한 관리</p>
                 <div className="radio">
-                  <label for="permit4">
+                  <label htmlFor="permit4">
                     <input type="radio" id="permit4" name="dist4" onChange={(e) => setRoleMgm(e.target.value)} value="Y" checked={roleMgm === 'Y' ? true : false} />
                     <span className="rdimg"></span>허용
                   </label>
-                  <label for="nopermit4">
+                  <label htmlFor="nopermit4">
                     <input type="radio" id="nopermit4" name="dist4" onChange={(e) => setRoleMgm(e.target.value)} value="N" checked={roleMgm === 'N' ? true : false} />
                     <span className="rdimg"></span>허용안함
                   </label>
@@ -183,11 +185,11 @@ const MgmtAddForm = () => {
               <div className="radio-wp">
                 <p>투자정보 관리</p>
                 <div className="radio">
-                  <label for="permit5">
+                  <label htmlFor="permit5">
                     <input type="radio" id="permit5" name="dist5" onChange={(e) => setRoleInve(e.target.value)} value="Y" checked={roleInve === 'Y' ? true : false} />
                     <span className="rdimg"></span>허용
                   </label>
-                  <label for="nopermit5">
+                  <label htmlFor="nopermit5">
                     <input type="radio" id="nopermit5" name="dist5" onChange={(e) => setRoleInve(e.target.value)} value="N" checked={roleInve === 'N' ? true : false} />
                     <span className="rdimg"></span>허용안함
                   </label>
@@ -196,11 +198,11 @@ const MgmtAddForm = () => {
               <div className="radio-wp">
                 <p>채용정보 관리</p>
                 <div className="radio">
-                  <label for="permit6">
+                  <label htmlFor="permit6">
                     <input type="radio" id="permit6" name="dist6" onChange={(e) => setRoleJobs(e.target.value)} value="Y" checked={roleJobs === 'Y' ? true : false} />
                     <span className="rdimg"></span>허용
                   </label>
-                  <label for="nopermit6">
+                  <label htmlFor="nopermit6">
                     <input type="radio" id="nopermit6" name="dist6" onChange={(e) => setRoleJobs(e.target.value)} value="N" checked={roleJobs === 'N' ? true : false} />
                     <span className="rdimg"></span>허용안함
                   </label>
@@ -209,11 +211,11 @@ const MgmtAddForm = () => {
               <div className="radio-wp">
                 <p>EV충전소 관리</p>
                 <div className="radio">
-                  <label for="permit7">
+                  <label htmlFor="permit7">
                     <input type="radio" id="permit7" name="dist7" onChange={(e) => setRoleEvst(e.target.value)} value="Y" checked={roleEvst === 'Y' ? true : false} />
                     <span className="rdimg"></span>허용
                   </label>
-                  <label for="nopermit7">
+                  <label htmlFor="nopermit7">
                     <input type="radio" id="nopermit7" name="dist7" onChange={(e) => setRoleEvst(e.target.value)} value="N" checked={roleEvst === 'N' ? true : false} />
                     <span className="rdimg"></span>허용안함
                   </label>
