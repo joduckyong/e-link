@@ -31,7 +31,7 @@ const Menu = () => {
               회사소개
             </NavLink>
             <ul>
-              <li>
+              <li className={localStorage.getItem('menuNm') === 'COM' && 'on'}>
                 <NavLink to="/admin/company/outline" onClick={(e) => handleOnClick(e, 'COM')}>
                   연혁
                 </NavLink>
@@ -111,7 +111,7 @@ const Menu = () => {
               관리자권한
             </NavLink>
             <ul>
-              <li>
+              <li className={localStorage.getItem('menuNm') === 'MGM' && 'on'}>
                 <NavLink to="/admin/role/mgmt" onClick={(e) => handleOnClick(e, 'MGM')}>
                   전체 관리자 목록
                 </NavLink>
