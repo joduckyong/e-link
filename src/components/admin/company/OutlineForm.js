@@ -1,5 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectOutline, insertOutline } from 'store/outlineReducer';
+import { useEffect } from 'react';
 
 const AddYearBox = ({ 
     yearCountList
@@ -13,6 +16,7 @@ const AddYearBox = ({
     , dayRef
     , contentRef
   }) => {
+
   return (
     <>
       {yearCountList.map((yindex, yidx) => (
@@ -34,7 +38,7 @@ const AddYearBox = ({
                   <input type="text" placeholder="내용을 입력해주세요." ref={(e) => {contentRef.current[yidx+'_'+midx] = e}} />
                 </div>
                 <div className="btn-wp">
-                  <button className="gray-btn" onClick={onCreate}>등록</button>
+                  <button className="gray-btn" onClick={(e) => onCreate(e, yidx, midx)}>등록</button>
                   <button className="red-btn" onClick={(e) => onDeleteMonthBox(e, yidx, mindex)}>삭제</button>
                 </div>
               </li>
@@ -57,8 +61,50 @@ const OutlineForm = () => {
   const dayRef = useRef({});
   const contentRef = useRef({});
 
-  const onCreate = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const outlineList = useSelector((state) => state.outlineReducer.data);
+
+  console.log(outlineList);
+
+  useEffect(() => {
+    dispatch(selectOutline());
+  }, dispatch);
+
+  const onCreate = async (e, yidx, midx) => {
+    e.preventDefault();
+
+    const companyYear = yearRef.current[yidx].value;
+    const companyMonth = monthRef.current[yidx+'_'+midx].value;
+    const companyDay = dayRef.current[yidx+'_'+midx].value;
+    const companyContents = contentRef.current[yidx+'_'+midx].value;
+
+    if (companyYear === '') {
+      alert('연도를 입력하세요');
+      yearRef.current[yidx].focus();
+      return;
+    }
+    if (companyMonth === '') {
+      alert('월을 입력하세요');
+      monthRef.current[yidx+'_'+midx].focus();
+      return;
+    }
+    if (companyDay === '') {
+      alert('일을 입력하세요');
+      dayRef.current[yidx+'_'+midx].focus();
+      return;
+    }
+    if (companyContents === '') {
+      alert('내용을 입력하세요');
+      contentRef.current[yidx+'_'+midx].focus();
+      return;
+    }
+    if (window.confirm('등록 하시겠습니까?')) {
+      const newList = { companyYear: companyYear, companyMonth: companyMonth, companyDay: companyDay, companyContents: companyContents };
+      await dispatch(insertOutline(newList));
+      return navigate('/admin/company/outline');
+    }
   }
   
   const onAddYearBox = () => {

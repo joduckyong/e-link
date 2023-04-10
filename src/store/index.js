@@ -4,6 +4,7 @@ import { popupReducer } from './popupReducer';
 import { boardReducer } from './boardReducer';
 import { contactUsReducer } from './contactUsReducer';
 import { managerReducer } from './managerReducer';
+import { outlineReducer } from './outlineReducer';
 import logger from 'redux-logger';
 
 const reducer = combineReducers({ 
@@ -12,6 +13,7 @@ const reducer = combineReducers({
   , boardReducer: boardReducer.reducer
   , contactUsReducer: contactUsReducer.reducer 
   , managerReducer: managerReducer.reducer 
+  , outlineReducer: outlineReducer.reducer 
 });
 
 export default configureStore({
