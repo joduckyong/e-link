@@ -1,37 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import Pagination from 'react-js-pagination';
 
-const AddYearBox = ({ yearCountList, monthCountList, onDeleteYearBox, onAddMonthBox, onDeleteMonthBox }) => {
+const AddYearBox = ({ 
+    yearCountList
+    , monthCountList
+    , onDeleteYearBox
+    , onAddMonthBox
+    , onDeleteMonthBox
+    , onCreate
+    , yearRef
+    , monthRef
+    , dayRef
+    , contentRef
+  }) => {
   return (
     <>
       {yearCountList.map((yindex, yidx) => (
         <li key={yindex} data-yindex={yindex}>
-          <div class="year-hd">
+          <div className="year-hd">
             <NavLink to="" onClick={(e) => onDeleteYearBox(e, yindex)}>
-              <button class="delete">
+              <button className="delete">
                 <img src="/img/admin/year-close.png" alt="삭제" />
               </button>
             </NavLink>
-            <input type="text" placeholder="yyyy" maxlength="4" />
+            <input type="text" placeholder="yyyy" maxLength="4" ref={(e) => {yearRef.current[yidx] = e}} />
           </div>
-          <ul class="year-bd">
+          <ul className="year-bd">
             {monthCountList[yidx].map((mindex, midx) => (
-              <li class="active" key={mindex} data-mindex={mindex}>
-                <div class="input-wp">
-                  <input type="text" placeholder="mm" maxlength="2" />
-                  <input type="text" placeholder="dd" maxlength="2" />
-                  <input type="text" placeholder="내용을 입력해주세요." />
+              <li className="active" key={mindex} data-mindex={mindex}>
+                <div className="input-wp">
+                  <input type="text" placeholder="mm" maxLength="2" ref={(e) => {monthRef.current[yidx+'_'+midx] = e}} />
+                  <input type="text" placeholder="dd" maxLength="2" ref={(e) => {dayRef.current[yidx+'_'+midx] = e}} />
+                  <input type="text" placeholder="내용을 입력해주세요." ref={(e) => {contentRef.current[yidx+'_'+midx] = e}} />
                 </div>
-                <div class="btn-wp">
-                  <button class="gray-btn">등록</button>
-                  <button class="red-btn" onClick={(e) => onDeleteMonthBox(e, yidx, mindex)}>삭제</button>
+                <div className="btn-wp">
+                  <button className="gray-btn" onClick={onCreate}>등록</button>
+                  <button className="red-btn" onClick={(e) => onDeleteMonthBox(e, yidx, mindex)}>삭제</button>
                 </div>
               </li>
             ))}
           </ul>
           
-          <button class="add-btn" onClick={(e) => onAddMonthBox(e, yidx)}>+ 내용추가</button>
+          <button className="add-btn" onClick={(e) => onAddMonthBox(e, yidx)}>+ 내용추가</button>
         </li>
       ))}
     </>
@@ -39,15 +49,18 @@ const AddYearBox = ({ yearCountList, monthCountList, onDeleteYearBox, onAddMonth
 };
 
 const OutlineForm = () => {
-  const totalCount = 0;
-  const [page, setPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(1);
   const [yearCountList, setYearCountList] = useState([0]);
   const [monthCountList, setMonthCountList] = useState([[0]]);
-  
-  const pageClick = (page) => {
-    setPage(page);
-  };
+  const yearRef = useRef([]);
+  const monthRef = useRef({});
+  const dayRef = useRef({});
+  const contentRef = useRef({});
 
+  const onCreate = () => {
+
+  }
+  
   const onAddYearBox = () => {
     let yearCountArr = [...yearCountList];
     let monthCountArr = [...monthCountList];
@@ -57,6 +70,7 @@ const OutlineForm = () => {
     monthCountArr.push([0]);
     setYearCountList(yearCountArr);
     setMonthCountList(monthCountArr);
+    setTotalCount(totalCount + 1);
   };
 
   const onDeleteYearBox = (e, index) => {
@@ -65,6 +79,7 @@ const OutlineForm = () => {
     let monthCountArr = monthCountList.filter((_, idx) => idx !== index);
     setYearCountList(countArr);
     setMonthCountList(monthCountArr);
+    setTotalCount(totalCount - 1);
   };
 
   const onAddMonthBox = (e, index) => {
@@ -82,7 +97,7 @@ const OutlineForm = () => {
     e.preventDefault();
     let monthCountArr = [...monthCountList];
     let monthForYearCountArr = monthCountArr[yidx].filter((i) => i !== mindex);
-    if(monthForYearCountArr.length == 0){
+    if(monthForYearCountArr.length === 0){
       return;
     }
     monthCountArr[yidx] = monthForYearCountArr;
@@ -90,37 +105,31 @@ const OutlineForm = () => {
   };
 
   return (
-    <div class="a-content">
+    <div className="a-content">
       <h2>
-        연혁<span>총 6건</span>
+        연혁<span>총 {totalCount}건</span>
       </h2>
-      <div class="ban-list p0">
-        <div class="btn-area position">
+      <div className="ban-list p0">
+        <div className="btn-area position">
           <NavLink to="" className="btn-add" onClick={onAddYearBox}>
-            <button class="btn btn-blue btn-120">연도생성</button>
+            <button className="btn btn-blue btn-120">연도생성</button>
           </NavLink>
         </div>
-        <div class="table-wrap">
-          <ul class="year-wp">
+        <div className="table-wrap">
+          <ul className="year-wp">
             <AddYearBox
               yearCountList={yearCountList}
               monthCountList={monthCountList}
               onDeleteYearBox={onDeleteYearBox}
               onAddMonthBox={onAddMonthBox}
               onDeleteMonthBox={onDeleteMonthBox}
+              onCreate={onCreate}
+              yearRef={yearRef}
+              monthRef={monthRef}
+              dayRef={dayRef}
+              contentRef={contentRef}
             />
           </ul>
-        </div>
-        <div className="paging">
-          <Pagination
-            activePage={page}
-            itemsCountPerPage={10}
-            totalItemsCount={totalCount}
-            pageRangeDisplayed={10}
-            prevPageText={'‹'}
-            nextPageText={'›'}
-            onChange={pageClick}
-          />
         </div>
       </div>
     </div>
