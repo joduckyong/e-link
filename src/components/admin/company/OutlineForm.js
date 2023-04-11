@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOutline, insertOutline } from 'store/outlineReducer';
+import { selectOutline, insertOutline, updateOutline, deleteOutlineIds } from 'store/outlineReducer';
 import { useEffect } from 'react';
 
 const AddYearBox = ({ 
@@ -9,12 +9,14 @@ const AddYearBox = ({
     , onAddMonthBox
     , onDeleteMonthBox
     , onCreate
+    , onEdit
     , onChange
     , onChangeYear
     , yearRef
     , monthRef
     , dayRef
     , contentRef
+    , modBtnRef
     , yearObj
     , inputs
   }) => {
@@ -34,13 +36,13 @@ const AddYearBox = ({
             {yearObj[year].map((item, midx) => (
               <li className="active" key={year+'_'+midx} data-mindex={year+'_'+midx}>
                 <div className="input-wp">
-                  <input type="text" placeholder="mm" maxLength="2" name="companyMonth" value={item.companyMonth} ref={(e) => {monthRef.current[year+'_'+midx] = e}} onChange={(e) => onChange(e, year, midx)} disabled={item.companyMonth ? true : false} />
-                  <input type="text" placeholder="dd" maxLength="2" name="companyDay" value={item.companyDay} ref={(e) => {dayRef.current[year+'_'+midx] = e}} onChange={(e) => onChange(e, year, midx)} disabled={item.companyDay ? true : false} />
-                  <input type="text" placeholder="내용을 입력해주세요." name="companyContents" value={item.companyContents} ref={(e) => {contentRef.current[year+'_'+midx] = e}} onChange={(e) => onChange(e, year, midx)} disabled={item.companyContents ? true : false} />
+                  <input type="text" placeholder="mm" maxLength="2" name="companyMonth" value={item.companyMonth} ref={(e) => {monthRef.current[year+'_'+midx] = e}} onChange={(e) => onChange(e, year, midx)} disabled={item.isInserted ? true : false} />
+                  <input type="text" placeholder="dd" maxLength="2" name="companyDay" value={item.companyDay} ref={(e) => {dayRef.current[year+'_'+midx] = e}} onChange={(e) => onChange(e, year, midx)} disabled={item.isInserted ? true : false} />
+                  <input type="text" placeholder="내용을 입력해주세요." name="companyContents" value={item.companyContents} ref={(e) => {contentRef.current[year+'_'+midx] = e}} onChange={(e) => onChange(e, year, midx)} disabled={item.isInserted ? true : false} />
                 </div>
                 <div className="btn-wp">
-                {item.companyMonth ? (
-                  <button className="white-btn" onClick={(e) => onCreate(e, year, midx)}>수정</button>
+                {item.isInserted ? (
+                  <button className="white-btn" onClick={(e) => onEdit(e, year, midx, item.companyId)} ref={(e) => {modBtnRef.current[year+'_'+midx] = e}}>수정</button>
                 ):
                 (
                   <button className="gray-btn" onClick={(e) => onCreate(e, year, midx)}>등록</button>
@@ -60,41 +62,36 @@ const AddYearBox = ({
 };
 
 const OutlineForm = () => {
-  const [totalCount, setTotalCount] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
   const [yearObj, setYearObj] = useState({});
   const [inputs, setInputs] = useState({});
   const yearRef = useRef([]);
   const monthRef = useRef({});
   const dayRef = useRef({});
   const contentRef = useRef({});
+  const modBtnRef = useRef([]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const outlineList = useSelector((state) => state.outlineReducer.data);
+  // const totalCount = useSelector((state) => state.boardReducer.totalCount);
 
   useEffect(() => {
     dispatch(selectOutline());
-  }, dispatch);
+  }, [dispatch]);
 
   useEffect(() => {
     const onInitBox = () => {
-      let yearCountArr = [];
-      let yearCount = yearCountArr.slice(-1)[0] ? yearCountArr.slice(-1)[0] : 0;
-
       let obj = {};
       outlineList.forEach((item, idx) => {
-        // if(!Object.keys(obj).includes(item.companyYear)){
-        //   yearCountArr.push(yearCount);
-        //   yearCount += 1;
-        //   obj[item.companyYear] = [];
-        // }
-
         let monthData = {
-          companyYear: item.companyYear
+          companyId: item.companyId
+          , companyYear: item.companyYear
           , companyMonth: item.companyMonth
           , companyDay: item.companyDay
           , companyContents: item.companyContents
+          , isInserted: true
         }
 
         if(!Object.keys(obj).includes(item.companyYear)){
@@ -102,26 +99,10 @@ const OutlineForm = () => {
         }else{
           obj[item.companyYear].push(monthData);
         }
-
-        // setYearList(object.keys(obj).reverse());
-        // setMonthList(object.keys(obj).reverse());
         setYearObj(obj);
-
-
-      //   let monthForYearCountArr = obj[item.companyYear];
-      //   let monthCount = monthForYearCountArr.slice(-1)[0] ? monthForYearCountArr.slice(-1)[0] : 0;
-      //   monthForYearCountArr.push(monthForYearCountArr.length);
-      //   obj[item.companyYear] = monthForYearCountArr;
       });
 
-      // let monthCountArr = [];
-      // Object.keys(obj).forEach((item) => {
-      //   monthCountArr.push(obj[item]);
-      // });
-
-      // setYearCountList(yearCountArr);
-      // setMonthCountList(monthCountArr);
-      // setTotalCount(Object.keys(obj).length);
+      setTotalCount(outlineList.length)
 
     }
 
@@ -148,7 +129,7 @@ const OutlineForm = () => {
 
   };
 
-  const onCreate = async (e, year, midx) => {
+  const onCreate = (e, year, midx) => {
     e.preventDefault();
 
     const companyYear = yearRef.current[year].value;
@@ -178,7 +159,55 @@ const OutlineForm = () => {
     }
     if (window.confirm('등록 하시겠습니까?')) {
       const newList = { companyYear: companyYear, companyMonth: companyMonth, companyDay: companyDay, companyContents: companyContents };
-      await dispatch(insertOutline(newList));
+      dispatch(insertOutline(newList)).then(() => {
+        dispatch(selectOutline());
+      });
+    }
+  }
+
+  const onEdit = async (e, year, midx, companyId) => {
+    e.preventDefault();
+
+    if(modBtnRef.current[year+'_'+midx].className === 'white-btn'){
+      monthRef.current[year+'_'+midx].disabled = false;
+      dayRef.current[year+'_'+midx].disabled = false;
+      contentRef.current[year+'_'+midx].disabled = false;
+      modBtnRef.current[year+'_'+midx].className = 'gray-btn';
+      return;
+    }
+
+    const companyYear = yearRef.current[year].value;
+    const companyMonth = monthRef.current[year+'_'+midx].value;
+    const companyDay = dayRef.current[year+'_'+midx].value;
+    const companyContents = contentRef.current[year+'_'+midx].value;
+
+    if (companyYear === '') {
+      alert('연도를 입력하세요');
+      yearRef.current[year].focus();
+      return;
+    }
+    if (companyMonth === '') {
+      alert('월을 입력하세요');
+      monthRef.current[year+'_'+midx].focus();
+      return;
+    }
+    if (companyDay === '') {
+      alert('일을 입력하세요');
+      dayRef.current[year+'_'+midx].focus();
+      return;
+    }
+    if (companyContents === '') {
+      alert('내용을 입력하세요');
+      contentRef.current[year+'_'+midx].focus();
+      return;
+    }
+    if (window.confirm('수정 하시겠습니까?')) {
+      const newList = { companyId: companyId, companyYear: companyYear, companyMonth: companyMonth, companyDay: companyDay, companyContents: companyContents };
+      await dispatch(updateOutline(newList));
+      monthRef.current[year+'_'+midx].disabled = true;
+      dayRef.current[year+'_'+midx].disabled = true;
+      contentRef.current[year+'_'+midx].disabled = true;
+      modBtnRef.current[year+'_'+midx].className = 'white-btn';
       return navigate('/admin/company/outline');
     }
   }
@@ -199,30 +228,33 @@ const OutlineForm = () => {
 
     setYearObj(yObj);
     setInputs({});
-    setTotalCount(Object.keys(yObj).length);
+    // setTotalCount(Object.keys(yObj).length);
 
-    // let yearCountArr = [...yearCountList];
-    // let monthCountArr = [...monthCountList];
-    // let yearCount = yearCountArr.slice(-1)[0] ? yearCountArr.slice(-1)[0] : 0;
-    // yearCount += 1;
-    // yearCountArr.push(yearCount);
-    // monthCountArr.push([0]);
-    // setYearCountList(yearCountArr);
-    // setMonthCountList(monthCountArr);
-    // setTotalCount(totalCount + 1);
   };
 
   const onDeleteYearBox = (e, year) => {
     e.preventDefault();
-    let yObj = {...yearObj};
-    delete yObj[year];
-    setYearObj(yObj);
-    setTotalCount(Object.keys(yObj).length);
-    // let countArr = yearCountList.filter((i) => i !== index);
-    // let monthCountArr = monthCountList.filter((_, idx) => idx !== index);
-    // setYearCountList(countArr);
-    // setMonthCountList(monthCountArr);
-    // setTotalCount(totalCount - 1);
+    if (window.confirm('삭제 하시겠습니까?')) {
+      let checkItems = [];
+      let yObj = {...yearObj};
+      yObj[year].forEach((item) => {
+        checkItems.push(item.companyId);
+      });
+      
+
+      if(checkItems[0]){  //DB에 저장된 데이터 삭제
+        const newList = { ids: checkItems };
+
+        dispatch(deleteOutlineIds(newList)).then(() => {
+          dispatch(selectOutline());
+        });
+      }else{  //DB에 저장 안된 상태에서는 화면에서 행만 삭제
+        delete yObj[year];
+        setYearObj(yObj);
+      }
+      
+    }
+   
   };
 
   const onAddMonthBox = (e, year) => {
@@ -236,41 +268,38 @@ const OutlineForm = () => {
       , companyContents: ''
     }
 
-    // console.log(yObj);
     yObj[year].push(monthData);
 
     setYearObj(yObj);
 
-   
-    // let monthCountArr = [...monthCountList];
-    // let monthForYearCountArr = monthCountArr[index];
-    // let monthCount = monthForYearCountArr.slice(-1)[0] ? monthForYearCountArr.slice(-1)[0] : 0;
-    // monthCount += 1;
-    // monthForYearCountArr.push(monthCount);
-    // monthCountArr[index] = monthForYearCountArr;
-    // setMonthCountList(monthCountArr);
   }
 
   const onDeleteMonthBox = (e, year, midx) => {
     e.preventDefault();
     let yObj = {...yearObj};
 
-    if(Object.keys(yObj[year]).length === 1){
-      return;
+    if (window.confirm('삭제 하시겠습니까?')) {
+      if(Object.keys(yObj[year]).length === 1){
+        return;
+      }
+
+      let checkItems = [yObj[year][midx].companyId];
+
+      if(checkItems[0]){  //DB에 저장된 데이터 삭제
+        const newList = { ids: checkItems };
+
+        dispatch(deleteOutlineIds(newList)).then(() => {
+          dispatch(selectOutline());
+        });
+      }else{  //DB에 저장 안된 상태에서는 화면에서 행만 삭제
+        yObj[year] = yObj[year].filter((i, idx) => idx !== midx);
+        setYearObj(yObj);
+      }
+
+      
+
+      
     }
-
-    yObj[year] = yObj[year].filter((i, idx) => idx !== midx);
-
-    setYearObj(yObj);
-
-
-    // let monthCountArr = [...monthCountList];
-    // let monthForYearCountArr = monthCountArr[yidx].filter((i) => i !== mindex);
-    // if(monthForYearCountArr.length === 0){
-    //   return;
-    // }
-    // monthCountArr[yidx] = monthForYearCountArr;
-    // setMonthCountList(monthCountArr);
   };
 
   return (
@@ -291,12 +320,14 @@ const OutlineForm = () => {
               onAddMonthBox={onAddMonthBox}
               onDeleteMonthBox={onDeleteMonthBox}
               onCreate={onCreate}
+              onEdit={onEdit}
               onChange={onChange}
               onChangeYear={onChangeYear}
               yearRef={yearRef}
               monthRef={monthRef}
               dayRef={dayRef}
               contentRef={contentRef}
+              modBtnRef={modBtnRef}
               yearObj={yearObj}
               inputs={inputs}
             />
