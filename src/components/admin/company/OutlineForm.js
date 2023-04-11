@@ -5,47 +5,54 @@ import { selectOutline, insertOutline } from 'store/outlineReducer';
 import { useEffect } from 'react';
 
 const AddYearBox = ({ 
-    yearCountList
-    , monthCountList
-    , onDeleteYearBox
+    onDeleteYearBox
     , onAddMonthBox
     , onDeleteMonthBox
     , onCreate
+    , onChange
+    , onChangeYear
     , yearRef
     , monthRef
     , dayRef
     , contentRef
+    , yearObj
+    , inputs
   }) => {
-
   return (
     <>
-      {yearCountList.map((yindex, yidx) => (
-        <li key={yindex} data-yindex={yindex}>
+      {Object.keys(yearObj).reverse().map((year, yidx) => (
+        <li key={year} data-yindex={year}>
           <div className="year-hd">
-            <NavLink to="" onClick={(e) => onDeleteYearBox(e, yindex)}>
+            <NavLink to="" onClick={(e) => onDeleteYearBox(e, year)}>
               <button className="delete">
                 <img src="/img/admin/year-close.png" alt="삭제" />
               </button>
             </NavLink>
-            <input type="text" placeholder="yyyy" maxLength="4" ref={(e) => {yearRef.current[yidx] = e}} />
+            <input type="text" placeholder="yyyy" maxLength="4" name={"companyYear"+yidx}  value={year.indexOf('new_') > -1 ? inputs["companyYear"+yidx] : year} ref={(e) => {yearRef.current[year] = e}} onChange={(e) => onChangeYear(e)} disabled={year.indexOf('new_') > -1 ? false : true}/>
           </div>
           <ul className="year-bd">
-            {monthCountList[yidx].map((mindex, midx) => (
-              <li className="active" key={mindex} data-mindex={mindex}>
+            {yearObj[year].map((item, midx) => (
+              <li className="active" key={year+'_'+midx} data-mindex={year+'_'+midx}>
                 <div className="input-wp">
-                  <input type="text" placeholder="mm" maxLength="2" ref={(e) => {monthRef.current[yidx+'_'+midx] = e}} />
-                  <input type="text" placeholder="dd" maxLength="2" ref={(e) => {dayRef.current[yidx+'_'+midx] = e}} />
-                  <input type="text" placeholder="내용을 입력해주세요." ref={(e) => {contentRef.current[yidx+'_'+midx] = e}} />
+                  <input type="text" placeholder="mm" maxLength="2" name="companyMonth" value={item.companyMonth} ref={(e) => {monthRef.current[year+'_'+midx] = e}} onChange={(e) => onChange(e, year, midx)} disabled={item.companyMonth ? true : false} />
+                  <input type="text" placeholder="dd" maxLength="2" name="companyDay" value={item.companyDay} ref={(e) => {dayRef.current[year+'_'+midx] = e}} onChange={(e) => onChange(e, year, midx)} disabled={item.companyDay ? true : false} />
+                  <input type="text" placeholder="내용을 입력해주세요." name="companyContents" value={item.companyContents} ref={(e) => {contentRef.current[year+'_'+midx] = e}} onChange={(e) => onChange(e, year, midx)} disabled={item.companyContents ? true : false} />
                 </div>
                 <div className="btn-wp">
-                  <button className="gray-btn" onClick={(e) => onCreate(e, yidx, midx)}>등록</button>
-                  <button className="red-btn" onClick={(e) => onDeleteMonthBox(e, yidx, mindex)}>삭제</button>
+                {item.companyMonth ? (
+                  <button className="white-btn" onClick={(e) => onCreate(e, year, midx)}>수정</button>
+                ):
+                (
+                  <button className="gray-btn" onClick={(e) => onCreate(e, year, midx)}>등록</button>
+                )
+                }
+                  <button className="red-btn" onClick={(e) => onDeleteMonthBox(e, year, midx)}>삭제</button>
                 </div>
               </li>
             ))}
           </ul>
           
-          <button className="add-btn" onClick={(e) => onAddMonthBox(e, yidx)}>+ 내용추가</button>
+          <button className="add-btn" onClick={(e) => onAddMonthBox(e, year)}>+ 내용추가</button>
         </li>
       ))}
     </>
@@ -54,8 +61,8 @@ const AddYearBox = ({
 
 const OutlineForm = () => {
   const [totalCount, setTotalCount] = useState(1);
-  const [yearCountList, setYearCountList] = useState([0]);
-  const [monthCountList, setMonthCountList] = useState([[0]]);
+  const [yearObj, setYearObj] = useState({});
+  const [inputs, setInputs] = useState({});
   const yearRef = useRef([]);
   const monthRef = useRef({});
   const dayRef = useRef({});
@@ -66,38 +73,107 @@ const OutlineForm = () => {
 
   const outlineList = useSelector((state) => state.outlineReducer.data);
 
-  console.log(outlineList);
-
   useEffect(() => {
     dispatch(selectOutline());
   }, dispatch);
 
-  const onCreate = async (e, yidx, midx) => {
+  useEffect(() => {
+    const onInitBox = () => {
+      let yearCountArr = [];
+      let yearCount = yearCountArr.slice(-1)[0] ? yearCountArr.slice(-1)[0] : 0;
+
+      let obj = {};
+      outlineList.forEach((item, idx) => {
+        // if(!Object.keys(obj).includes(item.companyYear)){
+        //   yearCountArr.push(yearCount);
+        //   yearCount += 1;
+        //   obj[item.companyYear] = [];
+        // }
+
+        let monthData = {
+          companyYear: item.companyYear
+          , companyMonth: item.companyMonth
+          , companyDay: item.companyDay
+          , companyContents: item.companyContents
+        }
+
+        if(!Object.keys(obj).includes(item.companyYear)){
+          obj[item.companyYear] = [monthData];
+        }else{
+          obj[item.companyYear].push(monthData);
+        }
+
+        // setYearList(object.keys(obj).reverse());
+        // setMonthList(object.keys(obj).reverse());
+        setYearObj(obj);
+
+
+      //   let monthForYearCountArr = obj[item.companyYear];
+      //   let monthCount = monthForYearCountArr.slice(-1)[0] ? monthForYearCountArr.slice(-1)[0] : 0;
+      //   monthForYearCountArr.push(monthForYearCountArr.length);
+      //   obj[item.companyYear] = monthForYearCountArr;
+      });
+
+      // let monthCountArr = [];
+      // Object.keys(obj).forEach((item) => {
+      //   monthCountArr.push(obj[item]);
+      // });
+
+      // setYearCountList(yearCountArr);
+      // setMonthCountList(monthCountArr);
+      // setTotalCount(Object.keys(obj).length);
+
+    }
+
+    onInitBox();
+    
+  }, [outlineList]);
+
+  const onChangeYear = (e) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs, 
+      [name]: value
+    })
+  }
+
+  const onChange = (e, year, midx) => {
+
+    const { value, name } = e.target;
+    let yObj = {...yearObj};
+    let mObj = yObj[year][midx];
+    yObj[year][midx] = {...mObj, companyYear: year, [name]: value};
+    
+    setYearObj(yObj)
+
+  };
+
+  const onCreate = async (e, year, midx) => {
     e.preventDefault();
 
-    const companyYear = yearRef.current[yidx].value;
-    const companyMonth = monthRef.current[yidx+'_'+midx].value;
-    const companyDay = dayRef.current[yidx+'_'+midx].value;
-    const companyContents = contentRef.current[yidx+'_'+midx].value;
+    const companyYear = yearRef.current[year].value;
+    const companyMonth = monthRef.current[year+'_'+midx].value;
+    const companyDay = dayRef.current[year+'_'+midx].value;
+    const companyContents = contentRef.current[year+'_'+midx].value;
 
     if (companyYear === '') {
       alert('연도를 입력하세요');
-      yearRef.current[yidx].focus();
+      yearRef.current[year].focus();
       return;
     }
     if (companyMonth === '') {
       alert('월을 입력하세요');
-      monthRef.current[yidx+'_'+midx].focus();
+      monthRef.current[year+'_'+midx].focus();
       return;
     }
     if (companyDay === '') {
       alert('일을 입력하세요');
-      dayRef.current[yidx+'_'+midx].focus();
+      dayRef.current[year+'_'+midx].focus();
       return;
     }
     if (companyContents === '') {
       alert('내용을 입력하세요');
-      contentRef.current[yidx+'_'+midx].focus();
+      contentRef.current[year+'_'+midx].focus();
       return;
     }
     if (window.confirm('등록 하시겠습니까?')) {
@@ -108,46 +184,93 @@ const OutlineForm = () => {
   }
   
   const onAddYearBox = () => {
-    let yearCountArr = [...yearCountList];
-    let monthCountArr = [...monthCountList];
-    let yearCount = yearCountArr.slice(-1)[0] ? yearCountArr.slice(-1)[0] : 0;
-    yearCount += 1;
-    yearCountArr.push(yearCount);
-    monthCountArr.push([0]);
-    setYearCountList(yearCountArr);
-    setMonthCountList(monthCountArr);
-    setTotalCount(totalCount + 1);
+    let yObj = {...yearObj};
+    let newKey = Object.keys(yObj).filter((item) => item.indexOf('new_') > -1).sort();
+    let maxNewKeyStr = newKey.slice(-1)[0] ? newKey.slice(-1)[0] : 'new_0';
+    let newKeyNo = Number(maxNewKeyStr.substring(4));
+    newKeyNo += 1;
+    let addNewKeyStr = 'new_'+newKeyNo;
+    yObj[addNewKeyStr] = [{
+      companyYear: ''
+      , companyMonth: ''
+      , companyDay: ''
+      , companyContents: ''
+    }];
+
+    setYearObj(yObj);
+    setInputs({});
+    setTotalCount(Object.keys(yObj).length);
+
+    // let yearCountArr = [...yearCountList];
+    // let monthCountArr = [...monthCountList];
+    // let yearCount = yearCountArr.slice(-1)[0] ? yearCountArr.slice(-1)[0] : 0;
+    // yearCount += 1;
+    // yearCountArr.push(yearCount);
+    // monthCountArr.push([0]);
+    // setYearCountList(yearCountArr);
+    // setMonthCountList(monthCountArr);
+    // setTotalCount(totalCount + 1);
   };
 
-  const onDeleteYearBox = (e, index) => {
+  const onDeleteYearBox = (e, year) => {
     e.preventDefault();
-    let countArr = yearCountList.filter((i) => i !== index);
-    let monthCountArr = monthCountList.filter((_, idx) => idx !== index);
-    setYearCountList(countArr);
-    setMonthCountList(monthCountArr);
-    setTotalCount(totalCount - 1);
+    let yObj = {...yearObj};
+    delete yObj[year];
+    setYearObj(yObj);
+    setTotalCount(Object.keys(yObj).length);
+    // let countArr = yearCountList.filter((i) => i !== index);
+    // let monthCountArr = monthCountList.filter((_, idx) => idx !== index);
+    // setYearCountList(countArr);
+    // setMonthCountList(monthCountArr);
+    // setTotalCount(totalCount - 1);
   };
 
-  const onAddMonthBox = (e, index) => {
+  const onAddMonthBox = (e, year) => {
     e.preventDefault();
-    let monthCountArr = [...monthCountList];
-    let monthForYearCountArr = monthCountArr[index];
-    let monthCount = monthForYearCountArr.slice(-1)[0] ? monthForYearCountArr.slice(-1)[0] : 0;
-    monthCount += 1;
-    monthForYearCountArr.push(monthCount);
-    monthCountArr[index] = monthForYearCountArr;
-    setMonthCountList(monthCountArr);
+    let yObj = {...yearObj};
+
+    let monthData = {
+      companyYear: ''
+      , companyMonth: ''
+      , companyDay: ''
+      , companyContents: ''
+    }
+
+    // console.log(yObj);
+    yObj[year].push(monthData);
+
+    setYearObj(yObj);
+
+   
+    // let monthCountArr = [...monthCountList];
+    // let monthForYearCountArr = monthCountArr[index];
+    // let monthCount = monthForYearCountArr.slice(-1)[0] ? monthForYearCountArr.slice(-1)[0] : 0;
+    // monthCount += 1;
+    // monthForYearCountArr.push(monthCount);
+    // monthCountArr[index] = monthForYearCountArr;
+    // setMonthCountList(monthCountArr);
   }
 
-  const onDeleteMonthBox = (e, yidx, mindex) => {
+  const onDeleteMonthBox = (e, year, midx) => {
     e.preventDefault();
-    let monthCountArr = [...monthCountList];
-    let monthForYearCountArr = monthCountArr[yidx].filter((i) => i !== mindex);
-    if(monthForYearCountArr.length === 0){
+    let yObj = {...yearObj};
+
+    if(Object.keys(yObj[year]).length === 1){
       return;
     }
-    monthCountArr[yidx] = monthForYearCountArr;
-    setMonthCountList(monthCountArr);
+
+    yObj[year] = yObj[year].filter((i, idx) => idx !== midx);
+
+    setYearObj(yObj);
+
+
+    // let monthCountArr = [...monthCountList];
+    // let monthForYearCountArr = monthCountArr[yidx].filter((i) => i !== mindex);
+    // if(monthForYearCountArr.length === 0){
+    //   return;
+    // }
+    // monthCountArr[yidx] = monthForYearCountArr;
+    // setMonthCountList(monthCountArr);
   };
 
   return (
@@ -164,16 +287,18 @@ const OutlineForm = () => {
         <div className="table-wrap">
           <ul className="year-wp">
             <AddYearBox
-              yearCountList={yearCountList}
-              monthCountList={monthCountList}
               onDeleteYearBox={onDeleteYearBox}
               onAddMonthBox={onAddMonthBox}
               onDeleteMonthBox={onDeleteMonthBox}
               onCreate={onCreate}
+              onChange={onChange}
+              onChangeYear={onChangeYear}
               yearRef={yearRef}
               monthRef={monthRef}
               dayRef={dayRef}
               contentRef={contentRef}
+              yearObj={yearObj}
+              inputs={inputs}
             />
           </ul>
         </div>
