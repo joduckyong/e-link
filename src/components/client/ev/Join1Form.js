@@ -1,6 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import classnames from 'classnames';
 
 const Join1Form = () => {
+  // 링크 연결
+  const navigate = useNavigate();
+
+  // 체크박스 선택값
+  const [checkItems, setCheckItems] = useState([]);
+
+  // 선택값
+  const [active1, setActive1] = useState(false);
+  const [active2, setActive2] = useState(false);
+  const [active3, setActive3] = useState(false);
+  const [active4, setActive4] = useState(false);
+  const [active5, setActive5] = useState(false);
+  const [active6, setActive6] = useState(false);
+
+  // 체크박스 단일 선택
+  const handleSingleCheck = (checked, id) => {
+    if (checked) {
+      setCheckItems((prev) => [...prev, id]);
+    } else {
+      setCheckItems(checkItems.filter((el) => el !== id));
+    }
+  };
+
+  // 체크박스 전체 선택
+  const handleAllCheck = (checked) => {
+    if (checked) {
+      const idArray = [];
+      for (let i = 1; i < 7; i++) {
+        idArray.push('agree-li0' + i);
+      }
+      setCheckItems(idArray);
+    } else {
+      setCheckItems([]);
+    }
+  };
+
+  const aggreBtn = (e) => {
+    e.preventDefault();
+
+    if (checkItems.includes('agree-li01') === false) {
+      alert('[필수]서비스 이용약관을 선택 하세요');
+      return;
+    }
+    if (checkItems.includes('agree-li02') === false) {
+      alert('[필수]필수 항목에 대한 개인정보 수집 및 이용 동의을 선택 하세요');
+      return;
+    }
+    if (checkItems.includes('agree-li03') === false) {
+      alert('[필수]위치기반서비스 이용약관 동의을 선택 하세요');
+      return;
+    }
+    if (checkItems.includes('agree-li04') === false) {
+      alert('[필수]선택 항목에 대한 개인정보 수집 및 이용 동의을 선택 하세요');
+      return;
+    }
+    if (checkItems.includes('agree-li05') === false) {
+      alert('[필수]선택 항목에 대한 개인정보 수집 및 이용 동의을 선택 하세요');
+      return;
+    }
+    if (checkItems.includes('agree-li06') === false) {
+      alert('[필수]마케팅 정보 수신 동의을 선택 하세요');
+      return;
+    }
+
+    navigate('/ev/join2');
+  };
+
   return (
     <>
       <section className="ev-sub-sect">
@@ -14,22 +83,32 @@ const Join1Form = () => {
           <div className="gray-mini-box">ELVIS 서비스는 만 14세 이상 이용가능합니다.</div>
           <div className="agree-wp">
             <div className="agree all-agree">
-              <label for="allagree">
-                <input type="checkbox" id="allagree" />
+              <label htmlFor="allagree">
+                <input
+                  type="checkbox"
+                  id="allagree"
+                  onChange={(e) => handleAllCheck(e.target.checked)}
+                  checked={checkItems.length === 6 ? true : false}
+                />
                 <span className="chkimg"></span>전체 약관동의 (선택 포함)
               </label>
             </div>
             <ul className="agree-list">
-              <li className="agree">
+              <li className={classnames('agree', { active: active1 })}>
                 <div className="ttl">
-                  <label for="agree-li01">
-                    <input type="checkbox" id="agree-li01" />
+                  <label htmlFor="agree-li01">
+                    <input
+                      type="checkbox"
+                      id="agree-li01"
+                      onChange={(e) => handleSingleCheck(e.target.checked, 'agree-li01')}
+                      checked={checkItems.includes('agree-li01') ? true : false}
+                    />
                     <span className="chkimg"></span>
                     <b>[필수]</b> 서비스 이용약관
                   </label>
-                  <div className="arrow"></div>
+                  <div className="arrow" onClick={() => setActive1(!active1)}></div>
                 </div>
-                <div className="cont">
+                <div className="cont" style={active1 ? { display: 'block' } : { display: 'none' }}>
                   <b>제 1 조 (목적)</b>
                   본 약관은 엘에스이링크 주식회사(이하 ‘회사’)가 제공하는 “엘에스이링크(주) ELVIS 전기차 충전 서비스”를 이용함에 있어 서비스 이용자와
                   회사간의 권리, 의무 및 책임사항, 서비스 이용에 따른 이용조건 및 절차 등 기본적인 사항을 규정함을 목적으로 합니다.
@@ -51,63 +130,90 @@ const Join1Form = () => {
                   간주합니다.
                 </div>
               </li>
-              <li className="agree">
+              <li className={classnames('agree', { active: active2 })}>
                 <div className="ttl">
-                  <label for="agree-li02">
-                    <input type="checkbox" id="agree-li02" />
+                  <label htmlFor="agree-li02">
+                    <input
+                      type="checkbox"
+                      id="agree-li02"
+                      onChange={(e) => handleSingleCheck(e.target.checked, 'agree-li02')}
+                      checked={checkItems.includes('agree-li02') ? true : false}
+                    />
                     <span className="chkimg"></span>
                     <b>[필수]</b>필수 항목에 대한 개인정보 수집 및 이용 동의
                   </label>
-                  <div className="arrow"></div>
+                  <div className="arrow" onClick={() => setActive2(!active2)}></div>
                 </div>
-                <div className="cont"></div>
+                <div className="cont" style={active2 ? { display: 'block' } : { display: 'none' }}></div>
               </li>
-              <li className="agree">
+              <li className={classnames('agree', { active: active3 })}>
                 <div className="ttl">
-                  <label for="agree-li03">
-                    <input type="checkbox" id="agree-li03" />
+                  <label htmlFor="agree-li03">
+                    <input
+                      type="checkbox"
+                      id="agree-li03"
+                      onChange={(e) => handleSingleCheck(e.target.checked, 'agree-li03')}
+                      checked={checkItems.includes('agree-li03') ? true : false}
+                    />
                     <span className="chkimg"></span>
                     <b>[필수]</b>위치기반서비스 이용약관 동의
                   </label>
-                  <div className="arrow"></div>
+                  <div className="arrow" onClick={() => setActive3(!active3)}></div>
                 </div>
-                <div className="cont"></div>
+                <div className="cont" style={active3 ? { display: 'block' } : { display: 'none' }}></div>
               </li>
-              <li className="agree">
+              <li className={classnames('agree', { active: active4 })}>
                 <div className="ttl">
-                  <label for="agree-li04">
-                    <input type="checkbox" id="agree-li04" />
+                  <label htmlFor="agree-li04">
+                    <input
+                      type="checkbox"
+                      id="agree-li04"
+                      onChange={(e) => handleSingleCheck(e.target.checked, 'agree-li04')}
+                      checked={checkItems.includes('agree-li04') ? true : false}
+                    />
                     <span className="chkimg"></span>
                     <b>[필수]</b>선택 항목에 대한 개인정보 수집 및 이용 동의
                   </label>
-                  <div className="arrow"></div>
+                  <div className="arrow" onClick={() => setActive4(!active4)}></div>
                 </div>
-                <div className="cont"></div>
+                <div className="cont" style={active4 ? { display: 'block' } : { display: 'none' }}></div>
               </li>
-              <li className="agree">
+              <li className={classnames('agree', { active: active5 })}>
                 <div className="ttl">
-                  <label for="agree-li05">
-                    <input type="checkbox" id="agree-li05" />
+                  <label htmlFor="agree-li05">
+                    <input
+                      type="checkbox"
+                      id="agree-li05"
+                      onChange={(e) => handleSingleCheck(e.target.checked, 'agree-li05')}
+                      checked={checkItems.includes('agree-li05') ? true : false}
+                    />
                     <span className="chkimg"></span>
                     <b>[필수]</b>선택 항목에 대한 개인정보 수집 및 이용 동의
                   </label>
-                  <div className="arrow"></div>
+                  <div className="arrow" onClick={() => setActive5(!active5)}></div>
                 </div>
-                <div className="cont"></div>
+                <div className="cont" style={active5 ? { display: 'block' } : { display: 'none' }}></div>
               </li>
-              <li className="agree">
+              <li className={classnames('agree', { active: active6 })}>
                 <div className="ttl">
-                  <label for="agree-li06">
-                    <input type="checkbox" id="agree-li06" />
+                  <label htmlFor="agree-li06">
+                    <input
+                      type="checkbox"
+                      id="agree-li06"
+                      onChange={(e) => handleSingleCheck(e.target.checked, 'agree-li06')}
+                      checked={checkItems.includes('agree-li06') ? true : false}
+                    />
                     <span className="chkimg"></span>
                     <b>[필수]</b>마케팅 정보 수신 동의
                   </label>
-                  <div className="arrow"></div>
+                  <div className="arrow" onClick={() => setActive6(!active6)}></div>
                 </div>
-                <div className="cont"></div>
+                <div className="cont" style={active6 ? { display: 'block' } : { display: 'none' }}></div>
               </li>
             </ul>
-            <button className="orange-btn">약관동의</button>
+            <button className="orange-btn" onClick={aggreBtn}>
+              약관동의
+            </button>
           </div>
         </form>
       </section>

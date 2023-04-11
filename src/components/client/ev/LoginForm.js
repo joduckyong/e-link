@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const LoginForm = () => {
   return (
@@ -18,13 +19,13 @@ const LoginForm = () => {
               </label>
             </div>
             <p className="link-wp">
-              <a href="./findid.html">
+              <NavLink to="/ev/findid">
                 아이디찾기&nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;&nbsp;
-              </a>
-              <a href="./findpw.html">
+              </NavLink>
+              <NavLink to="/ev/findpw">
                 비밀번호찾기&nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;&nbsp;
-              </a>
-              <a href="./join1.html">회원가입</a>
+              </NavLink>
+              <NavLink to="/ev/join1">회원가입</NavLink>
             </p>
           </div>
           <button className="orange-btn" type="button" onclick="location.href='./mypage1.html'">

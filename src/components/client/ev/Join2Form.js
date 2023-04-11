@@ -1,6 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Post from '../../../api/Post';
 
 const Join2Form = () => {
+  const [enroll_company, setEnroll_company] = useState({
+    zonecode: '',
+    address: '',
+  });
+
+  const [popup, setPopup] = useState(false);
+
+  const handleInput = (e) => {
+    setEnroll_company({
+      ...enroll_company,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleComplete = (data) => {
+    setPopup(!popup);
+  };
+
   return (
     <>
       <section className="ev-sub-sect">
@@ -99,9 +118,12 @@ const Join2Form = () => {
               <span className="orange">*</span>주소
             </h3>
             <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="우편번호" />
-              <button className="border-btn">우편번호 검색</button>
-              <input type="text" placeholder="주소" />
+              <input type="text" placeholder="우편번호" required={true} name="zonecode" value={enroll_company.zonecode} />
+              <button className="border-btn" onClick={handleComplete}>
+                우편번호 검색
+              </button>
+              {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
+              <input type="text" placeholder="주소" required={true} name="address" onChange={handleInput} value={enroll_company.address} />
               <input type="text" placeholder="상세주소" />
               <p className="red">상세주소를 입력해주세요.</p>
             </div>

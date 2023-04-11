@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const FindId2Form = () => {
   return (
@@ -22,9 +23,9 @@ const FindId2Form = () => {
                 <p>2023-05-31</p>
               </li>
             </ul>
-            <a href="./login.html" className="orange-btn">
+            <NavLink to="/ev/login" className="orange-btn">
               로그인
-            </a>
+            </NavLink>
             <button className="orange-btn border-btn">비밀번호 재설정</button>
           </div>
         </form>
