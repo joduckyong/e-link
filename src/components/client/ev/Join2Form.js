@@ -7,6 +7,20 @@ const Join2Form = () => {
     address: '',
   });
 
+  const [email, setEmail] = useState('');
+  const [emailCheck, setEmailCheck] = useState('');
+  const [passwd, setPasswd] = useState('');
+  const [rePasswd, setRePasswd] = useState('');
+  const [userNm, setUserNm] = useState('');
+  const [phone, setPhone] = useState('');
+  const [addressDetail, setAddressDetail] = useState('');
+
+  const [telno, setTelno] = useState('');
+  const [telcom, setTelcom] = useState('');
+  const [gender, setGender] = useState('');
+  const [brth, setBrth] = useState('');
+  const [ci, setCi] = useState('');
+
   const [popup, setPopup] = useState(false);
 
   const handleInput = (e) => {
@@ -16,9 +30,24 @@ const Join2Form = () => {
     });
   };
 
+  // 우편번호
   const handleComplete = (data) => {
     setPopup(!popup);
   };
+
+  // 휴대폰인증
+  const phonePopup = () => {
+    window.open('http://localhost:9060/api/phone/popup2', 'width=100,height=100,location=no,status=no,scrollbars=yes', '_blank');
+  };
+
+  // 아이디 중복검사
+  const emailDuplicated = (e) => {};
+
+  // 아이디 인증코드
+  const emailAuthCode = (e) => {};
+
+  // 회원가입
+  const signupUser = (e) => {};
 
   return (
     <>
@@ -36,16 +65,21 @@ const Join2Form = () => {
               <span className="orange">*</span>아이디
             </h3>
             <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="아이디를 입력해주세요. " />
-              <button className="border-btn">중복확인</button>
-              {/* <!-- <p className="red">사용할 수 없는 아이디입니다. </p> --> */}
-              <p className="blue">사용가능한 아이디입니다.</p>
+              <input type="text" placeholder="아이디를 입력해주세요. " onChange={(e) => setEmail(e.target.value)} />
+              <button className="border-btn" onClick={() => emailDuplicated()}>
+                중복확인
+              </button>
+              {emailCheck === 'Y'
+                ? '<p className="red">사용할 수 없는 아이디입니다. </p>'
+                : emailCheck === 'N'
+                ? '<p className="blue">사용가능한 아이디입니다.</p>'
+                : ''}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>비밀번호
             </h3>
             <div className="input-wp">
-              <input type="text" placeholder="비밀번호를 입력해주세요. " />
+              <input type="text" placeholder="비밀번호를 입력해주세요. " onChange={(e) => setPasswd(e.target.value)} />
               <ul className="confirm-wp">
                 <li>
                   <img src="/img/ev/ev_check_orange.png" alt="" />
@@ -71,7 +105,7 @@ const Join2Form = () => {
               <span className="orange">*</span>비밀번호 확인
             </h3>
             <div className="input-wp">
-              <input type="text" placeholder="비밀번호를 다시 한 번 입력해주세요. " />
+              <input type="text" placeholder="비밀번호를 다시 한 번 입력해주세요. " onChange={(e) => setRePasswd(e.target.value)} />
               <ul className="confirm-wp">
                 <li>
                   <img src="/img/ev/ev_check_orange.png" alt="" />
@@ -97,14 +131,16 @@ const Join2Form = () => {
               <span className="orange">*</span>이름
             </h3>
             <div className="input-wp">
-              <input type="text" placeholder="이름을 입력해주세요." />
+              <input type="text" placeholder="이름을 입력해주세요." onChange={(e) => setUserNm(e.target.value)} />
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>휴대폰 번호
             </h3>
             <div className="input-wp input-btn-wp">
               <input type="text" placeholder="휴대폰 번호를 입력해주세요. (입력 시 - 자동 생성)" />
-              <button className="border-btn">인증코드 전송</button>
+              <button className="border-btn" onClick={() => phonePopup()}>
+                인증코드 전송
+              </button>
               <p className="blue">인증번호가 발송되었습니다.</p>
             </div>
             <h3 className="mini-ttl">
@@ -167,7 +203,9 @@ const Join2Form = () => {
             <div className="input-wp">
               <input type="text" placeholder="차량 번호를 입력해주세요." />
             </div>
-            <button className="orange-btn">가입하기</button>
+            <button className="orange-btn" onClick={() => signupUser()}>
+              가입하기
+            </button>
           </div>
         </form>
       </section>
