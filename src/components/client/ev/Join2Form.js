@@ -57,20 +57,30 @@ const Join2Form = () => {
   // 아이디 중복검사
   const emailDuplicated = (e) => {
     e.preventDefault();
-    fetch(process.env.REACT_APP_EV_API_URL + '/auth/isEmailDuplicated', {
+
+    if (email === '') {
+      setEmailCheck('');
+      return;
+    }
+    const data = {
+      url: '/auth/isEmailDuplicated',
+      eml: email,
+    };
+
+    fetch(process.env.REACT_APP_API_URL + '/api/ev/auth/isEmailDuplicated', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
+        Accept: 'application/json',
       },
-      body: JSON.stringify('eml :' + email),
+      body: JSON.stringify(data),
     })
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((res) => {
-        console.log(res);
-        setEmailCheck(res);
+        const result = JSON.stringify(res.data).replace(/"/g, '');
+        setEmailCheck(result);
       });
   };
 
@@ -116,14 +126,16 @@ const Join2Form = () => {
             </h3>
             <div className="input-wp input-btn-wp">
               <input type="text" placeholder="아이디를 입력해주세요. " onChange={(e) => setEmail(e.target.value)} />
-              <button className="border-btn" onClick={emailDuplicated()}>
+              <button className="border-btn" onClick={emailDuplicated}>
                 중복확인
               </button>
-              {emailCheck === 'Y'
-                ? '<p className="red">사용할 수 없는 아이디입니다. </p>'
-                : emailCheck === 'N'
-                ? '<p className="blue">사용가능한 아이디입니다.</p>'
-                : ''}
+              {emailCheck === 'Y' ? (
+                <p className="red">사용할 수 없는 아이디입니다. </p>
+              ) : emailCheck === 'N' ? (
+                <p className="blue">사용가능한 아이디입니다.</p>
+              ) : (
+                ''
+              )}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>비밀번호
@@ -188,7 +200,7 @@ const Join2Form = () => {
             </h3>
             <div className="input-wp input-btn-wp">
               <input type="text" placeholder="휴대폰 번호를 입력해주세요. (입력 시 - 자동 생성)" />
-              <button className="border-btn" onClick={(e) => phonePopup()}>
+              <button className="border-btn" onClick={phonePopup}>
                 인증코드 전송
               </button>
               <p className="blue">인증번호가 발송되었습니다.</p>
@@ -204,12 +216,12 @@ const Join2Form = () => {
               <span className="orange">*</span>주소
             </h3>
             <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="우편번호" required={true} name="zonecode" value={enroll_company.zonecode} />
+              <input type="text" placeholder="우편번호" name="zonecode" value={enroll_company.zonecode} />
               <button className="border-btn" onClick={handleComplete}>
                 우편번호 검색
               </button>
               {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
-              <input type="text" placeholder="주소" required={true} name="address" onChange={handleInput} value={enroll_company.address} />
+              <input type="text" placeholder="주소" name="address" onChange={handleInput} value={enroll_company.address} />
               <input type="text" placeholder="상세주소" />
               <p className="red">상세주소를 입력해주세요.</p>
             </div>
@@ -253,7 +265,7 @@ const Join2Form = () => {
             <div className="input-wp">
               <input type="text" placeholder="차량 번호를 입력해주세요." />
             </div>
-            <button className="orange-btn" onClick={signupUser()}>
+            <button className="orange-btn" onClick={signupUser}>
               가입하기
             </button>
           </div>
