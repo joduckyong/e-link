@@ -2,6 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const LoginForm = () => {
+  const NAVER_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=NAVER&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
+
+  const naverLogin = () => {
+    window.open(NAVER_URI, 'width=50,height=50,location=no,status=no,scrollbars=yes', '_blank');
+  };
+
   return (
     <>
       <section className="ev-sub-sect">
@@ -35,7 +41,7 @@ const LoginForm = () => {
             <h2>SNS 로그인</h2>
             <ul className="sns-list">
               <li>
-                <a href=""></a>
+                <NavLink onClick={() => naverLogin()}></NavLink>
               </li>
               <li>
                 <a href=""></a>

@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import RepwForm from 'components/client/ev/RepwForm';
+import FindPwForm from 'components/client/ev/login/FindPwForm';
 
-const RepwPage = () => {
+const FindPwPage = () => {
   return (
     <>
       <Header />
-      <RepwForm />
+      <FindPwForm />
       <Footer />
     </>
   );
 };
 
-export default RepwPage;
+export default FindPwPage;

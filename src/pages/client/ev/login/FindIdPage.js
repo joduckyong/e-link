@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import LoginForm from 'components/client/ev/LoginForm';
+import FindIdForm from 'components/client/ev/login/FindIdForm';
 
-const loginPage = () => {
+const FindIdPage = () => {
   return (
     <>
       <Header />
-      <LoginForm />
+      <FindIdForm />
       <Footer />
     </>
   );
 };
 
-export default loginPage;
+export default FindIdPage;

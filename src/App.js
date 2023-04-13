@@ -106,24 +106,24 @@ import IndexPage from './pages/client/ev/IndexPage';
 import FindPage from './pages/client/ev/FindPage';
 
 //로그인
-import LoginEvPage from './pages/client/ev/loginPage';
+import LoginEvPage from './pages/client/ev/login/loginPage';
 
 //회원가입 약관동의
-import Join1Page from './pages/client/ev/Join1Page';
+import Join1Page from './pages/client/ev/login/Join1Page';
 //회원가입 정보입력
-import Join2Page from './pages/client/ev/Join2Page';
+import Join2Page from './pages/client/ev/login/Join2Page';
 //회원가입 가입완료
-import Join3Page from './pages/client/ev/Join3Page';
+import Join3Page from './pages/client/ev/login/Join3Page';
 
 //아이디 찾기
-import FindIdPage from './pages/client/ev/FindIdPage';
+import FindIdPage from './pages/client/ev/login/FindIdPage';
 //아이디 결과
-import FindId2Page from './pages/client/ev/FindId2Page';
+import FindId2Page from './pages/client/ev/login/FindId2Page';
 
 //비밀번호 찾기
-import FindPwPage from './pages/client/ev/FindPwPage';
+import FindPwPage from './pages/client/ev/login/FindPwPage';
 //비밀번호 재설정
-import RepwPage from './pages/client/ev/RepwPage';
+import RepwPage from './pages/client/ev/login/RepwPage';
 
 //고객센터 공지사항
 import NoticePage from './pages/client/ev/NoticePage';
@@ -145,6 +145,15 @@ import MyPage2 from './pages/client/ev/MyPage2';
 
 //관제센터
 import ControlEvPage from './pages/client/ev/ControlPage';
+
+//네이버리다이렉트
+import NaverRedirect from './components/client/ev/login/NaverRedirect';
+//카카오다이렉트
+import KakaoRedirect from './components/client/ev/login/KakaoRedirect';
+//구글다이렉트
+import GoogleRedirect from './components/client/ev/login/GoogleRedirect';
+//애플다이렉트
+import AppleRedirect from './components/client/ev/login/AppleRedirect';
 
 const App = () => {
   return (
@@ -254,6 +263,11 @@ const App = () => {
         <Route path="/ev/mypage2" element={<MyPage2 />} />
 
         <Route path="/ev/control" element={<ControlEvPage />} />
+
+        <Route path="/ev/login/authNaver" element={<NaverRedirect />} />
+        <Route path="/ev/login/authKakao" element={<KakaoRedirect />} />
+        <Route path="/ev/login/authGoogle" element={<GoogleRedirect />} />
+        <Route path="/ev/login/authApple" element={<AppleRedirect />} />
       </Routes>
     </Router>
   );

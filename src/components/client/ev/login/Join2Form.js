@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Post from '../../../api/Post';
+import Post from '../../../../api/Post';
 
 const Join2Form = () => {
   const [enroll_company, setEnroll_company] = useState({

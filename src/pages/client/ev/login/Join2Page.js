@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import Join1Form from 'components/client/ev/Join1Form';
+import Join2Form from 'components/client/ev/login/Join2Form';
 
-const Join1Page = () => {
+const Join2Page = () => {
   return (
     <>
       <Header />
-      <Join1Form />
+      <Join2Form />
       <Footer />
     </>
   );
 };
 
-export default Join1Page;
+export default Join2Page;

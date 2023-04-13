@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import FindPwForm from 'components/client/ev/FindPwForm';
+import Join1Form from 'components/client/ev/login/Join1Form';
 
-const FindPwPage = () => {
+const Join1Page = () => {
   return (
     <>
       <Header />
-      <FindPwForm />
+      <Join1Form />
       <Footer />
     </>
   );
 };
 
-export default FindPwPage;
+export default Join1Page;

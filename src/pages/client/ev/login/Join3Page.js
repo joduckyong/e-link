@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from 'components/client/Header';
 import Footer from 'components/client/Footer';
-import Join3Form from 'components/client/ev/Join3Form';
+import Join3Form from 'components/client/ev/login/Join3Form';
 
 const Join3Page = () => {
   return (
