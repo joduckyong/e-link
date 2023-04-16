@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const LoginForm = () => {
-  const NAVER_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=NAVER&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
+  const NAVER_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=NAVER`;
   const KAKAO_URI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
-  const GOOGLE_URI = `https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=NAVER&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
-  const APPLE_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=NAVER&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
+  const GOOGLE_URI = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&scope=https://www.googleapis.com/auth/drive.readonly`;
+  const APPLE_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_APPLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_APPLE_REDIRECT_URI}`;
 
   return (
     <>
