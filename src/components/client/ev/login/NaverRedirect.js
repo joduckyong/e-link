@@ -10,16 +10,28 @@ function NaverRedirect() {
 
   // 컴포넌트가 마운트되면 로그인 로직 실행
   useEffect(() => {
-    async function NaverLogin() {
-      const res = await axios.get(
-        `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&client_secret=${process.env.REACT_APP_NAVER_SECRET}&code=${code}`,
-      ); // 이 부분은 서버 API에 따라 바뀔 수 있으니 API 명세서를 잘 확인하세요.
-      const ACCESS_TOKEN = res.headers['authorization'];
-      const REFRESH_TOKEN = res.headers['refresh-token'];
+    async function Login() {
+      const data = {
+        url: `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&client_secret=${process.env.REACT_APP_NAVER_SECRET}&code=${code}`,
+      };
+
+      const res = await axios({
+        url: `${process.env.REACT_APP_API_URL}/api/ev/auth/token/naver`,
+        method: 'POST',
+        data: data,
+      });
+
+      const ACCESS_TOKEN = JSON.stringify(res.data.data.access_token);
+      const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token);
+
+      // console.log('res : ' + JSON.stringify(res));
+      // console.log('res : ' + JSON.stringify(res.data.data.access_token));
+      // console.log('res : ' + JSON.stringify(res.data.data.refresh_token));
+
       setCookie('accessToken', ACCESS_TOKEN);
       setCookie('refreshToken', REFRESH_TOKEN);
     }
-    NaverLogin();
+    Login();
     navigate('/ev/mypage1', { replace: true });
   }, []);
 
