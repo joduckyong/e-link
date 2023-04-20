@@ -52,12 +52,12 @@ function MarkerCluster() {
       markers.push(marker);
     }
 
-    const cluster = new MarkerClustering({
+    const markerClustering = new MarkerClustering({
       minClusterSize: 2,
-      maxZoom: 8,
+      maxZoom: 12,
       map: map,
       markers: markers,
-      disableClickZoom: false,
+      disableClickZoom: true,
       gridSize: 120,
       icons: [
         gray,
@@ -68,15 +68,14 @@ function MarkerCluster() {
       indexGenerator: [1, 5, 10, 15],
       stylingFunction: function (clusterMarker, count) {
         console.log(clusterMarker)
-        // without jquery $(clusterMarker.getElement()).find('div:first-child').text(count)
         clusterMarker
           .getElement()
           .querySelector('div:first-child').innerText = count
       },
     });
 
-    return cluster
-  })
+    return markerClustering
+  });
 
   return <Overlay element={cluster} />
 }
@@ -97,21 +96,6 @@ const FindForm = () => {
   const handleZoomChanged = useCallback((zoom) => {
     console.log(`zoom: ${zoom}`)
   }, []);
-
-  const normalBtnStyle = {
-    backgroundColor: '#fff',
-    border: 'solid 1px #333',
-    outline: '0 none',
-    borderRadius: '5px',
-    boxShadow: '2px 2px 1px 1px rgba(0, 0, 0, 0.5)',
-    margin: '0 5px 5px 0',
-  }
-
-  const selectedBtnStyle = {
-    ...normalBtnStyle,
-    backgroundColor: '#2780E3',
-    color: 'white',
-  }
 
   // const mapRef = useRef(null);
 
