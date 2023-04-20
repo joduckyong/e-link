@@ -27,6 +27,7 @@
     "react-js-pagination": "^3.0.3",
     "react-modal": "^3.16.1",
     "react-native-ckeditor": "^1.0.2",
+    "react-naver-maps": "^0.1.2",
     "react-quill": "^2.0.0",
     "react-redux": "^8.0.5",
     "react-router": "^6.6.1",
