@@ -8,25 +8,36 @@ const Join2Form = () => {
   });
 
   const [user, setUser] = useState({
-    email: '',
-    passwd: '',
     userNm: '',
-    phone: '',
-    address: '',
-    addressDetail: '',
+    eml: '',
+    pswd: '',
     telno: '',
-    telcom: '',
     gender: '',
     brth: '',
+    addr: '',
+    daddr: '',
+    telCom: '',
     ci: '',
+    roleId: '',
   });
 
   const [email, setEmail] = useState('');
   const [emailCheck, setEmailCheck] = useState('');
+  const [emailCheck2, setEmailCheck2] = useState(true);
+
+  const [ckpw, setCkpw] = useState(false);
+  const [ckpw1, setCkpw1] = useState(false);
+  const [ckpw2, setCkpw2] = useState(false);
+  const [ckpw3, setCkpw3] = useState(false);
+
+  const [ckpw_1, setCkpw_1] = useState(false);
+  const [ckpw1_1, setCkpw1_1] = useState(false);
+  const [ckpw2_1, setCkpw2_1] = useState(false);
+  const [ckpw3_1, setCkpw3_1] = useState(false);
+
   const [passwd, setPasswd] = useState('');
   const [rePasswd, setRePasswd] = useState('');
   const [userNm, setUserNm] = useState('');
-  const [phone, setPhone] = useState('');
   const [addressDetail, setAddressDetail] = useState('');
 
   const [telno, setTelno] = useState('');
@@ -46,12 +57,52 @@ const Join2Form = () => {
 
   // 우편번호
   const handleComplete = (data) => {
+    data.preventDefault();
     setPopup(!popup);
   };
 
   // 휴대폰인증
   const phonePopup = () => {
     window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2', 'width=100,height=100,location=no,status=no,scrollbars=yes', '_blank');
+  };
+
+  //비밀번호 유효성 검사
+  const checkPassword = (e) => {
+    //  8 ~ 15자 영문, 숫자, 특수문자 조합
+    var regExp1 = /^(?=.*[a-zA-Z])$/;
+    var regExp2 = /^(?=.*[0-9])$/;
+    var regExp3 = /^(?=.*[!@#$%^*+=-])$/;
+    var regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+
+    setCkpw1(regExp1.test(e.target.value));
+    setCkpw2(regExp2.test(e.target.value));
+    setCkpw3(regExp3.test(e.target.value));
+    setCkpw(regExp.test(e.target.value));
+    // 형식에 맞는 경우 true 리턴
+    console.log('비밀번호 유효성 검사 :: ', regExp.test(e.target.value));
+  };
+
+  //비밀번호 유효성 검사
+  const checkPassword2 = (e) => {
+    //  8 ~ 15자 영문, 숫자, 특수문자 조합
+    var regExp1 = /^(?=.*[a-zA-Z])$/;
+    var regExp2 = /^(?=.*[0-9])$/;
+    var regExp3 = /^(?=.*[!@#$%^*+=-])$/;
+    var regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+    // 형식에 맞는 경우 true 리턴
+    setCkpw1_1(regExp1.test(e.target.value));
+    setCkpw2_1(regExp2.test(e.target.value));
+    setCkpw3_1(regExp3.test(e.target.value));
+    setCkpw_1(regExp.test(e.target.value));
+    console.log('비밀번호 유효성 검사 :: ', regExp.test(e.target.value));
+  };
+
+  // 이메일 유효성 검사
+  const checkEmail = (e) => {
+    var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    // 형식에 맞는 경우 true 리턴
+    setEmailCheck2(regExp.test(e.target.value));
+    console.log('이메일 유효성 검사 :: ', regExp.test(e.target.value));
   };
 
   // 아이디 중복검사
@@ -84,28 +135,22 @@ const Join2Form = () => {
       });
   };
 
-  // 아이디 인증코드
-  const emailAuthCode = (e) => {
-    e.preventDefault();
-  };
-
   // 회원가입
   const signupUser = (e) => {
     e.preventDefault();
-
     setUser({
       ...user,
-      email: email,
-      passwd: passwd,
       userNm: userNm,
-      phone: phone,
-      address: enroll_company.address,
-      addressDetail: addressDetail,
+      eml: email,
+      pswd: passwd,
       telno: telno,
-      telcom: telcom,
       gender: gender,
       brth: brth,
+      addr: enroll_company.address,
+      daddr: addressDetail,
+      telcom: telcom,
       ci: ci,
+      roleId: 'elinkuser',
     });
   };
 
@@ -125,14 +170,16 @@ const Join2Form = () => {
               <span className="orange">*</span>아이디
             </h3>
             <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="아이디를 입력해주세요. " onChange={(e) => setEmail(e.target.value)} />
+              <input type="text" placeholder="아이디를 입력해주세요. " onChange={(e) => setEmail(e.target.value)} onBlur={checkEmail} />
               <button className="border-btn" onClick={emailDuplicated}>
                 중복확인
               </button>
               {emailCheck === 'Y' ? (
                 <p className="red">사용할 수 없는 아이디입니다. </p>
-              ) : emailCheck === 'N' ? (
+              ) : emailCheck === 'N' && emailCheck2 ? (
                 <p className="blue">사용가능한 아이디입니다.</p>
+              ) : emailCheck === 'N' && !emailCheck2 ? (
+                <p className="red">이메일 유효 하지 않습니다.</p>
               ) : (
                 ''
               )}
@@ -141,7 +188,7 @@ const Join2Form = () => {
               <span className="orange">*</span>비밀번호
             </h3>
             <div className="input-wp">
-              <input type="text" placeholder="비밀번호를 입력해주세요. " onChange={(e) => setPasswd(e.target.value)} />
+              <input type="text" placeholder="비밀번호를 입력해주세요. " onChange={(e) => setPasswd(e.target.value)} onBlur={checkPassword} />
               <ul className="confirm-wp">
                 <li>
                   <img src="/img/ev/ev_check_orange.png" alt="" />
@@ -167,7 +214,12 @@ const Join2Form = () => {
               <span className="orange">*</span>비밀번호 확인
             </h3>
             <div className="input-wp">
-              <input type="text" placeholder="비밀번호를 다시 한 번 입력해주세요. " onChange={(e) => setRePasswd(e.target.value)} />
+              <input
+                type="text"
+                placeholder="비밀번호를 다시 한 번 입력해주세요. "
+                onChange={(e) => setRePasswd(e.target.value)}
+                onBlur={checkPassword2}
+              />
               <ul className="confirm-wp">
                 <li>
                   <img src="/img/ev/ev_check_orange.png" alt="" />
@@ -199,7 +251,7 @@ const Join2Form = () => {
               <span className="orange">*</span>휴대폰 번호
             </h3>
             <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="휴대폰 번호를 입력해주세요. (입력 시 - 자동 생성)" />
+              <input type="text" placeholder="휴대폰 번호를 입력해주세요." />
               <button className="border-btn" onClick={phonePopup}>
                 인증코드 전송
               </button>
@@ -225,7 +277,7 @@ const Join2Form = () => {
               <input type="text" placeholder="상세주소" />
               <p className="red">상세주소를 입력해주세요.</p>
             </div>
-            <h3 className="mini-ttl">
+            {/* <h3 className="mini-ttl">
               <span className="orange">*</span>회원카드 발급
             </h3>
             <div className="radio-wp">
@@ -264,7 +316,7 @@ const Join2Form = () => {
             <h3 className="mini-ttl">차량 번호</h3>
             <div className="input-wp">
               <input type="text" placeholder="차량 번호를 입력해주세요." />
-            </div>
+            </div> */}
             <button className="orange-btn" onClick={signupUser}>
               가입하기
             </button>
