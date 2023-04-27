@@ -131,7 +131,7 @@ const CoporateForm = () => {
               </div>
               {/* 사진 수정하면 class prepare 지우기 */}
               <div className="img img1 prepare" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                <img src="/img/sub/enegec_enter.jpg" alt="" />
+                <img src="/img/sub/enegec_enter.jpg" width="100%" height="100%" alt="" />
               </div>
             </div>
           </div>
