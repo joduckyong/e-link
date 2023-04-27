@@ -72,16 +72,16 @@ const TransportationForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-              전기차 충전사업
+                전기차 충전사업
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">
-                  E-Link BUSINESS
-                  </NavLink>
+                  <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/transportation" className="on">전기차 충전사업</NavLink>
+                  <NavLink to="/business/ev/transportation" className="on">
+                    전기차 충전사업
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
@@ -120,9 +120,7 @@ const TransportationForm = () => {
             <div className="wrap">
               <div className="tit-wrap">
                 <div className="tit">전기버스 충전 솔루션</div>
-                <p>
-				차고지, 운행패턴, 수전여건에 맞추어 충전 솔루션을 제공합니다.
-                </p>
+                <p>차고지, 운행패턴, 수전여건에 맞추어 충전 솔루션을 제공합니다.</p>
               </div>
               <div className="img">
                 <ParallaxProvider>
@@ -133,7 +131,7 @@ const TransportationForm = () => {
               </div>
             </div>
           </div>
-	{/*<div className="system">
+          {/*<div className="system">
             <div className="sys-bg" style={{ 'background-size': 'cover' }}></div>
             <div className="wrap">
               <div className="sys-tit">전기버스 충전 시스템</div>
@@ -151,16 +149,17 @@ const TransportationForm = () => {
             </div>
           </div>*/}
 
-
-			<div className="infor-down infor-down2">
-				<div className="wrap">
-					<div className="tit-wrap">
-						<div className="tit">차세대 버스 충전 솔루션</div>
-						<p>
-						LS E-Link의 EV 버스 충전 솔루션은 전력분배, 순차충전, 충전속도제어 등 Fleet운영을 위한 최적의 충전 솔루션을 제공하여 고객 경제성을 극대화 시킵니다. <br className="pc-block" />나아가 LS E-Link의 AI기술이 적용된 BMS(Battery Management System)를 통해 고객의 배터리 안정성을 향상시킵니다.
-						</p>
-					</div>
-					{/* <ul className="drive-list">
+          <div className="infor-down infor-down2">
+            <div className="wrap">
+              <div className="tit-wrap">
+                <div className="tit">차세대 버스 충전 솔루션</div>
+                <p>
+                  LS E-Link의 EV 버스 충전 솔루션은 전력분배, 순차충전, 충전속도제어 등 Fleet운영을 위한 최적의 충전 솔루션을 제공하여 고객 경제성을
+                  극대화 시킵니다. <br className="pc-block" />
+                  나아가 LS E-Link의 AI기술이 적용된 BMS(Battery Management System)를 통해 고객의 배터리 안정성을 향상시킵니다.
+                </p>
+              </div>
+              {/* <ul className="drive-list">
 						<li>
 							<p className="tit">믿을 수 있는</p>
 							<div className="txt">
@@ -189,78 +188,79 @@ const TransportationForm = () => {
 							</div>
 						</li>
 					</ul> */}
-					<img src="/img/sub/vod.jpg" alt="" style={{ 'width': '100%' }}/>
-				</div>
-			</div>
+              <div className="video-wrap">
+                <video src="/video/20230427_170801187.mp4" playsInline loop muted autoPlay></video>
+              </div>
+              {/* <img src="/img/sub/vod.jpg" alt="" style={{ 'width': '100%' }}/> */}
+            </div>
+          </div>
 
+          <div className="infor-down infor-down3">
+            <div className="wrap">
+              <div className="tit-wrap">
+                <div className="tit">운영 최적화, 비용 절감</div>
+                <p>
+                  LS E-Link의 차량 및 에너지 관리 플랫폼은 충전 작업을 최적화하고 비용을 절감하기 위해 배터리 전기차량과
+                  <br className="pc-block" />
+                  충전기에 대한 기록 및 실시간 성능 정보를 제공하는 클라우드 기반 데이터 플랫폼입니다.
+                </p>
+              </div>
+              <ul className="drive-list drive-list2">
+                <li>
+                  <span className="img-box">
+                    <img src="/img/sub/drive-list-ico1.png" alt="" />
+                  </span>
+                  <div className="cont">
+                    <p className="tit">실시간 모니터링</p>
+                    <div className="txt">
+                      <p>실시간 데이터 모니터링 및 차량 추적을 위한 대시보드</p>
+                      <p>차량 및 충전기 현황</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <span className="img-box">
+                    <img src="/img/sub/drive-list-ico2.png" alt="" />
+                  </span>
+                  <div className="cont">
+                    <p className="tit">데이터 및 보고</p>
+                    <div className="txt">
+                      <p>사용자 정의 가능한 매개변수로 보고</p>
+                      <p>차량 및 충전기 보고</p>
+                      <p>다운로드 가능한 데이터 액세스</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <span className="img-box">
+                    <img src="/img/sub/drive-list-ico3.png" alt="" />
+                  </span>
+                  <div className="cont">
+                    <p className="tit">진단</p>
+                    <div className="txt">
+                      <p>자세한 오류 보고</p>
+                      <p>과거 및 현재 오류 정보</p>
+                      <p>문제 해결 정보</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <span className="img-box">
+                    <img src="/img/sub/drive-list-ico4.png" alt="" />
+                  </span>
+                  <div className="cont">
+                    <p className="tit">요금 관리</p>
+                    <div className="txt">
+                      <p>충전기 원격 제어를 위한 스마트 충전 기능</p>
+                      <p>에너지 관리 애플리케이션</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-			<div className="infor-down infor-down3">
-				<div className="wrap">
-					<div className="tit-wrap">
-						<div className="tit">운영 최적화, 비용 절감</div>
-						<p>
-							LS E-Link의 차량 및 에너지 관리 플랫폼은 충전 작업을 최적화하고 비용을 절감하기 위해 배터리 전기차량과<br className="pc-block" />
-							충전기에 대한 기록 및 실시간 성능 정보를 제공하는 클라우드 기반 데이터 플랫폼입니다.
-						</p>
-					</div>
-					<ul className="drive-list drive-list2"> 
-						<li>
-							<span className="img-box">
-								<img src="/img/sub/drive-list-ico1.png" alt="" />
-							</span>
-							<div className="cont">
-								<p className="tit">실시간 모니터링</p>
-								<div className="txt">
-									<p>실시간 데이터 모니터링 및 차량 추적을 위한 대시보드</p>
-									<p>차량 및 충전기 현황</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<span className="img-box">
-								<img src="/img/sub/drive-list-ico2.png" alt="" />
-							</span>
-							<div className="cont">
-								<p className="tit">데이터 및 보고</p>
-								<div className="txt">
-									<p>사용자 정의 가능한 매개변수로 보고</p>
-									<p>차량 및 충전기 보고</p>
-									<p>다운로드 가능한 데이터 액세스</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<span className="img-box">
-								<img src="/img/sub/drive-list-ico3.png" alt="" />
-							</span>
-							<div className="cont">
-								<p className="tit">진단</p>
-								<div className="txt">
-									<p>자세한 오류 보고</p>
-									<p>과거 및 현재 오류 정보</p>
-									<p>문제 해결 정보</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<span className="img-box">
-								<img src="/img/sub/drive-list-ico4.png" alt="" />
-							</span>
-							<div className="cont">
-								<p className="tit">요금 관리</p>
-								<div className="txt">
-									<p>충전기 원격 제어를 위한 스마트 충전 기능</p>
-									<p>에너지 관리 애플리케이션</p>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-
-
-	{/*<div className="business-wrap">
+          {/*<div className="business-wrap">
 		<div className="wrap pb70">
 			<div className="infor mt0">
 				<div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
@@ -294,10 +294,9 @@ const TransportationForm = () => {
 			</div>
 		</div>
 	</div>*/}
-			</div>
-		</div>
-	</div>
-	
+        </div>
+      </div>
+    </div>
   );
 };
 
