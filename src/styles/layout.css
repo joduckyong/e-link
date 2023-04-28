@@ -526,7 +526,7 @@ position: absolute; right: 0; top: 0; background: #FFF;}
 
 /*business 페이지 공통*/
 .sub .business .bg{height: 500px;}
-.sub .business-wrap{background: #FFF; padding-top: 130px; padding-bottom: 85px;}
+.sub .business-wrap{background: #FFF; padding-top: 30px; padding-bottom: 85px;}
 .sub .renewable-wrap{padding-bottom: 150px;}
 .sub .business .infor{display: flex; align-items: center; margin-bottom: 70px; margin-top: 100px;}
 .sub .business .infor.mb30{margin-bottom: 30px;}
