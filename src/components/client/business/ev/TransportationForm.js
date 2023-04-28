@@ -189,7 +189,10 @@ const TransportationForm = () => {
 						</li>
 					</ul> */}
               <div className="video-wrap">
-                <video src="/video/20230427_170801187.mp4" playsInline loop muted autoPlay></video>
+                {/* <video src="/video/20230427_170801187.mp4" playsInline loop muted autoPlay></video> */}
+                <video playsInline loop muted autoPlay controls>
+                  <source src="/video/20230427_170801187.mp4"></source>
+                </video>
               </div>
               {/* <img src="/img/sub/vod.jpg" alt="" style={{ 'width': '100%' }}/> */}
             </div>
