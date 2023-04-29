@@ -167,17 +167,17 @@ const Join2Form = () => {
           <div className="gray-mini-box">ELVIS 서비스는 만 14세 이상 이용가능합니다.</div>
           <div className="detail-wp">
             <h3 className="mini-ttl">
-              <span className="orange">*</span>아이디
+              <span className="orange">*</span>이메일
             </h3>
             <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="아이디를 입력해주세요. " onChange={(e) => setEmail(e.target.value)} onBlur={checkEmail} />
+              <input type="text" placeholder="이메일을 입력해주세요. " onChange={(e) => setEmail(e.target.value)} onBlur={checkEmail} />
               <button className="border-btn" onClick={emailDuplicated}>
                 중복확인
               </button>
               {emailCheck === 'Y' ? (
-                <p className="red">사용할 수 없는 아이디입니다. </p>
+                <p className="red">사용할 수 없는 이메일입니다. </p>
               ) : emailCheck === 'N' && emailCheck2 ? (
-                <p className="blue">사용가능한 아이디입니다.</p>
+                <p className="blue">사용가능한 이메일입니다.</p>
               ) : emailCheck === 'N' && !emailCheck2 ? (
                 <p className="red">이메일 유효 하지 않습니다.</p>
               ) : (
@@ -248,22 +248,25 @@ const Join2Form = () => {
               <input type="text" placeholder="이름을 입력해주세요." onChange={(e) => setUserNm(e.target.value)} />
             </div>
             <h3 className="mini-ttl">
-              <span className="orange">*</span>휴대폰 번호
+              <span className="orange">*</span>휴대폰 정보가져오기
             </h3>
-            <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="휴대폰 번호를 입력해주세요." />
+            <div className="input-wp input-btn-wp input-btn-wp">
+              <input type="text" readOnly placeholder="휴대폰검증 후 휴대폰 정보 버튼을 눌러주세요. " />
               <button className="border-btn" onClick={phonePopup}>
-                인증코드 전송
+                휴대폰 검증
               </button>
-              <p className="blue">인증번호가 발송되었습니다.</p>
+              <button className="border-btn" onClick={phonePopup}>
+                휴대폰 정보
+              </button>
+              {/* <p className="blue">인증번호가 발송되었습니다.</p> */}
             </div>
-            <h3 className="mini-ttl">
+            {/* <h3 className="mini-ttl">
               <span className="orange">*</span>인증번호
             </h3>
             <div className="input-wp input-btn-wp">
               <input type="text" placeholder="" />
               <button className="border-btn">확인</button>
-            </div>
+            </div> */}
             <h3 className="mini-ttl">
               <span className="orange">*</span>주소
             </h3>

@@ -13,7 +13,7 @@ const LoginForm = () => {
         <form className="login-wp">
           <h1>ELVIS 로그인</h1>
           <div className="input-wp">
-            <input type="text" placeholder="아이디" />
+            <input type="text" placeholder="이메일" />
             <input type="password" placeholder="비밀번호" />
           </div>
           <div className="txt-wp">
@@ -36,7 +36,7 @@ const LoginForm = () => {
           <button className="orange-btn" type="button" onclick="location.href='./mypage1.html'">
             로그인
           </button>
-          <div className="sns-wp">
+          {/* <div className="sns-wp">
             <h2>SNS 로그인</h2>
             <ul className="sns-list">
               <li>
@@ -52,7 +52,7 @@ const LoginForm = () => {
                 <a href={APPLE_URI}></a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </form>
       </section>
     </>
