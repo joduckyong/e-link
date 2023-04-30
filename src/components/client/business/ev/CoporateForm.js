@@ -71,16 +71,16 @@ const CoporateForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-              전기차 충전사업
+                전기차 충전사업
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">
-                  E-Link BUSINESS
-                  </NavLink>
+                  <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/transportation" className="on">전기차 충전사업</NavLink>
+                  <NavLink to="/business/ev/transportation" className="on">
+                    전기차 충전사업
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
@@ -131,7 +131,7 @@ const CoporateForm = () => {
               </div>
               {/* 사진 수정하면 class prepare 지우기 */}
               <div className="img img1 prepare" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                <img src="/img/sub/prepare_img.jpg" alt="" />
+                <img src="/img/sub/enegec_enter.jpg" width="100%" height="100%" alt="" />
               </div>
             </div>
           </div>

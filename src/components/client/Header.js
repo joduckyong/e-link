@@ -461,34 +461,22 @@ const Header = () => {
               <div className="depth-1" style={moMenuClass === '7' ? { display: 'block' } : { display: 'none' }}>
                 <ul>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      브랜드 소개
-                    </NavLink>
+                    <NavLink to="/ev/index">브랜드 소개</NavLink>
                   </li>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      EV 충전소 찾기
-                    </NavLink>
+                    <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
                   </li>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      회원가입
-                    </NavLink>
+                    <NavLink to="/ev/join1">회원가입</NavLink>
                   </li>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      고객센터
-                    </NavLink>
+                    <NavLink to="/ev/notice">고객센터</NavLink>
                   </li>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      마이페이지
-                    </NavLink>
+                    <NavLink to="/ev/mypage1">마이페이지</NavLink>
                   </li>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      관제센터
-                    </NavLink>
+                    <NavLink to="/ev/control">관제센터</NavLink>
                   </li>
                 </ul>
               </div>

@@ -71,16 +71,16 @@ const LogiticsForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-              전기차 충전사업
+                전기차 충전사업
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">
-                  E-Link BUSINESS
-                  </NavLink>
+                  <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/transportation" className="on">전기차 충전사업</NavLink>
+                  <NavLink to="/business/ev/transportation" className="on">
+                    전기차 충전사업
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
@@ -122,7 +122,7 @@ const LogiticsForm = () => {
                   맞춤형 충전 솔루션
                 </div>
                 <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                 시간적·공간적 제약, Fleet 규모, 및 전력사용환경 등 고객사의 개별 물류 환경에 최적화된 충전Infra 맞춤 솔루션을 제공합니다.
+                  시간적·공간적 제약, Fleet 규모, 및 전력사용환경 등 고객사의 개별 물류 환경에 최적화된 충전Infra 맞춤 솔루션을 제공합니다.
                 </p>
               </div>
               <div className="img">
@@ -137,7 +137,9 @@ const LogiticsForm = () => {
                 충전 관제 솔루션
               </div>
               <p data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-               cutting-edge technology가 구현된 <br />고도의 관제시스템을 통해 사용 환경에 최적화된 <br />전력분배 및 순차충전 자동 제어합니다.
+                cutting-edge technology가 구현된 <br />
+                고도의 관제시스템을 통해 사용 환경에 최적화된 <br />
+                전력분배 및 순차충전 자동 제어합니다.
               </p>
             </div>
           </div>
@@ -145,47 +147,52 @@ const LogiticsForm = () => {
             <div className="wrap pb70">
               <div className="infor mt0 mb30">
                 <div className="infor-tit mb30" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                사용자에게 안정성과 경제성을 제공하는 <br className="pc-block" />LS E-Link BMS 솔루션
+                  사용자에게 안정성과 경제성을 제공하는 <br className="pc-block" />
+                  LS E-Link BMS 솔루션
                 </div>
               </div>
               <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                Battery의 온도 분석과 셀 이상유무를 사전에 진단하여 열폭주를 방지하고 운전자에게 안정성을 제공합니다.<br className="pc-block" />
+                Battery의 온도 분석과 셀 이상유무를 사전에 진단하여 열폭주를 방지하고 운전자에게 안정성을 제공합니다.
+                <br className="pc-block" />
                 AI가 접목된 BMS로 배터리의 충전 방법을 가이드 및 이력을 관리함으로써 잔존가치를 보장하고 사용자에게 경제적 효과를 제공합니다.
               </div>
               <div className="img img1">
                 <div className="in"></div>
               </div>
-              
-	  		<ul className="dist-list">
+
+              <ul className="dist-list">
                 <li>
-                    <span className="img-box">
-						<img src="/img/sub/dist-list-ico1.png" alt="" />
-					</span>
-	  				<div>
-						<p className="tit">TCO 절감</p>
-						<p className="txt">
-							EV로 유지 보수 비용을 낮추고 에너지 관리 기능으로<br className="pc-block" />
-							전기 비용을 낮게 유지하십시오. 차량 텔레매틱스 통합 및<br className="pc-block" />
-							경로 관리 플랫폼을 통해 시간이 지남에 따라 차량 성능을<br className="pc-block" />
-							높이고 유지 관리 비용을 줄이십시오. 
-						</p>
-					</div>
+                  <span className="img-box">
+                    <img src="/img/sub/dist-list-ico1.png" alt="" />
+                  </span>
+                  <div>
+                    <p className="tit">TCO 절감</p>
+                    <p className="txt">
+                      EV로 유지 보수 비용을 낮추고 에너지 관리 기능으로
+                      <br className="pc-block" />
+                      전기 비용을 낮게 유지하십시오. 차량 텔레매틱스 통합 및<br className="pc-block" />
+                      경로 관리 플랫폼을 통해 시간이 지남에 따라 차량 성능을
+                      <br className="pc-block" />
+                      높이고 유지 관리 비용을 줄이십시오.
+                    </p>
+                  </div>
                 </li>
-				<li>
-                    <span className="img-box">
-						<img src="/img/sub/dist-list-ico2.png" alt="" />
-					</span>
-	  				<div>
-						<p className="tit">애플리케이션 프로그래밍 인터페이스(API) <br className="pc-block" />
-						통합을 통한 차량제어</p>
-						<p className="txt">
-						   다른 기존 차량 관리 솔루션과 API를 통해 통합된 <br className="pc-block" />
-							EV 충전 시스템으로 전체 차량을 계속 제어하십시오.
-						</p>
-					</div>
+                <li>
+                  <span className="img-box">
+                    <img src="/img/sub/dist-list-ico2.png" alt="" />
+                  </span>
+                  <div>
+                    <p className="tit">
+                      애플리케이션 프로그래밍 인터페이스(API) <br className="pc-block" />
+                      통합을 통한 차량제어
+                    </p>
+                    <p className="txt">
+                      다른 기존 차량 관리 솔루션과 API를 통해 통합된 <br className="pc-block" />
+                      EV 충전 시스템으로 전체 차량을 계속 제어하십시오.
+                    </p>
+                  </div>
                 </li>
               </ul>
-
             </div>
           </div>
         </div>
