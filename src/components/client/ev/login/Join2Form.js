@@ -27,6 +27,9 @@ const Join2Form = () => {
 
   const [passwd, setPasswd] = useState('');
   const [rePasswd, setRePasswd] = useState('');
+
+  const [passwdCk, setPasswdCk] = useState('');
+
   const [userNm, setUserNm] = useState('');
   const [userNmCk, setUserNmCk] = useState(false);
   const [addressCk, setAddressCk] = useState(false);
@@ -84,7 +87,10 @@ const Join2Form = () => {
     setCkpw3(regExp3.test(e.target.value));
     setCkpw(regExp.test(e.target.value));
     // 형식에 맞는 경우 true 리턴
-    console.log('비밀번호 유효성 검사 :: ', regExp.test(e.target.value));
+    console.log('비밀번호 유효성 검사1 :: ', ckpw1);
+    console.log('비밀번호 유효성 검사2 :: ', ckpw2);
+    console.log('비밀번호 유효성 검사3 :: ', ckpw3);
+    console.log('비밀번호 유효성 검사4 :: ', ckpw);
   };
 
   //비밀번호 유효성 검사
@@ -100,6 +106,12 @@ const Join2Form = () => {
     setCkpw3_1(regExp3.test(e.target.value));
     setCkpw_1(regExp.test(e.target.value));
     console.log('비밀번호 유효성 검사 :: ', regExp.test(e.target.value));
+
+    if (passwd === rePasswd) {
+      setPasswdCk(true);
+    } else {
+      setPasswdCk(false);
+    }
   };
 
   // 이메일 유효성 검사
@@ -301,29 +313,29 @@ const Join2Form = () => {
                 type="text"
                 placeholder="비밀번호를 입력해주세요. "
                 onChange={(e) => setPasswd(e.target.value)}
+                value={passwd}
                 onBlur={checkPassword}
                 maxlength={15}
               />
               <ul className="confirm-wp">
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   영문
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw2 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw2 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   숫자
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw3 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw3 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   특수문자
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   8~15자리
                 </li>
               </ul>
-              <p className="red">사용할 수 없는 비밀번호입니다. </p>
-              {/* <!-- <p className="blue">사용가능한 비밀번호입니다. </p> --> */}
+              {!ckpw ? <p className="red">사용할 수 없는 비밀번호입니다. </p> : ckpw ? <p className="blue">사용가능한 비밀번호입니다. </p> : ''}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>비밀번호 확인
@@ -333,29 +345,29 @@ const Join2Form = () => {
                 type="text"
                 placeholder="비밀번호를 다시 한 번 입력해주세요. "
                 onChange={(e) => setRePasswd(e.target.value)}
+                value={rePasswd}
                 onBlur={checkPassword2}
                 maxlength={15}
               />
               <ul className="confirm-wp">
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw1_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw1_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   영문
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_no.png" alt="" />
+                  {!ckpw2_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw2_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   숫자
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_no.png" alt="" />
+                  {!ckpw3_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw3_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   특수문자
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_no.png" alt="" />
+                  {!ckpw_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   8~15자리
                 </li>
               </ul>
-              <p className="red">비밀번호가 일치하지 않습니다. </p>
-              {/* <!-- <p className="blue">비밀번호가 일치합니다. </p> --> */}
+              {!passwdCk ? <p className="red">비밀번호가 일치하지 않습니다. </p> : passwdCk ? <p className="blue">비밀번호가 일치합니다. </p> : ''}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>이름
