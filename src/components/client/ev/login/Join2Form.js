@@ -15,15 +15,15 @@ const Join2Form = () => {
   const [emailCheck, setEmailCheck] = useState('');
   const [emailCheck2, setEmailCheck2] = useState(true);
 
-  const [ckpw, setCkpw] = useState(false);
   const [ckpw1, setCkpw1] = useState(false);
   const [ckpw2, setCkpw2] = useState(false);
   const [ckpw3, setCkpw3] = useState(false);
+  const [ckpw4, setCkpw4] = useState(false);
 
-  const [ckpw_1, setCkpw_1] = useState(false);
   const [ckpw1_1, setCkpw1_1] = useState(false);
   const [ckpw2_1, setCkpw2_1] = useState(false);
   const [ckpw3_1, setCkpw3_1] = useState(false);
+  const [ckpw4_1, setCkpw4_1] = useState(false);
 
   const [passwd, setPasswd] = useState('');
   const [rePasswd, setRePasswd] = useState('');
@@ -76,41 +76,71 @@ const Join2Form = () => {
 
   //비밀번호 유효성 검사
   const checkPassword = (e) => {
-    //  8 ~ 15자 영문, 숫자, 특수문자 조합
-    var regExp1 = /^(?=.*[a-zA-Z])$/;
-    var regExp2 = /^(?=.*[0-9])$/;
-    var regExp3 = /^(?=.*[!@#$%^*+=-])$/;
-    var regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+    setPasswd(e.target.value);
 
-    setCkpw1(regExp1.test(e.target.value));
-    setCkpw2(regExp2.test(e.target.value));
-    setCkpw3(regExp3.test(e.target.value));
-    setCkpw(regExp.test(e.target.value));
-    // 형식에 맞는 경우 true 리턴
-    console.log('비밀번호 유효성 검사1 :: ', ckpw1);
-    console.log('비밀번호 유효성 검사2 :: ', ckpw2);
-    console.log('비밀번호 유효성 검사3 :: ', ckpw3);
-    console.log('비밀번호 유효성 검사4 :: ', ckpw);
+    var eng = passwd.search(/[a-z]/gi);
+    var num = passwd.search(/[0-9]/g);
+    var spe = passwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+    console.log('eng : ' + eng);
+    console.log('num : ' + num);
+    console.log('spe : ' + spe);
+    console.log('passwd.length : ' + passwd.length);
+
+    if (eng === -1) {
+      setCkpw1(false);
+    } else {
+      setCkpw1(true);
+    }
+    if (num === -1) {
+      setCkpw2(false);
+    } else {
+      setCkpw2(true);
+    }
+    if (spe === -1) {
+      setCkpw3(false);
+    } else {
+      setCkpw3(true);
+    }
+    if (passwd.length >= 7 && passwd.length < 15) {
+      setCkpw4(true);
+    } else {
+      setCkpw4(false);
+    }
   };
 
   //비밀번호 유효성 검사
   const checkPassword2 = (e) => {
-    //  8 ~ 15자 영문, 숫자, 특수문자 조합
-    var regExp1 = /^(?=.*[a-zA-Z])$/;
-    var regExp2 = /^(?=.*[0-9])$/;
-    var regExp3 = /^(?=.*[!@#$%^*+=-])$/;
-    var regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
-    // 형식에 맞는 경우 true 리턴
-    setCkpw1_1(regExp1.test(e.target.value));
-    setCkpw2_1(regExp2.test(e.target.value));
-    setCkpw3_1(regExp3.test(e.target.value));
-    setCkpw_1(regExp.test(e.target.value));
-    console.log('비밀번호 유효성 검사 :: ', regExp.test(e.target.value));
+    setRePasswd(e.target.value);
 
-    if (passwd === rePasswd) {
-      setPasswdCk(true);
+    var eng = rePasswd.search(/[a-z]/gi);
+    var num = rePasswd.search(/[0-9]/g);
+    var spe = rePasswd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+    console.log('eng : ' + eng);
+    console.log('num : ' + num);
+    console.log('spe : ' + spe);
+    console.log('passwd.length : ' + rePasswd.length);
+
+    if (eng === -1) {
+      setCkpw1_1(false);
     } else {
-      setPasswdCk(false);
+      setCkpw1_1(true);
+    }
+    if (num === -1) {
+      setCkpw2_1(false);
+    } else {
+      setCkpw2_1(true);
+    }
+    if (spe === -1) {
+      setCkpw3_1(false);
+    } else {
+      setCkpw3_1(true);
+    }
+    if (rePasswd.length >= 7 && rePasswd.length < 15) {
+      setCkpw4_1(true);
+    } else {
+      setCkpw4_1(false);
     }
   };
 
@@ -268,8 +298,13 @@ const Join2Form = () => {
         return res.json();
       })
       .then((res) => {
-        // const result = JSON.stringify(res.data).replace(/"/g, '');
-        navigate('/ev/login', { replace: true });
+        if (res.data !== '') {
+          const result = JSON.stringify(res.data.principal).replace(/"/g, '');
+
+          if (result) {
+            navigate('/ev/join3', { replace: true });
+          }
+        }
       });
   };
 
@@ -312,9 +347,9 @@ const Join2Form = () => {
               <input
                 type="text"
                 placeholder="비밀번호를 입력해주세요. "
-                onChange={(e) => setPasswd(e.target.value)}
+                onChange={checkPassword}
                 value={passwd}
-                onBlur={checkPassword}
+                // onBlur={checkPassword}
                 maxlength={15}
               />
               <ul className="confirm-wp">
@@ -331,11 +366,15 @@ const Join2Form = () => {
                   특수문자
                 </li>
                 <li>
-                  {!ckpw ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
+                  {!ckpw4 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw4 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   8~15자리
                 </li>
               </ul>
-              {!ckpw ? <p className="red">사용할 수 없는 비밀번호입니다. </p> : ckpw ? <p className="blue">사용가능한 비밀번호입니다. </p> : ''}
+              {ckpw1 && ckpw2 && ckpw3 && ckpw4 ? (
+                <p className="blue">사용가능한 비밀번호입니다. </p>
+              ) : (
+                <p className="red">사용할 수 없는 비밀번호입니다. </p>
+              )}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>비밀번호 확인
@@ -344,9 +383,9 @@ const Join2Form = () => {
               <input
                 type="text"
                 placeholder="비밀번호를 다시 한 번 입력해주세요. "
-                onChange={(e) => setRePasswd(e.target.value)}
+                onChange={checkPassword2}
                 value={rePasswd}
-                onBlur={checkPassword2}
+                // onBlur={checkPassword2}
                 maxlength={15}
               />
               <ul className="confirm-wp">
@@ -363,11 +402,11 @@ const Join2Form = () => {
                   특수문자
                 </li>
                 <li>
-                  {!ckpw_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
+                  {!ckpw4_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw4_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   8~15자리
                 </li>
               </ul>
-              {!passwdCk ? <p className="red">비밀번호가 일치하지 않습니다. </p> : passwdCk ? <p className="blue">비밀번호가 일치합니다. </p> : ''}
+              {passwd === rePasswd ? <p className="blue">비밀번호가 일치합니다. </p> : <p className="red">비밀번호가 일치하지 않습니다. </p>}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>이름
