@@ -28,8 +28,6 @@ const Join2Form = () => {
   const [passwd, setPasswd] = useState('');
   const [rePasswd, setRePasswd] = useState('');
 
-  const [passwdCk, setPasswdCk] = useState('');
-
   const [userNm, setUserNm] = useState('');
   const [userNmCk, setUserNmCk] = useState(false);
   const [addressCk, setAddressCk] = useState(false);
@@ -76,16 +74,16 @@ const Join2Form = () => {
 
   //비밀번호 유효성 검사
   const checkPassword = (e) => {
-    setPasswd(e.target.value);
+    // setPasswd(e.target.value);
 
     var eng = passwd.search(/[a-z]/gi);
     var num = passwd.search(/[0-9]/g);
     var spe = passwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
 
-    console.log('eng : ' + eng);
-    console.log('num : ' + num);
-    console.log('spe : ' + spe);
-    console.log('passwd.length : ' + passwd.length);
+    // console.log('eng : ' + eng);
+    // console.log('num : ' + num);
+    // console.log('spe : ' + spe);
+    // console.log('passwd.length : ' + passwd.length);
 
     if (eng === -1) {
       setCkpw1(false);
@@ -102,7 +100,7 @@ const Join2Form = () => {
     } else {
       setCkpw3(true);
     }
-    if (passwd.length >= 7 && passwd.length < 15) {
+    if (passwd.length >= 8 && passwd.length <= 15) {
       setCkpw4(true);
     } else {
       setCkpw4(false);
@@ -111,16 +109,16 @@ const Join2Form = () => {
 
   //비밀번호 유효성 검사
   const checkPassword2 = (e) => {
-    setRePasswd(e.target.value);
+    // setRePasswd(e.target.value);
 
     var eng = rePasswd.search(/[a-z]/gi);
     var num = rePasswd.search(/[0-9]/g);
     var spe = rePasswd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
 
-    console.log('eng : ' + eng);
-    console.log('num : ' + num);
-    console.log('spe : ' + spe);
-    console.log('passwd.length : ' + rePasswd.length);
+    // console.log('eng2 : ' + eng);
+    // console.log('num2 : ' + num);
+    // console.log('spe2 : ' + spe);
+    // console.log('rePasswd.length : ' + rePasswd.length);
 
     if (eng === -1) {
       setCkpw1_1(false);
@@ -137,7 +135,7 @@ const Join2Form = () => {
     } else {
       setCkpw3_1(true);
     }
-    if (rePasswd.length >= 7 && rePasswd.length < 15) {
+    if (rePasswd.length >= 8 && rePasswd.length <= 15) {
       setCkpw4_1(true);
     } else {
       setCkpw4_1(false);
@@ -148,6 +146,13 @@ const Join2Form = () => {
   const checkEmail = (e) => {
     var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     // 형식에 맞는 경우 true 리턴
+
+    if (email === '') {
+      setEmailCheck('X');
+      return;
+    } else {
+      setEmailCheck('');
+    }
     setEmailCheck2(regExp.test(e.target.value));
     console.log('이메일 유효성 검사 :: ', regExp.test(e.target.value));
   };
@@ -159,6 +164,8 @@ const Join2Form = () => {
     if (email === '') {
       setEmailCheck('X');
       return;
+    } else {
+      setEmailCheck('');
     }
     const data = {
       url: '/auth/isEmailDuplicated',
@@ -184,7 +191,6 @@ const Join2Form = () => {
 
   // 이름 등록
   const userChange = (e) => {
-    setUserNm(e.target.value);
     if (userNm === '') {
       setUserNmCk(true);
     } else {
@@ -200,8 +206,7 @@ const Join2Form = () => {
   };
 
   const addressDetailChange = (e) => {
-    setAddressDetail(e.target.value);
-    if (userNm === '') {
+    if (addressDetail === '') {
       setAddressDetailCk(true);
     } else {
       setAddressDetailCk(false);
@@ -251,17 +256,30 @@ const Join2Form = () => {
         console.log('res.data : ' + res.data);
 
         if (res.data !== undefined) {
-          const dataBrth = JSON.stringify(res.data.brth).replace(/"/g, '');
-          const dataCi = JSON.stringify(res.data.ci).replace(/"/g, '');
-          const dataGender = JSON.stringify(res.data.gender).replace(/"/g, '');
-          const dataTelcom = JSON.stringify(res.data.telcom).replace(/"/g, '');
-          const dataTelNo = JSON.stringify(res.data.telno).replace(/"/g, '');
+          const dataBrth = JSON.stringify(res.data.brth);
+          const dataCi = JSON.stringify(res.data.ci);
+          const dataGender = JSON.stringify(res.data.gender);
+          const dataTelcom = JSON.stringify(res.data.telcom);
+          const dataTelNo = JSON.stringify(res.data.telno);
+
+          // console.log('dataBrth : ' + dataBrth);
+          // console.log('dataCi : ' + dataCi);
+          // console.log('dataGender : ' + dataGender);
+          // console.log('dataTelcom : ' + dataTelcom);
+          // console.log('dataTelNo : ' + dataTelNo);
 
           setBrth(dataBrth);
           setCi(dataCi);
           setGender(dataGender);
           setTelcom(dataTelcom);
           setTelno(dataTelNo);
+
+          // console.log('brth : ' + brth);
+          // console.log('ci : ' + ci);
+          // console.log('gender : ' + gender);
+          // console.log('telcom : ' + telcom);
+          // console.log('telno : ' + telno);
+
           signupUser(e);
         } else {
           setTelnoCk2(true);
@@ -285,6 +303,8 @@ const Join2Form = () => {
       ci: ci,
       roleId: 'elinkuser',
     };
+
+    console.log('data : ' + JSON.stringify(data));
 
     fetch(process.env.REACT_APP_API_URL + '/api/ev/auth/signupUser', {
       method: 'POST',
@@ -324,7 +344,7 @@ const Join2Form = () => {
               <span className="orange">*</span>이메일
             </h3>
             <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="이메일을 입력해주세요. " onChange={(e) => setEmail(e.target.value)} onBlur={checkEmail} />
+              <input type="text" placeholder="이메일을 입력해주세요. " onChange={(e) => setEmail(e.target.value)} onKeyUp={checkEmail} />
               <button className="border-btn" onClick={emailDuplicated}>
                 중복확인
               </button>
@@ -345,11 +365,11 @@ const Join2Form = () => {
             </h3>
             <div className="input-wp">
               <input
-                type="text"
+                type="password"
                 placeholder="비밀번호를 입력해주세요. "
-                onChange={checkPassword}
+                onChange={(e) => setPasswd(e.target.value)}
+                onKeyUp={checkPassword}
                 value={passwd}
-                // onBlur={checkPassword}
                 maxlength={15}
               />
               <ul className="confirm-wp">
@@ -372,6 +392,8 @@ const Join2Form = () => {
               </ul>
               {ckpw1 && ckpw2 && ckpw3 && ckpw4 ? (
                 <p className="blue">사용가능한 비밀번호입니다. </p>
+              ) : !ckpw1 && !ckpw2 && !ckpw3 && !ckpw4 ? (
+                ''
               ) : (
                 <p className="red">사용할 수 없는 비밀번호입니다. </p>
               )}
@@ -381,11 +403,11 @@ const Join2Form = () => {
             </h3>
             <div className="input-wp">
               <input
-                type="text"
+                type="password"
                 placeholder="비밀번호를 다시 한 번 입력해주세요. "
-                onChange={checkPassword2}
+                onChange={(e) => setRePasswd(e.target.value)}
+                onKeyUp={checkPassword2}
                 value={rePasswd}
-                // onBlur={checkPassword2}
                 maxlength={15}
               />
               <ul className="confirm-wp">
@@ -406,13 +428,26 @@ const Join2Form = () => {
                   8~15자리
                 </li>
               </ul>
-              {passwd === rePasswd ? <p className="blue">비밀번호가 일치합니다. </p> : <p className="red">비밀번호가 일치하지 않습니다. </p>}
+              {passwd === rePasswd && passwd !== '' && rePasswd !== '' ? (
+                <p className="blue">비밀번호가 일치합니다. </p>
+              ) : passwd !== rePasswd && passwd !== '' && rePasswd !== '' ? (
+                <p className="red">비밀번호가 일치하지 않습니다. </p>
+              ) : (
+                ''
+              )}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>이름
             </h3>
             <div className="input-wp">
-              <input type="text" name="userNm" placeholder="이름을 입력해주세요." value={userNm} onChange={userChange} />
+              <input
+                type="text"
+                name="userNm"
+                placeholder="이름을 입력해주세요."
+                value={userNm}
+                onChange={(e) => setUserNm(e.target.value)}
+                onKeyUp={userChange}
+              />
               {userNmCk && <p className="red">이름을 입력해주세요.</p>}
             </div>
             <h3 className="mini-ttl">
@@ -443,7 +478,13 @@ const Join2Form = () => {
               {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
               <input type="text" placeholder="주소" name="address" onChange={handleInput} value={enroll_company.address} />
               {addressCk && <p className="red">주소를 입력해주세요.</p>}
-              <input type="text" placeholder="상세주소" onChange={addressDetailChange} value={addressDetail} />
+              <input
+                type="text"
+                placeholder="상세주소"
+                onChange={(e) => setAddressDetail(e.target.value)}
+                onKeyUp={addressDetailChange}
+                value={addressDetail}
+              />
               {addressDetailCk && <p className="red">상세주소를 입력해주세요.</p>}
             </div>
             <button className="orange-btn" onClick={signupUserInfo}>
