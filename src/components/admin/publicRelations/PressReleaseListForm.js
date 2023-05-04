@@ -67,6 +67,14 @@ const PressReleaseListForm = () => {
 
   return (
     <div className="a-content">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="/admin/publicRelations/pressRelease">국문</Link>
+        </li>
+        <li>
+          <Link to="/admin/publicRelations/pressReleaseEn">영문</Link>
+        </li>
+      </ul>
       <h2>
         보도자료 관리<span>총 {totalCount}건</span>
       </h2>
@@ -123,10 +131,10 @@ const PressReleaseListForm = () => {
                       <span className="chkimg"></span>
                     </label>
                   </th>
-                  <td>{totalCount-(list.rnum-1)}</td>
+                  <td>{totalCount - (list.rnum - 1)}</td>
                   <td className="pl40">
                     <div className="shape-150">
-                      <ViewImage fileNm={list.thumbNm}/>
+                      <ViewImage fileNm={list.thumbNm} />
                     </div>
                   </td>
                   <td className="tal pl40">

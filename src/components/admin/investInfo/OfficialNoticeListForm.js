@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoard, insertBoard, updateBoard, deleteBoardIds } from 'store/boardReducer';
 import Pagination from 'react-js-pagination';
@@ -153,6 +154,14 @@ const OfficialNoticeListForm = () => {
 
   return (
     <div className="a-content a02">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="/admin/investInfo/officialNotice">국문</Link>
+        </li>
+        <li>
+          <Link to="/admin/investInfo/officialNoticeEn">영문</Link>
+        </li>
+      </ul>
       <h2>
         공시정보<span>총 {boardList.totalCount}건</span>
       </h2>

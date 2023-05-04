@@ -19,6 +19,14 @@ const MediaInfoForm = () => {
 
   return (
     <div className="a-content">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="">국문</Link>
+        </li>
+        <li>
+          <Link to="">영문</Link>
+        </li>
+      </ul>
       <h2>미디어 관리</h2>
       <div className="ban-list p0">
         <div className="btn-area position">

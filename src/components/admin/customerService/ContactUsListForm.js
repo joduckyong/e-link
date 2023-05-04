@@ -12,7 +12,7 @@ const ContactUsListForm = () => {
   const [checkItems, setCheckItems] = useState([]);
   const [selectItem, setSelectItem] = useState('');
   const [page, setPage] = useState(1);
-  const [contactType, setContactType] = useState('A');    // A: 상담신청, B: 불편신고, C: 문의하기
+  const [contactType, setContactType] = useState('A'); // A: 상담신청, B: 불편신고, C: 문의하기
 
   useEffect(() => {
     const newList = { contactId: 'CON', contactType: contactType, pageIndex: page };
@@ -79,31 +79,53 @@ const ContactUsListForm = () => {
     setCheckItems([]);
     setSelectItem('');
     setPage(1);
-  }
+  };
 
   return (
     <div className="a-content">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="/admin/customerService/contactUs">국문</Link>
+        </li>
+        <li>
+          <Link to="/admin/customerService/contactUsEn">영문</Link>
+        </li>
+      </ul>
       <h2>
         Contact Us<span>총 {totalCount}건</span>
       </h2>
       <ul className="sub-tab">
         <li className={contactType === 'A' && 'active'}>
-          <Link to="" onClick={() => onContactType('A')}>상담신청</Link>
+          <Link to="" onClick={() => onContactType('A')}>
+            상담신청
+          </Link>
         </li>
         <li className={contactType === 'B' && 'active'}>
-          <Link to="" onClick={() => onContactType('B')}>불편신고</Link>
+          <Link to="" onClick={() => onContactType('B')}>
+            불편신고
+          </Link>
         </li>
         <li className={contactType === 'C' && 'active'}>
-          <Link to="" onClick={() => onContactType('C')}>문의하기</Link>
+          <Link to="" onClick={() => onContactType('C')}>
+            문의하기
+          </Link>
         </li>
       </ul>
       <div className="ban-list p0">
         <div className="search-box">
           <select name="searchCondition" onChange={(e) => setSelectItem(e.target.value)}>
-            <option value="" selected={selectItem === '' && true}>전체</option>
-            <option value="name" selected={selectItem === 'name' && true}>이름</option>
-            <option value="title" selected={selectItem === 'title' && true}>제목</option>
-            <option value="content" selected={selectItem === 'content' && true}>내용</option>
+            <option value="" selected={selectItem === '' && true}>
+              전체
+            </option>
+            <option value="name" selected={selectItem === 'name' && true}>
+              이름
+            </option>
+            <option value="title" selected={selectItem === 'title' && true}>
+              제목
+            </option>
+            <option value="content" selected={selectItem === 'content' && true}>
+              내용
+            </option>
           </select>
           <div className="search-input">
             <input

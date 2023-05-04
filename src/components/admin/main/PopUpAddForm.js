@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { insertPopup } from 'store/popupReducer';
 import DatePicker from 'react-datepicker';
@@ -116,6 +117,14 @@ const PopUpAddForm = () => {
 
   return (
     <div className="a-content a01">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="">국문</Link>
+        </li>
+        <li>
+          <Link to="">영문</Link>
+        </li>
+      </ul>
       <h2>팝업 등록</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">
