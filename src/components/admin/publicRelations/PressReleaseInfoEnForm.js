@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoardInfo } from 'store/boardReducer';
+import { selectBoardInfo } from 'store/boardEnReducer';
 import { downloadFile } from 'common/download';
 
 const PressReleaseInfoEnForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
-  const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
-  const fileList = useSelector((state) => state.boardReducer.files);
+  const boardTitle = useSelector((state) => state.boardEnReducer.dataInfo.boardTitle);
+  const boardContents = useSelector((state) => state.boardEnReducer.dataInfo.boardContents);
+  const fileList = useSelector((state) => state.boardEnReducer.files);
   const attachList = fileList.filter((file) => file.fileType !== '1'); //썸네일 제외
 
   useEffect(() => {

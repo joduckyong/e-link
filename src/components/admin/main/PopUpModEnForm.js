@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPopupInfo, updatePopup } from 'store/popupReducer';
+import { selectPopupInfo, updatePopup } from 'store/popupEnReducer';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
@@ -37,8 +37,8 @@ const PopUpModEnForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const popupInfo = useSelector((state) => state.popupReducer.dataInfo);
-  const fileList = useSelector((state) => state.popupReducer.files);
+  const popupInfo = useSelector((state) => state.popupEnReducer.dataInfo);
+  const fileList = useSelector((state) => state.popupEnReducer.files);
 
   const thumbnailRef = useRef();
   // const fileRef = useRef();

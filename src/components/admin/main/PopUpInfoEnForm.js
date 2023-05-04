@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPopupInfo } from 'store/popupReducer';
+import { selectPopupInfo } from 'store/popupEnReducer';
 import ViewImage from 'components/common/ViewImage';
 
 const PopUpInfoEnForm = () => {
   const { id } = useParams();
   const [thumbnailName, setThumbnailName] = useState('선택된 파일 없음');
   const dispatch = useDispatch();
-  const popupInfo = useSelector((state) => state.popupReducer.dataInfo);
-  const fileList = useSelector((state) => state.popupReducer.files);
+  const popupInfo = useSelector((state) => state.popupEnReducer.dataInfo);
+  const fileList = useSelector((state) => state.popupEnReducer.files);
 
   useEffect(() => {
     dispatch(selectPopupInfo(id));

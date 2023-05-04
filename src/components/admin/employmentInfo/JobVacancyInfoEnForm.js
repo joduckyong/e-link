@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoardInfo } from 'store/boardReducer';
+import { selectBoardInfo } from 'store/boardEnReducer';
 import { downloadFile } from 'common/download';
 
 const JobVacancyInfoEnForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
-  const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
-  const boardType = useSelector((state) => state.boardReducer.dataInfo.boardType);
-  const url = useSelector((state) => state.boardReducer.dataInfo.url);
-  const boardStartDatetime = useSelector((state) => state.boardReducer.dataInfo.boardStartDatetime);
-  const boardEndDatetime = useSelector((state) => state.boardReducer.dataInfo.boardEndDatetime);
-  const attachList = useSelector((state) => state.boardReducer.files);
+  const boardTitle = useSelector((state) => state.boardEnReducer.dataInfo.boardTitle);
+  const boardContents = useSelector((state) => state.boardEnReducer.dataInfo.boardContents);
+  const boardType = useSelector((state) => state.boardEnReducer.dataInfo.boardType);
+  const url = useSelector((state) => state.boardEnReducer.dataInfo.url);
+  const boardStartDatetime = useSelector((state) => state.boardEnReducer.dataInfo.boardStartDatetime);
+  const boardEndDatetime = useSelector((state) => state.boardEnReducer.dataInfo.boardEndDatetime);
+  const attachList = useSelector((state) => state.boardEnReducer.files);
 
   useEffect(() => {
     dispatch(selectBoardInfo(id));

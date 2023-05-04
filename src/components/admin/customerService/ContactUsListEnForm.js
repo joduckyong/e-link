@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContactUs, deleteContactUsIds } from 'store/contactUsReducer';
+import { selectContactUs, deleteContactUsIds } from 'store/contactUsEnReducer';
 import Pagination from 'react-js-pagination';
 
 const ContactUsListEnForm = () => {
   const dispatch = useDispatch();
-  const contactUsList = useSelector((state) => state.contactUsReducer.data);
-  const totalCount = useSelector((state) => state.contactUsReducer.totalCount);
+  const contactUsList = useSelector((state) => state.contactUsEnReducer.data);
+  const totalCount = useSelector((state) => state.contactUsEnReducer.totalCount);
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [checkItems, setCheckItems] = useState([]);
   const [selectItem, setSelectItem] = useState('');

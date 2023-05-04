@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoardInfo } from 'store/boardReducer';
+import { selectBoardInfo } from 'store/boardEnReducer';
 import { downloadFile } from 'common/download';
 
 const FinancialInfoEnForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
-  const attachList = useSelector((state) => state.boardReducer.files);
+  const boardInfo = useSelector((state) => state.boardEnReducer.dataInfo);
+  const attachList = useSelector((state) => state.boardEnReducer.files);
 
   useEffect(() => {
     dispatch(selectBoardInfo(id));

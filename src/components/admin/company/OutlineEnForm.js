@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOutline, insertOutline, updateOutline, deleteOutlineIds } from 'store/outlineReducer';
+import { selectOutline, insertOutline, updateOutline, deleteOutlineIds } from 'store/outlineEnReducer';
 import { useEffect } from 'react';
 
 const AddYearBox = ({
@@ -132,7 +132,7 @@ const OutlineEnForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const outlineList = useSelector((state) => state.outlineReducer.data);
+  const outlineList = useSelector((state) => state.outlineEnReducer.data);
   // const totalCount = useSelector((state) => state.boardReducer.totalCount);
 
   useEffect(() => {

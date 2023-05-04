@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoardInfo, updateBoard } from 'store/boardReducer';
+import { selectBoardInfo, updateBoard } from 'store/boardEnReducer';
 import { getCookieToken } from 'storage/Cookie';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -43,8 +43,8 @@ const FinancialModEnForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
-  const attachList = useSelector((state) => state.boardReducer.files);
+  const boardInfo = useSelector((state) => state.boardEnReducer.dataInfo);
+  const attachList = useSelector((state) => state.boardEnReducer.files);
   const filesRef = useRef([]);
   const quillRef = useRef();
 

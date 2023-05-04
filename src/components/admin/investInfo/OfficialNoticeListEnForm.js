@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoard, insertBoard, updateBoard, deleteBoardIds } from 'store/boardReducer';
+import { selectBoard, insertBoard, updateBoard, deleteBoardIds } from 'store/boardEnReducer';
 import Pagination from 'react-js-pagination';
 
 const OfficialNoticeListEnForm = () => {
   const dispatch = useDispatch();
-  const boardList = useSelector((state) => state.boardReducer);
+  const boardList = useSelector((state) => state.boardEnReducer);
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
   const [boardTitle, setBoardTitle] = useState('');

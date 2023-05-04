@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoard, deleteBoardIds } from 'store/boardReducer';
+import { selectBoard, deleteBoardIds } from 'store/boardEnReducer';
 import Pagination from 'react-js-pagination';
 
 const JobVacancyListEnForm = () => {
   const dispatch = useDispatch();
-  const boardList = useSelector((state) => state.boardReducer.data);
-  const totalCount = useSelector((state) => state.boardReducer.totalCount);
+  const boardList = useSelector((state) => state.boardEnReducer.data);
+  const totalCount = useSelector((state) => state.boardEnReducer.totalCount);
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [checkItems, setCheckItems] = useState([]);
   const [selectItem, setSelectItem] = useState('');

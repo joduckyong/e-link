@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { insertPopup } from 'store/popupReducer';
+import { insertPopup } from 'store/popupEnReducer';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';

@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback, useMemo } from 'react';
 import axios from 'axios';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { insertBoard } from 'store/boardReducer';
+import { insertBoard } from 'store/boardEnReducer';
 import { getCookieToken } from 'storage/Cookie';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';

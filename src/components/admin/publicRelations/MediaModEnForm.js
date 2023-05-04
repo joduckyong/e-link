@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react'
 import axios from 'axios';
 import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoardInfo, updateBoard } from 'store/boardReducer';
+import { selectBoardInfo, updateBoard } from 'store/boardEnReducer';
 import { getCookieToken } from 'storage/Cookie';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -45,8 +45,8 @@ const MediaModEnForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
-  const attachList = useSelector((state) => state.boardReducer.files);
+  const boardInfo = useSelector((state) => state.boardEnReducer.dataInfo);
+  const attachList = useSelector((state) => state.boardEnReducer.files);
 
   const thumbnailRef = useRef();
   const filesRef = useRef([]);

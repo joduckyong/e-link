@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContactUsInfo } from 'store/contactUsReducer';
+import { selectContactUsInfo } from 'store/contactUsEnReducer';
 import { downloadFile } from 'common/download';
 
 const ContactUsInfoEnForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const contactNm = useSelector((state) => state.contactUsReducer.dataInfo.contactNm);
-  const contactTitle = useSelector((state) => state.contactUsReducer.dataInfo.contactTitle);
-  const contactPhone = useSelector((state) => state.contactUsReducer.dataInfo.contactPhone);
-  const contactContents = useSelector((state) => state.contactUsReducer.dataInfo.contactContents);
-  const contactAgree = useSelector((state) => state.contactUsReducer.dataInfo.contactAgree);
-  const attachList = useSelector((state) => state.contactUsReducer.files);
+  const contactNm = useSelector((state) => state.contactUsEnReducer.dataInfo.contactNm);
+  const contactTitle = useSelector((state) => state.contactUsEnReducer.dataInfo.contactTitle);
+  const contactPhone = useSelector((state) => state.contactUsEnReducer.dataInfo.contactPhone);
+  const contactContents = useSelector((state) => state.contactUsEnReducer.dataInfo.contactContents);
+  const contactAgree = useSelector((state) => state.contactUsEnReducer.dataInfo.contactAgree);
+  const attachList = useSelector((state) => state.contactUsEnReducer.files);
 
   useEffect(() => {
     dispatch(selectContactUsInfo(id));

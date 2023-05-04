@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoard, deleteBoardIds } from 'store/boardReducer';
+import { selectBoard, deleteBoardIds } from 'store/boardEnReducer';
 import Pagination from 'react-js-pagination';
 
 const FinancialListEnForm = () => {
   const dispatch = useDispatch();
-  const boardList = useSelector((state) => state.boardReducer);
+  const boardList = useSelector((state) => state.boardEnReducer);
   // 검색키워드
   const [searchKeyword, setSearchKeyword] = useState(null);
   // 체크된 아이템을 담을 배열

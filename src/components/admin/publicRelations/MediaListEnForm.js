@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBoard, deleteBoardIds, selectPinupId, updatePinupId } from 'store/boardReducer';
+import { selectBoard, deleteBoardIds, selectPinupId, updatePinupId } from 'store/boardEnReducer';
 import Pagination from 'react-js-pagination';
 import ViewImage from 'components/common/ViewImage';
 import classnames from 'classnames';
@@ -22,9 +22,9 @@ const YoutubeImage = ({ url, width, height }) => {
 
 const MediaListEnForm = () => {
   const dispatch = useDispatch();
-  const boardList = useSelector((state) => state.boardReducer.data);
-  const totalCount = useSelector((state) => state.boardReducer.totalCount);
-  const pinupId = useSelector((state) => state.boardReducer.pinupData);
+  const boardList = useSelector((state) => state.boardEnReducer.data);
+  const totalCount = useSelector((state) => state.boardEnReducer.totalCount);
+  const pinupId = useSelector((state) => state.boardEnReducer.pinupData);
   const [checkItems, setCheckItems] = useState([]);
   const [page, setPage] = useState(1);
 

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPopup, deletePopupIds } from 'store/popupReducer';
+import { selectPopup, deletePopupIds } from 'store/popupEnReducer';
 import Pagination from 'react-js-pagination';
 import ViewImage from 'components/common/ViewImage';
 
 const PopUpListEnForm = () => {
   const dispatch = useDispatch();
-  const popupList = useSelector((state) => state.popupReducer);
+  const popupList = useSelector((state) => state.popupEnReducer);
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
   // 페이징 값
