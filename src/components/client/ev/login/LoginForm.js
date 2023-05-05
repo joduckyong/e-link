@@ -7,6 +7,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { loginUser } from '../../../../api/EvUsers';
 import { removeCookieToken, setRefreshToken } from '../../../../storage/Cookie';
 import { SET_TOKEN } from '../../../../store/Auth';
+import { encrypt } from '../../../../api/crypto';
 
 const LoginForm = () => {
   const NAVER_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=NAVER`;
@@ -101,7 +102,7 @@ const LoginForm = () => {
           <button className="orange-btn" type="submit">
             로그인
           </button>
-          {/* <div className="sns-wp">
+          <div className="sns-wp">
             <h2>SNS 로그인</h2>
             <ul className="sns-list">
               <li>
@@ -117,7 +118,7 @@ const LoginForm = () => {
                 <a href={APPLE_URI}></a>
               </li>
             </ul>
-          </div> */}
+          </div>
         </form>
       </section>
     </>

@@ -26,7 +26,9 @@ const FindId2Form = () => {
             <NavLink to="/ev/login" className="orange-btn">
               로그인
             </NavLink>
-            <button className="orange-btn border-btn">비밀번호 재설정</button>
+            <NavLink to="/ev/findpw" className="orange-btn border-btn">
+              비밀번호 재설정
+            </NavLink>
           </div>
         </form>
       </section>

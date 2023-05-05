@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { encrypt } from '../../../../api/crypto';
 import Post from '../../../../api/Post';
 
 const Join2Form = () => {
@@ -69,7 +69,7 @@ const Join2Form = () => {
       return;
     }
 
-    window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2', 'width=0,height=0,location=no,status=no,scrollbars=yes', '_blank');
+    window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2?type=I', 'width=0,height=0,location=no,status=no,scrollbars=yes', '_blank');
   };
 
   //비밀번호 유효성 검사
