@@ -1,5 +1,6 @@
 import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import tokenReducer from './Auth';
+import evTokenReducer from './EvAuth';
 import { popupReducer } from './popupReducer';
 import { popupEnReducer } from './popupEnReducer';
 import { boardReducer } from './boardReducer';
@@ -13,6 +14,7 @@ import logger from 'redux-logger';
 
 const reducer = combineReducers({
   authToken: tokenReducer,
+  evAuthToken: evTokenReducer,
   popupReducer: popupReducer.reducer,
   popupEnReducer: popupEnReducer.reducer,
   boardReducer: boardReducer.reducer,

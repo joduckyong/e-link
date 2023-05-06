@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
+import { loginUser } from '../../../../api/EvUsers';
+import { setRefreshEvToken } from '../../../../storage/EvCookie';
+import { SET_EV_TOKEN } from '../../../../store/EvAuth';
 import { encrypt } from '../../../../api/crypto';
 
 const LoginForm = () => {
@@ -15,50 +19,75 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
 
-  const Login = async (e) => {
-    e.preventDefault();
+  // useForm 사용을 위한 선언
+  const {
+    register,
+    setValue,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
-    const data = {
-      url: '/auth/oauth/token',
-      username: username,
+  // submit 이후 동작할 코드
+  // 백으로 유저 정보 전달
+  const onValid = async ({ username, password }) => {
+    const response = await loginUser({
+      username,
       password: encrypt(password),
       grant_type: 'password',
       scope: 'mobileclient',
-      roleId: 'email',
-    };
+      login_type: 'email',
+      url: '/auth/oauth/token',
+    });
 
-    console.log('data : ' + JSON.stringify(data));
-
-    fetch(process.env.REACT_APP_API_URL + '/api/ev/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        if (res.data !== '') {
-          const result = JSON.stringify(res.data.principal);
-
-          console.log('result : ' + result);
-        }
-      });
+    if (response.status) {
+      // 쿠키에 Refresh Token, store에 Access Token 저장
+      // console.log('response.json.access_token : ' + JSON.stringify(response.json.data.access_token));
+      // console.log('response.json.refresh_token : ' + JSON.stringify(response.json.data.refresh_token));
+      // console.log('response.json.expires_in : ' + JSON.stringify(response.json.data.expires_in));
+      setRefreshEvToken(JSON.stringify(response.json.data.refresh_token), JSON.stringify(response.json.data.expires_in));
+      dispatch(SET_EV_TOKEN(JSON.stringify(response.json.data.access_token)));
+      return navigate('/ev/mypage1');
+    } else {
+      alert('아이디 비밀번호를 확인해주세요!');
+      // console.log(response.json);
+    }
+    // input 태그 값 비워주는 코드
+    setValue('password', '');
   };
 
   return (
     <>
       <section className="ev-sub-sect">
-        <form className="login-wp">
+        <form className="login-wp" onSubmit={handleSubmit(onValid)}>
           <h1>ELVIS 로그인</h1>
           <div className="input-wp">
-            <input type="text" name="username" defaultValue={username} placeholder="이메일" onChange={(e) => setUsername(e.target.value)} />
-            <input type="password" name="password" placeholder="비밀번호" onChange={(e) => setPassword(e.target.value)} />
+            <input
+              type="text"
+              name="username"
+              defaultValue={username}
+              placeholder="이메일"
+              {...register('username', { onChange: (e) => setUsername(e.target.value) })}
+            />
+            <ErrorMessage
+              name="username"
+              errors={errors}
+              render={({ message }) => (
+                <p style={{ color: 'red' }} className="text-sm font-medium text-rose-500">
+                  {message}
+                </p>
+              )}
+            />
+            <input type="password" name="password" placeholder="비밀번호" {...register('password')} />
+            <ErrorMessage
+              name="password"
+              errors={errors}
+              render={({ message }) => (
+                <p style={{ color: 'red' }} className="text-sm font-medium text-rose-500">
+                  {message}
+                </p>
+              )}
+            />
           </div>
           <div className="txt-wp">
             <div className="agree">
@@ -77,7 +106,7 @@ const LoginForm = () => {
               <NavLink to="/ev/join1">회원가입</NavLink>
             </p>
           </div>
-          <button className="orange-btn" onClick={Login}>
+          <button className="orange-btn" type="submit">
             로그인
           </button>
           <div className="sns-wp">
