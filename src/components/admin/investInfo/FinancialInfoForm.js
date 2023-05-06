@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBoardInfo } from 'store/boardReducer';
 import { downloadFile } from 'common/download';
@@ -16,6 +17,14 @@ const FinancialInfoForm = () => {
 
   return (
     <div className="a-content">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="">국문</Link>
+        </li>
+        <li>
+          <Link to="">영문</Link>
+        </li>
+      </ul>
       <h2>재무관리</h2>
       <div className="ban-list p0">
         <div className="btn-area position">

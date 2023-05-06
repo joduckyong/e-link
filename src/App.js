@@ -3,63 +3,133 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ScrollToTop from './components/common/ScrollToTop';
 
 /* 관리자 */
+//로그인
 import LoginPage from './pages/admin/LoginPage';
+
+//로그아웃
 import Logout from './components/admin/Logout';
 
+//팝업 국문
 import PopupPage from './pages/admin/main/PopupPage';
 import PopupAddPage from './pages/admin/main/PopupAddPage';
 import PopupModPage from './pages/admin/main/PopupModPage';
 import PopupInfoPage from './pages/admin/main/PopupInfoPage';
 
+//팝업 영문
+import PopupEnPage from './pages/admin/main/PopupEnPage';
+import PopupAddEnPage from './pages/admin/main/PopupAddEnPage';
+import PopupModEnPage from './pages/admin/main/PopupModEnPage';
+import PopupInfoEnPage from './pages/admin/main/PopupInfoEnPage';
+
+//회사 연혁 국문
 import OutlinePage from './pages/admin/company/OutlinePage';
 
+//회사 연혁 영문
+import OutlineEnPage from './pages/admin/company/OutlineEnPage';
+
+//공시정보 국문
+import OfficialNoticePage from './pages/admin/investInfo/OfficialNoticePage';
+
+//공시정보 영문
+import OfficialNoticeEnPage from './pages/admin/investInfo/OfficialNoticeEnPage';
+
+//재무정보 국문
 import FinancialPage from './pages/admin/investInfo/FinancialPage';
 import FinancialAddPage from './pages/admin/investInfo/FinancialAddPage';
 import FinancialModPage from './pages/admin/investInfo/FinancialModPage';
 import FinancialInfoPage from './pages/admin/investInfo/FinancialInfoPage';
 
-import OfficialNoticePage from './pages/admin/investInfo/OfficialNoticePage';
+//재무정보 영문
+import FinancialEnPage from './pages/admin/investInfo/FinancialEnPage';
+import FinancialAddEnPage from './pages/admin/investInfo/FinancialAddEnPage';
+import FinancialModEnPage from './pages/admin/investInfo/FinancialModEnPage';
+import FinancialInfoEnPage from './pages/admin/investInfo/FinancialInfoEnPage';
 
+//공고 국문
 import AnnouncePage from './pages/admin/investInfo/AnnouncePage';
 import AnnounceAddPage from './pages/admin/investInfo/AnnounceAddPage';
 import AnnounceModPage from './pages/admin/investInfo/AnnounceModPage';
 import AnnounceInfoPage from './pages/admin/investInfo/AnnounceInfoPage';
 
+//공고 영문
+import AnnounceEnPage from './pages/admin/investInfo/AnnounceEnPage';
+import AnnounceAddEnPage from './pages/admin/investInfo/AnnounceAddEnPage';
+import AnnounceModEnPage from './pages/admin/investInfo/AnnounceModEnPage';
+import AnnounceInfoEnPage from './pages/admin/investInfo/AnnounceInfoEnPage';
+
+//보도자료 국문
 import PressReleasePage from './pages/admin/publicRelations/PressReleasePage';
 import PressReleaseAddPage from './pages/admin/publicRelations/PressReleaseAddPage';
 import PressReleaseModPage from './pages/admin/publicRelations/PressReleaseModPage';
 import PressReleaseInfoPage from './pages/admin/publicRelations/PressReleaseInfoPage';
 
+//보도자료 영문
+import PressReleaseEnPage from './pages/admin/publicRelations/PressReleaseEnPage';
+import PressReleaseAddEnPage from './pages/admin/publicRelations/PressReleaseAddEnPage';
+import PressReleaseModEnPage from './pages/admin/publicRelations/PressReleaseModEnPage';
+import PressReleaseInfoEnPage from './pages/admin/publicRelations/PressReleaseInfoEnPage';
+
+//미디어 국문
 import MediaPage from './pages/admin/publicRelations/MediaPage';
 import MediaAddPage from './pages/admin/publicRelations/MediaAddPage';
 import MediaModPage from './pages/admin/publicRelations/MediaModPage';
 import MediaInfoPage from './pages/admin/publicRelations/MediaInfoPage';
 
+//미디어 영문
+import MediaEnPage from './pages/admin/publicRelations/MediaEnPage';
+import MediaAddEnPage from './pages/admin/publicRelations/MediaAddEnPage';
+import MediaModEnPage from './pages/admin/publicRelations/MediaModEnPage';
+import MediaInfoEnPage from './pages/admin/publicRelations/MediaInfoEnPage';
+
+//채용정보 국문
 import JobVacancyPage from './pages/admin/employmentInfo/JobVacancyPage';
 import JobVacancyAddPage from './pages/admin/employmentInfo/JobVacancyAddPage';
 import JobVacancyModPage from './pages/admin/employmentInfo/JobVacancyModPage';
 import JobVacancyInfoPage from './pages/admin/employmentInfo/JobVacancyInfoPage';
 
+//채용정보 영문
+import JobVacancyEnPage from './pages/admin/employmentInfo/JobVacancyEnPage';
+import JobVacancyAddEnPage from './pages/admin/employmentInfo/JobVacancyAddEnPage';
+import JobVacancyModEnPage from './pages/admin/employmentInfo/JobVacancyModEnPage';
+import JobVacancyInfoEnPage from './pages/admin/employmentInfo/JobVacancyInfoEnPage';
+
+//고객센터 국문
 import ContactUsPage from './pages/admin/customerService/ContactUsPage';
 import ContactUsInfoPage from './pages/admin/customerService/ContactUsInfoPage';
 
+//고객센터 영문
+import ContactUsEnPage from './pages/admin/customerService/ContactUsEnPage';
+import ContactUsInfoEnPage from './pages/admin/customerService/ContactUsInfoEnPage';
+
+//관리자권한
 import MgmtPage from './pages/admin/role/MgmtPage';
 import MgmtAddPage from './pages/admin/role/MgmtAddPage';
 import MgmtModPage from './pages/admin/role/MgmtModPage';
 
 /* 클라이언트 */
-
+//국문
 import MainPage from './pages/MainPage';
 import ClientPopupPage from './pages/PopupPage';
 
-/* 회사소개 */
+//영문
+// import MainEnPage from './pages/MainEnPage';
+// import ClientPopupEnPage from './pages/PopupEnPage';
+
+// 회사소개 국문
 import LselinkPage from './pages/client/company/LselinkPage';
 import VisionPage from './pages/client/company/VisionPage';
 import HistoryPage from './pages/client/company/HistoryPage';
 import IdentityPage from './pages/client/company/IdentityPage';
 import BusinessplacePage from './pages/client/company/BusinessplacePage';
 
-/* 사업영역 */
+// 회사소개 영문
+// import LselinkEnPage from './pages/client/company/LselinkEnPage';
+// import VisionEnPage from './pages/client/company/VisionEnPage';
+// import HistoryEnPage from './pages/client/company/HistoryEnPage';
+// import IdentityEnPage from './pages/client/company/IdentityEnPage';
+// import BusinessplaceEnPage from './pages/client/company/BusinessplaceEnPage';
+
+// 사업영역 국문
 import EvchargePage from './pages/client/business/e-link/EvchargePage';
 import ControlPage from './pages/client/business/e-link/ControlPage';
 import ElinkRenewablePage from './pages/client/business/e-link/RenewablePage';
@@ -68,7 +138,16 @@ import LogiticsPage from './pages/client/business/ev/LogiticsPage';
 import CoporatePage from './pages/client/business/ev/CoporatePage';
 import RenewablePage from './pages/client/business/renewable/RenewablePage';
 
-/* 투자정보 */
+// 사업영역 영문
+// import EvchargeEnPage from './pages/client/business/e-link/EvchargeEnPage';
+// import ControlEnPage from './pages/client/business/e-link/ControlEnPage';
+// import ElinkRenewableEnPage from './pages/client/business/e-link/RenewableEnPage';
+// import TransportationEnPage from './pages/client/business/ev/TransportationEnPage';
+// import LogiticsEnPage from './pages/client/business/ev/LogiticsEnPage';
+// import CoporateEnPage from './pages/client/business/ev/CoporateEnPage';
+// import RenewableEnPage from './pages/client/business/renewable/RenewableEnPage';
+
+// 투자정보 국문
 import ManagementPage from './pages/client/investment/ManagementPage';
 import ClientFinancialPage from './pages/client/investment/FinancialPage';
 import ClientFinancialviewPage from './pages/client/investment/FinancialviewPage';
@@ -76,27 +155,57 @@ import CreditPage from './pages/client/investment/CreditPage';
 import InvAnnouncePage from './pages/client/investment/AnnouncePage';
 import InvAnnounceviewPage from './pages/client/investment/AnnounceviewPage';
 
-/* 흥보센터 */
+// 투자정보 영문
+// import ManagementEnPage from './pages/client/investment/ManagementEnPage';
+// import ClientFinancialEnPage from './pages/client/investment/FinancialEnPage';
+// import ClientFinancialviewEnPage from './pages/client/investment/FinancialviewEnPage';
+// import CreditEnPage from './pages/client/investment/CreditEnPage';
+// import InvAnnounceEnPage from './pages/client/investment/AnnounceEnPage';
+// import InvAnnounceviewEnPage from './pages/client/investment/AnnounceviewEnPage';
+
+// 흥보센터 국문
 import PresslistPage from './pages/client/pr/PresslistPage';
 import PressviewPage from './pages/client/pr/PressviewPage';
 import MedialistPage from './pages/client/pr/MedialistPage';
 import MediaviewPage from './pages/client/pr/MediaviewPage';
 
-/* 채용정보 */
+// 흥보센터 영문
+// import PresslistEnPage from './pages/client/pr/PresslistEnPage';
+// import PressviewEnPage from './pages/client/pr/PressviewEnPage';
+// import MedialistEnPage from './pages/client/pr/MedialistEnPage';
+// import MediaviewEnPage from './pages/client/pr/MediaviewEnPage';
+
+// 채용정보 국문
 import PeoplePage from './pages/client/recruit/PeoplePage';
 import BenefitsPage from './pages/client/recruit/BenefitsPage';
 import PostingPage from './pages/client/recruit/PostingPage';
 import PostingviewPage from './pages/client/recruit/PostingviewPage';
 
-/* Contact US */
+// 채용정보 영문
+// import PeopleEnPage from './pages/client/recruit/PeopleEnPage';
+// import BenefitsEnPage from './pages/client/recruit/BenefitsEnPage';
+// import PostingEnPage from './pages/client/recruit/PostingEnPage';
+// import PostingviewEnPage from './pages/client/recruit/PostingviewEnPage';
+
+// Contact US 국문
 import ConsultPage from './pages/client/contactus/ConsultPage';
 import InconveniencePage from './pages/client/contactus/InconveniencePage';
 import InquiryPage from './pages/client/contactus/InquiryPage';
 
-/* 약간 */
+// Contact US 영문
+// import ConsultEnPage from './pages/client/contactus/ConsultEnPage';
+// import InconvenienceEnPage from './pages/client/contactus/InconvenienceEnPage';
+// import InquiryEnPage from './pages/client/contactus/InquiryEnPage';
+
+// 약관 국문
 import PrivacyPage from './pages/client/policy/PrivacyPage';
 import TermsPage from './pages/client/policy/TermsPage';
 import LocationPage from './pages/client/policy/LocationPage';
+
+// 약관 영문
+// import PrivacyEnPage from './pages/client/policy/PrivacyEnPage';
+// import TermsEnPage from './pages/client/policy/TermsEnPage';
+// import LocationEnPage from './pages/client/policy/LocationEnPage';
 
 /* EV 충전소 */
 //브랜드 소개
@@ -166,42 +275,87 @@ const App = () => {
         <Route path="/admin/main/popupAdd" element={<PopupAddPage />} />
         <Route path="/admin/main/popupMod/:id" element={<PopupModPage />} />
         <Route path="/admin/main/popupInfo/:id" element={<PopupInfoPage />} />
+
+        <Route path="/admin/main/popupEn" element={<PopupEnPage />} />
+        <Route path="/admin/main/popupAddEn" element={<PopupAddEnPage />} />
+        <Route path="/admin/main/popupModEn/:id" element={<PopupModEnPage />} />
+        <Route path="/admin/main/popupInfoEn/:id" element={<PopupInfoEnPage />} />
+
         <Route path="/admin/company/outline" element={<OutlinePage />} />
+        <Route path="/admin/company/outlineEn" element={<OutlineEnPage />} />
+
         <Route path="/admin/investInfo/officialNotice" element={<OfficialNoticePage />} />
+        <Route path="/admin/investInfo/officialNoticeEn" element={<OfficialNoticeEnPage />} />
+
         <Route path="/admin/investInfo/financial" element={<FinancialPage />} />
         <Route path="/admin/investInfo/financialAdd" element={<FinancialAddPage />} />
         <Route path="/admin/investInfo/financialMod/:id" element={<FinancialModPage />} />
         <Route path="/admin/investInfo/financialInfo/:id" element={<FinancialInfoPage />} />
+        <Route path="/admin/investInfo/financialEn" element={<FinancialEnPage />} />
+        <Route path="/admin/investInfo/financialAddEn" element={<FinancialAddEnPage />} />
+        <Route path="/admin/investInfo/financialModEn/:id" element={<FinancialModEnPage />} />
+        <Route path="/admin/investInfo/financialInfoEn/:id" element={<FinancialInfoEnPage />} />
+
         <Route path="/admin/investInfo/announce" element={<AnnouncePage />} />
         <Route path="/admin/investInfo/announceAdd" element={<AnnounceAddPage />} />
         <Route path="/admin/investInfo/announceMod/:id" element={<AnnounceModPage />} />
         <Route path="/admin/investInfo/announceInfo/:id" element={<AnnounceInfoPage />} />
+        <Route path="/admin/investInfo/announceEn" element={<AnnounceEnPage />} />
+        <Route path="/admin/investInfo/announceAddEn" element={<AnnounceAddEnPage />} />
+        <Route path="/admin/investInfo/announceModEn/:id" element={<AnnounceModEnPage />} />
+        <Route path="/admin/investInfo/announceInfoEn/:id" element={<AnnounceInfoEnPage />} />
+
         <Route path="/admin/publicRelations/pressRelease" element={<PressReleasePage />} />
         <Route path="/admin/publicRelations/pressReleaseAdd" element={<PressReleaseAddPage />} />
         <Route path="/admin/publicRelations/pressReleaseMod/:id" element={<PressReleaseModPage />} />
         <Route path="/admin/publicRelations/pressReleaseInfo/:id" element={<PressReleaseInfoPage />} />
+        <Route path="/admin/publicRelations/pressReleaseEn" element={<PressReleaseEnPage />} />
+        <Route path="/admin/publicRelations/pressReleaseAddEn" element={<PressReleaseAddEnPage />} />
+        <Route path="/admin/publicRelations/pressReleaseModEn/:id" element={<PressReleaseModEnPage />} />
+        <Route path="/admin/publicRelations/pressReleaseInfoEn/:id" element={<PressReleaseInfoEnPage />} />
+
         <Route path="/admin/publicRelations/media" element={<MediaPage />} />
         <Route path="/admin/publicRelations/mediaAdd" element={<MediaAddPage />} />
         <Route path="/admin/publicRelations/mediaMod/:id" element={<MediaModPage />} />
         <Route path="/admin/publicRelations/mediaInfo/:id" element={<MediaInfoPage />} />
+        <Route path="/admin/publicRelations/mediaEn" element={<MediaEnPage />} />
+        <Route path="/admin/publicRelations/mediaAddEn" element={<MediaAddEnPage />} />
+        <Route path="/admin/publicRelations/mediaModEn/:id" element={<MediaModEnPage />} />
+        <Route path="/admin/publicRelations/mediaInfoEn/:id" element={<MediaInfoEnPage />} />
+
         <Route path="/admin/employmentInfo/jobVacancy" element={<JobVacancyPage />} />
         <Route path="/admin/employmentInfo/jobVacancyAdd" element={<JobVacancyAddPage />} />
         <Route path="/admin/employmentInfo/jobVacancyMod/:id" element={<JobVacancyModPage />} />
         <Route path="/admin/employmentInfo/jobVacancyInfo/:id" element={<JobVacancyInfoPage />} />
+        <Route path="/admin/employmentInfo/jobVacancyEn" element={<JobVacancyEnPage />} />
+        <Route path="/admin/employmentInfo/jobVacancyAddEn" element={<JobVacancyAddEnPage />} />
+        <Route path="/admin/employmentInfo/jobVacancyModEn/:id" element={<JobVacancyModEnPage />} />
+        <Route path="/admin/employmentInfo/jobVacancyInfoEn/:id" element={<JobVacancyInfoEnPage />} />
+
         <Route path="/admin/customerService/contactUs" element={<ContactUsPage />} />
         <Route path="/admin/customerService/contactUsInfo/:id" element={<ContactUsInfoPage />} />
+        <Route path="/admin/customerService/contactUsEn" element={<ContactUsEnPage />} />
+        <Route path="/admin/customerService/contactUsInfoEn/:id" element={<ContactUsInfoEnPage />} />
+
         <Route path="/admin/role/mgmt" element={<MgmtPage />} />
         <Route path="/admin/role/mgmtAdd" element={<MgmtAddPage />} />
         <Route path="/admin/role/mgmtMod/:id" element={<MgmtModPage />} />
 
         <Route path="/" element={<MainPage />} />
         <Route path="/popup/:id" element={<ClientPopupPage />} />
+        {/* <Route path="/En" element={<MainEnPage />} />
+        <Route path="/popupEn/:id" element={<ClientPopupEnPage />} /> */}
 
         <Route path="/company/lselink" element={<LselinkPage />} />
         <Route path="/company/vision" element={<VisionPage />} />
         <Route path="/company/history" element={<HistoryPage />} />
         <Route path="/company/identity" element={<IdentityPage />} />
         <Route path="/company/businessplace" element={<BusinessplacePage />} />
+        {/* <Route path="/company/lselinkEn" element={<LselinkEnPage />} />
+        <Route path="/company/visionEn" element={<VisionEnPage />} />
+        <Route path="/company/historyEn" element={<HistoryEnPage />} />
+        <Route path="/company/identityEn" element={<IdentityEnPage />} />
+        <Route path="/company/businessplaceEn" element={<BusinessplaceEnPage />} /> */}
 
         <Route path="/business/e-link/evcharge" element={<EvchargePage />} />
         <Route path="/business/e-link/control" element={<ControlPage />} />
@@ -210,6 +364,13 @@ const App = () => {
         <Route path="/business/ev/logitics" element={<LogiticsPage />} />
         <Route path="/business/ev/coporate" element={<CoporatePage />} />
         <Route path="/business/renewable/renewable" element={<RenewablePage />} />
+        {/* <Route path="/business/e-link/evchargeEn" element={<EvchargeEnPage />} />
+        <Route path="/business/e-link/controlEn" element={<ControlEnPage />} />
+        <Route path="/business/e-link/renewableEn" element={<ElinkRenewableEnPage />} />
+        <Route path="/business/ev/transportationEn" element={<TransportationEnPage />} />
+        <Route path="/business/ev/logiticsEn" element={<LogiticsEnPage />} />
+        <Route path="/business/ev/coporateEn" element={<CoporateEnPage />} />
+        <Route path="/business/renewable/renewableEn" element={<RenewableEnPage />} /> */}
 
         <Route path="/investment/management" element={<ManagementPage />} />
         <Route path="/investment/financial" element={<ClientFinancialPage />} />
@@ -217,27 +378,47 @@ const App = () => {
         <Route path="/investment/credit" element={<CreditPage />} />
         <Route path="/investment/announce" element={<InvAnnouncePage />} />
         <Route path="/investment/announce-view/:id" element={<InvAnnounceviewPage />} />
+        {/* <Route path="/investment/managementEn" element={<ManagementEnPage />} />
+        <Route path="/investment/financialEn" element={<ClientFinancialEnPage />} />
+        <Route path="/investment/financial-viewEn/:id" element={<ClientFinancialviewEnPage />} />
+        <Route path="/investment/creditEn" element={<CreditEnPage />} />
+        <Route path="/investment/announceEn" element={<InvAnnounceEnPage />} />
+        <Route path="/investment/announce-viewEn/:id" element={<InvAnnounceviewEnPage />} /> */}
 
         <Route path="/pr/press-list" element={<PresslistPage />} />
         <Route path="/pr/press-view/:id" element={<PressviewPage />} />
+        {/* <Route path="/pr/press-listEn" element={<PresslistEnPage />} />
+        <Route path="/pr/press-viewEn/:id" element={<PressviewEnPage />} /> */}
+
         <Route path="/pr/media-list" element={<MedialistPage />} />
         <Route path="/pr/media-view/:id" element={<MediaviewPage />} />
+        {/* <Route path="/pr/media-listEn" element={<MedialistEnPage />} />
+        <Route path="/pr/media-viewEn/:id" element={<MediaviewEnPage />} /> */}
 
         <Route path="/recruit/people" element={<PeoplePage />} />
         <Route path="/recruit/benefits" element={<BenefitsPage />} />
         <Route path="/recruit/posting" element={<PostingPage />} />
         <Route path="/recruit/posting-view/:id" element={<PostingviewPage />} />
+        {/* <Route path="/recruit/peopleEn" element={<PeopleEnPage />} />
+        <Route path="/recruit/benefitsEn" element={<BenefitsEnPage />} />
+        <Route path="/recruit/postingEn" element={<PostingEnPage />} />
+        <Route path="/recruit/posting-viewEn/:id" element={<PostingviewEnPage />} /> */}
 
         <Route path="/contactus/consult" element={<ConsultPage />} />
         <Route path="/contactus/inconvenience" element={<InconveniencePage />} />
         <Route path="/contactus/inquiry" element={<InquiryPage />} />
+        {/* <Route path="/contactus/consultEn" element={<ConsultEnPage />} />
+        <Route path="/contactus/inconvenienceEn" element={<InconvenienceEnPage />} />
+        <Route path="/contactus/inquiryEn" element={<InquiryEnPage />} / */}
 
         <Route path="/policy/privacy" element={<PrivacyPage />} />
         <Route path="/policy/terms" element={<TermsPage />} />
         <Route path="/policy/location" element={<LocationPage />} />
+        {/* <Route path="/policy/privacyEn" element={<PrivacyEnPage />} />
+        <Route path="/policy/termsEn" element={<TermsEnPage />} />
+        <Route path="/policy/locationEn" element={<LocationEnPage />} /> */}
 
         <Route path="/ev/index" element={<IndexPage />} />
-
         <Route path="/ev/find" element={<FindPage />} />
 
         <Route path="/ev/login" element={<LoginEvPage />} />

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { encrypt } from '../../../../api/crypto';
 import Post from '../../../../api/Post';
 
 const Join2Form = () => {
@@ -7,40 +9,34 @@ const Join2Form = () => {
     address: '',
   });
 
-  const [user, setUser] = useState({
-    userNm: '',
-    eml: '',
-    pswd: '',
-    telno: '',
-    gender: '',
-    brth: '',
-    addr: '',
-    daddr: '',
-    telCom: '',
-    ci: '',
-    roleId: '',
-  });
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [emailCheck, setEmailCheck] = useState('');
   const [emailCheck2, setEmailCheck2] = useState(true);
 
-  const [ckpw, setCkpw] = useState(false);
   const [ckpw1, setCkpw1] = useState(false);
   const [ckpw2, setCkpw2] = useState(false);
   const [ckpw3, setCkpw3] = useState(false);
+  const [ckpw4, setCkpw4] = useState(false);
 
-  const [ckpw_1, setCkpw_1] = useState(false);
   const [ckpw1_1, setCkpw1_1] = useState(false);
   const [ckpw2_1, setCkpw2_1] = useState(false);
   const [ckpw3_1, setCkpw3_1] = useState(false);
+  const [ckpw4_1, setCkpw4_1] = useState(false);
 
   const [passwd, setPasswd] = useState('');
   const [rePasswd, setRePasswd] = useState('');
+
   const [userNm, setUserNm] = useState('');
+  const [userNmCk, setUserNmCk] = useState(false);
+  const [addressCk, setAddressCk] = useState(false);
   const [addressDetail, setAddressDetail] = useState('');
+  const [addressDetailCk, setAddressDetailCk] = useState(false);
 
   const [telno, setTelno] = useState('');
+  const [telnoCk, setTelnoCk] = useState(false);
+  const [telnoCk2, setTelnoCk2] = useState(false);
   const [telcom, setTelcom] = useState('');
   const [gender, setGender] = useState('');
   const [brth, setBrth] = useState('');
@@ -62,45 +58,100 @@ const Join2Form = () => {
   };
 
   // 휴대폰인증
-  const phonePopup = () => {
-    window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2', 'width=100,height=100,location=no,status=no,scrollbars=yes', '_blank');
+  const phonePopup = (e) => {
+    e.preventDefault();
+
+    if (telno.length === 11) {
+      setTelnoCk(false);
+    } else {
+      setTelnoCk(true);
+      return;
+    }
+
+    window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2?type=I', 'width=0,height=0,location=no,status=no,scrollbars=yes', '_blank');
   };
 
   //비밀번호 유효성 검사
   const checkPassword = (e) => {
-    //  8 ~ 15자 영문, 숫자, 특수문자 조합
-    var regExp1 = /^(?=.*[a-zA-Z])$/;
-    var regExp2 = /^(?=.*[0-9])$/;
-    var regExp3 = /^(?=.*[!@#$%^*+=-])$/;
-    var regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+    // setPasswd(e.target.value);
 
-    setCkpw1(regExp1.test(e.target.value));
-    setCkpw2(regExp2.test(e.target.value));
-    setCkpw3(regExp3.test(e.target.value));
-    setCkpw(regExp.test(e.target.value));
-    // 형식에 맞는 경우 true 리턴
-    console.log('비밀번호 유효성 검사 :: ', regExp.test(e.target.value));
+    var eng = passwd.search(/[a-z]/gi);
+    var num = passwd.search(/[0-9]/g);
+    var spe = passwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+    // console.log('eng : ' + eng);
+    // console.log('num : ' + num);
+    // console.log('spe : ' + spe);
+    // console.log('passwd.length : ' + passwd.length);
+
+    if (eng === -1) {
+      setCkpw1(false);
+    } else {
+      setCkpw1(true);
+    }
+    if (num === -1) {
+      setCkpw2(false);
+    } else {
+      setCkpw2(true);
+    }
+    if (spe === -1) {
+      setCkpw3(false);
+    } else {
+      setCkpw3(true);
+    }
+    if (passwd.length >= 8 && passwd.length <= 15) {
+      setCkpw4(true);
+    } else {
+      setCkpw4(false);
+    }
   };
 
   //비밀번호 유효성 검사
   const checkPassword2 = (e) => {
-    //  8 ~ 15자 영문, 숫자, 특수문자 조합
-    var regExp1 = /^(?=.*[a-zA-Z])$/;
-    var regExp2 = /^(?=.*[0-9])$/;
-    var regExp3 = /^(?=.*[!@#$%^*+=-])$/;
-    var regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
-    // 형식에 맞는 경우 true 리턴
-    setCkpw1_1(regExp1.test(e.target.value));
-    setCkpw2_1(regExp2.test(e.target.value));
-    setCkpw3_1(regExp3.test(e.target.value));
-    setCkpw_1(regExp.test(e.target.value));
-    console.log('비밀번호 유효성 검사 :: ', regExp.test(e.target.value));
+    // setRePasswd(e.target.value);
+
+    var eng = rePasswd.search(/[a-z]/gi);
+    var num = rePasswd.search(/[0-9]/g);
+    var spe = rePasswd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+    // console.log('eng2 : ' + eng);
+    // console.log('num2 : ' + num);
+    // console.log('spe2 : ' + spe);
+    // console.log('rePasswd.length : ' + rePasswd.length);
+
+    if (eng === -1) {
+      setCkpw1_1(false);
+    } else {
+      setCkpw1_1(true);
+    }
+    if (num === -1) {
+      setCkpw2_1(false);
+    } else {
+      setCkpw2_1(true);
+    }
+    if (spe === -1) {
+      setCkpw3_1(false);
+    } else {
+      setCkpw3_1(true);
+    }
+    if (rePasswd.length >= 8 && rePasswd.length <= 15) {
+      setCkpw4_1(true);
+    } else {
+      setCkpw4_1(false);
+    }
   };
 
   // 이메일 유효성 검사
   const checkEmail = (e) => {
     var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     // 형식에 맞는 경우 true 리턴
+
+    if (email === '') {
+      setEmailCheck('X');
+      return;
+    } else {
+      setEmailCheck('');
+    }
     setEmailCheck2(regExp.test(e.target.value));
     console.log('이메일 유효성 검사 :: ', regExp.test(e.target.value));
   };
@@ -110,8 +161,10 @@ const Join2Form = () => {
     e.preventDefault();
 
     if (email === '') {
-      setEmailCheck('');
+      setEmailCheck('X');
       return;
+    } else {
+      setEmailCheck('');
     }
     const data = {
       url: '/auth/isEmailDuplicated',
@@ -135,11 +188,109 @@ const Join2Form = () => {
       });
   };
 
+  // 이름 등록
+  const userChange = (e) => {
+    if (userNm === '') {
+      setUserNmCk(true);
+    } else {
+      setUserNmCk(false);
+    }
+  };
+
+  // 핸드폰 등록
+  const phoneChange = (e) => {
+    const { value } = e.target;
+    const onlyNumber = value.replace(/[^0-9]/g, '');
+    setTelno(onlyNumber);
+  };
+
+  const addressDetailChange = (e) => {
+    if (addressDetail === '') {
+      setAddressDetailCk(true);
+    } else {
+      setAddressDetailCk(false);
+    }
+  };
   // 회원가입
-  const signupUser = (e) => {
+  const signupUserInfo = (e) => {
     e.preventDefault();
-    setUser({
-      ...user,
+
+    if (email === '') {
+      setEmailCheck('X');
+      return;
+    }
+    if (userNm === '') {
+      setUserNmCk(true);
+      return;
+    }
+    if (telno.length === 11) {
+      setTelnoCk(false);
+    } else {
+      setTelnoCk(true);
+      return;
+    }
+
+    if (enroll_company.address === '') {
+      setAddressCk(true);
+      return;
+    } else {
+      setAddressCk(false);
+    }
+    if (addressDetail === '') {
+      setAddressDetailCk(true);
+      return;
+    } else {
+      setAddressDetailCk(false);
+    }
+    fetch(process.env.REACT_APP_API_URL + '/api/phone/phoneInfo/' + telno, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log('res.data : ' + res.data);
+
+        if (res.data !== undefined) {
+          const dataBrth = JSON.stringify(res.data.brth);
+          const dataCi = JSON.stringify(res.data.ci);
+          const dataGender = JSON.stringify(res.data.gender);
+          const dataTelcom = JSON.stringify(res.data.telcom);
+          const dataTelNo = JSON.stringify(res.data.telno).replace(/"/g, '');
+
+          // console.log('dataBrth : ' + dataBrth);
+          // console.log('dataCi : ' + dataCi);
+          // console.log('dataGender : ' + dataGender);
+          // console.log('dataTelcom : ' + dataTelcom);
+          // console.log('dataTelNo : ' + dataTelNo);
+
+          setBrth(dataBrth);
+          setCi(dataCi);
+          setGender(dataGender);
+          setTelcom(dataTelcom);
+          setTelno(dataTelNo);
+
+          // console.log('brth : ' + brth);
+          // console.log('ci : ' + ci);
+          // console.log('gender : ' + gender);
+          // console.log('telcom : ' + telcom);
+          // console.log('telno : ' + telno);
+
+          signupUser(e);
+        } else {
+          setTelnoCk2(true);
+        }
+      });
+  };
+
+  const signupUser = (e) => {
+    // e.preventDefault();
+    const data = {
+      url: '/auth/signupUser',
       userNm: userNm,
       eml: email,
       pswd: passwd,
@@ -151,7 +302,30 @@ const Join2Form = () => {
       telcom: telcom,
       ci: ci,
       roleId: 'elinkuser',
-    });
+    };
+
+    console.log('data : ' + JSON.stringify(data));
+
+    fetch(process.env.REACT_APP_API_URL + '/api/ev/auth/signupUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        if (res.data !== '') {
+          const result = JSON.stringify(res.data.principal);
+
+          if (result) {
+            navigate('/ev/join3', { replace: true });
+          }
+        }
+      });
   };
 
   return (
@@ -167,19 +341,21 @@ const Join2Form = () => {
           <div className="gray-mini-box">ELVIS 서비스는 만 14세 이상 이용가능합니다.</div>
           <div className="detail-wp">
             <h3 className="mini-ttl">
-              <span className="orange">*</span>아이디
+              <span className="orange">*</span>이메일
             </h3>
             <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="아이디를 입력해주세요. " onChange={(e) => setEmail(e.target.value)} onBlur={checkEmail} />
+              <input type="text" placeholder="이메일을 입력해주세요. " onChange={(e) => setEmail(e.target.value)} onKeyUp={checkEmail} />
               <button className="border-btn" onClick={emailDuplicated}>
                 중복확인
               </button>
               {emailCheck === 'Y' ? (
-                <p className="red">사용할 수 없는 아이디입니다. </p>
+                <p className="red">사용할 수 없는 이메일입니다. </p>
               ) : emailCheck === 'N' && emailCheck2 ? (
-                <p className="blue">사용가능한 아이디입니다.</p>
+                <p className="blue">사용가능한 이메일입니다.</p>
               ) : emailCheck === 'N' && !emailCheck2 ? (
                 <p className="red">이메일 유효 하지 않습니다.</p>
+              ) : emailCheck === 'X' ? (
+                <p className="red">이메일 입력하세요.</p>
               ) : (
                 ''
               )}
@@ -188,81 +364,108 @@ const Join2Form = () => {
               <span className="orange">*</span>비밀번호
             </h3>
             <div className="input-wp">
-              <input type="text" placeholder="비밀번호를 입력해주세요. " onChange={(e) => setPasswd(e.target.value)} onBlur={checkPassword} />
+              <input
+                type="password"
+                placeholder="비밀번호를 입력해주세요. "
+                onChange={(e) => setPasswd(e.target.value)}
+                onKeyUp={checkPassword}
+                value={passwd}
+                maxlength={15}
+              />
               <ul className="confirm-wp">
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   영문
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw2 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw2 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   숫자
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw3 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw3 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   특수문자
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw4 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw4 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   8~15자리
                 </li>
               </ul>
-              <p className="red">사용할 수 없는 비밀번호입니다. </p>
-              {/* <!-- <p className="blue">사용가능한 비밀번호입니다. </p> --> */}
+              {ckpw1 && ckpw2 && ckpw3 && ckpw4 ? (
+                <p className="blue">사용가능한 비밀번호입니다. </p>
+              ) : !ckpw1 && !ckpw2 && !ckpw3 && !ckpw4 ? (
+                ''
+              ) : (
+                <p className="red">사용할 수 없는 비밀번호입니다. </p>
+              )}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>비밀번호 확인
             </h3>
             <div className="input-wp">
               <input
-                type="text"
+                type="password"
                 placeholder="비밀번호를 다시 한 번 입력해주세요. "
                 onChange={(e) => setRePasswd(e.target.value)}
-                onBlur={checkPassword2}
+                onKeyUp={checkPassword2}
+                value={rePasswd}
+                maxlength={15}
               />
               <ul className="confirm-wp">
                 <li>
-                  <img src="/img/ev/ev_check_orange.png" alt="" />
+                  {!ckpw1_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw1_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   영문
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_no.png" alt="" />
+                  {!ckpw2_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw2_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   숫자
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_no.png" alt="" />
+                  {!ckpw3_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw3_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   특수문자
                 </li>
                 <li>
-                  <img src="/img/ev/ev_check_no.png" alt="" />
+                  {!ckpw4_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw4_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
                   8~15자리
                 </li>
               </ul>
-              <p className="red">비밀번호가 일치하지 않습니다. </p>
-              {/* <!-- <p className="blue">비밀번호가 일치합니다. </p> --> */}
+              {passwd === rePasswd && passwd !== '' && rePasswd !== '' ? (
+                <p className="blue">비밀번호가 일치합니다. </p>
+              ) : passwd !== rePasswd && passwd !== '' && rePasswd !== '' ? (
+                <p className="red">비밀번호가 일치하지 않습니다. </p>
+              ) : (
+                ''
+              )}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>이름
             </h3>
             <div className="input-wp">
-              <input type="text" placeholder="이름을 입력해주세요." onChange={(e) => setUserNm(e.target.value)} />
+              <input
+                type="text"
+                name="userNm"
+                placeholder="이름을 입력해주세요."
+                value={userNm}
+                onChange={(e) => setUserNm(e.target.value)}
+                onKeyUp={userChange}
+              />
+              {userNmCk && <p className="red">이름을 입력해주세요.</p>}
             </div>
             <h3 className="mini-ttl">
-              <span className="orange">*</span>휴대폰 번호
+              <span className="orange">*</span>휴대폰
             </h3>
-            <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="휴대폰 번호를 입력해주세요." />
+            <div className="input-wp input-btn-wp input-btn-wp">
+              <input
+                type="text"
+                name="telno"
+                placeholder="휴대폰 등록 후 휴대폰 인증 버튼을 눌러주세요. "
+                value={telno}
+                onChange={phoneChange}
+                maxlength={11}
+              />
               <button className="border-btn" onClick={phonePopup}>
-                인증코드 전송
+                휴대폰 인증
               </button>
-              <p className="blue">인증번호가 발송되었습니다.</p>
-            </div>
-            <h3 className="mini-ttl">
-              <span className="orange">*</span>인증번호
-            </h3>
-            <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="" />
-              <button className="border-btn">확인</button>
+              {telnoCk ? <p className="red">휴대폰 번호를 입력해주세요.</p> : telnoCk2 ? <p className="red">휴대폰 인증을 해주세요.</p> : ''}
             </div>
             <h3 className="mini-ttl">
               <span className="orange">*</span>주소
@@ -273,51 +476,18 @@ const Join2Form = () => {
                 우편번호 검색
               </button>
               {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
-              <input type="text" placeholder="주소" name="address" onChange={handleInput} value={enroll_company.address} />
-              <input type="text" placeholder="상세주소" />
-              <p className="red">상세주소를 입력해주세요.</p>
+              <input type="text" placeholder="주소" name="address" onChange={handleInput} value={enroll_company.address} readOnly />
+              {addressCk && <p className="red">주소를 입력해주세요.</p>}
+              <input
+                type="text"
+                placeholder="상세주소"
+                onChange={(e) => setAddressDetail(e.target.value)}
+                onKeyUp={addressDetailChange}
+                value={addressDetail}
+              />
+              {addressDetailCk && <p className="red">상세주소를 입력해주세요.</p>}
             </div>
-            {/* <h3 className="mini-ttl">
-              <span className="orange">*</span>회원카드 발급
-            </h3>
-            <div className="radio-wp">
-              <label htmlFor="card01">
-                <input type="radio" id="card01" name="card" checked />
-                <span className="radioimg"></span>신규 카드 발급
-              </label>
-              <label htmlFor="card02">
-                <input type="radio" id="card02" name="card" />
-                <span className="radioimg"></span>카드 발급 필요 없음
-              </label>
-            </div>
-            <h3 className="mini-ttl">
-              <span className="orange">*</span>간편결제
-            </h3>
-            <div className="input-wp input-btn-wp">
-              <input type="text" placeholder="충전요금 결제시 사용됩니다." />
-              <button className="border-btn">등록 및 변경</button>
-            </div>
-            <h3 className="mini-ttl">
-              <span className="orange">*</span>제조사
-            </h3>
-            <div className="input-wp">
-              <select name="" id="">
-                <option value="">제조사를 선택해주세요.</option>
-              </select>
-            </div>
-            <h3 className="mini-ttl">
-              <span className="orange">*</span>보유 차종
-            </h3>
-            <div className="input-wp">
-              <select name="" id="">
-                <option value="">제조사를 선택해주세요.</option>
-              </select>
-            </div>
-            <h3 className="mini-ttl">차량 번호</h3>
-            <div className="input-wp">
-              <input type="text" placeholder="차량 번호를 입력해주세요." />
-            </div> */}
-            <button className="orange-btn" onClick={signupUser}>
+            <button className="orange-btn" onClick={signupUserInfo}>
               가입하기
             </button>
           </div>

@@ -1,5 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
+import { loginUser } from '../../../../api/EvUsers';
+import { removeCookieToken, setRefreshToken } from '../../../../storage/Cookie';
+import { SET_TOKEN } from '../../../../store/Auth';
+import { encrypt } from '../../../../api/crypto';
 
 const LoginForm = () => {
   const NAVER_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=NAVER`;
@@ -7,14 +15,72 @@ const LoginForm = () => {
   const GOOGLE_URI = `https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile`;
   const APPLE_URI = `https://appleid.apple.com?response_type=code&client_id=${process.env.REACT_APP_APPLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_APPLE_REDIRECT_URI}`;
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = useState('');
+
+  // useForm 사용을 위한 선언
+  const {
+    register,
+    setValue,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  // submit 이후 동작할 코드
+  // 백으로 유저 정보 전달
+  const onValid = async ({ username, password }) => {
+    const response = await loginUser({ username, password });
+
+    if (response.status) {
+      // 쿠키에 Refresh Token, store에 Access Token 저장
+      // console.log('response.json.accessToken : ' + response.json.accessToken);
+      // console.log('response.json.refreshToken : ' + response.json.refreshToken);
+      setRefreshToken(response.json.accessToken);
+      // setRefreshToken(response.json.refreshToken);
+      dispatch(SET_TOKEN(response.json.accessToken));
+      return navigate('/ev/mypage1');
+    } else {
+      alert('아이디 비밀번호를 확인해주세요!');
+      // console.log(response.json);
+    }
+    // input 태그 값 비워주는 코드
+    setValue('password', '');
+  };
+
   return (
     <>
       <section className="ev-sub-sect">
-        <form className="login-wp">
+        <form className="login-wp" onSubmit={handleSubmit(onValid)}>
           <h1>ELVIS 로그인</h1>
           <div className="input-wp">
-            <input type="text" placeholder="아이디" />
-            <input type="password" placeholder="비밀번호" />
+            <input
+              type="text"
+              name="username"
+              defaultValue={username}
+              placeholder="이메일"
+              {...register('username', { onChange: (e) => setUsername(e.target.value) })}
+            />
+            <ErrorMessage
+              name="username"
+              errors={errors}
+              render={({ message }) => (
+                <p style={{ color: 'red' }} className="text-sm font-medium text-rose-500">
+                  {message}
+                </p>
+              )}
+            />
+            <input type="password" name="password" placeholder="비밀번호" {...register('password')} />
+            <ErrorMessage
+              name="password"
+              errors={errors}
+              render={({ message }) => (
+                <p style={{ color: 'red' }} className="text-sm font-medium text-rose-500">
+                  {message}
+                </p>
+              )}
+            />
           </div>
           <div className="txt-wp">
             <div className="agree">
@@ -33,7 +99,7 @@ const LoginForm = () => {
               <NavLink to="/ev/join1">회원가입</NavLink>
             </p>
           </div>
-          <button className="orange-btn" type="button" onclick="location.href='./mypage1.html'">
+          <button className="orange-btn" type="submit">
             로그인
           </button>
           <div className="sns-wp">

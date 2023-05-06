@@ -77,6 +77,14 @@ const FinancialListForm = () => {
 
   return (
     <div className="a-content">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="/admin/investInfo/financial">국문</Link>
+        </li>
+        <li>
+          <Link to="/admin/investInfo/financialEn">영문</Link>
+        </li>
+      </ul>
       <h2>
         재무관리<span>총 {boardList.totalCount}건</span>
       </h2>

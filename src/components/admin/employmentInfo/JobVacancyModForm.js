@@ -297,6 +297,14 @@ const JobVacancyModForm = () => {
 
   return (
     <div className="a-content">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="">국문</Link>
+        </li>
+        <li>
+          <Link to="">영문</Link>
+        </li>
+      </ul>
       <h2>채용공고 수정</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">

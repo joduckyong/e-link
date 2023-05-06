@@ -62,6 +62,14 @@ const PopUpListForm = () => {
   };
   return (
     <div className="a-content a01">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="/admin/main/popup">국문</Link>
+        </li>
+        <li>
+          <Link to="/admin/main/popupEn">영문</Link>
+        </li>
+      </ul>
       <h2>
         팝업 관리<span>총 {popupList.totalCount}건</span>
       </h2>

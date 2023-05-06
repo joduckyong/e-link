@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopupInfo } from 'store/popupReducer';
 import ViewImage from 'components/common/ViewImage';
@@ -23,6 +24,14 @@ const PopUpInfoForm = () => {
 
   return (
     <div className="a-content a01">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="">국문</Link>
+        </li>
+        <li>
+          <Link to="">영문</Link>
+        </li>
+      </ul>
       <h2>팝업 관리</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">

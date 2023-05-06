@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from 'components/admin/Menu';
 import PopUpModForm from 'components/admin/main/PopUpModForm';
 
-const PopupModPage = () => {
+const PopupModEnPage = () => {
   return (
     <div className="adminsub">
       <Menu />
@@ -11,4 +11,4 @@ const PopupModPage = () => {
   );
 };
 
-export default PopupModPage;
+export default PopupModEnPage;

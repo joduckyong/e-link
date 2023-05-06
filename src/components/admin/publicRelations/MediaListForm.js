@@ -93,6 +93,14 @@ const MediaListForm = () => {
 
   return (
     <div className="a-content">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="/admin/publicRelations/media">국문</Link>
+        </li>
+        <li>
+          <Link to="/admin/publicRelations/mediaEn">영문</Link>
+        </li>
+      </ul>
       <h2>
         미디어 관리<span>총 {totalCount}건</span>
       </h2>

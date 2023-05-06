@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPopupInfo, updatePopup } from 'store/popupReducer';
 import DatePicker from 'react-datepicker';
@@ -17,7 +18,7 @@ export function changeFormat(date, format) {
   }
 }
 
-const PopUpAddForm = () => {
+const PopUpModForm = () => {
   const [popupTitle, setPopupTitle] = useState('');
   const [popupLink, setPopupLink] = useState('');
   const [popupClose1, setPopupClose1] = useState('');
@@ -173,6 +174,14 @@ const PopUpAddForm = () => {
 
   return (
     <div className="a-content a01">
+      <ul className="sub-tab">
+        <li className="active">
+          <Link to="">국문</Link>
+        </li>
+        <li>
+          <Link to="">영문</Link>
+        </li>
+      </ul>
       <h2>팝업 수정</h2>
       <div className="ban-list bg-white">
         <div className="btn-area position">
@@ -277,4 +286,4 @@ const PopUpAddForm = () => {
   );
 };
 
-export default PopUpAddForm;
+export default PopUpModForm;
