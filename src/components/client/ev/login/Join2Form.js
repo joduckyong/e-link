@@ -45,7 +45,6 @@ const Join2Form = () => {
   const [popup, setPopup] = useState(false);
 
   const handleInput = (e) => {
-    setAddressCk(false);
     setEnroll_company({
       ...enroll_company,
       [e.target.name]: e.target.value,
@@ -230,6 +229,7 @@ const Join2Form = () => {
       setTelnoCk(true);
       return;
     }
+
     if (enroll_company.address === '') {
       setAddressCk(true);
       return;
@@ -260,7 +260,7 @@ const Join2Form = () => {
           const dataCi = JSON.stringify(res.data.ci);
           const dataGender = JSON.stringify(res.data.gender);
           const dataTelcom = JSON.stringify(res.data.telcom);
-          const dataTelNo = JSON.stringify(res.data.telno);
+          const dataTelNo = JSON.stringify(res.data.telno).replace(/"/g, '');
 
           // console.log('dataBrth : ' + dataBrth);
           // console.log('dataCi : ' + dataCi);
@@ -319,7 +319,7 @@ const Join2Form = () => {
       })
       .then((res) => {
         if (res.data !== '') {
-          const result = JSON.stringify(res.data.principal).replace(/"/g, '');
+          const result = JSON.stringify(res.data.principal);
 
           if (result) {
             navigate('/ev/join3', { replace: true });
@@ -476,7 +476,7 @@ const Join2Form = () => {
                 우편번호 검색
               </button>
               {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
-              <input type="text" placeholder="주소" name="address" onChange={handleInput} value={enroll_company.address} />
+              <input type="text" placeholder="주소" name="address" onChange={handleInput} value={enroll_company.address} readOnly />
               {addressCk && <p className="red">주소를 입력해주세요.</p>}
               <input
                 type="text"
