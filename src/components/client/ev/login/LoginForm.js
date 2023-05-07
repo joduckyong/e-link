@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { loginUser } from '../../../../api/EvUsers';
-import { removeCookieToken, setRefreshToken } from '../../../../storage/Cookie';
-import { SET_TOKEN } from '../../../../store/Auth';
+import { setRefreshEvToken } from '../../../../storage/EvCookie';
+import { SET_EV_TOKEN } from '../../../../store/EvAuth';
 import { encrypt } from '../../../../api/crypto';
 
 const LoginForm = () => {
@@ -31,15 +31,22 @@ const LoginForm = () => {
   // submit 이후 동작할 코드
   // 백으로 유저 정보 전달
   const onValid = async ({ username, password }) => {
-    const response = await loginUser({ username, password });
+    const response = await loginUser({
+      username,
+      password: encrypt(password),
+      grant_type: 'password',
+      scope: 'mobileclient',
+      login_type: 'email',
+      url: '/auth/oauth/token',
+    });
 
     if (response.status) {
       // 쿠키에 Refresh Token, store에 Access Token 저장
-      // console.log('response.json.accessToken : ' + response.json.accessToken);
-      // console.log('response.json.refreshToken : ' + response.json.refreshToken);
-      setRefreshToken(response.json.accessToken);
-      // setRefreshToken(response.json.refreshToken);
-      dispatch(SET_TOKEN(response.json.accessToken));
+      // console.log('response.json.access_token : ' + JSON.stringify(response.json.data.access_token));
+      // console.log('response.json.refresh_token : ' + JSON.stringify(response.json.data.refresh_token));
+      // console.log('response.json.expires_in : ' + JSON.stringify(response.json.data.expires_in));
+      setRefreshEvToken(JSON.stringify(response.json.data.refresh_token), JSON.stringify(response.json.data.expires_in));
+      dispatch(SET_EV_TOKEN(JSON.stringify(response.json.data.access_token)));
       return navigate('/ev/mypage1');
     } else {
       alert('아이디 비밀번호를 확인해주세요!');

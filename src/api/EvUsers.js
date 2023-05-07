@@ -34,7 +34,7 @@ export const loginUser = async (credentials) => {
     body: JSON.stringify(credentials),
   };
 
-  const data = await getPromise(`${process.env.REACT_APP_API_URL}/api/auth`, option).catch(() => {
+  const data = await getPromise(`${process.env.REACT_APP_API_URL}/api/ev/auth`, option).catch(() => {
     return statusError;
   });
 
@@ -49,39 +49,6 @@ export const loginUser = async (credentials) => {
       status,
       code,
       json,
-    };
-  } else {
-    return statusError;
-  }
-};
-
-export const logoutUser = async (credentials, accessToken) => {
-  const option = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      Authorization: accessToken,
-    },
-    body: JSON.stringify(credentials),
-  };
-
-  const data = await getPromise(`${process.env.REACT_APP_API_URL}/api/auth/logout`, option).catch(() => {
-    return statusError;
-  });
-
-  console.log('data  == ' + data);
-  if (parseInt(Number(data.status) / 100) === 2) {
-    const status = data.ok;
-
-    console.log('status  == ' + status);
-    const code = data.status;
-    // const text = await data.text();
-    // const json = text.length ? JSON.parse(text) : '';
-
-    return {
-      status,
-      code,
-      // json,
     };
   } else {
     return statusError;
