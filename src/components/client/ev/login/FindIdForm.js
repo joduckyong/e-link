@@ -75,7 +75,7 @@ const FindIdForm = () => {
 
     console.log('data : ' + JSON.stringify(data));
 
-    fetch(process.env.REACT_APP_API_URL + '/api/ev/auth/signupUser', {
+    fetch(process.env.REACT_APP_API_URL + '/api/ev/auth/findMe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -115,7 +115,7 @@ const FindIdForm = () => {
               휴대폰 본인인증
             </button>
             <button className="orange-btn" onClick={signupUserInfo}>
-              찾기
+              아이디 찾기
             </button>
 
             <div className="notice">
