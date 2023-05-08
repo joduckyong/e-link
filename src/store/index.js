@@ -10,6 +10,7 @@ import { contactUsEnReducer } from './contactUsEnReducer';
 import { managerReducer } from './managerReducer';
 import { outlineReducer } from './outlineReducer';
 import { outlineEnReducer } from './outlineEnReducer';
+import { EvReducer } from './EvReducer';
 import logger from 'redux-logger';
 
 const reducer = combineReducers({
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   managerReducer: managerReducer.reducer,
   outlineReducer: outlineReducer.reducer,
   outlineEnReducer: outlineEnReducer.reducer,
+  EvReducer: EvReducer.reducer,
 });
 
 export default configureStore({

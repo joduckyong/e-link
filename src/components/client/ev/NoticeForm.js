@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectEv } from 'store/EvReducer';
 
 const NoticeForm = () => {
+  const dispatch = useDispatch();
+  const noticeList = useSelector((state) => state.EvReducer.data);
+
+  useEffect(() => {
+    const url = '/api/m-service-mobile/community/getNotis';
+    const newList = { url: url };
+    dispatch(selectEv(newList));
+  }, [dispatch]);
+
   return (
     <>
       <section className="ev-sub-sect">
@@ -22,10 +34,20 @@ const NoticeForm = () => {
           </ul>
           <div className="list-wp">
             <div className="list-top">
-              <b>Total 14</b> / 3 page
+              <b>Total {noticeList.length}</b>
             </div>
             <ol className="list notice-list">
-              <li>
+            {noticeList.map((list, index) => (
+              <li key={index}>
+                <a href="./notice_view.html">
+                  <p>
+                    <b>No.14</b>{list.dttm}
+                  </p>
+                  <h2>{list.ttl}</h2>
+                </a>
+              </li>
+            ))}
+              {/* <li>
                 <a href="./notice_view.html">
                   <p>
                     <b>No.14</b>2022-11-30
@@ -64,7 +86,7 @@ const NoticeForm = () => {
                   </p>
                   <h2>요금 변경 안내 (2023. 1. 5. 부)</h2>
                 </a>
-              </li>
+              </li> */}
             </ol>
             <ol className="page-wp">
               <li className="prev">
