@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { loginUser } from '../../../../api/EvUsers';
-import { setRefreshEvToken } from '../../../../storage/EvCookie';
+import { setAccessEvToken } from '../../../../storage/EvCookie';
 import { SET_EV_TOKEN } from '../../../../store/EvAuth';
 import { encrypt } from '../../../../api/crypto';
 
@@ -45,9 +45,16 @@ const LoginForm = () => {
       // console.log('response.json.access_token : ' + JSON.stringify(response.json.data.access_token));
       // console.log('response.json.refresh_token : ' + JSON.stringify(response.json.data.refresh_token));
       // console.log('response.json.expires_in : ' + JSON.stringify(response.json.data.expires_in));
-      setRefreshEvToken(JSON.stringify(response.json.data.refresh_token), JSON.stringify(response.json.data.expires_in));
-      dispatch(SET_EV_TOKEN(JSON.stringify(response.json.data.access_token)));
-      return navigate('/ev/mypage1');
+
+      if (response.json.data.error !== undefined) {
+        alert(JSON.stringify(response.json.data.error_description).replace(/"/g, ''));
+        return;
+      } else {
+        // setRefreshEvToken(JSON.stringify(response.json.data.refresh_token), JSON.stringify(response.json.data.expires_in));
+        setAccessEvToken(JSON.stringify(response.json.data.access_token), JSON.stringify(response.json.data.expires_in));
+        dispatch(SET_EV_TOKEN(JSON.stringify(response.json.data.access_token)));
+        return navigate('/ev/mypage1');
+      }
     } else {
       alert('아이디 비밀번호를 확인해주세요!');
       // console.log(response.json);

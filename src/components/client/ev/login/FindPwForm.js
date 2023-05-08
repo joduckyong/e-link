@@ -70,7 +70,9 @@ const FindIdForm = () => {
       });
   };
 
-  const passChange = () => {
+  const passChange = (e) => {
+    e.preventDefault();
+
     if (pswd !== rePswd) {
       alert('비밀 번호가 일치 하시 않습니다.');
       return;
@@ -97,8 +99,8 @@ const FindIdForm = () => {
       })
       .then((res) => {
         if (res.data !== undefined) {
-          const result = JSON.stringify(res.data.success).replace(/"/g, '');
-          if (result) {
+          const result = JSON.stringify(res.data.success);
+          if (result !== undefined && result.replace(/"/g, '')) {
             alert('비밀번호가 변경 되었습니다.');
           }
         }
