@@ -2,9 +2,9 @@ import { Cookies } from 'react-cookie';
 
 const cookies = new Cookies();
 
-export const setRefreshEvToken = (refreshToken) => {
-  const today = new Date();
-  const expireDate = today.setDate(today.getDate() + 1);
+export const setRefreshEvToken = (refreshToken, expireDate) => {
+  // const today = new Date();
+  // const expireDate = today.setDate(today.getDate() + 1);
 
   return cookies.set('refreshEvToken', refreshToken, {
     // sameSite: 'elink',
