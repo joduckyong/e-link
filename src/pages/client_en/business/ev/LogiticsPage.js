@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from 'components/client/Header';
-import Footer from 'components/client/Footer';
-import LogiticsForm from 'components/client/business/ev/LogiticsForm';
+import Header from 'components/client_en/Header';
+import Footer from 'components/client_en/Footer';
+import LogiticsForm from 'components/client_en/business/ev/LogiticsForm';
 
 const LogiticsPage = () => {
   return (

@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from 'components/client_en/Header';
 import Footer from 'components/client_en/Footer';
-import RenewableForm from 'components/client_en/business/renewable/RenewableForm';
+import MainForm from 'components/client_en/MainForm';
 
-const RenewablePage = () => {
+const MainEnPage = () => {
   return (
     <>
       <Header />
-      <RenewableForm />
+      <MainForm />
       <Footer />
     </>
   );
 };
 
-export default RenewablePage;
+export default MainEnPage;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from 'components/client/Header';
-import Footer from 'components/client/Footer';
-import MedialistForm from 'components/client/pr/MedialistForm';
+import Header from 'components/client_en/Header';
+import Footer from 'components/client_en/Footer';
+import MedialistForm from 'components/client_en/pr/MedialistForm';
 
 const MedialistPage = () => {
   return (

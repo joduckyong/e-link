@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from 'components/client/Header';
-import Footer from 'components/client/Footer';
-import BusinessplaceForm from 'components/client/company/BusinessplaceForm';
+import Header from 'components/client_en/Header';
+import Footer from 'components/client_en/Footer';
+import BusinessplaceForm from 'components/client_en/company/BusinessplaceForm';
 
 const BusinessplacePage = () => {
   return (

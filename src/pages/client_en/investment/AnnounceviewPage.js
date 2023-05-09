@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from 'components/client/Header';
-import Footer from 'components/client/Footer';
-import AnnounceviewForm from 'components/client/investment/AnnounceviewForm';
+import Header from 'components/client_en/Header';
+import Footer from 'components/client_en/Footer';
+import AnnounceviewForm from 'components/client_en/investment/AnnounceviewForm';
 
 const AnnounceviewPage = () => {
   return (

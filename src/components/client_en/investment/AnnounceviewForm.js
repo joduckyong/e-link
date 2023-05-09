@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClientBoardInfo } from 'store/boardReducer';
+import { selectClientBoardInfo } from 'store/boardEnReducer';
 import AOS from 'aos';
 import classnames from 'classnames';
 import { downloadFile } from 'common/download';
@@ -9,12 +9,12 @@ import { downloadFile } from 'common/download';
 const AnnounceviewForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
-  const createdDatetime = useSelector((state) => state.boardReducer.dataInfo.createdDatetime);
-  const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
-  const fileList = useSelector((state) => state.boardReducer.files);
-  const prevBoardId = useSelector((state) => state.boardReducer.prevNextData?.prevBoardId);
-  const nextBoardId = useSelector((state) => state.boardReducer.prevNextData?.nextBoardId);
+  const boardTitle = useSelector((state) => state.boardEnReducer.dataInfo.boardTitle);
+  const createdDatetime = useSelector((state) => state.boardEnReducer.dataInfo.createdDatetime);
+  const boardContents = useSelector((state) => state.boardEnReducer.dataInfo.boardContents);
+  const fileList = useSelector((state) => state.boardEnReducer.files);
+  const prevBoardId = useSelector((state) => state.boardEnReducer.prevNextData?.prevBoardId);
+  const nextBoardId = useSelector((state) => state.boardEnReducer.prevNextData?.nextBoardId);
 
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);

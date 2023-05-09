@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClientPopup } from 'store/popupReducer';
-import { selectClientBoard } from 'store/boardReducer';
+import { selectClientPopup } from 'store/popupEnReducer';
+import { selectClientBoard } from 'store/boardEnReducer';
 import { useCookies } from 'react-cookie';
 import AOS from 'aos';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -31,8 +31,8 @@ const MainForm = () => {
   const [carVal, setCarVal] = useState(0);
 
   const dispatch = useDispatch();
-  const popupList = useSelector((state) => state.popupReducer.data);
-  const boardList = useSelector((state) => state.boardReducer.data);
+  const popupList = useSelector((state) => state.popupEnReducer.data);
+  const boardList = useSelector((state) => state.boardEnReducer.data);
 
   const removeImgTag = (text) => {
     const regex = /<IMG(.*?)><br>/gi;
@@ -285,7 +285,8 @@ const MainForm = () => {
                             충전 인프라 구축
                           </h3>
                           <p className="desc">
-                            신재생에너지 발전과 연계한 EV충전 <br className="m-block" />인프라 구축 및 <br className="pc-block" />
+                            신재생에너지 발전과 연계한 EV충전 <br className="m-block" />
+                            인프라 구축 및 <br className="pc-block" />
                             운영 컨설팅
                           </p>
                           <NavLink to="/business/e-link/renewable" className="link">
@@ -313,7 +314,8 @@ const MainForm = () => {
                             <br />
                           </h3>
                           <p className="desc">
-                            고객 특화/차종 특화 기능의 <br className="m-block" />관제시스템 <br className="pc-block" />
+                            고객 특화/차종 특화 기능의 <br className="m-block" />
+                            관제시스템 <br className="pc-block" />
                             구축 서비스 제공
                           </p>
                           <NavLink to="/business/e-link/control" className="link">
@@ -564,7 +566,7 @@ const MainForm = () => {
             </video> */}
 
             <video src="/video/technological-innovation.mp4" playsInline loop muted autoPlay></video>
-            <img style={{ position: 'absolute', zIndex: 1, top: 0, left:0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
+            <img style={{ position: 'absolute', zIndex: 1, top: 0, left: 0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
           </div>
         </div>
         <div className="con6">

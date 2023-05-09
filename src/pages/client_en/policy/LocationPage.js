@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from 'components/client/Header';
-import Footer from 'components/client/Footer';
-import LocationForm from 'components/client/policy/LocationForm';
+import Header from 'components/client_en/Header';
+import Footer from 'components/client_en/Footer';
+import LocationForm from 'components/client_en/policy/LocationForm';
 
 const LocationPage = () => {
   return (

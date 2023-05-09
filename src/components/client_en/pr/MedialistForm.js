@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClientBoard, selectClientBoardInfoWithPinup } from 'store/boardReducer';
+import { selectClientBoard, selectClientBoardInfoWithPinup } from 'store/boardEnReducer';
 import Pagination from 'react-js-pagination';
 import ViewImage from 'components/common/ViewImage';
 import AOS from 'aos';
@@ -19,10 +19,10 @@ export function changeFormat(date, format) {
 
 const MedialistForm = () => {
   const dispatch = useDispatch();
-  const boardList = useSelector((state) => state.boardReducer.data);
-  const boardInfo = useSelector((state) => state.boardReducer.dataInfo);
+  const boardList = useSelector((state) => state.boardEnReducer.data);
+  const boardInfo = useSelector((state) => state.boardEnReducer.dataInfo);
   const [searchKeyword, setSearchKeyword] = useState(null);
-  const totalCount = useSelector((state) => state.boardReducer.totalCount);
+  const totalCount = useSelector((state) => state.boardEnReducer.totalCount);
   const [page, setPage] = useState(1);
 
   const [activeMenu1, setActiveMenu1] = useState(false);

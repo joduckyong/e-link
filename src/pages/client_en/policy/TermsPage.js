@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from 'components/client/Header';
-import Footer from 'components/client/Footer';
-import TermsForm from 'components/client/policy/TermsForm';
+import Header from 'components/client_en/Header';
+import Footer from 'components/client_en/Footer';
+import TermsForm from 'components/client_en/policy/TermsForm';
 
 const TermsPage = () => {
   return (

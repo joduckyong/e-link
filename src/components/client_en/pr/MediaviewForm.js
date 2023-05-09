@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClientBoardInfo } from 'store/boardReducer';
+import { selectClientBoardInfo } from 'store/boardEnReducer';
 import { downloadFile } from 'common/download';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import AOS from 'aos';
@@ -12,11 +12,11 @@ SwiperCore.use([Navigation, Pagination]);
 const MediaviewForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const boardTitle = useSelector((state) => state.boardReducer.dataInfo?.boardTitle);
-  const createdDatetime = useSelector((state) => state.boardReducer.dataInfo?.createdDatetime);
-  const boardContents = useSelector((state) => state.boardReducer.dataInfo?.boardContents);
-  const url = useSelector((state) => state.boardReducer.dataInfo?.url);
-  const fileList = useSelector((state) => state.boardReducer?.files);
+  const boardTitle = useSelector((state) => state.boardEnReducer.dataInfo?.boardTitle);
+  const createdDatetime = useSelector((state) => state.boardEnReducer.dataInfo?.createdDatetime);
+  const boardContents = useSelector((state) => state.boardEnReducer.dataInfo?.boardContents);
+  const url = useSelector((state) => state.boardEnReducer.dataInfo?.url);
+  const fileList = useSelector((state) => state.boardEnReducer?.files);
 
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);

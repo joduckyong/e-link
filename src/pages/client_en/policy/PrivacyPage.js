@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from 'components/client/Header';
-import Footer from 'components/client/Footer';
-import PrivacyForm from 'components/client/policy/PrivacyForm';
+import Header from 'components/client_en/Header';
+import Footer from 'components/client_en/Footer';
+import PrivacyForm from 'components/client_en/policy/PrivacyForm';
 
 const PrivacyPage = () => {
   return (

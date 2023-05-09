@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClientBoard } from 'store/boardReducer';
+import { selectClientBoard } from 'store/boardEnReducer';
 import Pagination from 'react-js-pagination';
 import AOS from 'aos';
 import classnames from 'classnames';
@@ -18,8 +18,8 @@ export function changeFormat(date, format) {
 
 const PostingForm = () => {
   const dispatch = useDispatch();
-  const boardList = useSelector((state) => state.boardReducer.data);
-  const totalCount = useSelector((state) => state.boardReducer.totalCount);
+  const boardList = useSelector((state) => state.boardEnReducer.data);
+  const totalCount = useSelector((state) => state.boardEnReducer.totalCount);
   const [jobType, setJobType] = useState('');
   const [page, setPage] = useState(1);
   const [activeMenu1, setActiveMenu1] = useState(false);

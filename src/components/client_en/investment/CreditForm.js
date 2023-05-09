@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClientBoard } from 'store/boardReducer';
+import { selectClientBoard } from 'store/boardEnReducer';
 import AOS from 'aos';
 import classnames from 'classnames';
 import Pagination from 'react-js-pagination';
@@ -14,7 +14,7 @@ const CreditForm = () => {
   }
 
   const dispatch = useDispatch();
-  const boardList = useSelector((state) => state.boardReducer);
+  const boardList = useSelector((state) => state.boardEnReducer);
   const [searchKeyword, setSearchKeyword] = useState(now.getFullYear());
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
