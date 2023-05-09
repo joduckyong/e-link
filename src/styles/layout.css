@@ -576,7 +576,7 @@ top: 0; bottom: 0; left: 0; right: 0; position: fixed; z-index: -10;}
 .sub.sub02-2 .drive .infor-down .tit-wrap {margin-bottom: 70px;}
 .sub.sub02-2 .drive .infor-down .in{position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('/public/img/sub/sol-img1.jpg') center no-repeat;} 
 .sub.sub02-2 .drive .infor-down2 {padding-top: 0;padding-bottom: 0;}
-
+.sub.sub02-2 .drive .infor-down2 .video-wrap video {width: 100%;}
 
 .sub.sub02-2 .system{padding: 140px 0; position: relative;}
 .sub.sub02-2 .sys-bg{position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('/public/img/sub/system-bg.jpg') center  bottom no-repeat; background-size: cover; z-index: -1; transition: all 0.7 ease-out;}
