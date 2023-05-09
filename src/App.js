@@ -112,8 +112,8 @@ import MainPage from './pages/MainPage';
 import ClientPopupPage from './pages/PopupPage';
 
 //영문
-// import MainEnPage from './pages/MainEnPage';
-// import ClientPopupEnPage from './pages/PopupEnPage';
+import MainEnPage from './pages/MainEnPage';
+import ClientPopupEnPage from './pages/PopupEnPage';
 
 // 회사소개 국문
 import LselinkPage from './pages/client/company/LselinkPage';
@@ -123,11 +123,11 @@ import IdentityPage from './pages/client/company/IdentityPage';
 import BusinessplacePage from './pages/client/company/BusinessplacePage';
 
 // 회사소개 영문
-// import LselinkEnPage from './pages/client/company/LselinkEnPage';
-// import VisionEnPage from './pages/client/company/VisionEnPage';
-// import HistoryEnPage from './pages/client/company/HistoryEnPage';
-// import IdentityEnPage from './pages/client/company/IdentityEnPage';
-// import BusinessplaceEnPage from './pages/client/company/BusinessplaceEnPage';
+import LselinkEnPage from './pages/client_en/company/LselinkPage';
+import VisionEnPage from './pages/client_en/company/VisionPage';
+import HistoryEnPage from './pages/client_en/company/HistoryPage';
+import IdentityEnPage from './pages/client_en/company/IdentityPage';
+import BusinessplaceEnPage from './pages/client_en/company/BusinessplacePage';
 
 // 사업영역 국문
 import EvchargePage from './pages/client/business/e-link/EvchargePage';
@@ -139,13 +139,13 @@ import CoporatePage from './pages/client/business/ev/CoporatePage';
 import RenewablePage from './pages/client/business/renewable/RenewablePage';
 
 // 사업영역 영문
-// import EvchargeEnPage from './pages/client/business/e-link/EvchargeEnPage';
-// import ControlEnPage from './pages/client/business/e-link/ControlEnPage';
-// import ElinkRenewableEnPage from './pages/client/business/e-link/RenewableEnPage';
-// import TransportationEnPage from './pages/client/business/ev/TransportationEnPage';
-// import LogiticsEnPage from './pages/client/business/ev/LogiticsEnPage';
-// import CoporateEnPage from './pages/client/business/ev/CoporateEnPage';
-// import RenewableEnPage from './pages/client/business/renewable/RenewableEnPage';
+import EvchargeEnPage from './pages/client_en/business/e-link/EvchargePage';
+import ControlEnPage from './pages/client_en/business/e-link/ControlPage';
+import ElinkRenewableEnPage from './pages/client_en/business/e-link/RenewablePage';
+import TransportationEnPage from './pages/client_en/business/ev/TransportationPage';
+import LogiticsEnPage from './pages/client_en/business/ev/LogiticsPage';
+import CoporateEnPage from './pages/client_en/business/ev/CoporatePage';
+import RenewableEnPage from './pages/client_en/business/renewable/RenewablePage';
 
 // 투자정보 국문
 import ManagementPage from './pages/client/investment/ManagementPage';
@@ -156,12 +156,12 @@ import InvAnnouncePage from './pages/client/investment/AnnouncePage';
 import InvAnnounceviewPage from './pages/client/investment/AnnounceviewPage';
 
 // 투자정보 영문
-// import ManagementEnPage from './pages/client/investment/ManagementEnPage';
-// import ClientFinancialEnPage from './pages/client/investment/FinancialEnPage';
-// import ClientFinancialviewEnPage from './pages/client/investment/FinancialviewEnPage';
-// import CreditEnPage from './pages/client/investment/CreditEnPage';
-// import InvAnnounceEnPage from './pages/client/investment/AnnounceEnPage';
-// import InvAnnounceviewEnPage from './pages/client/investment/AnnounceviewEnPage';
+import ManagementEnPage from './pages/client_en/investment/ManagementPage';
+import ClientFinancialEnPage from './pages/client_en/investment/FinancialPage';
+import ClientFinancialviewEnPage from './pages/client_en/investment/FinancialviewPage';
+import CreditEnPage from './pages/client_en/investment/CreditPage';
+import InvAnnounceEnPage from './pages/client_en/investment/AnnouncePage';
+import InvAnnounceviewEnPage from './pages/client_en/investment/AnnounceviewPage';
 
 // 흥보센터 국문
 import PresslistPage from './pages/client/pr/PresslistPage';
@@ -170,10 +170,10 @@ import MedialistPage from './pages/client/pr/MedialistPage';
 import MediaviewPage from './pages/client/pr/MediaviewPage';
 
 // 흥보센터 영문
-// import PresslistEnPage from './pages/client/pr/PresslistEnPage';
-// import PressviewEnPage from './pages/client/pr/PressviewEnPage';
-// import MedialistEnPage from './pages/client/pr/MedialistEnPage';
-// import MediaviewEnPage from './pages/client/pr/MediaviewEnPage';
+import PresslistEnPage from './pages/client_en/pr/PresslistPage';
+import PressviewEnPage from './pages/client_en/pr/PressviewPage';
+import MedialistEnPage from './pages/client_en/pr/MedialistPage';
+import MediaviewEnPage from './pages/client_en/pr/MediaviewPage';
 
 // 채용정보 국문
 import PeoplePage from './pages/client/recruit/PeoplePage';
@@ -182,10 +182,10 @@ import PostingPage from './pages/client/recruit/PostingPage';
 import PostingviewPage from './pages/client/recruit/PostingviewPage';
 
 // 채용정보 영문
-// import PeopleEnPage from './pages/client/recruit/PeopleEnPage';
-// import BenefitsEnPage from './pages/client/recruit/BenefitsEnPage';
-// import PostingEnPage from './pages/client/recruit/PostingEnPage';
-// import PostingviewEnPage from './pages/client/recruit/PostingviewEnPage';
+import PeopleEnPage from './pages/client_en/recruit/PeoplePage';
+import BenefitsEnPage from './pages/client_en/recruit/BenefitsPage';
+import PostingEnPage from './pages/client_en/recruit/PostingPage';
+import PostingviewEnPage from './pages/client_en/recruit/PostingviewPage';
 
 // Contact US 국문
 import ConsultPage from './pages/client/contactus/ConsultPage';
@@ -193,9 +193,9 @@ import InconveniencePage from './pages/client/contactus/InconveniencePage';
 import InquiryPage from './pages/client/contactus/InquiryPage';
 
 // Contact US 영문
-// import ConsultEnPage from './pages/client/contactus/ConsultEnPage';
-// import InconvenienceEnPage from './pages/client/contactus/InconvenienceEnPage';
-// import InquiryEnPage from './pages/client/contactus/InquiryEnPage';
+import ConsultEnPage from './pages/client_en/contactus/ConsultPage';
+import InconvenienceEnPage from './pages/client_en/contactus/InconveniencePage';
+import InquiryEnPage from './pages/client_en/contactus/InquiryPage';
 
 // 약관 국문
 import PrivacyPage from './pages/client/policy/PrivacyPage';
@@ -203,9 +203,9 @@ import TermsPage from './pages/client/policy/TermsPage';
 import LocationPage from './pages/client/policy/LocationPage';
 
 // 약관 영문
-// import PrivacyEnPage from './pages/client/policy/PrivacyEnPage';
-// import TermsEnPage from './pages/client/policy/TermsEnPage';
-// import LocationEnPage from './pages/client/policy/LocationEnPage';
+import PrivacyEnPage from './pages/client_en/policy/PrivacyPage';
+import TermsEnPage from './pages/client_en/policy/TermsPage';
+import LocationEnPage from './pages/client_en/policy/LocationPage';
 
 /* EV 충전소 */
 //브랜드 소개
@@ -343,19 +343,19 @@ const App = () => {
 
         <Route path="/" element={<MainPage />} />
         <Route path="/popup/:id" element={<ClientPopupPage />} />
-        {/* <Route path="/En" element={<MainEnPage />} />
-        <Route path="/popupEn/:id" element={<ClientPopupEnPage />} /> */}
+        <Route path="/en" element={<MainEnPage />} />
+        <Route path="/en/popup/:id" element={<ClientPopupEnPage />} />
 
         <Route path="/company/lselink" element={<LselinkPage />} />
         <Route path="/company/vision" element={<VisionPage />} />
         <Route path="/company/history" element={<HistoryPage />} />
         <Route path="/company/identity" element={<IdentityPage />} />
         <Route path="/company/businessplace" element={<BusinessplacePage />} />
-        {/* <Route path="/company/lselinkEn" element={<LselinkEnPage />} />
-        <Route path="/company/visionEn" element={<VisionEnPage />} />
-        <Route path="/company/historyEn" element={<HistoryEnPage />} />
-        <Route path="/company/identityEn" element={<IdentityEnPage />} />
-        <Route path="/company/businessplaceEn" element={<BusinessplaceEnPage />} /> */}
+        <Route path="/en/company/lselink" element={<LselinkEnPage />} />
+        <Route path="/en/company/vision" element={<VisionEnPage />} />
+        <Route path="/en/company/history" element={<HistoryEnPage />} />
+        <Route path="/en/company/identity" element={<IdentityEnPage />} />
+        <Route path="/en/company/businessplace" element={<BusinessplaceEnPage />} />
 
         <Route path="/business/e-link/evcharge" element={<EvchargePage />} />
         <Route path="/business/e-link/control" element={<ControlPage />} />
@@ -364,13 +364,13 @@ const App = () => {
         <Route path="/business/ev/logitics" element={<LogiticsPage />} />
         <Route path="/business/ev/coporate" element={<CoporatePage />} />
         <Route path="/business/renewable/renewable" element={<RenewablePage />} />
-        {/* <Route path="/business/e-link/evchargeEn" element={<EvchargeEnPage />} />
-        <Route path="/business/e-link/controlEn" element={<ControlEnPage />} />
-        <Route path="/business/e-link/renewableEn" element={<ElinkRenewableEnPage />} />
-        <Route path="/business/ev/transportationEn" element={<TransportationEnPage />} />
-        <Route path="/business/ev/logiticsEn" element={<LogiticsEnPage />} />
-        <Route path="/business/ev/coporateEn" element={<CoporateEnPage />} />
-        <Route path="/business/renewable/renewableEn" element={<RenewableEnPage />} /> */}
+        <Route path="/en/business/e-link/evcharge" element={<EvchargeEnPage />} />
+        <Route path="/en/business/e-link/control" element={<ControlEnPage />} />
+        <Route path="/en/business/e-link/renewable" element={<ElinkRenewableEnPage />} />
+        <Route path="/en/business/ev/transportation" element={<TransportationEnPage />} />
+        <Route path="/en/business/ev/logitics" element={<LogiticsEnPage />} />
+        <Route path="/en/business/ev/coporate" element={<CoporateEnPage />} />
+        <Route path="/en/business/renewable/renewable" element={<RenewableEnPage />} />
 
         <Route path="/investment/management" element={<ManagementPage />} />
         <Route path="/investment/financial" element={<ClientFinancialPage />} />
@@ -378,45 +378,45 @@ const App = () => {
         <Route path="/investment/credit" element={<CreditPage />} />
         <Route path="/investment/announce" element={<InvAnnouncePage />} />
         <Route path="/investment/announce-view/:id" element={<InvAnnounceviewPage />} />
-        {/* <Route path="/investment/managementEn" element={<ManagementEnPage />} />
-        <Route path="/investment/financialEn" element={<ClientFinancialEnPage />} />
-        <Route path="/investment/financial-viewEn/:id" element={<ClientFinancialviewEnPage />} />
-        <Route path="/investment/creditEn" element={<CreditEnPage />} />
-        <Route path="/investment/announceEn" element={<InvAnnounceEnPage />} />
-        <Route path="/investment/announce-viewEn/:id" element={<InvAnnounceviewEnPage />} /> */}
+        <Route path="/en/investment/management" element={<ManagementEnPage />} />
+        <Route path="/en/investment/financial" element={<ClientFinancialEnPage />} />
+        <Route path="/en/investment/financial-view/:id" element={<ClientFinancialviewEnPage />} />
+        <Route path="/en/investment/credit" element={<CreditEnPage />} />
+        <Route path="/en/investment/announce" element={<InvAnnounceEnPage />} />
+        <Route path="/en/investment/announce-view/:id" element={<InvAnnounceviewEnPage />} />
 
         <Route path="/pr/press-list" element={<PresslistPage />} />
         <Route path="/pr/press-view/:id" element={<PressviewPage />} />
-        {/* <Route path="/pr/press-listEn" element={<PresslistEnPage />} />
-        <Route path="/pr/press-viewEn/:id" element={<PressviewEnPage />} /> */}
+        <Route path="/en/pr/press-list" element={<PresslistEnPage />} />
+        <Route path="/en/pr/press-view/:id" element={<PressviewEnPage />} />
 
         <Route path="/pr/media-list" element={<MedialistPage />} />
         <Route path="/pr/media-view/:id" element={<MediaviewPage />} />
-        {/* <Route path="/pr/media-listEn" element={<MedialistEnPage />} />
-        <Route path="/pr/media-viewEn/:id" element={<MediaviewEnPage />} /> */}
+        <Route path="/en/pr/media-list" element={<MedialistEnPage />} />
+        <Route path="/en/pr/media-view/:id" element={<MediaviewEnPage />} />
 
         <Route path="/recruit/people" element={<PeoplePage />} />
         <Route path="/recruit/benefits" element={<BenefitsPage />} />
         <Route path="/recruit/posting" element={<PostingPage />} />
         <Route path="/recruit/posting-view/:id" element={<PostingviewPage />} />
-        {/* <Route path="/recruit/peopleEn" element={<PeopleEnPage />} />
-        <Route path="/recruit/benefitsEn" element={<BenefitsEnPage />} />
-        <Route path="/recruit/postingEn" element={<PostingEnPage />} />
-        <Route path="/recruit/posting-viewEn/:id" element={<PostingviewEnPage />} /> */}
+        <Route path="/en/recruit/people" element={<PeopleEnPage />} />
+        <Route path="/en/recruit/benefits" element={<BenefitsEnPage />} />
+        <Route path="/en/recruit/posting" element={<PostingEnPage />} />
+        <Route path="/en/recruit/posting-view/:id" element={<PostingviewEnPage />} />
 
         <Route path="/contactus/consult" element={<ConsultPage />} />
         <Route path="/contactus/inconvenience" element={<InconveniencePage />} />
         <Route path="/contactus/inquiry" element={<InquiryPage />} />
-        {/* <Route path="/contactus/consultEn" element={<ConsultEnPage />} />
-        <Route path="/contactus/inconvenienceEn" element={<InconvenienceEnPage />} />
-        <Route path="/contactus/inquiryEn" element={<InquiryEnPage />} / */}
+        <Route path="/en/contactus/consult" element={<ConsultEnPage />} />
+        <Route path="/en/contactus/inconvenience" element={<InconvenienceEnPage />} />
+        <Route path="/en/contactus/inquiry" element={<InquiryEnPage />} />
 
         <Route path="/policy/privacy" element={<PrivacyPage />} />
         <Route path="/policy/terms" element={<TermsPage />} />
         <Route path="/policy/location" element={<LocationPage />} />
-        {/* <Route path="/policy/privacyEn" element={<PrivacyEnPage />} />
-        <Route path="/policy/termsEn" element={<TermsEnPage />} />
-        <Route path="/policy/locationEn" element={<LocationEnPage />} /> */}
+        <Route path="/en/policy/privacy" element={<PrivacyEnPage />} />
+        <Route path="/en/policy/terms" element={<TermsEnPage />} />
+        <Route path="/en/policy/location" element={<LocationEnPage />} />
 
         <Route path="/ev/index" element={<IndexPage />} />
         <Route path="/ev/find" element={<FindPage />} />
