@@ -2,6 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEv } from 'store/EvReducer';
+import moment from 'moment';
+
+export function changeFormat(date, format) {
+  //moment 변환을 함수로 미리 빼 두어서 사용.
+  if (moment(date).isValid()) {
+    return moment(date).format(format);
+  } else {
+    return null;
+  }
+}
 
 const NoticeForm = () => {
   const dispatch = useDispatch();
@@ -37,77 +47,16 @@ const NoticeForm = () => {
               <b>Total {noticeList.length}</b>
             </div>
             <ol className="list notice-list">
-            {noticeList.map((list, index) => (
-              <li key={index}>
-                <a href="./notice_view.html">
-                  <p>
-                    <b>No.14</b>{list.dttm}
-                  </p>
-                  <h2>{list.ttl}</h2>
-                </a>
-              </li>
-            ))}
-              {/* <li>
-                <a href="./notice_view.html">
-                  <p>
-                    <b>No.14</b>2022-11-30
-                  </p>
-                  <h2>요금 변경 안내 (2023. 1. 5. 부)</h2>
-                </a>
-              </li>
-              <li>
-                <a href="./notice_view.html">
-                  <p>
-                    <b>No.14</b>2022-11-30
-                  </p>
-                  <h2>요금 변경 안내 (2023. 1. 5. 부)</h2>
-                </a>
-              </li>
-              <li>
-                <a href="./notice_view.html">
-                  <p>
-                    <b>No.14</b>2022-11-30
-                  </p>
-                  <h2>요금 변경 안내 (2023. 1. 5. 부)</h2>
-                </a>
-              </li>
-              <li>
-                <a href="./notice_view.html">
-                  <p>
-                    <b>No.14</b>2022-11-30
-                  </p>
-                  <h2>요금 변경 안내 (2023. 1. 5. 부)</h2>
-                </a>
-              </li>
-              <li>
-                <a href="./notice_view.html">
-                  <p>
-                    <b>No.14</b>2022-11-30
-                  </p>
-                  <h2>요금 변경 안내 (2023. 1. 5. 부)</h2>
-                </a>
-              </li> */}
-            </ol>
-            <ol className="page-wp">
-              <li className="prev">
-                <a href="">
-                  <img src="/img/ev/ev_page_arrow.png" alt="이전" />
-                </a>
-              </li>
-              <li className="active">
-                <a href="">1</a>
-              </li>
-              <li>
-                <a href="">2</a>
-              </li>
-              <li>
-                <a href="">3</a>
-              </li>
-              <li className="next">
-                <a href="">
-                  <img src="/img/ev/ev_page_arrow.png" alt="다음" />
-                </a>
-              </li>
+              {noticeList.map((list, index) => (
+                <li key={index}>
+                  <Link to={`/ev/noticeInfo/${index}`}>
+                    <p>
+                      <b>No.{noticeList.length - index}</b>{changeFormat(list.dttm, 'yyyy-MM-DD') || ''}
+                    </p>
+                    <h2>{list.ttl}</h2>
+                  </Link>
+                </li>
+              ))}
             </ol>
           </div>
         </div>

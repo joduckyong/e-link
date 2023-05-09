@@ -434,7 +434,7 @@ const App = () => {
         <Route path="/ev/rePw" element={<RepwPage />} />
 
         <Route path="/ev/notice" element={<NoticePage />} />
-        <Route path="/ev/noticeInfo" element={<NoticeInfoPage />} />
+        <Route path="/ev/noticeInfo/:id" element={<NoticeInfoPage />} />
         <Route path="/ev/faq" element={<FaqPage />} />
         <Route path="/ev/inquiry" element={<InquiryEvPage />} />
         <Route path="/ev/inquiryInfo" element={<InquiryInfoPage />} />
