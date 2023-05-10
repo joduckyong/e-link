@@ -30,16 +30,16 @@ const NoticeForm = () => {
           <h1>고객센터</h1>
           <ul className="link-wp">
             <li className="active">
-              <a href="./notice.html">공지사항</a>
+              <Link to="/ev/notice">공지사항</Link>
             </li>
             <li>
-              <a href="./faq.html">FAQ</a>
+              <Link to="/ev/faq">FAQ</Link>
             </li>
             <li>
-              <a href="./inquiry.html">문의하기</a>
+              <Link to="/ev/inquiry">문의하기</Link>
             </li>
             <li>
-              <a href="">고장신고</a>
+              <Link to="">고장신고</Link>
             </li>
           </ul>
           <div className="list-wp">

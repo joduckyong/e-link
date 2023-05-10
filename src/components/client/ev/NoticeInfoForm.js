@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectEv } from 'store/EvReducer';
 import moment from 'moment';
 
 export function changeFormat(date, format) {
@@ -18,12 +17,9 @@ const NoticeInfoForm = () => {
   const dispatch = useDispatch();
   const noticeList = useSelector((state) => state.EvReducer.data);
 
-  // useEffect(() => {
-  //   const url = '/api/m-service-mobile/community/getNotis';
-  //   const newList = { url: url };
-  //   dispatch(selectEv(newList));
-  // }, [dispatch, id]);
-  
+  if(noticeList.length === 0){  //새로고침 시 목록 페이지 이동
+    window.location.href = '/ev/notice';
+  }
 
   return (
     <>
