@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+// import { NavLink } from 'react-router-dom';
+import AOS from 'aos';
+import ScrollContainer from 'react-indiana-drag-scroll';
+import 'aos/dist/aos.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const ControlForm = () => {
+  useEffect(() => {
+    AOS.init();
+  });
+
   return (
     <>
       <section className="ev-sect-01 evc-sect-01">
@@ -30,9 +41,12 @@ const ControlForm = () => {
           <img className="img pc-img" src="/img/ev/evc_sect02_bg.png" alt="" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" />
           <img className="img mo-img" src="/img/ev/evc_sect02_bg_m.png" alt="" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" />
         </div>
+
         <div className="txt-area">
-          <img src="/img/ev/evc_txt.png" alt="" />
-          <img src="/img/ev/evc_txt.png" alt="" />
+          <ScrollContainer className="scroll-container" horizontal={true}>
+            <img src="/img/ev/evc_txt.png" alt="" />
+            <img src="/img/ev/evc_txt.png" alt="" />
+          </ScrollContainer>
         </div>
       </section>
 
