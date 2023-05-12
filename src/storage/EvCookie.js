@@ -19,6 +19,23 @@ export const removeCookieEvToken = () => {
   return cookies.remove('accessEvToken', { path: '/' });
 };
 
+// EvUserNo
+export const setEvUserNo = (evUserNo, expireDate) => {
+  return cookies.set('evUserNo', evUserNo, {
+    path: '/',
+    expires: new Date(expireDate),
+  });
+};
+
+export const getCookieEvUserNo = () => {
+  const token = cookies.get('evUserNo');
+  return token;
+};
+
+export const removeCookieEvUserNo = () => {
+  return cookies.remove('evUserNo', { path: '/' });
+};
+
 // refresh token
 export const setRefreshEvToken = (refreshToken, expireDate) => {
   return cookies.set('refreshEvToken', refreshToken, {

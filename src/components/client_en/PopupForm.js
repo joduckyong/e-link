@@ -16,7 +16,7 @@ const PopupForm = ({ popupLink, fileNm, popupId, popupHeight, popupWidth, popupC
 
   const dayModalClose = (id) => {
     const expires = getExpiredDate(1);
-    setPopupCookies('POPUP_' + id, id, { path: '/', expires });
+    setPopupCookies('EN_POPUP_' + id, id, { path: '/', expires });
     displayRef.current.style = 'display:none';
   };
 

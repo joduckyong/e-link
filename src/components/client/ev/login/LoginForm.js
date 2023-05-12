@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { loginUser } from '../../../../api/EvUsers';
-import { setAccessEvToken } from '../../../../storage/EvCookie';
+import { setAccessEvToken, setEvUserNo } from '../../../../storage/EvCookie';
 import { SET_EV_TOKEN } from '../../../../store/EvAuth';
 import { encrypt } from '../../../../api/crypto';
 
@@ -52,6 +52,7 @@ const LoginForm = () => {
       } else {
         // setRefreshEvToken(JSON.stringify(response.json.data.refresh_token), JSON.stringify(response.json.data.expires_in));
         setAccessEvToken(JSON.stringify(response.json.data.access_token), JSON.stringify(response.json.data.expires_in));
+        setEvUserNo(JSON.stringify(response.json.data.USER_NO), JSON.stringify(response.json.data.expires_in));
         dispatch(SET_EV_TOKEN(JSON.stringify(response.json.data.access_token)));
         return navigate('/ev/mypage1');
       }

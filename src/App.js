@@ -16,22 +16,22 @@ import PopupModPage from './pages/admin/main/PopupModPage';
 import PopupInfoPage from './pages/admin/main/PopupInfoPage';
 
 //팝업 영문
-import PopupEnPage from './pages/admin/main/PopupEnPage';
-import PopupAddEnPage from './pages/admin/main/PopupAddEnPage';
-import PopupModEnPage from './pages/admin/main/PopupModEnPage';
-import PopupInfoEnPage from './pages/admin/main/PopupInfoEnPage';
+import PopupEnPage from './pages/admin_en/main/PopupEnPage';
+import PopupAddEnPage from './pages/admin_en/main/PopupAddEnPage';
+import PopupModEnPage from './pages/admin_en/main/PopupModEnPage';
+import PopupInfoEnPage from './pages/admin_en/main/PopupInfoEnPage';
 
 //회사 연혁 국문
 import OutlinePage from './pages/admin/company/OutlinePage';
 
 //회사 연혁 영문
-import OutlineEnPage from './pages/admin/company/OutlineEnPage';
+import OutlineEnPage from './pages/admin_en/company/OutlineEnPage';
 
 //공시정보 국문
 import OfficialNoticePage from './pages/admin/investInfo/OfficialNoticePage';
 
 //공시정보 영문
-import OfficialNoticeEnPage from './pages/admin/investInfo/OfficialNoticeEnPage';
+import OfficialNoticeEnPage from './pages/admin_en/investInfo/OfficialNoticeEnPage';
 
 //재무정보 국문
 import FinancialPage from './pages/admin/investInfo/FinancialPage';
@@ -40,10 +40,10 @@ import FinancialModPage from './pages/admin/investInfo/FinancialModPage';
 import FinancialInfoPage from './pages/admin/investInfo/FinancialInfoPage';
 
 //재무정보 영문
-import FinancialEnPage from './pages/admin/investInfo/FinancialEnPage';
-import FinancialAddEnPage from './pages/admin/investInfo/FinancialAddEnPage';
-import FinancialModEnPage from './pages/admin/investInfo/FinancialModEnPage';
-import FinancialInfoEnPage from './pages/admin/investInfo/FinancialInfoEnPage';
+import FinancialEnPage from './pages/admin_en/investInfo/FinancialEnPage';
+import FinancialAddEnPage from './pages/admin_en/investInfo/FinancialAddEnPage';
+import FinancialModEnPage from './pages/admin_en/investInfo/FinancialModEnPage';
+import FinancialInfoEnPage from './pages/admin_en/investInfo/FinancialInfoEnPage';
 
 //공고 국문
 import AnnouncePage from './pages/admin/investInfo/AnnouncePage';
@@ -52,10 +52,10 @@ import AnnounceModPage from './pages/admin/investInfo/AnnounceModPage';
 import AnnounceInfoPage from './pages/admin/investInfo/AnnounceInfoPage';
 
 //공고 영문
-import AnnounceEnPage from './pages/admin/investInfo/AnnounceEnPage';
-import AnnounceAddEnPage from './pages/admin/investInfo/AnnounceAddEnPage';
-import AnnounceModEnPage from './pages/admin/investInfo/AnnounceModEnPage';
-import AnnounceInfoEnPage from './pages/admin/investInfo/AnnounceInfoEnPage';
+import AnnounceEnPage from './pages/admin_en/investInfo/AnnounceEnPage';
+import AnnounceAddEnPage from './pages/admin_en/investInfo/AnnounceAddEnPage';
+import AnnounceModEnPage from './pages/admin_en/investInfo/AnnounceModEnPage';
+import AnnounceInfoEnPage from './pages/admin_en/investInfo/AnnounceInfoEnPage';
 
 //보도자료 국문
 import PressReleasePage from './pages/admin/publicRelations/PressReleasePage';
@@ -64,10 +64,10 @@ import PressReleaseModPage from './pages/admin/publicRelations/PressReleaseModPa
 import PressReleaseInfoPage from './pages/admin/publicRelations/PressReleaseInfoPage';
 
 //보도자료 영문
-import PressReleaseEnPage from './pages/admin/publicRelations/PressReleaseEnPage';
-import PressReleaseAddEnPage from './pages/admin/publicRelations/PressReleaseAddEnPage';
-import PressReleaseModEnPage from './pages/admin/publicRelations/PressReleaseModEnPage';
-import PressReleaseInfoEnPage from './pages/admin/publicRelations/PressReleaseInfoEnPage';
+import PressReleaseEnPage from './pages/admin_en/publicRelations/PressReleaseEnPage';
+import PressReleaseAddEnPage from './pages/admin_en/publicRelations/PressReleaseAddEnPage';
+import PressReleaseModEnPage from './pages/admin_en/publicRelations/PressReleaseModEnPage';
+import PressReleaseInfoEnPage from './pages/admin_en/publicRelations/PressReleaseInfoEnPage';
 
 //미디어 국문
 import MediaPage from './pages/admin/publicRelations/MediaPage';
@@ -76,10 +76,10 @@ import MediaModPage from './pages/admin/publicRelations/MediaModPage';
 import MediaInfoPage from './pages/admin/publicRelations/MediaInfoPage';
 
 //미디어 영문
-import MediaEnPage from './pages/admin/publicRelations/MediaEnPage';
-import MediaAddEnPage from './pages/admin/publicRelations/MediaAddEnPage';
-import MediaModEnPage from './pages/admin/publicRelations/MediaModEnPage';
-import MediaInfoEnPage from './pages/admin/publicRelations/MediaInfoEnPage';
+import MediaEnPage from './pages/admin_en/publicRelations/MediaEnPage';
+import MediaAddEnPage from './pages/admin_en/publicRelations/MediaAddEnPage';
+import MediaModEnPage from './pages/admin_en/publicRelations/MediaModEnPage';
+import MediaInfoEnPage from './pages/admin_en/publicRelations/MediaInfoEnPage';
 
 //채용정보 국문
 import JobVacancyPage from './pages/admin/employmentInfo/JobVacancyPage';
@@ -88,18 +88,18 @@ import JobVacancyModPage from './pages/admin/employmentInfo/JobVacancyModPage';
 import JobVacancyInfoPage from './pages/admin/employmentInfo/JobVacancyInfoPage';
 
 //채용정보 영문
-import JobVacancyEnPage from './pages/admin/employmentInfo/JobVacancyEnPage';
-import JobVacancyAddEnPage from './pages/admin/employmentInfo/JobVacancyAddEnPage';
-import JobVacancyModEnPage from './pages/admin/employmentInfo/JobVacancyModEnPage';
-import JobVacancyInfoEnPage from './pages/admin/employmentInfo/JobVacancyInfoEnPage';
+import JobVacancyEnPage from './pages/admin_en/employmentInfo/JobVacancyEnPage';
+import JobVacancyAddEnPage from './pages/admin_en/employmentInfo/JobVacancyAddEnPage';
+import JobVacancyModEnPage from './pages/admin_en/employmentInfo/JobVacancyModEnPage';
+import JobVacancyInfoEnPage from './pages/admin_en/employmentInfo/JobVacancyInfoEnPage';
 
 //고객센터 국문
 import ContactUsPage from './pages/admin/customerService/ContactUsPage';
 import ContactUsInfoPage from './pages/admin/customerService/ContactUsInfoPage';
 
 //고객센터 영문
-import ContactUsEnPage from './pages/admin/customerService/ContactUsEnPage';
-import ContactUsInfoEnPage from './pages/admin/customerService/ContactUsInfoEnPage';
+import ContactUsEnPage from './pages/admin_en/customerService/ContactUsEnPage';
+import ContactUsInfoEnPage from './pages/admin_en/customerService/ContactUsInfoEnPage';
 
 //관리자권한
 import MgmtPage from './pages/admin/role/MgmtPage';
