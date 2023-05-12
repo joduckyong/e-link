@@ -15,7 +15,7 @@ const ContactUsListEnForm = () => {
   const [contactType, setContactType] = useState('A'); // A: 상담신청, B: 불편신고, C: 문의하기
 
   useEffect(() => {
-    const newList = { contactId: 'CON', contactType: contactType, pageIndex: page };
+    const newList = { contactId: 'EN_CON', contactType: contactType, pageIndex: page };
     dispatch(selectContactUs(newList));
   }, [dispatch, page, contactType]);
 
@@ -25,7 +25,7 @@ const ContactUsListEnForm = () => {
   };
 
   const onSearch = (page) => {
-    const newList = { contactId: 'CON', contactType: contactType, pageIndex: page, searchKeyword: searchKeyword, searchCondition: selectItem };
+    const newList = { contactId: 'EN_CON', contactType: contactType, pageIndex: page, searchKeyword: searchKeyword, searchCondition: selectItem };
     dispatch(selectContactUs(newList));
   };
 
@@ -41,7 +41,7 @@ const ContactUsListEnForm = () => {
       const newList = { ids: checkItems };
 
       dispatch(deleteContactUsIds(newList)).then(() => {
-        const newList = { contactId: 'CON', pageIndex: page };
+        const newList = { contactId: 'EN_CON', pageIndex: page };
         dispatch(selectContactUs(newList));
       });
     }

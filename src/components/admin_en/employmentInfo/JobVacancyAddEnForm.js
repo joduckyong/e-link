@@ -86,7 +86,7 @@ const JobVacancyAddEnForm = () => {
 
     if (window.confirm('등록 하시겠습니까?')) {
       const newList = {
-        boardId: 'JOB',
+        boardId: 'EN_JOB',
         boardTitle: boardTitle,
         boardContents: boardContents,
         boardType: boardType,
