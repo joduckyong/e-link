@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyPage2Form = () => {
   return (
@@ -7,14 +8,14 @@ const MyPage2Form = () => {
         <div className="costomer-wp mypage-wp elvis-wp">
           <h1>마이페이지</h1>
           <ul className="link-wp">
-            <li>
-              <a href="./mypage1.html">이용내역</a>
+          <li>
+              <Link to="/ev/mypage1">이용내역</Link>
             </li>
             <li className="active">
-              <a href="./mypage2.html">ELVIS 캐시</a>
+              <Link to="/ev/mypage2">ELVIS 캐시</Link>
             </li>
             <li>
-              <a href="">커뮤니티</a>
+              <Link to="/ev/mypage3">커뮤니티</Link>
             </li>
           </ul>
           <form className="list-wp">

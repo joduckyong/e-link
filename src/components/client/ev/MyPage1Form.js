@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectEv } from 'store/EvReducer';
+import { getCookieEvUserNo } from '../../../storage/EvCookie';
 
 const MyPage1Form = () => {
+  const dispatch = useDispatch();
+  const myPageList = useSelector((state) => state.EvReducer.data);
+
+  useEffect(() => {
+    const evUserNo = getCookieEvUserNo();
+    const url = '/api/m-service-mobile/rechgst/getUserRechgInfo';
+    const newList = { url: url, userNo: evUserNo };
+    dispatch(selectEv(newList));
+  }, [dispatch]);
+
   return (
     <>
       <section className="ev-sub-sect">
@@ -8,13 +22,13 @@ const MyPage1Form = () => {
           <h1>마이페이지</h1>
           <ul className="link-wp">
             <li className="active">
-              <a href="./mypage1.html">이용내역</a>
+              <Link to="/ev/mypage1">이용내역</Link>
             </li>
             <li>
-              <a href="./mypage2.html">ELVIS 캐시</a>
+              <Link to="/ev/mypage2">ELVIS 캐시</Link>
             </li>
             <li>
-              <a href="">커뮤니티</a>
+              <Link to="/ev/mypage3">커뮤니티</Link>
             </li>
           </ul>
           <div className="list-wp">
@@ -45,57 +59,24 @@ const MyPage1Form = () => {
             </div>
             <div className="usage-list-wp">
               <ol className="list usage-list">
-                <li className="ttl">
+                <li className="ttl" >
                   <p>번호</p>
                   <p>이용시간</p>
                   <p>이용한 충전소</p>
                   <p>결제금액</p>
                   <p>충전량(KWh)</p>
                 </li>
-                <li>
-                  <p>10</p>
-                  <p>2023.03.07 00:18:00</p>
-                  <p>송파래미니스</p>
-                  <p>50,000</p>
-                  <p>42.3</p>
-                </li>
-                <li>
-                  <p>9</p>
-                  <p>2023.03.07 00:18:00</p>
-                  <p>송파래미니스</p>
-                  <p>50,000</p>
-                  <p>42.3</p>
-                </li>
-                <li>
-                  <p>8</p>
-                  <p>2023.03.07 00:18:00</p>
-                  <p>송파래미니스</p>
-                  <p>50,000</p>
-                  <p>42.3</p>
-                </li>
+                {myPageList.map((list, index) => (
+                  <li key={index}>
+                    <p>{myPageList.length - index}</p>
+                    <p></p>
+                    <p>{list.rechgstNm}</p>
+                    <p>{list.payAmt}</p>
+                    <p>{list.rechgWh}</p>
+                  </li>
+                ))}
               </ol>
             </div>
-            <ol className="page-wp">
-              <li className="prev">
-                <a href="">
-                  <img src="/img/ev/ev_page_arrow.png" alt="이전" />
-                </a>
-              </li>
-              <li className="active">
-                <a href="">1</a>
-              </li>
-              <li>
-                <a href="">2</a>
-              </li>
-              <li>
-                <a href="">3</a>
-              </li>
-              <li className="next">
-                <a href="">
-                  <img src="/img/ev/ev_page_arrow.png" alt="다음" />
-                </a>
-              </li>
-            </ol>
           </div>
         </div>
       </section>
