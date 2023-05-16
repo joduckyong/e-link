@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { encrypt } from '../../../../api/crypto';
+// import { encrypt } from '../../../../api/crypto';
+import axios from 'axios';
 import Post from '../../../../api/Post';
 
 const Join2Form = () => {
@@ -157,7 +158,7 @@ const Join2Form = () => {
   };
 
   // 아이디 중복검사
-  const emailDuplicated = (e) => {
+  const emailDuplicated = async (e) => {
     e.preventDefault();
 
     if (email === '') {
@@ -171,21 +172,19 @@ const Join2Form = () => {
       eml: email,
     };
 
-    fetch(process.env.REACT_APP_API_URL + '/api/ev/auth/isEmailDuplicated', {
+    const res = await axios({
+      url: `${process.env.REACT_APP_API_URL}/api/ev/auth/isEmailDuplicated`,
       method: 'POST',
+      data: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         Accept: 'application/json',
       },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        const result = JSON.stringify(res.data).replace(/"/g, '');
-        setEmailCheck(result);
-      });
+    });
+
+    const result = JSON.stringify(res.data.data).replace(/"/g, '');
+    console.log('result : ' + result);
+    setEmailCheck(result);
   };
 
   // 이름 등록
@@ -212,11 +211,19 @@ const Join2Form = () => {
     }
   };
   // 회원가입
-  const signupUserInfo = (e) => {
+  const signupUserInfo = async (e) => {
     e.preventDefault();
+
+    console.log('email : ' + email);
+    console.log('emailCheck : ' + emailCheck);
+    console.log('emailCheck2 : ' + emailCheck2);
 
     if (email === '') {
       setEmailCheck('X');
+      return;
+    }
+    if (emailCheck !== 'N') {
+      setEmailCheck('O');
       return;
     }
     if (userNm === '') {
@@ -242,53 +249,40 @@ const Join2Form = () => {
     } else {
       setAddressDetailCk(false);
     }
-    fetch(process.env.REACT_APP_API_URL + '/api/phone/phoneInfo/' + telno, {
+
+    const res = await axios({
+      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}`,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         Accept: 'application/json',
       },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        console.log('res.data : ' + res.data);
+    });
 
-        if (res.data !== undefined) {
-          const dataBrth = JSON.stringify(res.data.brth);
-          const dataCi = JSON.stringify(res.data.ci);
-          const dataGender = JSON.stringify(res.data.gender);
-          const dataTelcom = JSON.stringify(res.data.telcom);
-          const dataTelNo = JSON.stringify(res.data.telno).replace(/"/g, '');
+    console.log('data : ' + res.data.data);
 
-          // console.log('dataBrth : ' + dataBrth);
-          // console.log('dataCi : ' + dataCi);
-          // console.log('dataGender : ' + dataGender);
-          // console.log('dataTelcom : ' + dataTelcom);
-          // console.log('dataTelNo : ' + dataTelNo);
+    if (res.data.data !== undefined) {
+      const dataBrth = JSON.stringify(res.data.data.brth).replace(/"/g, '');
+      const dataCi = JSON.stringify(res.data.data.ci).replace(/"/g, '');
+      const dataGender = JSON.stringify(res.data.data.gender).replace(/"/g, '');
+      const dataTelcom = JSON.stringify(res.data.data.telcom).replace(/"/g, '');
+      const dataTelNo = JSON.stringify(res.data.data.telno).replace(/"/g, '');
 
-          setBrth(dataBrth);
-          setCi(dataCi);
-          setGender(dataGender);
-          setTelcom(dataTelcom);
-          setTelno(dataTelNo);
+      setBrth(dataBrth);
+      setCi(dataCi);
+      setGender(dataGender);
+      setTelcom(dataTelcom);
+      setTelno(dataTelNo);
 
-          // console.log('brth : ' + brth);
-          // console.log('ci : ' + ci);
-          // console.log('gender : ' + gender);
-          // console.log('telcom : ' + telcom);
-          // console.log('telno : ' + telno);
-
-          signupUser(e);
-        } else {
-          setTelnoCk2(true);
-        }
-      });
+      signupUser(e);
+    } else {
+      setTelnoCk2(true);
+    }
   };
 
-  const signupUser = (e) => {
+  const signupUser = async (e) => {
     // e.preventDefault();
+
     const data = {
       url: '/auth/signupUser',
       userNm: userNm,
@@ -304,28 +298,27 @@ const Join2Form = () => {
       roleId: 'elinkuser',
     };
 
-    console.log('data : ' + JSON.stringify(data));
-
-    fetch(process.env.REACT_APP_API_URL + '/api/ev/auth/signupUser', {
+    const res = await axios({
+      url: `${process.env.REACT_APP_API_URL}/api/ev/auth/signupUser`,
       method: 'POST',
+      data: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         Accept: 'application/json',
       },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        if (res.data !== '') {
-          const result = JSON.stringify(res.data.principal);
+    });
 
-          if (result) {
-            navigate('/ev/join3', { replace: true });
-          }
-        }
-      });
+    console.log('data : ' + JSON.stringify(res.data));
+
+    if (res.data !== '') {
+      const result = JSON.stringify(res.data.data.principal);
+
+      console.log('result : ' + result);
+
+      if (result !== '') {
+        navigate('/ev/join3', { replace: true });
+      }
+    }
   };
 
   return (
@@ -354,6 +347,8 @@ const Join2Form = () => {
                 <p className="blue">사용가능한 이메일입니다.</p>
               ) : emailCheck === 'N' && !emailCheck2 ? (
                 <p className="red">이메일 유효 하지 않습니다.</p>
+              ) : emailCheck === 'O' ? (
+                <p className="red">중복확인을 해주세요.</p>
               ) : emailCheck === 'X' ? (
                 <p className="red">이메일 입력하세요.</p>
               ) : (
