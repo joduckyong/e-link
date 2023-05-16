@@ -72,6 +72,11 @@ export const deleteOutlineIds = createAsyncThunk('EN_DEL_OUTLINE_IDS', async (ne
   return response.data;
 });
 
+export const selectClientOutline = createAsyncThunk('EN_CLIENT_LIST_OUTLINE', async (newList) => {
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/en/api/client/company/outline`);
+  return response.data;
+});
+
 export const outlineEnReducer = createSlice({
   name: 'outline',
   initialState: {
@@ -102,6 +107,13 @@ export const outlineEnReducer = createSlice({
     }),
     [deleteOutlineIds.fulfilled]: (state, { payload }) => ({
       ...state,
+    }),
+    [selectClientOutline.fulfilled]: (state, { payload }) => ({
+      ...state,
+      status: payload.status,
+      message: payload.message,
+      totalCount: payload.totalCount,
+      data: payload.data,
     }),
   },
 });

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectClientOutline } from 'store/outlineReducer';
 import AOS from 'aos';
 import classnames from 'classnames';
 import { ParallaxProvider, Parallax } from 'react-skrollr';
@@ -11,6 +13,15 @@ import 'swiper/css/pagination';
 const HistoryForm = () => {
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const outlineList = useSelector((state) => state.outlineReducer.data);
+  // const totalCount = useSelector((state) => state.boardReducer.totalCount);
+
+  useEffect(() => {
+    dispatch(selectClientOutline());
+  }, [dispatch]);
 
   useEffect(() => {
     AOS.init();
@@ -115,49 +126,16 @@ const HistoryForm = () => {
                     </div>
                   </div>
                   <ul className="time-list" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                    {/* <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>23.01.00</dt>
-                        <dd>
-                          <p>OCPP 1.6 인증</p>
-							{/*<div className="img">
-                            <img src="/img/sub/y-1-img1.png" alt="" />
-                          </div>
-                        </dd>
-                      </dl>
-                    </li> */}
-                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>23.02.20</dt>
-                        <dd>
-                          <p>전기공사업 등록</p>
-                        </dd>
-                      </dl>
-                    </li>
-                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>23.01.05</dt>
-                        <dd>
-                          <p>관제시스템 구축 완료</p>
-                        </dd>
-                      </dl>
-                    </li>
-					<li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>22.07.08</dt>
-                        <dd>
-                          <p>전기차충전 신사업 등록</p>
-                        </dd>
-                      </dl>
-                    </li>
-					<li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>22.05.02</dt>
-                        <dd>
-                          <p>엘이스이링크(주) 설립</p>
-                        </dd>
-                      </dl>
-                    </li>
+                    {outlineList.map((list, index) => (
+                      <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
+                        <dl>
+                          <dt>{list.companyYear}.{list.companyMonth}.{list.companyDay}</dt>
+                          <dd>
+                            <p>{list.companyContents}</p>
+                          </dd>
+                        </dl>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </Parallax>
