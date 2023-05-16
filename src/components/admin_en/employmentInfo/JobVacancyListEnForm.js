@@ -14,7 +14,7 @@ const JobVacancyListEnForm = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const newList = { boardId: 'JOB', pageIndex: page };
+    const newList = { boardId: 'EN_JOB', pageIndex: page };
     dispatch(selectBoard(newList));
   }, [dispatch, page]);
 
@@ -24,7 +24,7 @@ const JobVacancyListEnForm = () => {
   };
 
   const onSearch = (page) => {
-    const newList = { boardId: 'JOB', pageIndex: page, searchKeyword: searchKeyword, searchCondition: selectItem };
+    const newList = { boardId: 'EN_JOB', pageIndex: page, searchKeyword: searchKeyword, searchCondition: selectItem };
     dispatch(selectBoard(newList));
   };
 
@@ -40,7 +40,7 @@ const JobVacancyListEnForm = () => {
       const newList = { ids: checkItems };
 
       dispatch(deleteBoardIds(newList)).then(() => {
-        const newList = { boardId: 'JOB', pageIndex: page };
+        const newList = { boardId: 'EN_JOB', pageIndex: page };
         dispatch(selectBoard(newList));
       });
     }

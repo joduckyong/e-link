@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 const FindIdForm = () => {
   const [telno, setTelno] = useState('');
@@ -30,7 +31,7 @@ const FindIdForm = () => {
     window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2?type=V', 'width=0,height=0,location=no,status=no,scrollbars=yes', '_blank');
   };
 
-  const signupUserInfo = (e) => {
+  const signupUserInfo = async (e) => {
     e.preventDefault();
 
     if (telno.length !== 11) {
@@ -43,63 +44,53 @@ const FindIdForm = () => {
       return;
     }
 
-    fetch(process.env.REACT_APP_API_URL + '/api/phone/phoneInfo/' + telno, {
+    const res = await axios({
+      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}`,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         Accept: 'application/json',
       },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        console.log('res.data : ' + res.data);
+    });
 
-        if (res.data !== undefined) {
-          const dataCi = JSON.stringify(res.data.ci).replace(/"/g, '');
-          findMe(dataCi);
-        } else {
-          alert('휴대폰 본인인증을 해주세요.');
-          return;
-        }
-      });
+    if (JSON.stringify(res.data) !== undefined) {
+      const dataCi = JSON.stringify(res.data.data.ci).replace(/"/g, '');
+      findMe(dataCi);
+    } else {
+      alert('휴대폰 본인인증을 해주세요.');
+      return;
+    }
   };
 
-  const findMe = (ci) => {
+  const findMe = async (ci) => {
     // e.preventDefault();
     const data = {
       url: '/api/m-service-mobile/user/findMe',
       ci: ci,
     };
 
-    console.log('data : ' + JSON.stringify(data));
-
-    fetch(process.env.REACT_APP_API_URL + '/api/ev/auth/findMe', {
+    const res = await axios({
+      url: `${process.env.REACT_APP_API_URL}/api/ev/auth/findMe`,
       method: 'POST',
+      data: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         Accept: 'application/json',
       },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        if (res.data !== undefined) {
-          const dataUserNm = JSON.stringify(res.data.user.userNm).replace(/"/g, '');
-          const dataEml = JSON.stringify(res.data.user.eml).replace(/"/g, '');
-          const dataRegDttm = JSON.stringify(res.data.user.regDttm).substring(0, 11).replace(/"/g, '');
+    });
 
-          setStyle({ display: 'none' });
-          setStyle2({ display: 'block' });
+    if (res.data !== undefined) {
+      const dataUserNm = JSON.stringify(res.data.data.user.userNm).replace(/"/g, '');
+      const dataEml = JSON.stringify(res.data.data.user.eml).replace(/"/g, '');
+      const dataRegDttm = JSON.stringify(res.data.data.user.regDttm).substring(0, 11).replace(/"/g, '');
 
-          setUserNm(dataUserNm);
-          setEmail(dataEml);
-          setRegDttm(dataRegDttm);
-        }
-      });
+      setStyle({ display: 'none' });
+      setStyle2({ display: 'block' });
+
+      setUserNm(dataUserNm);
+      setEmail(dataEml);
+      setRegDttm(dataRegDttm);
+    }
   };
 
   return (

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 import { encrypt } from '../../../../api/crypto';
 
 const FindIdForm = () => {
@@ -31,7 +32,7 @@ const FindIdForm = () => {
     window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2?type=V', 'width=0,height=0,location=no,status=no,scrollbars=yes', '_blank');
   };
 
-  const signupUserInfo = (e) => {
+  const signupUserInfo = async (e) => {
     e.preventDefault();
 
     if (telno.length !== 11) {
@@ -44,33 +45,28 @@ const FindIdForm = () => {
       return;
     }
 
-    fetch(process.env.REACT_APP_API_URL + '/api/phone/phoneInfo/' + telno, {
+    const res = await axios({
+      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}`,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         Accept: 'application/json',
       },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        console.log('res.data : ' + res.data);
+    });
 
-        if (res.data !== undefined) {
-          const dataCi = JSON.stringify(res.data.ci).replace(/"/g, '');
-          setCi(dataCi);
+    if (res.data !== undefined) {
+      const dataCi = JSON.stringify(res.data.data.ci).replace(/"/g, '');
+      setCi(dataCi);
 
-          setStyle({ display: 'none' });
-          setStyle2({ display: 'block' });
-        } else {
-          alert('휴대폰 본인인증을 해주세요.');
-          return;
-        }
-      });
+      setStyle({ display: 'none' });
+      setStyle2({ display: 'block' });
+    } else {
+      alert('휴대폰 본인인증을 해주세요.');
+      return;
+    }
   };
 
-  const passChange = (e) => {
+  const passChange = async (e) => {
     e.preventDefault();
 
     if (pswd !== rePswd) {
@@ -84,27 +80,22 @@ const FindIdForm = () => {
       pswd: encrypt(pswd),
     };
 
-    console.log('data : ' + JSON.stringify(data));
-
-    fetch(process.env.REACT_APP_API_URL + '/api/ev/auth/resetPassword', {
+    const res = await axios({
+      url: `${process.env.REACT_APP_API_URL}/api/ev/auth/resetPassword`,
       method: 'POST',
+      data: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         Accept: 'application/json',
       },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        if (res.data !== undefined) {
-          const result = JSON.stringify(res.data.success);
-          if (result !== undefined && result.replace(/"/g, '')) {
-            alert('비밀번호가 변경 되었습니다.');
-          }
-        }
-      });
+    });
+
+    if (res.data !== undefined) {
+      const result = JSON.stringify(res.data.success);
+      if (result !== undefined && result.replace(/"/g, '')) {
+        alert('비밀번호가 변경 되었습니다.');
+      }
+    }
   };
 
   return (
