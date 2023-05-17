@@ -45,6 +45,9 @@ export const loginUser = async (credentials) => {
     const text = await data.text();
     const json = text.length ? JSON.parse(text) : '';
 
+    localStorage.setItem('tadminId', json.tadminId);
+    localStorage.setItem('tadminNm', json.tadminNm);
+
     return {
       status,
       code,
