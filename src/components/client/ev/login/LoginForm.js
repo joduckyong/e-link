@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { loginUser } from '../../../../api/EvUsers';
-import { setAccessEvToken, setEvUserNo } from '../../../../storage/EvCookie';
+import { setAccessEvToken, setEvUserNo, setRefreshEvToken } from '../../../../storage/EvCookie';
 import { SET_EV_TOKEN } from '../../../../store/EvAuth';
 import { encrypt } from '../../../../api/crypto';
+import { useCookies } from 'react-cookie';
 
 const LoginForm = () => {
   const NAVER_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=NAVER`;
@@ -19,6 +20,23 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState('');
+  const [loginstay, setLoginstay] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(['loginstay']);
+
+  useEffect(() => {
+    if (cookies.loginstay !== undefined) {
+      setLoginstay(true);
+    }
+  }, [cookies.loginstay]);
+
+  const handleOnChange = (checked) => {
+    setLoginstay(checked);
+    if (checked) {
+      setCookie('loginstay', loginstay, { maxAge: 31536000 });
+    } else {
+      removeCookie('loginstay');
+    }
+  };
 
   // useForm 사용을 위한 선언
   const {
@@ -50,9 +68,13 @@ const LoginForm = () => {
         alert(JSON.stringify(response.json.data.error_description).replace(/"/g, ''));
         return;
       } else {
+        // console.log('expires_in : ' + JSON.stringify(response.json.data.expires_in));
+        // console.log('expires_in : ' + new Date(JSON.stringify(response.json.data.expires_in)));
         // setRefreshEvToken(JSON.stringify(response.json.data.refresh_token), JSON.stringify(response.json.data.expires_in));
         setAccessEvToken(JSON.stringify(response.json.data.access_token), JSON.stringify(response.json.data.expires_in));
         setEvUserNo(JSON.stringify(response.json.data.USER_NO), JSON.stringify(response.json.data.expires_in));
+        setRefreshEvToken(JSON.stringify(response.json.data.refresh_token));
+
         dispatch(SET_EV_TOKEN(JSON.stringify(response.json.data.access_token)));
         return navigate('/ev/mypage1');
       }
@@ -100,7 +122,14 @@ const LoginForm = () => {
           <div className="txt-wp">
             <div className="agree">
               <label for="loginstay">
-                <input type="checkbox" id="loginstay" />
+                <input
+                  type="checkbox"
+                  id="loginstay"
+                  onChange={(e) => {
+                    handleOnChange(e.target.checked);
+                  }}
+                  checked={loginstay}
+                />
                 <span className="chkimg"></span>로그인 유지
               </label>
             </div>

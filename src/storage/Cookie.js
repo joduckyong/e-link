@@ -10,6 +10,8 @@ export const setRefreshToken = (refreshToken) => {
     // sameSite: 'elink',
     path: '/',
     expires: new Date(expireDate),
+    // secure: true,
+    // httpOnly: true,
   });
 };
 

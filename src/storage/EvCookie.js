@@ -1,17 +1,49 @@
 import { Cookies } from 'react-cookie';
+import axios from 'axios';
 
 const cookies = new Cookies();
 
 // access token
 export const setAccessEvToken = (accessEvToken, expireDate) => {
+  const date = new Date();
+  date.setSeconds(expireDate);
+
   return cookies.set('accessEvToken', accessEvToken, {
     path: '/',
-    expires: new Date(expireDate),
+    // secure: true,
+    // httpOnly: true,
+    expires: date,
   });
 };
 
-export const getCookieEvToken = () => {
+export const getCookieEvToken = async () => {
   const token = cookies.get('accessEvToken');
+  console.log('token ==== ' + token);
+
+  if (token === undefined) {
+    const data = {
+      url: '/auth/oauth/refreshToken',
+      scope: 'webclient',
+      refresh_token: getCookieRefreshEvToken(),
+    };
+
+    const res = await axios({
+      url: `${process.env.REACT_APP_API_URL}/auth/oauth/refreshToken`,
+      method: 'POST',
+      data: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Accept: 'application/json',
+      },
+    });
+
+    await setAccessEvToken(JSON.stringify(res.json.data.access_token), JSON.stringify(res.json.data.expires_in));
+    await setEvUserNo(JSON.stringify(res.json.data.USER_NO), JSON.stringify(res.json.data.expires_in));
+    await setRefreshEvToken(JSON.stringify(res.json.data.refresh_token));
+
+    // token = res.data.access_token;
+  }
+
   return token;
 };
 
@@ -21,9 +53,14 @@ export const removeCookieEvToken = () => {
 
 // EvUserNo
 export const setEvUserNo = (evUserNo, expireDate) => {
+  const date = new Date();
+  date.setSeconds(expireDate);
+
   return cookies.set('evUserNo', evUserNo, {
     path: '/',
-    expires: new Date(expireDate),
+    // secure: true,
+    // httpOnly: true,
+    expires: date,
   });
 };
 
@@ -37,10 +74,15 @@ export const removeCookieEvUserNo = () => {
 };
 
 // refresh token
-export const setRefreshEvToken = (refreshToken, expireDate) => {
+export const setRefreshEvToken = (refreshToken) => {
+  const date = new Date();
+  date.setFullYear(date.getFullYear() + 1);
+
   return cookies.set('refreshEvToken', refreshToken, {
     path: '/',
-    expires: new Date(expireDate),
+    // secure: true,
+    // httpOnly: true,
+    expires: date,
   });
 };
 

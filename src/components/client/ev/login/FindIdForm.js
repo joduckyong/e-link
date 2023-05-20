@@ -29,6 +29,10 @@ const FindIdForm = () => {
     }
     setPhoneCk(true);
     window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2?type=V', 'width=0,height=0,location=no,status=no,scrollbars=yes', '_blank');
+
+    window.test = () => {
+      alert('test');
+    };
   };
 
   const signupUserInfo = async (e) => {
