@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { loginUser } from '../../../../api/EvUsers';
-import { setAccessEvToken, setEvUserNo, setRefreshEvToken } from '../../../../storage/EvCookie';
+import { setAccessEvToken, setEvUserNo, setRefreshEvToken, getCookieEvToken } from '../../../../storage/EvCookie';
 import { SET_EV_TOKEN } from '../../../../store/EvAuth';
 import { encrypt } from '../../../../api/crypto';
 import { useCookies } from 'react-cookie';
@@ -26,6 +26,10 @@ const LoginForm = () => {
   useEffect(() => {
     if (cookies.loginstay !== undefined) {
       setLoginstay(true);
+      const token = getCookieEvToken();
+      if (token !== undefined) {
+        navigate('/ev/mypage1');
+      }
     }
   }, [cookies.loginstay]);
 
