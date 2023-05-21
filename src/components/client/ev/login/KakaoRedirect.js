@@ -22,17 +22,31 @@ function KakaoRedirect() {
       });
 
       const ACCESS_TOKEN = JSON.stringify(res.data.data.access_token);
-      const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token);
 
-      // console.log('res : ' + JSON.stringify(res));
-      // console.log('res : ' + JSON.stringify(res.data.data.access_token));
-      // console.log('res : ' + JSON.stringify(res.data.data.refresh_token));
+      if (ACCESS_TOKEN !== undefined) {
+        // const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token);
+        setCookie('accessToken', ACCESS_TOKEN);
+        // setCookie('refreshToken', REFRESH_TOKEN);
 
-      setCookie('accessToken', ACCESS_TOKEN);
-      setCookie('refreshToken', REFRESH_TOKEN);
+        const user = await axios({
+          url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${ACCESS_TOKEN}`,
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            Accept: 'application/json',
+          },
+        });
+
+        if (user.data.data !== undefined) {
+          // 추가 인증 필요
+          navigate('/ev/mypage1', { replace: true });
+        } else {
+          //회원가입
+          navigate('/ev/join1', { replace: true });
+        }
+      }
     }
     Login();
-    navigate('/ev/mypage1', { replace: true });
   }, []);
 
   return;
