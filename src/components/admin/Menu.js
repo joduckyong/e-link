@@ -124,7 +124,7 @@ const Menu = () => {
         <div className="in">
           <p>안녕하세요.</p>
           <p>
-            <b>{localStorage.getItem('tadminNm')}</b>님<span>({localStorage.getItem('tadminId')})</span>
+            <b>{localStorage.getItem('tadminId')}</b>님<span></span>
           </p>
           <ul>
             <li>

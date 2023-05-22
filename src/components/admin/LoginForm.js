@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { loginUser } from '../../api/Users';
-import { removeCookieToken, setRefreshToken } from '../../storage/Cookie';
+import { removeCookieToken, setAccessToken } from '../../storage/Cookie';
 import { SET_TOKEN } from '../../store/Auth';
 
 import { useCookies } from 'react-cookie';
@@ -57,7 +57,7 @@ const LoginForm = () => {
       // 쿠키에 Refresh Token, store에 Access Token 저장
       // console.log('response.json.accessToken : ' + response.json.accessToken);
       // console.log('response.json.refreshToken : ' + response.json.refreshToken);
-      setRefreshToken(response.json.accessToken);
+      setAccessToken(response.json.accessToken);
       // setRefreshToken(response.json.refreshToken);
       dispatch(SET_TOKEN(response.json.accessToken));
       return navigate('/admin/main/popup');
