@@ -1,19 +1,70 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEv } from 'store/EvReducer';
 import { getCookieEvUserNo } from '../../../storage/EvCookie';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { ko } from 'date-fns/esm/locale';
+import moment from 'moment';
+
+export function changeFormat(date, format) {
+  //moment 변환을 함수로 미리 빼 두어서 사용.
+  if (moment(date).isValid()) {
+    return moment(date).format(format);
+  } else {
+    return null;
+  }
+}
 
 const MyPage1Form = () => {
   const dispatch = useDispatch();
   const myPageList = useSelector((state) => state.EvReducer.data);
+  const [dateType, setDateType] = useState('1M');
+  const [popupStartdate, setPopupStartdate] = useState();
+  const [popupEnddate, setPopupEnddate] = useState();
+
+  useEffect(() => {
+    changeDate(dateType);
+  }, []);
 
   useEffect(() => {
     const evUserNo = getCookieEvUserNo();
     const url = '/api/m-service-mobile/rechgst/getUserRechgInfo';
-    const newList = { url: url, userNo: evUserNo };
+    const newList = { url: url, userNo: evUserNo, startDttm: changeFormat(popupStartdate, 'yyyy-MM-DD'), endDttm: changeFormat(popupEnddate, 'yyyy-MM-DD') };
     dispatch(selectEv(newList));
   }, [dispatch]);
+
+  // 검색
+  const onSearch = () => {
+    const evUserNo = getCookieEvUserNo();
+    const url = '/api/m-service-mobile/rechgst/getUserRechgInfo';
+    const newList = { url: url, userNo: evUserNo, startDttm: changeFormat(popupStartdate, 'yyyy-MM-DD'), endDttm: changeFormat(popupEnddate, 'yyyy-MM-DD') };
+    dispatch(selectEv(newList));
+  };
+
+  function changeDate(type){
+    let startDate = new Date();
+    let endDate = new Date();
+    switch(type){
+      case '1M':
+        startDate.setDate(1);
+        break;
+      case '3M':
+        startDate.setMonth(startDate.getMonth() - 3);
+        break;
+      case '6M':
+        startDate.setMonth(startDate.getMonth() - 6);
+        break;
+      default:
+        startDate = '';
+        endDate = '';
+    }
+
+    setDateType(type);
+    setPopupStartdate(startDate);
+    setPopupEnddate(endDate);
+  }
 
   return (
     <>
@@ -35,27 +86,39 @@ const MyPage1Form = () => {
             <div className="top-radio-wp">
               <div className="radio-wp">
                 <label for="date01">
-                  <input type="radio" id="date01" name="date" checked />
+                  <input type="radio" id="date01" name="date" onClick={(e)=> changeDate('1M')} checked={dateType === '1M' && true} />
                   <span className="radioimg"></span>당월
                 </label>
                 <label for="date02">
-                  <input type="radio" id="date02" name="date" />
+                  <input type="radio" id="date02" name="date" onClick={(e)=> changeDate('3M')} checked={dateType === '3M' && true} />
                   <span className="radioimg"></span>3개월
                 </label>
                 <label for="date03">
-                  <input type="radio" id="date03" name="date" />
+                  <input type="radio" id="date03" name="date" onClick={(e)=> changeDate('6M')} checked={dateType === '6M' && true} />
                   <span className="radioimg"></span>6개월
                 </label>
                 <label for="date04">
-                  <input type="radio" id="date04" name="date" />
+                  <input type="radio" id="date04" name="date" onClick={(e)=> changeDate('')} checked={dateType === '' && true} />
                   <span className="radioimg"></span>직접입력
                 </label>
               </div>
               <div className="date-wp">
-                <input type="text" className="datepicker" disabled />
-                <input type="text" className="datepicker" disabled />
+                <DatePicker 
+                  locale={ko} 
+                  dateFormat="yyyy-MM-dd" 
+                  selected={popupStartdate} 
+                  onChange={(date) => setPopupStartdate(date)}
+                  disabled={dateType === '' ? false : true}
+                />
+                <DatePicker 
+                  locale={ko} 
+                  dateFormat="yyyy-MM-dd" 
+                  selected={popupEnddate} 
+                  onChange={(date) => setPopupEnddate(date)} 
+                  disabled={dateType === '' ? false : true}
+                />
               </div>
-              <button className="orange-btn">조회</button>
+              <button className="orange-btn" onClick={onSearch}>조회</button>
             </div>
             <div className="usage-list-wp">
               <ol className="list usage-list">
