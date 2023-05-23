@@ -251,6 +251,8 @@ import InquiryAddPage from './pages/client/ev/InquiryAddPage';
 import MyPage1 from './pages/client/ev/MyPage1';
 //마이페이지 Elvis 캐시
 import MyPage2 from './pages/client/ev/MyPage2';
+//마이페이지 커뮤니티
+import MyPage3 from './pages/client/ev/MyPage3';
 
 //관제센터
 import ControlEvPage from './pages/client/ev/ControlPage';
@@ -442,6 +444,7 @@ const App = () => {
 
         <Route path="/ev/mypage1" element={<MyPage1 />} />
         <Route path="/ev/mypage2" element={<MyPage2 />} />
+        <Route path="/ev/mypage3" element={<MyPage3 />} />
 
         <Route path="/ev/control" element={<ControlEvPage />} />
 
