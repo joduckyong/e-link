@@ -19,29 +19,32 @@ export const setAccessEvToken = (accessEvToken, expireDate) => {
 export const getCookieEvToken = () => {
   let token = cookies.get('accessEvToken');
 
-  // if (token === undefined) {
-  //   async function refreshToken() {
-  //     const data = {
-  //       url: '/auth/oauth/refreshToken',
-  //       scope: 'webclient',
-  //       refresh_token: getCookieRefreshEvToken(),
-  //     };
-  //     const res = await axios({
-  //       url: `${process.env.REACT_APP_API_URL}/auth/oauth/refreshToken`,
-  //       method: 'POST',
-  //       data: JSON.stringify(data),
-  //       headers: {
-  //         'Content-Type': 'application/json; charset=utf-8',
-  //         Accept: 'application/json',
-  //       },
-  //     });
-  //     setAccessEvToken(JSON.stringify(res.json.data.access_token), JSON.stringify(res.json.data.expires_in));
-  //     setEvUserNo(JSON.stringify(res.json.data.USER_NO), JSON.stringify(res.json.data.expires_in));
-  //     setRefreshEvToken(JSON.stringify(res.json.data.refresh_token));
-  //     token = res.data.access_token;
-  //   }
-  //   refreshToken();
-  // }
+  // console.log('token : ' + token);
+  if (token === undefined) {
+    async function refreshToken() {
+      const data = {
+        url: '/auth/oauth/token',
+        scope: 'mobileclient',
+        grant_type: 'refresh_token',
+        refresh_token: getCookieRefreshEvToken(),
+      };
+      const res = await axios({
+        url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
+        method: 'POST',
+        data: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Accept: 'application/json',
+        },
+      });
+
+      setAccessEvToken(res.data.data.access_token, res.data.data.expires_in);
+      setEvUserNo(res.data.data.USER_NO, res.data.data.expires_in);
+      setRefreshEvToken(res.data.data.refresh_token);
+      token = res.data.data.access_token;
+    }
+    refreshToken();
+  }
   return token;
 };
 
