@@ -20,51 +20,12 @@ export function changeFormat(date, format) {
 const MyPage3Form = () => {
   const dispatch = useDispatch();
   const myPageList = useSelector((state) => state.EvReducer.data);
-  const [dateType, setDateType] = useState('1M');
-  const [popupStartdate, setPopupStartdate] = useState();
-  const [popupEnddate, setPopupEnddate] = useState();
 
   useEffect(() => {
-    changeDate(dateType);
-  }, []);
-
-  useEffect(() => {
-    const evUserNo = getCookieEvUserNo();
-    const url = '/api/m-service-mobile/rechgst/getUserRechgInfo';
-    const newList = { url: url, userNo: evUserNo, startDttm: changeFormat(popupStartdate, 'yyyy-MM-DD'), endDttm: changeFormat(popupEnddate, 'yyyy-MM-DD') };
+    const url = '/api/m-service-mobile/community/getFreePosts';
+    const newList = { url: url, category: 0, dttm: '', next: true, size: 10};
     dispatch(selectEv(newList));
   }, [dispatch]);
-
-  // 검색
-  const onSearch = () => {
-    const evUserNo = getCookieEvUserNo();
-    const url = '/api/m-service-mobile/rechgst/getUserRechgInfo';
-    const newList = { url: url, userNo: evUserNo, startDttm: changeFormat(popupStartdate, 'yyyy-MM-DD'), endDttm: changeFormat(popupEnddate, 'yyyy-MM-DD') };
-    dispatch(selectEv(newList));
-  };
-
-  function changeDate(type){
-    let startDate = new Date();
-    let endDate = new Date();
-    switch(type){
-      case '1M':
-        startDate.setDate(1);
-        break;
-      case '3M':
-        startDate.setMonth(startDate.getMonth() - 3);
-        break;
-      case '6M':
-        startDate.setMonth(startDate.getMonth() - 6);
-        break;
-      default:
-        startDate = '';
-        endDate = '';
-    }
-
-    setDateType(type);
-    setPopupStartdate(startDate);
-    setPopupEnddate(endDate);
-  }
 
   return (
     <>
@@ -83,59 +44,22 @@ const MyPage3Form = () => {
             </li>
           </ul>
           <div className="list-wp">
-            <div className="top-radio-wp">
-              <div className="radio-wp">
-                <label for="date01">
-                  <input type="radio" id="date01" name="date" onClick={(e)=> changeDate('1M')} checked={dateType === '1M' && true} />
-                  <span className="radioimg"></span>당월
-                </label>
-                <label for="date02">
-                  <input type="radio" id="date02" name="date" onClick={(e)=> changeDate('3M')} checked={dateType === '3M' && true} />
-                  <span className="radioimg"></span>3개월
-                </label>
-                <label for="date03">
-                  <input type="radio" id="date03" name="date" onClick={(e)=> changeDate('6M')} checked={dateType === '6M' && true} />
-                  <span className="radioimg"></span>6개월
-                </label>
-                <label for="date04">
-                  <input type="radio" id="date04" name="date" onClick={(e)=> changeDate('')} checked={dateType === '' && true} />
-                  <span className="radioimg"></span>직접입력
-                </label>
-              </div>
-              <div className="date-wp">
-                <DatePicker 
-                  locale={ko} 
-                  dateFormat="yyyy-MM-dd" 
-                  selected={popupStartdate} 
-                  onChange={(date) => setPopupStartdate(date)}
-                  disabled={dateType === '' ? false : true}
-                />
-                <DatePicker 
-                  locale={ko} 
-                  dateFormat="yyyy-MM-dd" 
-                  selected={popupEnddate} 
-                  onChange={(date) => setPopupEnddate(date)} 
-                  disabled={dateType === '' ? false : true}
-                />
-              </div>
-              <button className="orange-btn" onClick={onSearch}>조회</button>
-            </div>
             <div className="usage-list-wp">
               <ol className="list usage-list">
                 <li className="ttl" >
                   <p>번호</p>
-                  <p>이용시간</p>
-                  <p>이용한 충전소</p>
-                  <p>결제금액</p>
-                  <p>충전량(KWh)</p>
+                  <p>사용자 번호</p>
+                  <p>사용자 이름</p>
+                  <p>본문</p>
+                  <p>등록시간</p>
                 </li>
                 {myPageList.map((list, index) => (
                   <li key={index}>
                     <p>{myPageList.length - index}</p>
-                    <p></p>
-                    <p>{list.rechgstNm}</p>
-                    <p>{list.payAmt}</p>
-                    <p>{list.rechgWh}</p>
+                    <p>{list.userNo}</p>
+                    <p>{list.userNm}</p>
+                    <p>{list.pstCont}</p>
+                    <p>{changeFormat(list.regDttm, 'yyyy-MM-DD')}</p>
                   </li>
                 ))}
               </ol>
