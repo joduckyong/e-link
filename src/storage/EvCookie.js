@@ -39,7 +39,7 @@ export const getCookieEvToken = () => {
       });
 
       setAccessEvToken(res.data.data.access_token, res.data.data.expires_in);
-      setEvUserNo(res.data.data.USER_NO, res.data.data.expires_in);
+      // setEvUserNo(res.data.data.USER_NO, res.data.data.expires_in);
       setRefreshEvToken(res.data.data.refresh_token);
       token = res.data.data.access_token;
     }
