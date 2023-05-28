@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { encrypt } from '../../../../api/crypto';
 import axios from 'axios';
 import Post from '../../../../api/Post';
 
-const Join2Form = () => {
+const Join2SNSForm = () => {
   const [enroll_company, setEnroll_company] = useState({
     zonecode: '',
     address: '',
@@ -16,19 +15,6 @@ const Join2Form = () => {
   const [emailCheck, setEmailCheck] = useState('');
   const [emailCheck2, setEmailCheck2] = useState(true);
 
-  const [ckpw1, setCkpw1] = useState(false);
-  const [ckpw2, setCkpw2] = useState(false);
-  const [ckpw3, setCkpw3] = useState(false);
-  const [ckpw4, setCkpw4] = useState(false);
-
-  const [ckpw1_1, setCkpw1_1] = useState(false);
-  const [ckpw2_1, setCkpw2_1] = useState(false);
-  const [ckpw3_1, setCkpw3_1] = useState(false);
-  const [ckpw4_1, setCkpw4_1] = useState(false);
-
-  const [passwd, setPasswd] = useState('');
-  const [rePasswd, setRePasswd] = useState('');
-
   const [userNm, setUserNm] = useState('');
   const [userNmCk, setUserNmCk] = useState(false);
   const [addressCk, setAddressCk] = useState(false);
@@ -38,12 +24,21 @@ const Join2Form = () => {
   const [telno, setTelno] = useState('');
   const [telnoCk, setTelnoCk] = useState(false);
   const [telnoCk2, setTelnoCk2] = useState(false);
-  // const [telcom, setTelcom] = useState('');
-  // const [gender, setGender] = useState('');
-  // const [brth, setBrth] = useState('');
-  // const [ci, setCi] = useState('');
+  const [snsToken, setSnsToken] = useState('');
 
   const [popup, setPopup] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('snsType') === 'naver') {
+      setSnsToken(localStorage.getItem('snsToken').replace(/"/g, ''));
+    } else if (localStorage.getItem('snsType') === 'kakao') {
+      setSnsToken(localStorage.getItem('snsToken').replace(/"/g, ''));
+    } else if (localStorage.getItem('snsType') === 'google') {
+      setSnsToken(localStorage.getItem('snsToken').replace(/"/g, ''));
+    } else if (localStorage.getItem('snsType') === 'apple') {
+      setSnsToken(localStorage.getItem('snsToken').replace(/"/g, ''));
+    }
+  }, []);
 
   const handleInput = (e) => {
     setEnroll_company({
@@ -70,76 +65,6 @@ const Join2Form = () => {
     }
 
     window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2?type=I', 'width=0,height=0,location=no,status=no,scrollbars=yes', '_blank');
-  };
-
-  //비밀번호 유효성 검사
-  const checkPassword = (e) => {
-    // setPasswd(e.target.value);
-
-    var eng = passwd.search(/[a-z]/gi);
-    var num = passwd.search(/[0-9]/g);
-    var spe = passwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-
-    // console.log('eng : ' + eng);
-    // console.log('num : ' + num);
-    // console.log('spe : ' + spe);
-    // console.log('passwd.length : ' + passwd.length);
-
-    if (eng === -1) {
-      setCkpw1(false);
-    } else {
-      setCkpw1(true);
-    }
-    if (num === -1) {
-      setCkpw2(false);
-    } else {
-      setCkpw2(true);
-    }
-    if (spe === -1) {
-      setCkpw3(false);
-    } else {
-      setCkpw3(true);
-    }
-    if (passwd.length >= 8 && passwd.length <= 15) {
-      setCkpw4(true);
-    } else {
-      setCkpw4(false);
-    }
-  };
-
-  //비밀번호 유효성 검사
-  const checkPassword2 = (e) => {
-    // setRePasswd(e.target.value);
-
-    var eng = rePasswd.search(/[a-z]/gi);
-    var num = rePasswd.search(/[0-9]/g);
-    var spe = rePasswd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-
-    // console.log('eng2 : ' + eng);
-    // console.log('num2 : ' + num);
-    // console.log('spe2 : ' + spe);
-    // console.log('rePasswd.length : ' + rePasswd.length);
-
-    if (eng === -1) {
-      setCkpw1_1(false);
-    } else {
-      setCkpw1_1(true);
-    }
-    if (num === -1) {
-      setCkpw2_1(false);
-    } else {
-      setCkpw2_1(true);
-    }
-    if (spe === -1) {
-      setCkpw3_1(false);
-    } else {
-      setCkpw3_1(true);
-    }
-    if (rePasswd.length >= 8 && rePasswd.length <= 15) {
-      setCkpw4_1(true);
-    } else {
-      setCkpw4_1(false);
-    }
   };
 
   // 이메일 유효성 검사
@@ -259,7 +184,7 @@ const Join2Form = () => {
       },
     });
 
-    console.log('data : ' + res.data.data);
+    console.log('data : ' + JSON.stringify(res.data.data));
 
     if (res.data.data !== undefined) {
       const dataBrth = JSON.stringify(res.data.data.brth).replace(/"/g, '');
@@ -268,13 +193,35 @@ const Join2Form = () => {
       const dataTelcom = JSON.stringify(res.data.data.telcom).replace(/"/g, '');
       const dataTelNo = JSON.stringify(res.data.data.telno).replace(/"/g, '');
 
-      // setBrth(dataBrth);
-      // setCi(dataCi);
-      // setGender(dataGender);
-      // setTelcom(dataTelcom);
-      // setTelno(dataTelNo);
+      console.log('dataBrth : ' + dataBrth);
+      console.log('dataCi : ' + dataCi);
+      console.log('dataGender : ' + dataGender);
+      console.log('dataTelcom : ' + dataTelcom);
+      console.log('dataTelNo : ' + dataTelNo);
+
       if (dataCi !== '') {
-        signupUser(dataBrth, dataCi, dataGender, dataTelcom, dataTelNo);
+        const data = {
+          telno: dataTelNo,
+          snsToken: snsToken,
+        };
+
+        const res = await axios({
+          url: `${process.env.REACT_APP_API_URL}/phoneInfo/updateUser`,
+          method: 'POST',
+          data: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            Accept: 'application/json',
+          },
+        });
+
+        console.log('status :' + res.status);
+
+        return;
+        if (res.status === 200) {
+          signupUser(dataBrth, dataCi, dataGender, dataTelcom, dataTelNo);
+        }
+      } else {
       }
     } else {
       setTelnoCk2(true);
@@ -288,7 +235,6 @@ const Join2Form = () => {
       url: '/auth/signupUser',
       userNm: userNm,
       eml: email,
-      pswd: passwd,
       telno: dataTelNo,
       gender: dataGender,
       brth: dataBrth,
@@ -297,6 +243,10 @@ const Join2Form = () => {
       telcom: dataTelcom,
       ci: dataCi,
       roleId: 'elinkuser',
+      google: localStorage.getItem('snsType') === 'google' && snsToken,
+      naver: localStorage.getItem('snsType') === 'naver' && snsToken,
+      kakao: localStorage.getItem('snsType') === 'kakao' && snsToken,
+      apple: localStorage.getItem('snsType') === 'apple' && snsToken,
     };
 
     const res = await axios({
@@ -352,82 +302,6 @@ const Join2Form = () => {
                 <p className="red">중복확인을 해주세요.</p>
               ) : emailCheck === 'X' ? (
                 <p className="red">이메일 입력하세요.</p>
-              ) : (
-                ''
-              )}
-            </div>
-            <h3 className="mini-ttl">
-              <span className="orange">*</span>비밀번호
-            </h3>
-            <div className="input-wp">
-              <input
-                type="password"
-                placeholder="비밀번호를 입력해주세요. "
-                onChange={(e) => setPasswd(e.target.value)}
-                onKeyUp={checkPassword}
-                value={passwd}
-                maxlength={15}
-              />
-              <ul className="confirm-wp">
-                <li>
-                  {!ckpw1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
-                  영문
-                </li>
-                <li>
-                  {!ckpw2 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw2 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
-                  숫자
-                </li>
-                <li>
-                  {!ckpw3 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw3 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
-                  특수문자
-                </li>
-                <li>
-                  {!ckpw4 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw4 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
-                  8~15자리
-                </li>
-              </ul>
-              {ckpw1 && ckpw2 && ckpw3 && ckpw4 ? (
-                <p className="blue">사용가능한 비밀번호입니다. </p>
-              ) : !ckpw1 && !ckpw2 && !ckpw3 && !ckpw4 ? (
-                ''
-              ) : (
-                <p className="red">사용할 수 없는 비밀번호입니다. </p>
-              )}
-            </div>
-            <h3 className="mini-ttl">
-              <span className="orange">*</span>비밀번호 확인
-            </h3>
-            <div className="input-wp">
-              <input
-                type="password"
-                placeholder="비밀번호를 다시 한 번 입력해주세요. "
-                onChange={(e) => setRePasswd(e.target.value)}
-                onKeyUp={checkPassword2}
-                value={rePasswd}
-                maxlength={15}
-              />
-              <ul className="confirm-wp">
-                <li>
-                  {!ckpw1_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw1_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
-                  영문
-                </li>
-                <li>
-                  {!ckpw2_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw2_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
-                  숫자
-                </li>
-                <li>
-                  {!ckpw3_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw3_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
-                  특수문자
-                </li>
-                <li>
-                  {!ckpw4_1 ? <img src="/img/ev/ev_check_no.png" alt="" /> : ckpw4_1 ? <img src="/img/ev/ev_check_orange.png" alt="" /> : ''}
-                  8~15자리
-                </li>
-              </ul>
-              {passwd === rePasswd && passwd !== '' && rePasswd !== '' ? (
-                <p className="blue">비밀번호가 일치합니다. </p>
-              ) : passwd !== rePasswd && passwd !== '' && rePasswd !== '' ? (
-                <p className="red">비밀번호가 일치하지 않습니다. </p>
               ) : (
                 ''
               )}
@@ -493,4 +367,4 @@ const Join2Form = () => {
   );
 };
 
-export default Join2Form;
+export default Join2SNSForm;

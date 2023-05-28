@@ -53,9 +53,9 @@ export const removeCookieEvToken = () => {
 };
 
 // EvUserNo
-export const setEvUserNo = (evUserNo, expireDate) => {
+export const setEvUserNo = (evUserNo) => {
   const date = new Date();
-  date.setSeconds(expireDate);
+  date.setFullYear(date.getFullYear() + 1);
 
   return cookies.set('evUserNo', evUserNo, {
     path: '/',

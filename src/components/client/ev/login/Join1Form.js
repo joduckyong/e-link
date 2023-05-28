@@ -67,7 +67,11 @@ const Join1Form = () => {
       return;
     }
 
-    navigate('/ev/join2');
+    if (localStorage.getItem('snsType') === undefined) {
+      navigate('/ev/join2');
+    } else {
+      navigate('/ev/joinSns');
+    }
   };
 
   return (
