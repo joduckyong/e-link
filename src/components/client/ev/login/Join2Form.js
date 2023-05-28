@@ -262,11 +262,11 @@ const Join2Form = () => {
     console.log('data : ' + res.data.data);
 
     if (res.data.data !== undefined) {
-      const dataBrth = JSON.stringify(res.data.data.brth).replace(/"/g, '');
-      const dataCi = JSON.stringify(res.data.data.ci).replace(/"/g, '');
-      const dataGender = JSON.stringify(res.data.data.gender).replace(/"/g, '');
-      const dataTelcom = JSON.stringify(res.data.data.telcom).replace(/"/g, '');
-      const dataTelNo = JSON.stringify(res.data.data.telno).replace(/"/g, '');
+      const dataBrth = await JSON.stringify(res.data.data.brth).replace(/"/g, '');
+      const dataCi = await JSON.stringify(res.data.data.ci).replace(/"/g, '');
+      const dataGender = await JSON.stringify(res.data.data.gender).replace(/"/g, '');
+      const dataTelcom = await JSON.stringify(res.data.data.telcom).replace(/"/g, '');
+      const dataTelNo = await JSON.stringify(res.data.data.telno).replace(/"/g, '');
 
       // setBrth(dataBrth);
       // setCi(dataCi);
@@ -311,14 +311,22 @@ const Join2Form = () => {
 
     console.log('data : ' + JSON.stringify(res.data));
 
-    if (res.data !== '') {
+    if (res.data !== '' && JSON.stringify(res.data.data.status) === 200) {
       const result = JSON.stringify(res.data.data.principal);
-
       console.log('result : ' + result);
 
       if (result !== '') {
         navigate('/ev/join3', { replace: true });
       }
+    } else {
+      await axios({
+        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneDel/${telno}`,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Accept: 'application/json',
+        },
+      });
     }
   };
 

@@ -176,7 +176,7 @@ const Join2SNSForm = () => {
     }
 
     const res = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}`,
+      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}/${snsToken}`,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -187,11 +187,11 @@ const Join2SNSForm = () => {
     console.log('data : ' + JSON.stringify(res.data.data));
 
     if (res.data.data !== undefined) {
-      const dataBrth = JSON.stringify(res.data.data.brth).replace(/"/g, '');
-      const dataCi = JSON.stringify(res.data.data.ci).replace(/"/g, '');
-      const dataGender = JSON.stringify(res.data.data.gender).replace(/"/g, '');
-      const dataTelcom = JSON.stringify(res.data.data.telcom).replace(/"/g, '');
-      const dataTelNo = JSON.stringify(res.data.data.telno).replace(/"/g, '');
+      const dataBrth = await JSON.stringify(res.data.data.brth).replace(/"/g, '');
+      const dataCi = await JSON.stringify(res.data.data.ci).replace(/"/g, '');
+      const dataGender = await JSON.stringify(res.data.data.gender).replace(/"/g, '');
+      const dataTelcom = await JSON.stringify(res.data.data.telcom).replace(/"/g, '');
+      const dataTelNo = await JSON.stringify(res.data.data.telno).replace(/"/g, '');
 
       console.log('dataBrth : ' + dataBrth);
       console.log('dataCi : ' + dataCi);
@@ -200,28 +200,9 @@ const Join2SNSForm = () => {
       console.log('dataTelNo : ' + dataTelNo);
 
       if (dataCi !== '') {
-        const data = {
-          telno: dataTelNo,
-          snsToken: snsToken,
-        };
-
-        const res = await axios({
-          url: `${process.env.REACT_APP_API_URL}/phoneInfo/updateUser`,
-          method: 'POST',
-          data: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            Accept: 'application/json',
-          },
-        });
-
-        console.log('status :' + res.status);
-
-        return;
         if (res.status === 200) {
           signupUser(dataBrth, dataCi, dataGender, dataTelcom, dataTelNo);
         }
-      } else {
       }
     } else {
       setTelnoCk2(true);
@@ -260,15 +241,24 @@ const Join2SNSForm = () => {
     });
 
     console.log('data : ' + JSON.stringify(res.data));
+    console.log('data.status : ' + JSON.stringify(res.data.data.status));
 
-    if (res.data !== '') {
+    if (res.data !== '' && JSON.stringify(res.data.data.status) === 200) {
       const result = JSON.stringify(res.data.data.principal);
-
       console.log('result : ' + result);
 
       if (result !== '') {
         navigate('/ev/join3', { replace: true });
       }
+    } else {
+      await axios({
+        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneDel/${telno}`,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Accept: 'application/json',
+        },
+      });
     }
   };
 
