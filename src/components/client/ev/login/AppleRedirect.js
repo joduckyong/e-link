@@ -12,7 +12,7 @@ function AppleRedirect() {
   useEffect(() => {
     async function Login() {
       const data = {
-        url: `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=${process.env.REACT_APP_APPLE_CLIENT_ID}&client_secret=${process.env.REACT_APP_APPLE_SECRET}&code=${code}`,
+        url: `https://appleid.apple.com/auth/token?clientID=${process.env.REACT_APP_APPLE_CLIENT_ID}&clientSecret=${process.env.REACT_APP_APPLE_KEY_ID}`,
       };
 
       const res = await axios({
