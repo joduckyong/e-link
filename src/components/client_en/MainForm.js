@@ -123,21 +123,7 @@ const MainForm = () => {
               <span>EV Charging Innovation</span>
               <span>for tomorrow</span>
             </h1>
-            {/*
-			<div className="search" data-aos="fade-up" data-aos-duration="1000">
-              <div className="input">
-                <input type="text" placeholder="전기차충전소 찾기" />
-                <button>
-                  <img src="/img/main/ico-search.svg" alt="검색" />
-                </button>
-              </div>
-              <div className="recom">
-                <NavLink to="">#서울</NavLink>
-                <NavLink to="">#경기</NavLink>
-                <NavLink to="">#부산</NavLink>
-              </div>
-            </div>
-			*/}
+            
             <div className="scroll_wp">
               <div className="bar_wp">
                 <div className="bar"></div>
@@ -146,34 +132,30 @@ const MainForm = () => {
             </div>
           </div>
           <div className="video-wrap">
-            {/* <video muted autoPlay loop className="main-video-pc">
-              <source src="/video/main.mp4" type="video/mp4" />
-            </video> */}
-
             <video src="/video/main.mp4" playsInline loop muted autoPlay></video>
           </div>
         </div>
         <div className="con1">
           <div className="wrap">
             <div className="tit" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-              LS E-Link는
-              <br className="m-block" /> 보다 깨끗하고 안전한
+              LS E-Link
+              <br className="m-block" /> creates greater value
               <br />
-              전기차 충전 솔루션으로
-              <br />더 큰 가치를 만들어
-              <br className="m-block" /> 나갑니다.
+              with cleaner and safer
+              <br />electric vehicle
+              <br className="m-block" /> charging solutions.
             </div>
             <ul>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <NavLink to="/contactus/consult">
-                  <div className="s-tit">충전기 상담신청</div>
-                  <p>전기차 충전 인프라 구축이 필요하신가요?</p>
+                <NavLink to="/en/contactus/consult">
+                  <div className="s-tit">Charger Consultation Request</div>
+                  <p>Do you need to build an electric vehicle charging infrastructure?</p>
                 </NavLink>
               </li>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <NavLink to="/contactus/inconvenience">
-                  <div className="s-tit">불편신고</div>
-                  <p>고장이 나셨나요? 빠르게 대응하겠습니다.</p>
+                <NavLink to="/en/contactus/inconvenience">
+                  <div className="s-tit">Report complaints</div>
+                  <p>Did something break down? We will respond quickly.</p>
                 </NavLink>
               </li>
             </ul>
@@ -189,21 +171,17 @@ const MainForm = () => {
                     <strong className="main-section-headline">BUSINESS</strong>
                     <div className="btn-area">
                       <span>
-                        LS E-Link는 <br className="m-block" />
-                        충전 인프라 구축, 투자 컨설팅,
+                        LS E-Link  <br className="m-block" />
+                        provides a total solution
                         <br />
-                        최적의 Fleet 운영을 포함한
+                        including charging infrastructure construction,
                         <br />
-                        Total Solution을 제공하고 있습니다.<i className="icon-arrow-right-bk-30"></i>
+                        investment consulting, and optimal fleet operation .<i className="icon-arrow-right-bk-30"></i>
                       </span>
                     </div>
                   </div>
                   <div className="visual">
                     <div className="_visual">
-                      {/* <video muted autoPlay loop className="con2-video-pc">
-                        <source src="/video/con2-video.mp4" type="video/mp4" />
-                      </video> */}
-
                       <video src="/video/con2-video.mp4" playsInline loop muted autoPlay></video>
                     </div>
                   </div>
@@ -250,9 +228,9 @@ const MainForm = () => {
                     <div className="swiper-slide slide1">
                       <div className="slide-bg" style={{ background: '#EC6800 url() right bottom no-repeat' }}>
                         <div className="slide-inner">
-                          <h3 className="text">전기차 충전사업</h3>
+                          <h3 className="text">EV Charging business</h3>
                           <p className="desc">
-                            고객 맞춤형 충전 인프라 구축 <br />및 O&M서비스 제공
+                            Establishment of customized charging  <br />infrastructure and provision of O&M service.
                           </p>
                           <div className="car-wrap">
                             <div className={classNames({ on: carVal === 0 || carVal === 1 })}>
@@ -268,7 +246,7 @@ const MainForm = () => {
                               <img src="/img/main/car-2.png" alt="" />
                             </div>
                           </div>
-                          <NavLink to="/business/ev/transportation" className="link">
+                          <NavLink to="/en/business/ev/transportation" className="link">
                             VIEW MORE
                           </NavLink>
                         </div>
@@ -280,16 +258,19 @@ const MainForm = () => {
                       <div className="slide-bg" style={{ background: '#12A84E url(/img/main/con3-img2.png) right center no-repeat' }}>
                         <div className="slide-inner">
                           <h3 className="text">
-                            신재생에너지 융합형
+                            Establishment of new and 
                             <br />
-                            충전 인프라 구축
+                            renewable energy convergence
+                            <br />
+                            charging infrastructure
                           </h3>
                           <p className="desc">
-                            신재생에너지 발전과 연계한 EV충전 <br className="m-block" />
-                            인프라 구축 및 <br className="pc-block" />
-                            운영 컨설팅
+                            Establishment and operation consulting  <br className="m-block" />
+                            of EV charging infrastructure  <br className="pc-block" />
+                            linked to <br class="m-block" />
+                            new and renewable energy generation.
                           </p>
-                          <NavLink to="/business/e-link/renewable" className="link">
+                          <NavLink to="/en/business/e-link/renewable" className="link">
                             VIEW MORE
                           </NavLink>
                           <span className="cloud1">
@@ -314,11 +295,12 @@ const MainForm = () => {
                             <br />
                           </h3>
                           <p className="desc">
-                            고객 특화/차종 특화 기능의 <br className="m-block" />
-                            관제시스템 <br className="pc-block" />
-                            구축 서비스 제공
+                            Providing customer specific/vehicle  <br className="m-block" />
+                            specialized function  <br className="pc-block" />
+                            control system  <br className="m-block" />
+                            establishment service.
                           </p>
-                          <NavLink to="/business/e-link/control" className="link">
+                          <NavLink to="/en/business/e-link/control" className="link">
                             VIEW MORE
                           </NavLink>
                           <span className="air">
@@ -351,9 +333,7 @@ const MainForm = () => {
                 <div className="left" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
                   <div className="lf-wrap">
                     <div className="big-tit">
-                      내일의 에너지를
-                      <br />
-                      충전합니다.
+                      Recharge tomorrow's energy
                     </div>
                     <img src="/img/common/logo.svg" alt="" />
                   </div>
@@ -362,28 +342,40 @@ const MainForm = () => {
                   <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
                     <img src="/img/main/con4-img1.png" alt="" />
                     <div className="txt">
-                      <div className="small">전기·전력분야</div>
-                      <div className="big">글로벌 리딩기업 LS</div>
+                      <div className="small">Electricity and power field</div>
+                      <div className="big">Global leading company, LS</div>
                     </div>
                   </div>
                   <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
                     <img src="/img/main/con4-img2.png" alt="" />
                     <div className="txt">
-                      <div className="small">전기화시대 글로벌리딩기업 LS와</div>
-                      <div className="big">친환경에너지 선도기업 E1</div>
+                      <div className="small">
+                        LS, a global leading company 
+                        <br />
+                        in the era of electrification and
+                      </div>
+                      <div className="big">
+                        Eco-friendly energy 
+                        <br />
+                        leading company, E1
+                      </div>
                     </div>
                   </div>
                   <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
                     <img src="/img/main/con4-img3.png" alt="" />
                     <div className="txt">
-                      <div className="big">Fleet Management로</div>
-                      <div className="small long">고객의 운행여건에 최적화된 충전 솔루션 제공</div>
+                      <div className="big">Fleet Management</div>
+                      <div className="small long">
+                        Providing charging solutions optimized
+                        <br />
+                        for customer driving conditions
+                      </div>
                     </div>
                   </div>
                   <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
                     <img src="/img/main/con4-img4.png" alt="" />
                     <div className="txt">
-                      <div className="small">'함께하여 더 큰 가치'</div>
+                      <div className="small">'Greater value together'</div>
                       <div className="big">LS Partnership</div>
                     </div>
                   </div>
@@ -393,9 +385,9 @@ const MainForm = () => {
             <div className="mobile-show">
               <div className="left">
                 <div className="big-tit">
-                  내일의 에너지를
+                  Recharge 
                   <br />
-                  충전합니다.
+                  tomorrow's energy
                 </div>
                 <img className="mo_logo" src="/img/common/logo.svg" alt="" />
               </div>
@@ -403,28 +395,28 @@ const MainForm = () => {
                 <div>
                   <img src="/img/main/con4-img1.png" alt="" />
                   <div className="txt">
-                    <div className="small">전선·전력분야</div>
-                    <div className="big">글로벌 리딩기업 LS</div>
+                    <div className="small">Electricity and power field</div>
+                    <div className="big">Global leading company, LS</div>
                   </div>
                 </div>
                 <div>
                   <img src="/img/main/con4-img2.png" alt="" />
                   <div className="txt">
-                    <div className="small">전기화시대 글로벌리딩기업 LS와</div>
-                    <div className="big">친환경에너지서비스 선도기업 E1</div>
+                    <div className="small">LS, a global leading company in the era of electrification and</div>
+                    <div className="big">Eco-friendly energy leading company, E1</div>
                   </div>
                 </div>
                 <div>
                   <img src="/img/main/con4-img3.png" alt="" />
                   <div className="txt">
-                    <div className="big">Fleet Management로</div>
-                    <div className="small long">복잡하고 어려운 물류환경에서의 유연한 적용</div>
+                    <div className="big">Fleet Management</div>
+                    <div className="small long">Providing charging solutions optimized for customer driving conditions</div>
                   </div>
                 </div>
                 <div>
                   <img src="/img/main/con4-img4.png" alt="" />
                   <div className="txt">
-                    <div className="small">'함께하여 더 큰 가치'</div>
+                    <div className="small">'Greater value together'</div>
                     <div className="big">LS Partnership</div>
                   </div>
                 </div>
@@ -438,14 +430,13 @@ const MainForm = () => {
               TECHNOLOGICAL INNOVATION
             </div>
             <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
-              LS E-Link는 <br className="m-block" />
-              LS그룹의 전기·전력분야 <br className="m-block" />
-              기술력을 바탕으로 <br />
-              EV 충전 인프라 기술혁신을 <br className="m-block" />
-              선도하고 있습니다.
+              LS E-Link is based on  <br className="m-block" />
+              LS Group's technology  <br className="m-block" />
+              in electricity and power.  <br />
+              We are leading the technological innovation of EV charging infrastructure.
               <br />
-              차별화된 LS E-Link의 <br className="m-block" />
-              충전 솔루션을 경험해보세요.
+              Experience the differentiated charging solution  <br className="m-block" />
+              of LS E-Link.
             </div>
             <Swiper
               slidesPerView={1}
@@ -483,13 +474,13 @@ const MainForm = () => {
                 </div>
                 <div className="txt">
                   <div className="slide-tit">
-                    충전기에서 전력계통 연계까지 <br />
-                    고객맞춤형 충전 솔루션
+                      From charger to power <br class="m-block" /> grid connection<br class=" pc-block" />
+                      Customized <br class="m-block" />charging solution
                   </div>
                   <p>
-                    LS E-Link는 LS그룹의 전기·전력분야 기술력을 바탕으로 <br />
-                    EV 충전 인프라 기술혁신을 선도하고 있습니다. <br />
-                    차별화된 LS E-Link의 충전 솔루션을 경험해 보세요.
+                      LS E-Link is based on LS Group's technology  <br class="m-block" />in electricity and power. <br class=" pc-block" />
+                      We are leading the <br class="m-block" />technological innovation of EV charging infrastructure.<br class="pc-block" /><br class="m-block" />
+                      Experience the differentiated charging solution <br class="m-block" />of LS E-Link.
                   </p>
                 </div>
                 {/* </div> */}
@@ -501,15 +492,15 @@ const MainForm = () => {
                 </div>
                 <div className="txt">
                   <div className="slide-tit">
-                    물류배송 / 버스운수 환경에 <br />
-                    특화된 ELVIS 관제시스템
+                    Specialized in logistics delivery <br />
+                    / bus transportation environment, <br />
+                    ELVIS control system
                   </div>
                   <p>
-                    ELVIS 관제시스템은 물류배송과 버스운수 사업자들에게 <br />
-                    전기트럭/전기버스의 안정적인 운행을 위한 최적의 <br />
-                    순차충전 / 충전스케쥴링을 제공하고 있습니다.
-                    <br />
-                    ELVIS만의 특별한 서비스를 직접 체험해 보세요.
+                    The ELVIS control system provides optimal sequential <br class="m-block" />charging <br class="pc-block" />
+                    /charging scheduling for the stable operation <br class="m-block" />of electric trucks <br class="pc-block" />
+                    /electric buses to logistics delivery <br class="m-block" />and bus transportation operators. <br />
+                    Experience the special service of ELVIS for yourself.<br />
                   </p>
                 </div>
                 {/* </div> */}
@@ -521,13 +512,13 @@ const MainForm = () => {
                 </div>
                 <div className="txt">
                   <div className="slide-tit">
-                    업계최고 전기차충전인프라 <br />
-                    시공능력
+                    Industry's best electric vehicle <br class="m-block" />charging <br class="pc-block" />
+                    infrastructure<br class="m-block" /> construction capability
                   </div>
                   <p>
-                    LS E-Link는 업계최고 충전인프라 시공능력과 IT 기술력을 <br />
-                    바탕으로 전기자동차 충전시장을 선도해 가고 있습니다. <br />
-                    LS E-Link와 함께 성장해 보세요.
+                    LS E-Link is leading the electric vehicle charging market <br />
+                    based on the industry's best charging infrastructure <br class="m-block" />construction <br class="pc-block" />
+                    capability and IT technology. <br class="m-block" />Grow with LS E-Link.
                   </p>
                 </div>
                 {/* </div> */}
@@ -539,15 +530,15 @@ const MainForm = () => {
                 </div>
                 <div className="txt">
                   <div className="slide-tit">
-                    인프라 투자 / 자금조달 / 운영 Total <br />
-                    Solution을 제공하는 진정한 파트너
+                    A true partner that provides <br />
+                    a total solution for infrastructure<br />
+                    investment/financing/operation
                   </div>
                   <p>
-                    LS E-Link는 충전사업을 원하는 고객에게 인프라 투자, <br />
-                    자금조달 및 운영 등 전기차 충전사업에 필요한 <br />
-                    Total Solution을 제공하는 진정한 파트너입니다.
-                    <br />
-                    LS E-Link의 파트너가 되어보세요.
+                    LS E-Link is a true partner that provides a total solution <br />
+                    for electric vehicle charging business, including <br class="m-block" />infrastructure <br class="pc-block" />
+                    investment, financing and operation, <br class="m-block" />to customers who want to do so. <br />
+                    Become a partner of LS E-Link.
                   </p>
                 </div>
                 {/* </div> */}
@@ -591,7 +582,7 @@ const MainForm = () => {
                 .filter((list, index) => index < 3)
                 .map((list, index) => (
                   <li key={index}>
-                    <NavLink to={`/pr/press-view/${list.boardId}`}>
+                    <NavLink to={`/en/pr/press-view/${list.boardId}`}>
                       <div className="news-name">{list.createdDatetime}</div>
                       <div className="news-tit">{list.boardTitle}</div>
                       <p
@@ -612,9 +603,11 @@ const MainForm = () => {
           <div className="wrap">
             <div className="txt-area">
               <div className="main-tit" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-                LS E-Link에서
+                LS E-Link is waiting
                 <br />
-                함께 성장할 인재를 기다립니다.
+                for talented people 
+                <br />
+                to grow together.
               </div>
               {/*<NavLink to="/recruit/posting" className="more" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
                 VIEW MORE
@@ -622,15 +615,15 @@ const MainForm = () => {
             </div>
             <ul>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="700">
-                <NavLink to="/recruit/people">
+                <NavLink to="/en/recruit/people">
                   <i></i>
-                  인재상
+                  Ideal Talent
                 </NavLink>
               </li>
               <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="700">
-                <NavLink to="/recruit/posting">
+                <NavLink to="/en/recruit/posting">
                   <i></i>
-                  채용공고
+                  Job Posting
                 </NavLink>
               </li>
             </ul>

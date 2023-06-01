@@ -13,30 +13,27 @@ const Footer = () => {
       <div className="wrap">
         <ul className="menu">
           <li>
-            <NavLink to="/company/lselink">회사소개</NavLink>
+            <NavLink to="/en/company/lselink">Company</NavLink>
           </li>
           <li>
-            <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
+            <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
           </li>
           <li>
-            <NavLink to="/investment/credit">투자정보</NavLink>
+            <NavLink to="/en/investment/credit">IR Center</NavLink>
           </li>
           <li>
-            <NavLink to="/pr/press-list">홍보센터</NavLink>
+            <NavLink to="/en/pr/press-list">PR Center</NavLink>
           </li>
           <li>
-            <NavLink to="/recruit/people">채용정보</NavLink>
+            <NavLink to="/en/recruit/people">Recruitment</NavLink>
           </li>
           <li>
-            <NavLink to="/contactus/consult">Contact Us</NavLink>
-          </li>
-          <li>
-            <NavLink to="">EV 충전소</NavLink>
+            <NavLink to="/en/contactus/consult">Contact Us</NavLink>
           </li>
         </ul>
         <address>
-          <span>ADD</span>(04386) 서울특별시 용산구 한강대로 92, <br class="m-block" />
-          LS용산타워 17층 LS E-Link(주)
+          <span>ADD</span>LS E-Link. 17F, LS Yongsan Tower, 92 Hangang-daero, <br class="m-block" />
+          Yongsan-gu, Seoul, 04386, Korea
         </address>
 
         <ul className="tel">
@@ -45,54 +42,54 @@ const Footer = () => {
           </li>
         </ul>
         <ul className="tel">
-          <li>대표 : 김대근&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호 : 744-86-02437</li>
+          <li><span>CEO</span> : Kim, Daeguen&nbsp;&nbsp;&nbsp;&nbsp;<span>Business Reg.No :</span> 744-86-02437</li>
         </ul>
         <div className="bottom">
           <ul className="privacy">
             <li>
-              <NavLink to="/policy/privacy">
-                <strong>개인정보보호처리방침</strong>
+              <NavLink to="/en/policy/privacy">
+                <strong>Privacy Policy</strong>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/policy/terms">서비스 이용약관</NavLink>
+              <NavLink to="/en/policy/terms">Terms of Service</NavLink>
             </li>
             <li>
-              <NavLink to="/policy/location">위치기반 서비스 이용약관</NavLink>
+              <NavLink to="/en/policy/location">Terms of Use for Location-Based Services</NavLink>
             </li>
           </ul>
           <div className={familyActive ? 'fm on' : 'fm'} onClick={() => setFamilyActive(!familyActive)}>
             <NavLink to="">FAMILY SITE</NavLink>
             <ul className="family-link">
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lsholdings.com/')}>LS그룹</NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lsholdings.com/')}>LS Group</NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.e1.co.kr/')}>주식회사 E1</NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.e1.co.kr/')}>E1 Co.,Ltd.</NavLink>
               </li>
               <li>
                 <NavLink onClick={() => handleOpenNewTab('https://www.lselectric.co.kr/')}>LS ELECTRIC</NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lscns.co.kr/kr/main.asp')}>LS전선(주)</NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lscns.co.kr/kr/main.asp')}>LS C&S Co.,Ltd.</NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('http://www.lsmtron.co.kr/page/lsmtronMain.asp?naviId=s01')}>LS엠트론(주)</NavLink>
+                <NavLink onClick={() => handleOpenNewTab('http://www.lsmtron.co.kr/page/lsmtronMain.asp?naviId=s01')}>LS Mtron Co.,Ltd.</NavLink>
               </li>
               <li>
                 <NavLink onClick={() => handleOpenNewTab('http://www.lsmnm.com/mnm/index.aspx')}>LS MnM</NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://gaoncable.com/')}>가온전선(주)</NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://gaoncable.com/')}>GAON Cable Co.,Ltd.</NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.yescoholdings.com/main')}>(주)예스코</NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.yescoholdings.com/main')}>YESCO Co.,Ltd.</NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lsnetworks.co.kr/')}>LS네트웍스</NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lsnetworks.co.kr/')}>LS Networks</NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lsglobalinc.com/')}>LS글로벌</NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://www.lsglobalinc.com/')}>LS Global</NavLink>
               </li>
               <li>
                 <NavLink onClick={() => handleOpenNewTab('https://www.ls-ind.co.kr/')}>LS I&D</NavLink>
@@ -101,7 +98,7 @@ const Footer = () => {
                 <NavLink onClick={() => handleOpenNewTab('https://www.lsmetal.biz/')}>LS Metal</NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://lsautomotive.com/')}>LS 오토모티브</NavLink>
+                <NavLink onClick={() => handleOpenNewTab('https://lsautomotive.com/')}>LS Automotive</NavLink>
               </li>
             </ul>
           </div>
