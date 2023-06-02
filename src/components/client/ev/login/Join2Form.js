@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { encrypt } from '../../../../api/crypto';
+import { encrypt } from '../../../../api/crypto';
 import axios from 'axios';
 import Post from '../../../../api/Post';
 
@@ -69,7 +69,11 @@ const Join2Form = () => {
       return;
     }
 
-    window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2?type=I', 'width=0,height=0,location=no,status=no,scrollbars=yes', '_blank');
+    window.open(
+      process.env.REACT_APP_API_URL + '/api/phone/popup2?type=I&snsType=0',
+      'width=0,height=0,location=no,status=no,scrollbars=yes',
+      '_blank',
+    );
   };
 
   //비밀번호 유효성 검사
@@ -251,7 +255,7 @@ const Join2Form = () => {
     }
 
     const res = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}`,
+      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}/0`,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -274,10 +278,10 @@ const Join2Form = () => {
       // setTelcom(dataTelcom);
       // setTelno(dataTelNo);
       if (dataCi !== '') {
-        signupUser(dataBrth, dataCi, dataGender, dataTelcom, dataTelNo);
+        await signupUser(dataBrth, dataCi, dataGender, dataTelcom, dataTelNo);
       }
     } else {
-      setTelnoCk2(true);
+      await setTelnoCk2(true);
     }
   };
 
@@ -288,7 +292,7 @@ const Join2Form = () => {
       url: '/auth/signupUser',
       userNm: userNm,
       eml: email,
-      pswd: passwd,
+      pswd: encrypt(passwd),
       telno: dataTelNo,
       gender: dataGender,
       brth: dataBrth,
@@ -311,7 +315,7 @@ const Join2Form = () => {
 
     console.log('data : ' + JSON.stringify(res.data));
 
-    if (res.data !== '' && JSON.stringify(res.data.data.status) === 200) {
+    if (res.data !== '') {
       const result = JSON.stringify(res.data.data.principal);
       console.log('result : ' + result);
 
@@ -320,7 +324,7 @@ const Join2Form = () => {
       }
     } else {
       await axios({
-        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneDel/${telno}`,
+        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneDel/${telno}/0`,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',

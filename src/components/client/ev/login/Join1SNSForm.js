@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 
-const Join1Form = () => {
+const Join1SNSForm = () => {
   // 링크 연결
   const navigate = useNavigate();
 
@@ -67,7 +67,7 @@ const Join1Form = () => {
       return;
     }
 
-    navigate('/ev/join2');
+    navigate('/ev/join2Sns');
   };
 
   return (
@@ -221,4 +221,4 @@ const Join1Form = () => {
   );
 };
 
-export default Join1Form;
+export default Join1SNSForm;

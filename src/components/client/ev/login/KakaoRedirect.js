@@ -20,7 +20,7 @@ function KakaoRedirect() {
         data: data,
       });
 
-      const ACCESS_TOKEN = JSON.stringify(res.data.data.access_token);
+      const ACCESS_TOKEN = JSON.stringify(res.data.data.access_token).replace(/"/g, '');
 
       if (ACCESS_TOKEN !== undefined) {
         // const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token);
@@ -29,7 +29,7 @@ function KakaoRedirect() {
         // setCookie('refreshToken', REFRESH_TOKEN);
 
         const user = await axios({
-          url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${ACCESS_TOKEN}`,
+          url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${ACCESS_TOKEN}/2`,
           method: 'GET',
           headers: {
             'Content-Type': 'application/json; charset=utf-8',
@@ -61,11 +61,42 @@ function KakaoRedirect() {
           navigate('/ev/mypage1', { replace: true });
         } else {
           //회원가입
-          navigate('/ev/join1', { replace: true });
+          navigate('/ev/join1Sns', { replace: true });
         }
       }
     }
-    Login();
+
+    if (localStorage.getItem('snsType') === 'kakao') {
+      async function snsLogin() {
+        let data = {
+          login_type: localStorage.getItem('snsType'),
+          password: localStorage.getItem('snsToken'),
+          grant_type: 'password',
+          scope: 'mobileclient',
+          url: '/auth/oauth/token',
+        };
+
+        const resData = await axios({
+          url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
+          method: 'POST',
+          data: data,
+        });
+
+        const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
+        const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
+        const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
+        const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
+
+        setAccessEvToken(access_token, expires_in);
+        setEvUserNo(USER_NO);
+        setRefreshEvToken(refresh_token);
+
+        navigate('/ev/mypage1', { replace: true });
+      }
+      snsLogin();
+    } else {
+      Login();
+    }
   }, []);
 
   return;

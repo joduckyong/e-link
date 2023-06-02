@@ -21,8 +21,8 @@ function AppleRedirect() {
         data: data,
       });
 
-      const ACCESS_TOKEN = JSON.stringify(res.data.data.access_token);
-      const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token);
+      const ACCESS_TOKEN = JSON.stringify(res.data.data.access_token).replace(/"/g, '');
+      const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token).replace(/"/g, '');
 
       console.log('res : ' + JSON.stringify(res));
       console.log('res : ' + JSON.stringify(res.data.data.access_token));

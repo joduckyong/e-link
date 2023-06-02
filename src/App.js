@@ -219,6 +219,9 @@ import LoginEvPage from './pages/client/ev/login/loginPage';
 
 //회원가입 약관동의
 import Join1Page from './pages/client/ev/login/Join1Page';
+//회원가입 약관동의
+import Join1SnsPage from './pages/client/ev/login/Join1SnsPage';
+
 //회원가입 정보입력
 import Join2Page from './pages/client/ev/login/Join2Page';
 //회원가입 정보입력
@@ -429,7 +432,8 @@ const App = () => {
 
         <Route path="/ev/join1" element={<Join1Page />} />
         <Route path="/ev/join2" element={<Join2Page />} />
-        <Route path="/ev/joinSns" element={<Join2SnsPage />} />
+        <Route path="/ev/join1Sns" element={<Join1SnsPage />} />
+        <Route path="/ev/join2Sns" element={<Join2SnsPage />} />
         <Route path="/ev/join3" element={<Join3Page />} />
 
         <Route path="/ev/findId" element={<FindIdPage />} />

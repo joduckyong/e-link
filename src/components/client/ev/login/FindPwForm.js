@@ -46,7 +46,7 @@ const FindIdForm = () => {
     }
 
     const res = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}`,
+      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}/0`,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
