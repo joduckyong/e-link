@@ -314,8 +314,9 @@ const Join2Form = () => {
     });
 
     console.log('data : ' + JSON.stringify(res.data));
+    console.log('data.status : ' + JSON.stringify(res.data.data.status));
 
-    if (res.data !== '') {
+    if (res.data !== '' && JSON.stringify(res.data.data.status) !== 500) {
       const result = JSON.stringify(res.data.data.principal);
       console.log('result : ' + result);
 
@@ -331,6 +332,8 @@ const Join2Form = () => {
           Accept: 'application/json',
         },
       });
+
+      navigate('/ev/joinError', { replace: true });
     }
   };
 

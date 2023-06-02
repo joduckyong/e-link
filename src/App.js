@@ -229,6 +229,9 @@ import Join2SnsPage from './pages/client/ev/login/Join2SnsPage';
 //회원가입 가입완료
 import Join3Page from './pages/client/ev/login/Join3Page';
 
+//회원가입 가입에러
+import JoinErrorPage from './pages/client/ev/login/JoinErrorPage';
+
 //아이디 찾기
 import FindIdPage from './pages/client/ev/login/FindIdPage';
 //아이디 결과
@@ -435,6 +438,7 @@ const App = () => {
         <Route path="/ev/join1Sns" element={<Join1SnsPage />} />
         <Route path="/ev/join2Sns" element={<Join2SnsPage />} />
         <Route path="/ev/join3" element={<Join3Page />} />
+        <Route path="/ev/joinError" element={<JoinErrorPage />} />
 
         <Route path="/ev/findId" element={<FindIdPage />} />
         <Route path="/ev/findId2" element={<FindId2Page />} />
