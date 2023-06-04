@@ -37,6 +37,9 @@ function NaverRedirect() {
           },
         });
 
+        localStorage.setItem('snsType', 'naver');
+        localStorage.setItem('snsToken', ACCESS_TOKEN);
+
         if (user.data.data !== undefined) {
           let data = {
             login_type: 'naver',
@@ -69,7 +72,54 @@ function NaverRedirect() {
       }
     }
 
-    Login();
+    async function snsLogin() {
+      const ACCESS_TOKEN = localStorage.getItem('snsToken');
+
+      const user = await axios({
+        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${ACCESS_TOKEN}/1`,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Accept: 'application/json',
+        },
+      });
+
+      if (user.data.data !== undefined) {
+        let data = {
+          login_type: 'naver',
+          password: ACCESS_TOKEN,
+          grant_type: 'password',
+          scope: 'mobileclient',
+          url: '/auth/oauth/token',
+        };
+
+        const resData = await axios({
+          url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
+          method: 'POST',
+          data: data,
+        });
+
+        const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
+        const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
+        const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
+        const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
+
+        setAccessEvToken(access_token, expires_in);
+        setEvUserNo(USER_NO);
+        setRefreshEvToken(refresh_token);
+
+        navigate('/ev/mypage1', { replace: true });
+      } else {
+        //회원가입
+        navigate('/ev/join1Sns', { replace: true });
+      }
+    }
+
+    if (localStorage.getItem('snsType') !== undefined && localStorage.getItem('snsType') === 'naver') {
+      snsLogin();
+    } else {
+      Login();
+    }
   }, []);
 
   return;
