@@ -14,9 +14,6 @@ function GoogleRedirect() {
   useEffect(() => {
     if (ACCESS_TOKEN !== undefined) {
       async function Login() {
-        localStorage.setItem('snsType', 'google');
-        localStorage.setItem('snsToken', ACCESS_TOKEN);
-
         let data = {
           id: ACCESS_TOKEN,
           snsType: '3',
@@ -27,6 +24,9 @@ function GoogleRedirect() {
           method: 'POST',
           data: data,
         });
+
+        localStorage.setItem('snsType', 'google');
+        localStorage.setItem('snsToken', ACCESS_TOKEN);
 
         if (user.data.data !== undefined) {
           // 추가 인증 필요

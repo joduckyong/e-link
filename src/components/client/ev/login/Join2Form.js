@@ -318,12 +318,23 @@ const Join2Form = () => {
     console.log('data : ' + JSON.stringify(res.data));
     console.log('data.status : ' + JSON.stringify(res.data.data.status));
 
-    if (res.data !== '' && JSON.stringify(res.data.data.status) !== 500) {
+    if (JSON.stringify(res.data.data.status) !== 500) {
       const result = JSON.stringify(res.data.data.principal);
       console.log('result : ' + result);
 
-      if (result !== '') {
+      if (result !== undefined) {
         navigate('/ev/join3', { replace: true });
+      } else {
+        await axios({
+          url: `${process.env.REACT_APP_API_URL}/api/phone/phoneDel/${telno}/0`,
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            Accept: 'application/json',
+          },
+        });
+
+        navigate('/ev/joinError', { replace: true });
       }
     } else {
       await axios({

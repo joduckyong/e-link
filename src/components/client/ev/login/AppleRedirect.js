@@ -12,14 +12,11 @@ function AppleRedirect() {
   const navigate = useNavigate();
 
   const ACCESS_TOKEN = access_token;
-  console.log('ACCESS_TOKEN : ' + ACCESS_TOKEN);
+  //  console.log('ACCESS_TOKEN : ' + ACCESS_TOKEN);
 
   useEffect(() => {
     if (ACCESS_TOKEN !== undefined) {
       async function Login() {
-        localStorage.setItem('snsType', 'apple');
-        localStorage.setItem('snsToken', ACCESS_TOKEN);
-
         let data = {
           id: ACCESS_TOKEN,
           snsType: '4',
@@ -30,6 +27,9 @@ function AppleRedirect() {
           method: 'POST',
           data: data,
         });
+
+        localStorage.setItem('snsType', 'apple');
+        localStorage.setItem('snsToken', ACCESS_TOKEN);
 
         if (user.data.data !== undefined) {
           // 추가 인증 필요

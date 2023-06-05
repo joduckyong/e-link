@@ -24,8 +24,6 @@ function KakaoRedirect() {
 
       if (ACCESS_TOKEN !== undefined) {
         // const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token);
-        localStorage.setItem('snsType', 'kakao');
-        localStorage.setItem('snsToken', ACCESS_TOKEN);
         // setCookie('refreshToken', REFRESH_TOKEN);
 
         let data = {
@@ -38,6 +36,9 @@ function KakaoRedirect() {
           method: 'POST',
           data: data,
         });
+
+        localStorage.setItem('snsType', 'kakao');
+        localStorage.setItem('snsToken', ACCESS_TOKEN);
 
         if (user.data.data !== undefined) {
           // 추가 인증 필요

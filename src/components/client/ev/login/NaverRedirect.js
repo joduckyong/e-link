@@ -24,8 +24,6 @@ function NaverRedirect() {
       // const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token);
 
       if (ACCESS_TOKEN !== undefined) {
-        localStorage.setItem('snsType', 'naver');
-        localStorage.setItem('snsToken', ACCESS_TOKEN);
         // setCookie('refreshToken', REFRESH_TOKEN);
 
         let data = {
@@ -86,6 +84,9 @@ function NaverRedirect() {
         method: 'POST',
         data: data,
       });
+
+      localStorage.setItem('snsType', 'naver');
+      localStorage.setItem('snsToken', ACCESS_TOKEN);
 
       if (user.data.data !== undefined) {
         let data = {
