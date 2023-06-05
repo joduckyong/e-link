@@ -254,13 +254,15 @@ const Join2Form = () => {
       setAddressDetailCk(false);
     }
 
+    const data = {
+      id: telno,
+      snsType: '0',
+    };
+
     const res = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}/0`,
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        Accept: 'application/json',
-      },
+      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
+      method: 'POST',
+      data: data,
     });
 
     console.log('data : ' + res.data.data);

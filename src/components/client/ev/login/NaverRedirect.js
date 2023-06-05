@@ -28,13 +28,15 @@ function NaverRedirect() {
         localStorage.setItem('snsToken', ACCESS_TOKEN);
         // setCookie('refreshToken', REFRESH_TOKEN);
 
+        let data = {
+          id: ACCESS_TOKEN,
+          snsType: '1',
+        };
+
         const user = await axios({
-          url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${ACCESS_TOKEN}/1`,
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            Accept: 'application/json',
-          },
+          url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
+          method: 'POST',
+          data: data,
         });
 
         localStorage.setItem('snsType', 'naver');
@@ -75,13 +77,14 @@ function NaverRedirect() {
     async function snsLogin() {
       const ACCESS_TOKEN = localStorage.getItem('snsToken');
 
+      let data = {
+        id: ACCESS_TOKEN,
+        snsType: '1',
+      };
       const user = await axios({
-        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${ACCESS_TOKEN}/1`,
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-          Accept: 'application/json',
-        },
+        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
+        method: 'POST',
+        data: data,
       });
 
       if (user.data.data !== undefined) {

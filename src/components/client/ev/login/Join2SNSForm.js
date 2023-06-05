@@ -24,7 +24,7 @@ const Join2SNSForm = () => {
   const [telno, setTelno] = useState('');
   const [telnoCk, setTelnoCk] = useState(false);
   const [telnoCk2, setTelnoCk2] = useState(false);
-  const [snsType, setSnsType] = useState(0);
+  const [snsType, setSnsType] = useState('0');
   const [snsToken, setSnsToken] = useState('');
 
   const [popup, setPopup] = useState(false);
@@ -32,16 +32,16 @@ const Join2SNSForm = () => {
   useEffect(() => {
     if (localStorage.getItem('snsType') === 'naver') {
       setSnsToken(localStorage.getItem('snsToken').replace(/"/g, ''));
-      setSnsType(1);
+      setSnsType('1');
     } else if (localStorage.getItem('snsType') === 'kakao') {
       setSnsToken(localStorage.getItem('snsToken').replace(/"/g, ''));
-      setSnsType(2);
+      setSnsType('2');
     } else if (localStorage.getItem('snsType') === 'google') {
       setSnsToken(localStorage.getItem('snsToken').replace(/"/g, ''));
-      setSnsType(3);
+      setSnsType('3');
     } else if (localStorage.getItem('snsType') === 'apple') {
       setSnsToken(localStorage.getItem('snsToken').replace(/"/g, ''));
-      setSnsType(4);
+      setSnsType('4');
     }
   }, []);
 
@@ -184,13 +184,16 @@ const Join2SNSForm = () => {
       setAddressDetailCk(false);
     }
 
+    const data = {
+      telno: telno,
+      snsToken: snsToken,
+      snsType: snsType,
+    };
+
     const res = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}/${snsToken}/${snsType}`,
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        Accept: 'application/json',
-      },
+      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/telno/snsToken/snsType`,
+      method: 'POST',
+      data: data,
     });
 
     console.log('data : ' + JSON.stringify(res.data.data));

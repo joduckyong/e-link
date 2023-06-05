@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setAccessEvToken, setEvUserNo, setRefreshEvToken } from '../../../../storage/EvCookie';
 
@@ -10,105 +11,113 @@ function GoogleRedirect() {
 
   const ACCESS_TOKEN = access_token[1];
 
-  if (ACCESS_TOKEN !== undefined) {
-    async function Login() {
-      localStorage.setItem('snsType', 'google');
-      localStorage.setItem('snsToken', ACCESS_TOKEN);
-
-      const user = await axios({
-        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${ACCESS_TOKEN}/3`,
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-          Accept: 'application/json',
-        },
-      });
-
-      if (user.data.data !== undefined) {
-        // 추가 인증 필요
+  useEffect(() => {
+    if (ACCESS_TOKEN !== undefined) {
+      async function Login() {
+        localStorage.setItem('snsType', 'google');
+        localStorage.setItem('snsToken', ACCESS_TOKEN);
 
         let data = {
-          login_type: 'google',
-          password: ACCESS_TOKEN,
-          grant_type: 'password',
-          scope: 'mobileclient',
-          url: '/auth/oauth/token',
+          id: ACCESS_TOKEN,
+          snsType: '3',
         };
 
-        const resData = await axios({
-          url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
+        const user = await axios({
+          url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
           method: 'POST',
           data: data,
         });
 
-        const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
-        const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-        const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
-        const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
+        if (user.data.data !== undefined) {
+          // 추가 인증 필요
 
-        setAccessEvToken(access_token, expires_in);
-        setEvUserNo(USER_NO);
-        setRefreshEvToken(refresh_token);
+          let data = {
+            login_type: 'google',
+            password: ACCESS_TOKEN,
+            grant_type: 'password',
+            scope: 'mobileclient',
+            url: '/auth/oauth/token',
+          };
 
-        navigate('/ev/mypage1', { replace: true });
-      } else {
-        //회원가입
-        navigate('/ev/join1Sns', { replace: true });
+          const resData = await axios({
+            url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
+            method: 'POST',
+            data: data,
+          });
+
+          const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
+          const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
+          const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
+          const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
+
+          setAccessEvToken(access_token, expires_in);
+          setEvUserNo(USER_NO);
+          setRefreshEvToken(refresh_token);
+
+          navigate('/ev/mypage1', { replace: true });
+        } else {
+          //회원가입
+          navigate('/ev/join1Sns', { replace: true });
+        }
       }
-    }
 
-    async function snsLogin() {
-      const ACCESS_TOKEN = localStorage.getItem('snsToken');
+      async function snsLogin() {
+        const ACCESS_TOKEN = localStorage.getItem('snsToken');
 
-      const user = await axios({
-        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${ACCESS_TOKEN}/3`,
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-          Accept: 'application/json',
-        },
-      });
-
-      localStorage.setItem('snsType', 'google');
-      localStorage.setItem('snsToken', ACCESS_TOKEN);
-
-      if (user.data.data !== undefined) {
         let data = {
-          login_type: 'google',
-          password: ACCESS_TOKEN,
-          grant_type: 'password',
-          scope: 'mobileclient',
-          url: '/auth/oauth/token',
+          id: ACCESS_TOKEN,
+          snsType: '3',
         };
 
-        const resData = await axios({
-          url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
+        const user = await axios({
+          url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
           method: 'POST',
           data: data,
         });
 
-        const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
-        const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-        const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
-        const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
+        localStorage.setItem('snsType', 'google');
+        localStorage.setItem('snsToken', ACCESS_TOKEN);
 
-        setAccessEvToken(access_token, expires_in);
-        setEvUserNo(USER_NO);
-        setRefreshEvToken(refresh_token);
+        if (user.data.data !== undefined) {
+          let data = {
+            login_type: 'google',
+            password: ACCESS_TOKEN,
+            grant_type: 'password',
+            scope: 'mobileclient',
+            url: '/auth/oauth/token',
+          };
 
-        navigate('/ev/mypage1', { replace: true });
+          const resData = await axios({
+            url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
+            method: 'POST',
+            data: data,
+          });
+
+          const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
+          const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
+          const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
+          const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
+
+          setAccessEvToken(access_token, expires_in);
+          setEvUserNo(USER_NO);
+          setRefreshEvToken(refresh_token);
+
+          navigate('/ev/mypage1', { replace: true });
+        } else {
+          //회원가입
+          navigate('/ev/join1Sns', { replace: true });
+        }
+      }
+
+      if (localStorage.getItem('snsType') !== undefined && localStorage.getItem('snsType') === 'google') {
+        snsLogin();
       } else {
-        //회원가입
-        navigate('/ev/join1Sns', { replace: true });
+        Login();
       }
     }
+  }, []);
 
-    if (localStorage.getItem('snsType') !== undefined && localStorage.getItem('snsType') === 'google') {
-      snsLogin();
-    } else {
-      Login();
-    }
-  }
+  return;
 }
 
 export default GoogleRedirect;
