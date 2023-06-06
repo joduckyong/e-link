@@ -60,7 +60,7 @@ const MediaviewForm = () => {
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             <li>
               <NavLink to="/">
-                <img src="./../../img/sub/ico-home.svg" alt="" />
+                <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>

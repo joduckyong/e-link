@@ -351,7 +351,7 @@ transition: all 0.5s;}
   .sub .sub-top .path .on a:hover,.sub .sub-top .path .show a{color: #EC6800;}
   .sub .sub-top .path .on a:hover:after,.sub .sub-top .path .show a:after{background: url('/public/img/sub/subtop-arrow-on.svg') no-repeat !important;}
 }
-.sub .sub-top .path li{margin-left: 30px; position: relative;}
+.sub .sub-top .path li{margin-left: 30px; position: relative; width: max-content;}
 .sub .sub-top .txt-wrap{position: relative; z-index: 1; display: flex; align-items: center; height: 100%; justify-content: space-between;}
 .sub .sub-top .txt-wrap p{font-size: 18px; color: rgba(255,255,255,0.7); position: absolute; top: 454px; left: 0;}
 .sub .sub-top .bg{position: absolute; top: 0; left: 0; right: 0; bottom: 0; transition: all 0.2s; z-index: -1;}
@@ -378,8 +378,7 @@ color: #121212;}
 .sub .paging a.next-btn{margin-left: 25px;}
 .sub .paging a.prev-btn i{transform: rotate(180deg);}
 .sub .paging a.prev-btn i,.sub .paging a.next-btn i{display: inline-block; background: url('/public/img/common/ico-p-arrow.svg') no-repeat; width: 10px; height: 18px;}
-.sub .links{background: #EC6800; padding: 15px 0; border-radius: 10px; position: absolute; z-index: 1; top: 30px; left: 50%; opacity: 0; visibility: hidden; transition: all 0.5s; right: -15px;
-width: 130px; margin-left: -65px;}
+.sub .links{background: #EC6800; padding: 15px 0; border-radius: 10px; position: absolute; z-index: 1; top: 30px; left: 50%; opacity: 0; visibility: hidden; transition: all 0.5s;transform: translate(-50%,0);}
 .sub .links.active{opacity: 1; visibility: visible;}
 .sub .links li{text-align: center;}
 .sub .links a{font-size: 16px; font-weight: 500; color: rgba(255,255,252,0.5) !important; margin-top: 20px; display: inline-block; transition: all 0.2s; word-break: keep-all;}

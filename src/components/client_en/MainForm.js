@@ -572,9 +572,9 @@ const MainForm = () => {
         <div className="con7">
           <div className="wrap">
             <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-              보도자료
+              NEWS
             </div>
-            <NavLink to="/pr/press-list" className="more">
+            <NavLink to="/en/pr/press-list" className="more">
               <img src="/img/main/ico-plus.svg" alt="" />
             </NavLink>
             <ul data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">

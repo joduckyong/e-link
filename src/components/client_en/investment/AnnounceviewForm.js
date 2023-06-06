@@ -43,7 +43,7 @@ const AnnounceviewForm = () => {
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
-            공고
+            Announcement
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             <li>
@@ -53,52 +53,49 @@ const AnnounceviewForm = () => {
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                투자정보
+                IR Center
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/investment/management" className="on">
-                    투자정보
+                  <NavLink to="/en/company/lselink">
+                    Company
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/investment/management" className="on">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                공고
+                Announcement
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/investment/management">경영정보</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/investment/financial">재무정보</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/investment/credit">공시정보</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/investment/announce" className="on">
-                    공고
+                  <NavLink to="/en/investment/management">
+                    Management Information
                   </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/investment/financial">Financial Information</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/investment/credit">Disclosure Information</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/investment/announce" className="on">Announcement</NavLink>
                 </li>
               </ul>
             </li>
@@ -124,14 +121,14 @@ const AnnounceviewForm = () => {
               </div>
             ))}
             <div className="view-control">
-              <NavLink to={prevBoardId && `/investment/announce-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
-                이전글
+              <NavLink to={prevBoardId && `/en/investment/announce-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
+                Prev
               </NavLink>
-              <NavLink to="/investment/announce" className="list-btn">
-                목록
+              <NavLink to="/en/investment/announce" className="list-btn">
+                List
               </NavLink>
-              <NavLink to={nextBoardId && `/investment/announce-view/${nextBoardId}`} className={classnames('next-btn', { disable: !nextBoardId })}>
-                다음글
+              <NavLink to={nextBoardId && `/en/investment/announce-view/${nextBoardId}`} className={classnames('next-btn', { disable: !nextBoardId })}>
+                Next
               </NavLink>
             </div>
           </div>

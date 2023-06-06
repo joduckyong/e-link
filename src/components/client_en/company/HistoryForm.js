@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectClientOutline } from 'store/outlineEnReducer';
 import AOS from 'aos';
 import classnames from 'classnames';
 import { ParallaxProvider, Parallax } from 'react-skrollr';
@@ -11,6 +13,15 @@ import 'swiper/css/pagination';
 const HistoryForm = () => {
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const outlineList = useSelector((state) => state.outlineReducer.data);
+  // const totalCount = useSelector((state) => state.boardReducer.totalCount);
+
+  useEffect(() => {
+    dispatch(selectClientOutline());
+  }, [dispatch]);
 
   useEffect(() => {
     AOS.init();
@@ -32,65 +43,62 @@ const HistoryForm = () => {
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            연혁
+            History
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
             <li>
-              <NavLink to="/">
+              <NavLink to="/en">
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                회사소개
+                Company
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink" className="on">
-                    회사소개
+                  <NavLink to="/en/company/lselink" className="on">
+                    Company
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
-                </li>
-                <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                연혁
+                History
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/company/lselink">LS E-Link</NavLink>
+                  <NavLink to="/en/company/lselink">LS E-Link</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/company/vision">비전</NavLink>
+                  <NavLink to="/en/company/vision">Vision</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/company/history" className="on">
-                    연혁
+                  <NavLink to="/en/company/history" className="on">
+                    History
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/company/identity">CI·BI</NavLink>
+                  <NavLink to="/en/company/identity">CI·BI</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/company/businessplace">사업장 안내</NavLink>
+                  <NavLink to="/en/company/businessplace">Locations</NavLink>
                 </li>
               </ul>
             </li>
@@ -105,59 +113,24 @@ const HistoryForm = () => {
               <Parallax>
                 <div className="t-wrap" id="y-1" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
                   <div className="title" data-top="transform:translateY(0%);" data-800-top="transform:translateY(50px);">
-                    <div className="time">2022 - 현재</div>
+                    <div className="time">2022 - </div>
                     <div className="time-tit">
                       LS E-Link
                       <br />
-                      미래 종합 에너지 솔루션
-                      <br />
-                      기업의 탄생
+                      Total Energy Solution Company founded
                     </div>
                   </div>
                   <ul className="time-list" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                    {/* <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>23.01.00</dt>
-                        <dd>
-                          <p>OCPP 1.6 인증</p>
-							{/*<div className="img">
-                            <img src="/img/sub/y-1-img1.png" alt="" />
-                          </div>
-                        </dd>
-                      </dl>
-                    </li> */}
-                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>23.02.20</dt>
-                        <dd>
-                          <p>전기공사업 등록</p>
-                        </dd>
-                      </dl>
-                    </li>
-                    <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>23.01.05</dt>
-                        <dd>
-                          <p>관제시스템 구축 완료</p>
-                        </dd>
-                      </dl>
-                    </li>
-					<li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>22.07.08</dt>
-                        <dd>
-                          <p>전기차충전 신사업 등록</p>
-                        </dd>
-                      </dl>
-                    </li>
-					<li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
-                      <dl>
-                        <dt>22.05.02</dt>
-                        <dd>
-                          <p>엘이스이링크(주) 설립</p>
-                        </dd>
-                      </dl>
-                    </li>
+                    {outlineList.map((list, index) => (
+                      <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
+                        <dl>
+                          <dt>{list.companyYear}.{list.companyMonth}.{list.companyDay}</dt>
+                          <dd>
+                            <p>{list.companyContents}</p>
+                          </dd>
+                        </dl>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </Parallax>

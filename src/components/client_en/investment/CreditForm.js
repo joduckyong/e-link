@@ -58,66 +58,63 @@ const CreditForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            공시정보
+          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">  
+            Disclosure Information
           </h2>
           <p data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            정보제공 : 금융감독원 DART
+            Information provision : Financial Supervisory Service DART
           </p>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
             <li>
-              <NavLink to="/">
+              <NavLink to="/en">
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                투자정보
+                IR Center
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/investment/management" className="on">
-                    투자정보
+                  <NavLink to="/en/company/lselink">
+                    Company
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/investment/management" className="on">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                공시정보
+                Disclosure Information
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/investment/management">경영정보</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/investment/financial">재무정보</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/investment/credit" className="on">
-                    공시정보
+                  <NavLink to="/en/investment/management">
+                    Management Information
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/announce">공고</NavLink>
+                  <NavLink to="/en/investment/financial">Financial Information</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/investment/credit" className="on">Disclosure Information</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/investment/announce">Announcement</NavLink>
                 </li>
               </ul>
             </li>

@@ -36,55 +36,52 @@ const EvchargeForm = () => {
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
             <li>
-              <NavLink to="/">
+              <NavLink to="/en">
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                사업영역
+                Business
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/e-link/evcharge" className="on">
-                    사업영역
+                  <NavLink to="/en/company/lselink">
+                    Company
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge" className="on">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-              E-Link BUSINESS
+              E-Link Business
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/e-link/evcharge" className="on">
-                  E-Link BUSINESS
+                  <NavLink to="/en/business/e-link/evcharge" className="on">
+                  E-Link Business
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/transportation">전기차 충전사업</NavLink>
+                  <NavLink to="/en/business/ev/transportation">EV charging business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
+                  <NavLink to="/en/business/renewable/renewable">Renewable energy business</NavLink>
                 </li>
               </ul>
             </li>
@@ -95,15 +92,15 @@ const EvchargeForm = () => {
         <div className="nav-slide">
           <ul className="swiper-wrapper">
             <li className="swiper-slide on">
-              <NavLink to="/business/e-link/evcharge" className="on">
-                B2B 특화 전기차 <span className="mo-br">충전 사업</span>
+              <NavLink to="/en/business/e-link/evcharge" className="on">
+                B2B business
               </NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/business/e-link/control">관제시스템 구축</NavLink>
+              <NavLink to="/en/business/e-link/control">EVCS</NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/business/e-link/renewable">신재생에너지 융합형 충전 인프라 구축</NavLink>
+              <NavLink to="/en/business/e-link/renewable">Renewable energy converged charging infrastructure</NavLink>
             </li>
           </ul>
         </div>
@@ -113,7 +110,7 @@ const EvchargeForm = () => {
           <div className="business-wrap">
             <div className="wrap">
               <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                B2B 특화 전기차 충전 사업
+                B2B specialized EV charging business
               </h3>
             </div>
           </div>
@@ -122,10 +119,10 @@ const EvchargeForm = () => {
             <div className="wrap pb70">
               <div className="infor mt0">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  B2B 특화 전기차 충전 사업자
+                  B2B specialized EV charging business
                 </div>
                 <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                LS그룹의 축적된 전기 기술력을 바탕으로 Fleet 운영에 최적화된 충전 솔루션 및 배터리 관리 서비스를 제공합니다.
+                We provide ev charging solutions and the battery management services, the accumulated LS electrical technology, for fleet operation.
                 </div>
               </div>
               <div className="img img1">
@@ -137,10 +134,10 @@ const EvchargeForm = () => {
               </div>
               <div className="infor">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  충전 인프라 구축, 위탁운영 사업
+                  Establishment of charging infrastructure, consignment operation business
                 </div>
                 <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                사업성 검토, 인허가, 인프라 구축, 운영 및 Financing까지 Total Solution을 제공합니다.
+                  We provide a total solution from business feasibility review, licensing, infrastructure construction, operation and financing.
                 </div>
               </div>
               <div className="img img2">
