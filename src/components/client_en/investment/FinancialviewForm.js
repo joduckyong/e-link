@@ -122,7 +122,7 @@ const FinancialviewForm = () => {
             ))}
             <div className="view-control">
               <NavLink to={prevBoardId && `/en/investment/financial-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
-                Prev
+                Previous
               </NavLink>
               <NavLink to="/en/investment/financial" className="list-btn">
                 List

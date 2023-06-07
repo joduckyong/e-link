@@ -122,7 +122,7 @@ const AnnounceviewForm = () => {
             ))}
             <div className="view-control">
               <NavLink to={prevBoardId && `/en/investment/announce-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
-                Prev
+                Previous
               </NavLink>
               <NavLink to="/en/investment/announce" className="list-btn">
                 List

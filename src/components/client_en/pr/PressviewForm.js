@@ -127,7 +127,7 @@ const PressviewForm = () => {
             </div>
             <div className="view-control">
               <NavLink to={prevBoardId && `/en/pr/press-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
-                Prev
+                Previous
               </NavLink>
               <NavLink to="/en/pr/press-list" className="list-btn">
                 List

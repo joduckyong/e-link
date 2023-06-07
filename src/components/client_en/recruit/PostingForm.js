@@ -73,59 +73,52 @@ const PostingForm = () => {
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
-            채용공고
+            Job Posting
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             <li>
-              <NavLink to="/">
-                <img src="./../../img/sub/ico-home.svg" alt="" />
+              <NavLink to="/en">
+                <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                채용정보
+                Recruitment
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
+                  <NavLink to="/en/company/lselink">Company</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people" className="on">
-                    채용정보
-                  </NavLink>
+                  <NavLink to="/en/recruit/people" className="on">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
-                </li>
-                <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                채용공고
+                Job Posting
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/recruit/people">인재상</NavLink>
+                  <NavLink to="/en/recruit/people">Ideal Talent</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/benefits">복리후생</NavLink>
+                  <NavLink to="/en/recruit/benefits">Welfare</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/posting" className="on">
-                    채용공고
-                  </NavLink>
+                  <NavLink to="/en/recruit/posting" className="on">Job Posting</NavLink>
                 </li>
               </ul>
             </li>
@@ -136,36 +129,36 @@ const PostingForm = () => {
       <div className="content">
         <div className="wrap">
           <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            LS E-Link는 도전적이고,
+            LS E-Link is waiting for
             <br />
-            창의적인 인재를 기다리고 있습니다.
+            challenging and creative talents.
           </h3>
           <ul className="hire-tab">
             <li className={jobType === '' && 'on'}>
               <NavLink to="" onClick={(e) => setJobType('')}>
-                전체
+                Entire
               </NavLink>
             </li>
             <li className={jobType === '1' && 'on'}>
               <NavLink to="" onClick={(e) => setJobType('1')}>
-                신입
+                Newcomer
               </NavLink>
             </li>
             <li className={jobType === '2' && 'on'}>
               <NavLink to="" onClick={(e) => setJobType('2')}>
-                경력
+                Career
               </NavLink>
             </li>
             <li className={jobType === '3' && 'on'}>
               <NavLink to="" onClick={(e) => setJobType('3')}>
-                인턴
+                Intern
               </NavLink>
             </li>
           </ul>
           <ul className="hire-list">
             {boardList.map((list, index) => (
               <li key={index}>
-                <NavLink to={`/recruit/posting-view/${list.boardId}`}>
+                <NavLink to={`/en/recruit/posting-view/${list.boardId}`}>
                   <div className="division">
                     <span>{getboardType(list.boardType)}</span>
                     <p>
