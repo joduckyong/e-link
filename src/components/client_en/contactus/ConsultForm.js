@@ -96,7 +96,7 @@ const ConsultForm = () => {
     }
 
     if (!acceptFileTypes.test(e.target.files[0].name)) {
-      alert('Only jpg, png, gif, jpeg, pdf, hwp, xlsx, docx, ppt, and pptx files with a maximum size of 50MB or less can be uploaded.');
+      alert('Only jpg, png, gif, jpeg, pdf, hwp, xlsx, docx, ppt, and pptx files can be uploaded.');
       return;
     }
 
