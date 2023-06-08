@@ -76,7 +76,7 @@ const MyPage1Form = () => {
               <Link to="/ev/mypage1">이용내역</Link>
             </li>
             <li>
-              <Link to="/ev/mypage2">ELVIS 캐시</Link>
+              <Link to="">ELVIS 캐시</Link>
             </li>
             <li>
               <Link to="/ev/mypage3">커뮤니티</Link>

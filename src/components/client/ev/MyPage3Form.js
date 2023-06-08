@@ -37,7 +37,7 @@ const MyPage3Form = () => {
               <Link to="/ev/mypage1">이용내역</Link>
             </li>
             <li>
-              <Link to="/ev/mypage2">ELVIS 캐시</Link>
+              <Link to="">ELVIS 캐시</Link>
             </li>
             <li className="active">
               <Link to="/ev/mypage3">커뮤니티</Link>
