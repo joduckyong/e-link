@@ -219,10 +219,18 @@ import LoginEvPage from './pages/client/ev/login/loginPage';
 
 //회원가입 약관동의
 import Join1Page from './pages/client/ev/login/Join1Page';
+//회원가입 약관동의
+import Join1SnsPage from './pages/client/ev/login/Join1SnsPage';
+
 //회원가입 정보입력
 import Join2Page from './pages/client/ev/login/Join2Page';
+//회원가입 정보입력
+import Join2SnsPage from './pages/client/ev/login/Join2SnsPage';
 //회원가입 가입완료
 import Join3Page from './pages/client/ev/login/Join3Page';
+
+//회원가입 가입에러
+import JoinErrorPage from './pages/client/ev/login/JoinErrorPage';
 
 //아이디 찾기
 import FindIdPage from './pages/client/ev/login/FindIdPage';
@@ -427,7 +435,10 @@ const App = () => {
 
         <Route path="/ev/join1" element={<Join1Page />} />
         <Route path="/ev/join2" element={<Join2Page />} />
+        <Route path="/ev/join1Sns" element={<Join1SnsPage />} />
+        <Route path="/ev/join2Sns" element={<Join2SnsPage />} />
         <Route path="/ev/join3" element={<Join3Page />} />
+        <Route path="/ev/joinError" element={<JoinErrorPage />} />
 
         <Route path="/ev/findId" element={<FindIdPage />} />
         <Route path="/ev/findId2" element={<FindId2Page />} />
