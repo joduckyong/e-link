@@ -317,8 +317,8 @@ const Join2Form = () => {
 
     console.log('data : ' + JSON.stringify(res.data));
     console.log('data.status : ' + JSON.stringify(res.data.data.status));
-
-    if (JSON.stringify(res.data.data.status) !== 500) {
+    let dataStatus = JSON.stringify(res.data.data.status);
+    if (dataStatus !== 500) {
       const result = JSON.stringify(res.data.data.principal);
       console.log('result : ' + result);
 
