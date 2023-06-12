@@ -47,7 +47,7 @@ function GoogleRedirect() {
 
           const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
           const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-          const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
+          const USER_NO = await JSON.stringify(resData.data.data.user_name).replace(/"/g, '');
           const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
 
           setAccessEvToken(access_token, expires_in);
