@@ -12,13 +12,13 @@ export function changeFormat(date, format) {
   }
 }
 
-const InquiryInfoForm = () => {
+const BreakdownInfoForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const inquiryList = useSelector((state) => state.EvReducer.data);
+  const breakdownList = useSelector((state) => state.EvReducer.data);
 
-  if(inquiryList.length === 0){  //새로고침 시 목록 페이지 이동
-    window.location.href = '/ev/inquiry';
+  if(breakdownList.length === 0){  //새로고침 시 목록 페이지 이동
+    window.location.href = '/ev/breakdown';
   }
 
   return (
@@ -26,20 +26,20 @@ const InquiryInfoForm = () => {
       <section className="ev-sub-sect">
         <div className="view-wp">
           <div className="ttl-wp">
-            <h2>문의하기</h2>
+            <h2>고장신고</h2>
             <h1></h1>
             <div className="info">
               <p>
-                {inquiryList[id].regUserNm}<span>|</span>
+                {breakdownList[id].regUserNm}<span>|</span>
               </p>
-              <p>{changeFormat(inquiryList[id].regDttm, 'yyyy-MM-DD') || ''}</p>
+              <p>{changeFormat(breakdownList[id].regDttm, 'yyyy-MM-DD') || ''}</p>
             </div>
             <div className="modify-wp">
               <button className="btn">
                 <img src="/img/ev/ev_view_btn.png" alt="" />
               </button>
               <div className="bub" style={{display:'none'}}>
-                <Link className="modify" to="./inquiry_write.html">
+                <Link className="modify" to="./breakdown_write.html">
                   <img src="/img/ev/ev_view_modify.png" alt="" />
                   수정
                 </Link>
@@ -50,17 +50,17 @@ const InquiryInfoForm = () => {
               </div>
             </div>
           </div>
-          <div className="cont-wp" dangerouslySetInnerHTML={{ __html: inquiryList[id].qustCont }}>
+          <div className="cont-wp" dangerouslySetInnerHTML={{ __html: breakdownList[id].reqCont }}>
           </div>
           <div className="nav-wp">
-          <Link className="arrow prev" to={ id < inquiryList.length-1 ? `/ev/inquiryInfo/${Number(id)+1}` : `/ev/inquiryInfo/${id}` }>
+          <Link className="arrow prev" to={ id < breakdownList.length-1 ? `/ev/breakdownInfo/${Number(id)+1}` : `/ev/breakdownInfo/${id}` }>
               <img src="/img/ev/ev_arrow_list.png" alt="화살표 왼쪽" />
               <span>이전글</span>
             </Link>
-            <Link className="list" to="/ev/inquiry">
+            <Link className="list" to="/ev/breakdown">
               목록
             </Link>
-            <Link className="arrow next" to={ id > 0 ? `/ev/inquiryInfo/${Number(id)-1}` : `/ev/inquiryInfo/${id}` }>
+            <Link className="arrow next" to={ id > 0 ? `/ev/breakdownInfo/${Number(id)-1}` : `/ev/breakdownInfo/${id}` }>
               <span>다음글</span>
               <img src="/img/ev/ev_arrow_list.png" alt="화살표 오른쪽" />
             </Link>
@@ -71,4 +71,4 @@ const InquiryInfoForm = () => {
   );
 };
 
-export default InquiryInfoForm;
+export default BreakdownInfoForm;

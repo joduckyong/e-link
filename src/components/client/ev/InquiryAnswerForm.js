@@ -26,15 +26,15 @@ const InquiryInfoForm = () => {
       <section className="ev-sub-sect">
         <div className="view-wp">
           <div className="ttl-wp">
-            <h2>문의하기</h2>
+            <h2>문의하기 답변</h2>
             <h1></h1>
             <div className="info">
               <p>
-                {inquiryList[id].regUserNm}<span>|</span>
+                관리자<span>|</span>
               </p>
-              <p>{changeFormat(inquiryList[id].regDttm, 'yyyy-MM-DD') || ''}</p>
+              <p>{changeFormat(inquiryList[id].uptDttm, 'yyyy-MM-DD') || ''}</p>
             </div>
-            <div className="modify-wp">
+            {/* <div className="modify-wp">
               <button className="btn">
                 <img src="/img/ev/ev_view_btn.png" alt="" />
               </button>
@@ -48,12 +48,12 @@ const InquiryInfoForm = () => {
                   삭제
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
-          <div className="cont-wp" dangerouslySetInnerHTML={{ __html: inquiryList[id].qustCont }}>
+          <div className="cont-wp" dangerouslySetInnerHTML={{ __html: inquiryList[id].qustAns }}>
           </div>
           <div className="nav-wp">
-          <Link className="arrow prev" to={ id < inquiryList.length-1 ? `/ev/inquiryInfo/${Number(id)+1}` : `/ev/inquiryInfo/${id}` }>
+          {/* <Link className="arrow prev" to={ id < inquiryList.length-1 ? `/ev/inquiryInfo/${Number(id)+1}` : `/ev/inquiryInfo/${id}` }>
               <img src="/img/ev/ev_arrow_list.png" alt="화살표 왼쪽" />
               <span>이전글</span>
             </Link>
@@ -63,7 +63,7 @@ const InquiryInfoForm = () => {
             <Link className="arrow next" to={ id > 0 ? `/ev/inquiryInfo/${Number(id)-1}` : `/ev/inquiryInfo/${id}` }>
               <span>다음글</span>
               <img src="/img/ev/ev_arrow_list.png" alt="화살표 오른쪽" />
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>

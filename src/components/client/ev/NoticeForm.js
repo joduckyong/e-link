@@ -39,7 +39,7 @@ const NoticeForm = () => {
               <Link to="/ev/inquiry">문의하기</Link>
             </li>
             <li>
-              <Link to="">고장신고</Link>
+              <Link to="/ev/breakdown">고장신고</Link>
             </li>
           </ul>
           <div className="list-wp">
