@@ -76,7 +76,7 @@ const LoginForm = () => {
         // console.log('expires_in : ' + new Date(JSON.stringify(response.json.data.expires_in)));
         // setRefreshEvToken(JSON.stringify(response.json.data.refresh_token), JSON.stringify(response.json.data.expires_in));
         setAccessEvToken(JSON.stringify(response.json.data.access_token), JSON.stringify(response.json.data.expires_in));
-        setEvUserNo(JSON.stringify(response.json.data.USER_NO));
+        setEvUserNo(JSON.stringify(response.json.data.user_name));
         setRefreshEvToken(JSON.stringify(response.json.data.refresh_token));
 
         dispatch(SET_EV_TOKEN(JSON.stringify(response.json.data.access_token)));

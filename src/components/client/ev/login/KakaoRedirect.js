@@ -58,7 +58,7 @@ function KakaoRedirect() {
           });
 
           setAccessEvToken(JSON.stringify(resData.json.data.access_token), JSON.stringify(resData.json.data.expires_in));
-          setEvUserNo(JSON.stringify(resData.json.data.USER_NO));
+          setEvUserNo(JSON.stringify(resData.json.data.user_name));
           setRefreshEvToken(JSON.stringify(resData.json.data.refresh_token));
 
           navigate('/ev/mypage1', { replace: true });
