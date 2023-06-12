@@ -155,6 +155,9 @@ const Header = () => {
               </div>
             </li>
           </ul>
+          <div className="lang">
+            <NavLink to="/en">ENG</NavLink>
+          </div>
           <NavLink to="" className="menu" onClick={() => setPcMenuClass('on')}>
             <span></span>
           </NavLink>

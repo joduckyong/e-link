@@ -130,6 +130,9 @@ const Header = () => {
               </div>
             </li>
           </ul>
+          <div className="lang">
+            <NavLink to="/">KOR</NavLink>
+          </div>
           <NavLink to="" className="menu" onClick={() => setPcMenuClass('on')}>
             <span></span>
           </NavLink>
@@ -185,7 +188,9 @@ const Header = () => {
                       <NavLink to="/en/business/e-link/control">Establishment of control system</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/en/business/e-link/renewable">Establishment of new and renewable energy convergence charging infrastructure</NavLink>
+                      <NavLink to="/en/business/e-link/renewable">
+                        Establishment of new and renewable energy convergence charging infrastructure
+                      </NavLink>
                     </li>
                   </ul>
                 </li>
