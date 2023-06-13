@@ -14,6 +14,14 @@ function GoogleRedirect() {
   useEffect(() => {
     if (ACCESS_TOKEN !== undefined) {
       async function Login() {
+        const response = await axios({
+          url: `https://www.googleapis.com/userinfo/v2/me?access_token=${ACCESS_TOKEN}`,
+          method: 'GET',
+        });
+
+        console.log('response : ' + response);
+        return;
+
         let data = {
           id: ACCESS_TOKEN,
           snsType: '3',
@@ -95,7 +103,7 @@ function GoogleRedirect() {
 
           const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
           const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-          const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
+          const USER_NO = await JSON.stringify(resData.data.data.user_name).replace(/"/g, '');
           const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
 
           setAccessEvToken(access_token, expires_in);

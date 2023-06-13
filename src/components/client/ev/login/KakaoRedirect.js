@@ -20,12 +20,26 @@ function KakaoRedirect() {
         data: data,
       });
 
-      const ACCESS_TOKEN = JSON.stringify(res.data.data.access_token).replace(/"/g, '');
+      let ACCESS_TOKEN = JSON.stringify(res.data.data.access_token).replace(/"/g, '');
 
       if (ACCESS_TOKEN !== undefined) {
         // const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token);
         // setCookie('refreshToken', REFRESH_TOKEN);
 
+        const newList = { url: 'https://kapi.kakao.com//v2/user/me', urlType: 'none' };
+        const response = await axios({
+          url: `${process.env.REACT_APP_API_URL}/api/ev/common`,
+          method: 'POST',
+          data: newList,
+          headers: {
+            accessEvToken: ACCESS_TOKEN,
+          },
+        });
+
+        console.log('response : ' + JSON.stringify(response));
+        console.log('response.id : ' + JSON.stringify(response.data.data.id));
+
+        ACCESS_TOKEN = JSON.stringify(response.data.data.id);
         let data = {
           id: ACCESS_TOKEN,
           snsType: '2',
@@ -103,7 +117,7 @@ function KakaoRedirect() {
 
         const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
         const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-        const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
+        const USER_NO = await JSON.stringify(resData.data.data.user_name).replace(/"/g, '');
         const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
 
         setAccessEvToken(access_token, expires_in);

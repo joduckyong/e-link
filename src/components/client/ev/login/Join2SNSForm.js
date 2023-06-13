@@ -261,27 +261,9 @@ const Join2SNSForm = () => {
       if (result !== undefined) {
         navigate('/ev/join3', { replace: true });
       } else {
-        await axios({
-          url: `${process.env.REACT_APP_API_URL}/api/phone/phoneDel/${telno}/${snsType}`,
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            Accept: 'application/json',
-          },
-        });
-
         navigate('/ev/joinError', { replace: true });
       }
     } else {
-      await axios({
-        url: `${process.env.REACT_APP_API_URL}/api/phone/phoneDel/${telno}/${snsType}`,
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-          Accept: 'application/json',
-        },
-      });
-
       navigate('/ev/joinError', { replace: true });
     }
   };

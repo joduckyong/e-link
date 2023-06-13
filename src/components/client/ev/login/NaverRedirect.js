@@ -20,12 +20,26 @@ function NaverRedirect() {
         data: data,
       });
 
-      const ACCESS_TOKEN = JSON.stringify(res.data.data.access_token).replace(/"/g, '');
+      let ACCESS_TOKEN = JSON.stringify(res.data.data.access_token).replace(/"/g, '');
       // const REFRESH_TOKEN = JSON.stringify(res.data.data.refresh_token);
 
       if (ACCESS_TOKEN !== undefined) {
         // setCookie('refreshToken', REFRESH_TOKEN);
 
+        const newList = { url: 'https://openapi.naver.com/v1/nid/me', urlType: 'none' };
+        const response = await axios({
+          url: `${process.env.REACT_APP_API_URL}/api/ev/common`,
+          method: 'POST',
+          data: newList,
+          headers: {
+            accessEvToken: ACCESS_TOKEN,
+          },
+        });
+
+        console.log('response : ' + JSON.stringify(response));
+        console.log('response.id : ' + JSON.stringify(response.data.data.response.id));
+
+        ACCESS_TOKEN = JSON.stringify(response.data.data.response.id).replace(/"/g, '');
         let data = {
           id: ACCESS_TOKEN,
           snsType: '1',
@@ -105,7 +119,7 @@ function NaverRedirect() {
 
         const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
         const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-        const USER_NO = await JSON.stringify(resData.data.data.USER_NO).replace(/"/g, '');
+        const USER_NO = await JSON.stringify(resData.data.data.user_name).replace(/"/g, '');
         const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
 
         setAccessEvToken(access_token, expires_in);
