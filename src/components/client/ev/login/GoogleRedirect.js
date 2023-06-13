@@ -9,7 +9,7 @@ function GoogleRedirect() {
   let access_token = token[1].split('=');
   const navigate = useNavigate();
 
-  const ACCESS_TOKEN = access_token[1];
+  let ACCESS_TOKEN = access_token[1];
 
   useEffect(() => {
     if (ACCESS_TOKEN !== undefined) {
@@ -20,8 +20,10 @@ function GoogleRedirect() {
         });
 
         console.log('response : ' + response);
-        return;
+        console.log('response : ' + JSON.stringify(response));
+        console.log('response : ' + JSON.stringify(response.data.id));
 
+        ACCESS_TOKEN = JSON.stringify(response.data.id).replace(/"/g, '');
         let data = {
           id: ACCESS_TOKEN,
           snsType: '3',
