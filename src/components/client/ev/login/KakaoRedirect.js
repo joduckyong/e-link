@@ -75,6 +75,8 @@ function KakaoRedirect() {
           setEvUserNo(JSON.stringify(resData.json.data.user_name));
           setRefreshEvToken(JSON.stringify(resData.json.data.refresh_token));
 
+          localStorage.removeItem('snsType');
+          localStorage.removeItem('snsToken');
           navigate('/ev/mypage1', { replace: true });
         } else {
           //회원가입
@@ -124,6 +126,8 @@ function KakaoRedirect() {
         setEvUserNo(USER_NO);
         setRefreshEvToken(refresh_token);
 
+        localStorage.removeItem('snsType');
+        localStorage.removeItem('snsToken');
         navigate('/ev/mypage1', { replace: true });
       } else {
         //회원가입

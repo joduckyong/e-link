@@ -97,6 +97,8 @@ function AppleRedirect() {
           setEvUserNo(USER_NO);
           setRefreshEvToken(refresh_token);
 
+          localStorage.removeItem('snsType');
+          localStorage.removeItem('snsToken');
           navigate('/ev/mypage1', { replace: true });
         } else {
           //회원가입
@@ -145,6 +147,8 @@ function AppleRedirect() {
           setEvUserNo(USER_NO);
           setRefreshEvToken(refresh_token);
 
+          localStorage.removeItem('snsType');
+          localStorage.removeItem('snsToken');
           navigate('/ev/mypage1', { replace: true });
         } else {
           //회원가입
