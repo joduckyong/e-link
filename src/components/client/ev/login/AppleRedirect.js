@@ -11,8 +11,14 @@ function AppleRedirect() {
 
   const navigate = useNavigate();
 
-  const ACCESS_TOKEN = access_token;
-  //  console.log('ACCESS_TOKEN : ' + ACCESS_TOKEN);
+  let ACCESS_TOKEN;
+
+  let jsonToken = JSON.parse(access_token);
+  for (var key in jsonToken) {
+    if (key === 'sub') {
+      ACCESS_TOKEN = jsonToken[key];
+    }
+  }
 
   useEffect(() => {
     if (ACCESS_TOKEN !== undefined) {
