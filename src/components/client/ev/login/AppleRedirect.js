@@ -3,6 +3,40 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setAccessEvToken, setEvUserNo, setRefreshEvToken } from '../../../../storage/EvCookie';
 
+function b64DecodeUnicode(str) {
+  return decodeURIComponent(
+    atob(str).replace(/(.)/g, function (m, p) {
+      var code = p.charCodeAt(0).toString(16).toUpperCase();
+      if (code.length < 2) {
+        code = '0' + code;
+      }
+      return '%' + code;
+    }),
+  );
+}
+
+function base64_url_decode(str) {
+  var output = str.replace(/-/g, '+').replace(/_/g, '/');
+  switch (output.length % 4) {
+    case 0:
+      break;
+    case 2:
+      output += '==';
+      break;
+    case 3:
+      output += '=';
+      break;
+    default:
+      throw 'Illegal base64url string!';
+  }
+
+  try {
+    return b64DecodeUnicode(output);
+  } catch (err) {
+    return atob(output);
+  }
+}
+
 function AppleRedirect() {
   let code = new URL(window.location.href).toString().replace('#', '&');
   let token = code.split('&');
@@ -10,10 +44,10 @@ function AppleRedirect() {
   let access_token = arrToken.toString().replace('id_token,', '');
 
   const navigate = useNavigate();
+  let result = base64_url_decode(access_token.split('.')[1]);
+  let jsonToken = JSON.parse(result);
 
   let ACCESS_TOKEN;
-
-  let jsonToken = JSON.parse(access_token);
   for (var key in jsonToken) {
     if (key === 'sub') {
       ACCESS_TOKEN = jsonToken[key];
