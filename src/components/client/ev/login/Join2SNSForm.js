@@ -190,6 +190,7 @@ const Join2SNSForm = () => {
       snsType: snsType,
     };
 
+    console.log('snsToken : ' + snsToken);
     const res = await axios({
       url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/telno/snsToken/snsType`,
       method: 'POST',
@@ -234,10 +235,10 @@ const Join2SNSForm = () => {
       telcom: dataTelcom,
       ci: dataCi,
       roleId: 'elinkuser',
-      google: localStorage.getItem('snsType') === 'google' && snsToken,
-      naver: localStorage.getItem('snsType') === 'naver' && snsToken,
-      kakao: localStorage.getItem('snsType') === 'kakao' && snsToken,
-      apple: localStorage.getItem('snsType') === 'apple' && snsToken,
+      naver: snsType === '1' ? snsToken : '',
+      kakao: snsType === '2' ? snsToken : '',
+      google: snsType === '3' ? snsToken : '',
+      apple: snsType === '4' ? snsToken : '',
     };
 
     const res = await axios({
