@@ -49,6 +49,8 @@ const LoginForm = () => {
       setEvUserNo(USER_NO);
       setRefreshEvToken(refresh_token);
 
+      localStorage.removeItem('snsType');
+      localStorage.removeItem('snsToken');
       navigate('/ev/mypage1', { replace: true });
     } else {
       let pageUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=NAVER`;
@@ -137,6 +139,8 @@ const LoginForm = () => {
       setEvUserNo(USER_NO);
       setRefreshEvToken(refresh_token);
 
+      localStorage.removeItem('snsType');
+      localStorage.removeItem('snsToken');
       navigate('/ev/mypage1', { replace: true });
     } else {
       let pageUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&scope=https://www.googleapis.com/auth/userinfo.email`;
@@ -180,6 +184,8 @@ const LoginForm = () => {
       setEvUserNo(USER_NO);
       setRefreshEvToken(refresh_token);
 
+      localStorage.removeItem('snsType');
+      localStorage.removeItem('snsToken');
       navigate('/ev/mypage1', { replace: true });
     } else {
       let pageUrl = `https://appleid.apple.com/auth/authorize?response_type=code id_token&response_mode=fragment&client_id=${process.env.REACT_APP_APPLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_APPLE_REDIRECT_URI}&usePopup=false`;
