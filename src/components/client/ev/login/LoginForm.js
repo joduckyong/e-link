@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -12,191 +11,10 @@ import { encrypt } from '../../../../api/crypto';
 import { useCookies } from 'react-cookie';
 
 const LoginForm = () => {
-  const ACCESS_TOKEN = localStorage.getItem('snsToken');
-
-  const naverAuth = async () => {
-    let data = {
-      id: ACCESS_TOKEN,
-      snsType: '1',
-    };
-    const user = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
-      method: 'POST',
-      data: data,
-    });
-
-    if (user.data.data !== undefined) {
-      let data = {
-        login_type: 'naver',
-        password: ACCESS_TOKEN,
-        grant_type: 'password',
-        scope: 'mobileclient',
-        url: '/auth/oauth/token',
-      };
-
-      const resData = await axios({
-        url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
-        method: 'POST',
-        data: data,
-      });
-
-      const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
-      const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-      const USER_NO = await JSON.stringify(resData.data.data.user_name).replace(/"/g, '');
-      const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
-
-      setAccessEvToken(access_token, expires_in);
-      setEvUserNo(USER_NO);
-      setRefreshEvToken(refresh_token);
-
-      localStorage.removeItem('snsType');
-      localStorage.removeItem('snsToken');
-      navigate('/ev/mypage1', { replace: true });
-    } else {
-      let pageUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=NAVER`;
-      document.location.href = pageUrl;
-    }
-  };
-
-  const kakaoAuth = async () => {
-    let data = {
-      id: ACCESS_TOKEN,
-      snsType: '2',
-    };
-
-    const user = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
-      method: 'POST',
-      data: data,
-    });
-
-    if (user.data.data !== undefined) {
-      let data = {
-        login_type: 'kakao',
-        password: ACCESS_TOKEN,
-        grant_type: 'password',
-        scope: 'mobileclient',
-        url: '/auth/oauth/token',
-      };
-
-      const resData = await axios({
-        url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
-        method: 'POST',
-        data: data,
-      });
-
-      const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
-      const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-      const USER_NO = await JSON.stringify(resData.data.data.user_name).replace(/"/g, '');
-      const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
-
-      setAccessEvToken(access_token, expires_in);
-      setEvUserNo(USER_NO);
-      setRefreshEvToken(refresh_token);
-
-      localStorage.removeItem('snsType');
-      localStorage.removeItem('snsToken');
-      navigate('/ev/mypage1', { replace: true });
-    } else {
-      let pageUrl = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
-      document.location.href = pageUrl;
-    }
-  };
-
-  const googleAuth = async () => {
-    let data = {
-      id: ACCESS_TOKEN,
-      snsType: '3',
-    };
-
-    const user = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
-      method: 'POST',
-      data: data,
-    });
-
-    if (user.data.data !== undefined) {
-      let data = {
-        login_type: 'google',
-        password: ACCESS_TOKEN,
-        grant_type: 'password',
-        scope: 'mobileclient',
-        url: '/auth/oauth/token',
-      };
-
-      const resData = await axios({
-        url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
-        method: 'POST',
-        data: data,
-      });
-
-      const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
-      const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-      const USER_NO = await JSON.stringify(resData.data.data.user_name).replace(/"/g, '');
-      const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
-
-      setAccessEvToken(access_token, expires_in);
-      setEvUserNo(USER_NO);
-      setRefreshEvToken(refresh_token);
-
-      localStorage.removeItem('snsType');
-      localStorage.removeItem('snsToken');
-      navigate('/ev/mypage1', { replace: true });
-    } else {
-      let pageUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&scope=https://www.googleapis.com/auth/userinfo.email`;
-      document.location.href = pageUrl;
-    }
-  };
-
-  const appleAuth = async () => {
-    let data = {
-      id: ACCESS_TOKEN,
-      snsType: '4',
-    };
-
-    const user = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
-      method: 'POST',
-      data: data,
-    });
-
-    if (user.data.data !== undefined) {
-      let data = {
-        login_type: 'apple',
-        password: ACCESS_TOKEN,
-        grant_type: 'password',
-        scope: 'mobileclient',
-        url: '/auth/oauth/token',
-      };
-
-      const resData = await axios({
-        url: `${process.env.REACT_APP_API_URL}/api/ev/auth`,
-        method: 'POST',
-        data: data,
-      });
-
-      const access_token = await JSON.stringify(resData.data.data.access_token).replace(/"/g, '');
-      const expires_in = await JSON.stringify(resData.data.data.expires_in).replace(/"/g, '');
-      const USER_NO = await JSON.stringify(resData.data.data.user_name).replace(/"/g, '');
-      const refresh_token = await JSON.stringify(resData.data.data.refresh_token).replace(/"/g, '');
-
-      setAccessEvToken(access_token, expires_in);
-      setEvUserNo(USER_NO);
-      setRefreshEvToken(refresh_token);
-
-      localStorage.removeItem('snsType');
-      localStorage.removeItem('snsToken');
-      navigate('/ev/mypage1', { replace: true });
-    } else {
-      let pageUrl = `https://appleid.apple.com/auth/authorize?response_type=code id_token&response_mode=fragment&client_id=${process.env.REACT_APP_APPLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_APPLE_REDIRECT_URI}&usePopup=false`;
-      document.location.href = pageUrl;
-    }
-  };
-
-  // const NAVER_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=NAVER`;
-  // const KAKAO_URI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
-  // const GOOGLE_URI = `https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&scope=https://www.googleapis.com/auth/userinfo.email`;
-  // const APPLE_URI = `https://appleid.apple.com/auth/authorize?response_type=code id_token&response_mode=fragment&client_id=${process.env.REACT_APP_APPLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_APPLE_REDIRECT_URI}&usePopup=false`;
+  const NAVER_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=NAVER`;
+  const KAKAO_URI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
+  const GOOGLE_URI = `https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&scope=https://www.googleapis.com/auth/userinfo.email`;
+  const APPLE_URI = `https://appleid.apple.com/auth/authorize?response_type=code id_token&response_mode=fragment&client_id=${process.env.REACT_APP_APPLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_APPLE_REDIRECT_URI}&usePopup=false`;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -336,16 +154,16 @@ const LoginForm = () => {
             <h2>SNS 로그인</h2>
             <ul className="sns-list">
               <li>
-                <a href="javascript:void(0);" onClick={naverAuth}></a>
+                <a href={NAVER_URI}></a>
               </li>
               <li>
-                <a href="javascript:void(0);" onClick={kakaoAuth}></a>
+                <a href={KAKAO_URI}></a>
               </li>
               <li>
-                <a href="javascript:void(0);" onClick={googleAuth}></a>
+                <a href={GOOGLE_URI}></a>
               </li>
               <li>
-                <a href="javascript:void(0);" onClick={appleAuth}></a>
+                <a href={APPLE_URI}></a>
               </li>
             </ul>
           </div>
