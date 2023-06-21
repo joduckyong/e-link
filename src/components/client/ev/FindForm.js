@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectEv } from 'store/EvReducer';
 import { Container as MapDiv, NaverMap, useNavermaps, Marker, Overlay, useMap } from 'react-naver-maps';
 import {makeMarkerClustering} from 'common/marker-cluster';
 
+// function getBoundsData(bounds, data, getDataInBounds) {
+//   let __data = data.filter(e => (e.locInfo.split(",")[0] >= bounds.getMin()._lat && e.locInfo.split(",")[0] <= bounds.getMax()._lat ));
+//   getDataInBounds(__data);
+//   // console.log(__data);
+// }
 
-
-function getBoundsData(bounds, data, getDataInBounds) {
-  let __data = data.filter(e => (e.locInfo.split(",")[0] >= bounds.getMin()._lat && e.locInfo.split(",")[0] <= bounds.getMax()._lat ));
-  getDataInBounds(__data);
-  // console.log(__data);
-}
-
-const MarkerCluster = ({data, getDataInBounds}) => {
+const MarkerCluster = ({data}) => {
 
   const navermaps = useNavermaps();
   const map = useMap();
@@ -33,7 +33,7 @@ const MarkerCluster = ({data, getDataInBounds}) => {
   
   // const data = _data;
 
-  const [cluster] = useState(() => {
+  const clustering = () => {
     const markers = [];
 
     for (var i = 0, ii = data.length; i < ii; i++) {
@@ -96,11 +96,17 @@ const MarkerCluster = ({data, getDataInBounds}) => {
     });
 
     return markerClustering
-  });
+  }
 
-  navermaps.Event.addListener(map, "bounds_changed", function(bounds) {
-    getBoundsData(bounds, data, getDataInBounds);
-  });
+  const [cluster, setCluster] = useState(() => clustering());
+
+  useEffect(() => {
+    setCluster(clustering());
+}, [data]);
+
+  // navermaps.Event.addListener(map, "bounds_changed", function(bounds) {
+  //   getBoundsData(bounds, data, getDataInBounds);
+  // });
 
   return <Overlay element={cluster} />
 }
@@ -664,20 +670,44 @@ const FindForm = () => {
 
   const navermaps = useNavermaps();
 
+  const dispatch = useDispatch();
+  const findList = useSelector((state) => state.EvReducer.data);
+
   const [draggable, setDraggable] = useState(true);
   const [disableKineticPan, setDisableKineticPan] = useState(true);
   const [tileTransition, setTileTransition] = useState(true);
   const [minZoom, setMinZoom] = useState(7);
   const [scaleControl, setScaleControl] = useState(true);
-  const [dataInBounds, setDataInBounds] = useState(_data);
+  // const [dataInBounds, setDataInBounds] = useState(findList);
   const [mouseOverMarker, setMouseOverMarker] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState(null);
+  const [type, setType] = useState('name');
 
   const handleZoomChanged = useCallback((zoom) => {
     console.log(`zoom: ${zoom}`)
   }, []);
 
-  const getDataInBounds = (d) => {
-    setDataInBounds(d);
+  // const getDataInBounds = (d) => {
+  //   setDataInBounds(d);
+  // }
+
+  const onSearch = () => {
+    const url = '/api/m-service-mobile/rechgst/searchRechgst';
+    const keywordName = type === 'name' ? searchKeyword : '';
+    const keywordAddr = type === 'addr' ? searchKeyword : '';
+    const newList = { url: url, rechgstNm: keywordName, addr: keywordAddr };
+    dispatch(selectEv(newList));
+  };
+
+  const onKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      onSearch();
+    }
+  };
+
+  const btnTab = (type) => {
+    setType(type);
+    setSearchKeyword('');
   }
 
   return (
@@ -689,18 +719,23 @@ const FindForm = () => {
               ELVIS 충전소 찾기<div className="mo-close"></div>
             </h1>
             <div className="search-wp">
-              <input type="text" />
-              <button className="sbtn">
+              <input
+                  type="text"
+                  onChange={(e) => setSearchKeyword(e.target.value)}
+                  value={searchKeyword || ''}
+                  onKeyPress={onKeyPress}
+              />
+              <button className="sbtn" onClick={() => onSearch()}>
                 <img src="/img/common/ico-search.svg" alt="" />
               </button>
             </div>
           </div>
           <ul className="tab-link">
-            <li className="active">충전소명({dataInBounds.length})</li>
-            <li>지역명(50)</li>
+            <li className={type === 'name' ? 'active' : ''} onClick={() => btnTab('name')}>충전소명</li>
+            <li className={type === 'addr' ? 'active' : ''} onClick={() => btnTab('addr')}>지역명</li>
           </ul>
           <ul className="tab-cont">
-          {dataInBounds.map((list, index) => (
+          {findList.map((list, index) => (
             <li 
               key={index} 
               onMouseOver={() => setMouseOverMarker(list.locInfo)} 
@@ -712,62 +747,6 @@ const FindForm = () => {
               </h3>
             </li>
           ))}
-            {/* <li className="active">
-              <h2>송파레미니스아파트 102동</h2>
-              <p>서울특별시 송파구 성내천로 6 (오금동, 송파레미니스) </p>
-              <h3 className="orange">
-                <div className="cir"></div>충전가능(완속2)
-              </h3>
-            </li>
-            <li>
-              <h2>송파레미니스아파트 102동</h2>
-              <p>서울특별시 송파구 성내천로 6 (오금동, 송파레미니스) </p>
-              <h3 className="blue">
-                <div className="cir"></div>충전대기
-              </h3>
-            </li>
-            <li>
-              <h2>송파레미니스아파트 102동</h2>
-              <p>서울특별시 송파구 성내천로 6 (오금동, 송파레미니스) </p>
-              <h3 className="gray">
-                <div className="cir"></div>점검중
-              </h3>
-            </li>
-            <li>
-              <h2>송파레미니스아파트 102동</h2>
-              <p>서울특별시 송파구 성내천로 6 (오금동, 송파레미니스) </p>
-              <h3 className="orange">
-                <div className="cir"></div>충전가능(완속2)
-              </h3>
-            </li>
-            <li>
-              <h2>송파레미니스아파트 102동</h2>
-              <p>서울특별시 송파구 성내천로 6 (오금동, 송파레미니스) </p>
-              <h3 className="blue">
-                <div className="cir"></div>충전대기
-              </h3>
-            </li>
-            <li>
-              <h2>송파레미니스아파트 102동</h2>
-              <p>서울특별시 송파구 성내천로 6 (오금동, 송파레미니스) </p>
-              <h3 className="orange">
-                <div className="cir"></div>충전가능(완속2)
-              </h3>
-            </li>
-            <li>
-              <h2>송파레미니스아파트 102동</h2>
-              <p>서울특별시 송파구 성내천로 6 (오금동, 송파레미니스) </p>
-              <h3 className="orange">
-                <div className="cir"></div>충전가능(완속2)
-              </h3>
-            </li>
-            <li>
-              <h2>송파레미니스아파트 102동</h2>
-              <p>서울특별시 송파구 성내천로 6 (오금동, 송파레미니스) </p>
-              <h3 className="gray">
-                <div className="cir"></div>점검중
-              </h3>
-            </li> */}
           </ul>
         </article>
 
@@ -810,7 +789,7 @@ const FindForm = () => {
                 mapDataControl={scaleControl}
                 // mapTypeControl={scaleControl}
               >
-                <MarkerCluster data={_data} getDataInBounds={getDataInBounds}/>
+                <MarkerCluster data={findList}/>
                 <Marker
                   position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
                   animation={1}
