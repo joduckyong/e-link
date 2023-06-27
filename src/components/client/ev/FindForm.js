@@ -101,8 +101,9 @@ const MarkerCluster = ({data}) => {
   const [cluster, setCluster] = useState(() => clustering());
 
   useEffect(() => {
+    cluster.setMap(null); //클러스터링 초기화
     setCluster(clustering());
-}, [data]);
+  }, [data]);
 
   // navermaps.Event.addListener(map, "bounds_changed", function(bounds) {
   //   getBoundsData(bounds, data, getDataInBounds);
