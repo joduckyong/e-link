@@ -485,6 +485,10 @@ const Header = () => {
               </div>
             </li>
           </ul>
+          <div className="lang-btn">
+            <NavLink to="/">KOR</NavLink>
+            <NavLink to="/en">ENG</NavLink>
+          </div>
         </div>
       </div>
     </header>

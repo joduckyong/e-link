@@ -13,6 +13,7 @@ html{overflow-x: hidden;}
 header{ position: fixed; top: 0; left: 0; right: 0; background: #FFF; z-index: 2; border-bottom: 1px #E8E8E8 solid; z-index: 10;}
 header.on .gnb:before{visibility: visible; opacity: 1; }
 header .wrap{width: 1760px; display: flex; justify-content: space-between; align-items: center; margin: 0 auto; align-items: center;}
+header h1 {margin-right: 9%;}
 header .gnb{display: flex; align-items: center;}
 header .gnb:before{content: ''; position: absolute; left: 0; right: 0; top: 99px; background: #FFF; height: 320px; visibility: hidden; opacity: 0;transition: all 0.3s ease-out; border-bottom:1px solid #e8e8e8;}
 header .gnb>li{/*margin-left: 90px;*/ position: relative; height: 100%;}
@@ -32,7 +33,7 @@ header .pc-menu .lang a {display: inline-block;transition: all 0.2s;font-size: 1
 header .pc-menu .lang:hover {border: 1px solid #EC6800;background-color: #EC6800;}
 header .pc-menu .lang:hover a {color: #fff;}
 
-header .pc-menu a.menu{position: relative; height: 20px; display: inline-block; width: 28px;margin-left:122px;}
+header .pc-menu a.menu{position: relative; height: 20px; display: inline-block; width: 28px;margin-left:34px;}
 header .pc-menu a.menu:before{content: ''; display: inline-block; width: 100%; height: 2px; background: #111; position: absolute; top: 0; left: 0; transition: 0.3s}
 header .pc-menu a.menu:after{content: ''; display: inline-block; width: 100%; height: 2px; background: #111; position: absolute; bottom: 0; left: 0; transition: 0.3s}
 header .pc-menu a.menu span{position: absolute; display: inline-block; width: 21px; height: 2px; top: 50%; right: 0; background: #111; margin-top: -1px; transition: 0.3s}
