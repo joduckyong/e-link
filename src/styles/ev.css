@@ -130,10 +130,13 @@
 .ev-find-sect .ttl-wp .search-wp .sbtn{width:24px;height:24px;}
 .ev-find-sect .ttl-wp .search-wp .sbtn img{width:100%;}
 .ev-find-sect .tab-link{display:flex;width:100%;}
+.ev-find-sect .tab-link{display:flex;width:100%;}
 .ev-find-sect .tab-link li{flex:1;display:flex;justify-content:center;align-items:center;height: 50px;background: #F7F9FA;border-bottom: 1px solid #EC6800;font-weight: 600;font-size: 16px;color: #888888;cursor:pointer;}
 .ev-find-sect .tab-link li.active{background: #EC6800;color: #FFFFFF;}
-.ev-find-sect .tab-cont{width:100%;height:calc(100% - 220px);overflow-y:auto;-ms-overflow-style: none; /* IE and Edge */scrollbar-width: none; /* Firefox */}
-.ev-find-sect .tab-cont::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera*/}
+.ev-find-sect .tab-wp{width:100%;height:calc(100% - 220px);overflow-y:auto;-ms-overflow-style: none; /* IE and Edge */scrollbar-width: none; /* Firefox */}
+.ev-find-sect .tab-wp::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera*/}
+.ev-find-sect .tab-cont.active{display: block;}
+.ev-find-sect .tab-cont{display: none;}
 .ev-find-sect .tab-cont li{width:100%;height: 140px;padding: 30px 50px;background: #FFFFFF;border-bottom: 1px solid #EAEAEA;}
 .ev-find-sect .tab-cont li h2{font-weight: 500;font-size: 18px;line-height: 21px;}
 .ev-find-sect .tab-cont li p{margin-top: 7px;font-weight: 400;font-size: 13px;line-height: 16px;color: #888888;}
@@ -296,7 +299,7 @@
 
 /* 고객센터 공통 */
 .ev-sub-sect .costomer-wp{}
-.ev-sub-sect .costomer-wp .link-wp{display:flex;justify-content:space-between;width: 523px;margin: 52px auto 0;}
+.ev-sub-sect .costomer-wp .link-wp{display:flex;justify-content:space-between;width: 284px;margin: 52px auto 0;}
 .ev-sub-sect .costomer-wp .link-wp li{position:relative;}
 .ev-sub-sect .costomer-wp .link-wp li a{font-weight: 700;font-size: 26px;line-height: 31px;color: #444444;}
 .ev-sub-sect .costomer-wp .link-wp li.active a{color: #EC6800;}
@@ -661,7 +664,7 @@
 
 
 /* 고객센터 공통 */
-.ev-sub-sect .costomer-wp .link-wp{width: 320px;margin-top: 34px;}
+.ev-sub-sect .costomer-wp .link-wp{width: 177px;margin-top: 34px;}
 .ev-sub-sect .costomer-wp .link-wp li::after{right:-16px;height: 15px;}
 .ev-sub-sect .costomer-wp .link-wp li a{font-size: 18px;line-height: 21px;}
 
