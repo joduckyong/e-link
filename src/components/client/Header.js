@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { getCookieEvToken } from '../../storage/EvCookie';
 
 const Header = () => {
   const [headerClass, setHeaderClass] = useState('');
@@ -8,6 +9,9 @@ const Header = () => {
   const [evMenuActive, setEvMenuActive] = useState(false);
   const [moMenuActive, setMoMenuActive] = useState(false);
   const [moMenuClass, setMoMenuClass] = useState('');
+
+  const token = getCookieEvToken();
+  // console.log('token : ' + token);
 
   const onClickMoMenu = (menu) => {
     if (moMenuClass === menu) {
@@ -136,16 +140,16 @@ const Header = () => {
                   <li>
                     <NavLink to="/ev/index">브랜드 소개</NavLink>
                   </li>
+                  <li style={token === undefined && token === 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                    <NavLink to="/ev/login">로그인</NavLink>
+                  </li>
                   <li>
                     <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/ev/join1">회원가입</NavLink>
-                  </li>
-                  <li>
+                  <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/notice">고객센터</NavLink>
                   </li>
-                  <li>
+                  <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/mypage1">마이페이지</NavLink>
                   </li>
                   <li>
@@ -308,16 +312,16 @@ const Header = () => {
                 <li>
                   <NavLink to="/ev/index">브랜드 소개</NavLink>
                 </li>
+                <li style={token === undefined && token === 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                  <NavLink to="/ev/login">로그인</NavLink>
+                </li>
                 <li>
                   <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
                 </li>
-                <li>
-                  <NavLink to="/ev/join1">회원가입</NavLink>
-                </li>
-                <li>
+                <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
                   <NavLink to="/ev/notice">고객센터</NavLink>
                 </li>
-                <li>
+                <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
                   <NavLink to="/ev/mypage1">마이페이지</NavLink>
                 </li>
                 <li>
@@ -466,16 +470,16 @@ const Header = () => {
                   <li>
                     <NavLink to="/ev/index">브랜드 소개</NavLink>
                   </li>
+                  <li style={token === undefined && token === 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                    <NavLink to="/ev/login">로그인</NavLink>
+                  </li>
                   <li>
                     <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/ev/join1">회원가입</NavLink>
-                  </li>
-                  <li>
+                  <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/notice">고객센터</NavLink>
                   </li>
-                  <li>
+                  <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/mypage1">마이페이지</NavLink>
                   </li>
                   <li>

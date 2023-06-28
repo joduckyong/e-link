@@ -23,7 +23,7 @@ const MyPage3Form = () => {
 
   useEffect(() => {
     const url = '/api/m-service-mobile/community/getFreePosts';
-    const newList = { url: url, category: 0, dttm: '', next: true, size: 10};
+    const newList = { url: url, category: 0, dttm: '', next: true, size: 10 };
     dispatch(selectEv(newList));
   }, [dispatch]);
 
@@ -36,9 +36,9 @@ const MyPage3Form = () => {
             <li>
               <Link to="/ev/mypage1">이용내역</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="">ELVIS 캐시</Link>
-            </li>
+            </li> */}
             <li className="active">
               <Link to="/ev/mypage3">커뮤니티</Link>
             </li>
@@ -46,7 +46,7 @@ const MyPage3Form = () => {
           <div className="list-wp">
             <div className="usage-list-wp">
               <ol className="list usage-list">
-                <li className="ttl" >
+                <li className="ttl">
                   <p>번호</p>
                   <p>사용자 번호</p>
                   <p>사용자 이름</p>
