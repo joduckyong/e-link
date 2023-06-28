@@ -43,10 +43,13 @@ const ControlForm = () => {
         </div>
 
         <div className="txt-area">
-          <ScrollContainer className="scroll-container" horizontal={true}>
+          {/* <ScrollContainer className="scroll-container" horizontal={true}>
             <img src="/img/ev/evc_txt.png" alt="" />
             <img src="/img/ev/evc_txt.png" alt="" />
-          </ScrollContainer>
+          </ScrollContainer>*/}
+          <p data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="500">
+            Time flies, but good news is we are the ELVIS.
+          </p>
         </div>
       </section>
 

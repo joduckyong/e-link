@@ -425,10 +425,12 @@
 
 /* 관제센터 */
 .evc-sect-01{position:relative;background:url('/public/img/ev/evc_sect01_bg.png') center / cover;}
-
 .evc-sect-02{padding: 170px 0 0;background: #121212;color:#fff;}
 .evc-sect-02 h1{font-weight: 600;font-size: 40px;line-height: 60px;text-align: center;}
 .evc-sect-02 p{margin-top: 50px;font-weight: 400;font-size: 20px;line-height: 32px;text-align: center;}
+.evc-sect-02 .txt-area {padding-top: 9%;}
+.evc-sect-02 .txt-area p {font-size: 90px;color: #121212;text-align: center;text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444;font-weight: 700;margin-top: 0;line-height: normal;}
+
 .evc-sect-02 .img{display:block;width:100%;margin-top: 126px;}
 .evc-sect-02 .img.mo-img{display:none;}
 .evc-sect-02 .simply-scroll{width:100%;height:auto;margin: 140px 0 0;}
@@ -504,7 +506,8 @@
 	.ev-sub-sect .mypage-wp .usage-list li p:nth-of-type(4){width:13%;}
 	.ev-sub-sect .mypage-wp .usage-list li p:nth-of-type(5){width:17%;}
 	.ev-sub-sect .mypage-wp .usage-list li p:nth-of-type(3){width:30%;}
-
+	
+	.evc-sect-02 .txt-area p {font-size: 50px;padding: 0 3%;word-break: break-word;}
 }
 
 
@@ -770,6 +773,8 @@
 .evc-sect-03 .link-wp{margin-top: 78px;}
 .evc-sect-03 .link-wp .link{gap:10px;width: 100%;height: 60px;font-size: 14px;}
 .evc-sect-03 .link-wp .link img{width:26px;}
+
+.evc-sect-02 .txt-area p {font-size: 30px;padding: 0 2%;}
 
 /* [e] ELVIS 서브페이지 */
 
