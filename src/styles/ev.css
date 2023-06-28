@@ -136,7 +136,7 @@
 .ev-find-sect .tab-wp{width:100%;height:calc(100% - 220px);overflow-y:auto;-ms-overflow-style: none; /* IE and Edge */scrollbar-width: none; /* Firefox */}
 .ev-find-sect .tab-wp::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera*/}
 .ev-find-sect .tab-cont.active{display: block;}
-.ev-find-sect .tab-cont{display: none;}
+/* .ev-find-sect .tab-cont{display: none;} */
 .ev-find-sect .tab-cont li{width:100%;height: 140px;padding: 30px 50px;background: #FFFFFF;border-bottom: 1px solid #EAEAEA;}
 .ev-find-sect .tab-cont li h2{font-weight: 500;font-size: 18px;line-height: 21px;}
 .ev-find-sect .tab-cont li p{margin-top: 7px;font-weight: 400;font-size: 13px;line-height: 16px;color: #888888;}
