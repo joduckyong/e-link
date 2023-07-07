@@ -55,21 +55,55 @@ const ControlForm = () => {
 
       <section className="evc-sect-03">
         <div className="ev-inner">
-          <h1 data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-            시간은 빠르게 지나가 버립니다.
-            <br />
-            좋은 소식은 말이죠, <br className="mo-br" />
-            우리가 ELVIS라는 것이죠. <br />
-            당신의 소중한 시간, <br className="mo-br" />
-            ELVIS가 빠르게 채워드릴게요.
-          </h1>
           <p data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-            Charge your time with ELVIS
+            ELVIS manages your time.
           </p>
+          <h1 data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+            <span>법인전기차 운영 고객을 위한 </span>
+            <br />
+            '더 차별화된 충전소 솔루션'{' '}
+          </h1>
+          <p className="txt" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+            엘에스이링크는 전국적으로 구축되어 있는
+            <br />
+            버스차고지, 물류센터에 최적화된 전기자동차 <br />
+            솔루션을 제공함으로써 당신만의 전기자동차 <br />
+            Fleet 운영에 한 발 더 다가갑니다.
+          </p>
+
           <div className="link-wp">
-            <a className="link" href="" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+            <a
+              className="link"
+              target="_blank"
+              href="https://elvis.lselink.com/login"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              data-aos-once="true"
+            >
               ELVIS 관제센터 바로가기
               <img src="/img/ev/evc_arrow.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="evc-sect-04">
+        <div className="ev-inner">
+          <div className="con-wp">
+            <span>
+              <img src="/img/ev/ev_sect05_banner_icon.png" alt="" />
+            </span>
+            <div className="txt-wp">
+              <p className="txt">Charge your time with ELVIS</p>
+              <p className="tit">ELVIS - 전기차 충전 & 차계부</p>
+            </div>
+          </div>
+          <div className="btn-wp">
+            <a target="_blank" href="">
+              <img src="/img/ev/ev_sect05_banner_btn1.png" alt="" />
+            </a>
+            <a target="_blank" href="">
+              <img src="/img/ev/ev_sect05_banner_btn2.png" alt="" />
             </a>
           </div>
         </div>

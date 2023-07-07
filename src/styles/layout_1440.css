@@ -1,10 +1,12 @@
 @media only screen and (max-width:1760px){
+	header h1 {margin-right: 5%;}
 	header .wrap{width: 100%; padding: 0px 20px;}
 	header .all-menu{padding: 0px;}
 	header .all-menu .middle,header .all-menu .bottom{padding: 0 20px;}
 }
 @media only screen and (max-width:1460px){
-	header .pc-menu a.menu{margin-left: 0;}
+	/* header .pc-menu a.menu{margin-left: 0;} */
+	
 	.con3 .slide2 .slide-bg{background-position-x: 117% !important;}
 	.main .con3 .slide2 .cloud1{right: 10%;}
 	.main .con3 .slide2 .cloud2{right: 2%;}

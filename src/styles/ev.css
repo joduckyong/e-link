@@ -119,6 +119,18 @@
 .ev-sect-05 .color-wp li h3{font-weight: 600;font-size: 20px;line-height: 24px;}
 .ev-sect-05 .color-wp li p{font-weight: 400;font-size: 16px;line-height: 26px;}
 
+.ev-sect-06 {background: url('/public/img/ev/ev_sect05_banner_bg.jpg') center no-repeat;padding: 115px 0 130px;}
+.ev-sect-06 .con-wp {display: flex;margin-bottom: 45px;}
+.ev-sect-06 .txt-wp {margin-left: 50px;}
+.ev-sect-06 .con-wp .txt {color: #EC6800;font-size: 24px; font-weight: 600; line-height: normal;margin-bottom: 11px;margin-top: 18px;}
+.ev-sect-06 .con-wp .tit {color: #FFF;font-size: 48px;font-weight: 700;}
+.ev-sect-06 .btn-wp a {display: inline-block;margin-right: 16px;}
+
+
+
+
+
+
 /* 충전소 찾기 */
 
 .ev-find-sect{display:flex;height: 980px;padding-top: 100px;}
@@ -440,11 +452,22 @@
 
 .evc-sect-03{padding: 256px 0 310px;background:url('/public/img/ev/evc_sect03_bg.png') center / cover;color:#fff;}
 .evc-sect-03 h1{font-weight: 600;font-size: 40px;line-height: 60px;}
+.evc-sect-03 h1 span {font-weight: 400;}
+
 .evc-sect-03 p{margin-top: 40px;font-weight: 600;font-size: 24px;line-height: 60px;color: #EC6800;}
+.evc-sect-03 .txt {margin-top: 47px;font-weight: 300;font-size: 18px;line-height: 30px;color: #fff;}
+
 .evc-sect-03 .link-wp{display:flex;justify-content:end;margin-top: 45px;}
 .evc-sect-03 .link-wp .link{display:flex;justify-content:center;align-items:center;gap:18px;width: 416px;height: 80px;border:1px solid #fff;font-weight: 600;font-size: 18px;color: #FFFFFF;}
 .evc-sect-03 .link-wp .link img{width: 30px;}
 
+
+.evc-sect-04 {background: url('/public/img/ev/ev_sect05_banner_bg.jpg') center no-repeat;padding: 115px 0 130px;}
+.evc-sect-04 .con-wp {display: flex;margin-bottom: 45px;}
+.evc-sect-04 .txt-wp {margin-left: 50px;}
+.evc-sect-04 .con-wp .txt {color: #EC6800;font-size: 24px; font-weight: 600; line-height: normal;margin-bottom: 11px;margin-top: 18px;}
+.evc-sect-04 .con-wp .tit {color: #FFF;font-size: 48px;font-weight: 700;}
+.evc-sect-04 .btn-wp a {display: inline-block;margin-right: 16px;}
 
 
 /* [e] ELVIS 서브페이지 */
@@ -454,8 +477,14 @@
 
 	.ev-sect-03 ul li{gap:50px;}
 	.ev-sect-03 ul li img{width:50%;}
+	
 
+	
+	.ev-sect-06 .con-wp .txt {font-size: 18px;}
+	.ev-sect-06 .con-wp .tit {font-size: 36px;}
 
+	.evc-sect-04 .con-wp .txt {font-size: 18px;}
+	.evc-sect-04 .con-wp .tit {font-size: 36px;}
 }
 
 
@@ -508,10 +537,24 @@
 	.ev-sub-sect .mypage-wp .usage-list li p:nth-of-type(3){width:30%;}
 	
 	.evc-sect-02 .txt-area p {font-size: 50px;padding: 0 3%;word-break: break-word;}
+
+	.ev-sect-06 .con-wp span {display: none;}
+	.ev-sect-06 .txt-wp {margin-left: 0;}
+	.evc-sect-04 .con-wp span {display: none;}
+	.evc-sect-04 .txt-wp {margin-left: 0;}
 }
 
 
 @media only screen and (max-width:720px){
+.ev-sect-06 {background: url('/public/img/ev/ev_sect05_banner_bg_m.jpg') 50% 100% no-repeat;background-size: cover;padding: 57px 0 70%;text-align: center;}
+.ev-sect-06 .con-wp {display: block;margin-bottom: 38px;}
+.ev-sect-06 .con-wp .tit {font-size: 30px;line-height: 40px;padding: 0 30%;word-break: keep-all;}
+.ev-sect-06 .btn-wp a img {width: 155px;}
+
+.evc-sect-04 {background: url('/public/img/ev/ev_sect05_banner_bg_m.jpg') 50% 100% no-repeat;background-size: cover;padding: 57px 0 70%;text-align: center;}
+.evc-sect-04 .con-wp {display: block;margin-bottom: 38px;}
+.evc-sect-04 .con-wp .tit {font-size: 30px;line-height: 40px;padding: 0 30%;word-break: keep-all;}
+.evc-sect-04 .btn-wp a img {width: 155px;}
 
 .mo-br{display:block;}
 
@@ -776,7 +819,16 @@
 
 .evc-sect-02 .txt-area p {font-size: 30px;padding: 0 2%;}
 
-/* [e] ELVIS 서브페이지 */
+/* [e] ELVIS 서브페이지 */ 
 
 
+@media only screen and (max-width:500px){
+	.ev-sect-06 .con-wp .tit {padding: 0 20%;}
+	.ev-sect-06 .btn-wp a {margin-right: 10px;}
+	.ev-sect-06 .btn-wp a:last-child {margin-right: 0;}
+ 
+	.evc-sect-04 .con-wp .tit {padding: 0 20%;}
+	.evc-sect-04 .btn-wp a {margin-right: 10px;}
+	.evc-sect-04 .btn-wp a:last-child {margin-right: 0;}
+}
 }
