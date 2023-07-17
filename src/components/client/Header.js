@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getCookieEvToken } from '../../storage/EvCookie';
 
@@ -7,11 +7,17 @@ const Header = () => {
   const [pcMenuClass, setPcMenuClass] = useState('');
   const [elinkMenuActive, setElinkMenuActive] = useState(false);
   const [evMenuActive, setEvMenuActive] = useState(false);
+  const [evAuthActive, setAuthActive] = useState(false);
   const [moMenuActive, setMoMenuActive] = useState(false);
   const [moMenuClass, setMoMenuClass] = useState('');
 
-  const token = getCookieEvToken();
-  // console.log('token : ' + token);
+  useEffect(() => {
+    const token = getCookieEvToken();
+    //    console.log('token = ' + token);
+    if (token !== undefined) {
+      setAuthActive(true);
+    }
+  }, [evAuthActive]);
 
   const onClickMoMenu = (menu) => {
     if (moMenuClass === menu) {
@@ -20,6 +26,8 @@ const Header = () => {
       setMoMenuClass(menu);
     }
   };
+
+  console.log('evAuthActive = ' + evAuthActive);
   return (
     <header className={headerClass}>
       <div className="pc-menu">
@@ -140,16 +148,16 @@ const Header = () => {
                   <li>
                     <NavLink to="/ev/index">브랜드 소개</NavLink>
                   </li>
-                  <li style={token === undefined && token === 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                  <li style={!evAuthActive ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/login">로그인</NavLink>
                   </li>
                   <li>
                     <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
                   </li>
-                  <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                  <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/notice">고객센터</NavLink>
                   </li>
-                  <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                  <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/mypage1">마이페이지</NavLink>
                   </li>
                   <li>
@@ -312,16 +320,16 @@ const Header = () => {
                 <li>
                   <NavLink to="/ev/index">브랜드 소개</NavLink>
                 </li>
-                <li style={token === undefined && token === 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                <li style={!evAuthActive ? { display: 'block' } : { display: 'none' }}>
                   <NavLink to="/ev/login">로그인</NavLink>
                 </li>
                 <li>
                   <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
                 </li>
-                <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
                   <NavLink to="/ev/notice">고객센터</NavLink>
                 </li>
-                <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
                   <NavLink to="/ev/mypage1">마이페이지</NavLink>
                 </li>
                 <li>
@@ -470,16 +478,16 @@ const Header = () => {
                   <li>
                     <NavLink to="/ev/index">브랜드 소개</NavLink>
                   </li>
-                  <li style={token === undefined && token === 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                  <li style={!evAuthActive ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/login">로그인</NavLink>
                   </li>
                   <li>
                     <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
                   </li>
-                  <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                  <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/notice">고객센터</NavLink>
                   </li>
-                  <li style={token !== undefined && token !== 'undefined' ? { display: 'block' } : { display: 'none' }}>
+                  <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
                     <NavLink to="/ev/mypage1">마이페이지</NavLink>
                   </li>
                   <li>
