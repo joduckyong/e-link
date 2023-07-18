@@ -42,15 +42,13 @@ const ControlForm = () => {
           <img className="img mo-img" src="/img/ev/evc_sect02_bg_m.png" alt="" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" />
         </div>
 
-        <div className="txt-area">
-          {/* <ScrollContainer className="scroll-container" horizontal={true}>
+        {/* <div className="txt-area">
+          <ScrollContainer className="scroll-container" horizontal={true}>
             <img src="/img/ev/evc_txt.png" alt="" />
             <img src="/img/ev/evc_txt.png" alt="" />
-          </ScrollContainer>*/}
-          <p data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="500">
-            Time flies, but good news is we are the ELVIS.
-          </p>
-        </div>
+          </ScrollContainer>
+		  	<p data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="500">Time flies, but good news is we are the ELVIS.</p>
+        </div> */}
       </section>
 
       <section className="evc-sect-03">
@@ -99,10 +97,10 @@ const ControlForm = () => {
             </div>
           </div>
           <div className="btn-wp">
-            <a target="_blank" href="">
+            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.lselink.elvis">
               <img src="/img/ev/ev_sect05_banner_btn1.png" alt="" />
             </a>
-            <a target="_blank" href="">
+            <a target="_blank" href="https://apps.apple.com/kr/app/elvis/id6449213902">
               <img src="/img/ev/ev_sect05_banner_btn2.png" alt="" />
             </a>
           </div>

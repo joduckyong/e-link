@@ -118,7 +118,9 @@ const IndexForm = () => {
           <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
             ELVIS의 반듯하고 무게 있는 로고 형태는 전기차 충전분야의 전문성과 신뢰감을 나타내고
             <br className="pc-br" />
-            LS의 “L”과 E-link, Energy 를 뜻하는 “E”를 의미하는 심볼을 사용하였습니다.
+            LS의 “L”과 E-link, Energy 를 뜻하는 “E”를 의미하는 심볼을
+            <br className="pc-br" />
+            사용하였습니다.
           </h4>
           <div className="logo" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"></div>
           <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
