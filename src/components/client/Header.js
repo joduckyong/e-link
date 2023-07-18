@@ -13,8 +13,11 @@ const Header = () => {
 
   useEffect(() => {
     const token = getCookieEvToken();
-    //    console.log('token = ' + token);
-    if (token !== undefined) {
+    const evtoken = getCookieEvToken();
+
+    //        console.log('token = ' + token);
+
+    if (token !== undefined && typeof token !== 'undefined') {
       setAuthActive(true);
     }
   }, [evAuthActive]);
