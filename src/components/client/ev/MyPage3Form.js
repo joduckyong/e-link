@@ -22,7 +22,7 @@ const MyPage3Form = () => {
   const myPageList = useSelector((state) => state.EvReducer.data);
 
   useEffect(() => {
-    const url = '/api/m-service-mobile/community/getFreePosts';
+    const url = '/api/m-service-mobile/community/getPostList';
     const newList = { url: url, category: 0, dttm: '', next: true, size: 10 };
     dispatch(selectEv(newList));
   }, [dispatch]);

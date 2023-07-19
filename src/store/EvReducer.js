@@ -16,6 +16,20 @@ export const selectEv = createAsyncThunk('LIST_EV', async (newList) => {
   return response.data;
 });
 
+export const insertEv = createAsyncThunk('ADD_EV', async (newList) => {
+  const token = getCookieEvToken();
+
+  const response = await axios({
+    url: `${process.env.REACT_APP_API_URL}/api/ev/common/insert`,
+    method: 'POST',
+    data: newList,
+    headers: {
+      accessEvToken: token,
+    },
+  });
+  return response.data;
+});
+
 export const EvReducer = createSlice({
   name: 'ev',
   initialState: {
@@ -35,6 +49,10 @@ export const EvReducer = createSlice({
       message: payload.message,
       totalCount: payload.totalCount,
       data: payload.data,
+    }),
+    [insertEv.fulfilled]: (state, { payload }) => ({
+      ...state,
+      dataInfo: payload.data,
     }),
   },
 });

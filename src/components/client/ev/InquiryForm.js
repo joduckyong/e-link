@@ -45,7 +45,7 @@ const InquiryForm = () => {
           <div className="list-wp">
             <div className="list-top">
               <b>Total {inquiryList.length}</b>
-              <Link to="" className="write">
+              <Link to="/ev/inquiryAdd" className="write">
                 문의하기
               </Link>
             </div>
