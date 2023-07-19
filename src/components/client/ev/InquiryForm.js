@@ -14,7 +14,6 @@ export function changeFormat(date, format) {
 }
 
 const InquiryForm = () => {
-
   const dispatch = useDispatch();
   const inquiryList = useSelector((state) => state.EvReducer.data);
 
@@ -30,7 +29,7 @@ const InquiryForm = () => {
         <div className="costomer-wp">
           <h1>고객센터</h1>
           <ul className="link-wp">
-          <li>
+            <li>
               <Link to="/ev/notice">공지사항</Link>
             </li>
             <li>
@@ -46,6 +45,9 @@ const InquiryForm = () => {
           <div className="list-wp">
             <div className="list-top">
               <b>Total {inquiryList.length}</b>
+              <Link to="" className="write">
+                문의하기
+              </Link>
             </div>
             <ol className="list inquiry-list">
               {inquiryList.map((list, index) => (
@@ -61,19 +63,19 @@ const InquiryForm = () => {
                       <p>{changeFormat(list.regDttm, 'yyyy-MM-DD') || ''}</p>
                     </Link>
                   </li>
-                  {list.qustStats === "F" &&
-                  <li key={`ans_${index}`}>
-                    <Link to={`/ev/inquiryAnswer/${index}`}>
-                      <h3>No.{inquiryList.length - index}</h3>
-                      <h2>
-                        <div className="re">Re</div>
-                        <span>답변이 완료되었습니다.</span>
-                      </h2>
-                      <span className="name">관리자</span>
-                      <p>{changeFormat(list.uptDttm, 'yyyy-MM-DD') || ''}</p>
-                    </Link>
-                  </li>
-                  }
+                  {list.qustStats === 'F' && (
+                    <li key={`ans_${index}`}>
+                      <Link to={`/ev/inquiryAnswer/${index}`}>
+                        <h3>No.{inquiryList.length - index}</h3>
+                        <h2>
+                          <div className="re">Re</div>
+                          <span>답변이 완료되었습니다.</span>
+                        </h2>
+                        <span className="name">관리자</span>
+                        <p>{changeFormat(list.uptDttm, 'yyyy-MM-DD') || ''}</p>
+                      </Link>
+                    </li>
+                  )}
                 </>
               ))}
               {/* <li>

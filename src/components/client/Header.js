@@ -169,6 +169,9 @@ const Header = () => {
               </div>
             </li>
           </ul>
+          <NavLink to="" className="logout" style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+            로그아웃
+          </NavLink>
           <div className="lang">
             <NavLink to="/en">ENG</NavLink>
           </div>
@@ -503,6 +506,9 @@ const Header = () => {
             <NavLink to="/">KOR</NavLink>
             <NavLink to="/en">ENG</NavLink>
           </div>
+          <NavLink to="" className="logout_m">
+            로그아웃
+          </NavLink>
         </div>
       </div>
     </header>

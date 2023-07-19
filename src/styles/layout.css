@@ -28,7 +28,7 @@ header.on .pc-menu .depth-1{visibility: visible; opacity: 1; }
 header .pc-menu .depth-1 li{text-align: center; margin-top: 30px;}
 header .pc-menu .depth-1 li:first-child{margin-top: 0px;}
 header .pc-menu .depth-1 li a{font-size: 16px; color: #444; font-weight: 400; transition: all 0.2s;}
-header .pc-menu .lang {margin-left: auto;border: 1px solid #E8E8E8;border-radius: 50px;text-align: center;transition: all 0.2s;}
+header .pc-menu .lang {border: 1px solid #E8E8E8;border-radius: 50px;text-align: center;transition: all 0.2s;}
 header .pc-menu .lang a {display: inline-block;transition: all 0.2s;font-size: 14px;width: 60px;height: 32px;line-height: 32px;font-weight: 600;}
 header .pc-menu .lang:hover {border: 1px solid #EC6800;background-color: #EC6800;}
 header .pc-menu .lang:hover a {color: #fff;}
@@ -37,6 +37,8 @@ header .pc-menu a.menu{position: relative; height: 20px; display: inline-block; 
 header .pc-menu a.menu:before{content: ''; display: inline-block; width: 100%; height: 2px; background: #111; position: absolute; top: 0; left: 0; transition: 0.3s}
 header .pc-menu a.menu:after{content: ''; display: inline-block; width: 100%; height: 2px; background: #111; position: absolute; bottom: 0; left: 0; transition: 0.3s}
 header .pc-menu a.menu span{position: absolute; display: inline-block; width: 21px; height: 2px; top: 50%; right: 0; background: #111; margin-top: -1px; transition: 0.3s}
+
+header .pc-menu a.logout {font-size: 14px;margin-left: auto;margin-right: 20px;font-weight: 600;}
 
 header .all-menu{position: fixed; top: 0; width: 100%; right: 0%; bottom: 20%; background: #FFF; padding: 0 70px; opacity: 0; visibility: hidden; transition: all 0.3s ease-out;}
 header .all-menu.on{bottom: 0; opacity: 1; visibility: visible;}
@@ -90,7 +92,7 @@ header .mo-menu .in .lang-btn a:hover {color: #EC6800;}
 header .mo-menu .in .lang-btn a:after {content: '';display: inline-block;position: absolute;right: -10px;top: 3px;width: 1px;height: 11px;background: #ddd;}
 header .mo-menu .in .lang-btn a:last-child:after {display: none;}
 
-
+header .mo-menu .in .logout_m {position: absolute;bottom: 40px;right: 20px;font-weight: 600;}
 
 .topBtn{position:fixed;bottom:60px;right:80px;width: 70px;height: 70px;border-radius:50%;cursor:pointer;}
 .topBtn .cont{display:flex;justify-content:center;align-items:center;width:100%;height:100%;border-radius:50%;background:rgba(18, 18, 18, 0.22);border: 1px solid #FFFFFF;}

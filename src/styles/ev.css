@@ -311,16 +311,19 @@
 
 /* 고객센터 공통 */
 .ev-sub-sect .costomer-wp{}
-.ev-sub-sect .costomer-wp .link-wp{display:flex;justify-content:space-between;width: 284px;margin: 52px auto 0;}
-.ev-sub-sect .costomer-wp .link-wp li{position:relative;}
+.ev-sub-sect .costomer-wp .link-wp{display:flex;justify-content:center;margin: 52px auto 0;}
+.ev-sub-sect .costomer-wp .link-wp li{position:relative;margin-right: 64px;}
+.ev-sub-sect .costomer-wp .link-wp li:last-child {margin-right: 0;}
 .ev-sub-sect .costomer-wp .link-wp li a{font-weight: 700;font-size: 26px;line-height: 31px;color: #444444;}
 .ev-sub-sect .costomer-wp .link-wp li.active a{color: #EC6800;}
 .ev-sub-sect .costomer-wp .link-wp li::after{content:'';position:absolute;top:50%;transform:translateY(-50%);right:-32px;width:1px;height:22px;background: #444444;}
 .ev-sub-sect .costomer-wp .link-wp li:last-of-type::after{display:none;}
 
-.ev-sub-sect .costomer-wp .list-wp{width: 1280px;max-width:90vw;margin: 79px 0 194px;}
-.ev-sub-sect .costomer-wp .list-top{font-weight: 400;font-size: 18px;line-height: 21px;color: #FFFFFF;}
+.ev-sub-sect .costomer-wp .list-wp{width: 1280px;max-width:90vw;margin: 79px 0 194px;position: relative;}
+.ev-sub-sect .costomer-wp .list-top{font-weight: 400;font-size: 18px;line-height: 21px;color: #FFFFFF;display: flex;}
 .ev-sub-sect .costomer-wp .list-top b{font-weight: 600;}
+.ev-sub-sect .costomer-wp  .write {color: #fff;display: inline-block; font-weight: 700; padding: 10px 20px; border: 1px solid #fff; font-size: 16px;margin-left: auto;}
+.ev-sub-sect .costomer-wp .mp-write {position: absolute;right: 0;top: -55px;}
 .ev-sub-sect .costomer-wp .list{width:100%;margin-top: 37px;border-top: 1px solid #444;}
 .ev-sub-sect .costomer-wp .list li a{display:block;width:100%;padding: 50px 60px 57px;border-bottom: 1px solid #444444;}
 .ev-sub-sect .costomer-wp .list li:hover{background: #232323;}
@@ -399,7 +402,7 @@
 .ev-sub-sect .write-wp .orange-btn{margin-top: 20px;}
 
 /* 마이페이지 공통 */
-.ev-sub-sect .mypage-wp .link-wp li::after{right:-56px;}
+/* .ev-sub-sect .mypage-wp .link-wp li::after{right:-56px;} */
 
 .ev-sub-sect .mypage-wp .top-radio-wp{display:flex;justify-content:center;align-items:center;padding: 45px 0;background: #232323;}
 .ev-sub-sect .mypage-wp .top-radio-wp .radio-wp{gap:40px;margin-right: 16px;}
@@ -710,12 +713,14 @@
 
 
 /* 고객센터 공통 */
-.ev-sub-sect .costomer-wp .link-wp{width: 177px;margin-top: 34px;}
+.ev-sub-sect .costomer-wp .link-wp{margin-top: 34px;}
+.ev-sub-sect .costomer-wp .link-wp li {margin-right: 30px;}
 .ev-sub-sect .costomer-wp .link-wp li::after{right:-16px;height: 15px;}
 .ev-sub-sect .costomer-wp .link-wp li a{font-size: 18px;line-height: 21px;}
 
 .ev-sub-sect .costomer-wp .list-wp{max-width:100vw;margin: 48px 0 60px;}
-.ev-sub-sect .costomer-wp .list-top{margin-left: 5vw;font-size: 14px;line-height: 17px;}
+.ev-sub-sect .costomer-wp .list-top{margin: 0 5vw;font-size: 14px;line-height: 17px;}
+.ev-sub-sect .costomer-wp .list-top .write {font-size: 14px;}
 .ev-sub-sect .costomer-wp .list{margin-top: 29px;}
 .ev-sub-sect .costomer-wp .list li a{padding: 30px 5vw 35px;}
 .ev-sub-sect .costomer-wp .list li p{font-size: 14px;line-height: 17px;}
@@ -781,7 +786,7 @@
 .ev-sub-sect .write-wp .orange-btn{margin-top: 10px;}
 
 /* 마이페이지 공통 */
-.ev-sub-sect .mypage-wp .link-wp li::after{right:-28px;}
+/* .ev-sub-sect .mypage-wp .link-wp li::after{right:-28px;} */
 .ev-sub-sect .mypage-wp .list-wp{margin: 38px 0 60px;}
 .ev-sub-sect .mypage-wp .top-radio-wp .radio-wp{gap:24px;}
 .ev-sub-sect .mypage-wp .usage-list{margin-top: 0;}

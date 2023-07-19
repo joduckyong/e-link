@@ -44,6 +44,9 @@ const MyPage3Form = () => {
             </li>
           </ul>
           <div className="list-wp">
+            <Link to="" className="write mp-write">
+              글쓰기
+            </Link>
             <div className="usage-list-wp">
               <ol className="list usage-list">
                 <li className="ttl">
