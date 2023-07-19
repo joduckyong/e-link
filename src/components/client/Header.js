@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { getCookieEvToken } from '../../storage/EvCookie';
 
 const Header = () => {
@@ -10,6 +10,8 @@ const Header = () => {
   const [evAuthActive, setAuthActive] = useState(false);
   const [moMenuActive, setMoMenuActive] = useState(false);
   const [moMenuClass, setMoMenuClass] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = getCookieEvToken();
@@ -169,7 +171,7 @@ const Header = () => {
               </div>
             </li>
           </ul>
-          <NavLink to="" className="logout" style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+          <NavLink to="/ev/logout" className="logout" style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
             로그아웃
           </NavLink>
           <div className="lang">
@@ -506,7 +508,7 @@ const Header = () => {
             <NavLink to="/">KOR</NavLink>
             <NavLink to="/en">ENG</NavLink>
           </div>
-          <NavLink to="" className="logout_m">
+          <NavLink to="/ev/logout" className="logout_m" style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
             로그아웃
           </NavLink>
         </div>

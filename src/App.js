@@ -216,6 +216,8 @@ import FindPage from './pages/client/ev/FindPage';
 
 //로그인
 import LoginEvPage from './pages/client/ev/login/loginPage';
+//로그아웃
+import LogoutEvPage from './pages/client/ev/login/logoutPage';
 
 //회원가입 약관동의
 import Join1Page from './pages/client/ev/login/Join1Page';
@@ -440,6 +442,7 @@ const App = () => {
         <Route path="/ev/find" element={<FindPage />} />
 
         <Route path="/ev/login" element={<LoginEvPage />} />
+        <Route path="/ev/logout" element={<LogoutEvPage />} />
 
         <Route path="/ev/join1" element={<Join1Page />} />
         <Route path="/ev/join2" element={<Join2Page />} />
