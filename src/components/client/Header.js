@@ -11,14 +11,12 @@ const Header = () => {
   const [moMenuActive, setMoMenuActive] = useState(false);
   const [moMenuClass, setMoMenuClass] = useState('');
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     const token = getCookieEvToken();
 
     console.log('token = ' + token);
 
-    if (token !== undefined && typeof token !== 'undefined') {
+    if (token !== undefined && typeof token !== 'undefined' && token.length !== 9) {
       setAuthActive(true);
     }
   }, [evAuthActive]);
