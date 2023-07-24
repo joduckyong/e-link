@@ -5,7 +5,9 @@ import { insertEv } from 'store/EvReducer';
 
 const InquiryAddForm = () => {
   const dispatch = useDispatch();
+  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [selectItem, setSelectItem] = useState('Q010');
 
   const onCreate = async (e) => {
     e.preventDefault();
@@ -27,7 +29,8 @@ const InquiryAddForm = () => {
         userNo: evUserNo,
       };
       const result = await dispatch(insertEv(newList));
-      if (result.payload.data > 0) {
+      console.log(result.payload.data)
+      if (result.payload.status === "OK") {
         alert('등록 되었습니다.');
         document.location.href = '/ev/inquiry';
       } else {
@@ -42,6 +45,11 @@ const InquiryAddForm = () => {
         <form className="write-wp">
           <h1>문의하기</h1>
           <div className="chk-wp">
+            <select name="searchCondition" onChange={(e) => setSelectItem(e.target.value)}>
+              <option value="name" selected={selectItem === 'Q010' && true}>사용법</option>
+              <option value="name" selected={selectItem === 'Q020' && true}>결제/환불</option>
+              <option value="name" selected={selectItem === 'Q030' && true}>기타</option>
+            </select>
             <div className="agree">
               {/* <label for="secret">
                 <input type="checkbox" id="secret" />
@@ -49,7 +57,7 @@ const InquiryAddForm = () => {
               </label> */}
             </div>
           </div>
-          {/* <input type="text" placeholder="제목을 입력해주세요." onChange={(e) => setTitle(e.target.value)} value={title}/> */}
+          <input type="text" placeholder="제목을 입력해주세요." onChange={(e) => setTitle(e.target.value)} value={title}/>
           <textarea cols="30" rows="10" placeholder="문의 하실 내용을 입력해주세요." onChange={(e) => setContent(e.target.value)} value={content}></textarea>
           <button className="orange-btn" onClick={onCreate}>문의하기</button>
         </form>
