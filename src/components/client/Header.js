@@ -169,15 +169,17 @@ const Header = () => {
               </div>
             </li>
           </ul>
-          <NavLink to="/ev/logout" className="logout" style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
-            로그아웃
-          </NavLink>
-          <div className="lang">
-            <NavLink to="/en">ENG</NavLink>
+          <div className="side-wp">
+            <NavLink to="/ev/logout" className="logout" style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+              로그아웃
+            </NavLink>
+            <div className="lang">
+              <NavLink to="/en">ENG</NavLink>
+            </div>
+            <NavLink to="" className="menu" onClick={() => setPcMenuClass('on')}>
+              <span></span>
+            </NavLink>
           </div>
-          <NavLink to="" className="menu" onClick={() => setPcMenuClass('on')}>
-            <span></span>
-          </NavLink>
         </div>
       </div>
       <div className={`all-menu ${pcMenuClass}`}>

@@ -264,6 +264,8 @@ import BreakdownEvPage from './pages/client/ev/BreakdownPage';
 import BreakdownInfoPage from './pages/client/ev/BreakdownInfoPage';
 //고객센터 고장신고 답변 View
 import BreakdownAnswerPage from './pages/client/ev/BreakdownAnswerPage';
+//고객센터 고장신고 Write
+import BreakdownAddPage from './pages/client/ev/BreakdownAddPage';
 
 //마이페이지 이용내역
 import MyPage1 from './pages/client/ev/MyPage1';
@@ -467,6 +469,7 @@ const App = () => {
         <Route path="/ev/breakdown" element={<BreakdownEvPage />} />
         <Route path="/ev/breakdownInfo/:id" element={<BreakdownInfoPage />} />
         <Route path="/ev/breakdownAnswer/:id" element={<BreakdownAnswerPage />} />
+        <Route path="/ev/breakdownAdd" element={<BreakdownAddPage />} />
 
         <Route path="/ev/mypage1" element={<MyPage1 />} />
         <Route path="/ev/mypage2" element={<MyPage2 />} />

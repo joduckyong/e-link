@@ -28,6 +28,7 @@ header.on .pc-menu .depth-1{visibility: visible; opacity: 1; }
 header .pc-menu .depth-1 li{text-align: center; margin-top: 30px;}
 header .pc-menu .depth-1 li:first-child{margin-top: 0px;}
 header .pc-menu .depth-1 li a{font-size: 16px; color: #444; font-weight: 400; transition: all 0.2s;}
+header .pc-menu .side-wp {display: flex;align-items: center;margin-left: auto;}
 header .pc-menu .lang {border: 1px solid #E8E8E8;border-radius: 50px;text-align: center;transition: all 0.2s;}
 header .pc-menu .lang a {display: inline-block;transition: all 0.2s;font-size: 14px;width: 60px;height: 32px;line-height: 32px;font-weight: 600;}
 header .pc-menu .lang:hover {border: 1px solid #EC6800;background-color: #EC6800;}
