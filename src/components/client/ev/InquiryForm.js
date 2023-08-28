@@ -56,7 +56,7 @@ const InquiryForm = () => {
                     <Link to={`/ev/inquiryInfo/${index}`}>
                       <h3>No.{inquiryList.length - index}</h3>
                       <h2>
-                        <img src="/img/ev/ev_lock.png" alt="" />
+                        {/* <img src="/img/ev/ev_lock.png" alt="" /> */}
                         <span>{list.qustCont}</span>
                       </h2>
                       <span className="name">* * *</span>

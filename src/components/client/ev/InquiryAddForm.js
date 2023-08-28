@@ -29,7 +29,6 @@ const InquiryAddForm = () => {
         userNo: evUserNo,
       };
       const result = await dispatch(insertEv(newList));
-      console.log(result.payload.data)
       if (result.payload.status === "OK") {
         alert('등록 되었습니다.');
         document.location.href = '/ev/inquiry';

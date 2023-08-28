@@ -34,7 +34,7 @@ const MyPage1Form = () => {
     const newList = {
       url: url,
       userNo: evUserNo,
-      startDttm: changeFormat(popupStartdate, 'yyyy-MM-DD'),
+      startDttm: changeFormat(moment().clone().startOf("month"), 'yyyy-MM-DD'),
       endDttm: changeFormat(popupEnddate, 'yyyy-MM-DD'),
     };
     dispatch(selectEv(newList));
@@ -144,7 +144,7 @@ const MyPage1Form = () => {
                 {myPageList.map((list, index) => (
                   <li key={index}>
                     <p>{myPageList.length - index}</p>
-                    <p></p>
+                    <p>{changeFormat(list.regDttm, 'yyyy-MM-DD')}</p>
                     <p>{list.rechgstNm}</p>
                     <p>{list.payAmt}</p>
                     <p>{list.rechgWh}</p>
