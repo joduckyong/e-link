@@ -45,7 +45,7 @@ const BreakdownForm = () => {
           <div className="list-wp">
             <div className="list-top">
               <b>Total {breakdownList.length}</b>
-              <Link to="" className="write">
+              <Link to="/ev/breakdownAdd" className="write">
                 신고하기
               </Link>
             </div>
@@ -56,10 +56,10 @@ const BreakdownForm = () => {
                     <Link to={`/ev/breakdownInfo/${index}`}>
                       <h3>No.{breakdownList.length - index}</h3>
                       <h2>
-                        <img src="/img/ev/ev_lock.png" alt="" />
+                        {/* <img src="/img/ev/ev_lock.png" alt="" /> */}
                         <span>{list.reqCont}</span>
                       </h2>
-                      <span className="name">* * *</span>
+                      <span className="name">{list.regUserNo}</span>
                       <p>{changeFormat(list.regDttm, 'yyyy-MM-DD') || ''}</p>
                     </Link>
                   </li>

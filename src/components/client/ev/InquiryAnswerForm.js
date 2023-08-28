@@ -53,17 +53,17 @@ const InquiryInfoForm = () => {
           <div className="cont-wp" dangerouslySetInnerHTML={{ __html: inquiryList[id].qustAns }}>
           </div>
           <div className="nav-wp">
-          {/* <Link className="arrow prev" to={ id < inquiryList.length-1 ? `/ev/inquiryInfo/${Number(id)+1}` : `/ev/inquiryInfo/${id}` }>
-              <img src="/img/ev/ev_arrow_list.png" alt="화살표 왼쪽" />
-              <span>이전글</span>
+          <Link className="arrow prev">
+              {/* <img src="/img/ev/ev_arrow_list.png" alt="화살표 왼쪽" />
+              <span>이전글</span> */}
             </Link>
             <Link className="list" to="/ev/inquiry">
               목록
             </Link>
-            <Link className="arrow next" to={ id > 0 ? `/ev/inquiryInfo/${Number(id)-1}` : `/ev/inquiryInfo/${id}` }>
-              <span>다음글</span>
-              <img src="/img/ev/ev_arrow_list.png" alt="화살표 오른쪽" />
-            </Link> */}
+            <Link className="arrow next">
+              {/* <span>다음글</span>
+              <img src="/img/ev/ev_arrow_list.png" alt="화살표 오른쪽" /> */}
+            </Link>
           </div>
         </div>
       </section>

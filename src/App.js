@@ -250,22 +250,20 @@ import NoticePage from './pages/client/ev/NoticePage';
 import NoticeInfoPage from './pages/client/ev/NoticeInfoPage';
 //고객센터 Faq
 import FaqPage from './pages/client/ev/FaqPage';
+
 //고객센터 문의하기
 import InquiryEvPage from './pages/client/ev/InquiryPage';
-//고객센터 문의하기 View
 import InquiryInfoPage from './pages/client/ev/InquiryInfoPage';
-//고객센터 문의하기 답변 View
 import InquiryAnswerPage from './pages/client/ev/InquiryAnswerPage';
-//고객센터 문의하기 Write
+import InquiryModPage from './pages/client/ev/InquiryModPage';
 import InquiryAddPage from './pages/client/ev/InquiryAddPage';
+
 //고객센터 고장신고
 import BreakdownEvPage from './pages/client/ev/BreakdownPage';
-//고객센터 고장신고 View
 import BreakdownInfoPage from './pages/client/ev/BreakdownInfoPage';
-//고객센터 고장신고 답변 View
 import BreakdownAnswerPage from './pages/client/ev/BreakdownAnswerPage';
-//고객센터 고장신고 Write
 import BreakdownAddPage from './pages/client/ev/BreakdownAddPage';
+import BreakdownModPage from './pages/client/ev/BreakdownModPage';
 
 //마이페이지 이용내역
 import MyPage1 from './pages/client/ev/MyPage1';
@@ -465,11 +463,13 @@ const App = () => {
         <Route path="/ev/inquiry" element={<InquiryEvPage />} />
         <Route path="/ev/inquiryInfo/:id" element={<InquiryInfoPage />} />
         <Route path="/ev/inquiryAnswer/:id" element={<InquiryAnswerPage />} />
+        <Route path="/ev/inquiryMod/:id" element={<InquiryModPage />} />
         <Route path="/ev/inquiryAdd" element={<InquiryAddPage />} />
         <Route path="/ev/breakdown" element={<BreakdownEvPage />} />
         <Route path="/ev/breakdownInfo/:id" element={<BreakdownInfoPage />} />
         <Route path="/ev/breakdownAnswer/:id" element={<BreakdownAnswerPage />} />
         <Route path="/ev/breakdownAdd" element={<BreakdownAddPage />} />
+        <Route path="/ev/breakdownMod/:id" element={<BreakdownModPage />} />
 
         <Route path="/ev/mypage1" element={<MyPage1 />} />
         <Route path="/ev/mypage2" element={<MyPage2 />} />

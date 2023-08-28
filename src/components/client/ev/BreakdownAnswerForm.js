@@ -37,6 +37,19 @@ const BreakdownInfoForm = () => {
           </div>
           <div className="cont-wp" dangerouslySetInnerHTML={{ __html: breakdownList[id].reqAns }}>
           </div>
+          <div className="nav-wp">
+          <Link className="arrow prev">
+              {/* <img src="/img/ev/ev_arrow_list.png" alt="화살표 왼쪽" />
+              <span>이전글</span> */}
+            </Link>
+            <Link className="list" to="/ev/inquiry">
+              목록
+            </Link>
+            <Link className="arrow next">
+              {/* <span>다음글</span>
+              <img src="/img/ev/ev_arrow_list.png" alt="화살표 오른쪽" /> */}
+            </Link>
+          </div>
         </div>
       </section>
     </>

@@ -8,10 +8,10 @@ const BreakdownAddForm = () => {
           <h1>고장신고</h1>
           <div className="chk-wp">
             <div className="agree">
-              <label for="secret">
+              {/* <label for="secret">
                 <input type="checkbox" id="secret" />
                 비밀글<span className="chkimg"></span>
-              </label>
+              </label> */}
             </div>
           </div>
 

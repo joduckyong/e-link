@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { getCookieEvUserNo } from '../../../storage/EvCookie';
 import moment from 'moment';
+import { deleteEv } from 'store/EvReducer';
 
 export function changeFormat(date, format) {
   //moment 변환을 함수로 미리 빼 두어서 사용.
@@ -16,10 +18,30 @@ const InquiryInfoForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const inquiryList = useSelector((state) => state.EvReducer.data);
+  const [toggleActive, setToggleActive] = useState(false);
 
   if(inquiryList.length === 0){  //새로고침 시 목록 페이지 이동
     window.location.href = '/ev/inquiry';
   }
+
+  const onRemove = (e) => {
+    e.preventDefault();
+
+    const evUserNo = getCookieEvUserNo();
+    const url = '/api/m-service-mobile/question/delete';
+
+    if (window.confirm('삭제 하시겠습니까?')) {
+      const newList = {
+        url: url,
+        qustNo: inquiryList[id].qustNo,
+      };
+
+      dispatch(deleteEv(newList)).then(() => {
+        alert('삭제 되었습니다.');
+        document.location.href = '/ev/inquiry';
+      });
+    }
+  };
 
   return (
     <>
@@ -27,23 +49,23 @@ const InquiryInfoForm = () => {
         <div className="view-wp">
           <div className="ttl-wp">
             <h2>문의하기</h2>
-            <h1></h1>
+            <h1>{inquiryList[id].qustTtl}</h1>
             <div className="info">
               <p>
-                {inquiryList[id].regUserNm}<span>|</span>
+                {inquiryList[id].regUserNo}<span>|</span>
               </p>
               <p>{changeFormat(inquiryList[id].regDttm, 'yyyy-MM-DD') || ''}</p>
             </div>
             <div className="modify-wp">
-              <button className="btn">
+              <button className="btn" onClick={() => setToggleActive(!toggleActive)}>
                 <img src="/img/ev/ev_view_btn.png" alt="" />
               </button>
-              <div className="bub" style={{display:'none'}}>
-                <Link className="modify" to="./inquiry_write.html">
+              <div className="bub" style={toggleActive ? {display:''} : {display:'none'}}>
+                <Link className="modify" to={`/ev/inquiryMod/${id}`}>
                   <img src="/img/ev/ev_view_modify.png" alt="" />
                   수정
                 </Link>
-                <Link className="modify" to="">
+                <Link className="modify" to="" onClick={onRemove}>
                   <img src="/img/ev/ev_view_delete.png" alt="" />
                   삭제
                 </Link>

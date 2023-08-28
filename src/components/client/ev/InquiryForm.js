@@ -57,9 +57,9 @@ const InquiryForm = () => {
                       <h3>No.{inquiryList.length - index}</h3>
                       <h2>
                         {/* <img src="/img/ev/ev_lock.png" alt="" /> */}
-                        <span>{list.qustCont}</span>
+                        <span>{list.qustTtl}</span>
                       </h2>
-                      <span className="name">* * *</span>
+                      <span className="name">{list.regUserNo}</span>
                       <p>{changeFormat(list.regDttm, 'yyyy-MM-DD') || ''}</p>
                     </Link>
                   </li>
