@@ -271,6 +271,9 @@ import MyPage1 from './pages/client/ev/MyPage1';
 import MyPage2 from './pages/client/ev/MyPage2';
 //마이페이지 커뮤니티
 import MyPage3 from './pages/client/ev/MyPage3';
+import MyPage3InfoPage from './pages/client/ev/MyPage3InfoPage';
+import MyPage3AddPage from './pages/client/ev/MyPage3AddPage';
+import MyPage3ModPage from './pages/client/ev/MyPage3ModPage';
 
 //관제센터
 import ControlEvPage from './pages/client/ev/ControlPage';
@@ -474,6 +477,9 @@ const App = () => {
         <Route path="/ev/mypage1" element={<MyPage1 />} />
         <Route path="/ev/mypage2" element={<MyPage2 />} />
         <Route path="/ev/mypage3" element={<MyPage3 />} />
+        <Route path="/ev/mypage3Info/:id" element={<MyPage3InfoPage />} />
+        <Route path="/ev/mypage3Add" element={<MyPage3AddPage />} />
+        <Route path="/ev/mypage3Mod/:id" element={<MyPage3ModPage />} />
 
         <Route path="/ev/control" element={<ControlEvPage />} />
 

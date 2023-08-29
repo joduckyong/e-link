@@ -14,6 +14,11 @@ const InquiryAddForm = () => {
 
     const evUserNo = getCookieEvUserNo();
     const url = '/api/m-service-mobile/question/insert';
+
+    if (title === '') {
+      alert('제목을 입력하세요');
+      return;
+    }
     
     if (content === '') {
       alert('내용을 입력하세요');

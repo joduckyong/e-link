@@ -44,7 +44,7 @@ const MyPage3Form = () => {
             </li>
           </ul>
           <div className="list-wp">
-            <Link to="" className="write mp-write">
+            <Link to="/ev/mypage3Add" className="write mp-write">
               글쓰기
             </Link>
             <div className="usage-list-wp">
@@ -57,13 +57,15 @@ const MyPage3Form = () => {
                   <p>등록시간</p>
                 </li>
                 {myPageList.map((list, index) => (
-                  <li key={index}>
-                    <p>{myPageList.length - index}</p>
-                    <p>{list.userNo}</p>
-                    <p>{list.userNm}</p>
-                    <p>{list.pstCont}</p>
-                    <p>{changeFormat(list.regDttm, 'yyyy-MM-DD')}</p>
-                  </li>
+                  <Link to={`/ev/mypage3Info/${index}`}>
+                    <li key={index}>
+                      <p>{myPageList.length - index}</p>
+                      <p>{list.userNo}</p>
+                      <p>{list.userNm}</p>
+                      <p>{list.pstCont}</p>
+                      <p>{changeFormat(list.regDttm, 'yyyy-MM-DD')}</p>
+                    </li>
+                  </Link>
                 ))}
               </ol>
             </div>

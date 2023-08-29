@@ -57,7 +57,7 @@ const BreakdownForm = () => {
                       <h3>No.{breakdownList.length - index}</h3>
                       <h2>
                         {/* <img src="/img/ev/ev_lock.png" alt="" /> */}
-                        <span>{list.reqCont}</span>
+                        <span>{list.reqTtl}</span>
                       </h2>
                       <span className="name">{list.regUserNo}</span>
                       <p>{changeFormat(list.regDttm, 'yyyy-MM-DD') || ''}</p>

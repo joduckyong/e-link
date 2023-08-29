@@ -26,6 +26,11 @@ const InquiryModForm = () => {
 
     const evUserNo = getCookieEvUserNo();
     const url = '/api/m-service-mobile/question/update';
+
+    if (title === '') {
+      alert('제목을 입력하세요');
+      return;
+    }
     
     if (content === '') {
       alert('내용을 입력하세요');
