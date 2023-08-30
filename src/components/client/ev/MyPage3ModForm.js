@@ -15,10 +15,10 @@ const MyPage3ModForm = () => {
   const [selectCategory, setSelectCategory] = useState('1');
   const [selectRechgstId, setSelectRechgstId] = useState('');
   const [selectInstId, setSelectInstId] = useState('');
-  
-  if(mypage3List.length === 0){  //새로고침 시 목록 페이지 이동
-    window.location.href = '/ev/mypage3';
-  }
+
+  //  if(mypage3List.length === 0){  //새로고침 시 목록 페이지 이동
+  //    window.location.href = '/ev/mypage3';
+  //  }
 
   useEffect(() => {
     const url = '/api/m-service-mobile/rechgst/getELinkRechgsts';
@@ -29,15 +29,16 @@ const MyPage3ModForm = () => {
   const selectRechgsts = (e) => {
     setSelectRechgstId(e.target.value);
     setSelectInstId(e.target[e.target.selectedIndex].dataset.instid);
-  }
+  };
 
   useEffect(() => {
-    setPstNo(mypage3List[id].pstNo)
-    setContent(mypage3List[id].pstCont);
-    setSelectRechgstId(mypage3List[id].rechgstId)
-    setSelectInstId(mypage3List[id].instId)
-    if(mypage3List[id].rechgstId){  //충전소게시판 선택
-      setSelectCategory('2')
+    setPstNo(mypage3List[id]?.pstNo);
+    setContent(mypage3List[id]?.pstCont);
+    setSelectRechgstId(mypage3List[id]?.rechgstId);
+    setSelectInstId(mypage3List[id]?.instId);
+    if (mypage3List[id]?.rechgstId) {
+      //충전소게시판 선택
+      setSelectCategory('2');
     }
   }, []);
 
@@ -47,9 +48,10 @@ const MyPage3ModForm = () => {
     const evUserNo = getCookieEvUserNo();
     const url = '/api/m-service-mobile/community/updatePost';
 
-    let newList = {}
+    let newList = {};
 
-    if(selectCategory === '2'){ //충전소게시판
+    if (selectCategory === '2') {
+      //충전소게시판
       if (selectRechgstId === '') {
         alert('충전소를 선택하세요');
         return;
@@ -65,8 +67,9 @@ const MyPage3ModForm = () => {
         atchFileUuid: '',
         atchFileIds: '',
         pstBlnd: 'N',
-      }
-    }else if(selectCategory === '1'){ //자유게시판
+      };
+    } else if (selectCategory === '1') {
+      //자유게시판
       newList = {
         url: url,
         pstNo: pstNo,
@@ -75,22 +78,21 @@ const MyPage3ModForm = () => {
         atchFileUuid: '',
         atchFileIds: '',
         pstBlnd: 'N',
-      }
+      };
     }
-    
+
     if (content === '') {
       alert('내용을 입력하세요');
       return;
     }
 
-    if (window.confirm('수정 하시겠습니까?')) {
-
+    if (window.confirm('저장 하시겠습니까?')) {
       const result = await dispatch(updateEv(newList));
-      if (result.payload.status === "OK") {
-        alert('수정 되었습니다.');
+      if (result.payload.status === 'OK') {
+        alert('저장 되었습니다.');
         document.location.href = '/ev/mypage3';
       } else {
-        alert('수정에 실패하였습니다.');
+        alert('저장에 실패하였습니다.');
       }
     }
   };
@@ -112,17 +114,21 @@ const MyPage3ModForm = () => {
             <option value="1">자유게시판</option>
             <option value="2">충전소게시판</option>
           </select>
-          {selectCategory === '2' &&
+          {selectCategory === '2' && (
             <select name="cate" id="cate" onChange={(e) => selectRechgsts(e)} value={selectRechgstId}>
               <option value="">선택하세요</option>
               {rechgList.map((list, index) => (
-                <option key={index} value={list.rechgstId} data-instid={list.instId}>{list.instId}</option>
+                <option key={index} value={list.rechgstId} data-instid={list.instId}>
+                  {list.instId}
+                </option>
               ))}
             </select>
-          }
+          )}
           {/* <input type="text" placeholder="제목을 입력해주세요." onChange={(e) => setTitle(e.target.value)} value={title}/> */}
           <textarea cols="30" rows="10" placeholder="내용을 입력해주세요." onChange={(e) => setContent(e.target.value)} value={content}></textarea>
-          <button className="orange-btn" onClick={onEdit}>수정하기</button>
+          <button className="orange-btn" onClick={onEdit}>
+            저장하기
+          </button>
         </form>
       </section>
     </>
