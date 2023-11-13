@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const IndexForm = () => {
+  useEffect(() => {
+    AOS.init();
+  });
+
   return (
     <>
       <section className="ev-sect-01">
@@ -41,7 +50,7 @@ const IndexForm = () => {
             <br className="pc-br" />
             LS 그룹의 10년 간의 전력 경험과 함께 고객에게
             <br className="pc-br" />
-            친환경 사업으로 확장할 수 있는 포괄적인 충전 세트를 제공합니다.
+            친환경 사업으로 확장할 수 있는 포괄적인 충전 솔루션을 제공합니다.
           </h1>
           <ul>
             <li data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
@@ -107,9 +116,11 @@ const IndexForm = () => {
             Brand Identity
           </h1>
           <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-            ELVIS의 반듯하고 무게 있는 로고의 형태는 전기차 충전분야의 전문성과 신뢰감을 나타내고
+            ELVIS의 반듯하고 무게 있는 로고 형태는 전기차 충전분야의 전문성과 신뢰감을 나타내고
             <br className="pc-br" />
-            LS의 “L”과 E-link, Energy 를 뜻하는 “E”를 의미하는 심볼을 사용하였습니다.
+            LS의 “L”과 E-link, Energy 를 뜻하는 “E”를 의미하는 심볼을
+            <br className="pc-br" />
+            사용하였습니다.
           </h4>
           <div className="logo" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"></div>
           <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
@@ -133,6 +144,28 @@ const IndexForm = () => {
               </p>
             </li>
           </ul>
+        </div>
+      </section>
+
+      <section className="ev-sect-06">
+        <div className="ev-inner">
+          <div className="con-wp">
+            <span>
+              <img src="/img/ev/ev_sect05_banner_icon.png" alt="" />
+            </span>
+            <div className="txt-wp">
+              <p className="txt">Charge your time with ELVIS</p>
+              <p className="tit">ELVIS - 전기차 충전 & 차계부</p>
+            </div>
+          </div>
+          <div className="btn-wp">
+            <a target="_blank" href="">
+              <img src="/img/ev/ev_sect05_banner_btn1.png" alt="" />
+            </a>
+            <a target="_blank" href="">
+              <img src="/img/ev/ev_sect05_banner_btn2.png" alt="" />
+            </a>
+          </div>
         </div>
       </section>
     </>

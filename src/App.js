@@ -216,13 +216,23 @@ import FindPage from './pages/client/ev/FindPage';
 
 //로그인
 import LoginEvPage from './pages/client/ev/login/loginPage';
+//로그아웃
+import LogoutEvPage from './pages/client/ev/login/logoutPage';
 
 //회원가입 약관동의
 import Join1Page from './pages/client/ev/login/Join1Page';
+//회원가입 약관동의
+import Join1SnsPage from './pages/client/ev/login/Join1SnsPage';
+
 //회원가입 정보입력
 import Join2Page from './pages/client/ev/login/Join2Page';
+//회원가입 정보입력
+import Join2SnsPage from './pages/client/ev/login/Join2SnsPage';
 //회원가입 가입완료
 import Join3Page from './pages/client/ev/login/Join3Page';
+
+//회원가입 가입에러
+import JoinErrorPage from './pages/client/ev/login/JoinErrorPage';
 
 //아이디 찾기
 import FindIdPage from './pages/client/ev/login/FindIdPage';
@@ -240,17 +250,30 @@ import NoticePage from './pages/client/ev/NoticePage';
 import NoticeInfoPage from './pages/client/ev/NoticeInfoPage';
 //고객센터 Faq
 import FaqPage from './pages/client/ev/FaqPage';
+
 //고객센터 문의하기
 import InquiryEvPage from './pages/client/ev/InquiryPage';
-//고객센터 문의하기 View
 import InquiryInfoPage from './pages/client/ev/InquiryInfoPage';
-//고객센터 문의하기 Write
+import InquiryAnswerPage from './pages/client/ev/InquiryAnswerPage';
+import InquiryModPage from './pages/client/ev/InquiryModPage';
 import InquiryAddPage from './pages/client/ev/InquiryAddPage';
+
+//고객센터 고장신고
+import BreakdownEvPage from './pages/client/ev/BreakdownPage';
+import BreakdownInfoPage from './pages/client/ev/BreakdownInfoPage';
+import BreakdownAnswerPage from './pages/client/ev/BreakdownAnswerPage';
+import BreakdownAddPage from './pages/client/ev/BreakdownAddPage';
+import BreakdownModPage from './pages/client/ev/BreakdownModPage';
 
 //마이페이지 이용내역
 import MyPage1 from './pages/client/ev/MyPage1';
 //마이페이지 Elvis 캐시
 import MyPage2 from './pages/client/ev/MyPage2';
+//마이페이지 커뮤니티
+import MyPage3 from './pages/client/ev/MyPage3';
+import MyPage3InfoPage from './pages/client/ev/MyPage3InfoPage';
+import MyPage3AddPage from './pages/client/ev/MyPage3AddPage';
+import MyPage3ModPage from './pages/client/ev/MyPage3ModPage';
 
 //관제센터
 import ControlEvPage from './pages/client/ev/ControlPage';
@@ -422,10 +445,14 @@ const App = () => {
         <Route path="/ev/find" element={<FindPage />} />
 
         <Route path="/ev/login" element={<LoginEvPage />} />
+        <Route path="/ev/logout" element={<LogoutEvPage />} />
 
         <Route path="/ev/join1" element={<Join1Page />} />
         <Route path="/ev/join2" element={<Join2Page />} />
+        <Route path="/ev/join1Sns" element={<Join1SnsPage />} />
+        <Route path="/ev/join2Sns" element={<Join2SnsPage />} />
         <Route path="/ev/join3" element={<Join3Page />} />
+        <Route path="/ev/joinError" element={<JoinErrorPage />} />
 
         <Route path="/ev/findId" element={<FindIdPage />} />
         <Route path="/ev/findId2" element={<FindId2Page />} />
@@ -437,11 +464,22 @@ const App = () => {
         <Route path="/ev/noticeInfo/:id" element={<NoticeInfoPage />} />
         <Route path="/ev/faq" element={<FaqPage />} />
         <Route path="/ev/inquiry" element={<InquiryEvPage />} />
-        <Route path="/ev/inquiryInfo" element={<InquiryInfoPage />} />
+        <Route path="/ev/inquiryInfo/:id" element={<InquiryInfoPage />} />
+        <Route path="/ev/inquiryAnswer/:id" element={<InquiryAnswerPage />} />
+        <Route path="/ev/inquiryMod/:id" element={<InquiryModPage />} />
         <Route path="/ev/inquiryAdd" element={<InquiryAddPage />} />
+        <Route path="/ev/breakdown" element={<BreakdownEvPage />} />
+        <Route path="/ev/breakdownInfo/:id" element={<BreakdownInfoPage />} />
+        <Route path="/ev/breakdownAnswer/:id" element={<BreakdownAnswerPage />} />
+        <Route path="/ev/breakdownAdd" element={<BreakdownAddPage />} />
+        <Route path="/ev/breakdownMod/:id" element={<BreakdownModPage />} />
 
         <Route path="/ev/mypage1" element={<MyPage1 />} />
         <Route path="/ev/mypage2" element={<MyPage2 />} />
+        <Route path="/ev/mypage3" element={<MyPage3 />} />
+        <Route path="/ev/mypage3Info/:id" element={<MyPage3InfoPage />} />
+        <Route path="/ev/mypage3Add" element={<MyPage3AddPage />} />
+        <Route path="/ev/mypage3Mod/:id" element={<MyPage3ModPage />} />
 
         <Route path="/ev/control" element={<ControlEvPage />} />
 

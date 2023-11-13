@@ -31,65 +31,62 @@ const BusinessplaceForm = () => {
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            사업장 안내
+            Locations
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
             <li>
-              <NavLink to="/">
+              <NavLink to="/en">
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                회사소개
+                Company
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink" className="on">
-                    회사소개
+                  <NavLink to="/en/company/lselink" className="on">
+                    Company
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
-                </li>
-                <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                사업장 안내
+                Locations
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/company/lselink">LS E-Link</NavLink>
+                  <NavLink to="/en/company/lselink">LS E-Link</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/company/vision">비전</NavLink>
+                  <NavLink to="/en/company/vision">Vision</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/company/history">연혁</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/company/identity">CI·BI</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/company/businessplace" className="on">
-                    사업장 안내
+                  <NavLink to="/en/company/history">
+                    History
                   </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/company/identity">CI·BI</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/company/businessplace" className="on">Locations</NavLink>
                 </li>
               </ul>
             </li>
@@ -101,19 +98,21 @@ const BusinessplaceForm = () => {
         <div className="wrap">
           <div className="company-infor">
             <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-              본사
+              Headquarters
             </h3>
             <div className="txt">
               <dl data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                <dt>위치</dt>
+                <dt>Location</dt>
                 <dd>
-                  서울시 용산구 한강대로 92
+                  17F, LS Yongsan Tower, 
                   <br />
-                  (한강로2가, LS용산타워) 17층
+                  92 Hangang-daero, Yongsan-gu,
+                  <br />
+                  Seoul, 04386, Korea
                 </dd>
               </dl>
               <dl data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                <dt>전화</dt>
+                <dt>Phone</dt>
                 <dd>1660-3175</dd>
               </dl>
             </div>

@@ -31,11 +31,11 @@ const FaqForm = () => {
               <Link to="/ev/inquiry">문의하기</Link>
             </li>
             <li>
-              <Link to="">고장신고</Link>
+              <Link to="/ev/breakdown">고장신고</Link>
             </li>
           </ul>
           <div className="list-wp faq-list-wp">
-            <div className="swiper faq-nav">
+            {/* <div className="swiper faq-nav">
               <div className="swiper-wrapper">
                 <div className="swiper-slide active" style={{ marginRight:"16px" }}>
                   <Link to="">TOP 10</Link>
@@ -56,7 +56,7 @@ const FaqForm = () => {
                   <Link to="">고장신고</Link>
                 </div>
               </div>
-            </div>
+            </div> */}
             <ol className="list faq-list">
             {faqList.map((list, index) => (
                 <li 
@@ -67,7 +67,7 @@ const FaqForm = () => {
                   <div className="qa q">
                     <div className="cir">Q</div>
                     <p className="txt">
-                      <span>[회원가입/App 이용]</span>&nbsp; {list.ttl}
+                      <span></span>&nbsp; {list.ttl}
                     </p>
                   </div>
                   <div className="qa a" style={faqActive[list.faqNo] ? { display: 'flex' } : { display: 'none' }}>

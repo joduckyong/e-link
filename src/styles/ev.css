@@ -119,6 +119,18 @@
 .ev-sect-05 .color-wp li h3{font-weight: 600;font-size: 20px;line-height: 24px;}
 .ev-sect-05 .color-wp li p{font-weight: 400;font-size: 16px;line-height: 26px;}
 
+.ev-sect-06 {background: url('/public/img/ev/ev_sect05_banner_bg.jpg') center no-repeat;padding: 115px 0 130px;}
+.ev-sect-06 .con-wp {display: flex;margin-bottom: 45px;}
+.ev-sect-06 .txt-wp {margin-left: 50px;}
+.ev-sect-06 .con-wp .txt {color: #EC6800;font-size: 24px; font-weight: 600; line-height: normal;margin-bottom: 11px;margin-top: 18px;}
+.ev-sect-06 .con-wp .tit {color: #FFF;font-size: 48px;font-weight: 700;}
+.ev-sect-06 .btn-wp a {display: inline-block;margin-right: 16px;}
+
+
+
+
+
+
 /* 충전소 찾기 */
 
 .ev-find-sect{display:flex;height: 980px;padding-top: 100px;}
@@ -130,10 +142,13 @@
 .ev-find-sect .ttl-wp .search-wp .sbtn{width:24px;height:24px;}
 .ev-find-sect .ttl-wp .search-wp .sbtn img{width:100%;}
 .ev-find-sect .tab-link{display:flex;width:100%;}
+.ev-find-sect .tab-link{display:flex;width:100%;}
 .ev-find-sect .tab-link li{flex:1;display:flex;justify-content:center;align-items:center;height: 50px;background: #F7F9FA;border-bottom: 1px solid #EC6800;font-weight: 600;font-size: 16px;color: #888888;cursor:pointer;}
 .ev-find-sect .tab-link li.active{background: #EC6800;color: #FFFFFF;}
-.ev-find-sect .tab-cont{width:100%;height:calc(100% - 220px);overflow-y:auto;-ms-overflow-style: none; /* IE and Edge */scrollbar-width: none; /* Firefox */}
-.ev-find-sect .tab-cont::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera*/}
+.ev-find-sect .tab-wp{width:100%;height:calc(100% - 220px);overflow-y:auto;-ms-overflow-style: none; /* IE and Edge */scrollbar-width: none; /* Firefox */}
+.ev-find-sect .tab-wp::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera*/}
+.ev-find-sect .tab-cont.active{display: block;}
+/* .ev-find-sect .tab-cont{display: none;} */
 .ev-find-sect .tab-cont li{width:100%;height: 140px;padding: 30px 50px;background: #FFFFFF;border-bottom: 1px solid #EAEAEA;}
 .ev-find-sect .tab-cont li h2{font-weight: 500;font-size: 18px;line-height: 21px;}
 .ev-find-sect .tab-cont li p{margin-top: 7px;font-weight: 400;font-size: 13px;line-height: 16px;color: #888888;}
@@ -296,16 +311,19 @@
 
 /* 고객센터 공통 */
 .ev-sub-sect .costomer-wp{}
-.ev-sub-sect .costomer-wp .link-wp{display:flex;justify-content:space-between;width: 523px;margin: 52px auto 0;}
-.ev-sub-sect .costomer-wp .link-wp li{position:relative;}
+.ev-sub-sect .costomer-wp .link-wp{display:flex;justify-content:center;margin: 52px auto 0;}
+.ev-sub-sect .costomer-wp .link-wp li{position:relative;margin-right: 64px;}
+.ev-sub-sect .costomer-wp .link-wp li:last-child {margin-right: 0;}
 .ev-sub-sect .costomer-wp .link-wp li a{font-weight: 700;font-size: 26px;line-height: 31px;color: #444444;}
 .ev-sub-sect .costomer-wp .link-wp li.active a{color: #EC6800;}
 .ev-sub-sect .costomer-wp .link-wp li::after{content:'';position:absolute;top:50%;transform:translateY(-50%);right:-32px;width:1px;height:22px;background: #444444;}
 .ev-sub-sect .costomer-wp .link-wp li:last-of-type::after{display:none;}
 
-.ev-sub-sect .costomer-wp .list-wp{width: 1280px;max-width:90vw;margin: 79px 0 194px;}
-.ev-sub-sect .costomer-wp .list-top{font-weight: 400;font-size: 18px;line-height: 21px;color: #FFFFFF;}
+.ev-sub-sect .costomer-wp .list-wp{width: 1280px;max-width:90vw;margin: 79px 0 194px;position: relative;}
+.ev-sub-sect .costomer-wp .list-top{font-weight: 400;font-size: 18px;line-height: 21px;color: #FFFFFF;display: flex;}
 .ev-sub-sect .costomer-wp .list-top b{font-weight: 600;}
+.ev-sub-sect .costomer-wp  .write {color: #fff;display: inline-block; font-weight: 700; padding: 10px 20px; border: 1px solid #fff; font-size: 16px;margin-left: auto;}
+.ev-sub-sect .costomer-wp .mp-write {position: absolute;right: 0;top: -55px;}
 .ev-sub-sect .costomer-wp .list{width:100%;margin-top: 37px;border-top: 1px solid #444;}
 .ev-sub-sect .costomer-wp .list li a{display:block;width:100%;padding: 50px 60px 57px;border-bottom: 1px solid #444444;}
 .ev-sub-sect .costomer-wp .list li:hover{background: #232323;}
@@ -379,12 +397,23 @@
 .ev-sub-sect .write-wp{width: 1280px;max-width:90vw;padding-bottom: 132px;}
 .ev-sub-sect .write-wp .chk-wp{display:flex;justify-content:end;margin-top: 52px;}
 .ev-sub-sect .write-wp .chk-wp .agree .chkimg{margin-left: 6px;margin-right: 0;}
-.ev-sub-sect .write-wp input{margin-top: 28px;}
+.ev-sub-sect .write-wp input{margin-top: 20px;}
+.ev-sub-sect .write-wp select {margin-top: 20px;}
 .ev-sub-sect .write-wp textarea{width:100%;height: 500px;margin-top: 20px;padding: 23px 23px;background: #FFFFFF;border: 1px solid #DDDDDD;border-radius: 6px;font-weight: 400;font-size: 18px;resize: none;}
 .ev-sub-sect .write-wp .orange-btn{margin-top: 20px;}
 
+
+
+.ev-sub-sect .file{margin-top: 40px;}
+.ev-sub-sect .file .file-choice{display: inline-block; width: 216px; padding: 20px 0; font-size: 18px; color: #121212;text-align: center;background: #fff;}
+.ev-sub-sect .file input[type=file]{position: absolute; width: 0; height: 0; overflow: hidden;}
+.ev-sub-sect .file .upload-name{padding: 20px 30px; position: relative;}
+.ev-sub-sect .file .upload-name.on{background: #232323; border-radius: 30px; font-size: 16px; color: #fff; margin-left: 30px; padding-right: 55px;}
+.ev-sub-sect .file .upload-name.on:after{content: ''; display: block; width: 12px; height: 12px; background: url(/public/img/sub/ico-x-wh.png) no-repeat;position: absolute; top: 24px; right: 30px; cursor: pointer;}
+.ev-sub-sect .file p{font-size: 16px; color: #888; margin-top: 30px;} 
+
 /* 마이페이지 공통 */
-.ev-sub-sect .mypage-wp .link-wp li::after{right:-56px;}
+/* .ev-sub-sect .mypage-wp .link-wp li::after{right:-56px;} */
 
 .ev-sub-sect .mypage-wp .top-radio-wp{display:flex;justify-content:center;align-items:center;padding: 45px 0;background: #232323;}
 .ev-sub-sect .mypage-wp .top-radio-wp .radio-wp{gap:40px;margin-right: 16px;}
@@ -422,10 +451,12 @@
 
 /* 관제센터 */
 .evc-sect-01{position:relative;background:url('/public/img/ev/evc_sect01_bg.png') center / cover;}
-
 .evc-sect-02{padding: 170px 0 0;background: #121212;color:#fff;}
 .evc-sect-02 h1{font-weight: 600;font-size: 40px;line-height: 60px;text-align: center;}
 .evc-sect-02 p{margin-top: 50px;font-weight: 400;font-size: 20px;line-height: 32px;text-align: center;}
+.evc-sect-02 .txt-area {padding-top: 9%;}
+.evc-sect-02 .txt-area p {font-size: 90px;color: #121212;text-align: center;text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444;font-weight: 700;margin-top: 0;line-height: normal;}
+
 .evc-sect-02 .img{display:block;width:100%;margin-top: 126px;}
 .evc-sect-02 .img.mo-img{display:none;}
 .evc-sect-02 .simply-scroll{width:100%;height:auto;margin: 140px 0 0;}
@@ -435,11 +466,22 @@
 
 .evc-sect-03{padding: 256px 0 310px;background:url('/public/img/ev/evc_sect03_bg.png') center / cover;color:#fff;}
 .evc-sect-03 h1{font-weight: 600;font-size: 40px;line-height: 60px;}
+.evc-sect-03 h1 span {font-weight: 400;}
+
 .evc-sect-03 p{margin-top: 40px;font-weight: 600;font-size: 24px;line-height: 60px;color: #EC6800;}
+.evc-sect-03 .txt {margin-top: 47px;font-weight: 300;font-size: 18px;line-height: 30px;color: #fff;}
+
 .evc-sect-03 .link-wp{display:flex;justify-content:end;margin-top: 45px;}
 .evc-sect-03 .link-wp .link{display:flex;justify-content:center;align-items:center;gap:18px;width: 416px;height: 80px;border:1px solid #fff;font-weight: 600;font-size: 18px;color: #FFFFFF;}
 .evc-sect-03 .link-wp .link img{width: 30px;}
 
+
+.evc-sect-04 {background: url('/public/img/ev/ev_sect05_banner_bg.jpg') center no-repeat;padding: 115px 0 130px;}
+.evc-sect-04 .con-wp {display: flex;margin-bottom: 45px;}
+.evc-sect-04 .txt-wp {margin-left: 50px;}
+.evc-sect-04 .con-wp .txt {color: #EC6800;font-size: 24px; font-weight: 600; line-height: normal;margin-bottom: 11px;margin-top: 18px;}
+.evc-sect-04 .con-wp .tit {color: #FFF;font-size: 48px;font-weight: 700;}
+.evc-sect-04 .btn-wp a {display: inline-block;margin-right: 16px;}
 
 
 /* [e] ELVIS 서브페이지 */
@@ -449,12 +491,23 @@
 
 	.ev-sect-03 ul li{gap:50px;}
 	.ev-sect-03 ul li img{width:50%;}
+	
 
+	
+	.ev-sect-06 .con-wp .txt {font-size: 18px;}
+	.ev-sect-06 .con-wp .tit {font-size: 36px;}
 
+	.evc-sect-04 .con-wp .txt {font-size: 18px;}
+	.evc-sect-04 .con-wp .tit {font-size: 36px;}
 }
 
 
-
+@media only screen and (max-width:1280px){
+	
+	.ev-sub-sect .file .file-choice{font-size: 14px; padding: 17px 0;}
+	.ev-sub-sect .file .upload-name{font-size: 13px;}
+	.ev-sub-sect .file p{font-size: 13px; line-height: 20px;}
+}
 @media only screen and (max-width:1024px){
 
 	.pc-br{display:none;}
@@ -501,11 +554,26 @@
 	.ev-sub-sect .mypage-wp .usage-list li p:nth-of-type(4){width:13%;}
 	.ev-sub-sect .mypage-wp .usage-list li p:nth-of-type(5){width:17%;}
 	.ev-sub-sect .mypage-wp .usage-list li p:nth-of-type(3){width:30%;}
+	
+	.evc-sect-02 .txt-area p {font-size: 50px;padding: 0 3%;word-break: break-word;}
 
+	.ev-sect-06 .con-wp span {display: none;}
+	.ev-sect-06 .txt-wp {margin-left: 0;}
+	.evc-sect-04 .con-wp span {display: none;}
+	.evc-sect-04 .txt-wp {margin-left: 0;}
 }
 
 
 @media only screen and (max-width:720px){
+.ev-sect-06 {background: url('/public/img/ev/ev_sect05_banner_bg_m.jpg') 50% 100% no-repeat;background-size: cover;padding: 57px 0 70%;text-align: center;}
+.ev-sect-06 .con-wp {display: block;margin-bottom: 38px;}
+.ev-sect-06 .con-wp .tit {font-size: 30px;line-height: 40px;padding: 0 30%;word-break: keep-all;}
+.ev-sect-06 .btn-wp a img {width: 155px;}
+
+.evc-sect-04 {background: url('/public/img/ev/ev_sect05_banner_bg_m.jpg') 50% 100% no-repeat;background-size: cover;padding: 57px 0 70%;text-align: center;}
+.evc-sect-04 .con-wp {display: block;margin-bottom: 38px;}
+.evc-sect-04 .con-wp .tit {font-size: 30px;line-height: 40px;padding: 0 30%;word-break: keep-all;}
+.evc-sect-04 .btn-wp a img {width: 155px;}
 
 .mo-br{display:block;}
 
@@ -661,12 +729,14 @@
 
 
 /* 고객센터 공통 */
-.ev-sub-sect .costomer-wp .link-wp{width: 320px;margin-top: 34px;}
+.ev-sub-sect .costomer-wp .link-wp{margin-top: 34px;}
+.ev-sub-sect .costomer-wp .link-wp li {margin-right: 30px;}
 .ev-sub-sect .costomer-wp .link-wp li::after{right:-16px;height: 15px;}
 .ev-sub-sect .costomer-wp .link-wp li a{font-size: 18px;line-height: 21px;}
 
 .ev-sub-sect .costomer-wp .list-wp{max-width:100vw;margin: 48px 0 60px;}
-.ev-sub-sect .costomer-wp .list-top{margin-left: 5vw;font-size: 14px;line-height: 17px;}
+.ev-sub-sect .costomer-wp .list-top{margin: 0 5vw;font-size: 14px;line-height: 17px;}
+.ev-sub-sect .costomer-wp .list-top .write {font-size: 14px;}
 .ev-sub-sect .costomer-wp .list{margin-top: 29px;}
 .ev-sub-sect .costomer-wp .list li a{padding: 30px 5vw 35px;}
 .ev-sub-sect .costomer-wp .list li p{font-size: 14px;line-height: 17px;}
@@ -731,8 +801,13 @@
 .ev-sub-sect .write-wp textarea{margin-top: 10px;padding: 16px;border-radius: 3px;font-size: 14px;}
 .ev-sub-sect .write-wp .orange-btn{margin-top: 10px;}
 
+
+.ev-sub-sect .file .file-choice{width: 100%;}
+.ev-sub-sect .file .upload-name{display: block; margin-left: 0 !important; margin-top: 20px; text-align: center;}
+.ev-sub-sect .file .upload-name.on{text-align: left;}
+
 /* 마이페이지 공통 */
-.ev-sub-sect .mypage-wp .link-wp li::after{right:-28px;}
+/* .ev-sub-sect .mypage-wp .link-wp li::after{right:-28px;} */
 .ev-sub-sect .mypage-wp .list-wp{margin: 38px 0 60px;}
 .ev-sub-sect .mypage-wp .top-radio-wp .radio-wp{gap:24px;}
 .ev-sub-sect .mypage-wp .usage-list{margin-top: 0;}
@@ -768,7 +843,18 @@
 .evc-sect-03 .link-wp .link{gap:10px;width: 100%;height: 60px;font-size: 14px;}
 .evc-sect-03 .link-wp .link img{width:26px;}
 
-/* [e] ELVIS 서브페이지 */
+.evc-sect-02 .txt-area p {font-size: 30px;padding: 0 2%;}
+
+/* [e] ELVIS 서브페이지 */ 
 
 
+@media only screen and (max-width:500px){
+	.ev-sect-06 .con-wp .tit {padding: 0 20%;}
+	.ev-sect-06 .btn-wp a {margin-right: 10px;}
+	.ev-sect-06 .btn-wp a:last-child {margin-right: 0;}
+ 
+	.evc-sect-04 .con-wp .tit {padding: 0 20%;}
+	.evc-sect-04 .btn-wp a {margin-right: 10px;}
+	.evc-sect-04 .btn-wp a:last-child {margin-right: 0;}
+}
 }

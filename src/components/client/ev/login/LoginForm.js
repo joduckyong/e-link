@@ -13,8 +13,8 @@ import { useCookies } from 'react-cookie';
 const LoginForm = () => {
   const NAVER_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=NAVER`;
   const KAKAO_URI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
-  const GOOGLE_URI = `https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile`;
-  const APPLE_URI = `https://appleid.apple.com?response_type=code&client_id=${process.env.REACT_APP_APPLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_APPLE_REDIRECT_URI}`;
+  const GOOGLE_URI = `https://accounts.google.com/o/oauth2/v2/auth?response_type=token&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&scope=https://www.googleapis.com/auth/userinfo.email`;
+  const APPLE_URI = `https://appleid.apple.com/auth/authorize?response_type=code id_token&response_mode=fragment&client_id=${process.env.REACT_APP_APPLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_APPLE_REDIRECT_URI}&usePopup=false`;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -76,7 +76,7 @@ const LoginForm = () => {
         // console.log('expires_in : ' + new Date(JSON.stringify(response.json.data.expires_in)));
         // setRefreshEvToken(JSON.stringify(response.json.data.refresh_token), JSON.stringify(response.json.data.expires_in));
         setAccessEvToken(JSON.stringify(response.json.data.access_token), JSON.stringify(response.json.data.expires_in));
-        setEvUserNo(JSON.stringify(response.json.data.USER_NO), JSON.stringify(response.json.data.expires_in));
+        setEvUserNo(JSON.stringify(response.json.data.user_name));
         setRefreshEvToken(JSON.stringify(response.json.data.refresh_token));
 
         dispatch(SET_EV_TOKEN(JSON.stringify(response.json.data.access_token)));
@@ -125,7 +125,7 @@ const LoginForm = () => {
           </div>
           <div className="txt-wp">
             <div className="agree">
-              <label for="loginstay">
+              <label htmlFor="loginstay">
                 <input
                   type="checkbox"
                   id="loginstay"

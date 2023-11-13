@@ -45,59 +45,52 @@ const PostingviewForm = () => {
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
-            채용공고
+            Job Posting
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             <li>
-              <NavLink to="/">
-                <img src="./../../img/sub/ico-home.svg" alt="" />
+              <NavLink to="/en">
+                <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                채용정보
+                Recruitment
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
+                  <NavLink to="/en/company/lselink">Company</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people" className="on">
-                    채용정보
-                  </NavLink>
+                  <NavLink to="/en/recruit/people" className="on">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
-                </li>
-                <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                채용공고
+                Job Posting
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/recruit/people">인재상</NavLink>
+                  <NavLink to="/en/recruit/people">Ideal Talent</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/benefits">복리후생</NavLink>
+                  <NavLink to="/en/recruit/benefits">Welfare</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/posting" className="on">
-                    채용공고
-                  </NavLink>
+                  <NavLink to="/en/recruit/posting" className="on">Job Posting</NavLink>
                 </li>
               </ul>
             </li>
@@ -127,19 +120,19 @@ const PostingviewForm = () => {
               <p className="mt30" dangerouslySetInnerHTML={{ __html: boardContents }}></p>
             </div>
             <div className="view-control">
-              <NavLink to={prevBoardId && `/recruit/posting-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
-                이전글
+              <NavLink to={prevBoardId && `/en/recruit/posting-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
+                Previous
               </NavLink>
               <div class="btn-wrap">
-                <NavLink to="/recruit/posting" className="list-btn">
-                  목록
+                <NavLink to="/en/recruit/posting" className="list-btn">
+                  List
                 </NavLink>
                 <NavLink to="" className="apply-btn" onClick={() => window.open(url, '_blank')}>
-                  지원서 작성
+                  Submit Application
                 </NavLink>
               </div>
-              <NavLink to={nextBoardId && `/recruit/posting-view/${nextBoardId}`} className={classnames('next-btn', { disable: !nextBoardId })}>
-                다음글
+              <NavLink to={nextBoardId && `/en/recruit/posting-view/${nextBoardId}`} className={classnames('next-btn', { disable: !nextBoardId })}>
+                Next
               </NavLink>
             </div>
           </div>

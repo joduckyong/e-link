@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { getCookieEvToken } from '../../storage/EvCookie';
 
 const Header = () => {
   const [headerClass, setHeaderClass] = useState('');
   const [pcMenuClass, setPcMenuClass] = useState('');
   const [elinkMenuActive, setElinkMenuActive] = useState(false);
   const [evMenuActive, setEvMenuActive] = useState(false);
+  const [evAuthActive, setAuthActive] = useState(false);
   const [moMenuActive, setMoMenuActive] = useState(false);
   const [moMenuClass, setMoMenuClass] = useState('');
+
+  useEffect(() => {
+    const token = getCookieEvToken();
+
+    console.log('token = ' + token);
+
+    if (token !== undefined && typeof token !== 'undefined' && token.length !== 9) {
+      setAuthActive(true);
+    }
+  }, [evAuthActive]);
 
   const onClickMoMenu = (menu) => {
     if (moMenuClass === menu) {
@@ -16,6 +28,8 @@ const Header = () => {
       setMoMenuClass(menu);
     }
   };
+
+  console.log('evAuthActive = ' + evAuthActive);
   return (
     <header className={headerClass}>
       <div className="pc-menu">
@@ -130,48 +144,42 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                EV 충전소
-              </NavLink>
+              <NavLink to="/ev/index">EV 충전소</NavLink>
               <div className="depth-1">
                 <ul>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      브랜드 소개
-                    </NavLink>
+                    <NavLink to="/ev/index">브랜드 소개</NavLink>
+                  </li>
+                  <li style={!evAuthActive ? { display: 'block' } : { display: 'none' }}>
+                    <NavLink to="/ev/login">로그인</NavLink>
                   </li>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      EV 충전소 찾기
-                    </NavLink>
+                    <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
+                  </li>
+                  <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+                    <NavLink to="/ev/notice">고객센터</NavLink>
+                  </li>
+                  <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+                    <NavLink to="/ev/mypage1">마이페이지</NavLink>
                   </li>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      회원가입
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      고객센터
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      마이페이지
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      관제센터
-                    </NavLink>
+                    <NavLink to="/ev/control">관제센터</NavLink>
                   </li>
                 </ul>
               </div>
             </li>
           </ul>
-          <NavLink to="" className="menu" onClick={() => setPcMenuClass('on')}>
-            <span></span>
-          </NavLink>
+          <div className="side-wp">
+            <NavLink to="/ev/logout" className="logout" style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+              로그아웃
+            </NavLink>
+            <div className="lang">
+              <NavLink to="/en">ENG</NavLink>
+            </div>
+            <NavLink to="" className="menu" onClick={() => setPcMenuClass('on')}>
+              <span></span>
+            </NavLink>
+          </div>
         </div>
       </div>
       <div className={`all-menu ${pcMenuClass}`}>
@@ -312,39 +320,27 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <NavLink to="" onClick={() => alert('준비중 입니다')}>
+              <NavLink to="/ev/index">
                 <strong>EV 충전소</strong>
               </NavLink>
               <ul className="small-menu">
                 <li>
-                  <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                    브랜드 소개
-                  </NavLink>
+                  <NavLink to="/ev/index">브랜드 소개</NavLink>
+                </li>
+                <li style={!evAuthActive ? { display: 'block' } : { display: 'none' }}>
+                  <NavLink to="/ev/login">로그인</NavLink>
                 </li>
                 <li>
-                  <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                    EV 충전소 찾기
-                  </NavLink>
+                  <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
+                </li>
+                <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+                  <NavLink to="/ev/notice">고객센터</NavLink>
+                </li>
+                <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+                  <NavLink to="/ev/mypage1">마이페이지</NavLink>
                 </li>
                 <li>
-                  <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                    회원가입
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                    고객센터
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                    마이페이지
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                    관제센터
-                  </NavLink>
+                  <NavLink to="/ev/control">관제센터</NavLink>
                 </li>
               </ul>
             </li>
@@ -487,39 +483,34 @@ const Header = () => {
               <div className="depth-1" style={moMenuClass === '7' ? { display: 'block' } : { display: 'none' }}>
                 <ul>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      브랜드 소개
-                    </NavLink>
+                    <NavLink to="/ev/index">브랜드 소개</NavLink>
+                  </li>
+                  <li style={!evAuthActive ? { display: 'block' } : { display: 'none' }}>
+                    <NavLink to="/ev/login">로그인</NavLink>
                   </li>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      EV 충전소 찾기
-                    </NavLink>
+                    <NavLink to="/ev/find">EV 충전소 찾기</NavLink>
+                  </li>
+                  <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+                    <NavLink to="/ev/notice">고객센터</NavLink>
+                  </li>
+                  <li style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+                    <NavLink to="/ev/mypage1">마이페이지</NavLink>
                   </li>
                   <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      회원가입
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      고객센터
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      마이페이지
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="" onClick={() => alert('준비중 입니다')}>
-                      관제센터
-                    </NavLink>
+                    <NavLink to="/ev/control">관제센터</NavLink>
                   </li>
                 </ul>
               </div>
             </li>
           </ul>
+          <div className="lang-btn">
+            <NavLink to="/">KOR</NavLink>
+            <NavLink to="/en">ENG</NavLink>
+          </div>
+          <NavLink to="/ev/logout" className="logout_m" style={evAuthActive ? { display: 'block' } : { display: 'none' }}>
+            로그아웃
+          </NavLink>
         </div>
       </div>
     </header>

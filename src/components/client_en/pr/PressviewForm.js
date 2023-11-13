@@ -46,56 +46,53 @@ const PressviewForm = () => {
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
-            보도자료
+            Press
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             <li>
-              <NavLink to="/">
+              <NavLink to="/en">
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                홍보센터
+                PR Center
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/pr/press-list" className="on">
-                    홍보센터
+                  <NavLink to="/en/company/lselink">
+                    Company
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/pr/press-list" className="on">PR Center</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                보도자료
+                Press
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/pr/press-list" className="on">
-                    보도자료
+                  <NavLink to="/en/pr/press-list" className="on">
+                    Press
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/media-list">미디어</NavLink>
+                  <NavLink to="/en/pr/media-list">Media</NavLink>
                 </li>
               </ul>
             </li>
@@ -129,14 +126,14 @@ const PressviewForm = () => {
               <p className="mt40" dangerouslySetInnerHTML={{ __html: boardContents }}></p>
             </div>
             <div className="view-control">
-              <NavLink to={prevBoardId && `/pr/press-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
-                이전글
+              <NavLink to={prevBoardId && `/en/pr/press-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
+                Previous
               </NavLink>
-              <NavLink to="/pr/press-list" className="list-btn">
-                목록
+              <NavLink to="/en/pr/press-list" className="list-btn">
+                List
               </NavLink>
-              <NavLink to={nextBoardId && `/pr/press-view/${nextBoardId}`} className={classnames('next-btn', { disable: !nextBoardId })}>
-                다음글
+              <NavLink to={nextBoardId && `/en/pr/press-view/${nextBoardId}`} className={classnames('next-btn', { disable: !nextBoardId })}>
+                Next
               </NavLink>
             </div>
           </div>

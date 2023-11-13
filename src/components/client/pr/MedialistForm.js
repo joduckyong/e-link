@@ -96,7 +96,7 @@ const MedialistForm = () => {
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             <li>
               <NavLink to="/">
-                <img src="./../../img/sub/ico-home.svg" alt="" />
+                <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
@@ -175,7 +175,7 @@ const MedialistForm = () => {
                 <div className="sh-box">
                   <input type="text" onChange={(e) => setSearchKeyword(e.target.value)} value={searchKeyword || ''} onKeyPress={onKeyPress} />
                   <button onClick={() => onSearch(0)}>
-                    <img src="./../../img/common/ico-search.svg" alt="" />
+                    <img src="/img/common/ico-search.svg" alt="" />
                   </button>
                 </div>
               </div>

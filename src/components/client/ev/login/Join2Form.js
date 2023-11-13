@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { encrypt } from '../../../../api/crypto';
+import { encrypt } from '../../../../api/crypto';
 import axios from 'axios';
 import Post from '../../../../api/Post';
 
@@ -38,10 +38,10 @@ const Join2Form = () => {
   const [telno, setTelno] = useState('');
   const [telnoCk, setTelnoCk] = useState(false);
   const [telnoCk2, setTelnoCk2] = useState(false);
-  const [telcom, setTelcom] = useState('');
-  const [gender, setGender] = useState('');
-  const [brth, setBrth] = useState('');
-  const [ci, setCi] = useState('');
+  // const [telcom, setTelcom] = useState('');
+  // const [gender, setGender] = useState('');
+  // const [brth, setBrth] = useState('');
+  // const [ci, setCi] = useState('');
 
   const [popup, setPopup] = useState(false);
 
@@ -69,7 +69,11 @@ const Join2Form = () => {
       return;
     }
 
-    window.open(process.env.REACT_APP_API_URL + '/api/phone/popup2?type=I', 'width=0,height=0,location=no,status=no,scrollbars=yes', '_blank');
+    window.open(
+      process.env.REACT_APP_API_URL + '/api/phone/popup2?type=I&snsType=0',
+      'width=0,height=0,location=no,status=no,scrollbars=yes',
+      '_blank',
+    );
   };
 
   //비밀번호 유효성 검사
@@ -250,51 +254,54 @@ const Join2Form = () => {
       setAddressDetailCk(false);
     }
 
+    const data = {
+      id: telno,
+      snsType: '0',
+    };
+
     const res = await axios({
-      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/${telno}`,
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        Accept: 'application/json',
-      },
+      url: `${process.env.REACT_APP_API_URL}/api/phone/phoneInfo/id/snsType`,
+      method: 'POST',
+      data: data,
     });
 
     console.log('data : ' + res.data.data);
 
     if (res.data.data !== undefined) {
-      const dataBrth = JSON.stringify(res.data.data.brth).replace(/"/g, '');
-      const dataCi = JSON.stringify(res.data.data.ci).replace(/"/g, '');
-      const dataGender = JSON.stringify(res.data.data.gender).replace(/"/g, '');
-      const dataTelcom = JSON.stringify(res.data.data.telcom).replace(/"/g, '');
-      const dataTelNo = JSON.stringify(res.data.data.telno).replace(/"/g, '');
+      const dataBrth = await JSON.stringify(res.data.data.brth).replace(/"/g, '');
+      const dataCi = await JSON.stringify(res.data.data.ci).replace(/"/g, '');
+      const dataGender = await JSON.stringify(res.data.data.gender).replace(/"/g, '');
+      const dataTelcom = await JSON.stringify(res.data.data.telcom).replace(/"/g, '');
+      const dataTelNo = await JSON.stringify(res.data.data.telno).replace(/"/g, '');
 
-      setBrth(dataBrth);
-      setCi(dataCi);
-      setGender(dataGender);
-      setTelcom(dataTelcom);
-      setTelno(dataTelNo);
-
-      signupUser(e);
+      // setBrth(dataBrth);
+      // setCi(dataCi);
+      // setGender(dataGender);
+      // setTelcom(dataTelcom);
+      // setTelno(dataTelNo);
+      if (dataCi !== '') {
+        await signupUser(dataBrth, dataCi, dataGender, dataTelcom, dataTelNo);
+      }
     } else {
-      setTelnoCk2(true);
+      await setTelnoCk2(true);
     }
   };
 
-  const signupUser = async (e) => {
+  const signupUser = async (dataBrth, dataCi, dataGender, dataTelcom, dataTelNo) => {
     // e.preventDefault();
 
     const data = {
       url: '/auth/signupUser',
       userNm: userNm,
       eml: email,
-      pswd: passwd,
-      telno: telno,
-      gender: gender,
-      brth: brth,
+      pswd: encrypt(passwd),
+      telno: dataTelNo,
+      gender: dataGender,
+      brth: dataBrth,
       addr: enroll_company.address,
       daddr: addressDetail,
-      telcom: telcom,
-      ci: ci,
+      telcom: dataTelcom,
+      ci: dataCi,
       roleId: 'elinkuser',
     };
 
@@ -309,15 +316,19 @@ const Join2Form = () => {
     });
 
     console.log('data : ' + JSON.stringify(res.data));
-
-    if (res.data !== '') {
+    console.log('data.status : ' + JSON.stringify(res.data.data.status));
+    let dataStatus = JSON.stringify(res.data.data.status);
+    if (dataStatus !== 500) {
       const result = JSON.stringify(res.data.data.principal);
-
       console.log('result : ' + result);
 
-      if (result !== '') {
+      if (result !== undefined) {
         navigate('/ev/join3', { replace: true });
+      } else {
+        navigate('/ev/joinError', { replace: true });
       }
+    } else {
+      navigate('/ev/joinError', { replace: true });
     }
   };
 

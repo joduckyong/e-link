@@ -117,7 +117,7 @@ const PresslistForm = () => {
             <div className="txt-wrap wrap">
                 <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">보도자료</h2>
                 <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
-                    <li><NavLink to="/"><img src="./../../img/sub/ico-home.svg" alt="" /></NavLink></li>
+                    <li><NavLink to="/"><img src="/img/sub/ico-home.svg" alt="" /></NavLink></li>
                     <li className={classnames('link', {show: activeMenu1})}>
                         <NavLink to="" onClick={(e) => onClickMenuLink('1')}>홍보센터</NavLink>
                         <ul className={classnames('links', {active: activeMenu1})}>
@@ -154,7 +154,7 @@ const PresslistForm = () => {
                             value={searchKeyword || ''}
                             onKeyPress={onKeyPress}
                         />
-                        <button onClick={() => onSearch(0)}><img src="../../img/common/ico-search.svg" alt="" /></button>
+                        <button onClick={() => onSearch(0)}><img src="/img/common/ico-search.svg" alt="" /></button>
                     </div>
                 </div>
                 <ul className="con4-list-box">

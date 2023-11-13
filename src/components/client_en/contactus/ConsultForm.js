@@ -42,30 +42,30 @@ const ConsultForm = () => {
     const fileObj = fileRef.current.constructor.name === 'File' && fileRef.current;
 
     if (contactNm === '') {
-      alert('이름을 입력하세요');
+      alert('Please enter your name.');
       return;
     }
     if (contactPhone === '') {
-      alert('연락처를 입력하세요');
+      alert('Please enter without -.');
       return;
     }
     if (contactMail === '') {
-      alert('메일을 입력하세요');
+      alert('Please enter your email address.');
       return;
     }
     if (contactTitle === '') {
-      alert('제목을 입력하세요');
+      alert('Please enter the title.');
       return;
     }
     if (contactContents === '') {
-      alert('내용을 입력하세요');
+      alert('Please enter your inquiry details.');
       return;
     }
     if (!contactAgree) {
-      alert('개인정보 수집및 이용에 동의에 체크하세요');
+      alert('Please agree to the collection and use of personal information.');
       return;
     }
-    if (window.confirm('등록 하시겠습니까?')) {
+    if (window.confirm('Would you like to register?')) {
       const newList = {
         contactId: 'CON',
         contactNm: contactNm,
@@ -79,10 +79,10 @@ const ConsultForm = () => {
       };
       const result = await dispatch(insertContactUs(newList));
       if (result.payload.data > 0) {
-        alert('등록 되었습니다.');
-        document.location.href = '/contactUs/consult';
+        alert('Success!');
+        document.location.href = '/en/contactUs/consult';
       } else {
-        alert('등록에 실패하였습니다.');
+        alert('Fail!');
       }
     }
   };
@@ -96,12 +96,12 @@ const ConsultForm = () => {
     }
 
     if (!acceptFileTypes.test(e.target.files[0].name)) {
-      alert('첨부파일은 jpg, png, gif, jpeg, pdf, hwp, xlsx, docx, ppt, pptx 파일만 업로드 가능합니다.');
+      alert('Only jpg, png, gif, jpeg, pdf, hwp, xlsx, docx, ppt, and pptx files can be uploaded.');
       return;
     }
 
     if (e.target.files[0].size > acceptFileSize) {
-      alert('첨부파일은 최대 50MB 이하의 파일만 업로드 가능합니다.');
+      alert('Attachments can only be uploaded with a maximum size of 50MB or less.');
       return;
     }
 
@@ -130,58 +130,50 @@ const ConsultForm = () => {
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
             <li>
-              <NavLink to="/">
-                <img src="./../img/sub/ico-home.svg" alt="" />
+              <NavLink to="/en">
+                <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                Contact us
+                Contact Us
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
+                  <NavLink to="/en/company/lselink">Company</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/consult" className="on">
-                    Contact Us
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/contactus" className="on">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
-            {/*<li className="on link">
-                            <NavLink to="/contactus" onClick={(e) => onClickMenuLink('2')}>Contact us</NavLink>
-                        </li>*/}
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                상담신청
+                Consultation request
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/contactus/consult" className="on">
-                    상담신청
+                  <NavLink to="/en/contactus/consult" className="on">
+                    Consultation request
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/inconvenience">불편신고</NavLink>
+                  <NavLink to="/en/contactus/inconvenience">Report complaints</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/inquiry">문의하기</NavLink>
+                  <NavLink to="/en/contactus/inquiry">Contact us</NavLink>
                 </li>
               </ul>
             </li>
@@ -192,15 +184,15 @@ const ConsultForm = () => {
         <div className="nav-slide">
           <ul className="swiper-wrapper">
             <li className="swiper-slide on">
-              <NavLink to="/contactus/consult" className="on">
-                상담신청
+              <NavLink to="/en/contactus/consult" className="on">
+                Consultation request
               </NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/contactus/inconvenience">불편신고</NavLink>
+              <NavLink to="/en/contactus/inconvenience">Report complaints</NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/contactus/inquiry">문의하기</NavLink>
+              <NavLink to="/en/contactus/inquiry">Contact us</NavLink>
             </li>
           </ul>
         </div>
@@ -209,417 +201,426 @@ const ConsultForm = () => {
       <div className="content">
         <div className="wrap">
           <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            고객님에게 알맞은 맞춤 충전 솔루션을 제안합니다.
+            We propose a customized charging solution
+            <br />
+            that is right for you.
           </h3>
           <div className="term">
             <div className="agree">
               <label htmlFor="privacychk">
                 <input type="checkbox" id="privacychk" checked={contactAgree} onChange={(e) => checkHandler(e)} />
                 <span className="chkimg"></span>
-                개인정보 수집 및 이용에 동의합니다.
+                I agree to the collection and use of personal information.
               </label>
             </div>
             <NavLink to="" className={agreeActive ? 'open' : ''} onClick={() => setAgreeActive(!agreeActive)}>
-              약관보기
+              View Terms
             </NavLink>
           </div>
           <div className="agree-detail-wp">
             <div className="agree-detail-box" style={agreeActive ? { display: 'block' } : { display: 'none' }}>
-              <h3>1. 총칙</h3>
+              <h3>1. General rules</h3>
               <p className="depth01_p">
-                엘에스이링크 주식회사(이하 "회사")는 회사가 운영하는 엘에스이링크(주) ELVIS 전기차 충전 서비스(이하 "전기차 충전 서비스")를 이용하는
-                고객의 편의를 위해 이용자의 동의를 기반으로 개인 정보를 수집, 이용 및 제공하고 있습니다. 회사는 정보통신서비스제공자가 준수하여야 하는
-                " 개인정보보호법", "정보통신망이용촉진 및 정보보호 등에 관한 법률" 등 관계 법령, 개인정보보 호 규정 및 가이드라인이 정하는 내용을
-                준수합니다. "개인정보처리방침"이란 전기차 충전 서비스 이용을 위해 고객이 제공하는 개인정보를 전기차 충전 서비스의 이용 용도와 방식으로
-                수집 및 처리함에 있어, 개인정보보호를 위하여 회사가 준수해야 할 지침을 말합니다.
+                LSE Link Co., Ltd. (hereinafter referred to as the "Company") collects and uses personal information based on the user's consent for the convenience of customers 
+                using ELVIS electric vehicle charging service (hereinafter referred to as "electric vehicle charging service") operated by LSE Link Co., Ltd. and are providing. 
+                The company complies with the contents set forth in related laws, personal information protection regulations and guidelines, such as the "Personal Information Protection Act" 
+                and the "Act on Promotion of Information and Communications Network Utilization and Information Protection, etc." that information and communication service providers must comply with. 
+                "Personal information handling policy" refers to the guidelines that the company must comply with for the protection of personal information when collecting and 
+                processing personal information provided by customers for the use of electric vehicle charging service for the purpose and method of using electric vehicle charging service.
               </p>
-              <h3>2. 개인정보의 처리 목적, 항목 및 보유기간</h3>
+              <h3>2. Purpose of personal information processing, items and retention period</h3>
               <p className="depth01_p">
-                1) 회사는 다음의 목적을 위하여 아래와 같이 개인정보 항목을 처리하고 있습니다. 법령에 따른 개인정보 보유 및 이용기간 또는
-                고객님으로부터 개인정보를 수집 시에 동의 받은 개인정보 보유, 이용기간 내에서 개인정보를 처리, 보유합니다. 회사가 처리하고 있는
-                개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적, 항목이 변경되는 경우에는 ｢개인정보 보호법｣ 제18조에 따라 별도의
-                동의를 받는 등 필요한 조치를 이행할 예정입니다.
+                1) The company handles the following personal information items for the following purposes. Personal information is processed and retained within the period of retention and 
+                use of personal information in accordance with the law or within the period of retention and use of personal information agreed upon when collecting personal information 
+                from customers. Personal information processed by the company will not be used for purposes other than the following, and if the purpose of use or items are changed, 
+                necessary measures will be taken, such as obtaining separate consent in accordance with Article 18 of the 「Personal Information Protection Act」 no see.
               </p>
-              <h4>① 회원 관리 서비스 : 전기차 충전 서비스의 회원 관리 </h4>
+              <h4>① Member management service: Member management of electric vehicle charging service </h4>
               <p className="depth02_p">
-                ㄱ. 수집·이용 목적 : 회원가입 및 본인확인, 본인차량여부 확인, 간편가입 서비스 제공, 서비스 부정이용 방지, 가입의사 확인 및 회원자격
-                유지/관리, 서비스 이용 및 상담지원, 충전서비스 관련 알림메시지 발송 등 고지사항 전달 <br />
-                ㄴ. 수집 항목 : [필수항목] 아이디, 이름, CI, 휴대전화번호, 주소, 이메일, 본인확인번호, 간편가입 인증번호 <br />
-                - 신용카드 이용요금결제를 위해 일부 마스킹 처리된 신용카드번호, 암호화된 빌키(billkey) 및 발급일시 수집 <br />
-                - 생년월일 신용카드 본인 소유 확인을 위해 PASS 본인 인증을 통해 수집하고 복호화 가능한 암호값으로 저장 관리 <br />
-                - [선택항목] 차량 보유유형, 자동차등록번호(차량 번호), 차량 제조사, 차종, 차량 연식, 차량 모델, 차량 닉네임 <br />
-                ㄷ. 보유기간 : 회원탈퇴시 즉시 삭제 (관련법령이 있는 경우는 예외)
-              </p>
-              <h4>② 서비스 : 전기차 충전 서비스</h4>
-              <p className="depth02_p">
-                ㄱ. 수집·이용 목적 : <br />
-                - ELVIS 캐시, 충전내역 조회, 결제카드 및 차량관리 <br />
-                - 제휴 포인트 전환 및 사용, 서비스 제공 등 <br />
-                * 신용카드 등록관련정보는 입력 직후 암호화되어 각 금융회사에게 전달되고 회사에 저장하지 않습니다. 회사는 결제 진행을 위하여 암호화된
-                정보만을 전달 받아 사용합니다. <br />
-                ㄴ. 수집 항목 : [필수항목] 휴대전화번호, 결제·승인관련정보[결제카드인증번호, CI, 결제카드 별칭, 충전이력, 결제이력, 제휴포인트
-                사용이력, 멤버십카드·포인트 관련정보[멤버십카드번호, 자동차등록번호(차량번호), 차량 제조사, 차종, 차량정보(최초 가입 이후 차량을 추가
-                등록하는 경우) <br />
-                ㄷ. 보유기간 : 회원탈퇴시 즉시 삭제 (관련법령이 있는 경우는 예외)
-              </p>
-              <h4>③ 서비스 : 전기차 충전 서비스의 개선 </h4>
-              <p className="depth02_p">
-                ㄱ. 수집·이용 목적 : VOC 처리, 접속빈도 파악 및 서비스 이용에 대한 개선에 통계처리 <br />
-                ㄴ. 수집 항목 : [필수항목] 서비스 이용기록, 불량 이용기록, 충전내역, 1:1 문의내역, 차량 진단데이터
+                a. Purpose of collection and use: Membership registration and identification, confirmation of vehicle availability, provision of simple subscription service, 
+                prevention of fraudulent use of service, confirmation of intent to subscribe and maintenance/management of membership, service use and consultation support, 
+                notification of charging service notification, etc. Delivery of information
                 <br />
-                ㄷ. 보유기간 : 회원탈퇴시 즉시 삭제 (관련법령이 있는 경우는 예외)
+                b. Collected items: [Required items] ID, name, CI, mobile phone number, address, email, identification number, simple sign-up authentication number 
+                <br />
+                  - Partially masked credit card number for credit card payment, encrypted billkey ) and date of issuance 
+                <br />
+                  - Date of birth Collected through PASS authentication to verify ownership of credit card and stored and managed as decryptable password value 
+                <br />
+                  - [Optional] Vehicle ownership type, vehicle registration number (vehicle number), vehicle manufacturer, vehicle model, Vehicle year, vehicle model, and vehicle nickname 
+                <br />
+                c. Retention period: Delete immediately when membership is withdrawn (unless there are related laws)
               </p>
-              <h4>④ 서비스 : 위치기반서비스</h4>
+              <h4>② Service: Electric vehicle charging service</h4>
               <p className="depth02_p">
-                ㄱ. 수집·이용 목적 : 충전소 검색, 충전소 길안내 <br />
-                ㄴ. 수집 항목 : [필수항목] 실시간 위치정보(GPS) <br />
-                ㄷ. 보유기간 : 충전소 검색, 길안내 기능 종료 후 즉시 삭제 (별도 저장하지 않음)
+                a. Purpose of collection and use: <br />
+                - ELVIS cash, charge history inquiry, payment card and vehicle management <br />
+                - Affiliate point conversion and use, service provision, etc. <br />
+                * Credit card registration information is encrypted immediately after input and transmitted to each financial company, and is not stored by the company . 
+                The company receives and uses only encrypted information for payment processing. <br />
+                b. Collected items: [Required items] Mobile phone number, payment/approval related information [payment card authentication number, CI, payment card alias, 
+                charging history, payment history, affiliate point usage history, membership card/point related information [membership card number, Vehicle registration number (vehicle number), 
+                vehicle manufacturer, vehicle model, and vehicle information (in case of additional vehicle registration after initial subscription) <br />
+                c. Retention period: Delete immediately when membership is withdrawn (unless there are related laws)
               </p>
-              <h4>⑤ 서비스 : 마케팅 및 광고 </h4>
+              <h4>③ Service: Improvement of electric vehicle charging service </h4>
               <p className="depth02_p">
-                ㄱ. 수집·이용 목적 : 전기차 충전 서비스와 관련된 광고성 정보 전달 및 마케팅에 활용, 시장 조사, 상품 및 이벤트 안내 등<br />
-                ㄴ. 수집 항목 : [필수항목] 성명, 생년월일, 성별, 암호화된 동일인 식별 정보(CI), 휴대폰번호, 내외국인 여부, 이메일 주소, 구입차량 정보,
-                충전이력, ELVIS 캐시 사용이력 <br />
-                ㄷ. 보유기간 : 회원탈퇴시 즉시 삭제 (관련법령이 있는 경우는 예외)
+                a. Purpose of collection and use: Statistical processing for VOC processing, identification of access frequency, and improvement of service use <br />
+                b. Collected items: [Required items] Service use records, defective use records, charging details, 1:1 inquiry details, vehicle diagnosis data
+                <br />
+                c. Retention period: Delete immediately when membership is withdrawn (unless there are related laws)
               </p>
-              <h4>⑥ 서비스 : 차량 등록 </h4>
+              <h4>④ Service: Location-based service</h4>
               <p className="depth02_p">
-                ㄱ. 수집·이용 목적 : 회원가입 시 회원등급 설정 <br />
-                ㄴ. 수집 항목 : 차량 닉네임, 차량 보유유형, 자동차 등록번호 (차량번호), 차량 제조사, 차종, 모델명, 차량연식 <br />
-                ㄷ. 보유기간 : 회원탈퇴시 즉시 삭제 (관련법령이 있는 경우는 예외)
+                a. Purpose of collection and use: search for charging stations, directions to charging stations <br />
+                b. Collection items: [Required items] Real-time location information (GPS) <br />
+                c. Retention period: Deletion immediately after termination of charging station search and route guidance (no separate storage)
+              </p>
+              <h4>⑤ Service: Marketing and Advertising</h4>
+              <p className="depth02_p">
+                a. Purpose of collection and use: Delivery of advertising information related to electric vehicle charging service and utilization for marketing, market research, product and event information, etc.<br />
+                b.Collected items: [Required items] Name, date of birth, gender, encrypted identification information (CI), mobile phone number, domestic or foreigner status, e-mail address, 
+                purchased vehicle information, charging history, ELVIS cache usage history  <br />
+                c. Retention period: Delete immediately when membership is withdrawn (unless there are related laws)
+              </p>
+              <h4>⑥ Service: Vehicle Registration </h4>
+              <p className="depth02_p">
+                a. Purpose of collection and use: Set membership level when signing up for membership <br />
+                b. Collection items: vehicle nickname, vehicle ownership type, vehicle registration number (vehicle number), vehicle manufacturer, vehicle type, model name, vehicle year <br />
+                c. Retention period: Delete immediately when membership is withdrawn (unless there are related laws)
               </p>
               <p className="depth01_p">
-                2) 단, 상법 등 관련법령의 규정에 의하여 보존할 의무가 있는 경우 회사는 고객의 개인정보 를 보관합니다. 이 경우 회사는 보관하는 정보를
-                그 보관의 목적으로만 이용하며 보존기간은 다음과 같습니다.
+                2) However, if there is an obligation to preserve it in accordance with the provisions of related laws such as the Commercial Act, the company will keep the customer's personal information. 
+                In this case, the company uses the information it keeps only for the purpose of keeping it, and the retention period is as follows.
               </p>
               <p className="depth02_p">
-                ① 회사의 상업장부와 영업에 관한 중요서류 및 전표 등에 관련된 정보 : 10년 - 중요서류 / 5년 – 전표(상법) <br />
-                ② 모든 거래에 관한 장부 및 증빙서류와 관련된 정보 : 5년 (국세기본법, 법인세법) <br />
-                ③ 계약 또는 청약철회 등에 관한 기록, 대금결제 및 재화 등의 공급에 관한 기록 : 5년 (전자상거래 등에서의 소비자보호에 관한 법률) <br />
-                ④ 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년 (전자상거래 등에서의 소비자보호에 관한 법률) <br />
-                ⑤ 장부와 교부한 세금계산서 또는 영수증 : 5년 (부가가치세법) <br />⑥ 「통신비밀보호법」에 따른 서비스이용기록, 접속로그, 접속IP정보 :
-                3개월 3) 회사는 개인위치정보의 이용•제공 사실 확인 자료를 『위치정보의 보호 및 이용 등에 관한 법률』 제16조 제2항에 근거하여 위치정보
-                시스템에 자동으로 기록하며, 민원 처리 등을 위해 개인위치정보 이용•제공 사실 확인 자료를 그 기록 시점으로부터 6개월 동안 보유합니다.
+                ① Information related to the company's commercial books and important documents and slips related to business: 10 years - important documents / 5 years - slips (Commercial Act) <br />
+                ② Information related to books and supporting documents related to all transactions: 5 years (Basic National Tax Act, corporate Tax Act)<br />
+                ③ Records on contracts or subscription withdrawals, records on payment and supply of goods, etc.: 5 years (Consumer Protection Act in Electronic Commerce, etc.)<br />
+                ④ Records on consumer complaints or dispute handling: 3 years (electronic Consumer Protection Act in Commercial Transactions, etc.)<br />
+                ⑤ Tax invoices or receipts issued with books: 5 years (Value Added Tax Act)<br />
+                ⑥ Service use records, access logs, access IP information in accordance with the 「Communications Secrets Protection Act」: 3 months 
+              </p>
+              <p className="depth01_p">
+                3) The company Data confirming the use and provision of personal location information are automatically recorded in the location information system in accordance with Article 16, Paragraph 2 of the 『Act on Protection 
+                and Use of Location Information』, and personal location information is used for handling civil complaints, etc. We retain the fact-checking data provided for 6 months from the time of recording.
               </p>
 
-              <h3>3. 개인정보의 파기절차 및 파기방법</h3>
+              <h3>3. Destruction procedure and method of personal information</h3>
               <p className="depth01_p">
-                1) 회사는 다른 법률에 따라 개인정보를 보존하여야 하는 경우가 아닌 한, 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게
-                되었을 때에는 지체없이 해당 개인정보를 파기합니다.
+                1) The company destroys the personal information without delay when the personal information becomes unnecessary, such as the elapse of the personal information retention period and the achievement of the purpose of processing, 
+                unless it is required to preserve personal information in accordance with other laws.
               </p>
               <p className="depth01_p">
-                2) 회사는 다른 법률에 따라 보유하여야 하는 경우가 아닌 한, 개인위치정보의 보유기간의 경과, 처리목적 달성 등 개인위치정보가 불필요하게
-                되었을 때에는 제2조3항에 따라 기록·보존하여야 하는 위치정보 이용·제공사실 확인자료 외의 개인위치정보는 즉시 파기합니다.
+                2) Unless the company is required to retain it according to other laws, when personal location information becomes unnecessary, such as the expiration of the retention period of personal location information and the achievement of the purpose of processing, 
+                the location that must be recorded and preserved in accordance with Article 2, Paragraph 3 Personal location information other than data to confirm the use and provision of information is immediately destroyed.
               </p>
               <p className="depth01_p">
-                3) 고객님으로부터 동의 받은 개인정보 보유기간이 경과하거나 처리 목적이 달성되었음에도 불구하고 다른 법령에 의한 근거 및 내부 방침 및
-                정보보호 사유(보유 및 이용기간 참조)에 따라 개인정보를 계속 보존하여야 하는 경우에는, 해당 개인정보를 별도의 데이터베이스(DB)로
-                옮기거나 보관 장소를 달리하여(종이의 경우 별도의 서류함) 보존합니다. 별도 DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는
-                보유되는 목적 이외의 다른 목적으로 이용되지 않습니다.
+                3) Even though the personal information retention period agreed to by the customer has elapsed or the purpose of processing has been achieved, in the event that 
+                personal information must be retained in accordance with other laws and internal policies and reasons for information protection (refer to retention and use period) , 
+                The personal information is moved to a separate database (DB) or stored in a different storage location (separate filing cabinet in the case of paper). 
+                Personal information transferred to a separate DB is not used for any purpose other than the purpose for which it is retained unless otherwise required by law.
               </p>
-              <p className="depth01_p">4) 개인정보(개인위치정보 포함) 파기의 절차 및 방법은 다음과 같습니다.</p>
+              <p className="depth01_p">4) The procedure and method of destroying personal information (including personal location information) are as follows.</p>
               <p className="depth02_p">
-                - 파기절차 : 회사는 파기 사유가 발생한 개인정보를 선정하고, 회사의 개인(위치)정보 보호책임자의 승인을 받아 개인정보를 파기합니다.
-                <br />- 파기방법 : 회사는 전자적 파일 형태로 기록·저장된 개인정보는 기록을 재생할 수 없도록 파기하며, 종이 문서에 기록·저장된
-                개인정보는 분쇄기로 분쇄하거나 소각하여 파기합니다.
+              - Destruction procedure: The company selects the personal information for which the reason for destruction occurred and destroys the personal information 
+                with the approval of the person in charge of personal (location) information protection of the company.
+                <br />- Destruction method: The company destroys personal information recorded and stored in electronic file form so that the record cannot be reproduced, 
+                and personal information recorded and stored in paper documents is destroyed by shredding or incineration.
               </p>
 
-              <h3>4. 개인정보의 제3자 제공</h3>
+              <h3>4. Provision of personal information to third parties</h3>
               <p className="depth01_p">
-                1) 회사는 고객의 개인정보를 제2조(개인정보의 처리 목적, 항목 및 보유기간)에서 명시한 범위 내에서만 처리하며, 고객의 동의, 법률의
-                특별한 규정 등 ｢개인정보 보호법｣ 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
+                1) The company processes customers' personal information only within the scope specified in Article 2 (Purpose of processing personal information, items and retention period), 
+                and in accordance with Article 17 of the 「Personal Information Protection Act」 and Personal information will be provided to third parties only if it falls under Article 18.
               </p>
               <p className="depth01_p">
-                2) 회사는 고객님의 개인위치정보를 고객님께서 지정하는 제3자에게 제공하는 경우 개인위치 정보를 수집한 당해 통신 단말 장치로 매회
-                고객님께 제공받는 자, 제공 일시 및 제공 목적을 즉시 통보합니다. 단, 다음에 해당하는 경우에는 고객님께서 미리 특정하여 지정한 통신 단말
-                장치 또는 E-mail로 통보합니다.
+                2) If the company provides the customer's personal location information to a third party designated by the customer, the company immediately notifies the customer of the recipient, 
+                the date and time of provision, and the purpose of provision through the communication terminal device that collected the personal location information. However, in the following cases, 
+                notification will be made to the communication terminal device specified and designated by the customer in advance or by e-mail.
               </p>
               <p className="depth02_p">
-                - 개인위치정보를 수집한 당해 통신 단말 장치가 문자, 음성 또는 영상의 수신 기능을 갖추지 않은 경우 <br />- 개인위치정보 주체가
-                개인위치정보를 수집한 당해 통신 단말 장치 외의 통신 단말 장치 또는 E-mail 등으로 통보할 것을 미리 요청한 경우
+                - When the relevant communication terminal device that collected personal location information does not have a function to receive text, voice, or video  <br />
+                - When the personal location information subject collects personal location information, other than the relevant communication terminal device or e-mail If you have requested in advance to be notified
               </p>
 
-              <h3>5. 개인정보의 안전성 확보조치</h3>
+              <h3>5. Measures to ensure the safety of personal information</h3>
               <p className="depth01_p">
-                ※ 개인정보의 기술적/관리적 보호 대책 <br />
-                전기차 충전 서비스는 고객의 개인정보를 처리함에 있어 개인정보의 분실, 도난, 누출, 변조 또는 훼손되지 않도록 안전성 확보를 위하여
-                아래와 같은 기술적/관리적 대책을 적용하고 있습니다.
+                ※ Technical/administrative protection measures for personal information  <br />
+                Electric vehicle charging service applies the following technical/management measures to ensure safety so that personal information is not lost, stolen, leaked, falsified, or damaged in processing customer personal information.
               </p>
-              <h4>1) 기술적 조치</h4>
+              <h4>1) Technical measures</h4>
               <p className="depth02_p">
-                ① 고객정보의 암호화 고유식별정보, 카드번호 등 법령에서 암호화를 요구하고 있는 개인정보를 저장하는 경우, DB 내에 암호화저장되어 외부
-                침입에 의해 유출되더라도 고객의 개인정보를 활용할 수 없도록 하고 있습니다. <br />
-                ② 통신 구간 암호화 홈페이지를 통한 회원가입 및 로그인 등 고객정보를 입력하여 전달하는 구간에 대해 SSL 등 암호화 통신을 통하여 고객의
-                정보가 안전하게 전송되도록 조치하고 있습니다. <br />③ 보안솔루션의 설치 서비스 제공 및 고객의 정보를 안전하게 관리하기 위하여
-                개인정보처리시스템에 대해 백신프로그램의 설치, 주기적인 업데이트 및 정기점검을 수행하고 있으며, DB 접근제어 솔루션 및 필요시
-                화면캡처방지 솔루션 등을 적용하고 있습니다.
+                ① Encryption of customer information In the case of storing personal information that requires encryption by law, such as unique identification information and card number, 
+                it is encrypted and stored in the DB so that the customer's personal information cannot be used even if it is leaked due to external intrusion.<br />
+                ② Encryption of communication section We take measures to ensure that customer information is safely transmitted through encrypted communication such as SSL for the section where customer information is entered and delivered, 
+                such as membership registration and login through the website.  <br />
+                ③ In order to provide security solution installation services and safely manage customer information, vaccine programs are installed, periodic updates, and regular inspections are performed on the personal information processing system, 
+                and DB access control solutions and screen capture prevention solutions, if necessary, etc. is applying.
               </p>
-              <h4>2) 관리적 조치 </h4>
+              <h4>2) Administrative measures </h4>
               <p className="depth02_p">
-                ① 개인정보관리체계 수립 개인정보를 안전하게 관리하기 위하여 회사 내부적으로 개인정보 관리체계를 수립하여 운영하고 있습니다. <br />
-                ② 개인정보보호 위원회 운영 회사의 개인정보보호를 위한 위원회를 구성하여 연 1회 이상 위원회 회의를 개최하고 개인정보관리체계의 운영 및
-                개인정보보호 이슈 등의 사항에 대하여 개선하고 바로잡기 위한 노력을 기울이고 있습니다. <br />③ 개인정보 취급자 관리 고객의 개인정보를
-                처리하는 개인정보취급자를 대상으로 개인정보보호 서약서를 제출 받고, 연 1회 이상의 개인정보보호 교육을 수행하여 고객정보의 중요성과
-                안전하게 관리하도록 하고 있습니다. 또한 개인정보처리자의 권한 관리를 통하여 불필요한 고객의 개인정보에 대한 접근과 노출을 최소화하고
-                있습니다.
+                ① Establishment of personal information management system In order to safely manage personal information, the company has established and operated a personal information management system internally.<br />
+                ② Operating the Personal Information Protection Committee The company organizes a committee for personal information protection, holds a committee meeting at least once a year, 
+                and makes efforts to improve and correct matters such as the operation of the personal information management system and personal information protection issues. there is. <br />
+                ③ Management of personal information handlers Personal information handlers who handle personal information of customers are required to submit a personal information protection pledge, 
+                and personal information protection training is conducted at least once a year to ensure the importance and safe management of customer information. 
+                In addition, we minimize unnecessary access to and exposure of customers' personal information by managing the authority of the personal information manager.
               </p>
 
-              <h3>6. 개인정보 자동 수집 장치의 설치·운영 및 거부에 관한 사항</h3>
+              <h3>6. Matters concerning the installation, operation and rejection of automatic personal information collection devices</h3>
               <p className="depth01_p">
-                1) 전기차 충전 서비스는 이용자에게 개별적인 맞춤서비스를 제공하기 위해 이용 정보를 저장하고 수시로 불러오는 `쿠키(cookie)`를
-                사용합니다.
+                1) The electric vehicle charging service uses 'cookies' that store and retrieve usage information from time to time in order to provide individually customized services to users.
               </p>
               <p className="depth01_p">
-                2) 쿠키는 웹사이트를 운영하는데 이용되는 서버(http(s))가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의
-                하드디스크에 저장되기도 합니다.
+                2) Cookies are a small amount of information that the server (http(s)) used to run the website sends to the user's computer browser, and is sometimes stored on the hard disk of the user's PC computer.
               </p>
               <p className="depth02_p">
-                ① 쿠키의 사용목적: 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 보안접속 여부 등을 파악하여 이용자에게 최적화된
-                정보 제공을 위해 사용됩니다. 고객은 쿠키 설치에 대한 선택권을 가지고 있습니다. 따라서, 고객은 웹브라우저에서 옵션을 설정함으로써 모든
-                쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수도 있습니다. <br />② 쿠키의 설치∙운영 및
-                거부: 쿠키 설정을 거부하는 방법으로는 고객이 사용하는 웹 브라우저의 옵션을 선택함으로써 모든 쿠키를 허용하거나 쿠키를 저장할 때마다
-                확인을 거치거나, 모든 쿠키의 저장을 거부할 수 있습니다.
+                ① Purpose of use of cookies: It is used to provide optimized information to users by identifying the types of visits and usage of each service and website visited by the user, security access, etc. 
+                Customers have a choice about installing cookies. Therefore, customers may allow all cookies by setting options in their web browser, go through confirmation whenever a cookie is saved, or refuse to save all cookies.<br />
+                ② Installation, Operation, and Rejection of Cookies: To reject cookie settings, you can accept all cookies by selecting the option of the web browser used by the customer, go through confirmation every time a cookie is saved, or refuse to save all cookies can.
               </p>
               <p className="notice_p">
-                ※ 설정방법 예 (인터넷 익스플로어의 경우) : 웹 브라우저 상단의도구 &gt; 인터넷옵션 &gt; 개인정보 &gt; 고급 &gt; 설정방법 선택
+                ※ Example of setting method (in case of Internet Explorer): Tools at the top of the web browser &gt; Internet Options &gt; Privacy &gt; Advanced &gt; Select setting method
               </p>
-              <p className="depth02_p">③ 다만, 쿠키의 저장을 거부할 경우에는 로그인이 필요한 일부 서비스는 이용에 어려움이 있을 수 있습니다.</p>
+              <p className="depth02_p">③ However, if you refuse to save cookies, you may have difficulty using some services that require login.</p>
 
-              <h3>7. 개인정보의 열람 및 정정</h3>
+              <h3>7. Access and correction of personal information</h3>
               <p className="depth01_p">
-                1) 회원님은 언제든지 등록되어 있는 본인의 개인정보를 열람하거나 정정하실 수 있습니다. 특히 회원님의 개인정보의 정정 요구에 대하여
-                회사는 해당 내용에 대해 정정할 때까지 당해 개인정보를 이용하지 않습니다.
+                1) Members can view or correct their registered personal information at any time. In particular, in response to a member's request for correction of personal information, 
+                the company will not use the personal information until it is corrected.
               </p>
               <p className="depth01_p">
-                2) 회사는 회원의 개인정보 이용내역을 연 1회 이상 회원에게 전자우편, 서면, 팩스, 전화 등의 방법으로 통지합니다.
-              </p>
-
-              <h3>8. 개인정보 수집, 이용, 제공에 대한 동의철회</h3>
-              <p className="depth01_p">1) 회원님은 회원가입 시 개인정보 수집, 이용 및 제공에 대해 동의하신 내용을 언제든지 철회하실 수 있습니다.</p>
-              <p className="depth01_p">
-                2) 동의 철회는 홈페이지나 고객센터에 연락하여 본인 확인 절차를 거치신 후 직접 동의철회 신청을 하시거나, 개인정보 보호책임자 또는
-                개인정보 보호담당자에게 서면 또는 E-Mail등으로 송부하여 주시면 지체 없이 조치하여 드립니다.
+                2) The company notifies the member of the member's personal information usage details at least once a year by e-mail, writing, fax, or phone.
               </p>
 
-              <h3>9. 고객, 법정대리인의 권리와 의무 및 그 행사방법</h3>
+              <h3>8. Withdrawal of Consent to Collection, Use and Provision of Personal Information</h3>
+              <p className="depth01_p">1) Members can withdraw their consent to the collection, use and provision of personal information at any time when signing up for membership.</p>
               <p className="depth01_p">
-                1) 고객 또는 법정대리인(만 14세 미만의 아동인 경우)은 회사에 대하여 언제든지 개인정보 수집 · 이용 · 제공 등의 동의를 철회(가입해지)할
-                수 있으며 개인정보 열람, 정정, 삭제, 처리 정지 요구 등의 권리를 행사할 수 있습니다.
-                <br />
-                <br />
-                2) 고객 또는 법정대리인은 위와 같은 권리 행사를 온라인에서는 회사 홈페이지에 접속하여 본인 확인 절차를 거친 후 개인정보관리 메뉴에서
-                하실 수 있고, 서면, 전화 또는 이메일 등을 통하여 고객센터 또는 회사 개인정보보호 책임자 및 담당자에게 연락하는 방법으로 하실 수
-                있으며, 회사는 이에 대해 지체 없이 조치하겠습니다.
-                <br />
-                <br />
-                3) 제1, 2항에 따른 권리 행사는 고객님의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수 있습니다. 이 경우 “개인정보 처리
-                방법에 관한 고시(제2020-7호)” 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.
-                <br />
-                <br />
-                4) 개인정보 열람 및 처리정지 요구는 개인정보보호법 제35조 제4항, 제37조제2항에 의하여 고객님의 권리가 제한될 수 있습니다.
-                <br />
-                <br />
-                5) 개인정보의 정정 및 삭제 요구는 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없습니다.
-                <br />
-                <br />
-                6) 회사는 정보주체 권리에 따른 열람의 요구, 정정, 삭제의 요구, 처리정지의 요구 시 열람 등 요구를 한 자가 본인이거나 정당한
-                대리인인지를 확인합니다.
-                <br />
-                <br />
-                7) 고객이 개인정보 오류정정을 요구하신 경우, 회사는 오류정정을 완료하기 전까지 당해 개인정보를 이용 · 제공하지 않으며, 이미 제3자에게
-                당해 개인정보를 제공한 경우에는 제3자에게 지체 없이 통지하여 오류 정정이 이루어지도록 합니다.
-                <br />
-                <br />
-                8) 고객 또는 법정 대리인이 동의철회(가입해지)한 경우, 회사는 지체없이 파기하는 것을 원칙으로 하나 관계법령에서 의무적으로 보유하도록
-                한 경우에는 개인정보 처리방침 `개인정보의 보유 및 이용기간`에 따라 처리하고, 반드시 필요한 경우에만 열람 또는 이용이 가능하도록
-                조치하고 있습니다.
+                2) To withdraw consent, contact the homepage or customer center and go through the identification process and directly apply for withdrawal of consent, 
+                or if you send it in writing or by e-mail to the person in charge of personal information protection or personal information protection, action will be taken without delay.
               </p>
 
-              <h3>10. 8세 이하의 아동 등의 보호의무자의 권리ㆍ의무와 행사방법</h3>
+              <h3>9. Rights and obligations of customers and legal representatives and how to exercise them</h3>
               <p className="depth01_p">
-                1) 회사는 다음 중 어느 하나에 해당하는 자(이하 “8세 이하의 아동 등”)의 보호의무자가 8세 이하의 아동 등의 생명 또는 신체의 보호를
-                위하여 8세 이하의 아동 등의 개인위치정보의 수집·이용· 제공에 동의하는 경우에는 본인의 동의가 있는 것으로 봅니다.
+                1) Customers or legal representatives (in the case of children under the age of 14) may withdraw (cancel subscription) their consent to the collection, use, and provision of personal information to the company at any time, and view, correct, delete, or suspend processing of personal information. 
+                You can exercise your rights, such as requests.
+                <br />
+                <br />
+                2) The customer or legal representative can exercise the above rights online by accessing the company homepage, going through the identity verification process, and then going through the personal information management menu. 
+                You can do this by contacting the person in charge, and the company will take action without delay.
+                <br />
+                <br />
+                3) The exercise of rights pursuant to Paragraphs 1 and 2 can be done through an agent, such as a customer's legal representative or an authorized person. 
+                In this case, you must submit a power of attorney in accordance with the “Public Notice on Personal Information Processing Methods (No. 2020-7)” Annex No. 11.
+                <br />
+                <br />
+                4) Requests for viewing and suspension of processing of personal information may be restricted in accordance with Article 35 Paragraph 4 and Article 37 Paragraph 2 of the Personal Information Protection Act.
+                <br />
+                <br />
+                5) Requests for correction and deletion of personal information cannot be requested if the personal information is specified as the subject of collection in other laws and regulations.
+                <br />
+                <br />
+                6) The company checks whether the person who made the request, such as request for access, correction, deletion, or suspension of processing according to the rights of the information subject, is the person or a legitimate agent.
+                <br />
+                <br />
+                7) If the customer requests correction of personal information error, the company will not use or provide the personal information until the error correction is completed, 
+                and if the personal information has already been provided to a third party, Notify us so that errors can be corrected.
+                <br />
+                <br />
+                8) If a customer or legal representative withdraws consent (termination of subscription), the company in principle destroys it without delay, but if it is mandated to be retained by the relevant laws and regulations, 
+                it is in accordance with the personal information handling policy 'retention and use period of personal information' 
+                We take measures to ensure that personal information is processed according to personal information and is only available for viewing or use when absolutely necessary.
+              </p>
+
+              <h3>10. Rights and obligations of persons obligated to protect children under the age of 8, etc., and how to exercise them</h3>
+              <p className="depth01_p">
+              1) In order to protect the life or body of a child under the age of 8, etc. If you agree to the collection, use, and provision of information, you are deemed to have given your consent.
               </p>
               <p className="depth02_p">
-                - 8세 이하의 아동 <br />
-                - 피성년후견인 <br />- 『장애인복지법』 제2조 제2항 제2호의 규정에 의한 정신적 장애를 가진 자로서 장애인 고용 촉진 및 직업재활법 제2조
-                제2호의 규정에 의한 중증 장애인에 해당하는 자(『장애인복지법』 제32조에 따라 장애인 등록을 한 자에 한정)
+                - Children under the age of 8<br />
+                - Adult guardians <br />
+                - Persons with mental disabilities according to Article 2, Paragraph 2, Item 2 of the 『Welfare of Persons with Disabilities Act』 and severely disabled according to Article 2, Subparagraph 2 of the Employment Promotion and Vocational Rehabilitation Act (Limited to those who have been registered as disabled pursuant to Article 32 of the 『Welfare of Persons with Disabilities Act』)
               </p>
               <p className="depth01_p">
-                2) 8세 이하의 아동 등의 보호의무자는 8세 이하의 아동 등을 사실상 보호하는 자로서 다음 중 어느 하나에 해당하는 자를 의미합니다.
+                2) A person obligated to protect children under the age of 8, etc. means a person who actually protects a child under the age of 8, etc. and falls under any of the following:
               </p>
               <p className="depth02_p">
-                - 8세 이하의 아동의 법정대리인 또는 「보호시설에 있는 미성년자의 후견 직무에 관한 법률」 제3조에 따른 후견인
+                - A legal representative of a child under the age of 8 or a guardian pursuant to Article 3 of the 「Act on Guardianship of Minors in Protection Facilities」
                 <br />
-                - 피성년후견인의 법정대리인 <br />- 제1항제3호의 자의 법정대리인 또는 「장애인복지법」 제58조제1항제1호에 따른 장애인 거주 시설(국가
-                또는 지방자치단체가 설치ㆍ운영하는 시설로 한정한다)의 장, 「정신건강증진 및 정신질환자 복지서비스 지원에 관한 법률」 제22조에 따른
-                정신요양시설의 장 및 같은 법 제26조에 따른 정신재활시설(국가 또는 지방자치단체가 설치ㆍ운영하는 시설로 한정한다)의 장
+                - A legal representative of an adult guardian <br />
+                - A legal representative of a child under Paragraph 1 Subparagraph 3 The head of a residential facility for the disabled (limited to facilities established and operated by the state or local governments) under Article 58 (1) 1, 
+                mental health care under Article 22 of the Act on Mental Health Promotion and Welfare Service Support for Persons with Mental Disorders The head of a facility and the head of a mental rehabilitation facility (limited to facilities established and operated by the state or local government) under Article 26 of the same Act
               </p>
               <p className="depth01_p">
-                3) 8세 이하의 아동 등의 생명 또는 신체의 보호를 위하여 개인위치정보의 수집ㆍ이용ㆍ제공에 동의를 하려는 경우 8세 이하의 아동 등의
-                보호의무자임을 증명하기 위하여 서면동의서에 다음 사항을 기재하고 그 보호의무자가 기명날인 또는 서명한 후 회사에 제출하여야 합니다.
+                3) If you intend to consent to the collection, use, and provision of personal location information for the protection of the life or body of children under the age of 8, etc., write the following information in the written consent form to prove that you are the guardian of the child under the age of 8 and must be submitted to the company 
+                after the person responsible for protection affixes his/her name and seal or signature.
               </p>
               <p className="depth02_p">
-                - 8세 이하의 아동 등의 성명, 주소 및 생년월일 <br />
-                - 보호의무자의 성명, 주소 및 연락처 <br />
-                - 개인위치정보 수집, 이용 또는 제공의 목적이 8세 이하의 아동 등의 생명 또는 신체의 보호에 한정된다는 사실 <br />- 동의 연월일
+                - Name, address and date of birth of children under the age of 8 <br />
+                - Name, address and contact information of the person responsible for protection <br />
+                - The fact that the purpose of collecting, using or providing personal location information is limited to protecting the life or body of children under the age of 8  <br />
+                - Date of consent
               </p>
               <p className="depth01_p">
-                4) 보호의무자가 8세 이하의 아동 등의 개인위치정보의 수집·이용·제공에 동의한 경우 “고객 (개인위치정보주체)”은 보호의무자로 보며, 회사에
-                대하여 언제든지 『위치정보의 보호 및 이용 등에 관한 법률』 제24조에 따른 권리를 행사할 수 있습니다. 또한, 고객으로서 권리와 의무 및 그
-                행사방법은 [8. 고객, 법정대리인의 권리와 의무 및 그 행사방법]에 따릅니다.
+                4) If the person responsible for protection consents to the collection, use, and provision of personal location information of children under the age of 8, the “customer (subject of personal location information)” is regarded as the person responsible for protection, 
+                and the company at any time “protects location information and You can exercise your rights under Article 24 of the Act on Utilization, Etc. 
+                Also, as a customer, the rights and obligations and how to exercise them are [8. Rights and obligations of customers and legal representatives and how to exercise them].
               </p>
 
-              <h3>11. 고객의 권익침해에 대한 구제방법</h3>
+              <h3>11. Remedies for Infringement of Customer Rights and Interests</h3>
               <p className="depth01_p">
-                고객께서는 아래의 기관에 대해 개인정보 침해에 대한 피해구제, 상담 등을 문의하실 수 있습니다. 아래의 기관은 전기차 충전 서비스와 별개의
-                기관으로서, ELVIS 충전서비스의 자체적인 개인정보 불만처리, 피해구제 결과에 만족하지 못하시거나 보다 자세한 도움이 필요하시면 문의하여
-                주시기 바랍니다.
+                Customers can inquire about damage relief and consultation for personal information infringement to the following organizations. 
+                The organizations below are independent from the electric vehicle charging service. 
+                If you are not satisfied with the results of personal information complaint handling and damage relief of the ELVIS charging service, or if you need more detailed help, please contact us.
               </p>
 
               <table className="table_basic tb01">
                 <tr>
-                  <th>개인정보 침해신고센터(한국인터넷진흥원 운영)</th>
+                  <th>Personal Information Infringement Report Center (operated by Korea Internet & Security Agency)</th>
                   <td>
-                    - 소관업무 : 개인정보 침해사실 신고, 상담 신청 <br />
-                    - 홈페이지 : privacy.kisa.or.kr <br />
-                    - 전화 : (국번없이) 118 <br />- 주소 : (58324) 전남 나주시 진흥길 9(빛가람동 301-2) 3층
+                    - Responsibilities: Report infringement of personal information, apply for consultation <br />
+                    - Website: privacy.kisa.or.kr <br />
+                    - Phone: (without area code) 118 <br />
+                    - Address: (58324) 3rd floor, 9 Jinheung-gil, Naju-si, Jeollanam-do (301-2 Bitgaram-dong)
                   </td>
                 </tr>
                 <tr>
-                  <th>개인정보 분쟁조정위원회</th>
+                  <th>Personal Information Dispute Mediation Committee </th>
                   <td>
-                    - 소관업무 : 개인정보 분쟁조정신청, 집단분쟁조정 (민사적 해결)
+                    - Jurisdiction: personal information dispute mediation application, collective dispute mediation (civil settlement)
                     <br />
-                    - 홈페이지 : www.kopico.go.kr <br />
-                    - 전화 : (국번없이) 1833-6972 <br />- 주소 : (03171)서울특별시 종로구 세종대로 209 정부서울청사 12층
+                    - Website: www.kopico.go.kr <br />
+                    - Phone: (without area code) 1833-6972  <br />
+                    - Address: (03171) 209 Sejong-daero, Jongno-gu, Seoul Government Complex Seoul 12th floor
                   </td>
                 </tr>
                 <tr>
-                  <th>대검찰청</th>
-                  <td>(국번없이) 1301 (www.spo.go.kr) </td>
+                  <th>Supreme Prosecutor's Office</th>
+                  <td> (without area code) 1301 (www.spo.go.kr) </td>
                 </tr>
                 <tr>
-                  <th>경찰청</th>
-                  <td>(국번없이) 182 (ecrm.cyber.go.kr)</td>
+                  <th>National Police Agency </th>
+                  <td>(without area code) 182 (ecrm.cyber.go.kr)</td>
                 </tr>
               </table>
 
-              <h3>12. 개인정보 보호책임자 및 담당자, 업무처리 부서</h3>
+              <h3>12. Personal information protection manager and person in charge, business processing department</h3>
               <p className="depth01_p">
-                1) 전기차 충전 서비스는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 고객의 불만처리 및 피해구제 등을 위하여
-                아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
+                1) The electric vehicle charging service is responsible for overall handling of personal information, and the person in charge of personal information protection is designated as follows 
+                for customer complaint handling and damage relief related to personal information processing.
               </p>
 
               <table className="table_basic tb02">
                 <tr>
-                  <th>개인정보보호 정책 및 총괄</th>
-                  <th>ELVIS 충전서비스 부문</th>
+                  <th>Privacy Policy and General</th>
+                  <th>ELVIS Charging Service Division</th>
                 </tr>
                 <tr>
                   <td>
-                    개인정보 보호책임자 : 노진복 팀장
+                    Person in charge of personal information protection: Jinbok Noh, Team Leader
                     <br />
-                    (소속 : 경영지원팀 , 이메일 : jbnoh@lselink.com)
+                    (Affiliation: Business Support Team, E-mail: jbnoh@lselink.com)
                   </td>
                   <td>
-                    개인(위치)정보 보호담당자 : 장동수 매니저
+                    Person in charge of personal (location) information protection: Manager Jang Dong-soo
                     <br />
-                    (소속 : 서비스개발파트, 이메일 : dschang@lselink.com){' '}
+                    (Affiliation: Service Development Department, E-mail: dschang@lselink.com)
                   </td>
                 </tr>
               </table>
 
               <p className="depth01_p">
-                2) 위 개인정보 보호 담당 부서에서 개인정보 열람청구 업무를 담당하고 있습니다.
+                2) The department in charge of personal information protection is in charge of requesting access to personal information
                 <br />
                 <br />
-                3) 고객께서는 전기차 충전 서비스(또는 사업)를 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을
-                개인정보보호책임자 및 담당부서로 문의하실 수 있습니다. 전기차 충전 서비스는 고객님의 문의에 대해 지체 없이 답변 및 처리해
-                드리겠습니다. <br />
+                3) Customers can inquire about personal information protection related inquiries, complaint handling, damage relief, etc. 
+                that occurred while using the electric vehicle charging service (or business) to the person in charge of personal information protection and the department in charge. 
+                Electric vehicle charging service will answer and process your inquiries without delay. <br />
                 <br />
               </p>
 
               <p className="depth02_p">
-                ※ 다만 개인정보 보호 관련 문의, 불만 및 피해관련 내용 이외의 내용으로 발송하시는 이메일은 답변 및 처리가 어려우며, 담당자의 동의 없이
-                발송하는 영리목적의 광고성 이메일에 대해서 는 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제50조부터 제50조의8의 규정에 따라
-                관계기관에 신고 등의 조치가 이루어 질 수 있습니다.
+                ※ However, it is difficult to answer and process emails sent with contents other than personal information protection related inquiries, complaints, and damages. 
+                In accordance with the provisions of Articles 50 through 50-8 of the relevant Act, measures such as reporting to related agencies may be taken.
               </p>
 
-              <h3>13. 광고성 정보 전송 관련 안내</h3>
+              <h3>13. Information on transmission of advertising information</h3>
               <p className="depth01_p">
-                1) 전기차 충전 서비스는 고객의 사전 동의 없이 영리목적의 광고성 정보를 전송하지 않습니다.
+                1) The electric vehicle charging service does not transmit commercial advertising information without prior consent from the customer.
                 <br />
                 <br />
-                2) 전기차 충전 서비스는 이벤트 안내, 마케팅 및 홍보 등 영리 목적의 광고성 정보를 전송하는 경우에는 광고성 정보 전송에 대한 사전 동의를
-                득한 고객에 한하여 발송하고 있습니다.
+                2) The electric vehicle charging service is sent only to customers who have obtained prior consent for the transmission of advertising information for commercial purposes, 
+                such as event information, marketing and publicity.
                 <br />
                 <br />
-                3) 전기차 충전 서비스는 전자적 전송 매체를 이용하여 광고성 정보 전송하는 경우 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」
-                제50조부터 제50조의8의 규정에 따라 다음과 같이 조치 후 전송하고 있습니다.
+                3) Electric vehicle charging service transmits advertising information using electronic transmission media after taking the following measures in accordance with Articles 50 to 50-8 of the 「Act on Promotion of Information and Communications Network Utilization and Information Protection, Etc.」
               </p>
-              <h4>전자적 전송 수단 : 휴대전화 문자메시지, 전자우편, 팩스, 그 밖의 전자적 전송매체 </h4>
+              <h4>Electronic transmission method: mobile phone text message, e-mail, fax, and other electronic transmission media</h4>
               <p className="depth02_p">
-                ① 제목이 시작되는 부분에 (광고) 표시 <br />
-                ② 전송자의 명칭 및 연락처 <br />③ 무료 수신 거부 가능 번호 표기
+                ① Display (advertisement) at the beginning of the title <br />
+                ② Name and contact information of the sender <br />
+                ③ Display a number that allows you to reject free calls
               </p>
               <p className="depth01_p">
-                4) 전기차 충전 서비스는 고객님이 광고성 정보 수신 동의를 한 날로부터 매 2년 마다 고객의 광고성 정보 수신 동의 사실을 고객에게
-                확인합니다. 고객께서 수신 동의 여부 안내를 받은 후 아무런 의사표시를 하지 않으신 경우 수신 동의 의사가 그대로 유지됩니다.
+                4) Electric vehicle charging service confirms the customer's consent to receiving advertising information every two years from the date the customer consents to receiving advertising information. 
+                If the customer does not express any intention after being informed of whether or not to consent to receiving, the intention to consent to receiving is maintained.
                 <br />
                 <br />
-                5) 전기차 충전 서비스는 오후 9시부터 그 다음 날 오전 8시까지의 시간에 전자적 전송매체를 이용한 광고성 정보를 전송하지 않습니다.
+                5) Electric vehicle charging service does not transmit advertising information using electronic transmission media from 9:00 pm to 8:00 am the next day. 
                 <br />
                 <br />
-                6) 다만 아래의 경우에 전자적 전송매체로 발송하는 내용은 광고성 정보의 예외로 봅니다.
+                6) However, in the following cases, contents sent by electronic transmission medium are regarded as exceptions to advertising information.
               </p>
               <p className="depth02_p">
-                - 회사와 고객간 체결된 전기차 충전 서비스 계약이행 등과 관련한 정보 <br />- 관련 법령에 따라 차량 안전 및 품질관련 내용 등 회사가
-                반드시 고객에게 고지해야 하는 사항
+                - Information related to the fulfillment of electric vehicle charging service contracts concluded between the company and customers 
+                <br />
+                - Matters that the company must notify customers, such as vehicle safety and quality-related contents, in accordance with relevant laws and regulations
               </p>
 
-              <h3>14. 개인정보 처리방침의 변경에 관한 사항</h3>
+              <h3>14. Matters regarding changes to the personal information processing policy</h3>
               <p className="depth01_p">
-                전기차 충전 서비스는 본 개인정보처리방침을 변경하는 경우 그 이유 및 변경내용을 홈페이지 첫 화면의 공지사항 또는 별도의 창을 통하는
-                등의 방법으로 사전에 공지한 후 변경 및 적용하고 있습니다. <br />
+                In the case of changing this personal information processing policy, the EV charging service is notified in advance of the reason and details of the change, 
+                such as through a notice on the first screen of the homepage or through a separate window, before being changed and applied. 
+                <br />
                 <br />
               </p>
-              <p className="depth02_p">[부칙] (시행일) 본 방침은 2023년 2월 1일부터 시행됩니다.</p>
+              <p className="depth02_p">[Addendum] (Enforcement date) This policy will be effective from February 1, 2023.</p>
             </div>
           </div>
           <ul className="write">
             <li>
               <div className="input-wrap">
-                <span className="tit">이름</span>
-                <input type="text" placeholder="이름을 입력해주세요." onChange={(e) => setContactNm(e.target.value)} value={contactNm} />
+                <span className="tit">Name</span>
+                <input type="text" placeholder="Please enter your name." onChange={(e) => setContactNm(e.target.value)} value={contactNm} />
               </div>
               <div className="input-wrap pc-block"></div>
             </li>
             <li>
               <div className="input-wrap">
-                <span className="tit">연락처</span>
-                <input type="text" placeholder="-를 제외하고 입력해주세요." onChange={(e) => setContactPhone(e.target.value)} value={contactPhone} />
+                <span className="tit">Contact</span>
+                <input type="text" placeholder="Please enter without -." onChange={(e) => setContactPhone(e.target.value)} value={contactPhone} />
               </div>
               <div className="input-wrap">
-                <span className="tit">이메일</span>
-                <input type="text" placeholder="이메일 주소를 입력해주세요." onChange={(e) => setContactMail(e.target.value)} value={contactMail} />
-              </div>
-            </li>
-            <li>
-              <div className="input-wrap">
-                <span className="tit">제목</span>
-                <input type="text" placeholder="제목을 입력해주세요." onChange={(e) => setContactTitle(e.target.value)} value={contactTitle} />
+                <span className="tit">Email</span>
+                <input type="text" placeholder="Please enter your email address." onChange={(e) => setContactMail(e.target.value)} value={contactMail} />
               </div>
             </li>
             <li>
               <div className="input-wrap">
-                <span className="tit">내용</span>
+                <span className="tit">Title</span>
+                <input type="text" placeholder="Please enter the title." onChange={(e) => setContactTitle(e.target.value)} value={contactTitle} />
+              </div>
+            </li>
+            <li>
+              <div className="input-wrap">
+                <span className="tit">Detail</span>
                 <textarea
                   name=""
                   id=""
                   cols="30"
                   rows="10"
-                  placeholder="문의 하실 내용을 입력해주세요."
+                  placeholder="Please enter your inquiry details."
                   onChange={(e) => setContactContents(e.target.value)}
                   value={contactContents}
                 ></textarea>
@@ -630,16 +631,16 @@ const ConsultForm = () => {
             <div className="input-box">
               <label htmlFor="choice" className="file-choice">
                 <input type="file" id="choice" className="file" ref={fileRef} onChange={onUploadFile} />
-                파일첨부 +
+                File +
               </label>
               <span className={fileName ? 'upload-name on' : 'upload-name'} onClick={onDeleteFile}>
                 {fileName}
               </span>
             </div>
-            <p>※ 첨부파일은 최대 50MB 이하의 jpg, png, gif, jpeg, pdf, hwp, xlsx, docx, ppt, pptx 파일만 업로드 가능합니다.</p>
+            <p>※ Only jpg, png, gif, jpeg, pdf, hwp, xlsx, docx, ppt, and pptx files with a maximum size of 50MB or less can be uploaded.</p>
           </div>
           <NavLink to="" className="qa-btn" onClick={onCreate}>
-            문의하기
+            Send
           </NavLink>
         </div>
       </div>

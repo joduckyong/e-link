@@ -31,60 +31,57 @@ const RenewableForm = () => {
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            신재생 에너지사업
+            Renewable energy business
           </h2>
 
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
             <li>
-              <NavLink to="/">
+              <NavLink to="/en">
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                사업영역
+                Business
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/e-link/evcharge" className="on">
-                    사업영역
+                  <NavLink to="/en/company/lselink">
+                    Company
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge" className="on">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                신재생 에너지사업
+                Renewable energy business
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">E-Link Business</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">E-Link Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/transportation">전기차 충전사업</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/renewable/renewable" className="on">
-                    신재생 에너지사업
+                  <NavLink to="/en/business/ev/transportation">
+                  EV Charging Business
                   </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/en/business/renewable/renewable" className="on">Renewable energy business</NavLink>
                 </li>
               </ul>
             </li>
@@ -96,7 +93,7 @@ const RenewableForm = () => {
           <div className="business-wrap">
             <div className="wrap">
               <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                신재생 에너지 융합형 충전인프라
+                Renewable energy convergence charging infrastructure
               </h3>
             </div>
           </div>
@@ -105,8 +102,8 @@ const RenewableForm = () => {
             <div className="wrap">
               <div className="infor mt0">
                 <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  신재생 에너지 융합형 충전인프라는 태양광발전과 ESS를 융합하여 <br className="pc-block" />
-                  에너지를 효율적으로 관리하고 안정적인 전력공급을 위한 시스템입니다.
+                  Renewable energy convergence charging infrastructure is a system for efficient energy <br className="pc-block" />
+                  management and stable power supply by converging PV and ESS systems.
                 </div>
               </div>
               <div className="renew-img" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
@@ -117,28 +114,28 @@ const RenewableForm = () => {
               </div>
               <ul className="renew-list">
                 <li className="list01" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <div className="renew-tit">전기 품질 및 신뢰도 향상</div>
-                  <p>맞춤형 전원 공급을 통해 부하에 공급 및 보호</p>
+                  <div className="renew-tit">Improve electrical quality and reliability</div>
+                  <p>Supply and protect loads with custom power supplies</p>
                 </li>
                 <li className="list02" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <div className="renew-tit">상용 전력 망에 안정성 기여</div>
-                  <p>Blackout등 다양한 상황에 대처 가능 (독립 운전), <br className="pc-block" />지속적으로 부하에 에너지 공급</p>
+                  <div className="renew-tit">Provide stable electricity to the active Power Grid</div>
+                  <p>Capable of coping with various situations such as blackout (independent operation), continuously supplying <br className="pc-block" />energy to the load</p>
                 </li>
                 <li className="list03" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <div className="renew-tit">소비자 에너지 비용 최적</div>
-                  <p>태양광, ESS로 피크 저감 및 실시간 요금제 대응 가능</p>
+                  <div className="renew-tit">Optimizing energy-consuming costs</div>
+                  <p>power-peak management with PV and ESS systems <br className="pc-block" />and Demand Response</p>
                 </li>
                 <li className="list04" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <div className="renew-tit">친환경</div>
-                  <p>화석 연료 운영 최소화 가능</p>
+                  <div className="renew-tit">Eco-Friendly</div>
+                  <p>Carbon Zero</p>
                 </li>
                 <li className="list05" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <div className="renew-tit">발전 원가 비용 최소화</div>
-                  <p>ESS로 에너지를 저장하였다가, 필요시 에너지를 방전하여 <br className="pc-block" />디젤 발전기 등 지역 운영 비용 절감</p>
+                  <div className="renew-tit">Minimize power-generation cost</div>
+                  <p>store energy into ESS and discharge energy when <br className="pc-block" />necessary to reduce local operating costs such as <br className="pc-block" />diesel generators</p>
                 </li>
                 <li className="list06" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <div className="renew-tit">에너지 자립</div>
-                  <p>신재생 에너지와 ESS만으로 부하에 전기 공급</p>
+                  <div className="renew-tit">Energy independence</div>
+                  <p>Supply electricity to loads only with renewable energy <br className="pc-block" />and ESS</p>
                 </li>
               </ul>
             </div>

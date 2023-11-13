@@ -31,59 +31,56 @@ const CoporateForm = () => {
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
           <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            전기차 충전사업
+            EV Charging Business
           </h2>
           <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
             <li>
-              <NavLink to="/">
+              <NavLink to="/en">
                 <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                사업영역
+                Business
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/business/e-link/evcharge" className="on">
-                    사업영역
+                  <NavLink to="/en/company/lselink">
+                    Company
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge" className="on">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/en/contactus">Contact Us</NavLink>
                 </li>
               </ul>
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                전기차 충전사업
+                EV Charging Business
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">E-Link Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/transportation" className="on">
-                    전기차 충전사업
+                  <NavLink to="/en/business/ev/transportation" className="on">
+                  EV Charging Business
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
+                  <NavLink to="/en/business/renewable/renewable">Renewable energy business</NavLink>
                 </li>
               </ul>
             </li>
@@ -94,13 +91,13 @@ const CoporateForm = () => {
         <div className="nav-slide">
           <ul className="swiper-wrapper">
             <li className="swiper-slide">
-              <NavLink to="/business/ev/transportation">운수</NavLink>
+              <NavLink to="/en/business/ev/transportation">Transportation</NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/business/ev/logitics">물류</NavLink>
+              <NavLink to="/en/business/ev/logitics">Logistics</NavLink>
             </li>
             <li className="swiper-slide on">
-              <NavLink to="/business/e-link/renewable">에너지 센터</NavLink>
+              <NavLink to="/en/business/ev/coporate">Energy Center</NavLink>
             </li>
           </ul>
         </div>
@@ -110,7 +107,7 @@ const CoporateForm = () => {
           <div className="business-wrap">
             <div className="wrap">
               <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                에너지 센터{' '}
+                Energy Center
               </h3>
             </div>
           </div>
@@ -119,14 +116,14 @@ const CoporateForm = () => {
             <div className="wrap">
               <div className="infor m-mt0">
                 <div className="infor-tit m-mb10" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  전기名家 LS의 기술력이 집결된 <br className="pc-block" />
-                  전기차 Fleet 전용 에너지 센터
+                  An energy center dedicated to the electric vehicle fleet where the technology of LS,  <br className="pc-block" />
+                  a renowned electrician, is concentrated
                 </div>
                 <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                  전력 장비와 전선부터 충전기 및 IT플랫폼까지 LS의 모든 역량이 집결된 전기차 전용 충전 Place <br className="pc-block" />
-                  법인 및 개인사업자와 개인고객까지 모두에게 편리한 충전환경을 제공하고 Battery 관리 및 차량 경정비와
+                  A dedicated charging place for electric vehicles, where all of LS' capabilities are concentrated from power equipment and cables to chargers and IT platforms.  <br className="pc-block" />
+                  LS E-Link provides a convenient charging environment for corporations, individual businesses, and individual customers, and provides battery management solutions,
                   <br className="pc-block" />
-                  자동세차 등의 All-in-one Care Service 제공
+                  vehicle maintenance, and automatic car washing systems. All-in-One Care Service will be provided.
                 </div>
               </div>
               {/* 사진 수정하면 class prepare 지우기 */}
