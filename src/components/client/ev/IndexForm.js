@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
+import { Link } from 'react-router-dom';
 import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -9,6 +10,10 @@ const IndexForm = () => {
   useEffect(() => {
     AOS.init();
   });
+
+  const goToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -159,12 +164,12 @@ const IndexForm = () => {
             </div>
           </div>
           <div className="btn-wp">
-            <a target="_blank" href="">
+            <Link to="" onClick={goToTop}>
               <img src="/img/ev/ev_sect05_banner_btn1.png" alt="" />
-            </a>
-            <a target="_blank" href="">
+            </Link>
+            <Link to="" onClick={goToTop}>
               <img src="/img/ev/ev_sect05_banner_btn2.png" alt="" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

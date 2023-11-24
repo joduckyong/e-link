@@ -137,7 +137,7 @@ footer .family-link li a{line-height: 20px;}
   from { -webkit-transform: scale(1.0);}
   to   { -webkit-transform: scale(1.1);}
 }
-.wrap{width: 1280px; margin: 0 auto;}
+.wrap{width: 1080px; margin: 0 auto;}
 
 /*메인*/
 .main:before{content: ' '; display: block;background-image: url(/public/img/main/con4-bg.jpg);background-position: center; background-size: cover; height: 100vh; width: 100vw;
