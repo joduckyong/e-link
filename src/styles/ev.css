@@ -141,14 +141,14 @@
 .ev-find-sect .ttl-wp .search-wp input{width:calc(100% - 24px);height:100%;border:none;outline:none;font-weight: 500;font-size: 18px;color: #444444;}
 .ev-find-sect .ttl-wp .search-wp .sbtn{width:24px;height:24px;}
 .ev-find-sect .ttl-wp .search-wp .sbtn img{width:100%;}
-.ev-find-sect .tab-link{display:flex;width:100%;}
-.ev-find-sect .tab-link{display:flex;width:100%;}
+.ev-find-sect .tab-link{display:flex;width:100%; height: 50px;}
 .ev-find-sect .tab-link li{flex:1;display:flex;justify-content:center;align-items:center;height: 50px;background: #F7F9FA;border-bottom: 1px solid #EC6800;font-weight: 600;font-size: 16px;color: #888888;cursor:pointer;}
 .ev-find-sect .tab-link li.active{background: #EC6800;color: #FFFFFF;}
 .ev-find-sect .tab-wp{width:100%;height:calc(100% - 220px);overflow-y:auto;-ms-overflow-style: none; /* IE and Edge */scrollbar-width: none; /* Firefox */}
 .ev-find-sect .tab-wp::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera*/}
 .ev-find-sect .tab-cont.active{display: block;}
 /* .ev-find-sect .tab-cont{display: none;} */
+.ev-find-sect .tab-cont{height: calc(100% - 220px); overflow-y: scroll;}
 .ev-find-sect .tab-cont li{width:100%;height: 140px;padding: 30px 50px;background: #FFFFFF;border-bottom: 1px solid #EAEAEA;}
 .ev-find-sect .tab-cont li h2{font-weight: 500;font-size: 18px;line-height: 21px;}
 .ev-find-sect .tab-cont li p{margin-top: 7px;font-weight: 400;font-size: 13px;line-height: 16px;color: #888888;}
@@ -616,13 +616,15 @@
 .ev-find-sect .map-wp .cir-type li .cir{width: 10px;height: 10px;}
 .ev-find-sect .map-wp .cir-wp .num{font-size: 14px;}
 
+.ev-find-sect .tab-link{height: calc(100vw*(40/360));}
+
 .ev-find-sect .txt-wp{bottom:-300px;height:auto;}
 .ev-find-sect .ttl-wp{height:auto;}
 .ev-find-sect .ttl-wp h1{font-size: 18px;line-height: 22px;}
 .ev-find-sect .ttl-wp .search-wp{height:40px;}
 .ev-find-sect .ttl-wp .search-wp input{width:calc(100% - 18px);font-size: 14px;}
 .ev-find-sect .ttl-wp .search-wp .sbtn{width:18px;height:18px;}
-.ev-find-sect .tab-link li{height:40px;font-size: 13px;}
+.ev-find-sect .tab-link li{height:calc(100vw*(40/360));font-size: 13px;}
 .ev-find-sect .tab-cont{height:200px;}
 .ev-find-sect .tab-cont li{height:auto;padding: 20px 5vw;}
 .ev-find-sect .tab-cont li h2{font-size: 14px;line-height: 17px;}
