@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContactUs, deleteContactUsIds } from 'store/contactUsEnReducer';
+import { selectContactUs, deleteContactUsIds, updateContactUsIds } from 'store/contactUsEnReducer';
 import Pagination from 'react-js-pagination';
 
 const ContactUsListEnForm = () => {
@@ -29,6 +29,24 @@ const ContactUsListEnForm = () => {
     dispatch(selectContactUs(newList));
   };
 
+  const onResult = (e) => {
+    e.preventDefault();
+
+    if (checkItems.length === 0) {
+      alert('항목을 선택하세요');
+      return;
+    }
+
+    if (window.confirm('처리완료 하시겠습니까?')) {
+      const newList = { ids: checkItems };
+
+      dispatch(updateContactUsIds(newList)).then(() => {
+        const newList = { contactId: 'EN_CON', contactType: contactType, pageIndex: page };
+        dispatch(selectContactUs(newList));
+      });
+    }
+  };
+
   const onRemove = (e) => {
     e.preventDefault();
 
@@ -41,7 +59,7 @@ const ContactUsListEnForm = () => {
       const newList = { ids: checkItems };
 
       dispatch(deleteContactUsIds(newList)).then(() => {
-        const newList = { contactId: 'EN_CON', pageIndex: page };
+        const newList = { contactId: 'EN_CON', contactType: contactType, pageIndex: page };
         dispatch(selectContactUs(newList));
       });
     }
@@ -143,6 +161,9 @@ const ContactUsListEnForm = () => {
           <button className="btn btn-red btn-120" onClick={onRemove}>
             선택삭제
           </button>
+          <button className="btn btn-blue btn-120" onClick={onResult}>
+            처리완료
+          </button>
         </div>
         <div className="table-wrap">
           <table>
@@ -170,6 +191,7 @@ const ContactUsListEnForm = () => {
                 <th>메일</th>
                 <th>문의제목</th>
                 <th>작성일</th>
+                <th>처리상태</th>
                 <th>관리</th>
               </tr>
             </thead>
@@ -193,6 +215,7 @@ const ContactUsListEnForm = () => {
                   <td>{list.contactMail}</td>
                   <td className="fb">{list.contactTitle}</td>
                   <td>{list.createdDatetime}</td>
+                  <td>{list.contactProcess === 'N' ? '대기' : '완료'}</td>
                   <td>
                     <Link to={`/admin/customerService/contactUsInfoEn/${list.contactId}`}>
                       <button className="btn">보기</button>

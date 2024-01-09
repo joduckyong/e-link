@@ -67,6 +67,26 @@ export const insertContactUs = createAsyncThunk('CLIENT_ADD_CONTACTUS', async (n
   return response.data;
 });
 
+export const updateContactUsIds = createAsyncThunk('MOD_CONTACTUS_IDS', async (newList) => {
+  const token = getCookieToken();
+  console.log('token : ' + token);
+
+  if (token === undefined && typeof token === 'undefined') {
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
+  }
+
+  const response = await axios({
+    url: `${process.env.REACT_APP_API_URL}/api/contactUs/`,
+    method: 'POST',
+    data: newList,
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  return response.data;
+});
+
 export const deleteContactUsIds = createAsyncThunk('DEL_CONTACTUS_IDS', async (newList) => {
   const token = getCookieToken();
   console.log('token : ' + token);
@@ -113,6 +133,10 @@ export const contactUsReducer = createSlice({
     [insertContactUs.fulfilled]: (state, { payload }) => ({
       ...state,
       dataInfo: payload.data,
+    }),
+    [updateContactUsIds.fulfilled]: (state, { payload }) => ({
+      ...state,
+      payload,
     }),
     [deleteContactUsIds.fulfilled]: (state, { payload }) => ({
       ...state,
