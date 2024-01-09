@@ -71,9 +71,12 @@ function KakaoRedirect() {
             data: data,
           });
 
-          setAccessEvToken(JSON.stringify(resData.json.data.access_token), JSON.stringify(resData.json.data.expires_in));
-          setEvUserNo(JSON.stringify(resData.json.data.user_name));
-          setRefreshEvToken(JSON.stringify(resData.json.data.refresh_token));
+          // console.log('data : ' + JSON.stringify(resData));
+          // console.log('data : ' + JSON.stringify(resData.data.data.access_token));
+
+          setAccessEvToken(resData.data.data.access_token, resData.data.data.expires_in);
+          setEvUserNo(resData.data.data.user_name);
+          setRefreshEvToken(resData.data.data.refresh_token);
 
           localStorage.removeItem('snsType');
           localStorage.removeItem('snsToken');
