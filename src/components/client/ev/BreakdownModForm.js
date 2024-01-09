@@ -99,7 +99,7 @@ const BreakdownModForm = () => {
           <select name="cate" id="cate" onChange={(e) => selectRechgsts(e)} value={selectRechgstId}>
             <option value="" sele>선택하세요</option>
             {rechgList.map((list, index) => (
-              <option key={index} value={list.rechgstId} data-instid={list.instId}>{list.instId}</option>
+              <option key={index} value={list.rechgstId} data-instid={list.instId}>{list.rechgstNm}</option>
             ))}
           </select>
           <input type="text" placeholder="제목을 입력해주세요." onChange={(e) => setTitle(e.target.value)} value={title}/>
