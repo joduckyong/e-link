@@ -10,6 +10,51 @@ import {makeMarkerClustering} from 'common/marker-cluster';
 //   // console.log(__data);
 // }
 
+const DetailWindow = ({position}) => {
+  const navermaps = useNavermaps();
+  const map = useMap();
+
+  var latLng = new navermaps.LatLng(position),
+    // map = new navermaps.Map('map', {
+    //     center: latLng.destinationPoint(0, 500),
+    //     zoom: 10
+    // }),
+    marker = new navermaps.Marker({
+        map: map,
+        position: latLng,
+        animation: 1,
+        zIndex: 999,
+        
+    });
+
+    console.log(marker)
+
+var contentString = [
+        '<div class="iw_inner">',
+        '   <h3>서울특별시청</h3>',
+        '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
+        '       <img src="/img/example/hi-seoul.jpg" width="55" height="55" alt="서울시청" class="thumb" /><br />',
+        '       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
+        '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+        '   </p>',
+        '</div>'
+    ].join('');
+
+var infowindow = new navermaps.InfoWindow({
+    content: contentString,
+});
+
+navermaps.Event.addListener(marker, "click", function(e) {
+    if (infowindow.getMap()) {
+        infowindow.close();
+    } else {
+        infowindow.open(map, marker);
+    }
+});
+
+infowindow.open(map, marker);
+}
+
 const MarkerCluster = ({data}) => {
 
   const navermaps = useNavermaps();
@@ -248,6 +293,9 @@ const FindForm = () => {
                   animation={1}
                   zIndex={999}
                 />
+                <DetailWindow
+                  position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
+                />
               </NaverMap>
             </MapDiv>
           </div>
@@ -266,7 +314,7 @@ const FindForm = () => {
             </div>
           </div>
           */}
-          <ul className="cir-type">
+          {/* <ul className="cir-type">
             <li>
               <div className="cir orange"></div>충전가능
             </li>
@@ -276,7 +324,7 @@ const FindForm = () => {
             <li>
               <div className="cir gray"></div>점검중
             </li>
-          </ul> 
+          </ul>  */}
         </article>
       </section>
     </>
