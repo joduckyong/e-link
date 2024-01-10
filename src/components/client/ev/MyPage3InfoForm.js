@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCookieEvUserNo } from '../../../storage/EvCookie';
 import moment from 'moment';
-import { deleteEv } from 'store/EvReducer';
+import { deleteEv, selectUserNo } from 'store/EvReducer';
 
 export function changeFormat(date, format) {
   //moment 변환을 함수로 미리 빼 두어서 사용.
@@ -20,13 +20,17 @@ const MyPage3InfoForm = () => {
   const mypage3List = useSelector((state) => state.EvReducer.data);
   const [pstNo, setPstNo] = useState('');
   const [toggleActive, setToggleActive] = useState(false);
+  const [userNo, setUserNo] = useState('');
 
   if(mypage3List.length === 0){  //새로고침 시 목록 페이지 이동
     window.location.href = '/ev/mypage3';
   }
 
   useEffect(() => {
-    setPstNo(mypage3List[id].pstNo)
+    dispatch(selectUserNo()).then((state) => {
+      setPstNo(mypage3List[id].pstNo)
+      setUserNo(state.payload.userNo);
+    });
   }, []);
 
   const onRemove = (e) => {
@@ -61,6 +65,7 @@ const MyPage3InfoForm = () => {
               </p>
               <p>{changeFormat(mypage3List[id].regDttm, 'yyyy-MM-DD') || ''}</p>
             </div>
+            { mypage3List[id].userNo === userNo &&
             <div className="modify-wp">
               <button className="btn" onClick={() => setToggleActive(!toggleActive)}>
                 <img src="/img/ev/ev_view_btn.png" alt="" />
@@ -76,6 +81,7 @@ const MyPage3InfoForm = () => {
                 </Link>
               </div>
             </div>
+            }
           </div>
           <div className="cont-wp" dangerouslySetInnerHTML={{ __html: mypage3List[id].pstCont }}>
           </div>
