@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCookieEvUserNo } from '../../../storage/EvCookie';
 import moment from 'moment';
-import { deleteEv } from 'store/EvReducer';
+import { deleteEv, selectUserNo } from 'store/EvReducer';
 
 export function changeFormat(date, format) {
   //moment 변환을 함수로 미리 빼 두어서 사용.
@@ -19,10 +19,17 @@ const InquiryInfoForm = () => {
   const dispatch = useDispatch();
   const inquiryList = useSelector((state) => state.EvReducer.data);
   const [toggleActive, setToggleActive] = useState(false);
+  const [userNo, setUserNo] = useState('');
 
   if(inquiryList.length === 0){  //새로고침 시 목록 페이지 이동
     window.location.href = '/ev/inquiry';
   }
+
+  useEffect(() => {
+    dispatch(selectUserNo()).then((state) => {
+      setUserNo(state.payload.userNo);
+    });
+  }, []);
 
   const onRemove = (e) => {
     e.preventDefault();
@@ -56,21 +63,23 @@ const InquiryInfoForm = () => {
               </p>
               <p>{changeFormat(inquiryList[id].regDttm, 'yyyy-MM-DD') || ''}</p>
             </div>
-            <div className="modify-wp">
-              <button className="btn" onClick={() => setToggleActive(!toggleActive)}>
-                <img src="/img/ev/ev_view_btn.png" alt="" />
-              </button>
-              <div className="bub" style={toggleActive ? {display:''} : {display:'none'}}>
-                <Link className="modify" to={`/ev/inquiryMod/${id}`}>
-                  <img src="/img/ev/ev_view_modify.png" alt="" />
-                  수정
-                </Link>
-                <Link className="modify" to="" onClick={onRemove}>
-                  <img src="/img/ev/ev_view_delete.png" alt="" />
-                  삭제
-                </Link>
+            { inquiryList[id].regUserNo === userNo &&
+              <div className="modify-wp">
+                <button className="btn" onClick={() => setToggleActive(!toggleActive)}>
+                  <img src="/img/ev/ev_view_btn.png" alt="" />
+                </button>
+                <div className="bub" style={toggleActive ? {display:''} : {display:'none'}}>
+                  <Link className="modify" to={`/ev/inquiryMod/${id}`}>
+                    <img src="/img/ev/ev_view_modify.png" alt="" />
+                    수정
+                  </Link>
+                  <Link className="modify" to="" onClick={onRemove}>
+                    <img src="/img/ev/ev_view_delete.png" alt="" />
+                    삭제
+                  </Link>
+                </div>
               </div>
-            </div>
+            }
           </div>
           <div className="cont-wp" dangerouslySetInnerHTML={{ __html: inquiryList[id].qustCont }}>
           </div>
