@@ -14,7 +14,7 @@
     "aos": "^2.3.4",
     "axios": "^1.2.1",
     "classnames": "^2.3.2",
-    "crypto-js": "^4.1.1",
+    "crypto-js": "^4.2.0",
     "gsap": "^3.11.3",
     "moment": "^2.29.4",
     "react": "^18.2.0",
@@ -64,5 +64,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.1"
   }
 }
