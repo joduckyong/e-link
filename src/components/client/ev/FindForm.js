@@ -14,22 +14,20 @@ const DetailWindow = ({position}) => {
   const navermaps = useNavermaps();
   const map = useMap();
 
-  var latLng = new navermaps.LatLng(position),
+  const latLng = new navermaps.LatLng(position),
     // map = new navermaps.Map('map', {
     //     center: latLng.destinationPoint(0, 500),
     //     zoom: 10
     // }),
+    
     marker = new navermaps.Marker({
         map: map,
         position: latLng,
-        animation: 1,
-        zIndex: 999,
-        
     });
 
-    console.log(marker)
+    marker.setMap(null);  //마커 안보이게
 
-var contentString = [
+  const contentString = [
         '<div class="iw_inner">',
         '   <h3>서울특별시청</h3>',
         '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
@@ -40,17 +38,17 @@ var contentString = [
         '</div>'
     ].join('');
 
-var infowindow = new navermaps.InfoWindow({
+  const infowindow = new navermaps.InfoWindow({
     content: contentString,
 });
 
-navermaps.Event.addListener(marker, "click", function(e) {
-    if (infowindow.getMap()) {
-        infowindow.close();
-    } else {
-        infowindow.open(map, marker);
-    }
-});
+// navermaps.Event.addListener(marker, "click", function(e) {
+//     if (infowindow.getMap()) {
+//         infowindow.close();
+//     } else {
+//         infowindow.open(map, marker);
+//     }
+// });
 
 infowindow.open(map, marker);
 }
@@ -174,6 +172,7 @@ const FindForm = () => {
   const [mouseOverMarker, setMouseOverMarker] = useState('');
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [type, setType] = useState('name');
+  const [acitveIndex, setAcitveIndex] = useState('');
 
   const handleZoomChanged = useCallback((zoom) => {
     console.log(`zoom: ${zoom}`)
@@ -208,6 +207,11 @@ const FindForm = () => {
     setSearchKeyword('');
   }
 
+  const clickData = (index, locInfo) => {
+    setAcitveIndex(index);
+    setMouseOverMarker(locInfo);
+  }
+
   return (
     <>
       <section className="ev-find-sect">
@@ -234,10 +238,12 @@ const FindForm = () => {
           </ul>
           <ul className="tab-cont">
           {findList.map((list, index) => (
-            <li 
-              key={index} 
-              onMouseOver={() => setMouseOverMarker(list.locInfo)} 
-              onMouseOut={() => setMouseOverMarker("")}>
+            <li className={acitveIndex === index ? 'active' : ''}
+              key={index}
+              onClick={(e) => clickData(index, list.locInfo)}
+              // onMouseOver={() => setMouseOverMarker(list.locInfo)} 
+              // onMouseOut={() => setMouseOverMarker("")}
+              >
               <h2>{list.rechgstNm}</h2>
               <p>{list.addr} </p>
               <h3 className="orange">
@@ -293,9 +299,11 @@ const FindForm = () => {
                   animation={1}
                   zIndex={999}
                 />
-                <DetailWindow
-                  position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
-                />
+                {mouseOverMarker &&
+                  <DetailWindow
+                    position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
+                  />
+                }
               </NaverMap>
             </MapDiv>
           </div>
