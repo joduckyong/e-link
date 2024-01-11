@@ -10,30 +10,29 @@ import {makeMarkerClustering} from 'common/marker-cluster';
 //   // console.log(__data);
 // }
 
-const DetailWindow = ({position}) => {
+const DetailWindow = ({position, data, index}) => {
   const navermaps = useNavermaps();
-  const map = useMap();
+  // const map = useMap();
+  const _data = data[index] ?? {};
 
   const latLng = new navermaps.LatLng(position),
-    // map = new navermaps.Map('map', {
-    //     center: latLng.destinationPoint(0, 500),
-    //     zoom: 10
-    // }),
+    map = new navermaps.Map('map', {
+        center: latLng.destinationPoint(0, 500),
+        zoom: 10
+    }),
     
     marker = new navermaps.Marker({
         map: map,
         position: latLng,
     });
 
-    marker.setMap(null);  //마커 안보이게
+    // marker.setMap(null);  //마커 안보이게
 
   const contentString = [
         '<div class="iw_inner">',
-        '   <h3>서울특별시청</h3>',
-        '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
-        '       <img src="/img/example/hi-seoul.jpg" width="55" height="55" alt="서울시청" class="thumb" /><br />',
-        '       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
-        '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+        '   <h3>'+_data.rechgstNm+'</h3>',
+        '   <p>'+(_data.addr ?? "")+'<br />',
+        '       '+(_data.operInstTelno ?? "")+'<br />',
         '   </p>',
         '</div>'
     ].join('');
@@ -159,6 +158,8 @@ const MarkerCluster = ({data}) => {
 const FindForm = () => {
 
   const navermaps = useNavermaps();
+  const lat = 35.1595704;
+  const lon = 127.005399
 
   const dispatch = useDispatch();
   const findList = useSelector((state) => state.EvReducer.data);
@@ -192,7 +193,9 @@ const FindForm = () => {
     const url = '/api/m-service-mobile/rechgst/searchRechgst';
     const keywordName = type === 'name' ? searchKeyword : '';
     const keywordAddr = type === 'addr' ? searchKeyword : '';
-    const newList = { url: url, rechgstNm: keywordName, addr: keywordAddr };
+    const newList = { url: url, rechgstNm: keywordName ?? "", addr: keywordAddr ?? "" };
+    setAcitveIndex("");
+    setMouseOverMarker("");
     dispatch(selectEv(newList));
   };
 
@@ -269,7 +272,7 @@ const FindForm = () => {
                 zoomControlOptions={{
                   position: navermaps.Position.TOP_RIGHT,
                 }}
-                defaultCenter={new navermaps.LatLng(35.1595704, 127.005399)}
+                defaultCenter={new navermaps.LatLng(lat, lon)}
                 defaultZoom={1}
                 onZoomChanged={handleZoomChanged}
                 // 지도 인터랙션 옵션
@@ -294,14 +297,16 @@ const FindForm = () => {
                 // mapTypeControl={scaleControl}
               >
                 <MarkerCluster data={findList}/>
-                <Marker
+                {/* <Marker
                   position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
                   animation={1}
                   zIndex={999}
-                />
+                /> */}
                 {mouseOverMarker &&
                   <DetailWindow
                     position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
+                    data={findList}
+                    index={acitveIndex}
                   />
                 }
               </NaverMap>

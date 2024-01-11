@@ -9,4 +9,22 @@
     margin-bottom: 20px;
   }
 
+.iw_inner {
+    padding: 10px;
+}
+.iw_inner h3 {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin: 10px 0;
+}
+.iw_inner p {
+    font-size: 12px;
+    color: #333;
+}
+.iw_inner img.thumb {
+    float: right;
+    border: solid 1px #aeaeae;
+}
+
 
