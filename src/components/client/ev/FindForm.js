@@ -10,8 +10,8 @@ import {makeMarkerClustering} from 'common/marker-cluster';
 //   // console.log(__data);
 // }
 
-const DetailWindow = ({position, data, index}) => {
-  const navermaps = useNavermaps();
+const DetailWindow = ({navermaps, position, data, index, isFocused}) => {
+  // const navermaps = useNavermaps();
   // const map = useMap();
   const _data = data[index] ?? {};
 
@@ -48,6 +48,13 @@ const DetailWindow = ({position, data, index}) => {
 //         infowindow.open(map, marker);
 //     }
 // });
+useEffect(() => {
+  if(isFocused){
+    infowindow.close();
+  }else{
+    infowindow.open(map, marker);
+  }
+})
 
 infowindow.open(map, marker);
 }
@@ -174,6 +181,7 @@ const FindForm = () => {
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [type, setType] = useState('name');
   const [acitveIndex, setAcitveIndex] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleZoomChanged = useCallback((zoom) => {
     console.log(`zoom: ${zoom}`)
@@ -213,6 +221,7 @@ const FindForm = () => {
   const clickData = (index, locInfo) => {
     setAcitveIndex(index);
     setMouseOverMarker(locInfo);
+    setIsFocused(false);
   }
 
   return (
@@ -229,6 +238,7 @@ const FindForm = () => {
                   onChange={(e) => setSearchKeyword(e.target.value)}
                   value={searchKeyword || ''}
                   onKeyPress={onKeyPress}
+                  onFocus={() => setIsFocused(true)}
               />
               <button className="sbtn" onClick={() => onSearch()}>
                 <img src="/img/common/ico-search.svg" alt="" />
@@ -304,9 +314,11 @@ const FindForm = () => {
                 /> */}
                 {mouseOverMarker &&
                   <DetailWindow
+                    navermaps={navermaps}
                     position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
                     data={findList}
                     index={acitveIndex}
+                    isFocused={isFocused}
                   />
                 }
               </NaverMap>
