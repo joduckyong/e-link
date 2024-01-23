@@ -4,11 +4,11 @@ import { selectEv } from 'store/EvReducer';
 import { Container as MapDiv, NaverMap, useNavermaps, Marker, Overlay, useMap } from 'react-naver-maps';
 import {makeMarkerClustering} from 'common/marker-cluster';
 
-// function getBoundsData(bounds, data, getDataInBounds) {
-//   let __data = data.filter(e => (e.locInfo.split(",")[0] >= bounds.getMin()._lat && e.locInfo.split(",")[0] <= bounds.getMax()._lat ));
-//   getDataInBounds(__data);
-//   // console.log(__data);
-// }
+function getBoundsData(bounds, data, getDataInBounds) {
+  let __data = data.filter(e => (e.locInfo.split(",")[0] >= bounds.getMin()._lat && e.locInfo.split(",")[0] <= bounds.getMax()._lat ));
+  getDataInBounds(__data);
+  // console.log(__data);
+}
 
 const DetailWindow = ({navermaps, position, data, index, isFocused}) => {
   // const navermaps = useNavermaps();
@@ -59,9 +59,9 @@ useEffect(() => {
 infowindow.open(map, marker);
 }
 
-const MarkerCluster = ({data}) => {
+const MarkerCluster = ({navermaps, data, getDataInBounds}) => {
 
-  const navermaps = useNavermaps();
+  // const navermaps = useNavermaps();
   const map = useMap();
 
   const MarkerClustering = makeMarkerClustering(window.naver)
@@ -96,11 +96,11 @@ const MarkerCluster = ({data}) => {
     }
 
     const markerClustering = new MarkerClustering({
-      minClusterSize: 1,
+      minClusterSize: 2,
       maxZoom: 30,
       map: map,
       markers: markers,
-      disableClickZoom: true,
+      disableClickZoom: false,
       gridSize: 120,
       icons: [
         blue
@@ -119,7 +119,7 @@ const MarkerCluster = ({data}) => {
           .querySelector('div:first-child').innerText = count
 
         navermaps.Event.addListener(clusterMarker, 'mouseover', function(e) {
-            console.log(e);
+            // console.log(e);
             let cMarker = e.overlay;
             cMarker.setIcon(orange);
             cMarker
@@ -129,7 +129,7 @@ const MarkerCluster = ({data}) => {
         });
 
         navermaps.Event.addListener(clusterMarker, 'mouseout', function(e) {
-          console.log(e);
+          // console.log(e);
           let cMarker = e.overlay;
           cMarker.setIcon(blue);
           cMarker
@@ -154,9 +154,9 @@ const MarkerCluster = ({data}) => {
     setCluster(clustering());
   }, [data]);
 
-  // navermaps.Event.addListener(map, "bounds_changed", function(bounds) {
-  //   getBoundsData(bounds, data, getDataInBounds);
-  // });
+  navermaps.Event.addListener(map, "bounds_changed", function(bounds) {
+    getBoundsData(bounds, data, getDataInBounds);
+  });
 
   return <Overlay element={cluster} />
 }
@@ -176,7 +176,7 @@ const FindForm = () => {
   const [tileTransition, setTileTransition] = useState(true);
   const [minZoom, setMinZoom] = useState(7);
   const [scaleControl, setScaleControl] = useState(true);
-  // const [dataInBounds, setDataInBounds] = useState(findList);
+  const [dataInBounds, setDataInBounds] = useState(findList);
   const [mouseOverMarker, setMouseOverMarker] = useState('');
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [type, setType] = useState('name');
@@ -187,15 +187,19 @@ const FindForm = () => {
     console.log(`zoom: ${zoom}`)
   }, []);
 
-  // const getDataInBounds = (d) => {
-  //   setDataInBounds(d);
-  // }
+  const getDataInBounds = (d) => {
+    setDataInBounds(d);
+  }
 
   useEffect(() => {
     const url = '/api/m-service-mobile/rechgst/getELinkRechgsts';
     const newList = { url: url };
     dispatch(selectEv(newList));
   }, [dispatch]);
+
+  useEffect(() => {
+    setDataInBounds(findList)
+  }, [findList])
 
   const onSearch = () => {
     const url = '/api/m-service-mobile/rechgst/searchRechgst';
@@ -250,7 +254,7 @@ const FindForm = () => {
             <li className={type === 'addr' ? 'active' : ''} onClick={() => btnTab('addr')}>지역명</li>
           </ul>
           <ul className="tab-cont">
-          {findList.map((list, index) => (
+          {dataInBounds.map((list, index) => (
             <li className={acitveIndex === index ? 'active' : ''}
               key={index}
               onClick={(e) => clickData(index, list.locInfo)}
@@ -306,13 +310,17 @@ const FindForm = () => {
                 mapDataControl={scaleControl}
                 // mapTypeControl={scaleControl}
               >
-                <MarkerCluster data={findList}/>
+                <MarkerCluster 
+                  navermaps={navermaps} 
+                  data={findList} 
+                  getDataInBounds={getDataInBounds}
+                />
                 {/* <Marker
                   position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
                   animation={1}
                   zIndex={999}
                 /> */}
-                {mouseOverMarker &&
+                {/* {mouseOverMarker &&
                   <DetailWindow
                     navermaps={navermaps}
                     position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
@@ -320,7 +328,7 @@ const FindForm = () => {
                     index={acitveIndex}
                     isFocused={isFocused}
                   />
-                }
+                } */}
               </NaverMap>
             </MapDiv>
           </div>
