@@ -10,56 +10,33 @@ function getBoundsData(bounds, data, getDataInBounds) {
   // console.log(__data);
 }
 
-const DetailWindow = ({navermaps, position, data, index, isFocused}) => {
-  // const navermaps = useNavermaps();
-  // const map = useMap();
-  const _data = data[index] ?? {};
-
-  const latLng = new navermaps.LatLng(position),
-    map = new navermaps.Map('map', {
-        center: latLng.destinationPoint(0, 500),
-        zoom: 10
-    }),
-    
-    marker = new navermaps.Marker({
-        map: map,
-        position: latLng,
-    });
-
-    // marker.setMap(null);  //마커 안보이게
-
-  const contentString = [
-        '<div class="iw_inner">',
-        '   <h3>'+_data.rechgstNm+'</h3>',
-        '   <p>'+(_data.addr ?? "")+'<br />',
-        '       '+(_data.operInstTelno ?? "")+'<br />',
-        '   </p>',
-        '</div>'
-    ].join('');
-
-  const infowindow = new navermaps.InfoWindow({
-    content: contentString,
-});
-
-// navermaps.Event.addListener(marker, "click", function(e) {
-//     if (infowindow.getMap()) {
-//         infowindow.close();
-//     } else {
-//         infowindow.open(map, marker);
-//     }
-// });
-useEffect(() => {
-  if(isFocused){
-    infowindow.close();
-  }else{
-    infowindow.open(map, marker);
+//소수점 뒤에 0 제거
+function zeroCut(nn) {
+  if (nn == 0 || nn == undefined || nn == null) return nn;
+  nn = nn + "";
+  let num3Arr = nn.split(".");
+  let arr1 = num3Arr[1];
+  let isNotZero = false;
+  let result = "";
+  for (let i = arr1.length;i > 0; i--) {
+    let n = i-1;
+    let charA = arr1.charAt(n);
+    if (charA == '0') {
+      if (isNotZero == true) {
+        result += "0";
+      } else {
+        result += "";
+      }
+    } else {
+      isNotZero = true;
+      result += arr1.charAt(n);
+    }
   }
-})
+  return num3Arr[0] + "." + result.split("").reverse().join("");
 
-infowindow.open(map, marker);
 }
 
-const MarkerCluster = ({navermaps, data, getDataInBounds}) => {
+const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo}) => {
 
   // const navermaps = useNavermaps();
   const map = useMap();
@@ -84,16 +61,66 @@ const MarkerCluster = ({navermaps, data, getDataInBounds}) => {
 
   const clustering = () => {
     const markers = [];
+    const infoWindows = [];
 
-    for (var i = 0, ii = data.length; i < ii; i++) {
-      var spot = data[i],
+    for (let i = 0, ii = data.length; i < ii; i++) {
+      const spot = data[i],
         latlng = new navermaps.LatLng(spot.locInfo.split(",")[0], spot.locInfo.split(",")[1]),
         marker = new navermaps.Marker({
           position: latlng,
         });
 
+      const contentString = [
+          '<div class="iw_inner">',
+          '   <h3>'+data[i].rechgstNm+'</h3>',
+          '   <p>'+(data[i].addr ?? "")+'<br />',
+          '       '+(data[i].operInstTelno ?? "")+'<br />',
+          '   </p>',
+          '</div>'
+      ].join('');
+
+      const infowindow = new navermaps.InfoWindow({
+        content: contentString,
+      });
+
       markers.push(marker);
+      infoWindows.push(infowindow);
     }
+  
+    const getClickHandler = (seq) => {
+      return function(e) {
+          const marker = markers[seq],
+              infoWindow = infoWindows[seq];
+
+          if (infoWindow.getMap()) {
+              infoWindow.close();
+          } else {
+              infoWindow.open(map, marker);
+          }
+    }
+  }
+  
+  for (let i=0, ii=markers.length; i<ii; i++) {
+    navermaps.Event.addListener(markers[i], 'click', getClickHandler(i));
+  }
+
+  if(activeLocInfo){
+    const _lan = zeroCut(activeLocInfo.split(",")[0]);
+    const _lng = zeroCut(activeLocInfo.split(",")[1]);
+    const seq = markers.findIndex((item) => item.position._lat.toString() === _lan && item.position._lng.toString() === _lng);
+    const marker = markers[seq],
+        infoWindow = infoWindows[seq];
+
+    const latLng = new navermaps.LatLng(_lan, _lng);
+    map.setCenter(latLng.destinationPoint(0, 500));
+    map.setZoom(10);
+    
+    if (infoWindow.getMap()) {
+        infoWindow.close();
+    } else {
+        infoWindow.open(map, marker);
+    }
+  }
 
     const markerClustering = new MarkerClustering({
       minClusterSize: 2,
@@ -152,7 +179,7 @@ const MarkerCluster = ({navermaps, data, getDataInBounds}) => {
   useEffect(() => {
     cluster.setMap(null); //클러스터링 초기화
     setCluster(clustering());
-  }, [data]);
+  }, [data, activeLocInfo]);
 
   navermaps.Event.addListener(map, "bounds_changed", function(bounds) {
     getBoundsData(bounds, data, getDataInBounds);
@@ -177,11 +204,9 @@ const FindForm = () => {
   const [minZoom, setMinZoom] = useState(7);
   const [scaleControl, setScaleControl] = useState(true);
   const [dataInBounds, setDataInBounds] = useState(findList);
-  const [mouseOverMarker, setMouseOverMarker] = useState('');
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [type, setType] = useState('name');
-  const [acitveIndex, setAcitveIndex] = useState('');
-  const [isFocused, setIsFocused] = useState(false);
+  const [activeLocInfo, setActiveLocInfo] = useState('');
 
   const handleZoomChanged = useCallback((zoom) => {
     console.log(`zoom: ${zoom}`)
@@ -206,8 +231,7 @@ const FindForm = () => {
     const keywordName = type === 'name' ? searchKeyword : '';
     const keywordAddr = type === 'addr' ? searchKeyword : '';
     const newList = { url: url, rechgstNm: keywordName ?? "", addr: keywordAddr ?? "" };
-    setAcitveIndex("");
-    setMouseOverMarker("");
+    setActiveLocInfo("");
     dispatch(selectEv(newList));
   };
 
@@ -223,9 +247,7 @@ const FindForm = () => {
   }
 
   const clickData = (index, locInfo) => {
-    setAcitveIndex(index);
-    setMouseOverMarker(locInfo);
-    setIsFocused(false);
+    setActiveLocInfo(locInfo);
   }
 
   return (
@@ -242,7 +264,6 @@ const FindForm = () => {
                   onChange={(e) => setSearchKeyword(e.target.value)}
                   value={searchKeyword || ''}
                   onKeyPress={onKeyPress}
-                  onFocus={() => setIsFocused(true)}
               />
               <button className="sbtn" onClick={() => onSearch()}>
                 <img src="/img/common/ico-search.svg" alt="" />
@@ -255,7 +276,7 @@ const FindForm = () => {
           </ul>
           <ul className="tab-cont">
           {dataInBounds.map((list, index) => (
-            <li className={acitveIndex === index ? 'active' : ''}
+            <li
               key={index}
               onClick={(e) => clickData(index, list.locInfo)}
               // onMouseOver={() => setMouseOverMarker(list.locInfo)} 
@@ -314,21 +335,13 @@ const FindForm = () => {
                   navermaps={navermaps} 
                   data={findList} 
                   getDataInBounds={getDataInBounds}
+                  activeLocInfo={activeLocInfo}
                 />
                 {/* <Marker
                   position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
                   animation={1}
                   zIndex={999}
                 /> */}
-                {/* {mouseOverMarker &&
-                  <DetailWindow
-                    navermaps={navermaps}
-                    position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
-                    data={findList}
-                    index={acitveIndex}
-                    isFocused={isFocused}
-                  />
-                } */}
               </NaverMap>
             </MapDiv>
           </div>
