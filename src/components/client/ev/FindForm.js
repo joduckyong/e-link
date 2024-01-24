@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEv } from 'store/EvReducer';
-import { Container as MapDiv, NaverMap, useNavermaps, Marker, Overlay, useMap } from 'react-naver-maps';
+import { Container as MapDiv, NaverMap, useNavermaps, Overlay, useMap } from 'react-naver-maps';
 import {makeMarkerClustering} from 'common/marker-cluster';
 
 function getBoundsData(bounds, data, getDataInBounds) {
@@ -12,7 +12,7 @@ function getBoundsData(bounds, data, getDataInBounds) {
 
 //소수점 뒤에 0 제거
 function zeroCut(nn) {
-  if (nn == 0 || nn == undefined || nn == null) return nn;
+  if (nn === 0 || nn === undefined || nn === null) return nn;
   nn = nn + "";
   let num3Arr = nn.split(".");
   let arr1 = num3Arr[1];
@@ -21,8 +21,8 @@ function zeroCut(nn) {
   for (let i = arr1.length;i > 0; i--) {
     let n = i-1;
     let charA = arr1.charAt(n);
-    if (charA == '0') {
-      if (isNotZero == true) {
+    if (charA === '0') {
+      if (isNotZero === true) {
         result += "0";
       } else {
         result += "";
