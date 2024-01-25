@@ -15,7 +15,7 @@ const Join1Form = () => {
   const [checkItems, setCheckItems] = useState([]);
 
   // 선택값
-  const [active, setActive] = useState(false);
+  const [activeStates, setActiveStates] = useState({});
 
   const [page, setPage] = useState(1);
   const [checkLength, setCheckLength] = useState(0);
@@ -45,16 +45,6 @@ const Join1Form = () => {
       setCheckItems(idArray);
     } else {
       setCheckItems([]);
-    }
-  };
-
-  const checkUsed = (id) => {
-    console.log('id =========' + id);
-    const idArray = boardList.data?.map((list) => list.boardId) || [];
-    if (idArray.includes(id)) {
-      setActive(true);
-    } else {
-      setActive(false);
     }
   };
 
@@ -113,7 +103,7 @@ const Join1Form = () => {
             </div>
             <ul className="agree-list">
               {boardList.data?.map((list, index) => (
-                <li className={classnames('agree', { active: active })}>
+                <li className={classnames('agree', { active: activeStates[list.boardId] })}>
                   <div className="ttl">
                     <label htmlFor={list.boardId}>
                       <input
@@ -125,10 +115,9 @@ const Join1Form = () => {
                       <span className="chkimg"></span>
                       <b>[{getboardType(list.boardType)}]</b> {list.boardTitle}
                     </label>
-                    <div className="arrow" onClick={() => setActive(!active)}></div>
-                    {/* <div className="arrow" onClick={() => checkUsed(list.boardId)}></div> */}
+                    <div className="arrow" onClick={() => setActiveStates((prev) => ({ ...prev, [list.boardId]: !prev[list.boardId] }))}></div>
                   </div>
-                  <div className="cont" style={active ? { display: 'block' } : { display: 'none' }}>
+                  <div className="cont" style={{ display: activeStates[list.boardId] ? 'block' : 'none' }}>
                     <div dangerouslySetInnerHTML={{ __html: list.boardContents }}></div>
                   </div>
                 </li>
