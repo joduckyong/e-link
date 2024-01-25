@@ -87,6 +87,7 @@ const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo}) => {
       infoWindows.push(infowindow);
     }
   
+    //지도안에서 마커 클릭
     const getClickHandler = (seq) => {
       return function(e) {
           const marker = markers[seq],
@@ -104,6 +105,7 @@ const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo}) => {
     navermaps.Event.addListener(markers[i], 'click', getClickHandler(i));
   }
 
+  //목록에서 클릭 시
   if(activeLocInfo){
     const _lan = zeroCut(activeLocInfo.split(",")[0]);
     const _lng = zeroCut(activeLocInfo.split(",")[1]);
