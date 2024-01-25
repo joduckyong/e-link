@@ -18,6 +18,8 @@ const ContactusForm = () => {
 
   const [agreeActive, setAgreeActive] = useState(false);
 
+  const [emailCheck, setEmailCheck] = useState(true);
+
   const fileRef = useRef();
 
   const dispatch = useDispatch();
@@ -36,6 +38,22 @@ const ContactusForm = () => {
     }
   };
 
+  // 핸드폰 등록
+  const phoneChange = (e) => {
+    const { value } = e.target;
+    const onlyNumber = value.replace(/[^0-9]/g, '');
+    setContactPhone(onlyNumber);
+  };
+
+  // 이메일 유효성 검사
+  const checkEmail = (e) => {
+    var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    // 형식에 맞는 경우 true 리턴
+
+    setEmailCheck(regExp.test(e.target.value));
+    console.log('이메일 유효성 검사 :: ', regExp.test(e.target.value));
+  };
+
   const onCreate = async (e) => {
     e.preventDefault();
 
@@ -51,6 +69,10 @@ const ContactusForm = () => {
     }
     if (contactMail === '') {
       alert('메일을 입력하세요');
+      return;
+    }
+    if (!emailCheck) {
+      alert('이메일 유효 하지 않습니다.');
       return;
     }
     if (contactTitle === '') {
@@ -598,11 +620,17 @@ const ContactusForm = () => {
             <li>
               <div className="input-wrap">
                 <span className="tit">연락처</span>
-                <input type="text" placeholder="-를 제외하고 입력해주세요." onChange={(e) => setContactPhone(e.target.value)} value={contactPhone} />
+                <input type="text" placeholder="-를 제외하고 입력해주세요." onChange={phoneChange} value={contactPhone} maxlength={11} />
               </div>
               <div className="input-wrap">
                 <span className="tit">이메일</span>
-                <input type="text" placeholder="이메일 주소를 입력해주세요." onChange={(e) => setContactMail(e.target.value)} value={contactMail} />
+                <input
+                  type="text"
+                  placeholder="이메일 주소를 입력해주세요."
+                  onChange={(e) => setContactMail(e.target.value)}
+                  value={contactMail}
+                  onKeyUp={checkEmail}
+                />
               </div>
             </li>
             <li>

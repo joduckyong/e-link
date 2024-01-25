@@ -337,8 +337,9 @@
 .ev-sub-sect .view-wp .ttl-wp h2{font-weight: 600;font-size: 18px;line-height: 21px;color: #EC6800;}
 .ev-sub-sect .view-wp .ttl-wp h1{margin-top: 20px;font-weight: 700;font-size: 48px;line-height: 57px;color: #FFFFFF;}
 .ev-sub-sect .view-wp .ttl-wp p{margin-top: 28px;font-weight: 400;font-size: 18px;line-height: 21px;color: #888888;}
-.ev-sub-sect .view-wp .cont-wp{padding: 100px 110px;border-top: 1px solid #444444;border-bottom: 1px solid #444444;font-weight: 400;font-size: 18px;line-height: 30px;color: #FFFFFF;}
+.ev-sub-sect .view-wp .cont-wp{max-width: 70%;margin: 0 auto;padding: 100px 110px;border-top: 1px solid #444444;border-bottom: 1px solid #444444;font-weight: 400;font-size: 18px;line-height: 30px;color: #FFFFFF;}
 .ev-sub-sect .view-wp .cont-wp *{max-width:100%;	}
+.ev-sub-sect .view-wp .cont-wp a{color: #fff;}
 .ev-sub-sect .view-wp .nav-wp{display:flex;justify-content:space-between;margin-top: 80px;}
 .ev-sub-sect .view-wp .nav-wp .arrow{display:flex;align-items:center;gap:30px;font-weight: 600;font-size: 18px;color: #FFFFFF;}
 .ev-sub-sect .view-wp .nav-wp .arrow img{width: 18px;}
