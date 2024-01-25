@@ -14,7 +14,12 @@ const Menu = () => {
           <img src="/img/common/logo.svg" alt="" />
         </h1>
         <ul className="menu-list">
-          <li className={(localStorage.getItem('menuNm') === 'POP' || localStorage.getItem('menuNm') === null) && 'on'}>
+          <li
+            className={
+              (localStorage.getItem('menuNm') === 'POP' || localStorage.getItem('menuNm') === 'AGR' || localStorage.getItem('menuNm') === null) &&
+              'on'
+            }
+          >
             <NavLink to="/admin/main/popup" onClick={(e) => handleOnClick(e, 'POP')}>
               메인페이지
             </NavLink>
@@ -22,6 +27,11 @@ const Menu = () => {
               <li className={(localStorage.getItem('menuNm') === 'POP' || localStorage.getItem('menuNm') === null) && 'on'}>
                 <NavLink to="/admin/main/popup" onClick={(e) => handleOnClick(e, 'POP')}>
                   팝업 관리
+                </NavLink>
+              </li>
+              <li className={(localStorage.getItem('menuNm') === 'AGR' || localStorage.getItem('menuNm') === null) && 'on'}>
+                <NavLink to="/admin/main/agree" onClick={(e) => handleOnClick(e, 'AGR')}>
+                  약관동의
                 </NavLink>
               </li>
             </ul>
