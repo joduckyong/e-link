@@ -172,9 +172,9 @@ const AgreeModForm = () => {
   }, []);
 
   return (
-    <div class="a-content a01 a01-2">
+    <div className="a-content a01 a01-2">
       <h2>약관동의</h2>
-      <div class="ban-list p0">
+      <div className="ban-list p0">
         <div className="btn-area position">
           <Link to="/admin/main/agree">
             <button className="btn btn-white btn-120">취소</button>
@@ -183,9 +183,9 @@ const AgreeModForm = () => {
             수정
           </button>
         </div>
-        <div class="regi_wp">
-          <div class="regi_cont">
-            <label for="regiTitle">제목</label>
+        <div className="regi_wp">
+          <div className="regi_cont">
+            <label htmlFor="regiTitle">제목</label>
             <input
               type="text"
               name="regiTitle"
@@ -199,10 +199,10 @@ const AgreeModForm = () => {
             </div>
           </div>
 
-          <div class="sel_wp">
+          <div className="sel_wp">
             <span>필수 / 선택</span>
-            <div class="sel_box">
-              <div class="sel_form">
+            <div className="sel_box">
+              <div className="sel_form">
                 <input
                   type="radio"
                   id="selEssen"
@@ -211,9 +211,9 @@ const AgreeModForm = () => {
                   checked={boardType === '1' ? true : false}
                   onChange={(e) => setBoardType(e.target.value)}
                 />
-                <label for="selEssen">필수</label>
+                <label htmlFor="selEssen">필수</label>
               </div>
-              <div class="sel_form">
+              <div className="sel_form">
                 <input
                   type="radio"
                   id="selChoice"
@@ -222,7 +222,7 @@ const AgreeModForm = () => {
                   checked={boardType === '2' ? true : false}
                   onChange={(e) => setBoardType(e.target.value)}
                 />
-                <label for="selChoice">선택</label>
+                <label htmlFor="selChoice">선택</label>
               </div>
             </div>
           </div>
