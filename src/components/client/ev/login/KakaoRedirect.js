@@ -80,6 +80,7 @@ function KakaoRedirect() {
 
           localStorage.removeItem('snsType');
           localStorage.removeItem('snsToken');
+          localStorage.setItem('login', '1');
           navigate('/ev/mypage1', { replace: true });
         } else {
           //회원가입
@@ -131,6 +132,7 @@ function KakaoRedirect() {
 
         localStorage.removeItem('snsType');
         localStorage.removeItem('snsToken');
+        localStorage.setItem('login', '1');
         navigate('/ev/mypage1', { replace: true });
       } else {
         //회원가입

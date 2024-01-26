@@ -19,8 +19,9 @@ export const setAccessEvToken = (accessEvToken, expireDate) => {
 export const getCookieEvToken = () => {
   let token = cookies.get('accessEvToken');
 
+  // localStorage.getItem('login');
   // console.log('token : ' + token);
-  if (token === undefined) {
+  if (token === undefined && localStorage.getItem('login') === '1') {
     async function refreshToken() {
       const data = {
         url: '/auth/oauth/token',
@@ -49,6 +50,7 @@ export const getCookieEvToken = () => {
 };
 
 export const removeCookieEvToken = () => {
+  localStorage.setItem('login', '2');
   return cookies.remove('accessEvToken', { path: '/' });
 };
 
