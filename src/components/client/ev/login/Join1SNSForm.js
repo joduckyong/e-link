@@ -64,16 +64,17 @@ const Join1SNSForm = () => {
   const aggreBtn = (e) => {
     e.preventDefault();
 
-    let returnPage = true;
+    let alertShown = false;
     boardList.data?.forEach((list) => {
       if (!checkItems.includes(list.boardId) && list.boardType === '1') {
-        alert('[' + getboardType(list.boardType) + ']' + list.boardTitle + '을 선택 하세요');
-        returnPage = false;
-        return;
+        if (!alertShown) {
+          alert('[' + getboardType(list.boardType) + ']' + list.boardTitle + '을 선택 하세요');
+          alertShown = true;
+        }
       }
     });
 
-    if (returnPage) {
+    if (!alertShown) {
       navigate('/ev/join2Sns');
     }
   };
