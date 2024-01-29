@@ -28,6 +28,7 @@ const LoginForm = () => {
       setLoginstay(true);
       const token = getCookieEvToken();
       if (token !== undefined) {
+        localStorage.setItem('login', '1');
         navigate('/ev/mypage1');
       }
     }
@@ -80,6 +81,7 @@ const LoginForm = () => {
         setRefreshEvToken(JSON.stringify(response.json.data.refresh_token));
 
         dispatch(SET_EV_TOKEN(JSON.stringify(response.json.data.access_token)));
+        localStorage.setItem('login', '1');
         return navigate('/ev/mypage1');
       }
     } else {
