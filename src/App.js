@@ -15,6 +15,12 @@ import PopupAddPage from './pages/admin/main/PopupAddPage';
 import PopupModPage from './pages/admin/main/PopupModPage';
 import PopupInfoPage from './pages/admin/main/PopupInfoPage';
 
+//약관동의 국문
+import AgreePage from './pages/admin/main/AgreePage';
+import AgreeAddPage from './pages/admin/main/AgreeAddPage';
+import AgreeModPage from './pages/admin/main/AgreeModPage';
+import AgreeInfoPage from './pages/admin/main/AgreeInfoPage';
+
 //팝업 영문
 import PopupEnPage from './pages/admin_en/main/PopupEnPage';
 import PopupAddEnPage from './pages/admin_en/main/PopupAddEnPage';
@@ -298,6 +304,11 @@ const App = () => {
         <Route path="/admin/main/popupAdd" element={<PopupAddPage />} />
         <Route path="/admin/main/popupMod/:id" element={<PopupModPage />} />
         <Route path="/admin/main/popupInfo/:id" element={<PopupInfoPage />} />
+
+        <Route path="/admin/main/agree" element={<AgreePage />} />
+        <Route path="/admin/main/agreeAdd" element={<AgreeAddPage />} />
+        <Route path="/admin/main/agreeMod/:id" element={<AgreeModPage />} />
+        <Route path="/admin/main/agreeInfo/:id" element={<AgreeInfoPage />} />
 
         <Route path="/admin/main/popupEn" element={<PopupEnPage />} />
         <Route path="/admin/main/popupAddEn" element={<PopupAddEnPage />} />
