@@ -36,7 +36,7 @@ function zeroCut(nn) {
 
 }
 
-const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo}) => {
+const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo, infoWindowArr, setInfoWindowArr}) => {
 
   // const navermaps = useNavermaps();
   const map = useMap();
@@ -63,6 +63,11 @@ const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo}) => {
     const markers = [];
     const infoWindows = [];
 
+    //infowindow 초기화
+    for (let i=0, ii=infoWindowArr.length; i<ii; i++) {
+      infoWindowArr[i].setMap(null);
+    }
+
     for (let i = 0, ii = data.length; i < ii; i++) {
       const spot = data[i],
         latlng = new navermaps.LatLng(spot.locInfo.split(",")[0], spot.locInfo.split(",")[1]),
@@ -86,6 +91,8 @@ const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo}) => {
       markers.push(marker);
       infoWindows.push(infowindow);
     }
+
+    setInfoWindowArr(infoWindows);
   
     //지도안에서 마커 클릭
     const getClickHandler = (seq) => {
@@ -209,6 +216,7 @@ const FindForm = () => {
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [type, setType] = useState('name');
   const [activeLocInfo, setActiveLocInfo] = useState('');
+  const [infoWindowArr, setInfoWindowArr] = useState([]);
 
   const handleZoomChanged = useCallback((zoom) => {
     console.log(`zoom: ${zoom}`)
@@ -338,6 +346,8 @@ const FindForm = () => {
                   data={findList} 
                   getDataInBounds={getDataInBounds}
                   activeLocInfo={activeLocInfo}
+                  infoWindowArr={infoWindowArr}
+                  setInfoWindowArr={setInfoWindowArr}
                 />
                 {/* <Marker
                   position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
