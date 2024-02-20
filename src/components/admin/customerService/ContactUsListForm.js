@@ -161,9 +161,11 @@ const ContactUsListForm = () => {
           <button className="btn btn-red btn-120" onClick={onRemove}>
             선택삭제
           </button>
-          <button className="btn btn-blue btn-120" onClick={onResult}>
-            처리완료
-          </button>
+          {contactType !== 'C' && (
+            <button className="btn btn-blue btn-120" onClick={onResult}>
+              처리완료
+            </button>
+          )}
         </div>
         <div className="table-wrap">
           <table>

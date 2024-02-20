@@ -67,7 +67,7 @@ export const insertContactUs = createAsyncThunk('EN_CLIENT_ADD_CONTACTUS', async
   return response.data;
 });
 
-export const updateContactUsIds = createAsyncThunk('MOD_CONTACTUS_IDS', async (newList) => {
+export const updateContactUs = createAsyncThunk('EN_MOD_CONTACTUS', async (newList) => {
   const token = getCookieToken();
   console.log('token : ' + token);
 
@@ -76,7 +76,26 @@ export const updateContactUsIds = createAsyncThunk('MOD_CONTACTUS_IDS', async (n
   }
 
   const response = await axios({
-    url: `${process.env.REACT_APP_API_URL}/api/contactUs/`,
+    url: `${process.env.REACT_APP_API_URL}/en/api/contactUs/update`,
+    method: 'POST',
+    data: newList,
+    headers: {
+      Authorization: token,
+    },
+  });
+  return response.data;
+});
+
+export const updateContactUsIds = createAsyncThunk('EN_MOD_CONTACTUS_IDS', async (newList) => {
+  const token = getCookieToken();
+  console.log('token : ' + token);
+
+  if (token === undefined && typeof token === 'undefined') {
+    document.location.href = process.env.REACT_APP_ADMIN_LOGIN;
+  }
+
+  const response = await axios({
+    url: `${process.env.REACT_APP_API_URL}/en/api/contactUs/`,
     method: 'POST',
     data: newList,
     headers: {

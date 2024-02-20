@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import axios from 'axios';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContactUsInfo, updateContactUsIds } from 'store/contactUsReducer';
+import { selectContactUsInfo, updateContactUs } from 'store/contactUsReducer';
 import { downloadFile } from 'common/download';
 import { getCookieToken } from 'storage/Cookie';
 import ReactQuill from 'react-quill';
@@ -10,32 +10,27 @@ import 'react-quill/dist/quill.snow.css';
 
 const ContactUsInfoForm = () => {
   const { id } = useParams();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const contactType = useSelector((state) => state.contactUsReducer.dataInfo.contactType);
   const contactNm = useSelector((state) => state.contactUsReducer.dataInfo.contactNm);
   const contactTitle = useSelector((state) => state.contactUsReducer.dataInfo.contactTitle);
   const contactPhone = useSelector((state) => state.contactUsReducer.dataInfo.contactPhone);
   const contactContents = useSelector((state) => state.contactUsReducer.dataInfo.contactContents);
-  const contactContents2 = useSelector((state) => state.contactUsReducer.dataInfo.contactReContents);
+  const contactContents2 = useSelector((state) => state.contactUsReducer.dataInfo.contactRecontents);
   const contactAgree = useSelector((state) => state.contactUsReducer.dataInfo.contactAgree);
+  const contactProcess = useSelector((state) => state.contactUsReducer.dataInfo.contactProcess);
   const attachList = useSelector((state) => state.contactUsReducer.files);
 
-  // const contactReContents = useSelector((state) => state.contactUsReducer.dataInfo.contactReContents);
   const [contactRecontents, setContactRecontents] = useState('');
 
-  const filesRef = useRef([]);
   const quillRef = useRef();
 
   useEffect(() => {
     dispatch(selectContactUsInfo(id));
   }, [dispatch, id]);
-
-  useEffect(() => {
-    if (contactContents2 !== '') {
-      setContactRecontents(contactContents2);
-    }
-  }, [contactContents2]);
 
   const imageHandler = () => {
     console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
@@ -168,7 +163,7 @@ const ContactUsInfoForm = () => {
         contactId: id,
         contactRecontents: contactRecontents,
       };
-      await dispatch(updateContactUsIds(newList));
+      await dispatch(updateContactUs(newList));
       return navigate('/admin/customerService/contactUs');
     }
   };
@@ -189,9 +184,11 @@ const ContactUsInfoForm = () => {
           <Link to="/admin/customerService/contactUs">
             <button className="btn btn-white btn-120">목록</button>
           </Link>
-          <button className="btn btn-blue btn-120" onClick={onEdit}>
-            답변
-          </button>
+          {contactType === 'C' && contactProcess === 'N' && (
+            <button className="btn btn-blue btn-120" onClick={onEdit}>
+              답변
+            </button>
+          )}
         </div>
         <div className="view-detail bg-white">
           <ul>
@@ -249,16 +246,31 @@ const ContactUsInfoForm = () => {
           </ul>
         </div>
       </div>
-      <div className="ban-list bg-white">
-        <div className="ed-tit">
-          <div className="s-tit">답변</div>
-        </div>
-        <div className="edit">
-          <div className="ed-area">
-            <ReactQuill ref={quillRef} value={contactRecontents} onChange={setContactRecontents} modules={modules} />
+      {contactType === 'C' && contactProcess === 'N' && (
+        <div className="ban-list bg-white">
+          <div className="ed-tit">
+            <div className="s-tit">답변</div>
+          </div>
+          <div className="edit">
+            <div className="ed-area">
+              <ReactQuill ref={quillRef} value={contactRecontents} onChange={setContactRecontents} modules={modules} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
+      {contactType === 'C' && contactProcess === 'Y' && (
+        <div className="ban-list bg-white">
+          <div className="ed-tit">
+            <div className="s-tit">답변</div>
+          </div>
+          <div className="edit">
+            <div className="ed-area">
+              <div dangerouslySetInnerHTML={{ __html: contactContents2 }}></div>
+              {/* <div className="text">{contactContents2}</div> */}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
