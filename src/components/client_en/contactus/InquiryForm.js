@@ -11,6 +11,7 @@ const ContactusForm = () => {
   const [contactPhone, setContactPhone] = useState('');
   const [contactMail, setContactMail] = useState('');
   const [contactContents, setContactContents] = useState('');
+  const [contactPw, setContactPw] = useState('');
   const [contactAgree, setContactAgree] = useState(false);
   const [fileName, setFileName] = useState('');
   const [activeMenu1, setActiveMenu1] = useState(false);
@@ -83,6 +84,10 @@ const ContactusForm = () => {
       alert('Please enter your inquiry details.');
       return;
     }
+    if (contactPw === '') {
+      alert('Please enter your password');
+      return;
+    }
     if (!contactAgree) {
       alert('Please agree to the collection and use of personal information.');
       return;
@@ -95,6 +100,7 @@ const ContactusForm = () => {
         contactPhone: contactPhone,
         contactMail: contactMail,
         contactContents: contactContents,
+        contactPw: contactPw,
         contactAgree: contactAgree ? 'Y' : 'N',
         contactType: 'C',
         file: fileObj,
@@ -727,6 +733,12 @@ const ContactusForm = () => {
                   onChange={(e) => setContactContents(e.target.value)}
                   value={contactContents}
                 ></textarea>
+              </div>
+            </li>
+            <li>
+              <div className="input-wrap">
+                <span className="tit">Password</span>
+                <input type="text" placeholder="Please enter your password." onChange={(e) => setContactPw(e.target.value)} />
               </div>
             </li>
           </ul>

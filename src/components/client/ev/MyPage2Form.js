@@ -8,14 +8,14 @@ const MyPage2Form = () => {
         <div className="costomer-wp mypage-wp elvis-wp">
           <h1>마이페이지</h1>
           <ul className="link-wp">
-          <li>
+            <li>
               <Link to="/ev/mypage1">이용내역</Link>
             </li>
             <li className="active">
               <Link to="">ELVIS 캐시</Link>
             </li>
             <li>
-              <Link to="/ev/mypage3">커뮤니티</Link>
+              <Link to="/ev/mypage3">문의내역조회</Link>
             </li>
           </ul>
           <form className="list-wp">

@@ -101,7 +101,7 @@ const MyPage3ModForm = () => {
     <>
       <section className="ev-sub-sect">
         <form className="write-wp">
-          <h1>커뮤니티</h1>
+          <h1>문의내역</h1>
           <div className="chk-wp">
             <div className="agree">
               {/* <label for="secret">

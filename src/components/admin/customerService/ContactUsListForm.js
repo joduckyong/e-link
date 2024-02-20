@@ -125,7 +125,7 @@ const ContactUsListForm = () => {
         </li>
         <li className={contactType === 'C' && 'active'}>
           <Link to="" onClick={() => onContactType('C')}>
-            문의하기
+            질의하기
           </Link>
         </li>
       </ul>

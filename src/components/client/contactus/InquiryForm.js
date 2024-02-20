@@ -11,6 +11,7 @@ const ContactusForm = () => {
   const [contactPhone, setContactPhone] = useState('');
   const [contactMail, setContactMail] = useState('');
   const [contactContents, setContactContents] = useState('');
+  const [contactPw, setContactPw] = useState('');
   const [contactAgree, setContactAgree] = useState(false);
   const [fileName, setFileName] = useState('');
   const [activeMenu1, setActiveMenu1] = useState(false);
@@ -83,6 +84,10 @@ const ContactusForm = () => {
       alert('내용을 입력하세요');
       return;
     }
+    if (contactPw === '') {
+      alert('비밀번호를 입력하세요');
+      return;
+    }
     if (!contactAgree) {
       alert('개인정보 수집및 이용에 동의에 체크하세요');
       return;
@@ -95,6 +100,7 @@ const ContactusForm = () => {
         contactPhone: contactPhone,
         contactMail: contactMail,
         contactContents: contactContents,
+        contactPw: contactPw,
         contactAgree: contactAgree ? 'Y' : 'N',
         contactType: 'C',
         file: fileObj,
@@ -191,7 +197,7 @@ const ContactusForm = () => {
                         </li>*/}
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                문의하기
+                질의하기
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
@@ -202,7 +208,7 @@ const ContactusForm = () => {
                 </li>
                 <li>
                   <NavLink to="/contactus/inquiry" className="on">
-                    문의하기
+                    질의하기
                   </NavLink>
                 </li>
               </ul>
@@ -221,7 +227,7 @@ const ContactusForm = () => {
             </li>
             <li className="swiper-slide on">
               <NavLink to="/contactus/inquiry" className="on">
-                문의하기
+                질의하기
               </NavLink>
             </li>
           </ul>
@@ -653,6 +659,12 @@ const ContactusForm = () => {
                 ></textarea>
               </div>
             </li>
+            <li>
+              <div className="input-wrap">
+                <span className="tit">비밀번호</span>
+                <input type="text" placeholder="비밀번호를 입력해주세요." onChange={(e) => setContactPw(e.target.value)} />
+              </div>
+            </li>
           </ul>
           <div className="file">
             <div className="input-box">
@@ -667,7 +679,7 @@ const ContactusForm = () => {
             <p>※ 첨부파일은 최대 50MB 이하의 jpg, png, gif, jpeg, pdf, hwp, xlsx, docx, ppt, pptx 파일만 업로드 가능합니다.</p>
           </div>
           <NavLink to="" className="qa-btn" onClick={onCreate}>
-            문의하기
+            질의하기
           </NavLink>
         </div>
       </div>

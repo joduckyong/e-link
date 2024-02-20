@@ -40,7 +40,7 @@ const MyPage3Form = () => {
               <Link to="">ELVIS 캐시</Link>
             </li> */}
             <li className="active">
-              <Link to="/ev/mypage3">커뮤니티</Link>
+              <Link to="/ev/mypage3">문의내역조회</Link>
             </li>
           </ul>
           <div className="list-wp">
