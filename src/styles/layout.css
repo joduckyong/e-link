@@ -5678,3 +5678,9 @@ label[for='regiTitle'] {
   font-size: 24px;
   text-align: center;
 }
+
+pre{
+  padding:10px;
+  overflow: auto;
+  white-space: pre-wrap;
+}  

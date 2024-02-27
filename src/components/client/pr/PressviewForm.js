@@ -10,14 +10,24 @@ import classnames from 'classnames';
 const PressviewForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const boardTitle = useSelector((state) => state.boardReducer.dataInfo?.boardTitle);
-  const createdDatetime = useSelector((state) => state.boardReducer.dataInfo?.createdDatetime);
-  const boardContents = useSelector((state) => state.boardReducer.dataInfo?.boardContents);
+  const boardTitle = useSelector(
+    (state) => state.boardReducer.dataInfo?.boardTitle,
+  );
+  const createdDatetime = useSelector(
+    (state) => state.boardReducer.dataInfo?.createdDatetime,
+  );
+  const boardContents = useSelector(
+    (state) => state.boardReducer.dataInfo?.boardContents,
+  );
   const fileList = useSelector((state) => state.boardReducer?.files);
   //   const thumbnailList = fileList.filter((file) => file.fileType === '1'); //썸네일
   //   const realImageNm = thumbnailList.length > 0 ? thumbnailList[0].fileNm.replace('s_', '') : '';
-  const prevBoardId = useSelector((state) => state.boardReducer.prevNextData?.prevBoardId);
-  const nextBoardId = useSelector((state) => state.boardReducer.prevNextData?.nextBoardId);
+  const prevBoardId = useSelector(
+    (state) => state.boardReducer.prevNextData?.prevBoardId,
+  );
+  const nextBoardId = useSelector(
+    (state) => state.boardReducer.prevNextData?.nextBoardId,
+  );
 
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
@@ -45,10 +55,21 @@ const PressviewForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+            data-aos-delay="200"
+          >
             보도자료
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+            data-aos-delay="200"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -114,7 +135,12 @@ const PressviewForm = () => {
                   (list, index) =>
                     list.fileType !== '1' && (
                       <li style={{ padding: '5px 0 5px 0' }}>
-                        <NavLink to="" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}>
+                        <NavLink
+                          to=""
+                          onClick={() =>
+                            downloadFile(list.fileNm, list.fileOriginNm)
+                          }
+                        >
                           <div className="file">{list.fileOriginNm}</div>
                         </NavLink>
                       </li>
@@ -126,16 +152,25 @@ const PressviewForm = () => {
               {/* <div className="img">
                 <ViewImage fileNm={realImageNm} />
               </div> */}
-              <p className="mt40" dangerouslySetInnerHTML={{ __html: boardContents }}></p>
+              <p
+                className="mt40"
+                dangerouslySetInnerHTML={{ __html: boardContents }}
+              ></p>
             </div>
             <div className="view-control">
-              <NavLink to={prevBoardId && `/pr/press-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
+              <NavLink
+                to={prevBoardId && `/pr/press-view/${prevBoardId}`}
+                className={classnames('prev-btn', { disable: !prevBoardId })}
+              >
                 이전글
               </NavLink>
               <NavLink to="/pr/press-list" className="list-btn">
                 목록
               </NavLink>
-              <NavLink to={nextBoardId && `/pr/press-view/${nextBoardId}`} className={classnames('next-btn', { disable: !nextBoardId })}>
+              <NavLink
+                to={nextBoardId && `/pr/press-view/${nextBoardId}`}
+                className={classnames('next-btn', { disable: !nextBoardId })}
+              >
                 다음글
               </NavLink>
             </div>

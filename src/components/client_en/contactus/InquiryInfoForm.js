@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClientContactUsInfo } from 'store/contactUsReducer';
+import { selectClientContactUsInfo } from 'store/contactUsEnReducer';
 import AOS from 'aos';
 import classnames from 'classnames';
 import { downloadFile } from 'common/download';
@@ -12,10 +12,10 @@ const InquiryInfoForm = () => {
 
   const contactusInfo = useSelector((state) => state.contactUsReducer);
   const prevBoardId = useSelector(
-    (state) => state.contactUsReducer.prevNextData?.prevBoardId,
+    (state) => state.contactUsEnReducer.prevNextData?.prevBoardId,
   );
   const nextBoardId = useSelector(
-    (state) => state.contactUsReducer.prevNextData?.nextBoardId,
+    (state) => state.contactUsEnReducer.prevNextData?.nextBoardId,
   );
 
   const [activeMenu1, setActiveMenu1] = useState(false);
@@ -46,15 +46,8 @@ const InquiryInfoForm = () => {
     }
   };
 
-  // const page = (id, mail) => {
-  //   console.log('id ===========' + id);
-  //   console.log('mail ===========' + mail);
-  //   if (id != null) {
-  //     return navigate(`/contactUs/inquiryInfo?id=${id}&mail=${mail}`);
-  //   }
-  // };
   return (
-    <div className="sub sub06 qa_sub06">
+    <div className="sub sub06">
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
@@ -74,57 +67,55 @@ const InquiryInfoForm = () => {
             data-aos-delay="200"
           >
             <li>
-              <NavLink to="/">
-                <img src="./../img/sub/ico-home.svg" alt="" />
+              <NavLink to="/en">
+                <img src="/img/sub/ico-home.svg" alt="" />
               </NavLink>
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                Contact us
+                Contact Us
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
+                  <NavLink to="/en/company/lselink">Company</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/consult" className="on">
+                  <NavLink to="/en/contactus" className="on">
                     Contact Us
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="">EV 충전소</NavLink>
-                </li>
               </ul>
             </li>
-            {/*<li className="on link">
-                            <NavLink to="/contactus" onClick={(e) => onClickMenuLink('2')}>Contact us</NavLink>
-                        </li>*/}
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                질의하기
+                Contact us
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/contactus/consult">상담신청</NavLink>
+                  <NavLink to="/en/contactus/consult">
+                    Consultation request
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/inconvenience">불편신고</NavLink>
+                  <NavLink to="/en/contactus/inconvenience">
+                    Report complaints
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/inquiry" className="on">
-                    질의하기
+                  <NavLink to="/en/contactus/inquiry" className="on">
+                    Contact us
                   </NavLink>
                 </li>
               </ul>
@@ -136,29 +127,30 @@ const InquiryInfoForm = () => {
         <div className="nav-slide">
           <ul className="swiper-wrapper">
             <li className="swiper-slide">
-              <NavLink to="/contactus/consult">상담신청</NavLink>
+              <NavLink to="/en/contactus/consult">Consultation request</NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/contactus/inconvenience">불편신고</NavLink>
+              <NavLink to="/en/contactus/inconvenience">
+                Report complaints
+              </NavLink>
             </li>
             <li className="swiper-slide on">
-              <NavLink to="/contactus/inquiry" className="on">
-                질의하기
+              <NavLink to="/en/contactus/inquiry" className="on">
+                Contact us
               </NavLink>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="content view-wp">
+      <div className="content">
         <div className="wrap">
           <h3
             data-aos="fade-right"
             data-aos-duration="2000"
             data-aos-once="true"
           >
-            고객님의 질의와 소중한
-            <br className="mBr" /> 제안을 받습니다.
+            We receive your inquiries and valuable suggestions.
           </h3>
           <div className="tab_box">
             <NavLink to="/contactus/inquiry">질의하기</NavLink>
@@ -231,13 +223,13 @@ const InquiryInfoForm = () => {
               }
               className={classnames('prev-btn', { disable: !prevBoardId })}
             >
-              이전글
+              Before
             </NavLink>
             <NavLink
               to={`/contactUs/inquiryList?mail=${mail}`}
               className="list-btn"
             >
-              목록
+              List
             </NavLink>
             <NavLink
               to={
@@ -246,7 +238,7 @@ const InquiryInfoForm = () => {
               }
               className={classnames('next-btn', { disable: !nextBoardId })}
             >
-              다음글
+              next
             </NavLink>
           </div>
         </div>

@@ -14,14 +14,30 @@ const ContactUsInfoForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const contactType = useSelector((state) => state.contactUsReducer.dataInfo.contactType);
-  const contactNm = useSelector((state) => state.contactUsReducer.dataInfo.contactNm);
-  const contactTitle = useSelector((state) => state.contactUsReducer.dataInfo.contactTitle);
-  const contactPhone = useSelector((state) => state.contactUsReducer.dataInfo.contactPhone);
-  const contactContents = useSelector((state) => state.contactUsReducer.dataInfo.contactContents);
-  const contactContents2 = useSelector((state) => state.contactUsReducer.dataInfo.contactRecontents);
-  const contactAgree = useSelector((state) => state.contactUsReducer.dataInfo.contactAgree);
-  const contactProcess = useSelector((state) => state.contactUsReducer.dataInfo.contactProcess);
+  const contactType = useSelector(
+    (state) => state.contactUsReducer.dataInfo.contactType,
+  );
+  const contactNm = useSelector(
+    (state) => state.contactUsReducer.dataInfo.contactNm,
+  );
+  const contactTitle = useSelector(
+    (state) => state.contactUsReducer.dataInfo.contactTitle,
+  );
+  const contactPhone = useSelector(
+    (state) => state.contactUsReducer.dataInfo.contactPhone,
+  );
+  const contactContents = useSelector(
+    (state) => state.contactUsReducer.dataInfo.contactContents,
+  );
+  const contactContents2 = useSelector(
+    (state) => state.contactUsReducer.dataInfo.contactRecontents,
+  );
+  const contactAgree = useSelector(
+    (state) => state.contactUsReducer.dataInfo.contactAgree,
+  );
+  const contactProcess = useSelector(
+    (state) => state.contactUsReducer.dataInfo.contactProcess,
+  );
   const attachList = useSelector((state) => state.contactUsReducer.files);
 
   const [contactRecontents, setContactRecontents] = useState('');
@@ -59,7 +75,11 @@ const ContactUsInfoForm = () => {
             Authorization: token,
           },
         };
-        const result = await axios.post(process.env.REACT_APP_API_URL + '/api/file/', formData, config);
+        const result = await axios.post(
+          process.env.REACT_APP_API_URL + '/api/file/',
+          formData,
+          config,
+        );
         console.log('성공 시, 백엔드가 보내주는 데이터', result.data);
         const IMG_URL = `${process.env.REACT_APP_API_URL}/api/file/img/${result.data}`;
         console.log('IMG_URL : ' + IMG_URL);
@@ -95,8 +115,22 @@ const ContactUsInfoForm = () => {
           [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
           [{ direction: 'rtl' }], // text direction
           [{ align: [] }],
-          ['bold', 'italic', 'underline', 'strike', 'blockquote', 'link', 'code-block', 'formula'],
-          [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+          [
+            'bold',
+            'italic',
+            'underline',
+            'strike',
+            'blockquote',
+            'link',
+            'code-block',
+            'formula',
+          ],
+          [
+            { list: 'ordered' },
+            { list: 'bullet' },
+            { indent: '-1' },
+            { indent: '+1' },
+          ],
           [
             {
               color: [
@@ -206,7 +240,9 @@ const ContactUsInfoForm = () => {
             </li>
             <li>
               <span className="tit">내용</span>
-              <div className="text">{contactContents}</div>
+              <div className="text">
+                <pre>{contactContents}</pre>
+              </div>
             </li>
             <li>
               <span className="tit"></span>
@@ -222,7 +258,12 @@ const ContactUsInfoForm = () => {
                   <span className="tit">첨부파일</span>
                   <div className="text">
                     <span>{list.fileOriginNm}</span>
-                    <button className="btn-down" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}>
+                    <button
+                      className="btn-down"
+                      onClick={() =>
+                        downloadFile(list.fileNm, list.fileOriginNm)
+                      }
+                    >
                       <img src="/img/admin/ico-download.svg" alt="" />
                     </button>
                   </div>
@@ -237,7 +278,12 @@ const ContactUsInfoForm = () => {
               <span className="tit">약관동의</span>
               <div className="text">
                 <label htmlFor="allagree">
-                  <input type="checkbox" id="allagree" checked={contactAgree === 'Y' && 'checked'} readOnly />
+                  <input
+                    type="checkbox"
+                    id="allagree"
+                    checked={contactAgree === 'Y' && 'checked'}
+                    readOnly
+                  />
                   <span className="chkimg"></span>
                 </label>
                 개인정보 수집 및 이용에 동의합니다.
@@ -253,7 +299,12 @@ const ContactUsInfoForm = () => {
           </div>
           <div className="edit">
             <div className="ed-area">
-              <ReactQuill ref={quillRef} value={contactRecontents} onChange={setContactRecontents} modules={modules} />
+              <ReactQuill
+                ref={quillRef}
+                value={contactRecontents}
+                onChange={setContactRecontents}
+                modules={modules}
+              />
             </div>
           </div>
         </div>

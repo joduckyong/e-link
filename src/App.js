@@ -205,6 +205,9 @@ import InquiryListPage from './pages/client/contactus/InquiryListPage';
 import ConsultEnPage from './pages/client_en/contactus/ConsultPage';
 import InconvenienceEnPage from './pages/client_en/contactus/InconveniencePage';
 import InquiryEnPage from './pages/client_en/contactus/InquiryPage';
+import InquiryEnPage2 from './pages/client_en/contactus/InquiryPage2';
+import InquiryInfoEnPage2 from './pages/client_en/contactus/InquiryInfoPage';
+import InquiryListEnPage from './pages/client_en/contactus/InquiryListPage';
 
 // 약관 국문
 import PrivacyPage from './pages/client/policy/PrivacyPage';
@@ -316,63 +319,195 @@ const App = () => {
         <Route path="/admin/main/popupEn" element={<PopupEnPage />} />
         <Route path="/admin/main/popupAddEn" element={<PopupAddEnPage />} />
         <Route path="/admin/main/popupModEn/:id" element={<PopupModEnPage />} />
-        <Route path="/admin/main/popupInfoEn/:id" element={<PopupInfoEnPage />} />
+        <Route
+          path="/admin/main/popupInfoEn/:id"
+          element={<PopupInfoEnPage />}
+        />
 
         <Route path="/admin/company/outline" element={<OutlinePage />} />
         <Route path="/admin/company/outlineEn" element={<OutlineEnPage />} />
 
-        <Route path="/admin/investInfo/officialNotice" element={<OfficialNoticePage />} />
-        <Route path="/admin/investInfo/officialNoticeEn" element={<OfficialNoticeEnPage />} />
+        <Route
+          path="/admin/investInfo/officialNotice"
+          element={<OfficialNoticePage />}
+        />
+        <Route
+          path="/admin/investInfo/officialNoticeEn"
+          element={<OfficialNoticeEnPage />}
+        />
 
         <Route path="/admin/investInfo/financial" element={<FinancialPage />} />
-        <Route path="/admin/investInfo/financialAdd" element={<FinancialAddPage />} />
-        <Route path="/admin/investInfo/financialMod/:id" element={<FinancialModPage />} />
-        <Route path="/admin/investInfo/financialInfo/:id" element={<FinancialInfoPage />} />
-        <Route path="/admin/investInfo/financialEn" element={<FinancialEnPage />} />
-        <Route path="/admin/investInfo/financialAddEn" element={<FinancialAddEnPage />} />
-        <Route path="/admin/investInfo/financialModEn/:id" element={<FinancialModEnPage />} />
-        <Route path="/admin/investInfo/financialInfoEn/:id" element={<FinancialInfoEnPage />} />
+        <Route
+          path="/admin/investInfo/financialAdd"
+          element={<FinancialAddPage />}
+        />
+        <Route
+          path="/admin/investInfo/financialMod/:id"
+          element={<FinancialModPage />}
+        />
+        <Route
+          path="/admin/investInfo/financialInfo/:id"
+          element={<FinancialInfoPage />}
+        />
+        <Route
+          path="/admin/investInfo/financialEn"
+          element={<FinancialEnPage />}
+        />
+        <Route
+          path="/admin/investInfo/financialAddEn"
+          element={<FinancialAddEnPage />}
+        />
+        <Route
+          path="/admin/investInfo/financialModEn/:id"
+          element={<FinancialModEnPage />}
+        />
+        <Route
+          path="/admin/investInfo/financialInfoEn/:id"
+          element={<FinancialInfoEnPage />}
+        />
 
         <Route path="/admin/investInfo/announce" element={<AnnouncePage />} />
-        <Route path="/admin/investInfo/announceAdd" element={<AnnounceAddPage />} />
-        <Route path="/admin/investInfo/announceMod/:id" element={<AnnounceModPage />} />
-        <Route path="/admin/investInfo/announceInfo/:id" element={<AnnounceInfoPage />} />
-        <Route path="/admin/investInfo/announceEn" element={<AnnounceEnPage />} />
-        <Route path="/admin/investInfo/announceAddEn" element={<AnnounceAddEnPage />} />
-        <Route path="/admin/investInfo/announceModEn/:id" element={<AnnounceModEnPage />} />
-        <Route path="/admin/investInfo/announceInfoEn/:id" element={<AnnounceInfoEnPage />} />
+        <Route
+          path="/admin/investInfo/announceAdd"
+          element={<AnnounceAddPage />}
+        />
+        <Route
+          path="/admin/investInfo/announceMod/:id"
+          element={<AnnounceModPage />}
+        />
+        <Route
+          path="/admin/investInfo/announceInfo/:id"
+          element={<AnnounceInfoPage />}
+        />
+        <Route
+          path="/admin/investInfo/announceEn"
+          element={<AnnounceEnPage />}
+        />
+        <Route
+          path="/admin/investInfo/announceAddEn"
+          element={<AnnounceAddEnPage />}
+        />
+        <Route
+          path="/admin/investInfo/announceModEn/:id"
+          element={<AnnounceModEnPage />}
+        />
+        <Route
+          path="/admin/investInfo/announceInfoEn/:id"
+          element={<AnnounceInfoEnPage />}
+        />
 
-        <Route path="/admin/publicRelations/pressRelease" element={<PressReleasePage />} />
-        <Route path="/admin/publicRelations/pressReleaseAdd" element={<PressReleaseAddPage />} />
-        <Route path="/admin/publicRelations/pressReleaseMod/:id" element={<PressReleaseModPage />} />
-        <Route path="/admin/publicRelations/pressReleaseInfo/:id" element={<PressReleaseInfoPage />} />
-        <Route path="/admin/publicRelations/pressReleaseEn" element={<PressReleaseEnPage />} />
-        <Route path="/admin/publicRelations/pressReleaseAddEn" element={<PressReleaseAddEnPage />} />
-        <Route path="/admin/publicRelations/pressReleaseModEn/:id" element={<PressReleaseModEnPage />} />
-        <Route path="/admin/publicRelations/pressReleaseInfoEn/:id" element={<PressReleaseInfoEnPage />} />
+        <Route
+          path="/admin/publicRelations/pressRelease"
+          element={<PressReleasePage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseAdd"
+          element={<PressReleaseAddPage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseMod/:id"
+          element={<PressReleaseModPage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseInfo/:id"
+          element={<PressReleaseInfoPage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseEn"
+          element={<PressReleaseEnPage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseAddEn"
+          element={<PressReleaseAddEnPage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseModEn/:id"
+          element={<PressReleaseModEnPage />}
+        />
+        <Route
+          path="/admin/publicRelations/pressReleaseInfoEn/:id"
+          element={<PressReleaseInfoEnPage />}
+        />
 
         <Route path="/admin/publicRelations/media" element={<MediaPage />} />
-        <Route path="/admin/publicRelations/mediaAdd" element={<MediaAddPage />} />
-        <Route path="/admin/publicRelations/mediaMod/:id" element={<MediaModPage />} />
-        <Route path="/admin/publicRelations/mediaInfo/:id" element={<MediaInfoPage />} />
-        <Route path="/admin/publicRelations/mediaEn" element={<MediaEnPage />} />
-        <Route path="/admin/publicRelations/mediaAddEn" element={<MediaAddEnPage />} />
-        <Route path="/admin/publicRelations/mediaModEn/:id" element={<MediaModEnPage />} />
-        <Route path="/admin/publicRelations/mediaInfoEn/:id" element={<MediaInfoEnPage />} />
+        <Route
+          path="/admin/publicRelations/mediaAdd"
+          element={<MediaAddPage />}
+        />
+        <Route
+          path="/admin/publicRelations/mediaMod/:id"
+          element={<MediaModPage />}
+        />
+        <Route
+          path="/admin/publicRelations/mediaInfo/:id"
+          element={<MediaInfoPage />}
+        />
+        <Route
+          path="/admin/publicRelations/mediaEn"
+          element={<MediaEnPage />}
+        />
+        <Route
+          path="/admin/publicRelations/mediaAddEn"
+          element={<MediaAddEnPage />}
+        />
+        <Route
+          path="/admin/publicRelations/mediaModEn/:id"
+          element={<MediaModEnPage />}
+        />
+        <Route
+          path="/admin/publicRelations/mediaInfoEn/:id"
+          element={<MediaInfoEnPage />}
+        />
 
-        <Route path="/admin/employmentInfo/jobVacancy" element={<JobVacancyPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyAdd" element={<JobVacancyAddPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyMod/:id" element={<JobVacancyModPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyInfo/:id" element={<JobVacancyInfoPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyEn" element={<JobVacancyEnPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyAddEn" element={<JobVacancyAddEnPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyModEn/:id" element={<JobVacancyModEnPage />} />
-        <Route path="/admin/employmentInfo/jobVacancyInfoEn/:id" element={<JobVacancyInfoEnPage />} />
+        <Route
+          path="/admin/employmentInfo/jobVacancy"
+          element={<JobVacancyPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyAdd"
+          element={<JobVacancyAddPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyMod/:id"
+          element={<JobVacancyModPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyInfo/:id"
+          element={<JobVacancyInfoPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyEn"
+          element={<JobVacancyEnPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyAddEn"
+          element={<JobVacancyAddEnPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyModEn/:id"
+          element={<JobVacancyModEnPage />}
+        />
+        <Route
+          path="/admin/employmentInfo/jobVacancyInfoEn/:id"
+          element={<JobVacancyInfoEnPage />}
+        />
 
-        <Route path="/admin/customerService/contactUs" element={<ContactUsPage />} />
-        <Route path="/admin/customerService/contactUsInfo/:id" element={<ContactUsInfoPage />} />
-        <Route path="/admin/customerService/contactUsEn" element={<ContactUsEnPage />} />
-        <Route path="/admin/customerService/contactUsInfoEn/:id" element={<ContactUsInfoEnPage />} />
+        <Route
+          path="/admin/customerService/contactUs"
+          element={<ContactUsPage />}
+        />
+        <Route
+          path="/admin/customerService/contactUsInfo/:id"
+          element={<ContactUsInfoPage />}
+        />
+        <Route
+          path="/admin/customerService/contactUsEn"
+          element={<ContactUsEnPage />}
+        />
+        <Route
+          path="/admin/customerService/contactUsInfoEn/:id"
+          element={<ContactUsInfoEnPage />}
+        />
 
         <Route path="/admin/role/mgmt" element={<MgmtPage />} />
         <Route path="/admin/role/mgmtAdd" element={<MgmtAddPage />} />
@@ -392,35 +527,77 @@ const App = () => {
         <Route path="/en/company/vision" element={<VisionEnPage />} />
         <Route path="/en/company/history" element={<HistoryEnPage />} />
         <Route path="/en/company/identity" element={<IdentityEnPage />} />
-        <Route path="/en/company/businessplace" element={<BusinessplaceEnPage />} />
+        <Route
+          path="/en/company/businessplace"
+          element={<BusinessplaceEnPage />}
+        />
 
         <Route path="/business/e-link/evcharge" element={<EvchargePage />} />
         <Route path="/business/e-link/control" element={<ControlPage />} />
-        <Route path="/business/e-link/renewable" element={<ElinkRenewablePage />} />
-        <Route path="/business/ev/transportation" element={<TransportationPage />} />
+        <Route
+          path="/business/e-link/renewable"
+          element={<ElinkRenewablePage />}
+        />
+        <Route
+          path="/business/ev/transportation"
+          element={<TransportationPage />}
+        />
         <Route path="/business/ev/logitics" element={<LogiticsPage />} />
         <Route path="/business/ev/coporate" element={<CoporatePage />} />
-        <Route path="/business/renewable/renewable" element={<RenewablePage />} />
-        <Route path="/en/business/e-link/evcharge" element={<EvchargeEnPage />} />
+        <Route
+          path="/business/renewable/renewable"
+          element={<RenewablePage />}
+        />
+        <Route
+          path="/en/business/e-link/evcharge"
+          element={<EvchargeEnPage />}
+        />
         <Route path="/en/business/e-link/control" element={<ControlEnPage />} />
-        <Route path="/en/business/e-link/renewable" element={<ElinkRenewableEnPage />} />
-        <Route path="/en/business/ev/transportation" element={<TransportationEnPage />} />
+        <Route
+          path="/en/business/e-link/renewable"
+          element={<ElinkRenewableEnPage />}
+        />
+        <Route
+          path="/en/business/ev/transportation"
+          element={<TransportationEnPage />}
+        />
         <Route path="/en/business/ev/logitics" element={<LogiticsEnPage />} />
         <Route path="/en/business/ev/coporate" element={<CoporateEnPage />} />
-        <Route path="/en/business/renewable/renewable" element={<RenewableEnPage />} />
+        <Route
+          path="/en/business/renewable/renewable"
+          element={<RenewableEnPage />}
+        />
 
         <Route path="/investment/management" element={<ManagementPage />} />
         <Route path="/investment/financial" element={<ClientFinancialPage />} />
-        <Route path="/investment/financial-view/:id" element={<ClientFinancialviewPage />} />
+        <Route
+          path="/investment/financial-view/:id"
+          element={<ClientFinancialviewPage />}
+        />
         <Route path="/investment/credit" element={<CreditPage />} />
         <Route path="/investment/announce" element={<InvAnnouncePage />} />
-        <Route path="/investment/announce-view/:id" element={<InvAnnounceviewPage />} />
-        <Route path="/en/investment/management" element={<ManagementEnPage />} />
-        <Route path="/en/investment/financial" element={<ClientFinancialEnPage />} />
-        <Route path="/en/investment/financial-view/:id" element={<ClientFinancialviewEnPage />} />
+        <Route
+          path="/investment/announce-view/:id"
+          element={<InvAnnounceviewPage />}
+        />
+        <Route
+          path="/en/investment/management"
+          element={<ManagementEnPage />}
+        />
+        <Route
+          path="/en/investment/financial"
+          element={<ClientFinancialEnPage />}
+        />
+        <Route
+          path="/en/investment/financial-view/:id"
+          element={<ClientFinancialviewEnPage />}
+        />
         <Route path="/en/investment/credit" element={<CreditEnPage />} />
         <Route path="/en/investment/announce" element={<InvAnnounceEnPage />} />
-        <Route path="/en/investment/announce-view/:id" element={<InvAnnounceviewEnPage />} />
+        <Route
+          path="/en/investment/announce-view/:id"
+          element={<InvAnnounceviewEnPage />}
+        />
 
         <Route path="/pr/press-list" element={<PresslistPage />} />
         <Route path="/pr/press-view/:id" element={<PressviewPage />} />
@@ -439,18 +616,36 @@ const App = () => {
         <Route path="/en/recruit/people" element={<PeopleEnPage />} />
         <Route path="/en/recruit/benefits" element={<BenefitsEnPage />} />
         <Route path="/en/recruit/posting" element={<PostingEnPage />} />
-        <Route path="/en/recruit/posting-view/:id" element={<PostingviewEnPage />} />
+        <Route
+          path="/en/recruit/posting-view/:id"
+          element={<PostingviewEnPage />}
+        />
 
         <Route path="/contactus/consult" element={<ConsultPage />} />
-        <Route path="/contactus/inconvenience" element={<InconveniencePage />} />
+        <Route
+          path="/contactus/inconvenience"
+          element={<InconveniencePage />}
+        />
         <Route path="/contactus/inquiry" element={<InquiryPage />} />
         <Route path="/contactus/inquiry2" element={<InquiryPage2 />} />
         <Route path="/contactus/inquiryInfo" element={<InquiryInfoPage2 />} />
         <Route path="/contactus/inquiryList" element={<InquiryListPage />} />
 
         <Route path="/en/contactus/consult" element={<ConsultEnPage />} />
-        <Route path="/en/contactus/inconvenience" element={<InconvenienceEnPage />} />
+        <Route
+          path="/en/contactus/inconvenience"
+          element={<InconvenienceEnPage />}
+        />
         <Route path="/en/contactus/inquiry" element={<InquiryEnPage />} />
+        <Route path="/en/contactus/inquiry2" element={<InquiryEnPage2 />} />
+        <Route
+          path="/en/contactus/inquiryInfo"
+          element={<inquiryInfoPage2 />}
+        />
+        <Route
+          path="/en/contactus/inquiryList"
+          element={<inquiryListEnPage />}
+        />
 
         <Route path="/policy/privacy" element={<PrivacyPage />} />
         <Route path="/policy/terms" element={<TermsPage />} />
@@ -488,7 +683,10 @@ const App = () => {
         <Route path="/ev/inquiryAdd" element={<InquiryAddPage />} />
         <Route path="/ev/breakdown" element={<BreakdownEvPage />} />
         <Route path="/ev/breakdownInfo/:id" element={<BreakdownInfoPage />} />
-        <Route path="/ev/breakdownAnswer/:id" element={<BreakdownAnswerPage />} />
+        <Route
+          path="/ev/breakdownAnswer/:id"
+          element={<BreakdownAnswerPage />}
+        />
         <Route path="/ev/breakdownAdd" element={<BreakdownAddPage />} />
         <Route path="/ev/breakdownMod/:id" element={<BreakdownModPage />} />
 
