@@ -96,7 +96,7 @@ const InquiryForm = () => {
     }
     if (window.confirm('Would you like to register?')) {
       const newList = {
-        contactId: 'CON',
+        contactId: 'EN_CON',
         contactNm: contactNm,
         contactTitle: contactTitle,
         contactPhone: contactPhone,

@@ -10,7 +10,7 @@ const InquiryInfoForm = () => {
   const id = new URL(window.location.href).searchParams.get('id');
   const mail = new URL(window.location.href).searchParams.get('mail');
 
-  const contactusInfo = useSelector((state) => state.contactUsReducer);
+  const contactusInfo = useSelector((state) => state.contactUsEnReducer);
   const prevBoardId = useSelector(
     (state) => state.contactUsEnReducer.prevNextData?.prevBoardId,
   );
@@ -47,7 +47,7 @@ const InquiryInfoForm = () => {
   };
 
   return (
-    <div className="sub sub06">
+    <div className="sub sub06 qa_sub06">
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
@@ -143,7 +143,7 @@ const InquiryInfoForm = () => {
         </div>
       </div>
 
-      <div className="content">
+      <div className="content view-wp">
         <div className="wrap">
           <h3
             data-aos="fade-right"
@@ -153,9 +153,9 @@ const InquiryInfoForm = () => {
             We receive your inquiries and valuable suggestions.
           </h3>
           <div className="tab_box">
-            <NavLink to="/contactus/inquiry">질의하기</NavLink>
-            <NavLink to="/contactus/inquiry2" className="on">
-              질의내역
+            <NavLink to="/en/contactus/inquiry">Ask a question</NavLink>
+            <NavLink to="/en/contactus/inquiry2" className="on">
+              Inquiry details
             </NavLink>
           </div>
           <div className="ttl-wp">
@@ -219,14 +219,14 @@ const InquiryInfoForm = () => {
             <NavLink
               to={
                 prevBoardId &&
-                `/contactUs/inquiryInfo?id=${prevBoardId}&mail=${mail}`
+                `/en/contactUs/inquiryInfo?id=${prevBoardId}&mail=${mail}`
               }
               className={classnames('prev-btn', { disable: !prevBoardId })}
             >
               Before
             </NavLink>
             <NavLink
-              to={`/contactUs/inquiryList?mail=${mail}`}
+              to={`/en/contactUs/inquiryList?mail=${mail}`}
               className="list-btn"
             >
               List
@@ -234,7 +234,7 @@ const InquiryInfoForm = () => {
             <NavLink
               to={
                 nextBoardId &&
-                `/contactUs/inquiryInfo?id=${nextBoardId}&mail=${mail}`
+                `/en/contactUs/inquiryInfo?id=${nextBoardId}&mail=${mail}`
               }
               className={classnames('next-btn', { disable: !nextBoardId })}
             >

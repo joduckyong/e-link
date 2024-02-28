@@ -24,7 +24,7 @@ const InquiryListForm = () => {
     const mail = new URL(window.location.href).searchParams.get('mail');
     console.log('mail === ' + mail);
 
-    const newList = { contactId: 'CON', pageIndex: page, contactMail: mail };
+    const newList = { contactId: 'EN_CON', pageIndex: page, contactMail: mail };
     dispatch(selectClientContactUs(newList));
   }, [dispatch, page]);
 
@@ -44,7 +44,7 @@ const InquiryListForm = () => {
   };
 
   return (
-    <div className="sub sub06">
+    <div className="sub sub06 qa_sub06">
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
@@ -140,7 +140,7 @@ const InquiryListForm = () => {
         </div>
       </div>
 
-      <div className="content">
+      <div className="content costomer-wp">
         <div className="wrap">
           <h3
             data-aos="fade-right"
@@ -174,7 +174,7 @@ const InquiryListForm = () => {
                     {list.contactRecontents && (
                       <h2>
                         <div className="re">Re</div>
-                        <span>답변이 완료되었습니다.</span>
+                        <span>The answer has been completed.</span>
                       </h2>
                     )}
                     <span className="name">{list.contactNm2}</span>

@@ -58,7 +58,7 @@ const InquiryForm2 = () => {
     }
 
     const newList = {
-      contactId: 'CON',
+      contactId: 'EN_CON',
       contactMail: contactMail,
       contactPw: contactPw,
       contactType: 'C',

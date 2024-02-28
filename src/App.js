@@ -640,11 +640,11 @@ const App = () => {
         <Route path="/en/contactus/inquiry2" element={<InquiryEnPage2 />} />
         <Route
           path="/en/contactus/inquiryInfo"
-          element={<inquiryInfoPage2 />}
+          element={<InquiryInfoEnPage2 />}
         />
         <Route
           path="/en/contactus/inquiryList"
-          element={<inquiryListEnPage />}
+          element={<InquiryListEnPage />}
         />
 
         <Route path="/policy/privacy" element={<PrivacyPage />} />
