@@ -203,7 +203,7 @@ const InconvenienceForm = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/inquiry">문의하기</NavLink>
+                  <NavLink to="/contactus/inquiry">질의하기</NavLink>
                 </li>
               </ul>
             </li>
@@ -222,7 +222,7 @@ const InconvenienceForm = () => {
               </NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/contactus/inquiry">문의하기</NavLink>
+              <NavLink to="/contactus/inquiry">질의하기</NavLink>
             </li>
           </ul>
         </div>

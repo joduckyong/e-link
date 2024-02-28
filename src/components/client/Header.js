@@ -138,7 +138,7 @@ const Header = () => {
                     <NavLink to="/contactus/inconvenience">불편신고</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/contactus/inquiry">문의하기</NavLink>
+                    <NavLink to="/contactus/inquiry">질의하기</NavLink>
                   </li>
                 </ul>
               </div>
@@ -315,7 +315,7 @@ const Header = () => {
                   <NavLink to="/contactus/inconvenience">불편신고</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/inquiry">문의하기</NavLink>
+                  <NavLink to="/contactus/inquiry">질의하기</NavLink>
                 </li>
               </ul>
             </li>

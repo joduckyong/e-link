@@ -22,13 +22,14 @@ const MyPage3InfoForm = () => {
   const [toggleActive, setToggleActive] = useState(false);
   const [userNo, setUserNo] = useState('');
 
-  if(mypage3List.length === 0){  //새로고침 시 목록 페이지 이동
+  if (mypage3List.length === 0) {
+    //새로고침 시 목록 페이지 이동
     window.location.href = '/ev/mypage3';
   }
 
   useEffect(() => {
     dispatch(selectUserNo()).then((state) => {
-      setPstNo(mypage3List[id].pstNo)
+      setPstNo(mypage3List[id].pstNo);
       setUserNo(state.payload.userNo);
     });
   }, []);
@@ -57,43 +58,43 @@ const MyPage3InfoForm = () => {
       <section className="ev-sub-sect">
         <div className="view-wp">
           <div className="ttl-wp">
-            <h2>커뮤니티</h2>
+            <h2>문의내역</h2>
             <h1></h1>
             <div className="info">
               <p>
-                {mypage3List[id].regUserNo}<span>|</span>
+                {mypage3List[id].regUserNo}
+                <span>|</span>
               </p>
               <p>{changeFormat(mypage3List[id].regDttm, 'yyyy-MM-DD') || ''}</p>
             </div>
-            { mypage3List[id].userNo === userNo &&
-            <div className="modify-wp">
-              <button className="btn" onClick={() => setToggleActive(!toggleActive)}>
-                <img src="/img/ev/ev_view_btn.png" alt="" />
-              </button>
-              <div className="bub" style={toggleActive ? {display:''} : {display:'none'}}>
-                <Link className="modify" to={`/ev/mypage3Mod/${id}`}>
-                  <img src="/img/ev/ev_view_modify.png" alt="" />
-                  수정
-                </Link>
-                <Link className="modify" to="" onClick={onRemove}>
-                  <img src="/img/ev/ev_view_delete.png" alt="" />
-                  삭제
-                </Link>
+            {mypage3List[id].userNo === userNo && (
+              <div className="modify-wp">
+                <button className="btn" onClick={() => setToggleActive(!toggleActive)}>
+                  <img src="/img/ev/ev_view_btn.png" alt="" />
+                </button>
+                <div className="bub" style={toggleActive ? { display: '' } : { display: 'none' }}>
+                  <Link className="modify" to={`/ev/mypage3Mod/${id}`}>
+                    <img src="/img/ev/ev_view_modify.png" alt="" />
+                    수정
+                  </Link>
+                  <Link className="modify" to="" onClick={onRemove}>
+                    <img src="/img/ev/ev_view_delete.png" alt="" />
+                    삭제
+                  </Link>
+                </div>
               </div>
-            </div>
-            }
+            )}
           </div>
-          <div className="cont-wp" dangerouslySetInnerHTML={{ __html: mypage3List[id].pstCont }}>
-          </div>
+          <div className="cont-wp" dangerouslySetInnerHTML={{ __html: mypage3List[id].pstCont }}></div>
           <div className="nav-wp">
-          <Link className="arrow prev" to={ id < mypage3List.length-1 ? `/ev/mypage3Info/${Number(id)+1}` : `/ev/mypage3Info/${id}` }>
+            <Link className="arrow prev" to={id < mypage3List.length - 1 ? `/ev/mypage3Info/${Number(id) + 1}` : `/ev/mypage3Info/${id}`}>
               <img src="/img/ev/ev_arrow_list.png" alt="화살표 왼쪽" />
               <span>이전글</span>
             </Link>
             <Link className="list" to="/ev/mypage3">
               목록
             </Link>
-            <Link className="arrow next" to={ id > 0 ? `/ev/mypage3Info/${Number(id)-1}` : `/ev/mypage3Info/${id}` }>
+            <Link className="arrow next" to={id > 0 ? `/ev/mypage3Info/${Number(id) - 1}` : `/ev/mypage3Info/${id}`}>
               <span>다음글</span>
               <img src="/img/ev/ev_arrow_list.png" alt="화살표 오른쪽" />
             </Link>
