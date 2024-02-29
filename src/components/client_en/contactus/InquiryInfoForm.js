@@ -9,6 +9,7 @@ import { downloadFile } from 'common/download';
 const InquiryInfoForm = () => {
   const id = new URL(window.location.href).searchParams.get('id');
   const mail = new URL(window.location.href).searchParams.get('mail');
+  const type = new URL(window.location.href).searchParams.get('type');
 
   const contactusInfo = useSelector((state) => state.contactUsEnReducer);
   const prevBoardId = useSelector(
@@ -158,68 +159,67 @@ const InquiryInfoForm = () => {
               Inquiry details
             </NavLink>
           </div>
-          <div className="ttl-wp">
-            <p>{contactusInfo.dataInfo.contactTitle}</p>
-            <div className="info">
-              <p>
-                {contactusInfo.dataInfo.contactNm}
-                <span>|</span>
-              </p>
-              <p>{contactusInfo.dataInfo.createdDatetime}</p>
-              {/* <ul>
-                  <li style={{ padding: '5px 0 5px 0' }}>
-                    <NavLink
-                      to=""
-                      onClick={() =>
-                        downloadFile(
-                          contactusInfo.dataInfo.fileNm,
-                          contactusInfo.dataInfo.fileOriginNm,
-                        )
-                      }
-                    >
-                      <div className="file">
-                        {contactusInfo.dataInfo.fileOriginNm}
-                      </div>
-                    </NavLink>
-                  </li>
-                </ul> */}
-            </div>
-          </div>
-          <div className="cont-wp">
-            <pre>{contactusInfo.dataInfo.contactContents}</pre>
-          </div>
-          <div className="list-num-wrap">
-            <div className="file">
-              <button
-                className="btn-down"
-                onClick={() =>
-                  downloadFile(
-                    contactusInfo.dataInfo.fileNm,
-                    contactusInfo.dataInfo.fileOriginNm,
-                  )
-                }
-              >
-                <div className="list-num">
-                  {contactusInfo.dataInfo.fileOriginNm}
+          {type === 'C' && (
+            <>
+              <div className="ttl-wp">
+                <p>{contactusInfo.dataInfo.contactTitle}</p>
+                <div className="info">
+                  <p>
+                    {contactusInfo.dataInfo.contactNm}
+                    <span>|</span>
+                  </p>
+                  <p>{contactusInfo.dataInfo.createdDatetime}</p>
                 </div>
-              </button>
-            </div>
-          </div>
-          {contactusInfo.dataInfo.contactRecontents && (
-            <div className="cont-wp">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: contactusInfo.dataInfo.contactRecontents,
-                }}
-              ></div>
-            </div>
+              </div>
+              <div className="cont-wp">
+                <pre>{contactusInfo.dataInfo.contactContents}</pre>
+              </div>
+              <div className="list-num-wrap">
+                <div className="file">
+                  <button
+                    className="btn-down"
+                    onClick={() =>
+                      downloadFile(
+                        contactusInfo.dataInfo.fileNm,
+                        contactusInfo.dataInfo.fileOriginNm,
+                      )
+                    }
+                  >
+                    <div className="list-num">
+                      {contactusInfo.dataInfo.fileOriginNm}
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
+          {contactusInfo.dataInfo.contactRecontents && type === 'V' && (
+            <>
+              <div className="ttl-wp">
+                <p>The answer has been completed.</p>
+                <div className="info">
+                  <p>
+                    admin
+                    <span>|</span>
+                  </p>
+                  <p>{contactusInfo.dataInfo.updatedDatetime}</p>
+                </div>
+              </div>
+              <div className="cont-wp">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: contactusInfo.dataInfo.contactRecontents,
+                  }}
+                ></div>
+              </div>
+            </>
           )}
 
           <div className="view-control">
             <NavLink
               to={
                 prevBoardId &&
-                `/en/contactUs/inquiryInfo?id=${prevBoardId}&mail=${mail}`
+                `/en/contactUs/inquiryInfo?id=${prevBoardId}&mail=${mail}&type=C`
               }
               className={classnames('prev-btn', { disable: !prevBoardId })}
             >
@@ -234,7 +234,7 @@ const InquiryInfoForm = () => {
             <NavLink
               to={
                 nextBoardId &&
-                `/en/contactUs/inquiryInfo?id=${nextBoardId}&mail=${mail}`
+                `/en/contactUs/inquiryInfo?id=${nextBoardId}&mail=${mail}&type=C`
               }
               className={classnames('next-btn', { disable: !nextBoardId })}
             >

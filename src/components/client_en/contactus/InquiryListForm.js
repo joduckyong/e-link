@@ -162,37 +162,36 @@ const InquiryListForm = () => {
             </div>
             <ol className="list inquiry-list">
               {contactusList?.data?.map((list, index) => (
-                <li key={index}>
-                  <NavLink
-                    to={`/en/contactUs/inquiryInfo?id=${list.contactId}&mail=${list.contactMail}`}
-                  >
-                    <h3>No.{contactusList.totalCount - (list.rnum - 1)}</h3>
-                    <h2>
-                      <img src="/img/ev/ev_lock.png" alt="" />
-                      <span>{list.contactTitle}</span>
-                    </h2>
-                    {list.contactRecontents && (
+                <>
+                  <li key={index}>
+                    <NavLink
+                      to={`/en/contactUs/inquiryInfo?id=${list.contactId}&mail=${list.contactMail}&type=C`}
+                    >
+                      <h3>No.{contactusList.totalCount - (list.rnum - 1)}</h3>
                       <h2>
-                        <div className="re">Re</div>
-                        <span>The answer has been completed.</span>
+                        <img src="/img/ev/ev_lock.png" alt="" />
+                        <span>{list.contactTitle}</span>
                       </h2>
-                    )}
-                    <span className="name">{list.contactNm2}</span>
-                    <p>{list.createdDatetime}</p>
-                  </NavLink>
-                </li>
+                      <span className="name">{list.contactNm2}</span>
+                      <p>{list.createdDatetime}</p>
+                    </NavLink>
+                  </li>
+                  {list.contactRecontents && (
+                    <li>
+                      <NavLink
+                        to={`/en/contactUs/inquiryInfo?id=${list.contactId}&mail=${list.contactMail}&type=V`}
+                      >
+                        <h2>
+                          <div className="re">Re</div>
+                          <span>The answer has been completed.</span>
+                        </h2>
+                        <span className="name">admin</span>
+                        <p>{list.updatedDatetime}</p>
+                      </NavLink>
+                    </li>
+                  )}
+                </>
               ))}
-              {/* <li>
-                <a href="./contactus02-02.html">
-                  <h3>No.13</h3>
-                  <h2>
-                    <div className="re">Re</div>
-                    <span>답변이 완료되었습니다.</span>
-                  </h2>
-                  <span className="name">관리자</span>
-                  <p>2022-11-30</p>
-                </a>
-              </li> */}
             </ol>
             <div className="paging">
               <Pagination
