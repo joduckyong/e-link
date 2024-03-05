@@ -293,7 +293,7 @@ const ContactUsInfoForm = () => {
         </div>
       </div>
       {contactType === 'C' && contactProcess === 'N' && (
-        <div className="ban-list bg-white">
+        <div className="ban-list bg-white mt10">
           <div className="ed-tit">
             <div className="s-tit">답변</div>
           </div>
@@ -310,7 +310,7 @@ const ContactUsInfoForm = () => {
         </div>
       )}
       {contactType === 'C' && contactProcess === 'Y' && (
-        <div className="ban-list bg-white">
+        <div className="ban-list bg-white mt10">
           <div className="ed-tit">
             <div className="s-tit">답변</div>
           </div>

@@ -4148,7 +4148,7 @@ footer .family-link li a {
 }
 
 .qa_sub06 .costomer-wp .list-wp {
-  width: 1280px;
+  width: 100%;
   max-width: 90vw;
   margin: 79px 0 194px;
 }
@@ -5679,8 +5679,8 @@ label[for='regiTitle'] {
   text-align: center;
 }
 
-pre{
-  padding:10px;
+pre {
+  padding: 10px;
   overflow: auto;
   white-space: pre-wrap;
-}  
+}

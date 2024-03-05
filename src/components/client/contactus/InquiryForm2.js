@@ -64,8 +64,14 @@ const InquiryForm2 = () => {
       contactType: 'C',
     };
     const result = await dispatch(selectClientContactUsInfoCnt(newList));
-    if (result.payload.data > 0) {
-      return navigate('/contactUs/inquiryList?mail=' + contactMail);
+
+    if (result.payload.data !== '') {
+      return navigate(
+        '/contactUs/inquiryList?mail=' +
+          contactMail +
+          '&key=' +
+          result.payload.data,
+      );
     } else {
       alert('정보에 없습니다.');
     }

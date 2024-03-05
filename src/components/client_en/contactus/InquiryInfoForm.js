@@ -10,6 +10,7 @@ const InquiryInfoForm = () => {
   const id = new URL(window.location.href).searchParams.get('id');
   const mail = new URL(window.location.href).searchParams.get('mail');
   const type = new URL(window.location.href).searchParams.get('type');
+  const key = new URL(window.location.href).searchParams.get('key');
 
   const contactusInfo = useSelector((state) => state.contactUsEnReducer);
   const prevBoardId = useSelector(
@@ -33,9 +34,9 @@ const InquiryInfoForm = () => {
     // console.log('id === ' + id);
     // console.log('mail === ' + mail);
 
-    const newList = { contactId: id, contactMail: mail };
+    const newList = { contactId: id, contactMail: mail, contactPw: key };
     dispatch(selectClientContactUsInfo(newList));
-  }, [dispatch, id, mail]);
+  }, [dispatch, id, mail, key]);
 
   const onClickMenuLink = (menu) => {
     if (menu === '1') {
@@ -219,14 +220,14 @@ const InquiryInfoForm = () => {
             <NavLink
               to={
                 prevBoardId &&
-                `/en/contactUs/inquiryInfo?id=${prevBoardId}&mail=${mail}&type=C`
+                `/en/contactUs/inquiryInfo?id=${prevBoardId}&mail=${mail}&type=C&key=${key}`
               }
               className={classnames('prev-btn', { disable: !prevBoardId })}
             >
               Before
             </NavLink>
             <NavLink
-              to={`/en/contactUs/inquiryList?mail=${mail}`}
+              to={`/en/contactUs/inquiryList?mail=${mail}&key=${key}`}
               className="list-btn"
             >
               List
@@ -234,7 +235,7 @@ const InquiryInfoForm = () => {
             <NavLink
               to={
                 nextBoardId &&
-                `/en/contactUs/inquiryInfo?id=${nextBoardId}&mail=${mail}&type=C`
+                `/en/contactUs/inquiryInfo?id=${nextBoardId}&mail=${mail}&type=C&key=${key}`
               }
               className={classnames('next-btn', { disable: !nextBoardId })}
             >
