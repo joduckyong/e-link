@@ -65,7 +65,12 @@ const InquiryForm2 = () => {
     };
     const result = await dispatch(selectClientContactUsInfoCnt(newList));
     if (result.payload.data > 0) {
-      return navigate('/en/contactUs/inquiryList?mail=' + contactMail);
+      return navigate(
+        '/en/contactUs/inquiryList?mail=' +
+          contactMail +
+          '&key=' +
+          result.payload.data,
+      );
     } else {
       alert('There is no information.');
     }

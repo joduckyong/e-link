@@ -16,17 +16,22 @@ const InquiryListForm = () => {
   const [activeMenu2, setActiveMenu2] = useState(false);
   const [page, setPage] = useState(1);
 
+  const mail = new URL(window.location.href).searchParams.get('mail');
+  const key = new URL(window.location.href).searchParams.get('key');
+
   useEffect(() => {
     AOS.init();
   });
 
   useEffect(() => {
-    const mail = new URL(window.location.href).searchParams.get('mail');
-    console.log('mail === ' + mail);
-
-    const newList = { contactId: 'CON', pageIndex: page, contactMail: mail };
+    const newList = {
+      contactId: 'CON',
+      pageIndex: page,
+      contactMail: mail,
+      contactPw: key,
+    };
     dispatch(selectClientContactUs(newList));
-  }, [dispatch, page]);
+  }, [dispatch]);
 
   // 페이징
   const pageClick = (page) => {
@@ -166,7 +171,7 @@ const InquiryListForm = () => {
                 <>
                   <li key={index}>
                     <NavLink
-                      to={`/contactUs/inquiryInfo?id=${list.contactId}&mail=${list.contactMail}&type=C`}
+                      to={`/contactUs/inquiryInfo?id=${list.contactId}&mail=${list.contactMail}&type=C&key=${key}`}
                     >
                       <h3>No.{contactusList.totalCount - (list.rnum - 1)}</h3>
                       <h2>
@@ -180,7 +185,7 @@ const InquiryListForm = () => {
                   {list.contactRecontents && (
                     <li>
                       <NavLink
-                        to={`/contactUs/inquiryInfo?id=${list.contactId}&mail=${list.contactMail}&type=V`}
+                        to={`/contactUs/inquiryInfo?id=${list.contactId}&mail=${list.contactMail}&type=V&key=${key}`}
                       >
                         <h3>No.{contactusList.totalCount - list.rnum + 1}</h3>
                         <h2>
