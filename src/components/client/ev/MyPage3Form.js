@@ -17,6 +17,10 @@ export function changeFormat(date, format) {
   }
 }
 
+const truncate = (str, n) => {
+  return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+};
+
 const MyPage3Form = () => {
   const dispatch = useDispatch();
   const myPageList = useSelector((state) => state.EvReducer.data);
@@ -62,7 +66,7 @@ const MyPage3Form = () => {
                       <p>{myPageList.length - index}</p>
                       <p>{list.userNo}</p>
                       <p>{list.userNm}</p>
-                      <p>{list.pstCont}</p>
+                      <p>{truncate(list.pstCont, 15)}</p>
                       <p>{changeFormat(list.regDttm, 'yyyy-MM-DD')}</p>
                     </li>
                   </Link>
