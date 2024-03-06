@@ -993,7 +993,7 @@ const InquiryForm = () => {
           <ul className="write">
             <li>
               <div className="input-wrap">
-                <span className="tit">Name</span>
+                <span className="tit">Name (required)</span>
                 <input
                   type="text"
                   placeholder="Please enter your name."
@@ -1002,7 +1002,7 @@ const InquiryForm = () => {
                 />
               </div>
               <div className="input-wrap">
-                <span className="tit">Password</span>
+                <span className="tit">Password (required)</span>
                 <input
                   type="password"
                   placeholder="Please enter your password."
@@ -1012,7 +1012,7 @@ const InquiryForm = () => {
             </li>
             <li>
               <div className="input-wrap">
-                <span className="tit">Contact</span>
+                <span className="tit">Contact (required)</span>
                 <input
                   type="text"
                   placeholder="Please enter without -."
@@ -1021,7 +1021,7 @@ const InquiryForm = () => {
                 />
               </div>
               <div className="input-wrap">
-                <span className="tit">Email</span>
+                <span className="tit">Email (required)</span>
                 <input
                   type="text"
                   placeholder="Please enter your email address."

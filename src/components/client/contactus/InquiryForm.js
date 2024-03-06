@@ -812,7 +812,7 @@ const InquiryForm = () => {
           <ul className="write">
             <li>
               <div className="input-wrap">
-                <span className="tit">이름</span>
+                <span className="tit">이름 (필수)</span>
                 <input
                   type="text"
                   placeholder="이름을 입력해주세요."
@@ -821,7 +821,7 @@ const InquiryForm = () => {
                 />
               </div>
               <div className="input-wrap">
-                <span className="tit">비밀번호</span>
+                <span className="tit">비밀번호 (필수)</span>
                 <input
                   type="password"
                   placeholder="비밀번호를 입력해주세요."
@@ -831,7 +831,7 @@ const InquiryForm = () => {
             </li>
             <li>
               <div className="input-wrap">
-                <span className="tit">연락처</span>
+                <span className="tit">연락처 (필수)</span>
                 <input
                   type="text"
                   placeholder="-를 제외하고 입력해주세요."
@@ -841,7 +841,7 @@ const InquiryForm = () => {
                 />
               </div>
               <div className="input-wrap">
-                <span className="tit">이메일</span>
+                <span className="tit">이메일 (필수)</span>
                 <input
                   type="text"
                   placeholder="이메일 주소를 입력해주세요."

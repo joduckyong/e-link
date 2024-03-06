@@ -1,11 +1,21 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEv } from 'store/EvReducer';
-import { Container as MapDiv, NaverMap, useNavermaps, Overlay, useMap } from 'react-naver-maps';
-import {makeMarkerClustering} from 'common/marker-cluster';
+import {
+  Container as MapDiv,
+  NaverMap,
+  useNavermaps,
+  Overlay,
+  useMap,
+} from 'react-naver-maps';
+import { makeMarkerClustering } from 'common/marker-cluster';
 
 function getBoundsData(bounds, data, getDataInBounds) {
-  let __data = data.filter(e => (e.locInfo.split(",")[0] >= bounds.getMin()._lat && e.locInfo.split(",")[0] <= bounds.getMax()._lat ));
+  let __data = data.filter(
+    (e) =>
+      e.locInfo.split(',')[0] >= bounds.getMin()._lat &&
+      e.locInfo.split(',')[0] <= bounds.getMax()._lat,
+  );
   getDataInBounds(__data);
   // console.log(__data);
 }
@@ -13,50 +23,55 @@ function getBoundsData(bounds, data, getDataInBounds) {
 //소수점 뒤에 0 제거
 function zeroCut(nn) {
   if (nn === 0 || nn === undefined || nn === null) return nn;
-  nn = nn + "";
-  let num3Arr = nn.split(".");
+  nn = nn + '';
+  let num3Arr = nn.split('.');
   let arr1 = num3Arr[1];
   let isNotZero = false;
-  let result = "";
-  for (let i = arr1.length;i > 0; i--) {
-    let n = i-1;
+  let result = '';
+  for (let i = arr1.length; i > 0; i--) {
+    let n = i - 1;
     let charA = arr1.charAt(n);
     if (charA === '0') {
       if (isNotZero === true) {
-        result += "0";
+        result += '0';
       } else {
-        result += "";
+        result += '';
       }
     } else {
       isNotZero = true;
       result += arr1.charAt(n);
     }
   }
-  return num3Arr[0] + "." + result.split("").reverse().join("");
-
+  return num3Arr[0] + '.' + result.split('').reverse().join('');
 }
 
-const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo, infoWindowArr, setInfoWindowArr}) => {
-
+const MarkerCluster = ({
+  navermaps,
+  data,
+  getDataInBounds,
+  activeLocInfo,
+  infoWindowArr,
+  setInfoWindowArr,
+}) => {
   // const navermaps = useNavermaps();
   const map = useMap();
 
-  const MarkerClustering = makeMarkerClustering(window.naver)
+  const MarkerClustering = makeMarkerClustering(window.naver);
 
   const blue = {
     content:
-    '<div style="curosr:pointer; width:50px; height:50px; background:#5C6FBC; display:flex; justify-content: center; align-items: center; border-radius: 50%; font-weight: 600; font-size: 18px; color: #FFFFFF;"></div>',
+      '<div style="curosr:pointer; width:50px; height:50px; background:#5C6FBC; display:flex; justify-content: center; align-items: center; border-radius: 50%; font-weight: 600; font-size: 18px; color: #FFFFFF;"></div>',
     size: navermaps.Size(40, 40),
     anchor: navermaps.Point(20, 20),
-  }
+  };
 
   const orange = {
     content:
-    '<div style="curosr:pointer; width:50px; height:50px; background:#EC6800; display:flex; justify-content: center; align-items: center; border-radius: 50%; font-weight: 600; font-size: 18px; color: #FFFFFF;"></div>',
+      '<div style="curosr:pointer; width:50px; height:50px; background:#EC6800; display:flex; justify-content: center; align-items: center; border-radius: 50%; font-weight: 600; font-size: 18px; color: #FFFFFF;"></div>',
     size: navermaps.Size(40, 40),
     anchor: navermaps.Point(20, 20),
-  }
-  
+  };
+
   // const data = _data;
 
   const clustering = () => {
@@ -64,24 +79,27 @@ const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo, infoWin
     const infoWindows = [];
 
     //infowindow 초기화
-    for (let i=0, ii=infoWindowArr.length; i<ii; i++) {
+    for (let i = 0, ii = infoWindowArr.length; i < ii; i++) {
       infoWindowArr[i].setMap(null);
     }
 
     for (let i = 0, ii = data.length; i < ii; i++) {
       const spot = data[i],
-        latlng = new navermaps.LatLng(spot.locInfo.split(",")[0], spot.locInfo.split(",")[1]),
+        latlng = new navermaps.LatLng(
+          spot.locInfo.split(',')[0],
+          spot.locInfo.split(',')[1],
+        ),
         marker = new navermaps.Marker({
           position: latlng,
         });
 
       const contentString = [
-          '<div class="iw_inner">',
-          '   <h3>'+data[i].rechgstNm+'</h3>',
-          '   <p>'+(data[i].addr ?? "")+'<br />',
-          '       '+(data[i].operInstTelno ?? "")+'<br />',
-          '   </p>',
-          '</div>'
+        '<div class="iw_inner">',
+        '   <h3>' + data[i].rechgstNm + '</h3>',
+        '   <p>' + (data[i].addr ?? '') + '<br />',
+        '       ' + (data[i].operInstTelno ?? '') + '<br />',
+        '   </p>',
+        '</div>',
       ].join('');
 
       const infowindow = new navermaps.InfoWindow({
@@ -93,43 +111,47 @@ const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo, infoWin
     }
 
     setInfoWindowArr(infoWindows);
-  
+
     //지도안에서 마커 클릭
     const getClickHandler = (seq) => {
-      return function(e) {
-          const marker = markers[seq],
-              infoWindow = infoWindows[seq];
+      return function (e) {
+        const marker = markers[seq],
+          infoWindow = infoWindows[seq];
 
-          if (infoWindow.getMap()) {
-              infoWindow.close();
-          } else {
-              infoWindow.open(map, marker);
-          }
+        if (infoWindow.getMap()) {
+          infoWindow.close();
+        } else {
+          infoWindow.open(map, marker);
+        }
+      };
+    };
+
+    for (let i = 0, ii = markers.length; i < ii; i++) {
+      navermaps.Event.addListener(markers[i], 'click', getClickHandler(i));
     }
-  }
-  
-  for (let i=0, ii=markers.length; i<ii; i++) {
-    navermaps.Event.addListener(markers[i], 'click', getClickHandler(i));
-  }
 
-  //목록에서 클릭 시
-  if(activeLocInfo){
-    const _lan = zeroCut(activeLocInfo.split(",")[0]);
-    const _lng = zeroCut(activeLocInfo.split(",")[1]);
-    const seq = markers.findIndex((item) => item.position._lat.toString() === _lan && item.position._lng.toString() === _lng);
-    const marker = markers[seq],
+    //목록에서 클릭 시
+    if (activeLocInfo) {
+      const _lan = zeroCut(activeLocInfo.split(',')[0]);
+      const _lng = zeroCut(activeLocInfo.split(',')[1]);
+      const seq = markers.findIndex(
+        (item) =>
+          item.position._lat.toString() === _lan &&
+          item.position._lng.toString() === _lng,
+      );
+      const marker = markers[seq],
         infoWindow = infoWindows[seq];
 
-    const latLng = new navermaps.LatLng(_lan, _lng);
-    map.setCenter(latLng.destinationPoint(0, 500));
-    map.setZoom(10);
-    
-    if (infoWindow.getMap()) {
+      const latLng = new navermaps.LatLng(_lan, _lng);
+      map.setCenter(latLng.destinationPoint(0, 500));
+      map.setZoom(10);
+
+      if (infoWindow.getMap()) {
         infoWindow.close();
-    } else {
+      } else {
         infoWindow.open(map, marker);
+      }
     }
-  }
 
     const markerClustering = new MarkerClustering({
       minClusterSize: 2,
@@ -138,9 +160,7 @@ const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo, infoWin
       markers: markers,
       disableClickZoom: false,
       gridSize: 120,
-      icons: [
-        blue
-      ],
+      icons: [blue],
       // icons: [
       //   gray,
       //   blue,
@@ -150,38 +170,33 @@ const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo, infoWin
       // indexGenerator: [1],
       stylingFunction: function (clusterMarker, count) {
         // console.log(clusterMarker)
-        clusterMarker
-          .getElement()
-          .querySelector('div:first-child').innerText = count
+        clusterMarker.getElement().querySelector('div:first-child').innerText =
+          count;
 
-        navermaps.Event.addListener(clusterMarker, 'mouseover', function(e) {
-            // console.log(e);
-            let cMarker = e.overlay;
-            cMarker.setIcon(orange);
-            cMarker
-              .getElement()
-              .querySelector('div:first-child').innerText = count
-            
+        navermaps.Event.addListener(clusterMarker, 'mouseover', function (e) {
+          // console.log(e);
+          let cMarker = e.overlay;
+          cMarker.setIcon(orange);
+          cMarker.getElement().querySelector('div:first-child').innerText =
+            count;
         });
 
-        navermaps.Event.addListener(clusterMarker, 'mouseout', function(e) {
+        navermaps.Event.addListener(clusterMarker, 'mouseout', function (e) {
           // console.log(e);
           let cMarker = e.overlay;
           cMarker.setIcon(blue);
-          cMarker
-              .getElement()
-              .querySelector('div:first-child').innerText = count
+          cMarker.getElement().querySelector('div:first-child').innerText =
+            count;
         });
 
         // navermaps.Event.addListener(clusterMarker, 'click', function(e) {
         //     console.log(e);
         // });
       },
-      
     });
 
-    return markerClustering
-  }
+    return markerClustering;
+  };
 
   const [cluster, setCluster] = useState(() => clustering());
 
@@ -190,19 +205,17 @@ const MarkerCluster = ({navermaps, data, getDataInBounds, activeLocInfo, infoWin
     setCluster(clustering());
   }, [data, activeLocInfo]);
 
-  navermaps.Event.addListener(map, "bounds_changed", function(bounds) {
+  navermaps.Event.addListener(map, 'bounds_changed', function (bounds) {
     getBoundsData(bounds, data, getDataInBounds);
   });
 
-  return <Overlay element={cluster} />
-}
-
+  return <Overlay element={cluster} />;
+};
 
 const FindForm = () => {
-
   const navermaps = useNavermaps();
   const lat = 35.1595704;
-  const lon = 127.005399
+  const lon = 127.005399;
 
   const dispatch = useDispatch();
   const findList = useSelector((state) => state.EvReducer.data);
@@ -219,12 +232,12 @@ const FindForm = () => {
   const [infoWindowArr, setInfoWindowArr] = useState([]);
 
   const handleZoomChanged = useCallback((zoom) => {
-    console.log(`zoom: ${zoom}`)
+    console.log(`zoom: ${zoom}`);
   }, []);
 
   const getDataInBounds = (d) => {
     setDataInBounds(d);
-  }
+  };
 
   useEffect(() => {
     const url = '/api/m-service-mobile/rechgst/getELinkRechgsts';
@@ -233,15 +246,19 @@ const FindForm = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    setDataInBounds(findList)
-  }, [findList])
+    setDataInBounds(findList);
+  }, [findList]);
 
   const onSearch = () => {
     const url = '/api/m-service-mobile/rechgst/searchRechgst';
     const keywordName = type === 'name' ? searchKeyword : '';
     const keywordAddr = type === 'addr' ? searchKeyword : '';
-    const newList = { url: url, rechgstNm: keywordName ?? "", addr: keywordAddr ?? "" };
-    setActiveLocInfo("");
+    const newList = {
+      url: url,
+      rechgstNm: keywordName ?? '',
+      addr: keywordAddr ?? '',
+    };
+    setActiveLocInfo('');
     dispatch(selectEv(newList));
   };
 
@@ -254,11 +271,11 @@ const FindForm = () => {
   const btnTab = (type) => {
     setType(type);
     setSearchKeyword('');
-  }
+  };
 
   const clickData = (index, locInfo) => {
     setActiveLocInfo(locInfo);
-  }
+  };
 
   return (
     <>
@@ -270,10 +287,10 @@ const FindForm = () => {
             </h1>
             <div className="search-wp">
               <input
-                  type="text"
-                  onChange={(e) => setSearchKeyword(e.target.value)}
-                  value={searchKeyword || ''}
-                  onKeyPress={onKeyPress}
+                type="text"
+                onChange={(e) => setSearchKeyword(e.target.value)}
+                value={searchKeyword || ''}
+                onKeyPress={onKeyPress}
               />
               <button className="sbtn" onClick={() => onSearch()}>
                 <img src="/img/common/ico-search.svg" alt="" />
@@ -281,31 +298,44 @@ const FindForm = () => {
             </div>
           </div>
           <ul className="tab-link">
-            <li className={type === 'name' ? 'active' : ''} onClick={() => btnTab('name')}>충전소명</li>
-            <li className={type === 'addr' ? 'active' : ''} onClick={() => btnTab('addr')}>지역명</li>
+            <li
+              className={type === 'name' ? 'active' : ''}
+              onClick={() => btnTab('name')}
+            >
+              충전소명
+            </li>
+            <li
+              className={type === 'addr' ? 'active' : ''}
+              onClick={() => btnTab('addr')}
+            >
+              지역명
+            </li>
           </ul>
           <ul className="tab-cont">
-          {dataInBounds.map((list, index) => (
-            <li
-              key={index}
-              onClick={(e) => clickData(index, list.locInfo)}
-              // onMouseOver={() => setMouseOverMarker(list.locInfo)} 
-              // onMouseOut={() => setMouseOverMarker("")}
+            {dataInBounds.map((list, index) => (
+              <li
+                key={index}
+                onClick={(e) => clickData(index, list.locInfo)}
+                // onMouseOver={() => setMouseOverMarker(list.locInfo)}
+                // onMouseOut={() => setMouseOverMarker("")}
               >
-              <h2>{list.rechgstNm}</h2>
-              <p>{list.addr} </p>
-              <h3 className="orange">
-                <div className="cir"></div>{list.utztnPsbltyHr}{list.highCnt > 0 && `(급속${list.highCnt})`} {list.lowCnt > 0 && `(완속${list.lowCnt})`}
-              </h3>
-            </li>
-          ))}
+                <h2>{list.rechgstNm}</h2>
+                <p>{list.addr} </p>
+                <h3 className="orange">
+                  <div className="cir"></div>
+                  {list.utztnPsbltyHr}
+                  {list.highCnt > 0 && `(급속${list.highCnt})`}{' '}
+                  {list.lowCnt > 0 && `(완속${list.lowCnt})`}
+                </h3>
+              </li>
+            ))}
           </ul>
         </article>
 
         <article className="map-wp">
           {/* <img src="/img/ev/evf_map.png" alt="" /> */}
           {/* <div id="map" ref={mapRef} style={{ width: "100%", height: "100%" }} /> */}
-          <div id="map" style={{ width: "100%", height: "100%" }} >
+          <div id="map" style={{ width: '100%', height: '100%' }}>
             <MapDiv
               style={{
                 width: '100%',
@@ -341,9 +371,9 @@ const FindForm = () => {
                 mapDataControl={scaleControl}
                 // mapTypeControl={scaleControl}
               >
-                <MarkerCluster 
-                  navermaps={navermaps} 
-                  data={findList} 
+                <MarkerCluster
+                  navermaps={navermaps}
+                  data={findList}
                   getDataInBounds={getDataInBounds}
                   activeLocInfo={activeLocInfo}
                   infoWindowArr={infoWindowArr}
