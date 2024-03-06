@@ -230,6 +230,7 @@ const FindForm = () => {
   const [type, setType] = useState('name');
   const [activeLocInfo, setActiveLocInfo] = useState('');
   const [infoWindowArr, setInfoWindowArr] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleZoomChanged = useCallback((zoom) => {
     console.log(`zoom: ${zoom}`);
@@ -247,6 +248,11 @@ const FindForm = () => {
 
   useEffect(() => {
     setDataInBounds(findList);
+    if (findList.length > 0) {
+      if (findList[0]['locInfo']) {
+        setIsLoading(true);
+      }
+    }
   }, [findList]);
 
   const onSearch = () => {
@@ -371,14 +377,16 @@ const FindForm = () => {
                 mapDataControl={scaleControl}
                 // mapTypeControl={scaleControl}
               >
-                <MarkerCluster
-                  navermaps={navermaps}
-                  data={findList}
-                  getDataInBounds={getDataInBounds}
-                  activeLocInfo={activeLocInfo}
-                  infoWindowArr={infoWindowArr}
-                  setInfoWindowArr={setInfoWindowArr}
-                />
+                {isLoading && (
+                  <MarkerCluster
+                    navermaps={navermaps}
+                    data={findList}
+                    getDataInBounds={getDataInBounds}
+                    activeLocInfo={activeLocInfo}
+                    infoWindowArr={infoWindowArr}
+                    setInfoWindowArr={setInfoWindowArr}
+                  />
+                )}
                 {/* <Marker
                   position={new navermaps.LatLng(mouseOverMarker.split(",")[0], mouseOverMarker.split(",")[1])}
                   animation={1}
