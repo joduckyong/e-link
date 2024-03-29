@@ -72,10 +72,21 @@ const PostingForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+            data-aos-delay="200"
+          >
             채용공고
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+            data-aos-delay="200"
+          >
             <li>
               <NavLink to="/">
                 <img src="./../../img/sub/ico-home.svg" alt="" />
@@ -135,7 +146,11 @@ const PostingForm = () => {
 
       <div className="content">
         <div className="wrap">
-          <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+          <h3
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             LS E-Link는 도전적이고,
             <br />
             창의적인 인재를 기다리고 있습니다.
@@ -169,8 +184,15 @@ const PostingForm = () => {
                   <div className="division">
                     <span>{getboardType(list.boardType)}</span>
                     <p>
-                      {changeFormat(list.boardStartDatetime, 'yyyy-MM-DD HH:mm') || ''} -{' '}
-                      {changeFormat(list.boardEndDatetime, 'yyyy-MM-DD HH:mm') || ''}
+                      {changeFormat(
+                        list.boardStartDatetime,
+                        'yyyy-MM-DD HH:mm',
+                      ) || ''}{' '}
+                      -{' '}
+                      {changeFormat(
+                        list.boardEndDatetime,
+                        'yyyy-MM-DD HH:mm',
+                      ) || ''}
                     </p>
                   </div>
                   <div className="tit">{list.boardTitle}</div>
