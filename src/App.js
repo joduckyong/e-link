@@ -200,6 +200,7 @@ import InquiryPage from './pages/client/contactus/InquiryPage';
 import InquiryPage2 from './pages/client/contactus/InquiryPage2';
 import InquiryInfoPage2 from './pages/client/contactus/InquiryInfoPage';
 import InquiryListPage from './pages/client/contactus/InquiryListPage';
+import CyberNewspaperPage from './pages/client/contactus/CyberNewspaperPage';
 
 // Contact US 영문
 import ConsultEnPage from './pages/client_en/contactus/ConsultPage';
@@ -630,6 +631,11 @@ const App = () => {
         <Route path="/contactus/inquiry2" element={<InquiryPage2 />} />
         <Route path="/contactus/inquiryInfo" element={<InquiryInfoPage2 />} />
         <Route path="/contactus/inquiryList" element={<InquiryListPage />} />
+
+        <Route
+          path="/contactus/cyberNewspaper"
+          element={<CyberNewspaperPage />}
+        />
 
         <Route path="/en/contactus/consult" element={<ConsultEnPage />} />
         <Route

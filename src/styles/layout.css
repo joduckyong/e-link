@@ -4464,6 +4464,95 @@ footer .family-link li a {
   margin-top: 20px;
 }
 
+/* 사이버 신문고 */
+.report .wrap{
+  width: 1080px;
+}
+.report h4{
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 600;
+}
+.report01 div{
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.report01 img{
+  width: 25px;
+  height: 25px;
+}
+.report01 p{
+  font-size: 18px;
+  color: #444;
+  line-height: 1.67;
+}
+.report01,
+.report02{
+  margin-bottom: 60px;
+}
+.report02 ul{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+  padding: 60px;
+  border: 1px solid #eaeaea;
+}
+.report02 li{
+  position: relative;
+  padding-left: 25px;
+  width: 458px;
+  font-size: 16px;
+  color: #444;
+}
+.report02 li::before{
+  position: absolute;
+  left: 12px;
+  top: 5px;
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: #444;
+  border-radius: 50%;
+}
+.report03 .report_box{
+  margin-bottom: 40px;
+  padding: 60px 0;
+  font-size: 20px;
+  color: #121212;
+  background: #f3f5f9;
+  text-align: center;
+  font-weight: 600;
+}
+.report03 .report_box p{
+  margin-top: 20px;
+  font-size: 16px;
+  color: #444;
+  font-weight: 400;
+}
+.report .report_btn{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.report .report_btn button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 60px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.report .report_btn .btn01{
+  border: 1px solid #444;
+  color: #444;
+}
+.report .report_btn .btn02{
+  border: 1px solid #eaeaea;
+  color: #888;
+}
+
 /*관리자페이지*/
 .adminsub {
   height: 100%;

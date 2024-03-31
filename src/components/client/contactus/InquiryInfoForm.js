@@ -148,6 +148,9 @@ const InquiryInfoForm = () => {
                 질의하기
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/contactus/cyberNewspaper">사이버 신문고</NavLink>
+            </li>
           </ul>
         </div>
       </div>
