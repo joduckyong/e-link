@@ -29,10 +29,20 @@ const ControlForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            E-Link<br class="m-block" /> BUSINESS
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
+            E-Link
+            <br class="m-block" /> BUSINESS
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/en">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -44,12 +54,12 @@ const ControlForm = () => {
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/en/company/lselink">
-                    Company
-                  </NavLink>
+                  <NavLink to="/en/company/lselink">Company</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/en/business/e-link/evcharge" className="on">Business</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge" className="on">
+                    Business
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/en/investment/management">IR Center</NavLink>
@@ -67,19 +77,23 @@ const ControlForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-              E-Link Business
+                E-Link Business
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
                   <NavLink to="/en/business/e-link/evcharge" className="on">
-                  E-Link Business
+                    E-Link Business
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/en/business/ev/transportation">EV charging business</NavLink>
+                  <NavLink to="/en/business/ev/transportation">
+                    EV charging business
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/en/business/renewable/renewable">Renewable energy business</NavLink>
+                  <NavLink to="/en/business/renewable/renewable">
+                    Renewable energy business
+                  </NavLink>
                 </li>
               </ul>
             </li>
@@ -92,14 +106,18 @@ const ControlForm = () => {
           <ul className="swiper-wrapper">
             <li className="swiper-slide">
               <NavLink to="/en/business/e-link/evcharge">
-                B2B business
+                B2B specialized EV charging business
               </NavLink>
             </li>
             <li className="swiper-slide on">
-              <NavLink to="/en/business/e-link/control" className="on">EVCS</NavLink>
+              <NavLink to="/en/business/e-link/control" className="on">
+                EVCS
+              </NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/en/business/e-link/renewable">Renewable energy converged charging infrastructure</NavLink>
+              <NavLink to="/en/business/e-link/renewable">
+                Renewable energy converged charging infrastructure
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -108,7 +126,11 @@ const ControlForm = () => {
         <div className="business control">
           <div className="business-wrap">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 EVCS
               </h3>
             </div>
@@ -117,20 +139,38 @@ const ControlForm = () => {
           <div className="business-wrap">
             <div className="wrap pb70">
               <div className="infor mt0">
-                <div className="infor-tit m-lf34" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  Provide customized EVCS with different UI/UX application for each customer
+                <div
+                  className="infor-tit m-lf34"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  Provide customized EVCS with different UI/UX application for
+                  each customer
                 </div>
               </div>
               <div className="img img1">
-                <div className="in" style={{ 'background-size': 'cover' }}></div>
+                <div
+                  className="in"
+                  style={{ 'background-size': 'cover' }}
+                ></div>
               </div>
               <div className="infor">
-                <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  Provide customized subscription service to customers at reasonable price
+                <div
+                  className="infor-tit"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  Provide customized subscription service to customers at
+                  reasonable price
                 </div>
               </div>
               <div className="img img2">
-                <div className="in" style={{ 'background-size': 'cover' }}></div>
+                <div
+                  className="in"
+                  style={{ 'background-size': 'cover' }}
+                ></div>
               </div>
             </div>
           </div>

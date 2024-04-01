@@ -31,10 +31,20 @@ const EvchargeForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            E-Link<br class="m-block" /> BUSINESS
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
+            E-Link
+            <br class="m-block" /> BUSINESS
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/en">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -46,12 +56,12 @@ const EvchargeForm = () => {
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/en/company/lselink">
-                    Company
-                  </NavLink>
+                  <NavLink to="/en/company/lselink">Company</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/en/business/e-link/evcharge" className="on">Business</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge" className="on">
+                    Business
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/en/investment/management">IR Center</NavLink>
@@ -69,19 +79,23 @@ const EvchargeForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-              E-Link Business
+                E-Link Business
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
                   <NavLink to="/en/business/e-link/evcharge" className="on">
-                  E-Link Business
+                    E-Link Business
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/en/business/ev/transportation">EV charging business</NavLink>
+                  <NavLink to="/en/business/ev/transportation">
+                    EV charging business
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/en/business/renewable/renewable">Renewable energy business</NavLink>
+                  <NavLink to="/en/business/renewable/renewable">
+                    Renewable energy business
+                  </NavLink>
                 </li>
               </ul>
             </li>
@@ -93,14 +107,16 @@ const EvchargeForm = () => {
           <ul className="swiper-wrapper">
             <li className="swiper-slide on">
               <NavLink to="/en/business/e-link/evcharge" className="on">
-                B2B business
+                B2B specialized EV charging business
               </NavLink>
             </li>
             <li className="swiper-slide">
               <NavLink to="/en/business/e-link/control">EVCS</NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/en/business/e-link/renewable">Renewable energy converged charging infrastructure</NavLink>
+              <NavLink to="/en/business/e-link/renewable">
+                Renewable energy converged charging infrastructure
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -109,7 +125,11 @@ const EvchargeForm = () => {
         <div className="business electronic-car">
           <div className="business-wrap">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 B2B specialized EV charging business
               </h3>
             </div>
@@ -118,32 +138,65 @@ const EvchargeForm = () => {
           <div className="business-wrap business-infor">
             <div className="wrap pb70">
               <div className="infor mt0">
-                <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                <div
+                  className="infor-tit"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
                   B2B specialized EV charging business
                 </div>
-                <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                We provide ev charging solutions and the battery management services, the accumulated LS electrical technology, for fleet operation.
+                <div
+                  className="infor-txt"
+                  data-aos="fade-left"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  We provide ev charging solutions and the battery management
+                  services, the accumulated LS electrical technology, for fleet
+                  operation.
                 </div>
               </div>
               <div className="img img1">
                 <ParallaxProvider>
                   <Parallax>
-                    <div className="in" data-top-top="background-position: 100% 50%;" data-center-top="background-position:100% 100%;"></div>
+                    <div
+                      className="in"
+                      data-top-top="background-position: 100% 50%;"
+                      data-center-top="background-position:100% 100%;"
+                    ></div>
                   </Parallax>
                 </ParallaxProvider>
               </div>
               <div className="infor">
-                <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                  Establishment of charging infrastructure, consignment operation business
+                <div
+                  className="infor-tit"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  Establishment of charging infrastructure, consignment
+                  operation business
                 </div>
-                <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                  We provide a total solution from business feasibility review, licensing, infrastructure construction, operation and financing.
+                <div
+                  className="infor-txt"
+                  data-aos="fade-left"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  We provide a total solution from business feasibility review,
+                  licensing, infrastructure construction, operation and
+                  financing.
                 </div>
               </div>
               <div className="img img2">
                 <ParallaxProvider>
                   <Parallax>
-                    <div className="in" data-top-top="background-position: 100% 50%;" data-center-top="background-position:100% 100%;"></div>
+                    <div
+                      className="in"
+                      data-top-top="background-position: 100% 50%;"
+                      data-center-top="background-position:100% 100%;"
+                    ></div>
                   </Parallax>
                 </ParallaxProvider>
               </div>

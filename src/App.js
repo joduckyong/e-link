@@ -209,6 +209,7 @@ import InquiryEnPage from './pages/client_en/contactus/InquiryPage';
 import InquiryEnPage2 from './pages/client_en/contactus/InquiryPage2';
 import InquiryInfoEnPage2 from './pages/client_en/contactus/InquiryInfoPage';
 import InquiryListEnPage from './pages/client_en/contactus/InquiryListPage';
+import CyberNewspaperEnPage from './pages/client_en/contactus/CyberNewspaperPage';
 
 // 약관 국문
 import PrivacyPage from './pages/client/policy/PrivacyPage';
@@ -651,6 +652,10 @@ const App = () => {
         <Route
           path="/en/contactus/inquiryList"
           element={<InquiryListEnPage />}
+        />
+        <Route
+          path="/en/contactus/cyberNewspaper"
+          element={<CyberNewspaperEnPage />}
         />
 
         <Route path="/policy/privacy" element={<PrivacyPage />} />

@@ -219,6 +219,11 @@ const InconvenienceForm = () => {
                 <li>
                   <NavLink to="/en/contactus/inquiry">Contact us</NavLink>
                 </li>
+                <li>
+                  <NavLink to="/en/contactus/cyberNewspaper">
+                    Cyber Whistleblower System
+                  </NavLink>
+                </li>
               </ul>
             </li>
           </ul>
@@ -351,9 +356,8 @@ const InconvenienceForm = () => {
               <p className="depth02_p">
                 a. Purpose of collection and use: <br />
                 - ELVIS cash, charge history inquiry, payment card and vehicle
-                management <br />
-                - Affiliate point conversion and use, service provision, etc.{' '}
-                <br />
+                management <br />- Affiliate point conversion and use, service
+                provision, etc. <br />
                 * Credit card registration information is encrypted immediately
                 after input and transmitted to each financial company, and is
                 not stored by the company . The company receives and uses only

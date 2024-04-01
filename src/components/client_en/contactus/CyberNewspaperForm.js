@@ -61,50 +61,48 @@ const CyberNewspaperForm = () => {
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
-                  <NavLink to="/company/lselink">회사소개</NavLink>
+                  <NavLink to="/en/company/lselink">Company</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
+                  <NavLink to="/en/business/e-link/evcharge">Business</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/en/investment/management">IR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/en/pr/press-list">PR Center</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/recruit/people">채용정보</NavLink>
+                  <NavLink to="/en/recruit/people">Recruitment</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/consult" className="on">
+                  <NavLink to="/en/contactus" className="on">
                     Contact Us
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="">EV 충전소</NavLink>
-                </li>
               </ul>
             </li>
-            {/*<li className="on link">
-                            <NavLink to="/contactus" onClick={(e) => onClickMenuLink('2')}>Contact us</NavLink>
-                        </li>*/}
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-                질의하기
+                Report complaints
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/contactus/consult">상담신청</NavLink>
+                  <NavLink to="/en/contactus/consult">
+                    Consultation request
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/inconvenience">불편신고</NavLink>
+                  <NavLink to="/en/contactus/inconvenience">
+                    Report complaints
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/inquiry">질의하기</NavLink>
+                  <NavLink to="/en/contactus/inquiry">Contact us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus/cyberNewspaper" className="on">
-                    사이버 신문고
+                  <NavLink to="/en/contactus/cyberNewspaper" className="on">
+                    Cyber Whistleblower System
                   </NavLink>
                 </li>
               </ul>
@@ -120,39 +118,49 @@ const CyberNewspaperForm = () => {
             data-aos-duration="2000"
             data-aos-once="true"
           >
-            사이버 신문고
+            Cyber Whistleblower System
           </h3>
           <div className="report_cont report01">
-            <h4>제보하기</h4>
+            <h4>Report Submission</h4>
             <div>
               <img src="/img/sub/error.svg" alt="" />
               <p>
-                이곳은 LS E-Link 임직원들의 부정/비리, 불공정한 업무처리 등으로
-                인해 협력업체 대표/임직원 및 고객 여러분들이 불이익을 당하셨을
-                경우 제보하는 곳입니다. 귀하의 소중한 제보는 당사 윤리경영의
-                밑거름이 되며, 제보자 인적사항 및 제보내용은 철저히 보호될
-                것임을 약속 드리겠습니다.
+                This is the place where representatives and employees of LS
+                E-Link can report instances of misconduct, corruption, unfair
+                business practices, etc., that have caused disadvantages to
+                representatives/employees of collaborating companies as well as
+                customers. Your valuable report will serve as the foundation of
+                our ethical management, and we promise to thoroughly protect the
+                personal information and content of the reporter.
               </p>
             </div>
           </div>
           <div className="report_cont report02">
-            <h4>제보대상</h4>
+            <h4>Subjects of Reporting</h4>
             <ul>
-              <li>당사 임직원의 부정/비리(금품, 향응, 접대 등 수수)</li>
-              <li>당사 임직원의 직무태만/불성실한 업무태도</li>
               <li>
-                협력업체에 대한 불공정한 업무처리(업체선정, 계약/거래관계 등)
+                Misconduct/corruption of LS E-Link employees (acceptance of
+                bribes, gifts, hospitality, etc.)
               </li>
-              <li>기타(LS E-Link 윤리규범 위배 행위)</li>
+              <li>
+                Negligence/unfaithful attitudes of LS E-Link employees in their
+                duties
+              </li>
+              <li>
+                Unfair treatment of collaborating companies (selection of
+                companies, contract/trading relationships, etc.)
+              </li>
+              <li>Others (violations of LS E-Link ethical norms)</li>
             </ul>
           </div>
           <div className="report_cont report03">
-            <h4>제보방법</h4>
+            <h4>Methods of Reporting</h4>
             <div className="report_box">
-              사이버 신문고
+              Cyber Whistleblower System
               <p>
-                특정 양식에 의거 제보하는 곳으로 LS E-Link가
-                <br className="mBr" /> 운영하는 모든 웹사이트에서 접속 가능
+                Accessible on all websites operated by LS E-Link
+                <br className="mBr" /> where reports can be submitted based on
+                specific forms.
               </p>
             </div>
             <div className="report_btn">
@@ -160,21 +168,21 @@ const CyberNewspaperForm = () => {
                 type="button"
                 onClick={() =>
                   Popup(
-                    'https://ethics.lsholdings.co.kr/ko/view/report.asp?cn=014000',
+                    'https://ethics.lsholdings.co.kr/en/view/report.asp?cn=014000',
                   )
                 }
                 className="btn01"
               >
-                제보하기
+                Submit Report
               </button>
               <button
                 type="button"
                 onClick={() =>
-                  Popup('https://ethics.lsholdings.co.kr/ko/view/process.asp')
+                  Popup('https://ethics.lsholdings.co.kr/en/view/process.asp')
                 }
                 className="btn02"
               >
-                제보확인하기
+                Check Report Status
               </button>
             </div>
           </div>

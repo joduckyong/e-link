@@ -148,6 +148,11 @@ const InquiryForm2 = () => {
                     Contact us
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/en/contactus/cyberNewspaper">
+                    Cyber Whistleblower System
+                  </NavLink>
+                </li>
               </ul>
             </li>
           </ul>
