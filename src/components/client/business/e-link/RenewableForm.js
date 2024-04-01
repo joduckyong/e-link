@@ -30,11 +30,20 @@ const RenewableForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             E-Link
             <br class="m-block" /> BUSINESS
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -72,19 +81,23 @@ const RenewableForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-              E-Link BUSINESS
+                E-Link BUSINESS
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
                   <NavLink to="/business/e-link/evcharge" className="on">
-                  E-Link BUSINESS
+                    E-Link BUSINESS
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/transportation">전기차 충전사업</NavLink>
+                  <NavLink to="/business/ev/transportation">
+                    전기차 충전사업
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
+                  <NavLink to="/business/renewable/renewable">
+                    신재생 에너지사업
+                  </NavLink>
                 </li>
               </ul>
             </li>
@@ -96,14 +109,16 @@ const RenewableForm = () => {
           <ul className="swiper-wrapper">
             <li className="swiper-slide">
               <NavLink to="/business/e-link/evcharge">
-                B2B 특화 전기차 <span className="mo-br">충전 사업</span>
+                B2B 특화 전기차 충전 사업
               </NavLink>
             </li>
             <li className="swiper-slide">
               <NavLink to="/business/e-link/control">관제시스템 구축</NavLink>
             </li>
             <li className="swiper-slide on">
-              <NavLink to="/business/e-link/renewable">신재생에너지 융합형 충전 인프라 구축</NavLink>
+              <NavLink to="/business/e-link/renewable">
+                신재생에너지 융합형 충전 인프라 구축
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -112,7 +127,11 @@ const RenewableForm = () => {
         <div className="business energy">
           <div className="business-wrap">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 신재생에너지 융합형 충전 인프라 구축
               </h3>
             </div>
@@ -121,20 +140,47 @@ const RenewableForm = () => {
           <div className="business-wrap pb0">
             <div className="wrap pb70">
               <div className="infor mt0 mb75">
-                <div className="infor-tit mb0" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                전기차 충전 솔루션을 넘어 PV-ESS, R(Reuse Battery)-ESS,
+                <div
+                  className="infor-tit mb0"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  전기차 충전 솔루션을 넘어 PV-ESS, R(Reuse Battery)-ESS,
                   <br className="pc-block" />
                   DR, V2G까지 분산 전원 시대를 선도합니다.
                 </div>
               </div>
-              <img src="/img/sub/renewable_graph.png" className="pc-img" style={{ width: '100%' }} />
-              <img src="/img/sub/m_renewable_graph.png" className="mo-img" style={{ width: '100%' }} />
-              <div className="infor-tit infor-tit2 mt120" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-              대규모 EV Fleet을 운영하는 고객사에게 분산 전원 시대를 대비하여 <br className="pc-block" />
-              PV-ESS, R(Reuse Battery)-ESS, DR, V2G 솔루션을 제공합니다.
+              <img
+                src="/img/sub/renewable_graph.png"
+                className="pc-img"
+                style={{ width: '100%' }}
+              />
+              <img
+                src="/img/sub/m_renewable_graph.png"
+                className="mo-img"
+                style={{ width: '100%' }}
+              />
+              <div
+                className="infor-tit infor-tit2 mt120"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
+                대규모 EV Fleet을 운영하는 고객사에게 분산 전원 시대를 대비하여{' '}
+                <br className="pc-block" />
+                PV-ESS, R(Reuse Battery)-ESS, DR, V2G 솔루션을 제공합니다.
               </div>
-              <img src="/img/sub/renewable_img.png" className="pc-img" style={{ width: '100%' }} />
-              <img src="/img/sub/m_renewable_img.png" className="mo-img" style={{ width: '100%' }} />
+              <img
+                src="/img/sub/renewable_img.png"
+                className="pc-img"
+                style={{ width: '100%' }}
+              />
+              <img
+                src="/img/sub/m_renewable_img.png"
+                className="mo-img"
+                style={{ width: '100%' }}
+              />
             </div>
 
             {/*<div className="img out-img">

@@ -29,10 +29,20 @@ const ControlForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-            E-Link<br class="m-block" /> BUSINESS
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
+            E-Link
+            <br class="m-block" /> BUSINESS
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -70,19 +80,23 @@ const ControlForm = () => {
             </li>
             <li className={classnames('on link', { show: activeMenu2 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('2')}>
-              E-Link BUSINESS
+                E-Link BUSINESS
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
                   <NavLink to="/business/e-link/evcharge" className="on">
-                  E-Link BUSINESS
+                    E-Link BUSINESS
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/ev/transportation">전기차 충전사업</NavLink>
+                  <NavLink to="/business/ev/transportation">
+                    전기차 충전사업
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
+                  <NavLink to="/business/renewable/renewable">
+                    신재생 에너지사업
+                  </NavLink>
                 </li>
               </ul>
             </li>
@@ -94,13 +108,17 @@ const ControlForm = () => {
         <div className="nav-slide">
           <ul className="swiper-wrapper">
             <li className="swiper-slide">
-              <NavLink to="/business/e-link/evcharge">B2B 특화 전기차 <span className="mo-br">충전 사업</span></NavLink>
+              <NavLink to="/business/e-link/evcharge">
+                B2B 특화 전기차 충전 사업
+              </NavLink>
             </li>
             <li className="swiper-slide on">
               <NavLink to="/business/e-link/control">관제시스템 구축</NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/business/e-link/renewable">신재생에너지 융합형 충전 인프라 구축</NavLink>
+              <NavLink to="/business/e-link/renewable">
+                신재생에너지 융합형 충전 인프라 구축
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -109,7 +127,11 @@ const ControlForm = () => {
         <div className="business control">
           <div className="business-wrap">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 관제시스템 구축
               </h3>
             </div>
@@ -118,20 +140,37 @@ const ControlForm = () => {
           <div className="business-wrap">
             <div className="wrap pb70">
               <div className="infor mt0">
-                <div className="infor-tit m-lf34" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                고객별, 차종별 UI/UX 적용된 맞춤형 관제시스템 제공
+                <div
+                  className="infor-tit m-lf34"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  고객별, 차종별 UI/UX 적용된 맞춤형 관제시스템 제공
                 </div>
               </div>
               <div className="img img1">
-                <div className="in" style={{ 'background-size': 'cover' }}></div>
+                <div
+                  className="in"
+                  style={{ 'background-size': 'cover' }}
+                ></div>
               </div>
               <div className="infor">
-                <div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                서버구축이 불필요한 고객에게 최고의 가성비로 맞춤형 구독서비스 제공
+                <div
+                  className="infor-tit"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  서버구축이 불필요한 고객에게 최고의 가성비로 맞춤형 구독서비스
+                  제공
                 </div>
               </div>
               <div className="img img2">
-                <div className="in" style={{ 'background-size': 'cover' }}></div>
+                <div
+                  className="in"
+                  style={{ 'background-size': 'cover' }}
+                ></div>
               </div>
             </div>
           </div>
