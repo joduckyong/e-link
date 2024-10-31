@@ -30,10 +30,19 @@ const CoporateForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             전기차 충전사업
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -53,19 +62,18 @@ const CoporateForm = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/investment/financial">
+                    투자정보 & 홍보센터
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -75,7 +83,9 @@ const CoporateForm = () => {
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
+                  <NavLink to="/business/e-link/evcharge">
+                    E-Link BUSINESS
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/business/ev/transportation" className="on">
@@ -83,7 +93,9 @@ const CoporateForm = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
+                  <NavLink to="/business/renewable/renewable">
+                    스마트 전력 신사업
+                  </NavLink>
                 </li>
               </ul>
             </li>
@@ -109,7 +121,11 @@ const CoporateForm = () => {
         <div className="business corporate">
           <div className="business-wrap">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 에너지 센터{' '}
               </h3>
             </div>
@@ -118,20 +134,42 @@ const CoporateForm = () => {
           <div className="business-wrap m-pt50">
             <div className="wrap">
               <div className="infor m-mt0">
-                <div className="infor-tit m-mb10" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+                <div
+                  className="infor-tit m-mb10"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
                   전기名家 LS의 기술력이 집결된 <br className="pc-block" />
                   전기차 Fleet 전용 에너지 센터
                 </div>
-                <div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-                  전력 장비와 전선부터 충전기 및 IT플랫폼까지 LS의 모든 역량이 집결된 전기차 전용 충전 Place <br className="pc-block" />
-                  법인 및 개인사업자와 개인고객까지 모두에게 편리한 충전환경을 제공하고 Battery 관리 및 차량 경정비와
+                <div
+                  className="infor-txt"
+                  data-aos="fade-left"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  전력 장비와 전선부터 충전기 및 IT플랫폼까지 LS의 모든 역량이
+                  집결된 전기차 전용 충전 Place <br className="pc-block" />
+                  법인 및 개인사업자와 개인고객까지 모두에게 편리한 충전환경을
+                  제공하고 Battery 관리 및 차량 경정비와
                   <br className="pc-block" />
                   자동세차 등의 All-in-one Care Service 제공
                 </div>
               </div>
               {/* 사진 수정하면 class prepare 지우기 */}
-              <div className="img img1 prepare" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                <img src="/img/sub/enegec_enter.jpg" width="100%" height="100%" alt="" />
+              <div
+                className="img img1 prepare"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
+                <img
+                  src="/img/sub/enegec_enter.jpg"
+                  width="100%"
+                  height="100%"
+                  alt=""
+                />
               </div>
             </div>
           </div>

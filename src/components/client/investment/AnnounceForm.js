@@ -25,7 +25,12 @@ const AnnounceForm = () => {
   });
 
   useEffect(() => {
-    const newList = { boardId: 'ANN', pageIndex: page, searchKeyword: searchKeyword, searchCondition: 'year' };
+    const newList = {
+      boardId: 'ANN',
+      pageIndex: page,
+      searchKeyword: searchKeyword,
+      searchCondition: 'year',
+    };
     dispatch(selectClientBoard(newList));
   }, [dispatch, page, searchKeyword]);
 
@@ -54,10 +59,19 @@ const AnnounceForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             공고
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -65,7 +79,7 @@ const AnnounceForm = () => {
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                투자정보
+                투자정보 & 홍보센터
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
@@ -76,7 +90,7 @@ const AnnounceForm = () => {
                 </li>
                 <li>
                   <NavLink to="/investment/management" className="on">
-                    투자정보
+                    투자정보 & 홍보센터
                   </NavLink>
                 </li>
                 <li>
@@ -86,10 +100,10 @@ const AnnounceForm = () => {
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -98,9 +112,6 @@ const AnnounceForm = () => {
                 공고
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
-                <li>
-                  <NavLink to="/investment/management">경영정보</NavLink>
-                </li>
                 <li>
                   <NavLink to="/investment/financial">재무정보</NavLink>
                 </li>
@@ -111,6 +122,9 @@ const AnnounceForm = () => {
                   <NavLink to="/investment/announce" className="on">
                     공고
                   </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/pr/press-list">뉴스</NavLink>
                 </li>
               </ul>
             </li>

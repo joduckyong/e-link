@@ -27,10 +27,21 @@ const PeopleForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+            data-aos-delay="200"
+          >
             인재상
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+            data-aos-delay="200"
+          >
             <li>
               <NavLink to="/">
                 <img src="./../../img/sub/ico-home.svg" alt="" />
@@ -48,21 +59,23 @@ const PeopleForm = () => {
                   <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/investment/financial">
+                    투자정보 & 홍보센터
+                  </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/pr/press-list">홍보센터</NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/recruit/people" className="on">
                     채용정보
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -76,12 +89,12 @@ const PeopleForm = () => {
                     인재상
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/recruit/benefits">복리후생</NavLink>
                 </li>
                 <li>
                   <NavLink to="/recruit/posting">채용공고</NavLink>
-                </li>
+                </li> */}
               </ul>
             </li>
           </ul>
@@ -138,10 +151,15 @@ const PeopleForm = () => {
         <div className="title">
           <div className="inner">
             <p>Positive·Creative·Professional</p>
-            <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+            <h3
+              data-aos="fade-right"
+              data-aos-duration="2000"
+              data-aos-once="true"
+            >
               LS E-Link는 LS 파트너십을 바탕으로 <br className="pc-block" />
               <span>
-                밝고, 창의적이며, 전문성을 가진 인재가 <br className="pc-block" />
+                밝고, 창의적이며, 전문성을 가진 인재가{' '}
+                <br className="pc-block" />
               </span>
               함께 만들어가는 회사입니다.
             </h3>
@@ -153,23 +171,27 @@ const PeopleForm = () => {
               <img src="/img/sub/sub05-1-ico1.png" alt="" />
               <p className="tit">Positive</p>
               <p className="txt">
-                밝은 기운과 <span>긍정적 Mind</span>를 갖추고 함께 일하는 사람들과 더불어 <span>상생</span>을 도모하며, <span>윤리적 절차</span>와
-                기본을 준수하는 인재
+                밝은 기운과 <span>긍정적 Mind</span>를 갖추고 함께 일하는
+                사람들과 더불어 <span>상생</span>을 도모하며,{' '}
+                <span>윤리적 절차</span>와 기본을 준수하는 인재
               </p>
             </li>
             <li>
               <img src="/img/sub/sub05-1-ico2.png" alt="" />
               <p className="tit">Creative</p>
               <p className="txt">
-                <span>창의력</span>을 바탕으로 <span>변화와 혁신</span>을 추구하며 가치를 창출하고 Global 기업으로의 <span>성장을 주도</span>하는 인재
+                <span>창의력</span>을 바탕으로 <span>변화와 혁신</span>을
+                추구하며 가치를 창출하고 Global 기업으로의{' '}
+                <span>성장을 주도</span>하는 인재
               </p>
             </li>
             <li>
               <img src="/img/sub/sub05-1-ico3.png" alt="" />
               <p className="tit">Professional</p>
               <p className="txt">
-                자신의 분야에서 최고가 되기 위해 <span>꾸준히 노력</span>하며 Global 감각을 보유하고 세계 무대에서 경쟁할 수 있는 <span>전문성</span>
-                과 <span>열정</span>을 가진 인재
+                자신의 분야에서 최고가 되기 위해 <span>꾸준히 노력</span>하며
+                Global 감각을 보유하고 세계 무대에서 경쟁할 수 있는{' '}
+                <span>전문성</span>과 <span>열정</span>을 가진 인재
               </p>
             </li>
           </ul>

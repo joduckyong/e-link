@@ -184,10 +184,9 @@ const InconvenienceForm = () => {
                   <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/investment/financial">
+                    투자정보 & 홍보센터
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/recruit/people">채용정보</NavLink>
@@ -198,7 +197,7 @@ const InconvenienceForm = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>

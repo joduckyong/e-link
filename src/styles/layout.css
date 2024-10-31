@@ -790,7 +790,7 @@ footer .family-link li a {
 }
 
 .main .con1 {
-  background: url('/public/img/main/con1-bg.jpg') center 0 no-repeat;
+  background: url('/public/img/main/Mask group.jpg') center 0 no-repeat;
   padding: 210px 0 240px;
 }
 .main .con1 .tit {
@@ -1091,10 +1091,10 @@ footer .family-link li a {
   margin-left: 0 !important;
 }
 .con3 .swiper-pagination span:nth-child(2):before {
-  content: 'ENERGY';
+  content: 'SOLUTION';
 }
 .con3 .swiper-pagination span:nth-child(3):before {
-  content: 'SOLUTION';
+  content: 'ENERGY';
 }
 .con3 .air {
   position: absolute;
@@ -2100,7 +2100,10 @@ footer .family-link li a {
   word-break: keep-all;
 }
 .sub.sub01-3 .t-wrap .time-list {
-  width: 50%;
+	width: 50%;
+	height: 700px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 .sub.sub01-3 .t-wrap .time-list dl {
   display: flex;
@@ -2464,6 +2467,7 @@ footer .family-link li a {
   bottom: 0;
   left: 0;
 }
+
 .sub.sub01-5 .img {
   border-radius: 30px;
   overflow: hidden;
@@ -2471,6 +2475,26 @@ footer .family-link li a {
 }
 .sub.sub01-5 .img img {
   max-width: 100%;
+}
+
+.line_company {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+.line_company .company-infor:not(:first-of-type) .img {
+	margin-top: 0;
+}
+.line_company .txt dl {
+	flex-direction: column;
+}
+.line_company .txt dt,
+.line_company .txt dd {
+	width: 100% !important;
+}
+.sub.sub01-5 .img img {
+	max-width: 100%;
 }
 
 /*business 페이지 공통*/
@@ -2608,7 +2632,7 @@ footer .family-link li a {
   background-size: cover;
 }
 .sub.sub02-1-1 .electronic-car .img2 .in {
-  background: url('/public/img/sub/electronic-img2.jpg') center 0 no-repeat;
+  background: url('/public/img/sub/img.png') center 0 no-repeat;
   position: absolute;
   top: 0;
   left: 0;
@@ -2721,6 +2745,23 @@ footer .family-link li a {
   bottom: 0;
   background: url('/public/img/sub/sol-img1.jpg') center no-repeat;
 }
+
+/* .sub.sub02-2 .drive .infor-down .in2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/public/img/sub/Group 1493.png') center no-repeat;
+} */
+
+.sub.sub02-2 .drive .infor-down3 .wrap .img{
+  padding-bottom: 0;
+  width: 100%;
+  height: 900px;
+  background: url('/public/img/sub/Group 1493.png') center no-repeat;
+}
+
 .sub.sub02-2 .drive .infor-down2 {
   padding-top: 0;
   padding-bottom: 0;
@@ -5724,6 +5765,142 @@ label[for='regiTitle'] {
   bottom: 75px;
 }
 
+/* ethic page */
+.ethic img {
+	width: 100%;
+}
+.ethic .sub-top .bg {
+	background: url("/public/img/sub/ethic_top.jpg") center 0 no-repeat;
+	background-size: cover;
+}
+.ethic .wrap {
+	margin-top: 110px;
+	padding-bottom: 150px;
+}
+.ethic .wrap > * {
+	color: #121212;
+}
+.ethic .top {
+	margin-bottom: 110px;
+}
+.ethic .cont_tit {
+	margin-bottom: 56px;
+}
+.ethic .cont_tit p {
+	margin-bottom: 24px;
+	font-size: 32px;
+	font-weight: 600;
+}
+.ethic .cont_tit small {
+	font-size: 18px;
+}
+.ethic .bot h3 {
+	margin-bottom: 56px;
+	font-size: 48px;
+	font-weight: 600;
+}
+.ethic .bot .cont_wp {
+	display: flex;
+	gap: 16px;
+}
+.ethic .bot .cont_wp li {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 416px;
+	height: 536px;
+	gap: 40px;
+	border-radius: 30px;
+	background: #f3f5f8;
+}
+.ethic .bot .cont_img {
+	width: 160px;
+	height: 160px;
+}
+.ethic .bot .cont_txt {
+	padding: 0 40px;
+	font-size: 32px;
+	font-weight: 600;
+	text-align: center;
+}
+.ethic .bot .cont_txt small {
+	display: block;
+	margin-top: 14px;
+	font-size: 18px;
+	color: #444;
+	line-height: 1.6;
+	letter-spacing: -0.04em;
+}
+@media screen and (max-width: 1280px) {
+	.ethic .wrap {
+		margin-top: calc(100vw * (110 / 1280));
+		padding-bottom: calc(100vw * (150 / 1280)) !important;
+	}
+	.ethic .top {
+		margin-bottom: calc(100vw * (110 / 1280));
+	}
+	.ethic .cont_tit {
+		margin-bottom: calc(100vw * (56 / 1280));
+	}
+	.ethic .cont_tit p {
+		margin-bottom: calc(100vw * (24 / 1280));
+		font-size: calc(100vw * (32 / 1280));
+	}
+	.ethic .cont_tit small {
+		font-size: calc(100vw * (18 / 1280));
+	}
+	.ethic .bot h3 {
+		margin-bottom: calc(100vw * (56 / 1280));
+		font-size: calc(100vw * (48 / 1280));
+	}
+	.ethic .bot .cont_wp {
+		gap: calc(100vw * (16 / 1280));
+	}
+	.ethic .bot .cont_wp li {
+		width: calc(100vw * (416 / 1280));
+		height: calc(100vw * (536 / 1280));
+		gap: calc(100vw * (40 / 1280));
+		border-radius: calc(100vw * (30 / 1280));
+	}
+	.ethic .bot .cont_img {
+		width: calc(100vw * (160 / 1280));
+		height: calc(100vw * (160 / 1280));
+	}
+	.ethic .bot .cont_txt {
+		padding: 0 calc(100vw * (30 / 1280));
+		font-size: calc(100vw * (32 / 1280));
+	}
+	.ethic .bot .cont_txt small {
+		margin-top: calc(100vw * (14 / 1280));
+		font-size: calc(100vw * (18 / 1280));
+	}
+}
+/* footer */
+footer .ft_link {
+	position: absolute;
+	top: 130px;
+	right: 0;
+}
+footer .ft_link .top {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	margin-bottom: 26px;
+}
+footer .ft_link .top .cont_txt {
+	font-size: 32px;
+	font-weight: 700;
+	color: #121212;
+}
+footer .ft_link .top .cont_txt span {
+	display: block;
+	margin-bottom: 16px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #ec6800;
+}
+
 /* 추가탭 */
 .sub-tab {
   display: flex;
@@ -5772,4 +5949,24 @@ pre {
   padding: 10px;
   overflow: auto;
   white-space: pre-wrap;
+}
+
+.wrap{
+   width: 1280px;
+   margin: 0 auto;
+}
+footer .ft_link{
+  top: 80px;
+  right: 20px;
+}
+footer .bot{
+  display: flex;
+  gap: 8px;
+}
+.sub.sub02-2 .drive .drive-list2{
+   flex-wrap: wrap;
+}
+.sub.sub02-2 .drive .drive-list2 li{
+   width: 48%;
+   flex: none;
 }

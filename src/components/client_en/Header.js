@@ -75,14 +75,11 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <NavLink to="/en/investment/financial">IR Center</NavLink>
+              <NavLink to="/en/investment/financial">
+                IR Center & PR Center
+              </NavLink>
               <div className="depth-1">
                 <ul>
-                  <li>
-                    <NavLink to="/en/investment/management">
-                      Management Information
-                    </NavLink>
-                  </li>
                   <li>
                     <NavLink to="/en/investment/financial">
                       Financial Information
@@ -96,18 +93,8 @@ const Header = () => {
                   <li>
                     <NavLink to="/en/investment/announce">Announcement</NavLink>
                   </li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <NavLink to="/en/pr/press-list">PR Center</NavLink>
-              <div className="depth-1">
-                <ul>
                   <li>
-                    <NavLink to="/en/pr/press-list">Press</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/en/pr/media-list">Media</NavLink>
+                    <NavLink to="/en/pr/press-list">News</NavLink>
                   </li>
                 </ul>
               </div>
@@ -271,14 +258,9 @@ const Header = () => {
             </li>
             <li>
               <NavLink to="/en/investment/financial">
-                <strong>IR Center</strong>
+                <strong>IR Center & PR Center</strong>
               </NavLink>
               <ul className="small-menu">
-                <li>
-                  <NavLink to="/en/investment/management">
-                    Management Information
-                  </NavLink>
-                </li>
                 <li>
                   <NavLink to="/en/investment/financial">
                     Financial Information
@@ -292,18 +274,8 @@ const Header = () => {
                 <li>
                   <NavLink to="/en/investment/announce">Announcement</NavLink>
                 </li>
-              </ul>
-            </li>
-            <li>
-              <NavLink to="/en/pr/press-list">
-                <strong>PR Center</strong>
-              </NavLink>
-              <ul className="small-menu">
                 <li>
-                  <NavLink to="/en/pr/press-list">Press</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/en/pr/media-list">Media</NavLink>
+                  <NavLink to="/en/pr/press-list">News</NavLink>
                 </li>
               </ul>
             </li>
@@ -454,7 +426,7 @@ const Header = () => {
               className={moMenuClass === '3' ? 'mo-click on' : 'mo-click'}
               onClick={() => onClickMoMenu('3')}
             >
-              <NavLink to="">IR Center</NavLink>
+              <NavLink to="">IR Center & PR Center</NavLink>
               <div
                 className="depth-1"
                 style={
@@ -464,11 +436,6 @@ const Header = () => {
                 }
               >
                 <ul>
-                  <li>
-                    <NavLink to="/en/investment/management">
-                      Management Information
-                    </NavLink>
-                  </li>
                   <li>
                     <NavLink to="/en/investment/financial">
                       Financial Information
@@ -482,28 +449,8 @@ const Header = () => {
                   <li>
                     <NavLink to="/en/investment/announce">Announcement</NavLink>
                   </li>
-                </ul>
-              </div>
-            </li>
-            <li
-              className={moMenuClass === '4' ? 'mo-click on' : 'mo-click'}
-              onClick={() => onClickMoMenu('4')}
-            >
-              <NavLink to="">PR Center</NavLink>
-              <div
-                className="depth-1"
-                style={
-                  moMenuClass === '4'
-                    ? { display: 'block' }
-                    : { display: 'none' }
-                }
-              >
-                <ul>
                   <li>
-                    <NavLink to="/en/pr/press-list">Press</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/en/pr/media-list">Media</NavLink>
+                    <NavLink to="/en/pr/press-list">News</NavLink>
                   </li>
                 </ul>
               </div>

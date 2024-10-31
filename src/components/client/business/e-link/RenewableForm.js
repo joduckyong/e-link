@@ -63,19 +63,21 @@ const RenewableForm = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/investment/financial">
+                    투자정보 & 홍보센터
+                  </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/pr/press-list">홍보센터</NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -96,7 +98,7 @@ const RenewableForm = () => {
                 </li>
                 <li>
                   <NavLink to="/business/renewable/renewable">
-                    신재생 에너지사업
+                    스마트 전력 신사업
                   </NavLink>
                 </li>
               </ul>
@@ -113,12 +115,10 @@ const RenewableForm = () => {
               </NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/business/e-link/control">관제시스템 구축</NavLink>
+              <NavLink to="/business/e-link/control">관제시스템</NavLink>
             </li>
             <li className="swiper-slide on">
-              <NavLink to="/business/e-link/renewable">
-                신재생에너지 융합형 충전 인프라 구축
-              </NavLink>
+              <NavLink to="/business/e-link/renewable">차세대 모빌리티</NavLink>
             </li>
           </ul>
         </div>
@@ -132,8 +132,19 @@ const RenewableForm = () => {
                 data-aos-duration="2000"
                 data-aos-once="true"
               >
-                신재생에너지 융합형 충전 인프라 구축
+                차세대 모빌리티
               </h3>
+              <div className="infor mt0 mb75">
+                <div
+                  className="infor-tit mb0"
+                  data-aos="fade-right"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  대용량 배터리, 대규모 전력을 사용하는 B2B EV충전 시장과 동일한
+                  특징을 가진 차세대 모빌리티로 충전사업을 확장합니다.
+                </div>
+              </div>
             </div>
           </div>
           <div className="bg"></div>
@@ -172,12 +183,12 @@ const RenewableForm = () => {
                 PV-ESS, R(Reuse Battery)-ESS, DR, V2G 솔루션을 제공합니다.
               </div>
               <img
-                src="/img/sub/renewable_img.png"
+                src="/img/sub/Group 1397.jpg"
                 className="pc-img"
                 style={{ width: '100%' }}
               />
               <img
-                src="/img/sub/m_renewable_img.png"
+                src="/img/sub/Group 1397.jpg"
                 className="mo-img"
                 style={{ width: '100%' }}
               />

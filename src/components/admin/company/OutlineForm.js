@@ -2,7 +2,12 @@ import React, { useState, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOutline, insertOutline, updateOutline, deleteOutlineIds } from 'store/outlineReducer';
+import {
+  selectOutline,
+  insertOutline,
+  updateOutline,
+  deleteOutlineIds,
+} from 'store/outlineReducer';
 import { useEffect } from 'react';
 
 const AddYearBox = ({
@@ -38,7 +43,11 @@ const AddYearBox = ({
                 placeholder="yyyy"
                 maxLength="4"
                 name={'companyYear' + yidx}
-                value={year.indexOf('new_') > -1 ? inputs['companyYear' + yidx] : year}
+                value={
+                  year.indexOf('new_') > -1
+                    ? inputs['companyYear' + yidx]
+                    : year
+                }
                 ref={(e) => {
                   yearRef.current[year] = e;
                 }}
@@ -48,7 +57,11 @@ const AddYearBox = ({
             </div>
             <ul className="year-bd">
               {yearObj[year].map((item, midx) => (
-                <li className="active" key={year + '_' + midx} data-mindex={year + '_' + midx}>
+                <li
+                  className="active"
+                  key={year + '_' + midx}
+                  data-mindex={year + '_' + midx}
+                >
                   <div className="input-wp">
                     <input
                       type="text"
@@ -98,11 +111,17 @@ const AddYearBox = ({
                         수정
                       </button>
                     ) : (
-                      <button className="gray-btn" onClick={(e) => onCreate(e, year, midx)}>
+                      <button
+                        className="gray-btn"
+                        onClick={(e) => onCreate(e, year, midx)}
+                      >
                         등록
                       </button>
                     )}
-                    <button className="red-btn" onClick={(e) => onDeleteMonthBox(e, year, midx)}>
+                    <button
+                      className="red-btn"
+                      onClick={(e) => onDeleteMonthBox(e, year, midx)}
+                    >
                       삭제
                     </button>
                   </div>
@@ -201,18 +220,23 @@ const OutlineForm = () => {
       monthRef.current[year + '_' + midx].focus();
       return;
     }
-    if (companyDay === '') {
-      alert('일을 입력하세요');
-      dayRef.current[year + '_' + midx].focus();
-      return;
-    }
+    // if (companyDay === '') {
+    //   alert('일을 입력하세요');
+    //   dayRef.current[year + '_' + midx].focus();
+    //   return;
+    // }
     if (companyContents === '') {
       alert('내용을 입력하세요');
       contentRef.current[year + '_' + midx].focus();
       return;
     }
     if (window.confirm('등록 하시겠습니까?')) {
-      const newList = { companyYear: companyYear, companyMonth: companyMonth, companyDay: companyDay, companyContents: companyContents };
+      const newList = {
+        companyYear: companyYear,
+        companyMonth: companyMonth,
+        companyDay: companyDay,
+        companyContents: companyContents,
+      };
       dispatch(insertOutline(newList)).then(() => {
         dispatch(selectOutline());
       });

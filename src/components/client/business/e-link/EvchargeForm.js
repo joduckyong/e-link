@@ -64,19 +64,21 @@ const EvchargeForm = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/investment/financial">
+                    투자정보 & 홍보센터
+                  </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/pr/press-list">홍보센터</NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -97,7 +99,7 @@ const EvchargeForm = () => {
                 </li>
                 <li>
                   <NavLink to="/business/renewable/renewable">
-                    신재생 에너지사업
+                    스마트 전력 신사업
                   </NavLink>
                 </li>
               </ul>
@@ -114,12 +116,10 @@ const EvchargeForm = () => {
               </NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/business/e-link/control">관제시스템 구축</NavLink>
+              <NavLink to="/business/e-link/control">관제시스템</NavLink>
             </li>
             <li className="swiper-slide">
-              <NavLink to="/business/e-link/renewable">
-                신재생에너지 융합형 충전 인프라 구축
-              </NavLink>
+              <NavLink to="/business/e-link/renewable">차세대 모빌리티</NavLink>
             </li>
           </ul>
         </div>

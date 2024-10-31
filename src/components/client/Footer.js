@@ -35,8 +35,9 @@ const Footer = () => {
           </li>
         </ul>
         <address>
-          <span>ADD</span>(04386) 서울특별시 용산구 한강대로 92, <br class="m-block" />
-          LS용산타워 17층 LS E-Link(주)
+          <span>ADD</span>(04386) 서울특별시 용산구 한강대로 92,{' '}
+          <br class="m-block" />
+          LS용산타워 LS E-Link(주)
         </address>
 
         <ul className="tel">
@@ -45,7 +46,9 @@ const Footer = () => {
           </li>
         </ul>
         <ul className="tel">
-          <li>대표 : 김대근&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호 : 744-86-02437</li>
+          <li>
+            대표 : 김대근&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호 : 744-86-02437
+          </li>
         </ul>
         <div className="bottom">
           <ul className="privacy">
@@ -60,52 +63,159 @@ const Footer = () => {
             <li>
               <NavLink to="/policy/location">위치기반 서비스 이용약관</NavLink>
             </li>
+            <li className="ethic_link">
+              <NavLink to="/policy/Ethic">윤리경영</NavLink>
+            </li>
           </ul>
-          <div className={familyActive ? 'fm on' : 'fm'} onClick={() => setFamilyActive(!familyActive)}>
+          <div
+            className={familyActive ? 'fm on' : 'fm'}
+            onClick={() => setFamilyActive(!familyActive)}
+          >
             <NavLink to="">FAMILY SITE</NavLink>
             <ul className="family-link">
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lsholdings.com/')}>LS그룹</NavLink>
+                <NavLink
+                  onClick={() =>
+                    handleOpenNewTab('https://www.lsholdings.com/')
+                  }
+                >
+                  LS그룹
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.e1.co.kr/')}>주식회사 E1</NavLink>
+                <NavLink
+                  onClick={() => handleOpenNewTab('https://www.e1.co.kr/')}
+                >
+                  주식회사 E1
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lselectric.co.kr/')}>LS ELECTRIC</NavLink>
+                <NavLink
+                  onClick={() =>
+                    handleOpenNewTab('https://www.lselectric.co.kr/')
+                  }
+                >
+                  LS ELECTRIC
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lscns.co.kr/kr/main.asp')}>LS전선(주)</NavLink>
+                <NavLink
+                  onClick={() =>
+                    handleOpenNewTab('https://www.lscns.co.kr/kr/main.asp')
+                  }
+                >
+                  LS전선(주)
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('http://www.lsmtron.co.kr/page/lsmtronMain.asp?naviId=s01')}>LS엠트론(주)</NavLink>
+                <NavLink
+                  onClick={() =>
+                    handleOpenNewTab(
+                      'http://www.lsmtron.co.kr/page/lsmtronMain.asp?naviId=s01',
+                    )
+                  }
+                >
+                  LS엠트론(주)
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('http://www.lsmnm.com/mnm/index.aspx')}>LS MnM</NavLink>
+                <NavLink
+                  onClick={() =>
+                    handleOpenNewTab('http://www.lsmnm.com/mnm/index.aspx')
+                  }
+                >
+                  LS MnM
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://gaoncable.com/')}>가온전선(주)</NavLink>
+                <NavLink
+                  onClick={() => handleOpenNewTab('https://gaoncable.com/')}
+                >
+                  가온전선(주)
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.yescoholdings.com/main')}>(주)예스코</NavLink>
+                <NavLink
+                  onClick={() =>
+                    handleOpenNewTab('https://www.yescoholdings.com/main')
+                  }
+                >
+                  (주)예스코
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lsnetworks.co.kr/')}>LS네트웍스</NavLink>
+                <NavLink
+                  onClick={() =>
+                    handleOpenNewTab('https://www.lsnetworks.co.kr/')
+                  }
+                >
+                  LS네트웍스
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lsglobalinc.com/')}>LS글로벌</NavLink>
+                <NavLink
+                  onClick={() =>
+                    handleOpenNewTab('https://www.lsglobalinc.com/')
+                  }
+                >
+                  LS글로벌
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.ls-ind.co.kr/')}>LS I&D</NavLink>
+                <NavLink
+                  onClick={() => handleOpenNewTab('https://www.ls-ind.co.kr/')}
+                >
+                  LS I&D
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://www.lsmetal.biz/')}>LS Metal</NavLink>
+                <NavLink
+                  onClick={() => handleOpenNewTab('https://www.lsmetal.biz/')}
+                >
+                  LS Metal
+                </NavLink>
               </li>
               <li>
-                <NavLink onClick={() => handleOpenNewTab('https://lsautomotive.com/')}>LS 오토모티브</NavLink>
+                <NavLink
+                  onClick={() => handleOpenNewTab('https://lsautomotive.com/')}
+                >
+                  LS 오토모티브
+                </NavLink>
               </li>
             </ul>
           </div>
           <p className="copy">ⓒ2023. LS E-Link ALL RIGHT RESERVED.</p>
+        </div>
+        <div className="ft_link">
+          <div className="top">
+            <div className="ft_logo">
+              <img src="/img/common/ft_logo.png" alt="" />
+            </div>
+            <div className="cont_txt">
+              <span>Charge your time with ELVIS</span>
+              ELVIS - 전기차 충전 & 차계부
+            </div>
+          </div>
+          <div className="bot">
+            <a
+              className="down_btn"
+              href="https://play.google.com/store/apps/details?id=com.lselink.elvis"
+              download
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src="/img/common/ft_btn01.png" alt="" />
+            </a>
+            <a
+              className="down_btn"
+              href="https://apps.apple.com/kr/app/elvis/id6449213902"
+              download
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src="/img/common/ft_btn02.png" alt="" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

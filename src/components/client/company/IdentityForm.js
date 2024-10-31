@@ -35,10 +35,19 @@ const IdentityForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             CI·BI
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -58,19 +67,21 @@ const IdentityForm = () => {
                   <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/investment/financial">
+                    투자정보 & 홍보센터
+                  </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/pr/press-list">홍보센터</NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -106,13 +117,23 @@ const IdentityForm = () => {
         <div className="ci-bi">
           <div className="ci-wrap">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 Group Corporate Identity
               </h3>
-              <p className="ci-introduce" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <p
+                className="ci-introduce"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 화살표 모양은 끊임없이 미래를 향해 전진하는 기업의 강한 의지와
                 <br className="pc-block" />
-                새로운 패러다임을 여는 무한 성장기업을 상징하며, 곡선 Line은 고객을 향한 LS의 마음을 의미합니다.
+                새로운 패러다임을 여는 무한 성장기업을 상징하며, 곡선 Line은
+                고객을 향한 LS의 마음을 의미합니다.
               </p>
               <div className="represt">
                 <div className="img check-img">
@@ -126,7 +147,15 @@ const IdentityForm = () => {
                     <i className="red"></i>Red : 도전적이고 진취적인 사고
                   </li>
                   <li>
-                    <NavLink onClick={() => handleOpenNewTab('https://www.lsholdings.com/ko/media/ci/')}>CI 규정 보러가기</NavLink>
+                    <NavLink
+                      onClick={() =>
+                        handleOpenNewTab(
+                          'https://www.lsholdings.com/ko/media/ci/',
+                        )
+                      }
+                    >
+                      CI 규정 보러가기
+                    </NavLink>
                   </li>
                 </ul>
               </div>
@@ -135,14 +164,26 @@ const IdentityForm = () => {
           <div className="bg"></div>
           <div className="ci-wrap">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 CI
               </h3>
-              <p className="ci-introduce2" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <p
+                className="ci-introduce2"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 LS CI 매뉴얼을 기반으로, E1의 Orange 컬러를 혼합하여
                 <br className="pc-block" />
                 양사 파트너십 이미지를 반영하였습니다.
-                <button className="btn-down" onClick={() => downloadFile('CI.zip', 'CI.zip')}>
+                <button
+                  className="btn-down"
+                  onClick={() => downloadFile('CI.zip', 'CI.zip')}
+                >
                   다운로드
                 </button>
               </p>
@@ -151,10 +192,12 @@ const IdentityForm = () => {
                   <img src="/img/logo/ls-link.svg" alt="LS" />
                 </div>
                 <p className="notice">
-                  LS E-Link CI 시그니처와 로고타입은 조형적인 특징 및 상징성이 가장 잘 드러나는 Identity의 대표적인 형태이므로, 적용시 규정과 원칙을
-                  반드시 준수하여
+                  LS E-Link CI 시그니처와 로고타입은 조형적인 특징 및 상징성이
+                  가장 잘 드러나는 Identity의 대표적인 형태이므로, 적용시 규정과
+                  원칙을 반드시 준수하여
                   <br className="pc-block" />
-                  왜곡, 변형, 오·남용 등 어떠한 이미지 손상도 발생하지 않도록 해야합니다.
+                  왜곡, 변형, 오·남용 등 어떠한 이미지 손상도 발생하지 않도록
+                  해야합니다.
                 </p>
                 <ul className="logo-list">
                   <li>
@@ -175,14 +218,27 @@ const IdentityForm = () => {
           </div>
           <div className="ci-wrap bg-gray">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 Wordmark
               </h3>
-              <p className="ci-introduce2" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <p
+                className="ci-introduce2"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 E는 에너지(Energy)와 전기(Electricity)의 중의적의미를,
                 <br className="pc-block" />
-                Link는 전기와 관련한 LS의 모든 기술력이 연결된다는 의미가 결합 되었습니다.
-                <button className="btn-down" onClick={() => downloadFile('Wordmark.zip', 'Wordmark.zip')}>
+                Link는 전기와 관련한 LS의 모든 기술력이 연결된다는 의미가 결합
+                되었습니다.
+                <button
+                  className="btn-down"
+                  onClick={() => downloadFile('Wordmark.zip', 'Wordmark.zip')}
+                >
                   다운로드
                 </button>
               </p>
@@ -241,13 +297,24 @@ const IdentityForm = () => {
           </div>
           <div className="ci-wrap color">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 Color System
               </h3>
-              <p className="ci-introduce2" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-                전용색상은 LS E-Link의 정체성을 표현하는 주요 요소 중 하나입니다. <br className="pc-block" />
-                공동 출자사인 E1의 오렌지 컬러와 LS의 네이비 컬러를 활용한 그라데이션 컬러 구성으로 일반적인 단색 컬러 구성의 CI와는 색다른 의미와
-                느낌을 전달하고 있습니다.
+              <p
+                className="ci-introduce2"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
+                전용색상은 LS E-Link의 정체성을 표현하는 주요 요소 중
+                하나입니다. <br className="pc-block" />
+                공동 출자사인 E1의 오렌지 컬러와 LS의 네이비 컬러를 활용한
+                그라데이션 컬러 구성으로 일반적인 단색 컬러 구성의 CI와는 색다른
+                의미와 느낌을 전달하고 있습니다.
               </p>
               <ul className="color-list">
                 <li>

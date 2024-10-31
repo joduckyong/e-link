@@ -6,7 +6,12 @@ import { selectClientBoard } from 'store/boardReducer';
 import { useCookies } from 'react-cookie';
 import AOS from 'aos';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Mousewheel, Autoplay } from 'swiper';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Mousewheel,
+  Autoplay,
+} from 'swiper';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import classNames from 'classnames';
@@ -104,7 +109,9 @@ const MainForm = () => {
   return (
     <>
       {popupList
-        .filter((list) => list.popupId !== popupCookies['POPUP_' + list.popupId])
+        .filter(
+          (list) => list.popupId !== popupCookies['POPUP_' + list.popupId],
+        )
         .map((list) => (
           <Modal
             popupLink={list.popupLink}
@@ -150,27 +157,46 @@ const MainForm = () => {
               <source src="/video/main.mp4" type="video/mp4" />
             </video> */}
 
-            <video src="/video/main.mp4" playsInline loop muted autoPlay></video>
+            <video
+              src="/video/main.mp4"
+              playsInline
+              loop
+              muted
+              autoPlay
+            ></video>
           </div>
         </div>
         <div className="con1">
           <div className="wrap">
-            <div className="tit" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+            <div
+              className="tit"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+              data-aos-once="true"
+            >
               LS E-Link는
-              <br className="m-block" /> 보다 깨끗하고 안전한
+              <br className="m-block" /> B2B 대용량 고전력에 특화된
               <br />
               전기차 충전 솔루션으로
               <br />더 큰 가치를 만들어
               <br className="m-block" /> 나갑니다.
             </div>
             <ul>
-              <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+              <li
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-once="true"
+              >
                 <NavLink to="/contactus/consult">
                   <div className="s-tit">충전기 상담신청</div>
                   <p>전기차 충전 인프라 구축이 필요하신가요?</p>
                 </NavLink>
               </li>
-              <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+              <li
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-once="true"
+              >
                 <NavLink to="/contactus/inconvenience">
                   <div className="s-tit">불편신고</div>
                   <p>고장이 나셨나요? 빠르게 대응하겠습니다.</p>
@@ -181,7 +207,10 @@ const MainForm = () => {
         </div>
 
         <div className="con2" ref={scrollRef}>
-          <div className={classNames('con2-container', { on: scrollView })} ref={scrollStyleChange}>
+          <div
+            className={classNames('con2-container', { on: scrollView })}
+            ref={scrollStyleChange}
+          >
             <section className="section intro" data-section-color="transparent">
               <div>
                 <article className="_intro">
@@ -189,12 +218,12 @@ const MainForm = () => {
                     <strong className="main-section-headline">BUSINESS</strong>
                     <div className="btn-area">
                       <span>
-                        LS E-Link는 <br className="m-block" />
-                        충전 인프라 구축, 투자 컨설팅,
+                        LS E-Link는 충전인프라의
                         <br />
-                        최적의 Fleet 운영을 포함한
+                        설계 및 개발부터 구축 그리고 운영까지
                         <br />
-                        Total Solution을 제공하고 있습니다.<i className="icon-arrow-right-bk-30"></i>
+                        Total Solution을 제공하고 있습니다.
+                        <i className="icon-arrow-right-bk-30"></i>
                       </span>
                     </div>
                   </div>
@@ -204,7 +233,13 @@ const MainForm = () => {
                         <source src="/video/con2-video.mp4" type="video/mp4" />
                       </video> */}
 
-                      <video src="/video/con2-video.mp4" playsInline loop muted autoPlay></video>
+                      <video
+                        src="/video/con2-video.mp4"
+                        playsInline
+                        loop
+                        muted
+                        autoPlay
+                      ></video>
                     </div>
                   </div>
                 </article>
@@ -248,14 +283,24 @@ const MainForm = () => {
                 >
                   <SwiperSlide>
                     <div className="swiper-slide slide1">
-                      <div className="slide-bg" style={{ background: '#EC6800 url() right bottom no-repeat' }}>
+                      <div
+                        className="slide-bg"
+                        style={{
+                          background: '#EC6800 url() right bottom no-repeat',
+                        }}
+                      >
                         <div className="slide-inner">
                           <h3 className="text">전기차 충전사업</h3>
                           <p className="desc">
-                            고객 맞춤형 충전 인프라 구축 <br />및 O&M서비스 제공
+                            고객 맞춤형 충전 인프라 구축 <br />및 운영서비스
+                            제공
                           </p>
                           <div className="car-wrap">
-                            <div className={classNames({ on: carVal === 0 || carVal === 1 })}>
+                            <div
+                              className={classNames({
+                                on: carVal === 0 || carVal === 1,
+                              })}
+                            >
                               <img src="/img/main/car.png" alt="" />
                             </div>
                             <div className={classNames({ on: carVal === 2 })}>
@@ -268,55 +313,40 @@ const MainForm = () => {
                               <img src="/img/main/car-2.png" alt="" />
                             </div>
                           </div>
-                          <NavLink to="/business/ev/transportation" className="link">
+                          <NavLink
+                            to="/business/ev/transportation"
+                            className="link"
+                          >
                             VIEW MORE
                           </NavLink>
-                        </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="swiper-slide slide2">
-                      <div className="slide-bg" style={{ background: '#12A84E url(/img/main/con3-img2.png) right center no-repeat' }}>
-                        <div className="slide-inner">
-                          <h3 className="text">
-                            신재생에너지 융합형
-                            <br />
-                            충전 인프라 구축
-                          </h3>
-                          <p className="desc">
-                            신재생에너지 발전과 연계한 EV충전 <br className="m-block" />인프라 구축 및 <br className="pc-block" />
-                            운영 컨설팅
-                          </p>
-                          <NavLink to="/business/e-link/renewable" className="link">
-                            VIEW MORE
-                          </NavLink>
-                          <span className="cloud1">
-                            <img src="/img/main/con3-img2-cloud1.png" alt="" />
-                          </span>
-                          <span className="cloud2">
-                            <img src="/img/main/con3-img2-cloud2.png" alt="" />
-                          </span>
-                          <span className="cloud3">
-                            <img src="/img/main/con3-img2-cloud3.png" alt="" />
-                          </span>
                         </div>
                       </div>
                     </div>
                   </SwiperSlide>
                   <SwiperSlide>
                     <div className="swiper-slide slide3">
-                      <div className="slide-bg" style={{ background: '#1E2F63 url(/img/main/con3-pad.png) 70% center no-repeat' }}>
+                      <div
+                        className="slide-bg"
+                        style={{
+                          background:
+                            '#1E2F63 url(/img/main/con3-pad.png) 70% center no-repeat',
+                        }}
+                      >
                         <div className="slide-inner">
                           <h3 className="text">
                             EV CSMS
                             <br />
                           </h3>
                           <p className="desc">
-                            고객 특화/차종 특화 기능의 <br className="m-block" />관제시스템 <br className="pc-block" />
+                            고객 특화/차종 특화 기능의{' '}
+                            <br className="m-block" />
+                            관제시스템 <br className="pc-block" />
                             구축 서비스 제공
                           </p>
-                          <NavLink to="/business/e-link/control" className="link">
+                          <NavLink
+                            to="/business/e-link/control"
+                            className="link"
+                          >
                             VIEW MORE
                           </NavLink>
                           <span className="air">
@@ -335,6 +365,42 @@ const MainForm = () => {
                       </div>
                     </div>
                   </SwiperSlide>
+                  <SwiperSlide>
+                    <div className="swiper-slide slide2">
+                      <div
+                        className="slide-bg"
+                        style={{
+                          background:
+                            '#12A84E url(/img/main/con3-img2.png) right center no-repeat',
+                        }}
+                      >
+                        <div className="slide-inner">
+                          <h3 className="text">차세대 모빌리티</h3>
+                          <p className="desc">
+                            차세대 모빌리티와 연계한 EV충전
+                            <br className="m-block" />
+                            인프라 구축 및 <br className="pc-block" />
+                            운영 컨설팅
+                          </p>
+                          <NavLink
+                            to="/business/e-link/renewable"
+                            className="link"
+                          >
+                            VIEW MORE
+                          </NavLink>
+                          <span className="cloud1">
+                            <img src="/img/main/con3-img2-cloud1.png" alt="" />
+                          </span>
+                          <span className="cloud2">
+                            <img src="/img/main/con3-img2-cloud2.png" alt="" />
+                          </span>
+                          <span className="cloud3">
+                            <img src="/img/main/con3-img2-cloud3.png" alt="" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
                 </Swiper>
               </div>
               <div className="swiper-pagination"></div>
@@ -346,7 +412,12 @@ const MainForm = () => {
           <div className="wrap index-action">
             <div id="ourvalue" className="pc-show">
               <div className="area-wrap">
-                <div className="left" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+                <div
+                  className="left"
+                  data-aos="fade-right"
+                  data-aos-duration="1000"
+                  data-aos-once="true"
+                >
                   <div className="lf-wrap">
                     <div className="big-tit">
                       내일의 에너지를
@@ -357,28 +428,48 @@ const MainForm = () => {
                   </div>
                 </div>
                 <div className="right">
-                  <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
+                  <div
+                    data-aos="zoom-in-up"
+                    data-aos-duration="1000"
+                    data-aos-once="true"
+                  >
                     <img src="/img/main/con4-img1.png" alt="" />
                     <div className="txt">
                       <div className="small">전기·전력분야</div>
                       <div className="big">글로벌 리딩기업 LS</div>
                     </div>
                   </div>
-                  <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
+                  <div
+                    data-aos="zoom-in-up"
+                    data-aos-duration="1000"
+                    data-aos-once="true"
+                  >
                     <img src="/img/main/con4-img2.png" alt="" />
                     <div className="txt">
-                      <div className="small">전기화시대 글로벌리딩기업 LS와</div>
+                      <div className="small">
+                        전기화시대 글로벌리딩기업 LS와
+                      </div>
                       <div className="big">친환경에너지 선도기업 E1</div>
                     </div>
                   </div>
-                  <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
+                  {/* <div
+                    data-aos="zoom-in-up"
+                    data-aos-duration="1000"
+                    data-aos-once="true"
+                  >
                     <img src="/img/main/con4-img3.png" alt="" />
                     <div className="txt">
                       <div className="big">Fleet Management로</div>
-                      <div className="small long">고객의 운행여건에 최적화된 충전 솔루션 제공</div>
+                      <div className="small long">
+                        고객의 운행여건에 최적화된 충전 솔루션 제공
+                      </div>
                     </div>
-                  </div>
-                  <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true">
+                  </div> */}
+                  <div
+                    data-aos="zoom-in-up"
+                    data-aos-duration="1000"
+                    data-aos-once="true"
+                  >
                     <img src="/img/main/con4-img4.png" alt="" />
                     <div className="txt">
                       <div className="small">'함께하여 더 큰 가치'</div>
@@ -416,7 +507,9 @@ const MainForm = () => {
                   <img src="/img/main/con4-img3.png" alt="" />
                   <div className="txt">
                     <div className="big">Fleet Management로</div>
-                    <div className="small long">복잡하고 어려운 물류환경에서의 유연한 적용</div>
+                    <div className="small long">
+                      복잡하고 어려운 물류환경에서의 유연한 적용
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -432,10 +525,21 @@ const MainForm = () => {
         </div>
         <div className="con5">
           <div className="con5-textarea">
-            <div className="s-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+            <div
+              className="s-tit"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-once="true"
+            >
               TECHNOLOGICAL INNOVATION
             </div>
-            <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300">
+            <div
+              className="main-tit"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-once="true"
+              data-aos-delay="300"
+            >
               LS E-Link는 <br className="m-block" />
               LS그룹의 전기·전력분야 <br className="m-block" />
               기술력을 바탕으로 <br />
@@ -523,7 +627,8 @@ const MainForm = () => {
                     시공능력
                   </div>
                   <p>
-                    LS E-Link는 업계최고 충전인프라 시공능력과 IT 기술력을 <br />
+                    LS E-Link는 업계최고 충전인프라 시공능력과 IT 기술력을{' '}
+                    <br />
                     바탕으로 전기자동차 충전시장을 선도해 가고 있습니다. <br />
                     LS E-Link와 함께 성장해 보세요.
                   </p>
@@ -551,8 +656,14 @@ const MainForm = () => {
                 {/* </div> */}
               </SwiperSlide>
               <div className="control">
-                <div className="swiper-button-prev" ref={navigationPrevRef}></div>
-                <div className="swiper-button-next" ref={navigationNextRef}></div>
+                <div
+                  className="swiper-button-prev"
+                  ref={navigationPrevRef}
+                ></div>
+                <div
+                  className="swiper-button-next"
+                  ref={navigationNextRef}
+                ></div>
               </div>
             </Swiper>
             {/* </div> */}
@@ -563,8 +674,25 @@ const MainForm = () => {
               <source src="/video/technological-innovation.mp4" type="video/mp4" />
             </video> */}
 
-            <video src="/video/technological-innovation.mp4" playsInline loop muted autoPlay></video>
-            <img style={{ position: 'absolute', zIndex: 1, top: 0, left:0, height: '100%', width: '100%' }} src="/img/main/1296.png" alt="" />
+            <video
+              src="/video/technological-innovation.mp4"
+              playsInline
+              loop
+              muted
+              autoPlay
+            ></video>
+            <img
+              style={{
+                position: 'absolute',
+                zIndex: 1,
+                top: 0,
+                left: 0,
+                height: '100%',
+                width: '100%',
+              }}
+              src="/img/main/1296.png"
+              alt=""
+            />
           </div>
         </div>
         <div className="con6">
@@ -574,17 +702,32 @@ const MainForm = () => {
             <source src="/video/main_con6_video.mp4" type="video/mp4" />
           </video> */}
 
-          <video src="/video/main_con6_video.mov" playsInline loop muted autoPlay></video>
+          <video
+            src="/video/main_con6_video.mov"
+            playsInline
+            loop
+            muted
+            autoPlay
+          ></video>
         </div>
-        <div className="con7">
+        {/* <div className="con7">
           <div className="wrap">
-            <div className="main-tit" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+            <div
+              className="main-tit"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-once="true"
+            >
               보도자료
             </div>
             <NavLink to="/pr/press-list" className="more">
               <img src="/img/main/ico-plus.svg" alt="" />
             </NavLink>
-            <ul data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+            <ul
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-once="true"
+            >
               {boardList
                 .filter((list, index) => index < 3)
                 .map((list, index) => (
@@ -596,7 +739,10 @@ const MainForm = () => {
                         dangerouslySetInnerHTML={{
                           __html:
                             removeImgTag(list.boardContents).length > 126
-                              ? removeImgTag(list.boardContents).substring(0, 126) + '...'
+                              ? removeImgTag(list.boardContents).substring(
+                                  0,
+                                  126,
+                                ) + '...'
                               : removeImgTag(list.boardContents),
                         }}
                       ></p>
@@ -605,27 +751,39 @@ const MainForm = () => {
                 ))}
             </ul>
           </div>
-        </div>
-        <div className="con8">
+        </div>  */}
+        {/* <div className="con8">
           <div className="wrap">
             <div className="txt-area">
-              <div className="main-tit" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+              <div
+                className="main-tit"
+                data-aos="fade-right"
+                data-aos-duration="1000"
+                data-aos-once="true"
+              >
                 LS E-Link에서
                 <br />
                 함께 성장할 인재를 기다립니다.
               </div>
-              {/*<NavLink to="/recruit/posting" className="more" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-                VIEW MORE
-              </NavLink>*/}
             </div>
             <ul>
-              <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="700">
+              <li
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-once="true"
+                data-aos-delay="700"
+              >
                 <NavLink to="/recruit/people">
                   <i></i>
                   인재상
                 </NavLink>
               </li>
-              <li data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="700">
+              <li
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-once="true"
+                data-aos-delay="700"
+              >
                 <NavLink to="/recruit/posting">
                   <i></i>
                   채용공고
@@ -633,7 +791,7 @@ const MainForm = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

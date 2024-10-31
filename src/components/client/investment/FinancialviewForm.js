@@ -9,12 +9,22 @@ import { downloadFile } from 'common/download';
 const FinancialviewForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const boardTitle = useSelector((state) => state.boardReducer.dataInfo.boardTitle);
-  const createdDatetime = useSelector((state) => state.boardReducer.dataInfo.createdDatetime);
-  const boardContents = useSelector((state) => state.boardReducer.dataInfo.boardContents);
+  const boardTitle = useSelector(
+    (state) => state.boardReducer.dataInfo.boardTitle,
+  );
+  const createdDatetime = useSelector(
+    (state) => state.boardReducer.dataInfo.createdDatetime,
+  );
+  const boardContents = useSelector(
+    (state) => state.boardReducer.dataInfo.boardContents,
+  );
   const fileList = useSelector((state) => state.boardReducer.files);
-  const prevBoardId = useSelector((state) => state.boardReducer.prevNextData?.prevBoardId);
-  const nextBoardId = useSelector((state) => state.boardReducer.prevNextData?.nextBoardId);
+  const prevBoardId = useSelector(
+    (state) => state.boardReducer.prevNextData?.prevBoardId,
+  );
+  const nextBoardId = useSelector(
+    (state) => state.boardReducer.prevNextData?.nextBoardId,
+  );
 
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
@@ -42,10 +52,21 @@ const FinancialviewForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+            data-aos-delay="200"
+          >
             재무정보
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true" data-aos-delay="200">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+            data-aos-delay="200"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -53,7 +74,7 @@ const FinancialviewForm = () => {
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                투자정보
+                투자정보 & 홍보센터
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
@@ -63,21 +84,18 @@ const FinancialviewForm = () => {
                   <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management" className="on">
-                    투자정보
+                  <NavLink to="/investment/financial" className="on">
+                    투자정보 & 홍보센터
                   </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
                 </li>
                 <li>
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -112,25 +130,37 @@ const FinancialviewForm = () => {
             <h3 className="tit">{boardTitle}</h3>
             <div className="list-num">{createdDatetime}</div>
             <div className="view-area">
-              <p className="mt30" dangerouslySetInnerHTML={{ __html: boardContents }}></p>
+              <p
+                className="mt30"
+                dangerouslySetInnerHTML={{ __html: boardContents }}
+              ></p>
             </div>
             {fileList.map((list, index) => (
               <div className="list-num-wrap">
                 <div className="file">
-                  <button className="btn-down" onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}>
+                  <button
+                    className="btn-down"
+                    onClick={() => downloadFile(list.fileNm, list.fileOriginNm)}
+                  >
                     <div className="list-num">{list.fileOriginNm}</div>
                   </button>
                 </div>
               </div>
             ))}
             <div className="view-control">
-              <NavLink to={prevBoardId && `/investment/financial-view/${prevBoardId}`} className={classnames('prev-btn', { disable: !prevBoardId })}>
+              <NavLink
+                to={prevBoardId && `/investment/financial-view/${prevBoardId}`}
+                className={classnames('prev-btn', { disable: !prevBoardId })}
+              >
                 이전글
               </NavLink>
               <NavLink to="/investment/financial" className="list-btn">
                 목록
               </NavLink>
-              <NavLink to={nextBoardId && `/investment/financial-view/${nextBoardId}`} className={classnames('next-btn', { disable: !nextBoardId })}>
+              <NavLink
+                to={nextBoardId && `/investment/financial-view/${nextBoardId}`}
+                className={classnames('next-btn', { disable: !nextBoardId })}
+              >
                 다음글
               </NavLink>
             </div>

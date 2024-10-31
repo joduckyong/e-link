@@ -86,19 +86,16 @@ const Header = () => {
                   </li>
                   <li>
                     <NavLink to="/business/renewable/renewable">
-                      신재생 에너지사업
+                      스마트 전력 신사업
                     </NavLink>
                   </li>
                 </ul>
               </div>
             </li>
             <li>
-              <NavLink to="/investment/financial">투자정보</NavLink>
+              <NavLink to="/investment/financial">투자정보 & 홍보센터</NavLink>
               <div className="depth-1">
                 <ul>
-                  <li>
-                    <NavLink to="/investment/management">경영정보</NavLink>
-                  </li>
                   <li>
                     <NavLink to="/investment/financial">재무정보</NavLink>
                   </li>
@@ -108,18 +105,8 @@ const Header = () => {
                   <li>
                     <NavLink to="/investment/announce">공고</NavLink>
                   </li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <NavLink to="/pr/press-list">홍보센터</NavLink>
-              <div className="depth-1">
-                <ul>
                   <li>
-                    <NavLink to="/pr/press-list">보도자료</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/pr/media-list">미디어</NavLink>
+                    <NavLink to="/pr/press-list">뉴스</NavLink>
                   </li>
                 </ul>
               </div>
@@ -131,12 +118,12 @@ const Header = () => {
                   <li>
                     <NavLink to="/recruit/people">인재상</NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink to="/recruit/benefits">복리후생</NavLink>
                   </li>
                   <li>
                     <NavLink to="/recruit/posting">채용공고</NavLink>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </li>
@@ -166,9 +153,9 @@ const Header = () => {
               <NavLink to="/ev/index">EV 충전소</NavLink>
               <div className="depth-1">
                 <ul>
-                  <li>
+                  {/* <li>
                     <NavLink to="/ev/index">브랜드 소개</NavLink>
-                  </li>
+                  </li> */}
                   <li
                     style={
                       !evAuthActive ? { display: 'block' } : { display: 'none' }
@@ -193,9 +180,9 @@ const Header = () => {
                   >
                     <NavLink to="/ev/mypage1">마이페이지</NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink to="/ev/control">관제센터</NavLink>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </li>
@@ -315,19 +302,16 @@ const Header = () => {
                 </li>
                 <li>
                   <NavLink to="/business/renewable/renewable">
-                    신재생 에너지사업
+                    스마트 전력 신사업
                   </NavLink>
                 </li>
               </ul>
             </li>
             <li>
               <NavLink to="/investment/financial">
-                <strong>투자정보</strong>
+                <strong>투자정보 & 홍보센터</strong>
               </NavLink>
               <ul className="small-menu">
-                <li>
-                  <NavLink to="/investment/management">경영정보</NavLink>
-                </li>
                 <li>
                   <NavLink to="/investment/financial">재무정보</NavLink>
                 </li>
@@ -337,18 +321,8 @@ const Header = () => {
                 <li>
                   <NavLink to="/investment/announce">공고</NavLink>
                 </li>
-              </ul>
-            </li>
-            <li>
-              <NavLink to="/pr/press-list">
-                <strong>홍보센터</strong>
-              </NavLink>
-              <ul className="small-menu">
                 <li>
-                  <NavLink to="/pr/press-list">보도자료</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/pr/media-list">미디어</NavLink>
+                  <NavLink to="/pr/press-list">뉴스</NavLink>
                 </li>
               </ul>
             </li>
@@ -360,12 +334,12 @@ const Header = () => {
                 <li>
                   <NavLink to="/recruit/people">인재상</NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/recruit/benefits">복리후생</NavLink>
                 </li>
                 <li>
                   <NavLink to="/recruit/posting">채용공고</NavLink>
-                </li>
+                </li> */}
               </ul>
             </li>
             <li>
@@ -394,9 +368,9 @@ const Header = () => {
                 <strong>EV 충전소</strong>
               </NavLink>
               <ul className="small-menu">
-                <li>
+                {/* <li>
                   <NavLink to="/ev/index">브랜드 소개</NavLink>
-                </li>
+                </li> */}
                 <li
                   style={
                     !evAuthActive ? { display: 'block' } : { display: 'none' }
@@ -421,9 +395,9 @@ const Header = () => {
                 >
                   <NavLink to="/ev/mypage1">마이페이지</NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/ev/control">관제센터</NavLink>
-                </li>
+                </li> */}
               </ul>
             </li>
           </ul>
@@ -520,7 +494,7 @@ const Header = () => {
                   </li>
                   <li>
                     <NavLink to="/business/renewable/renewable">
-                      신재생 에너지사업
+                      스마트 전력 신사업
                     </NavLink>
                   </li>
                 </ul>
@@ -530,7 +504,7 @@ const Header = () => {
               className={moMenuClass === '3' ? 'mo-click on' : 'mo-click'}
               onClick={() => onClickMoMenu('3')}
             >
-              <NavLink to="">투자정보</NavLink>
+              <NavLink to="">투자정보 & 홍보센터</NavLink>
               <div
                 className="depth-1"
                 style={
@@ -541,9 +515,6 @@ const Header = () => {
               >
                 <ul>
                   <li>
-                    <NavLink to="/investment/management">경영정보</NavLink>
-                  </li>
-                  <li>
                     <NavLink to="/investment/financial">재무정보</NavLink>
                   </li>
                   <li>
@@ -552,28 +523,8 @@ const Header = () => {
                   <li>
                     <NavLink to="/investment/announce">공고</NavLink>
                   </li>
-                </ul>
-              </div>
-            </li>
-            <li
-              className={moMenuClass === '4' ? 'mo-click on' : 'mo-click'}
-              onClick={() => onClickMoMenu('4')}
-            >
-              <NavLink to="">홍보센터</NavLink>
-              <div
-                className="depth-1"
-                style={
-                  moMenuClass === '4'
-                    ? { display: 'block' }
-                    : { display: 'none' }
-                }
-              >
-                <ul>
                   <li>
-                    <NavLink to="/pr/press-list">보도자료</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/pr/media-list">미디어</NavLink>
+                    <NavLink to="/pr/press-list">뉴스</NavLink>
                   </li>
                 </ul>
               </div>
@@ -595,12 +546,12 @@ const Header = () => {
                   <li>
                     <NavLink to="/recruit/people">인재상</NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink to="/recruit/benefits">복리후생</NavLink>
                   </li>
                   <li>
                     <NavLink to="/recruit/posting">채용공고</NavLink>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </li>
@@ -644,9 +595,9 @@ const Header = () => {
                 }
               >
                 <ul>
-                  <li>
+                  {/* <li>
                     <NavLink to="/ev/index">브랜드 소개</NavLink>
-                  </li>
+                  </li> */}
                   <li
                     style={
                       !evAuthActive ? { display: 'block' } : { display: 'none' }
@@ -671,9 +622,9 @@ const Header = () => {
                   >
                     <NavLink to="/ev/mypage1">마이페이지</NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink to="/ev/control">관제센터</NavLink>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </li>

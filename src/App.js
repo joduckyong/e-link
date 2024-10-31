@@ -215,6 +215,7 @@ import CyberNewspaperEnPage from './pages/client_en/contactus/CyberNewspaperPage
 import PrivacyPage from './pages/client/policy/PrivacyPage';
 import TermsPage from './pages/client/policy/TermsPage';
 import LocationPage from './pages/client/policy/LocationPage';
+import EthicPage from './pages/client/policy/EthicPage';
 
 // 약관 영문
 import PrivacyEnPage from './pages/client_en/policy/PrivacyPage';
@@ -661,6 +662,7 @@ const App = () => {
         <Route path="/policy/privacy" element={<PrivacyPage />} />
         <Route path="/policy/terms" element={<TermsPage />} />
         <Route path="/policy/location" element={<LocationPage />} />
+        <Route path="/policy/ethic" element={<EthicPage />} />
         <Route path="/en/policy/privacy" element={<PrivacyEnPage />} />
         <Route path="/en/policy/terms" element={<TermsEnPage />} />
         <Route path="/en/policy/location" element={<LocationEnPage />} />

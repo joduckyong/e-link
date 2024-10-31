@@ -31,10 +31,19 @@ const TransportationForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             전기차 충전사업
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -54,19 +63,18 @@ const TransportationForm = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/pr/press-list">홍보센터</NavLink>
+                  <NavLink to="/investment/financial">
+                    투자정보 & 홍보센터
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -76,7 +84,9 @@ const TransportationForm = () => {
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
                 <li>
-                  <NavLink to="/business/e-link/evcharge">E-Link BUSINESS</NavLink>
+                  <NavLink to="/business/e-link/evcharge">
+                    E-Link BUSINESS
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="/business/ev/transportation" className="on">
@@ -84,7 +94,9 @@ const TransportationForm = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/business/renewable/renewable">신재생 에너지사업</NavLink>
+                  <NavLink to="/business/renewable/renewable">
+                    스마트 전력 신사업
+                  </NavLink>
                 </li>
               </ul>
             </li>
@@ -100,9 +112,9 @@ const TransportationForm = () => {
             <li className="swiper-slide">
               <NavLink to="/business/ev/logitics">물류</NavLink>
             </li>
-            <li className="swiper-slide">
+            {/* <li className="swiper-slide">
               <NavLink to="/business/ev/coporate">에너지 센터</NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
@@ -110,7 +122,11 @@ const TransportationForm = () => {
         <div className="business drive">
           <div className="business-wrap">
             <div className="wrap">
-              <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+              <h3
+                data-aos="fade-right"
+                data-aos-duration="2000"
+                data-aos-once="true"
+              >
                 운수
               </h3>
             </div>
@@ -120,81 +136,42 @@ const TransportationForm = () => {
             <div className="wrap">
               <div className="tit-wrap">
                 <div className="tit">전기버스 충전 솔루션</div>
-                <p>차고지, 운행패턴, 수전여건에 맞추어 충전 솔루션을 제공합니다.</p>
+                <p>
+                  차고지, 운행패턴, 수전여건에 맞추어 충전 솔루션을 제공합니다.
+                </p>
               </div>
               <div className="img">
                 <ParallaxProvider>
                   <Parallax>
-                    <div className="in" data-top-top="background-position: 50% 100%;" data-center-top="background-position:100% 100%;"></div>
+                    <div
+                      className="in"
+                      data-top-top="background-position: 50% 100%;"
+                      data-center-top="background-position:100% 100%;"
+                    ></div>
                   </Parallax>
                 </ParallaxProvider>
               </div>
             </div>
           </div>
-          {/*<div className="system">
-            <div className="sys-bg" style={{ 'background-size': 'cover' }}></div>
-            <div className="wrap">
-              <div className="sys-tit">전기버스 충전 시스템</div>
-              <ul>
-                <li>
-                  <img src="/img/sub/kepco.svg" alt="" />
-                </li>
-                <li>
-                  <img src="/img/sub/e-link.svg" alt="" />
-                </li>
-                <li>
-                  <img src="/img/sub/charge.svg" alt="" />
-                </li>
-              </ul>
-            </div>
-          </div>*/}
 
           <div className="infor-down infor-down2">
             <div className="wrap">
               <div className="tit-wrap">
                 <div className="tit">차세대 버스 충전 솔루션</div>
                 <p>
-                  LS E-Link의 EV 버스 충전 솔루션은 전력분배, 순차충전, 충전속도제어 등 Fleet운영을 위한 최적의 충전 솔루션을 제공하여 고객 경제성을
-                  극대화 시킵니다. <br className="pc-block" />
-                  나아가 LS E-Link의 AI기술이 적용된 BMS(Battery Management System)를 통해 고객의 배터리 안정성을 향상시킵니다.
+                  LS E-Link의 EV 버스 충전 솔루션은 전력분배, 순차충전,
+                  충전속도제어 등 을 활용한 최적의 충전 솔루션을 제공하여 고객
+                  경제성을 극대화 시킵니다. <br className="pc-block" />
+                  나아가 LS E-Link의 AI기술이 적용된 BMS(Battery Management
+                  System)를 통해 고객의 배터리 안정성을 향상시킵니다.
                 </p>
               </div>
-              {/* <ul className="drive-list">
-						<li>
-							<p className="tit">믿을 수 있는</p>
-							<div className="txt">
-								<p>99.5%의 가용성을 달성하도록 구축 및 인력 배치</p>
-								<p>3-10년 제조업체 보증</p>
-							</div>
-						</li>
-						<li>
-							<p className="tit">콤팩트</p>
-							<div className="txt">
-								<p>공간이 제한된 창고에 최적화</p>
-								<p>중앙 집중식 전원 모듈로 공간 절약</p>
-							</div>
-						</li>
-						<li>
-							<p className="tit">비용 효율적</p>
-							<div className="txt">
-								<p>하드웨어 및 설치 비용 감소</p>
-								<p>추가 모듈을 쉽게 추가할 수 있는 확장성을 고려한 설계</p>
-							</div>
-						</li>
-						<li>
-							<p className="tit">고성능</p>
-							<div className="txt">
-								<p>60kW ~ 1440kW의 다양한 전력 수준으로 제공</p>
-							</div>
-						</li>
-					</ul> */}
+
               <div className="video-wrap">
-                {/* <video src="/video/20230427_170801187.mp4" playsInline loop muted autoPlay></video> */}
                 <video playsInline loop muted autoPlay controls>
                   <source src="/video/20230427_170801187.mp4"></source>
                 </video>
               </div>
-              {/* <img src="/img/sub/vod.jpg" alt="" style={{ 'width': '100%' }}/> */}
             </div>
           </div>
 
@@ -203,9 +180,11 @@ const TransportationForm = () => {
               <div className="tit-wrap">
                 <div className="tit">운영 최적화, 비용 절감</div>
                 <p>
-                  LS E-Link의 차량 및 에너지 관리 플랫폼은 충전 작업을 최적화하고 비용을 절감하기 위해 배터리 전기차량과
+                  LS E-Link의 차량 및 에너지 관리 플랫폼은 충전 작업을
+                  최적화하고 비용을 절감하기 위해 배터리 전기차량과
                   <br className="pc-block" />
-                  충전기에 대한 기록 및 실시간 성능 정보를 제공하는 클라우드 기반 데이터 플랫폼입니다.
+                  충전기에 대한 기록 및 실시간 성능 정보를 제공하는 클라우드
+                  기반 데이터 플랫폼입니다.
                 </p>
               </div>
               <ul className="drive-list drive-list2">
@@ -263,40 +242,20 @@ const TransportationForm = () => {
             </div>
           </div>
 
-          {/*<div className="business-wrap">
-		<div className="wrap pb70">
-			<div className="infor mt0">
-				<div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-					효율적이고 최적화된 충전인프라 컨설팅
-				</div>
-				<div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-					구축을 위한 설계부터 인허가 시공 운영관리 등 충전인프라 Total solution을 제공합니다.
-				</div>
-			</div>
-			<div className="img img1">
-				<ParallaxProvider>
-				<Parallax>
-				<div className="in" data-top-top="background-position: 100% 50%;" data-center-top="background-position:100% 100%;"></div>
-				</Parallax>
-				</ParallaxProvider>
-			</div>
-			<div className="infor">
-				<div className="infor-tit" data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
-				LS E-Link만의 관제솔루션 제공
-				</div>
-				<div className="infor-txt" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
-				전기버스 운영 및 정산에 특화 된 관제솔루션을 사용자의 Needs에 맞추어 제공합니다.
-				</div>
-			</div>
-			<div className="img img2">
-				<ParallaxProvider>
-				<Parallax>
-				<div className="in" data-top-top="background-position: 100% 50%;" data-center-top="background-position:100% 100%;"></div>
-				</Parallax>
-				</ParallaxProvider>
-			</div>
-		</div>
-	</div>*/}
+          <div className="infor-down infor-down3">
+            <div className="wrap">
+              <div className="tit-wrap">
+                <div className="tit">무사고 화재 예방 솔루션</div>
+                <p>
+                  LS E-Link는 충전중 배터리 진단, 운행중 BMS관리 및 평시 전력의
+                  효율적인 인프라 관리를 통해 운영 안정성을 확보하고 있습니다.
+                </p>
+              </div>
+              <div className="img">
+                <div className="in2"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

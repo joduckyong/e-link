@@ -1492,7 +1492,21 @@
   .sub.sub02-3 .renew-list li {
     width: 100%;
   }
-
+  footer .ft_link {
+		top: calc(100vw*(20/1080));
+				right: calc(100vw*(20 / 1080));
+  }
+  footer .ft_link .top {
+		gap: calc(100vw*(24/1080));
+		margin-bottom: calc(100vw*(18/1080));
+  }
+  footer .ft_link .top .cont_txt {
+		font-size: calc(100vw*(24/1080));
+  }
+  footer .ft_link .top .cont_txt span {
+		margin-bottom: calc(100vw*(16/1080));
+		font-size: calc(100vw*(16/1080));
+  }
   footer {
     padding: 30px 0;
   }

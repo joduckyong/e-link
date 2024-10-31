@@ -42,10 +42,19 @@ const HistoryForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             연혁
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -65,19 +74,21 @@ const HistoryForm = () => {
                   <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management">투자정보</NavLink>
+                  <NavLink to="/investment/financial">
+                    투자정보 & 홍보센터
+                  </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/pr/press-list">홍보센터</NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -114,8 +125,18 @@ const HistoryForm = () => {
           <div className="wrap">
             <ParallaxProvider>
               <Parallax>
-                <div className="t-wrap" id="y-1" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
-                  <div className="title" data-top="transform:translateY(0%);" data-800-top="transform:translateY(50px);">
+                <div
+                  className="t-wrap"
+                  id="y-1"
+                  data-aos="fade-up"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                >
+                  <div
+                    className="title"
+                    data-top="transform:translateY(0%);"
+                    data-800-top="transform:translateY(50px);"
+                  >
                     <div className="time">2022 - 현재</div>
                     <div className="time-tit">
                       LS E-Link
@@ -125,11 +146,22 @@ const HistoryForm = () => {
                       기업의 탄생
                     </div>
                   </div>
-                  <ul className="time-list" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+                  <ul
+                    className="time-list"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                    data-aos-once="true"
+                  >
                     {outlineList.map((list, index) => (
-                      <li data-top="transform:translateY(0%);" data-800-top="transform:translateY(80px);">
+                      <li
+                        data-top="transform:translateY(0%);"
+                        data-800-top="transform:translateY(80px);"
+                      >
                         <dl>
-                          <dt>{list.companyYear}.{list.companyMonth}.{list.companyDay}</dt>
+                          <dt>
+                            {list.companyYear}.{list.companyMonth}.
+                            {list.companyDay}
+                          </dt>
                           <dd>
                             <p>{list.companyContents}</p>
                           </dd>

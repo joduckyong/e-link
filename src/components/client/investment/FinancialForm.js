@@ -25,7 +25,12 @@ const FinancialForm = () => {
   });
 
   useEffect(() => {
-    const newList = { boardId: 'FIN', pageIndex: page, searchKeyword: searchKeyword, searchCondition: 'year' };
+    const newList = {
+      boardId: 'FIN',
+      pageIndex: page,
+      searchKeyword: searchKeyword,
+      searchCondition: 'year',
+    };
     dispatch(selectClientBoard(newList));
   }, [dispatch, page, searchKeyword]);
 
@@ -54,10 +59,19 @@ const FinancialForm = () => {
       <div className="sub-top">
         <div className="bg big-frame"></div>
         <div className="txt-wrap wrap">
-          <h2 data-aos="fade-right" data-aos-duration="2000" data-aos-once="true">
+          <h2
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             재무정보
           </h2>
-          <ul className="path" data-aos="fade-up" data-aos-duration="2000" data-aos-once="true">
+          <ul
+            className="path"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            data-aos-once="true"
+          >
             <li>
               <NavLink to="/">
                 <img src="/img/sub/ico-home.svg" alt="" />
@@ -65,7 +79,7 @@ const FinancialForm = () => {
             </li>
             <li className={classnames('link', { show: activeMenu1 })}>
               <NavLink to="" onClick={(e) => onClickMenuLink('1')}>
-                투자정보
+                투자정보 & 홍보센터
               </NavLink>
               <ul className={classnames('links', { active: activeMenu1 })}>
                 <li>
@@ -75,21 +89,21 @@ const FinancialForm = () => {
                   <NavLink to="/business/e-link/evcharge">사업영역</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/investment/management" className="on">
-                    투자정보
+                  <NavLink to="/investment/financial" className="on">
+                    투자정보 & 홍보센터
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/pr/press-list">홍보센터</NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/recruit/people">채용정보</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contactus">Contact Us</NavLink>
+                  <NavLink to="/contactus/consult">Contact Us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="">EV 충전소</NavLink>
+                  <NavLink to="/ev/login">EV 충전소</NavLink>
                 </li>
               </ul>
             </li>
@@ -98,9 +112,6 @@ const FinancialForm = () => {
                 재무정보
               </NavLink>
               <ul className={classnames('links', { active: activeMenu2 })}>
-                <li>
-                  <NavLink to="/investment/management">경영정보</NavLink>
-                </li>
                 <li>
                   <NavLink to="/investment/financial" className="on">
                     재무정보
@@ -111,6 +122,9 @@ const FinancialForm = () => {
                 </li>
                 <li>
                   <NavLink to="/investment/announce">공고</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/pr/press-list">뉴스</NavLink>
                 </li>
               </ul>
             </li>
