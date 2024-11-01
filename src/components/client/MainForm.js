@@ -157,13 +157,7 @@ const MainForm = () => {
               <source src="/video/main.mp4" type="video/mp4" />
             </video> */}
 
-            <video
-              src="/video/main.mp4"
-              playsInline
-              loop
-              muted
-              autoPlay
-            ></video>
+            <video src="/video/1p.mp4" playsInline loop muted autoPlay></video>
           </div>
         </div>
         <div className="con1">
