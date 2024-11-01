@@ -159,11 +159,13 @@ const HistoryForm = () => {
                       >
                         <dl>
                           <dt>
-                            {list.companyYear}.{list.companyMonth}.
-                            {list.companyDay}
+                            {list.companyYear}.{list.companyMonth}
+                            {/* {list.companyDay} */}
                           </dt>
                           <dd>
-                            <p>{list.companyContents}</p>
+                            <p style={{ whiteSpace: 'pre-line' }}>
+                              {list.companyContents}
+                            </p>
                           </dd>
                         </dl>
                       </li>

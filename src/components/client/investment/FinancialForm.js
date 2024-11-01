@@ -132,9 +132,10 @@ const FinancialForm = () => {
         </div>
       </div>
 
-      <div className="content">
+      <div className="content pt0">
         <div className="wrap">
-          <div className="list-top">
+          <h2 class="prepare-txt">준비중입니다.</h2>
+          {/* <div className="list-top">
             <p className="t-ver">
               Total <strong>{boardList.totalCount}</strong> / {page} Page
             </p>
@@ -169,7 +170,7 @@ const FinancialForm = () => {
               nextPageText={'›'}
               onChange={pageClick}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
