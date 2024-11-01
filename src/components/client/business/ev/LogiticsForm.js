@@ -157,6 +157,7 @@ const LogiticsForm = () => {
               </div>
               <div className="img">
                 <div className="in"></div>
+                <div className="in2"></div>
               </div>
             </div>
           </div>

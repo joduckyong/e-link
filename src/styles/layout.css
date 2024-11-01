@@ -2900,7 +2900,15 @@ footer .family-link li a {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/public/img/sub/sol-img2.jpg') center no-repeat;
+  background: url('/public/img/sub/3p-1.png') left no-repeat;
+}
+.sub.sub02-2 .dist .infor-down .in2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/public/img/sub/3p-2.png') right no-repeat;
 }
 .sub.sub02-2 .dist-solution-img {
   background: #e9ecf1 url('/public/img/sub/dist-pc-img.png') center no-repeat;
