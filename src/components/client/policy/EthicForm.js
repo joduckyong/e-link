@@ -59,16 +59,23 @@ const EthicForm = () => {
         <div className="top">
           <div className="cont_tit">
             <p>
-              LS머트리얼즈는 윤리의식을 바탕으로 밝고 건전한 기업을 만들어
-              갑니다.
+              LS E-Link는 윤리의식을 바탕으로 밝고 건전한 기업을 만들어 갑니다.
             </p>
             <small>
-              LS머트리얼즈는 LS Partnership과 준법경영을 바탕으로 윤리경영을
+              LS E-Link는 LS Partnership과 준법경영을 바탕으로 윤리경영을
               실천하고 있으며,
               <br className="mBr" />
               전직원이 원칙과 기본을 지켜 모든 업무를 투명하고 합리적으로
               처리하고 있습니다.
             </small>
+            <div className="download_btn">
+              <a href="/img/sub/LS 윤리규범.pdf" download>
+                LS 윤리규범
+              </a>
+              <a href="/img/sub/LS 윤리규범 실전지침.pdf" download>
+                LS 윤리규범 실천지침
+              </a>
+            </div>
           </div>
           <div className="cont_img">
             <img src="/img/sub/ethic_bnr.png" alt="" />

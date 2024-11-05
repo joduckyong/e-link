@@ -93,7 +93,7 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <NavLink to="/investment/financial">투자정보 & 홍보센터</NavLink>
+              <NavLink to="/investment/financial">IR</NavLink>
               <div className="depth-1">
                 <ul>
                   <li>
@@ -309,7 +309,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink to="/investment/financial">
-                <strong>투자정보 & 홍보센터</strong>
+                <strong>IR</strong>
               </NavLink>
               <ul className="small-menu">
                 <li>
@@ -504,7 +504,7 @@ const Header = () => {
               className={moMenuClass === '3' ? 'mo-click on' : 'mo-click'}
               onClick={() => onClickMoMenu('3')}
             >
-              <NavLink to="">투자정보 & 홍보센터</NavLink>
+              <NavLink to="">IR</NavLink>
               <div
                 className="depth-1"
                 style={

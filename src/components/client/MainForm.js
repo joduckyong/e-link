@@ -169,7 +169,7 @@ const MainForm = () => {
               data-aos-once="true"
             >
               LS E-Link는
-              <br className="m-block" /> B2B 대용량 고전력에 특화된
+              <br className="m-block" /> B2B 고전압 대용량에 특화된
               <br />
               전기차 충전 솔루션으로
               <br />더 큰 가치를 만들어
@@ -689,12 +689,12 @@ const MainForm = () => {
             />
           </div>
         </div>
-        <div className="con6">
-          {/*<div className="in"></div>*/}
+        {/* <div className="con6">
+          <div className="in"></div>
 
-          {/* <video muted autoPlay loop playsInline className="con6-video-pc">
+          <video muted autoPlay loop playsInline className="con6-video-pc">
             <source src="/video/main_con6_video.mp4" type="video/mp4" />
-          </video> */}
+          </video>
 
           <video
             src="/video/main_con6_video.mov"
@@ -703,7 +703,7 @@ const MainForm = () => {
             muted
             autoPlay
           ></video>
-        </div>
+        </div> */}
         {/* <div className="con7">
           <div className="wrap">
             <div

@@ -174,7 +174,7 @@ const BusinessplaceForm = () => {
                 data-aos-duration="2000"
                 data-aos-once="true"
               >
-                <img src="/img/sub/company.jpg" alt="" />
+                <img src="/img/sub/company2.jpg" alt="" />
               </div>
             </div>
             <div className="company-infor">
@@ -194,7 +194,7 @@ const BusinessplaceForm = () => {
                 data-aos-duration="2000"
                 data-aos-once="true"
               >
-                <img src="/img/sub/company.jpg" alt="" />
+                <img src="/img/sub/company3.jpg" alt="" />
               </div>
             </div>
             <div className="company-infor">
@@ -214,7 +214,7 @@ const BusinessplaceForm = () => {
                 data-aos-duration="2000"
                 data-aos-once="true"
               >
-                <img src="/img/sub/company.jpg" alt="" />
+                <img src="/img/sub/company4.jpg" alt="" />
               </div>
             </div>
           </div>
