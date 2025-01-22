@@ -138,22 +138,175 @@ const ControlForm = () => {
           </div>
           <div className="bg"></div>
           <div className="business-wrap">
-            <div className="wrap pb70">
-              <div className="infor mt0">
+            <div className="pb70">
+              <div className="wrap">
+                <div className="infor mt0">
+                  <div
+                    className="infor-tit m-lf34"
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                    data-aos-once="true"
+                  >
+                    관제시스템 특화 기능
+                  </div>
+                </div>
+                <div className="img img1">
+                  <div
+                    className="in"
+                    style={{ 'background-size': 'contain' }}
+                  ></div>
+                </div>
+              </div>
+              <div className="wrap control-screen">
+                <div className="infor">
+                  <div
+                    className="infor-tit m-lf34"
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                    data-aos-once="true"
+                  >
+                    관제시스템 화면
+                  </div>
+                </div>
+                <ul>
+                  <li>
+                    <div className="img img01">
+                      <div className="in"></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="img img02">
+                      <div className="in"></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="img img03">
+                      <div className="in"></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div className="control-function">
+                <div className="wrap infor mt0">
+                  <div
+                    className="infor-tit m-lf34"
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                    data-aos-once="true"
+                  >
+                    관제시스템 기능
+                  </div>
+                </div>
+                <ul className="wrap control-function-list">
+                  <li className="list">
+                    <div className="img img01">
+                      <div className="in"></div>
+                    </div>
+                    <div className="txt">
+                      <div className="tit-box">
+                        <p>제어 기능</p>
+                      </div>
+                      <ul>
+                        <li>리셋</li>
+                        <li>충전정지</li>
+                        <li>펌웨어업데이트</li>
+                        <li>충전량 제어</li>
+                        <li>SOC 상한값 설정</li>
+                        <li>커넥터 별 제어</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li className="list">
+                    <div className="img img02">
+                      <div className="in"></div>
+                    </div>
+                    <div className="txt">
+                      <div className="tit-box">
+                        <p>충전사업별 기능</p>
+                        <span>
+                          물류 / 운수에 특화된 충전기 제어시스템 및 통계기능
+                        </span>
+                      </div>
+                      <div className="txt-box">
+                        <strong>운수</strong>
+                        <ul>
+                          <li>버스순차충전</li>
+                          <li>커넥터별 충전기 제어</li>
+                          <li>SOH 예측 기능</li>
+                          <li>차량 기준 충전량 조회</li>
+                          <li>요일별 SOC 상한치 설정(노선기준)</li>
+                        </ul>
+                      </div>
+                      <div className="txt-box">
+                        <strong>물류</strong>
+                        <ul>
+                          <li>법인 소속 차량 월별 충전량 기반 정산기능</li>
+                          <li>법인 관리차량 이력조회</li>
+                          <li>충전소별 충전량/수익 분석</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div className="wrap control-manufacturer">
+                <div className="infor">
+                  <div
+                    className="infor-tit m-lf34"
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                    data-aos-once="true"
+                  >
+                    연동가능 충전기 제조사
+                  </div>
+                </div>
+                <div className="img">
+                  <div className="in"></div>
+                </div>
+              </div>
+              <div className="wrap control-brand">
+                <div className="infor">
+                  <h3
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                    data-aos-once="true"
+                  >
+                    Brand Identity
+                  </h3>
+                </div>
                 <div
-                  className="infor-tit m-lf34"
-                  data-aos="fade-right"
+                  className="infor-txt"
+                  data-aos="fade-left"
                   data-aos-duration="2000"
                   data-aos-once="true"
                 >
-                  고객별, 차종별 UI/UX 적용된 맞춤형 관제시스템 제공
+                  ELVIS의 반듯하고 무게 있는 로고의 형태는 전기차 충전분야의
+                  전문성과 신뢰감을 나타내고 <br />
+                  LS의 “L”과 E-link, Energy 를 뜻하는 “E”를 의미하는 심볼을
+                  사용하였습니다.
                 </div>
-              </div>
-              <div className="img img1">
-                <div
-                  className="in"
-                  style={{ 'background-size': 'cover' }}
-                ></div>
+                <div className="img symbol">
+                  <div className="in"></div>
+                </div>
+                <div className="color">
+                  <span className="color-tit">Color</span>
+                  <ul>
+                    <li className="blue">
+                      <div className="color-name">ELVIS Blue</div>
+                      <div className="color-info">
+                        <p>#091C54</p>
+                        <p>Process Color : C100 M95 Y34 K36</p>
+                      </div>
+                    </li>
+                    <li className="orange">
+                      <div className="color-name">ELVIS Orange</div>
+                      <div className="color-info">
+                        <p>#E96600</p>
+                        <p>Process Color : C4 M73 Y100 </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
               {/* <div className="infor">
                 <div

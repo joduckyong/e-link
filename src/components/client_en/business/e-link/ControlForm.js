@@ -152,7 +152,7 @@ const ControlForm = () => {
               <div className="img img1">
                 <div
                   className="in"
-                  style={{ 'background-size': 'cover' }}
+                  style={{ 'background-size': 'contain' }}
                 ></div>
               </div>
               <div className="infor">
@@ -169,7 +169,7 @@ const ControlForm = () => {
               <div className="img img2">
                 <div
                   className="in"
-                  style={{ 'background-size': 'cover' }}
+                  style={{ 'background-size': 'contain' }}
                 ></div>
               </div>
             </div>

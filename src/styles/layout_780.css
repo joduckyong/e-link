@@ -485,6 +485,17 @@
   .sub.sub02-1-1 .electronic-car:before {
     background-position-x: calc(100% - 35%);
   }
+  .sub.sub02-1-1 .control .control-screen ul{
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sub.sub02-1-1 .control .control-brand .color ul{
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sub.sub02-1-1 .control .control-brand .color ul li .color-info{
+    margin-top: 16px;
+  }
   .sub.sub02-1-1 .energy .pc-graph {
     display: none;
   }

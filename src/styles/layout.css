@@ -2657,8 +2657,12 @@ footer .family-link li a {
   position: fixed;
   z-index: -10;
 }
+.sub.sub02-1-1 .control .img1{
+  border: 1px solid #AFBAC6;
+}
 .sub.sub02-1-1 .control .img1 .in {
-  background: url('/public/img/sub/control-img1.jpg') center 0 no-repeat;
+  /* background: url('/public/img/sub/control-img1.jpg') center 0 no-repeat; */
+  background: url('/public/img/sub/control-img01.jpg') center 0 no-repeat;
   position: absolute;
   top: 0;
   left: 0;
@@ -2666,7 +2670,7 @@ footer .family-link li a {
   bottom: 0;
   background-size: cover;
 }
-.sub.sub02-1-1 .control .img2 .in {
+/* .sub.sub02-1-1 .control .img2 .in {
   background: url('/public/img/sub/control-img2.jpg') center 0 no-repeat;
   position: absolute;
   top: 0;
@@ -2674,6 +2678,204 @@ footer .family-link li a {
   right: 0;
   bottom: 0;
   background-size: cover;
+} */
+
+.sub.sub02-1-1 .control .infor{
+  margin-bottom: 40px;
+}
+.sub.sub02-1-1 .control .control-screen{
+  padding-bottom: 130px;
+}
+.sub.sub02-1-1 .control .control-screen .infor{
+  margin-top: 56px;
+}
+.sub.sub02-1-1 .control .control-screen ul{
+  display: flex;
+  gap: 18px;
+}
+.sub.sub02-1-1 .control .control-screen ul li{
+  flex: 1;
+}
+.sub.sub02-1-1 .control .control-screen ul li .img{
+  height: 194px;
+  border: 1px solid #EAEAEA;
+}
+.sub.sub02-1-1 .control .control-screen ul li .img .in{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center 0;
+  background-repeat: no-repeat;
+}
+.sub.sub02-1-1 .control .control-screen ul li .img01 .in{
+  background-image: url('/public/img/sub/control-screen-img01.jpg');
+}
+.sub.sub02-1-1 .control .control-screen ul li .img02 .in{
+  background-image: url('/public/img/sub/control-screen-img02.jpg');
+}
+.sub.sub02-1-1 .control .control-screen ul li .img03 .in{
+  background-image: url('/public/img/sub/control-screen-img03.jpg');
+}
+.sub.sub02-1-1 .control .control-function{
+  padding: 130px 0;
+  background: #F3F5F9;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list:nth-child(even) {
+  flex-direction: row-reverse;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .img{
+  width: 62%;
+  height: 400px;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .img .in{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center 0;
+  background-repeat: no-repeat;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .img01 .in{
+  background-image: url('/public/img/sub/control-function-img01.jpg');
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .img02 .in{
+  background-image: url('/public/img/sub/control-function-img02.jpg');
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .txt{
+  width: calc(38% - 48px);
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .txt .tit-box{
+  margin-bottom: 24px;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .txt .tit-box p{
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 34px;
+  letter-spacing: -0.72px;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .txt .tit-box span{
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: -0.54px;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .txt .txt-box{
+  display: flex;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .txt .txt-box + .txt-box{
+  margin-top: 16px;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .txt .txt-box strong{
+  color: #EC6800;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.48px;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .txt ul li{
+  position: relative;
+  padding-left: 23px;
+  color: #444;
+  line-height: 24px;
+  letter-spacing: -0.48px;
+}
+.sub.sub02-1-1 .control .control-function .control-function-list .list .txt ul li::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 3px;
+  height: 3px;
+  background: #444;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.sub.sub02-1-1 .control .control-manufacturer .infor{
+  margin-top: 130px;
+}
+.sub.sub02-1-1 .control .control-manufacturer .img{
+  height: 600px;
+  border: 1px solid #AFBAC6;
+}
+.sub.sub02-1-1 .control .control-manufacturer .img .in{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-image: url('/public/img/sub/control-manufacturer-img01.jpg');
+}
+.sub.sub02-1-1 .control .control-brand .img{
+  height: 300px;
+  margin: 80px 0 90px;
+  border-radius: 0;
+}
+.sub.sub02-1-1 .control .control-brand .img .in{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-image: url('/public/img/sub/control-brand-img01.png');
+}
+
+.sub.sub02-1-1 .control .control-brand .color .color-tit{
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.6px;
+}
+.sub.sub02-1-1 .control .control-brand .color ul{
+  display: flex;
+  gap: 18px;
+  margin-top: 20px;
+}
+.sub.sub02-1-1 .control .control-brand .color ul li{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  height: 200px;
+  padding: 36px 40px 40px;
+  box-sizing: border-box;
+  color: #fff;
+}
+.sub.sub02-1-1 .control .control-brand .color ul li.blue{
+  background: #0A1E5A;
+}
+.sub.sub02-1-1 .control .control-brand .color ul li.orange{
+  background: #EC6800;
+}
+.sub.sub02-1-1 .control .control-brand .color ul li .color-name{
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.6px;
+}
+.sub.sub02-1-1 .control .control-brand .color ul li .color-info p{
+  line-height: 26px;
+  letter-spacing: -0.32px;
 }
 
 .sub.sub02-1-1 .energy:before {

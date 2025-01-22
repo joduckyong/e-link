@@ -811,6 +811,80 @@
   .sub.sub02-1-1 .electronic-car .infor-tit {
     width: 100%;
   }
+  .sub.sub02-1-1 .control .img{
+    padding-bottom: 50%;
+  }
+  .sub.sub02-1-1 .control .infor{
+    margin-bottom: 30px;
+  }
+  .sub.sub02-1-1 .control .control-screen .infor{
+    margin-top: 30px;
+  }
+  .sub.sub02-1-1 .control .control-screen{
+    padding-bottom: 70px;
+  }
+  .sub.sub02-1-1 .control .control-screen ul li .img{
+    height: auto;
+    padding-bottom: 55%;
+  }
+  .sub.sub02-1-1 .control .control-function{
+    padding: 70px 0;
+  }
+  .sub.sub02-1-1 .control .control-function .control-function-list .list{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .sub.sub02-1-1 .control .control-function .control-function-list .list:nth-child(even){
+    flex-direction: column;
+  }
+  .sub.sub02-1-1 .control .control-function .control-function-list .list .img{
+    width: 100%;
+    height: auto;
+  }
+  .sub.sub02-1-1 .control .control-function .control-function-list .list .txt{
+    width: 100%;
+  }
+  .sub.sub02-1-1 .control .control-function .control-function-list .list .txt .tit-box{
+    margin-bottom: 10px;
+  }
+  .sub.sub02-1-1 .control .control-function .control-function-list .list .txt .tit-box p{
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+  .sub.sub02-1-1 .control .control-function .control-function-list .list .txt .tit-box span{
+    font-size: 14px;
+  }
+  .sub.sub02-1-1 .control .control-function .control-function-list .list .txt .txt-box strong{
+    font-size: 14px;
+  }
+  .sub.sub02-1-1 .control .control-function .control-function-list .list .txt ul li{
+    font-size: 14px;
+  }
+  .sub.sub02-1-1 .control .control-manufacturer .infor{
+    margin-top: 60px;
+  }
+  .sub.sub02-1-1 .control .control-manufacturer .img{
+    height: auto;
+    padding-bottom: 55%;
+  }
+  .sub.sub02-1-1 .control .control-brand .img{
+    height: auto;
+    margin: 20px 0 30px;
+    padding-bottom: 30%;
+  }
+  .sub.sub02-1-1 .control .control-brand .color .color-tit{
+    font-size: 18px;
+  }
+  .sub.sub02-1-1 .control .control-brand .color ul li{
+    padding: 10px;
+  }
+  .sub.sub02-1-1 .control .control-brand .color ul li .color-name{
+    font-size: 14px;
+  }
+  .sub.sub02-1-1 .control .control-brand .color ul li .color-info p{
+    font-size: 14px;
+  }
+
   .sub.sub02-1-1 .energy .infor {
     margin-bottom: 30px !important;
   }
