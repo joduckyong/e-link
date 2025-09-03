@@ -7,6 +7,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import 'aos/dist/aos.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, {
+  Navigation,
+  EffectFade,
+  Pagination,
+  Autoplay,
+} from 'swiper';
+import 'swiper/css';
+import 'swiper/swiper-bundle.css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+SwiperCore.use([Navigation, EffectFade, Pagination, Autoplay]); // Swiper
+
 const RenewableForm = () => {
   const [activeMenu1, setActiveMenu1] = useState(false);
   const [activeMenu2, setActiveMenu2] = useState(false);
@@ -142,7 +156,8 @@ const RenewableForm = () => {
                   data-aos-once="true"
                 >
                   대용량 배터리, 대규모 전력을 사용하는 B2B EV충전 시장과 동일한
-                  특징을 가진 차세대 모빌리티로 충전사업을 확장합니다.
+                  특징을 가진 차세대 모빌리티로 충전사업을 확장합니다.<br/>
+                  LS E-Link는 UAM, 항만장비 (YT, RS, AGV), 전기선박 등 다양한 차세대 모빌리티에 맞춘 충전인프라를 구축 및 운영하고 있습니다.
                 </div>
               </div>
             </div>
@@ -150,6 +165,62 @@ const RenewableForm = () => {
           <div className="bg"></div>
         </div>
       </div>
+
+      <div className="renewable-infor">
+        <Swiper
+          effect={'fade'}
+          loop={true}
+          autoplay={{ delay: 2000 }}
+          pagination={{
+            el: '.swiper-pagination',
+            clickable: true,
+          }}
+        >
+          <SwiperSlide>
+            <div
+              className="img"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-once="true"
+            >
+              <div
+                className="bg"
+                data-top-top="background-position: 50% 50%;"
+                data-center-top="background-position:100% 50%;"
+              ></div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
+              className="img img2"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-once="true"
+            >
+              <div
+                className="bg"
+                data-top-top="background-position: 50% 50%;"
+                data-center-top="background-position:100% 50%;"
+              ></div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
+              className="img img3"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-once="true"
+            >
+              <div
+                className="bg"
+                data-top-top="background-position: 50% 50%;"
+                data-center-top="background-position:100% 50%;"
+              ></div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+        </div>
+        <br/><br/>
     </div>
   );
 };

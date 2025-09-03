@@ -762,14 +762,11 @@
   }
 
   .sub .business-wrap {
-    padding-top: 60px;
-    padding-bottom: 50px;
+      padding-bottom: 10px;
+      padding-top: 30px;
   }
   .sub .business-wrap.m-pt50 {
     padding-top: 50px;
-  }
-  .sub .business .bg {
-    height: 260px;
   }
   .sub .business .infor {
     flex-wrap: wrap;

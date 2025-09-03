@@ -69,12 +69,12 @@ const PeopleForm = () => {
                 <li>
                   <NavLink to="/en/recruit/people" className="on">Ideal Talent</NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/en/recruit/benefits">Welfare</NavLink>
                 </li>
                 <li>
                   <NavLink to="/en/recruit/posting">Job Posting</NavLink>
-                </li>
+                </li> */}
               </ul>
             </li>
           </ul>
@@ -119,9 +119,9 @@ const PeopleForm = () => {
               </p>
             </li>
           </ul>
-          <NavLink to="/en/recruit/posting" className="btn">
+          {/* <NavLink to="/en/recruit/posting" className="btn">
             Recruitment Guide
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
     </div>

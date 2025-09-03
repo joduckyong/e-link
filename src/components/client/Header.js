@@ -110,7 +110,7 @@ const Header = () => {
                   </li>
                 </ul>
               </div>
-            </li>
+            </li>       
             <li>
               <NavLink to="/recruit/people">채용정보</NavLink>
               <div className="depth-1">
@@ -118,12 +118,21 @@ const Header = () => {
                   <li>
                     <NavLink to="/recruit/people">인재상</NavLink>
                   </li>
-                  {/* <li>
+                   {/* <li>
                     <NavLink to="/recruit/benefits">복리후생</NavLink>
                   </li>
                   <li>
                     <NavLink to="/recruit/posting">채용공고</NavLink>
-                  </li> */}
+                  </li>  */}
+                  <li>
+                    <a 
+                      href="https://lselink.ninehire.site" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      채용공고
+                    </a>
+                  </li>                   
                 </ul>
               </div>
             </li>
@@ -340,8 +349,17 @@ const Header = () => {
                 <li>
                   <NavLink to="/recruit/posting">채용공고</NavLink>
                 </li> */}
+                <li>
+                    <a 
+                      href="https://lselink.ninehire.site" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      채용공고
+                    </a>
+                </li>                
               </ul>
-            </li>
+            </li>            
             <li>
               <NavLink to="/contactus/consult">
                 <strong>Contact Us</strong>
@@ -546,15 +564,24 @@ const Header = () => {
                   <li>
                     <NavLink to="/recruit/people">인재상</NavLink>
                   </li>
-                  {/* <li>
+                   {/* <li>
                     <NavLink to="/recruit/benefits">복리후생</NavLink>
                   </li>
                   <li>
                     <NavLink to="/recruit/posting">채용공고</NavLink>
-                  </li> */}
+                  </li>  */}
+                  <li>
+                    <a 
+                      href="https://lselink.ninehire.site" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      채용공고
+                    </a>
+                  </li>                  
                 </ul>
               </div>
-            </li>
+            </li>            
             <li
               className={moMenuClass === '6' ? 'mo-click on' : 'mo-click'}
               onClick={() => onClickMoMenu('6')}

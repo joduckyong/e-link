@@ -468,6 +468,10 @@
   .sub .business .out-img {
     border-radius: 0;
   }
+  .sub .business .img2 {
+      overflow-x: scroll;
+      height: 694px;
+  }  
   .sub .business .pc-energy-img {
     display: none;
   }
@@ -717,6 +721,12 @@
   .mBr {
     display: block;
   }
+  .sub.sub02-1-1 .renewable-infor .swiper, .sub.sub02-1-1 .renewable-infor .swiper-pointer-events {
+      width: 90%;
+  }
+  .sub.sub02-1-1 .renewable-infor .img {
+      border-radius: 15px;
+  }  
   .sub .content {
     padding: 50px 0 60px;
   }

@@ -195,9 +195,9 @@ const PeopleForm = () => {
               </p>
             </li>
           </ul>
-          <NavLink to="/recruit/posting" className="btn">
+          {/* <NavLink to="/recruit/posting" className="btn">
             채용안내
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
     </div>

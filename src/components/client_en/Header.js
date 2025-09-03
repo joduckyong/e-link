@@ -106,12 +106,12 @@ const Header = () => {
                   <li>
                     <NavLink to="/en/recruit/people">Ideal Talent</NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink to="/en/recruit/benefits">Welfare</NavLink>
                   </li>
                   <li>
                     <NavLink to="/en/recruit/posting">Job Posting</NavLink>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </li>
@@ -287,12 +287,12 @@ const Header = () => {
                 <li>
                   <NavLink to="/en/recruit/people">Ideal Talent</NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/en/recruit/benefits">Welfare</NavLink>
                 </li>
                 <li>
                   <NavLink to="/en/recruit/posting">Job Posting</NavLink>
-                </li>
+                </li> */}
               </ul>
             </li>
             <li>
@@ -472,12 +472,12 @@ const Header = () => {
                   <li>
                     <NavLink to="/en/recruit/people">Ideal Talent</NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink to="/en/recruit/benefits">Welfare</NavLink>
                   </li>
                   <li>
                     <NavLink to="/en/recruit/posting">Job Posting</NavLink>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </li>

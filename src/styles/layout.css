@@ -1954,6 +1954,46 @@ footer .family-link li a {
   color: #121212;
 }
 
+
+.sub.sub02-1-1 .renewable-infor {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.sub.sub02-1-1 .renewable-infor .swiper {
+  width: 70%;
+}
+.sub.sub02-1-1 .renewable-infor .swiper-pointer-events {
+  width: 70%;
+}
+.sub.sub02-1-1 .renewable-infor .img {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 50%;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.sub.sub02-1-1 .renewable-infor .img .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/public/img/sub/uam.png') center no-repeat;
+  background-size: cover;
+  transition: all 0.7s ease-out;
+}
+.sub.sub02-1-1 .renewable-infor .img2 .bg {
+  background: url('/public/img/sub/agv.png') center no-repeat;
+  background-size: cover;
+}
+.sub.sub02-1-1 .renewable-infor .img3 .bg {
+  background: url('/public/img/sub/electric_ship.png') center no-repeat;
+  background-size: cover;
+}
+
+
 .sub.sub01-2 .sub-top .bg {
   background: url('/public/img/sub/sub01-2-top.jpg') center 0 no-repeat;
   background-size: cover;
@@ -2499,13 +2539,10 @@ footer .family-link li a {
 }
 
 /*business 페이지 공통*/
-.sub .business .bg {
-  height: 500px;
-}
 .sub .business-wrap {
   background: #fff;
   padding-top: 130px;
-  padding-bottom: 85px;
+  /* padding-bottom: 85px; */
 }
 .sub .renewable-wrap {
   padding-bottom: 150px;
@@ -2547,10 +2584,10 @@ footer .family-link li a {
   transition: all 0.7s ease-out;
 }
 .sub .business .img {
-  height: 500px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 30px;
+    border-radius: 30px;
+    height: 694px;
+    overflow: hidden;
+    position: relative;
 }
 .sub .business .img.prepare {
   height: auto;
@@ -2634,12 +2671,14 @@ footer .family-link li a {
 }
 .sub.sub02-1-1 .electronic-car .img2 .in {
   background: url('/public/img/sub/img.png') center 0 no-repeat;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-size: cover;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1280px;
+    background-position: 0 !important;
 }
 
 .sub.sub02-1-1 .control:before {
@@ -2878,21 +2917,21 @@ footer .family-link li a {
   letter-spacing: -0.32px;
 }
 
-.sub.sub02-1-1 .energy:before {
-  content: ' ';
-  display: block;
-  background-image: url('/public/img/sub/2p.jpg');
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: fixed;
-  z-index: -10;
+.sub.sub02-1-1 .energy .bg_box {
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: -10;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
 }
+
 .sub.sub02-1-1 .energy .out-img .in {
   background: url('/public/img/sub/energy-img.jpg') center 0 no-repeat;
   position: absolute;
